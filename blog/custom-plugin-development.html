@@ -41,12 +41,15 @@ h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
-@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}}
+/* Hero image */
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}}
 </style>
 </head>
 <body>
 <header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">← Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></header>
 <article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="Code on screen representing WordPress plugin development" class="hero-img">
 <div class="date">Jun 2026 · 6 min read</div>
 <h1>Building Custom WordPress Plugins from Scratch</h1>
 <p class="lead">How I architect ACF-driven plugins with REST API integrations, clean hooks, and client-friendly settings pages that are built to last.</p>
