@@ -126,8 +126,8 @@ section {
 }
 
 .btn-primary {
-  background: var(--ink);
-  color: var(--bg);
+  background: #0d1321;
+  color: #fff;
 }
 
 .btn-primary:hover {
@@ -208,8 +208,8 @@ header {
 
 .nav-cta {
   padding: 10px 18px;
-  background: var(--ink);
-  color: var(--bg);
+  background: #0d1321;
+  color: #fff;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
@@ -1024,7 +1024,7 @@ html[data-theme="dark"] .skel::after {
    -------------------------------------------------------------------------- */
 
 .cta {
-  background: var(--ink);
+  background: linear-gradient(135deg, #0d1321, #1e2a5a);
   color: #fff;
   border-radius: 24px;
   padding: 64px;
@@ -1039,7 +1039,7 @@ html[data-theme="dark"] .skel::after {
 }
 
 .cta p {
-  color: #a8b3d0;
+  color: #c7d2fe;
   max-width: 520px;
   margin: 0 auto 32px;
 }
