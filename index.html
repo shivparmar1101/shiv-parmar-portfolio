@@ -615,11 +615,8 @@ footer .foot-inner{display:flex;justify-content:space-between;align-items:center
             <label for="message">Project Details *</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
           </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn btn-primary" type="submit">Send Message</button>
-            <button class="btn btn-ghost" type="button" id="whatsappBtn">💬 WhatsApp</button>
-          </div>
-          <p class="form-note" id="formStatus">Message sends via email + WhatsApp — you'll hear back within 24 hours.</p>
+          <button class="btn btn-primary" type="submit">✉️ Send Message</button>
+          <p class="form-note" id="formStatus">Sends via email + WhatsApp — you'll hear back within 24 hours.</p>
         </form>
       </div>
       <div class="contact-cards">
@@ -681,7 +678,6 @@ navLinks.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navL
 // Contact form — Formspree + WhatsApp
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
-const whatsappBtn = document.getElementById('whatsappBtn');
 
 function getFormData(){
   return {
@@ -694,16 +690,12 @@ function getFormData(){
   };
 }
 
-function openWhatsApp(){
-  const d = getFormData();
+function openWhatsApp(d){
   const text = 'Hello Shiv!\n\nName: '+d.name+'\nEmail: '+d.email+'\nPhone: '+d.phone+'\nSubject: '+d.subject+'\nBudget: '+d.budget+'\n\n'+d.message;
   window.open('https://wa.me/917359411663?text='+encodeURIComponent(text),'_blank');
 }
 
-// WhatsApp button click
-whatsappBtn.addEventListener('click', openWhatsApp);
-
-// Form submit — Formspree + WhatsApp
+// Single button — Formspree (email) + WhatsApp
 contactForm.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const d = getFormData();
@@ -711,7 +703,6 @@ contactForm.addEventListener('submit', async (e)=>{
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  // Send via Formspree (email)
   try {
     const resp = await fetch('https://formspree.io/f/meajalpq',{
       method: 'POST',
@@ -726,18 +717,16 @@ contactForm.addEventListener('submit', async (e)=>{
       })
     });
     if(resp.ok){
-      formStatus.textContent = '✅ Message sent via email! Opening WhatsApp...';
-      openWhatsApp();
+      formStatus.textContent = '✅ Sent! Opening WhatsApp...';
     } else {
-      formStatus.textContent = '⚠️ Email failed. Opening WhatsApp instead...';
-      openWhatsApp();
+      formStatus.textContent = '⚠️ Opening WhatsApp...';
     }
   } catch(err){
-    formStatus.textContent = '⚠️ Network error. Opening WhatsApp...';
-    openWhatsApp();
+    formStatus.textContent = '⚠️ Opening WhatsApp...';
   }
 
-  btn.textContent = 'Message Sent ✓';
+  openWhatsApp(d);
+  btn.textContent = '✅ Message Sent';
 });
 
 // Reveal on scroll
