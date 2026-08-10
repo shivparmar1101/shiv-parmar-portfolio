@@ -814,12 +814,9 @@ html[data-theme="dark"] .skel::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.proj-card:hover .proj-preview img {
-  transform: scale(1.05);
-}
-
 .proj-card:hover .proj-preview .proj-overlay {
   background: linear-gradient(135deg, rgba(13,19,33,0.75), rgba(36,86,240,0.45));
+  opacity: 0.85;
 }
 
 .proj-card:hover .proj-info h3 {
@@ -852,7 +849,19 @@ html[data-theme="dark"] .skel::after {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --f: 0.08;
+  --r: 16px;
+  --_f: calc(100% * var(--f) / (1 + var(--f)));
+  --_a: calc(90deg * var(--f));
+  clip-path: inset(0 var(--_f) 0 0 round var(--r));
+  transform: perspective(600px) var(--_t, rotateY(var(--_a)));
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              clip-path 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.proj-card:hover .proj-preview img {
+  clip-path: inset(0 0 0 var(--_f) round var(--r));
+  --_t: translateX(calc(-1 * var(--_f))) rotateY(calc(-1 * var(--_a)));
 }
 
 .proj-preview .proj-overlay {
