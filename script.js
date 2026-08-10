@@ -57,7 +57,7 @@ const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxl2QKeGgr_CjIe6RD8bU-Cz2vsKlcGdWZioBY100re8F6Fl9D9a3yuMzrTgjagt5FPLg/exec";
+  "https://script.google.com/macros/s/AKfycbwsHozh2qkj-dmOnxiacVOpMdTzZFAoDqd3NMhyNffUJxkpv3leba-3-e9wxgiTy9Xg4A/exec";
 
 contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
