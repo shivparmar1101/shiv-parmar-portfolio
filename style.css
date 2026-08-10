@@ -587,22 +587,39 @@ html[data-theme="dark"] .skel::after {
 }
 
 /* --------------------------------------------------------------------------
-   7. Logo Strip
+   7. Logo Strip / Marquee
    -------------------------------------------------------------------------- */
+
+.logo-strip-wrapper {
+  overflow: hidden;
+  padding: 24px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 
 .logo-strip {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  opacity: 0.55;
+  gap: 60px;
+  animation: marquee 20s linear infinite;
+  width: max-content;
 }
 
-.logo-strip span {
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+.logo-strip img {
+  height: 32px;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.logo-strip img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* --------------------------------------------------------------------------
@@ -1251,15 +1268,6 @@ footer .foot-inner {
 
   .hero-meta div strong {
     font-size: 22px;
-  }
-
-  .logo-strip {
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .logo-strip span {
-    font-size: 14px;
   }
 
   .proj-preview {
