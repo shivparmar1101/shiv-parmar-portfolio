@@ -594,8 +594,6 @@ html[data-theme="dark"] .skel::after {
   overflow: hidden;
   padding: 32px 0;
   background: var(--bg-2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   position: relative;
 }
 
@@ -626,10 +624,6 @@ html[data-theme="dark"] .skel::after {
   animation: marquee 25s linear infinite;
   width: max-content;
   align-items: center;
-}
-
-.logo-strip:hover {
-  animation-play-state: paused;
 }
 
 .logo-item {
