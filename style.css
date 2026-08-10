@@ -592,34 +592,101 @@ html[data-theme="dark"] .skel::after {
 
 .logo-strip-wrapper {
   overflow: hidden;
-  padding: 24px 0;
-  background: var(--bg);
+  padding: 32px 0;
+  background: var(--bg-2);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.logo-strip-wrapper::before,
+.logo-strip-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-strip-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-2), transparent);
+}
+
+.logo-strip-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-2), transparent);
 }
 
 .logo-strip {
   display: flex;
-  gap: 60px;
-  animation: marquee 20s linear infinite;
+  gap: 24px;
+  animation: marquee 25s linear infinite;
   width: max-content;
+  align-items: center;
 }
 
-.logo-strip img {
-  height: 32px;
-  opacity: 0.5;
-  filter: grayscale(100%);
-  transition: opacity 0.3s, filter 0.3s;
+.logo-strip:hover {
+  animation-play-state: paused;
 }
 
-.logo-strip img:hover {
-  opacity: 1;
-  filter: grayscale(0%);
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+  min-width: 90px;
+}
+
+.logo-item:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(36, 86, 240, 0.15);
+}
+
+.logo-item img {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.5);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.logo-item:hover img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.15);
+}
+
+.logo-item span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.logo-item:hover span {
+  color: var(--accent);
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1443,6 +1510,20 @@ footer .foot-inner {
 
   .floating-pill {
     display: none;
+  }
+
+  .logo-item {
+    padding: 12px 16px;
+    min-width: 72px;
+  }
+
+  .logo-item img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .logo-item span {
+    font-size: 9px;
   }
 }
 
