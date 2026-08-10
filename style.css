@@ -61,7 +61,7 @@ body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.3s, color 0.3s;
+  text-rendering: optimizeLegibility;
 }
 
 a {
