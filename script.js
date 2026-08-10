@@ -78,20 +78,15 @@ contactForm.addEventListener("submit", async (e) => {
   try {
     const response = await fetch(SCRIPT_URL, {
       method: "POST",
+      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
-    const result = await response.json();
-
-    if (result.status === "success") {
-      formStatus.textContent =
-        "✅ Message sent successfully! I will get back to you within 24 hours.";
-      submitBtn.textContent = "✅ Sent!";
-      contactForm.reset();
-    } else {
-      throw new Error("Server returned non-success status");
-    }
+    formStatus.textContent =
+      "✅ Message sent successfully! I will get back to you within 24 hours.";
+    submitBtn.textContent = "✅ Sent!";
+    contactForm.reset();
   } catch (error) {
     formStatus.textContent = "❌ Something went wrong. Please try again.";
     submitBtn.textContent = "Send Message";
