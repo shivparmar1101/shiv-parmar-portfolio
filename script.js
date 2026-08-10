@@ -59,6 +59,7 @@ const formStatus = document.getElementById("formStatus");
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec";
 
+if (contactForm) {
 contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -93,6 +94,7 @@ contactForm.addEventListener("submit", async (e) => {
     submitBtn.disabled = false;
   }
 });
+}
 
 // --------------------------------------------------------------------------
 // 4. Reveal on Scroll (Intersection Observer)
