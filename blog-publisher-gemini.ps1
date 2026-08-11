@@ -126,7 +126,7 @@ function Send-EmailNotification {
         [string]$error = ""
     )
 
-    $notificationUrl = "https://script.google.com/macros/s/AKfycbwYznbwA4974_7lQUOpROqSC-HHau83nX80kPtM2v_QC6rsXts9hOnJIV1SZywi0LYE/exec"
+    $notificationUrl = "https://script.google.com/macros/s/AKfycbxZ5poh7MGyq-4nzpri5qtB4AujOWhIAsxT6uLiZ5NuJ7VzgRVuJKZRKY0VipBFli6D/exec"
 
     $body = @{
         type = "blog_notification"
