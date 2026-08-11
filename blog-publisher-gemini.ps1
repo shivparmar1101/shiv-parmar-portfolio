@@ -323,17 +323,28 @@ $listCard = @"
           </article>
 "@
 
-# Find the grid-3 div in blog.html and add new card
-$blogGrid = [regex]::Match($blogContent, '<div class="grid-3">[\s\S]*?</div>', [System.Text.RegularExpressions.RegexOptions]::Multiline)
-if ($blogGrid.Success) {
-    $existingCards = [regex]::Matches($blogGrid.Value, '<article class="blog-card reveal">[\s\S]*?</article>')
-    $newGrid = '<div class="grid-3">'
-    $newGrid += "`n" + $listCard
-    foreach ($card in $existingCards) {
-        $newGrid += "`n" + $card.Value
+# Find all existing blog cards
+$listCards = [regex]::Matches($blogContent, '<article class="blog-card reveal">[\s\S]*?</article>')
+
+if ($listCards.Count -gt 0) {
+    # Build new grid with new card first, then existing cards
+    $newListGrid = '<div class="grid-3">'
+    $newListGrid += "`n" + $listCard
+    
+    $listCount = 0
+    foreach ($card in $listCards) {
+        $newListGrid += "`n" + $card.Value
+        $listCount++
     }
-    $newGrid += "`n" + '</div>'
-    $blogContent = $blogContent.Substring(0, $blogGrid.Index) + $newGrid + $blogContent.Substring($blogGrid.Index + $blogGrid.Length)
+    $newListGrid += "`n" + '</div>'
+    
+    # Replace from first card to last card
+    $firstCard = $listCards[0]
+    $lastCard = $listCards[$listCards.Count - 1]
+    $startIdx = $firstCard.Index
+    $endIdx = $lastCard.Index + $lastCard.Length
+    
+    $blogContent = $blogContent.Substring(0, $startIdx) + $newListGrid + $blogContent.Substring($endIdx)
 }
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding $false
