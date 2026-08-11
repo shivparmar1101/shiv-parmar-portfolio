@@ -357,7 +357,7 @@ Write-Host "Saved: blog/$filename" -ForegroundColor Green
 
 # Update homepage
 Write-Host "Updating homepage..." -ForegroundColor Yellow
-Update-HomepageBlog -title $topic.title -date $date -readTime $topic.read -slug $slug -description "AI-generated blog post about $($topic.title.ToLower())."
+Update-HomepageBlog -title $topic.title -date $date -readTime $topic.read -slug $slug -description "$($topic.cat) development guide covering best practices, code examples and real-world use cases."
 
 # Update blog listing page
 Write-Host "Updating blog listing page..." -ForegroundColor Yellow
@@ -369,7 +369,7 @@ $listCard = @"
           <article class="blog-card reveal">
             <div class="date">$date &middot; $($topic.read) read</div>
             <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
-            <p>AI-generated blog post about $($topic.title.ToLower()).</p>
+            <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>
             <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
           </article>
 "@

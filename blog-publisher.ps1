@@ -302,7 +302,7 @@ Write-Host "Saved: $filename" -ForegroundColor Green
 
 # Update homepage
 Write-Host "Updating homepage..." -ForegroundColor Yellow
-Update-HomepageBlog -blogDir $BlogDir -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "AI-generated blog post about $($topic.title.ToLower())."
+Update-HomepageBlog -blogDir $BlogDir -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "$($topic.cat) development guide covering best practices, code examples and real-world use cases."
 
 # Git commit and push
 Write-Host "Committing to GitHub..." -ForegroundColor Yellow
