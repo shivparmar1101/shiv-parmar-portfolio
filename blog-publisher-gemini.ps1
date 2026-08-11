@@ -219,28 +219,39 @@ function Update-HomepageBlog {
           </article>
 "@
 
-    # Find the blog section and replace all cards with just 3 latest
-    $blogSection = [regex]::Match($content, '<div class="grid-3">[\s\S]*?</div>', [System.Text.RegularExpressions.RegexOptions]::Multiline)
+    # Find blog section by looking for blog heading
+    $blogSectionStart = $content.IndexOf('id="blog"')
+    $educationSectionStart = $content.IndexOf('id="education"')
     
-    if ($blogSection.Success) {
-        # Get existing blog cards
-        $existingCards = [regex]::Matches($blogSection.Value, '<article class="blog-card reveal">[\s\S]*?</article>')
+    if ($blogSectionStart -gt 0 -and $educationSectionStart -gt 0) {
+        $blogSection = $content.Substring($blogSectionStart, $educationSectionStart - $blogSectionStart)
         
-        # Build new grid with new card first, then take first 2 existing cards
-        $newGrid = '<div class="grid-3">'
-        $newGrid += "`n" + $newCard
+        # Find all existing blog cards
+        $existingCards = [regex]::Matches($blogSection, '<article class="blog-card reveal">[\s\S]*?</article>')
         
-        $count = 0
-        foreach ($card in $existingCards) {
-            if ($count -lt 2) {
-                $newGrid += "`n" + $card.Value
-                $count++
+        if ($existingCards.Count -gt 0) {
+            # Build new blog section with new card first, then 2 existing cards
+            $newBlogCards = "`n" + $newCard
+            $count = 0
+            foreach ($card in $existingCards) {
+                if ($count -lt 2) {
+                    $newBlogCards += "`n" + $card.Value
+                    $count++
+                }
             }
+            
+            # Replace from first card to last card in blog section
+            $firstCard = $existingCards[0]
+            $lastCard = $existingCards[$existingCards.Count - 1]
+            
+            $beforeCards = $blogSection.Substring(0, $firstCard.Index)
+            $afterCards = $blogSection.Substring($lastCard.Index + $lastCard.Length)
+            
+            $newBlogSection = $beforeCards + $newBlogCards + "`n" + $afterCards
+            
+            # Replace in full content
+            $content = $content.Substring(0, $blogSectionStart) + $newBlogSection + $content.Substring($educationSectionStart)
         }
-        $newGrid += "`n" + '</div>'
-        
-        # Replace the old grid with new one
-        $content = $content.Substring(0, $blogSection.Index) + $newGrid + $content.Substring($blogSection.Index + $blogSection.Length)
     }
 
     $utf8NoBom = New-Object System.Text.UTF8Encoding $false
@@ -373,28 +384,43 @@ $listCard = @"
           </article>
 "@
 
-# Find all existing blog cards
-$listCards = [regex]::Matches($blogContent, '<article class="blog-card reveal">[\s\S]*?</article>')
+# Find the blogGrid div
+$gridStart = $blogContent.IndexOf('<div class="grid-3" id="blogGrid">')
+if ($gridStart -lt 0) {
+    # Fallback if id not found
+    $gridStart = $blogContent.IndexOf('<div class="grid-3">')
+}
 
-if ($listCards.Count -gt 0) {
-    # Build new grid with new card first, then existing cards
-    $newListGrid = '<div class="grid-3">'
-    $newListGrid += "`n" + $listCard
-    
-    $listCount = 0
-    foreach ($card in $listCards) {
-        $newListGrid += "`n" + $card.Value
-        $listCount++
+if ($gridStart -gt 0) {
+    # Find the closing </div> of the grid
+    $gridEnd = $blogContent.IndexOf('</div>', $gridStart + 10)
+    while ($gridEnd -gt 0) {
+        $nextGrid = $blogContent.IndexOf('<div class="grid-3"', $gridEnd + 1)
+        if ($nextGrid -gt 0 -and $nextGrid -lt $gridEnd) {
+            $gridEnd = $blogContent.IndexOf('</div>', $gridEnd + 1)
+        } else {
+            break
+        }
     }
-    $newListGrid += "`n" + '</div>'
     
-    # Replace from first card to last card
-    $firstCard = $listCards[0]
-    $lastCard = $listCards[$listCards.Count - 1]
-    $startIdx = $firstCard.Index
-    $endIdx = $lastCard.Index + $lastCard.Length
-    
-    $blogContent = $blogContent.Substring(0, $startIdx) + $newListGrid + $blogContent.Substring($endIdx)
+    if ($gridEnd -gt 0) {
+        $currentGrid = $blogContent.Substring($gridStart, $gridEnd - $gridStart + 6)
+        
+        # Find all existing blog cards in the grid
+        $existingCards = [regex]::Matches($currentGrid, '<article class="blog-card reveal">[\s\S]*?</article>')
+        
+        # Build new grid with new card first, then existing cards
+        $newGrid = '<div class="grid-3" id="blogGrid">'
+        $newGrid += "`n" + $listCard
+        
+        foreach ($card in $existingCards) {
+            $newGrid += "`n" + $card.Value
+        }
+        $newGrid += "`n" + '</div>'
+        
+        # Replace the old grid
+        $blogContent = $blogContent.Substring(0, $gridStart) + $newGrid + $blogContent.Substring($gridEnd + 6)
+    }
 }
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding $false
