@@ -287,9 +287,20 @@ if (-not $content) {
 
 Write-Host "Content generated! ($($content.Length) chars)" -ForegroundColor Green
 
-# Use Unsplash image (Gemini image gen needs special setup)
-$imageUrl = "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop"
-Write-Host "Using professional header image..." -ForegroundColor Green
+# Use topic-specific image
+$imageUrls = @(
+    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop"
+)
+$imageUrl = $imageUrls | Get-Random
+Write-Host "Using blog-specific header image..." -ForegroundColor Green
 
 # Create slug and filename
 $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
