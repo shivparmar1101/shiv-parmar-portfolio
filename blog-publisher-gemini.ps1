@@ -3,7 +3,7 @@
 # Run via Windows Task Scheduler
 
 param(
-    [string]$ApiKey = "AQ.Ab8RN6LXMXImg0jZ5kNKlX-_85wBGnVblwhaaeCt6iU-Sey2Vw",
+    [string]$ApiKey = "",
     [string]$BlogDir = "D:\xampp\htdocs\portfolio\blog",
     [string]$SiteUrl = "https://shivparmar1101.github.io/shiv-parmar-portfolio"
 )
