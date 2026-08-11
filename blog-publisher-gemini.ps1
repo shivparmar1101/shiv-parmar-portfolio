@@ -308,6 +308,37 @@ Write-Host "Saved: blog/$filename" -ForegroundColor Green
 Write-Host "Updating homepage..." -ForegroundColor Yellow
 Update-HomepageBlog -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "AI-generated blog post about $($topic.title.ToLower())."
 
+# Update blog listing page
+Write-Host "Updating blog listing page..." -ForegroundColor Yellow
+$blogHtmlPath = "D:\xampp\htdocs\portfolio\blog.html"
+$blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
+
+# Create new blog card for listing page
+$listCard = @"
+          <article class="blog-card reveal">
+            <div class="date">$date &middot; $($topic.readTime) read</div>
+            <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
+            <p>AI-generated blog post about $($topic.title.ToLower()).</p>
+            <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
+          </article>
+"@
+
+# Find the grid-3 div in blog.html and add new card
+$blogGrid = [regex]::Match($blogContent, '<div class="grid-3">[\s\S]*?</div>', [System.Text.RegularExpressions.RegexOptions]::Multiline)
+if ($blogGrid.Success) {
+    $existingCards = [regex]::Matches($blogGrid.Value, '<article class="blog-card reveal">[\s\S]*?</article>')
+    $newGrid = '<div class="grid-3">'
+    $newGrid += "`n" + $listCard
+    foreach ($card in $existingCards) {
+        $newGrid += "`n" + $card.Value
+    }
+    $newGrid += "`n" + '</div>'
+    $blogContent = $blogContent.Substring(0, $blogGrid.Index) + $newGrid + $blogContent.Substring($blogGrid.Index + $blogGrid.Length)
+}
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($blogHtmlPath, $blogContent, $utf8NoBom)
+
 # Git commit and push
 Write-Host "Committing to GitHub..." -ForegroundColor Yellow
 Set-Location "D:\xampp\htdocs\portfolio"
