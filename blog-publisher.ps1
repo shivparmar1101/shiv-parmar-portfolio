@@ -196,7 +196,7 @@ function Update-HomepageBlog {
     )
 
     $indexPath = "D:\xampp\htdocs\portfolio\index.html"
-    $content = Get-Content $indexPath -Raw
+    $content = Get-Content $indexPath -Raw -Encoding UTF8
 
     # Create new blog card
     $newCard = @"
@@ -208,17 +208,32 @@ function Update-HomepageBlog {
           </article>
 "@
 
-    # Find the grid-3 div and add new card at the beginning
-    $content = $content -replace '(<div class="grid-3">[\s\S]*?<article class="blog-card reveal">)', "`$1`n$newCard"
-
-    # Remove the last blog card if more than 3
-    $cards = [regex]::Matches($content, '<article class="blog-card reveal">[\s\S]*?</article>')
-    if ($cards.Count -gt 3) {
-        $lastCard = $cards[$cards.Count - 1]
-        $content = $content.Remove($lastCard.Index, $lastCard.Length)
+    # Find the blog section and replace all cards with just 3 latest
+    $blogSection = [regex]::Match($content, '<div class="grid-3">[\s\S]*?</div>', [System.Text.RegularExpressions.RegexOptions]::Multiline)
+    
+    if ($blogSection.Success) {
+        # Get existing blog cards
+        $existingCards = [regex]::Matches($blogSection.Value, '<article class="blog-card reveal">[\s\S]*?</article>')
+        
+        # Build new grid with new card first, then take first 2 existing cards
+        $newGrid = '<div class="grid-3">'
+        $newGrid += "`n" + $newCard
+        
+        $count = 0
+        foreach ($card in $existingCards) {
+            if ($count -lt 2) {
+                $newGrid += "`n" + $card.Value
+                $count++
+            }
+        }
+        $newGrid += "`n" + '</div>'
+        
+        # Replace the old grid with new one
+        $content = $content.Substring(0, $blogSection.Index) + $newGrid + $content.Substring($blogSection.Index + $blogSection.Length)
     }
 
-    Set-Content -Path $indexPath -Value $content -Encoding UTF8
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($indexPath, $content, $utf8NoBom)
 }
 
 # Main execution
