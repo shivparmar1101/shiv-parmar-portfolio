@@ -219,39 +219,29 @@ function Update-HomepageBlog {
           </article>
 "@
 
-    # Find blog section by looking for blog heading
-    $blogSectionStart = $content.IndexOf('id="blog"')
-    $educationSectionStart = $content.IndexOf('id="education"')
-    
-    if ($blogSectionStart -gt 0 -and $educationSectionStart -gt 0) {
-        $blogSection = $content.Substring($blogSectionStart, $educationSectionStart - $blogSectionStart)
-        
-        # Find all existing blog cards
-        $existingCards = [regex]::Matches($blogSection, '<article class="blog-card reveal">[\s\S]*?</article>')
-        
-        if ($existingCards.Count -gt 0) {
-            # Build new blog section with new card first, then 2 existing cards
-            $newBlogCards = "`n" + $newCard
-            $count = 0
-            foreach ($card in $existingCards) {
-                if ($count -lt 2) {
-                    $newBlogCards += "`n" + $card.Value
-                    $count++
-                }
+    # Use marker comments for reliable insertion
+    $startMarker = "<!-- BLOG_CARDS_START -->"
+    $endMarker = "<!-- BLOG_CARDS_END -->"
+    $startIdx = $content.IndexOf($startMarker)
+    $endIdx = $content.IndexOf($endMarker)
+
+    if ($startIdx -gt 0 -and $endIdx -gt $startIdx) {
+        # Extract existing cards between markers
+        $between = $content.Substring($startIdx + $startMarker.Length, $endIdx - $startIdx - $startMarker.Length)
+        $existingCards = [regex]::Matches($between, '<article class="blog-card reveal">[\s\S]*?</article>')
+
+        # Build new content: new card + keep only 2 most recent existing
+        $newBetween = "`n" + $newCard
+        $count = 0
+        foreach ($card in $existingCards) {
+            if ($count -lt 2) {
+                $newBetween += "`n" + $card.Value
+                $count++
             }
-            
-            # Replace from first card to last card in blog section
-            $firstCard = $existingCards[0]
-            $lastCard = $existingCards[$existingCards.Count - 1]
-            
-            $beforeCards = $blogSection.Substring(0, $firstCard.Index)
-            $afterCards = $blogSection.Substring($lastCard.Index + $lastCard.Length)
-            
-            $newBlogSection = $beforeCards + $newBlogCards + "`n" + $afterCards
-            
-            # Replace in full content
-            $content = $content.Substring(0, $blogSectionStart) + $newBlogSection + $content.Substring($educationSectionStart)
         }
+
+        # Replace between markers
+        $content = $content.Substring(0, $startIdx + $startMarker.Length) + $newBetween + "`n          " + $content.Substring($endIdx)
     }
 
     $utf8NoBom = New-Object System.Text.UTF8Encoding $false
@@ -384,43 +374,25 @@ $listCard = @"
           </article>
 "@
 
-# Find the blogGrid div
-$gridStart = $blogContent.IndexOf('<div class="grid-3" id="blogGrid">')
-if ($gridStart -lt 0) {
-    # Fallback if id not found
-    $gridStart = $blogContent.IndexOf('<div class="grid-3">')
-}
+# Use marker comments for reliable insertion
+$blogStartMarker = "<!-- BLOG_CARDS_START -->"
+$blogEndMarker = "<!-- BLOG_CARDS_END -->"
+$blogStartIdx = $blogContent.IndexOf($blogStartMarker)
+$blogEndIdx = $blogContent.IndexOf($blogEndMarker)
 
-if ($gridStart -gt 0) {
-    # Find the closing </div> of the grid
-    $gridEnd = $blogContent.IndexOf('</div>', $gridStart + 10)
-    while ($gridEnd -gt 0) {
-        $nextGrid = $blogContent.IndexOf('<div class="grid-3"', $gridEnd + 1)
-        if ($nextGrid -gt 0 -and $nextGrid -lt $gridEnd) {
-            $gridEnd = $blogContent.IndexOf('</div>', $gridEnd + 1)
-        } else {
-            break
-        }
+if ($blogStartIdx -gt 0 -and $blogEndIdx -gt $blogStartIdx) {
+    # Extract existing cards between markers
+    $between = $blogContent.Substring($blogStartIdx + $blogStartMarker.Length, $blogEndIdx - $blogStartIdx - $blogStartMarker.Length)
+    $existingCards = [regex]::Matches($between, '<article class="blog-card reveal">[\s\S]*?</article>')
+
+    # Build new content: new card + all existing cards
+    $newBetween = "`n" + $listCard
+    foreach ($card in $existingCards) {
+        $newBetween += "`n" + $card.Value
     }
-    
-    if ($gridEnd -gt 0) {
-        $currentGrid = $blogContent.Substring($gridStart, $gridEnd - $gridStart + 6)
-        
-        # Find all existing blog cards in the grid
-        $existingCards = [regex]::Matches($currentGrid, '<article class="blog-card reveal">[\s\S]*?</article>')
-        
-        # Build new grid with new card first, then existing cards
-        $newGrid = '<div class="grid-3" id="blogGrid">'
-        $newGrid += "`n" + $listCard
-        
-        foreach ($card in $existingCards) {
-            $newGrid += "`n" + $card.Value
-        }
-        $newGrid += "`n" + '</div>'
-        
-        # Replace the old grid
-        $blogContent = $blogContent.Substring(0, $gridStart) + $newGrid + $blogContent.Substring($gridEnd + 6)
-    }
+
+    # Replace between markers
+    $blogContent = $blogContent.Substring(0, $blogStartIdx + $blogStartMarker.Length) + $newBetween + "`n          " + $blogContent.Substring($blogEndIdx)
 }
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding $false
