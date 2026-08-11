@@ -1198,12 +1198,13 @@ html[data-theme="dark"] .skel::after {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: inset 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .blog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 32px rgba(36, 86, 240, 0.15);
 }
 
 .blog-card .date {
