@@ -117,6 +117,35 @@ function Generate-Image {
     }
 }
 
+function Send-EmailNotification {
+    param(
+        [string]$status,
+        [string]$title,
+        [string]$filename,
+        [string]$url,
+        [string]$error = ""
+    )
+
+    $notificationUrl = "https://script.google.com/macros/s/AKfycbwYznbwA4974_7lQUOpROqSC-HHau83nX80kPtM2v_QC6rsXts9hOnJIV1SZywi0LYE/exec"
+
+    $body = @{
+        type = "blog_notification"
+        status = $status
+        title = $title
+        filename = $filename
+        url = $url
+        error = $error
+        time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    } | ConvertTo-Json
+
+    try {
+        Invoke-RestMethod -Uri $notificationUrl -Method Post -ContentType "application/json" -Body $body
+        Write-Host "Email notification sent!" -ForegroundColor Green
+    } catch {
+        Write-Host "Email notification failed: $_" -ForegroundColor Yellow
+    }
+}
+
 function Create-BlogHTML {
     param(
         [string]$title,
@@ -291,6 +320,7 @@ $content = Generate-BlogPost -apiKey $ApiKey -topic $topic
 
 if (-not $content) {
     Write-Host "Failed to generate content!" -ForegroundColor Red
+    Send-EmailNotification -status "error" -title $topic.title -filename "" -url "" -error "Failed to generate blog content from Gemini API"
     exit 1
 }
 
@@ -421,3 +451,6 @@ Write-Host "  Title: $($topic.title)" -ForegroundColor Green
 Write-Host "  File: blog/$filename" -ForegroundColor Green
 Write-Host "  Cost: FREE!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
+
+# Send success email
+Send-EmailNotification -status "success" -title $topic.title -filename "blog/$filename" -url "$SiteUrl/blog/$filename"
