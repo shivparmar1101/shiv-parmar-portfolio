@@ -348,7 +348,7 @@ $date = Get-Date -Format "MMM yyyy"
 $filename = "$slug.html"
 
 # Generate HTML
-$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.readTime -content $content -imageUrl $imageUrl -slug $slug
+$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug
 
 # Save file
 $filePath = Join-Path $BlogDir $filename
@@ -357,7 +357,7 @@ Write-Host "Saved: blog/$filename" -ForegroundColor Green
 
 # Update homepage
 Write-Host "Updating homepage..." -ForegroundColor Yellow
-Update-HomepageBlog -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "AI-generated blog post about $($topic.title.ToLower())."
+Update-HomepageBlog -title $topic.title -date $date -readTime $topic.read -slug $slug -description "AI-generated blog post about $($topic.title.ToLower())."
 
 # Update blog listing page
 Write-Host "Updating blog listing page..." -ForegroundColor Yellow
@@ -367,7 +367,7 @@ $blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
 # Create new blog card for listing page
 $listCard = @"
           <article class="blog-card reveal">
-            <div class="date">$date &middot; $($topic.readTime) read</div>
+            <div class="date">$date &middot; $($topic.read) read</div>
             <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
             <p>AI-generated blog post about $($topic.title.ToLower()).</p>
             <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
