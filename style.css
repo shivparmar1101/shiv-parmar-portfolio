@@ -267,8 +267,8 @@ header {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 48px;
   align-items: center;
 }
 
@@ -284,8 +284,7 @@ header {
 
 .hero .lead {
   margin: 20px 0 32px;
-  font-size: 17px;
-  max-width: 520px;
+  font-size: 18px;
 }
 
 .hero-actions {
@@ -303,66 +302,288 @@ header {
 
 .hero-meta div strong {
   display: block;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
 }
 
 .hero-meta div span {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--muted);
 }
 
-/* Hero Photo */
+/* Avatar */
 
-.hero-photo-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-photo {
-  width: 320px;
-  height: 320px;
-  border-radius: 24px;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  border: 3px solid var(--line);
-  box-shadow: 0 20px 60px rgba(13, 19, 33, 0.12);
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-photo-placeholder {
-  width: 100%;
-  height: 100%;
+.avatar-ring {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  padding: 4px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  margin-bottom: 24px;
+}
+
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+}
+
+.avatar-initials {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   display: grid;
   place-items: center;
-}
-
-.hero-photo-placeholder span {
-  font-size: 72px;
-  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #fff;
-  letter-spacing: -0.04em;
+  font-weight: 800;
+  font-size: 32px;
+  border: 3px solid var(--bg);
 }
 
-.hero-photo-bg {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 24px;
+/* Hero browser card */
+
+.hero-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.browser {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 20px 40px rgba(13, 19, 33, 0.14);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.browser-bar .dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-bar .dots span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.browser-bar .dots span:nth-child(2) {
+  background: #febc2e;
+}
+
+.browser-bar .dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.browser-bar .url {
+  flex: 1;
+  background: var(--bg-soft);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+  text-align: left;
+}
+
+.browser-body {
+  padding: 16px;
+}
+
+/* Mini nav inside browser */
+
+.mini-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mini-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.mini-links {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+}
+
+.mini-links i {
+  width: 26px;
+  height: 7px;
+  border-radius: 99px;
+  background: var(--bg-soft);
+}
+
+.mini-btn {
+  width: 40px;
+  height: 16px;
+  border-radius: 99px;
   background: var(--accent-soft);
-  border: 2px solid var(--accent);
-  top: 20px;
-  right: -10px;
-  z-index: 1;
-  opacity: 0.4;
+}
+
+/* Skeleton loader */
+
+.skel {
+  height: 9px;
+  border-radius: 99px;
+  background: var(--bg-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.skel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.8s infinite;
+}
+
+html[data-theme="dark"] .skel::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.mini-hero {
+  margin-bottom: 14px;
+}
+
+.mini-hero .t1 {
+  width: 55%;
+  height: 13px;
+  margin-bottom: 9px;
+  background: var(--ink);
+  opacity: 0.85;
+}
+
+.mini-hero .t1::after {
+  display: none;
+}
+
+.mini-hero .t2 {
+  width: 82%;
+  margin-bottom: 12px;
+}
+
+.mini-hero .b {
+  width: 72px;
+  height: 18px;
+  border-radius: 99px;
+  background: var(--accent);
+}
+
+/* Mini cards inside browser */
+
+.mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mini-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 10px;
+}
+
+.mini-card .img {
+  height: 34px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--accent-soft), var(--bg-soft));
+  margin-bottom: 7px;
+}
+
+.mini-card .l1 {
+  width: 80%;
+  margin-bottom: 5px;
+}
+
+.mini-card .l2 {
+  width: 55%;
+}
+
+.mini-footer {
+  height: 11px;
+  border-radius: 99px;
+  background: var(--bg-soft);
+}
+
+/* Floating pills */
+
+.floating-pill {
+  position: absolute;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 99px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: bob 4s ease-in-out infinite;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.pill-1 { top: -15px; right: 20px; }
+.pill-2 { bottom: 74px; left: -18px; animation-delay: 1s; }
+.pill-3 { bottom: -16px; right: 44px; animation-delay: 2s; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Badges */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
@@ -1157,19 +1378,8 @@ footer .foot-inner {
     padding: 80px 0 60px;
   }
 
-  .hero-photo-wrap {
-    order: -1;
-    margin-bottom: 20px;
-  }
-
-  .hero-photo {
-    width: 240px;
-    height: 240px;
-  }
-
-  .hero-photo-bg {
-    width: 200px;
-    height: 200px;
+  .hero-card {
+    display: none;
   }
 
   .hero-meta {
@@ -1349,6 +1559,10 @@ footer .foot-inner {
   footer .foot-inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  .floating-pill {
+    display: none;
   }
 
   .logo-item {
