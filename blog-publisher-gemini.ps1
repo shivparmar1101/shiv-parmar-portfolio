@@ -260,6 +260,14 @@ if (-not $ApiKey) {
     $ApiKey = $env:GEMINI_API_KEY
 }
 
+# Fallback: read from config file for scheduled task
+if (-not $ApiKey) {
+    $configFile = Join-Path $PSScriptRoot ".api-key"
+    if (Test-Path $configFile) {
+        $ApiKey = (Get-Content $configFile -Raw).Trim()
+    }
+}
+
 if (-not $ApiKey) {
     Write-Host "ERROR: No API key provided!" -ForegroundColor Red
     Write-Host ""
