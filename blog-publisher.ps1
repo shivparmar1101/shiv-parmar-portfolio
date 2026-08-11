@@ -201,10 +201,10 @@ function Update-HomepageBlog {
     # Create new blog card
     $newCard = @"
           <article class="blog-card reveal">
-            <div class="date">$date · $readTime read</div>
+            <div class="date">$date &middot; $readTime read</div>
             <h3><a href="blog/$slug.html">$title</a></h3>
             <p>$description</p>
-            <a class="read-more" href="blog/$slug.html">Read more →</a>
+            <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
           </article>
 "@
 

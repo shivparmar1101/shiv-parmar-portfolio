@@ -176,7 +176,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:v
 </style>
 </head>
 <body>
-<header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">← Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></header>
+<header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">&larr; Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">&#9790;</button></div></div></header>
 <article><div class="container">
 <img src="$imageUrl" alt="$title" class="hero-img">
 <div class="date">$date · $readTime read</div>
@@ -212,10 +212,10 @@ function Update-HomepageBlog {
     # Create new blog card
     $newCard = @"
           <article class="blog-card reveal">
-            <div class="date">$date · $readTime read</div>
+            <div class="date">$date &middot; $readTime read</div>
             <h3><a href="blog/$slug.html">$title</a></h3>
             <p>$description</p>
-            <a class="read-more" href="blog/$slug.html">Read more →</a>
+            <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
           </article>
 "@
 
