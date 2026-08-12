@@ -242,7 +242,7 @@ h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:
     </div>
   </header>
 <article><div class="container">
-<img src="$imageUrl" alt="$title" class="hero-img">
+<img src="$imageUrl" alt="$title" title="$title" class="hero-img">
 <div class="date">$date &middot; $readTime read</div>
 <h1>$title</h1>
 <div class="content">
