@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shivparmar1101.github.io/shiv-parmar-portfolio/sitemap.xml
