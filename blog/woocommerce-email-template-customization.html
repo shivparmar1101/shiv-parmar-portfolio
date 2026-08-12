@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WooCommerce Email Template Customization &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Email Template Customization - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Email Template Customization" title="WooCommerce Email Template Customization" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 5 min read</div>
+<h1>WooCommerce Email Template Customization</h1>
+<div class="content">
+<p>Namaste! I’m Shiv Parmar, a dedicated WordPress and WooCommerce developer based in the vibrant tech hub of Rajkot, India. Over my years of building custom e-commerce solutions for clients around the globe, I have noticed a recurring pattern: store owners spend thousands of dollars perfecting their homepage and checkout pages, but completely ignore their post-purchase transactional emails.</p>
+
+<p>Default WooCommerce transactional emails—like order confirmations, completed order notifications, and password resets—are functional, but they look sterile and uninspiring. More importantly, transactional emails boast an average open rate of over 60%, making them one of the most lucrative touchpoints for customer retention, upselling, and brand building.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<p>In this comprehensive guide, I will walk you through the proper, developer-approved ways to customize WooCommerce email templates without breaking your site during future updates.</p>
+
+<blockquote>
+    <p>"Your transactional email is often the last impression a customer has after giving you their hard-earned money. Making it look professional, warm, and aligned with your brand isn't just nice to have—it's essential for repeat business."</p>
+</blockquote>
+
+<h2>Understanding the WooCommerce Email Architecture</h2>
+
+<p>Before jumping into code, it is important to understand how WooCommerce structures its email engine. WooCommerce handles emails through a collection of template files located inside the core plugin directory: <code>woocommerce/templates/emails/</code>.</p>
+
+<p>These templates handle everything from the global structural markup (<code>email-header.php</code> and <code>email-footer.php</code>) to specific notification layouts like <code>customer-processing-order.php</code> or <code>admin-new-order.php</code>.</p>
+
+<p>When customizing these emails, developers generally have three main approaches:</p>
+<ul>
+    <li><strong>Global CSS Styling via Hooks:</strong> Quick visual tweaks without touching core template files.</li>
+    <li><strong>Action Hooks and Filters:</strong> Injecting custom dynamic content into existing templates safely.</li>
+    <li><strong>Template File Overrides:</strong> Full structural layout control by copying files into your child theme.</li>
+</ul>
+
+<h2>Method 1: Customizing Email Styles via PHP Hooks</h2>
+
+<p>If you simply want to alter colors, typography, border-radii, or container padding across all emails, overriding template files is overkill. WooCommerce provides the <code>woocommerce_email_styles</code> filter hook, allowing you to inject custom inline CSS directly into the compiled email HTML.</p>
+
+<p>Add the following code snippet to your child theme's <code>functions.php</code> file or via a custom functionality plugin:</p>
+
+<pre><code>/**
+ * Inject custom inline CSS into WooCommerce emails
+ * Author: Shiv Parmar
+ */
+add_filter( 'woocommerce_email_styles', 'shiv_custom_woocommerce_email_styles', 10, 2 );
+function shiv_custom_woocommerce_email_styles( $css, $email ) {
+    $custom_css = '
+        #header_wrapper {
+            background-color: #1e293b !important;
+            padding: 36px 48px !important;
+        }
+        #header_wrapper h1 {
+            font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+        }
+        .td {
+            color: #334155 !important;
+            font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !important;
+        }
+        .shiv-order-notice {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    ';
+
+    return $css . $custom_css;
+}
+</code></pre>
+
+<p>This approach keeps your codebase clean, upgrade-safe, and light on maintenance overhead.</p>
+
+<h2>Method 2: Injecting Custom Content using Action Hooks</h2>
+
+<p>Suppose you want to add a custom banner, delivery instruction note, or social media link block inside the standard WooCommerce order email. Rather than duplicating template files, WooCommerce exposes strategic action hooks inside its email flow:</p>
+
+<ul>
+    <li><code>woocommerce_email_before_order_table</code></li>
+    <li><code>woocommerce_email_after_order_table</code></li>
+    <li><code>woocommerce_email_order_meta</code></li>
+    <li><code>woocommerce_email_customer_details</code></li>
+</ul>
+
+<p>Here is an example where I inject a custom fulfillment status message specifically for the customer's processing order email:</p>
+
+<pre><code>/**
+ * Add custom delivery note before order table in processing emails
+ * Author: Shiv Parmar
+ */
+add_action( 'woocommerce_email_before_order_table', 'shiv_add_custom_email_notice', 20, 4 );
+function shiv_add_custom_email_notice( $order, $sent_to_admin, $plain_text, $email ) {
+    // Only execute on customer processing order emails
+    if ( 'customer_processing_order' === $email-&gt;id ) {
+        echo '&lt;div class="shiv-order-notice"&gt;';
+        echo '&lt;p style="margin: 0;"&gt;&lt;strong&gt;Note from Our Rajkot Warehouse:&lt;/strong&gt; Your order has been assigned to our packing team and will be dispatched within 24 business hours. You will receive a tracking link as soon as it ships!&lt;/p&gt;';
+        echo '&lt;/div&gt;';
+    }
+}
+</code></pre>
+
+<p>By using hooks, your email layout stays intact even when WooCommerce updates its core email HTML structures in major releases.</p>
+
+<h2>Method 3: Overriding Template Files in Your Child Theme</h2>
+
+<p>When you need to perform deep layout adjustments—such as restructuring the entire HTML layout of the header, footer, or itemized table—template overriding is the correct path.</p>
+
+<h3>Step-by-Step Instructions:</h3>
+<ol>
+    <li>Navigate to your plugin directory: <code>wp-content/plugins/woocommerce/templates/emails/</code></li>
+    <li>Locate the template file you wish to modify (e.g., <code>customer-completed-order.php</code>).</li>
+    <li>Copy that specific file into your active child theme using this directory path: <code>wp-content/themes/your-child-theme/woocommerce/emails/customer-completed-order.php</code>.</li>
+    <li>Open the newly created file inside your theme directory and customize the markup safely.</li>
+</ol>
+
+<p><strong>Crucial Rule:</strong> Never modify WooCommerce core files directly inside the <code>plugins/woocommerce</code> directory! Any edits made there will be overwritten instantly when WooCommerce is updated.</p>
+
+<h3>Overriding the Email Header &amp; Footer globally</h3>
+
+<p>If you want to create a completely custom email wrap (for instance, adding a sticky header navigation or a dynamic custom footer), override <code>email-header.php</code> and <code>email-footer.php</code> inside <code>your-child-theme/woocommerce/emails/</code>.</p>
+
+<p>Here is an snippet showing how you can customize the footer copyright line in <code>email-footer.php</code>:</p>
+
+<pre><code>&lt;!-- Custom Footer Block --&gt;
+&lt;td valign="top" align="center"&gt;
+    &lt;table border="0" cellpadding="10" cellspacing="0" width="100%" id="template_footer"&gt;
+        &lt;td valign="top" style="padding: 20px 0; text-align: center;"&gt;
+            &lt;p style="color: #94a3b8; font-size: 13px; margin: 0;"&gt;
+                &amp;copy; &lt;?php echo esc_html( date( 'Y' ) ); ?&gt; &lt;?php echo esc_html( get_bloginfo( 'name' ) ); ?&gt;. Built with passion in Rajkot, Gujarat.
+            &lt;/p&gt;
+            &lt;p style="margin-top: 8px;"&gt;
+                &lt;a href="https://example.com/privacy" style="color: #64748b; text-decoration: underline; font-size: 12px;"&gt;Privacy Policy&lt;/a&gt; | 
+                &lt;a href="https://example.com/support" style="color: #64748b; text-decoration: underline; font-size: 12px;"&gt;Support Center&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/td&gt;
+    &lt;/table&gt;
+&lt;/td&gt;
+</code></pre>
+
+<h2>Testing and Previewing Custom Email Templates</h2>
+
+<p>One of the biggest pain points in WooCommerce email development is testing your changes. Placing test orders over and over to view design edits is extremely tedious and time-consuming.</p>
+
+<p>To streamline this workflow, I recommend using these two development approaches:</p>
+
+<ul>
+    <li><strong>Built-in WooCommerce Email Previewer:</strong> Navigate to <code>WooCommerce &gt; Settings &gt; Emails</code> in your WP Admin dashboard. Scroll down to the template customization settings and click "Click here to preview your email template."</li>
+    <li><strong>Use Mailpit / Mailtrap on Local Environments:</strong> When developing locally (e.g., using LocalWP or DDEV), route outgoing emails through Mailtrap or Local's built-in Mailpit server to inspect exact inline styling and rendering behavior across various desktop and mobile clients.</li>
+</ul>
+
+<h2>My Personal Best Practice Recommendations</h2>
+
+<p>Throughout my years working on client e-commerce platforms, these core rules have saved me countless hours of debugging:</p>
+
+<ol>
+    <li><strong>Keep CSS Inline-Friendly:</strong> Old desktop mail clients (like Outlook) do not render modern CSS Grid or Flexbox well. Use standard HTML tables and inline block CSS properties for rock-solid cross-client compatibility.</li>
+    <li><strong>Favor Hooks Over Overrides:</strong> Before copying a template file into your theme, check if a WooCommerce hook exists that can achieve the same result. It reduces site maintenance significantly during major updates.</li>
+    <li><strong>Check Theme Overrides via Status Page:</strong> Always monitor <code>WooCommerce &gt; Status</code>. If WooCommerce updates core email files, it will alert you if your theme overrides are outdated.</li>
+</ol>
+
+<h2>Wrapping Up</h2>
+
+<p>Customizing your WooCommerce emails isn't just about making them look pretty—it's an opportunity to deliver a memorable post-purchase experience that builds trust and encourages customer loyalty. Whether you inject simple styling via PHP hooks or build custom templates in your child theme, taking control of your transactional communications pays huge dividends.</p>
+
+<p>Have any questions about custom WooCommerce hooks, template structures, or email client rendering issues? Feel free to drop a comment below or reach out to me directly from Rajkot. Happy coding!</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
