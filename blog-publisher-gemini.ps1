@@ -369,7 +369,9 @@ function Update-HomepageBlog {
         $count = 0
         foreach ($card in $existingCards) {
             if ($count -lt 2) {
-                $newBetween += "`n" + $card.Value
+                # Ensure consistent indentation
+                $cardText = $card.Value -replace '^\s+', '          '
+                $newBetween += "`n" + $cardText
                 $count++
             }
         }
@@ -543,7 +545,9 @@ if ($blogStartIdx -gt 0 -and $blogEndIdx -gt $blogStartIdx) {
     # Build new content: new card + all existing cards
     $newBetween = "`n" + $listCard
     foreach ($card in $existingCards) {
-        $newBetween += "`n" + $card.Value
+        # Ensure consistent indentation
+        $cardText = $card.Value -replace '^\s+', '          '
+        $newBetween += "`n" + $cardText
     }
 
     # Replace between markers
