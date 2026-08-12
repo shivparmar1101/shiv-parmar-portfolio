@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Speed Up WooCommerce Product Pages &mdash; Shiv Parmar</title>
+<meta name="description" content="How to Speed Up WooCommerce Product Pages - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="How to Speed Up WooCommerce Product Pages" title="How to Speed Up WooCommerce Product Pages" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 5 min read</div>
+<h1>How to Speed Up WooCommerce Product Pages</h1>
+<div class="content">
+<p>Hello everyone! I’m Shiv Parmar, a WordPress developer based in Rajkot, India. Over the past few years, I’ve helped dozens of e-commerce store owners transform their sluggish WooCommerce websites into blazing-fast shopping experiences. If there is one thing I’ve learned from working on high-traffic stores, it’s this: <strong>your product page speed directly dictates your revenue</strong>.</p>
+
+<p>A customer browsing your catalog expects instant feedback. When they click on a product and wait three to five seconds for the page to render, bounce rates skyrocket and sales slip away. While homepage and archive optimization are crucial, single product pages carry the heaviest load—they display variable prices, image galleries, customer reviews, inventory updates, and dynamic cart calculations.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<p>In this guide, I will share the exact step-by-step technical strategies I use to optimize WooCommerce product pages for my clients, complete with custom code snippets that you can implement right away.</p>
+
+<blockquote>
+<p>"A 1-second delay in page load time can lead to a 7% reduction in conversions. In WooCommerce development, product page speed isn't just a performance metric—it is a core business feature."</p>
+</blockquote>
+
+<h2>1. Dequeue Unnecessary Scripts and Styles</h2>
+
+<p>By default, WordPress and many popular plugins load their CSS and JavaScript assets across every single page of your site, regardless of whether they are actually needed. For instance, Contact Form 7 or your custom review plugin might be loading scripts on every WooCommerce product page, adding unnecessary HTTP requests and render-blocking resources.</p>
+
+<p>We can fix this by programmatically dequeuing scripts on WooCommerce single product pages using the <code>wp_enqueue_scripts</code> hook in your child theme's <code>functions.php</code> file.</p>
+
+<h3>PHP Snippet: Selective Script Removal</h3>
+
+<pre><code>/**
+ * Dequeue non-essential scripts on single product pages.
+ * Author: Shiv Parmar
+ */
+function shiv_optimize_product_page_assets() {
+    // Check if we are on a single WooCommerce product page
+    if ( is_product() ) {
+        // Dequeue Contact Form 7 scripts and styles if not needed on product pages
+        wp_dequeue_script( 'contact-form-7' );
+        wp_dequeue_style( 'contact-form-7' );
+
+        // Dequeue block editor CSS if your product descriptions use standard formatting
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'shiv_optimize_product_page_assets', 99 );
+</code></pre>
+
+<p>By stripping away unneeded third-party scripts, you immediately reduce the total page payload and minimize JavaScript execution time on critical rendering paths.</p>
+
+<h2>2. Disable Unused WooCommerce Product Gallery Features</h2>
+
+<p>WooCommerce includes native scripts for product image zoom, lightbox popups, and flexslider functionality. While these features look impressive, they introduce extra JavaScript files (<code>zoom.min.js</code>, <code>photoswipe.min.js</code>, <code>flexslider.min.js</code>) and increase DOM size.</p>
+
+<p>If your design uses simple image displays or alternative custom galleries, you should disable the built-in gallery features that you aren't using.</p>
+
+<h3>PHP Snippet: Remove Default WC Gallery Support</h3>
+
+<pre><code>/**
+ * Remove unused WooCommerce product gallery features.
+ * Author: Shiv Parmar
+ */
+function shiv_remove_wc_gallery_features() {
+    // Remove zoom effect on product gallery images
+    remove_theme_support( 'wc-product-gallery-zoom' );
+    
+    // Remove lightbox popup feature
+    remove_theme_support( 'wc-product-gallery-lightbox' );
+}
+add_action( 'after_setup_theme', 'shiv_remove_wc_gallery_features', 100 );
+</code></pre>
+
+<h2>3. Optimize Related Products and Cross-Sells Queries</h2>
+
+<p>The "Related Products" section on a WooCommerce product page relies on heavy database queries. By default, WooCommerce queries products sharing the same categories and tags, orders them randomly, and outputs them on the front end. On stores with thousands of SKUs, this single SQL query can slow down server response time (TTFB) significantly.</p>
+
+<p>To reduce database load, you can limit the number of related products retrieved or disable the query altogether if you prefer a streamlined layout.</p>
+
+<h3>PHP Snippet: Limit Related Products Query</h3>
+
+<pre><code>/**
+ * Limit related products count to reduce database processing time.
+ * Author: Shiv Parmar
+ */
+function shiv_limit_related_products_args( $args ) {
+    $args['posts_per_page'] = 3; // Limit to 3 items instead of default 4 or 8
+    $args['columns']        = 3;
+    return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'shiv_limit_related_products_args', 20 );
+</code></pre>
+
+<h2>4. Optimize CSS Rendering with Modern Layout Properties</h2>
+
+<p>Product pages often feature complex DOM trees containing product tabs, related products, upsells, and review sections. Browsers spend considerable CPU effort calculating layout geometries for off-screen content.</p>
+
+<p>We can use modern CSS properties like <code>content-visibility</code> to instruct the browser to skip rendering off-screen sections (like related products or long review lists) until the user scrolls down to them.</p>
+
+<h3>CSS Snippet: Defer Off-Screen Product Sections</h3>
+
+<pre><code>/* Modern CSS Optimization for WooCommerce Product Elements */
+.single-product .related.products,
+.single-product .upsells.products,
+.single-product div.product .woocommerce-tabs {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+}
+</code></pre>
+
+<p>This simple CSS rule drastically improves the initial render speed and interaction metrics (FID/INP) by reducing early layout calculations.</p>
+
+<h2>5. Tame WooCommerce Cart Fragments and AJAX Overhead</h2>
+
+<p>One of the most infamous performance bottlenecks in WooCommerce is the <code>wc-ajax=get_refreshed_fragments</code> request. While this AJAX endpoint ensures the header shopping cart updates dynamically, it often runs on static page loads, breaking cache efficiency and overloading server resources.</p>
+
+<p>To keep product pages loading instantly, we can write JavaScript to delay non-critical frontend initializations until after the main thread is clear.</p>
+
+<h3>JavaScript Snippet: Deferred Initialization for Product Actions</h3>
+
+<pre><code>/**
+ * Defer non-critical scripts on single product pages.
+ * Author: Shiv Parmar
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we are on a single product page
+    if (document.body.classList.contains('single-product')) {
+        
+        // Defer load of non-essential third-party widgets
+        window.addEventListener('scroll', function() {
+            // Lazy load social share buttons or external review widgets on first scroll
+            console.log('User scrolled: Loading deferred scripts...');
+        }, { once: true });
+        
+    }
+});
+</code></pre>
+
+<h2>6. Key Technical Workflow Checklist for Product Pages</h2>
+
+<p>To keep my performance tuning structured, I follow a strict development checklist whenever optimizing a client's WooCommerce site from my office here in Rajkot. Here is the recommended order of operations:</p>
+
+<ol>
+    <li><strong>Implement Persistent Object Caching:</strong> Configure Redis or Memcached to cache database queries for product variations, taxonomy relations, and meta values.</li>
+    <li><strong>Convert Images to WebP/AVIF:</strong> Ensure gallery thumbnails are served in next-gen formats and scaled to exact rendered dimensions.</li>
+    <li><strong>Disable Dynamic Script Bloat:</strong> Clean up plugin styles and scripts on `is_product()` checks as demonstrated above.</li>
+    <li><strong>Use Server-Side HTML Caching with Bypass Rules:</strong> Ensure full page caching (Nginx FastCGI or LiteSpeed) caches product pages while bypassing only logged-in users or active carts.</li>
+    <li><strong>Optimize Database Indexes:</strong> Clean up expired WooCommerce transients and optimize the <code>wp_postmeta</code> and <code>wp_options</code> tables.</li>
+</ol>
+
+<h2>Summary &amp; Final Thoughts</h2>
+
+<p>Optimizing WooCommerce single product pages does not require sacrificing design or user functionality. By taking a developer-first approach—dequeuing unnecessary scripts, refining database queries, utilizing modern CSS properties, and offloading heavy gallery processing—you can achieve near-instantaneous page loads.</p>
+
+<p>When your product pages load under one second, users browse longer, add more items to their cart, and convert at significantly higher rates. Try implementing these snippets on a staging environment first, benchmark your Google PageSpeed Insights and GTmetrix scores, and watch your server performance soar.</p>
+
+<p>If you have any questions or need help applying these techniques to your own custom WooCommerce setup, feel free to drop a comment or reach out directly. Happy coding!</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>

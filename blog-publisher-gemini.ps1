@@ -413,8 +413,20 @@ if (-not $ApiKey) {
     exit 1
 }
 
-# Select random topic
-$topic = $topics | Get-Random
+# Filter out already-published topics
+$existingFiles = Get-ChildItem -Path $BlogDir -Filter "*.html" -File | ForEach-Object { $_.BaseName }
+$availableTopics = $topics | Where-Object {
+    $slug = $_.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
+    $existingFiles -notcontains $slug
+}
+
+if ($availableTopics.Count -eq 0) {
+    Write-Host "All topics already published! No new blog to generate." -ForegroundColor Yellow
+    exit 0
+}
+
+# Select random topic from available (unpublished) topics
+$topic = $availableTopics | Get-Random
 Write-Host "Topic: $($topic.title)" -ForegroundColor Green
 Write-Host "Category: $($topic.cat)" -ForegroundColor Gray
 Write-Host ""
@@ -544,7 +556,7 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 # Git commit and push
 Write-Host "Committing to GitHub..." -ForegroundColor Yellow
 Set-Location "D:\xampp\htdocs\portfolio"
-$gitExe = "C:\Users\Krunal\AppData\Local\GitHubDesktop\app-3.6.3\resources\app\git\cmd\git.exe"
+$gitExe = "git"
 & $gitExe add .
 & $gitExe commit -m "blog: auto-published - $($topic.title)"
 & $gitExe push origin main

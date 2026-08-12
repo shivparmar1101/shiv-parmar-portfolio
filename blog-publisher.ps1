@@ -259,8 +259,20 @@ if (-not $ApiKey) {
     exit 1
 }
 
-# Select random topic
-$topic = $topics | Get-Random
+# Filter out already-published topics
+$existingFiles = Get-ChildItem -Path $BlogDir -Filter "*.html" -File | ForEach-Object { $_.BaseName }
+$availableTopics = $topics | Where-Object {
+    $slug = $_.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
+    $existingFiles -notcontains $slug
+}
+
+if ($availableTopics.Count -eq 0) {
+    Write-Host "All topics already published! No new blog to generate." -ForegroundColor Yellow
+    exit 0
+}
+
+# Select random topic from available (unpublished) topics
+$topic = $availableTopics | Get-Random
 Write-Host "Topic: $($topic.title)" -ForegroundColor Green
 Write-Host "Category: $($topic.cat)" -ForegroundColor Gray
 Write-Host ""
@@ -304,10 +316,44 @@ Write-Host "Saved: $filename" -ForegroundColor Green
 Write-Host "Updating homepage..." -ForegroundColor Yellow
 Update-HomepageBlog -blogDir $BlogDir -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "$($topic.cat) development guide covering best practices, code examples and real-world use cases."
 
+# Update blog listing page
+Write-Host "Updating blog listing page..." -ForegroundColor Yellow
+$blogHtmlPath = "D:\xampp\htdocs\portfolio\blog.html"
+$blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
+
+$listCard = @"
+          <article class="blog-card reveal">
+            <div class="date">$date &middot; $($topic.readTime) read</div>
+            <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
+            <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>
+            <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
+          </article>
+"@
+
+$blogStartMarker = "<!-- BLOG_CARDS_START -->"
+$blogEndMarker = "<!-- BLOG_CARDS_END -->"
+$blogStartIdx = $blogContent.IndexOf($blogStartMarker)
+$blogEndIdx = $blogContent.IndexOf($blogEndMarker)
+
+if ($blogStartIdx -gt 0 -and $blogEndIdx -gt $blogStartIdx) {
+    $between = $blogContent.Substring($blogStartIdx + $blogStartMarker.Length, $blogEndIdx - $blogStartIdx - $blogStartMarker.Length)
+    $existingCards = [regex]::Matches($between, '<article class="blog-card reveal">[\s\S]*?</article>')
+
+    $newBetween = "`n" + $listCard
+    foreach ($card in $existingCards) {
+        $newBetween += "`n" + $card.Value
+    }
+
+    $blogContent = $blogContent.Substring(0, $blogStartIdx + $blogStartMarker.Length) + $newBetween + "`n          " + $blogContent.Substring($blogEndIdx)
+}
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($blogHtmlPath, $blogContent, $utf8NoBom)
+
 # Git commit and push
 Write-Host "Committing to GitHub..." -ForegroundColor Yellow
 Set-Location "D:\xampp\htdocs\portfolio"
-$gitExe = "C:\Users\Krunal\AppData\Local\GitHubDesktop\app-3.6.3\resources\app\git\cmd\git.exe"
+$gitExe = "git"
 & $gitExe add .
 & $gitExe commit -m "blog: auto-published - $topic.title"
 & $gitExe push origin main
