@@ -176,11 +176,8 @@ function Create-BlogHTML {
         [string]$slug
     )
 
-    # Insert CTA after first 2 paragraphs
-    $contentParts = $content -split '</p>', 3
-    if ($contentParts.Count -ge 3) {
-        $content = $contentParts[0] + '</p>' + $contentParts[1] + '</p>'
-        $content += @"
+    # Insert CTA after first 2 paragraphs (safe injection)
+    $cta = @"
 
 <div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
   <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
@@ -188,7 +185,28 @@ function Create-BlogHTML {
 </div>
 
 "@
-        $content += $contentParts[2]
+
+    # Find safe injection point after 2 top-level paragraphs
+    $paragraphCount = 0
+    $insertPos = -1
+    $i = 0
+    while ($i -lt $content.Length - 4) {
+        if ($content[$i] -eq '<' -and $content[$i+1] -eq 'p' -and $content[$i+2] -eq '>') {
+            $paragraphCount++
+            if ($paragraphCount -eq 2) {
+                # Find the closing </p>
+                $closeIdx = $content.IndexOf('</p>', $i)
+                if ($closeIdx -gt 0) {
+                    $insertPos = $closeIdx + 4
+                }
+                break
+            }
+        }
+        $i++
+    }
+
+    if ($insertPos -gt 0) {
+        $content = $content.Substring(0, $insertPos) + $cta + $content.Substring($insertPos)
     }
 
     # Add second CTA + contact form at end
