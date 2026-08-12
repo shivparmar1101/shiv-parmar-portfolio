@@ -15,9 +15,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup PowerShell
-        uses: azure/setup-powershell@v4
-
       - name: Run Blog Publisher
         shell: pwsh
         env:
