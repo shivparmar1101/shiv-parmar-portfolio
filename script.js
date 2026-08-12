@@ -74,6 +74,7 @@ contactForm.addEventListener("submit", async (e) => {
     subject: document.getElementById("subject").value,
     budget: document.getElementById("budget").value,
     message: document.getElementById("message").value.trim(),
+    pageUrl: window.location.href,
   };
 
   try {
