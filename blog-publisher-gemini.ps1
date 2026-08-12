@@ -382,7 +382,7 @@ Write-Host "Using topic-matched header image..." -ForegroundColor Green
 
 # Create slug and filename
 $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
-$date = Get-Date -Format "MMM yyyy"
+$date = Get-Date -Format "MMM dd, yyyy"
 $filename = "$slug.html"
 
 # Generate HTML
