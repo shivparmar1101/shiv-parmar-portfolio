@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress Multisite Configuration Tips â€” Shiv Parmar</title>
+<meta name="description" content="WordPress Multisite Configuration Tips - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f7f8fc;--bg-2:#fff;--bg-soft:#eef0f5;--ink:#0d1321;--muted:#5b6478;--line:#e4e8f0;--accent:#2456f0;--accent-soft:#eef1ff;--radius:14px;--container:720px}
+html[data-theme="dark"]{--bg:#0d1321;--bg-2:#141b2e;--bg-soft:#1b2440;--ink:#eef2ff;--muted:#9aa5c0;--line:#26324d;--accent:#5b8cff;--accent-soft:#182450}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+header{padding:24px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.logo span{color:var(--accent)}
+.back{font-size:14px;font-weight:500;color:var(--muted)}
+.back:hover{color:var(--accent);text-decoration:none}
+.theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.lead{font-size:18px;color:var(--muted);margin-bottom:40px;max-width:600px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">&larr; Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">&#9790;</button></div></div></header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=600&fit=crop" alt="WordPress Multisite Configuration Tips" class="hero-img">
+<div class="date">Aug 2026 Â· 6 min read</div>
+<h1>WordPress Multisite Configuration Tips</h1>
+<div class="content">
+<p>Hello fellow developers! I’m Shiv Parmar, a WordPress developer based in the vibrant city of Rajkot, India. Over the years, I have had the privilege of architecting and managing scalable WordPress solutions for clients across the globe. One feature that constantly excites me—and keeps me on my toes—is WordPress Multisite (WPMU).</p>
+
+<p>WordPress Multisite allows you to create a network of virtual websites under a single WordPress installation. It is an incredible choice for enterprise multi-brand portals, educational institutions, franchise networks, and international multilingual websites. However, setting up a multisite network correctly from day one requires strategic planning and tight technical configurations. Missteps during setup can lead to performance bottlenecks, security vulnerabilities, and domain routing headaches down the road.</p>
+
+<p>In this post, I am excited to share my battle-tested WordPress Multisite configuration tips, code snippets, and best practices to help you deploy a rock-solid network.</p>
+
+<h2>1. Fine-Tuning Your wp-config.php Configuration</h2>
+
+<p>When you enable WordPress Multisite, the default setup gives you basic network constants. However, production environments demand deeper customization. Beyond the default code generated by the WordPress installer, I always add performance, redirect, and security parameters to <code>wp-config.php</code>.</p>
+
+<p>Here is a hardened configuration snippet that I implement in my agency projects:</p>
+
+<pre><code>/* Enable Multisite */
+define( 'WP_ALLOW_MULTISITE', true );
+define( 'MULTISITE', true );
+define( 'SUBDOMAIN_INSTALL', true ); // Set to false if using subdirectories
+define( 'DOMAIN_CURRENT_SITE', 'mainnetwork.com' );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+
+/* Network Performance & Routing Enhancements */
+define( 'COOKIE_DOMAIN', '' ); // Prevents cross-subdomain cookie conflicts
+define( 'NOBLOGREDIRECT', 'https://mainnetwork.com' ); // Redirect 404 subdomains gracefully
+define( 'WP_MEMORY_LIMIT', '256M' ); // Individual script memory limit
+define( 'WP_MAX_MEMORY_LIMIT', '512M' ); // Admin panel memory limit
+define( 'WP_POST_REVISIONS', 5 ); // Prevent database inflation across sub-sites</code></pre>
+
+<p>Setting <code>NOBLOGREDIRECT</code> is particularly useful. If a user visits a deleted or uncreated subdomain (e.g., <code>nonexistent.mainnetwork.com</code>), WordPress automatically routes them back to your main site instead of throwing an ugly database error page.</p>
+
+<h2>2. Server-Level Rewrite Rules (Apache &amp; Nginx)</h2>
+
+<p>Multisite relies heavily on dynamic routing rules to figure out which site database tables to load based on the request URL. You must ensure your web server handles these rewrite requests efficiently before they hit PHP.</p>
+
+<h3>Apache .htaccess Rules for Subdomain Setup</h3>
+
+<pre><code>RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+
+# Add trailing slash to /wp-admin
+RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+RewriteRule ^(.*\.php)$ $1 [L]
+RewriteRule . index.php [L]</code></pre>
+
+<p>If you are running an Nginx environment (which I personally prefer for high-traffic networks), make sure your server block handles <code>ms-files.php</code> legacy rewrites and routes asset calls through <code>try_files</code> cleanly to reduce unnecessary PHP processing overhead.</p>
+
+<h2>3. Enforcing Global Governance via Must-Use (MU) Plugins</h2>
+
+<p>One common mistake network administrators make is relying on standard plugins installed on individual sub-sites for core business logic. Sub-site administrators could
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<footer><div class="container">Â© 2026 Shiv Parmar Â· WordPress Developer</div></footer>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+</script>
+</body>
+</html>
