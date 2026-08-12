@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WooCommerce Shipping Zones Setup Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Shipping Zones Setup Guide - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Shipping Zones Setup Guide" title="WooCommerce Shipping Zones Setup Guide" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 5 min read</div>
+<h1>WooCommerce Shipping Zones Setup Guide</h1>
+<div class="content">
+<p>Namaste, fellow developers and store owners! I am <strong>Shiv Parmar</strong>, a freelance WordPress developer based out of Rajkot, India. Over the last few years, I have helped numerous e-commerce businesses around the globe build, optimize, and scale their WooCommerce stores. If there is one area that consistently causes confusion for store admins and site builders alike, it is <strong>WooCommerce Shipping Zones</strong>.</p>
+
+<p>A poorly configured shipping setup leads to abandoned carts, confused customers, and lost revenue. In this comprehensive guide, I will walk you through setting up shipping zones natively in WooCommerce, as well as share some essential developer tricks using PHP, CSS, and JavaScript to customize shipping logic to match unique business requirements.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>What Are WooCommerce Shipping Zones?</h2>
+
+<p>Introduced in WooCommerce 2.6, Shipping Zones revolutionized how physical products are delivered. Simply put, a <strong>Shipping Zone</strong> is a geographic region where specific shipping methods and rates apply.</p>
+
+<p>When a customer reaches the checkout page, WooCommerce evaluates their shipping address against your defined zones in top-to-bottom order. The first matching zone applies its rules to the customer's cart. If no zone matches, WooCommerce falls back to the default "Locations not covered by your other zones" section.</p>
+
+<p>Inside each Shipping Zone, you can add three default <strong>Shipping Methods</strong>:</p>
+<ul>
+    <li><strong>Flat Rate:</strong> A fixed charge per item, per order, or per shipping class.</li>
+    <li><strong>Free Shipping:</strong> Triggered by minimum order amounts, coupons, or specific criteria.</li>
+    <li><strong>Local Pickup:</strong> Allows customers to collect their items in person.</li>
+</ul>
+
+<h2>Step-by-Step UI Configuration Guide</h2>
+
+<p>Before diving into code, let's review how to configure shipping zones inside the WordPress dashboard properly.</p>
+
+<ol>
+    <li>Navigate to <strong>WooCommerce &gt; Settings &gt; Shipping &gt; Shipping Zones</strong>.</li>
+    <li>Click on the <strong>Add shipping zone</strong> button.</li>
+    <li>Enter a descriptive <strong>Zone Name</strong> (e.g., "Gujarat Local", "Domestic India", or "North America").</li>
+    <li>Select the <strong>Zone Regions</strong>. You can restrict zones by Country, State, or even specific Postcodes/Zipcodes.</li>
+    <li>Click <strong>Add shipping method</strong>, select your preferred method (e.g., Flat Rate), and configure its pricing rules.</li>
+    <li>Save your changes and repeat the process for all target shipping territories.</li>
+</ol>
+
+<blockquote>
+    <p><strong>Key Insight from Shiv:</strong> WooCommerce processes Shipping Zones from top to bottom. Always place your most granular zones (like specific postcode ranges) at the top of the list, followed by broader state-level and country-level zones. If a broad zone sits at the top, your specific rules beneath it will never trigger!</p>
+</blockquote>
+
+<h2>Advanced Developer Tweaks for WooCommerce Shipping</h2>
+
+<p>The built-in options work great for simple stores, but custom client projects often require tailored logic. Let's look at how we can hook into WooCommerce programmatically to enhance shipping functionality.</p>
+
+<h3>1. Hiding Flat Rate When Free Shipping Is Available (PHP)</h3>
+
+<p>By default, WooCommerce shows both "Flat Rate" and "Free Shipping" options when a customer qualifies for free shipping. This often confuses buyers. You can automatically hide paid flat rate options using the <code>woocommerce_package_rates</code> filter hook in your theme's <code>functions.php</code> file or a custom plugin.</p>
+
+<pre><code>/**
+ * Hide Flat Rate shipping methods when Free Shipping is available.
+ * Author: Shiv Parmar
+ */
+add_filter( 'woocommerce_package_rates', 'shiv_hide_flat_rate_when_free_is_available', 10, 2 );
+
+function shiv_hide_flat_rate_when_free_is_available( $rates, $package ) {
+    $free_shipping_present = false;
+
+    // Check if free shipping exists in available rates
+    foreach ( $rates as $rate_id =&gt; $rate ) {
+        if ( 'free_shipping' === $rate-&gt;method_id ) {
+            $free_shipping_present = true;
+            break;
+        }
+    }
+
+    // Filter out flat rates if free shipping is active
+    if ( $free_shipping_present ) {
+        foreach ( $rates as $rate_id =&gt; $rate ) {
+            if ( 'flat_rate' === $rate-&gt;method_id ) {
+                unset( $rates[ $rate_id ] );
+            }
+        }
+    }
+
+    return $rates;
+}
+</code></pre>
+
+<h3>2. Enhancing Shipping Option UI on Checkout (CSS)</h3>
+
+<p>The standard WooCommerce shipping selector radio list can look plain. With a bit of modern CSS, we can style shipping options into card-style buttons that look sleek and modern.</p>
+
+<pre><code>/* WooCommerce Checkout Shipping Styling by Shiv Parmar */
+ul#shipping_method {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul#shipping_method li {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+ul#shipping_method li:hover {
+    border-color: #3182ce;
+    background-color: #ebf8ff;
+}
+
+ul#shipping_method li input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #3182ce;
+}
+</code></pre>
+
+<h3>3. Auto-Updating Checkout on Postal Code Input (JavaScript)</h3>
+
+<p>Sometimes users type their postcode, but the shipping options don't update until they click out of the field. We can write a quick JavaScript snippet to trigger WooCommerce's checkout update automatically after the user finishes typing their postal code.</p>
+
+<pre><code>/**
+ * Auto-trigger checkout update on postcode field change
+ * Custom JS snippet by Shiv Parmar
+ */
+jQuery( document ).ready( function( $ ) {
+    let postcodeTimeout;
+
+    $( 'body' ).on( 'keyup change', '#billing_postcode, #shipping_postcode', function() {
+        clearTimeout( postcodeTimeout );
+        
+        postcodeTimeout = setTimeout( function() {
+            $( 'body' ).trigger( 'update_checkout' );
+        }, 800 ); // Wait 800ms after user stops typing
+    });
+});
+</code></pre>
+
+<h2>Troubleshooting Common Shipping Zone Issues</h2>
+
+<p>During client site handovers, I frequently run into a few recurring shipping bugs. Here is how to solve them quickly:</p>
+
+<h3>1. Shipping Rates Not Updating After Code Changes</h3>
+
+<p>WooCommerce caches shipping rates in transient data to improve performance. If you update your PHP code or shipping zone settings and don't see changes on the checkout page, make sure to clear the shipping cache:</p>
+<p>Go to <strong>WooCommerce &gt; Status &gt; Tools</strong> and click <strong>Clear shipping rates cache</strong>.</p>
+
+<h3>2. Unmatched Postcode Formats</h3>
+
+<p>Postcode rules are strict. Make sure to define postcodes on individual lines. WooCommerce supports wildcards (e.g., <code>360*</code> for all Rajkot pin codes starting with 360) and numerical ranges (e.g., <code>360001...360007</code>).</p>
+
+<h2>Conclusion</h2>
+
+<p>Setting up WooCommerce Shipping Zones properly is fundamental to providing a frictionless checkout experience. Whether you are setting up simple flat rates through the WordPress admin interface or writing custom PHP hooks to dynamically alter package rates, mastering shipping logic is an invaluable skill for every WooCommerce developer.</p>
+
+<p>I hope this guide gave you clear insights into configuring shipping zones both visually and programmatically. If you have any questions or need custom WooCommerce development assistance, feel free to drop a comment below or reach out to me directly!</p>
+
+<p><em>Happy coding from Rajkot!</em></p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
