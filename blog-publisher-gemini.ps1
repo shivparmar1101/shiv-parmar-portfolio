@@ -309,8 +309,7 @@ if(bcForm){
           phone:"",
           subject:document.getElementById("bc-subject").value,
           budget:"",
-          message:document.getElementById("bc-message").value.trim(),
-          pageUrl:window.location.href
+          message:document.getElementById("bc-message").value.trim()
         })
       });
       status.textContent = "Message sent! I'll get back within 24 hours.";
