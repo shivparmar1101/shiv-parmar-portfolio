@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress SEO Technical Checklist &mdash; Shiv Parmar</title>
+<meta name="description" content="WordPress SEO Technical Checklist - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop" alt="WordPress SEO Technical Checklist" title="WordPress SEO Technical Checklist" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 6 min read</div>
+<h1>WordPress SEO Technical Checklist</h1>
+<div class="content">
+<p>Hello everyone! I’m <strong>Shiv Parmar</strong>, a passionate WordPress developer based in the vibrant city of Rajkot, India. Over the years, I’ve built and optimized hundreds of custom WordPress websites for clients around the globe. If there is one thing I’ve learned working in the WordPress ecosystem, it’s this: content might be king, but technical SEO is the castle it lives in.</p>
+
+<p>Too often, businesses spend thousands of dollars on content creation and link building, only to wonder why their search rankings remain stagnant. The culprit? Technical roadblocks that prevent search engine crawlers from indexing and understanding their site efficiently. Today, I want to share my ultimate <strong>WordPress SEO Technical Checklist</strong>—complete with battle-tested code snippets—that I use on almost every project to ensure flawless technical health.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>1. Eliminate WordPress Core Header Bloat</h2>
+
+<p>Out of the box, WordPress injects extra scripts, inline styles, and metadata into your <code>&lt;head&gt;</code> element. Things like inline emoji scripts, RSD links, and generator tags consume rendering bandwidth and slow down critical rendering paths.</p>
+
+<p>To give search bots and real users a leaner page load, I add the following lightweight snippet to the theme's <code>functions.php</code> or inside a custom functionality plugin:</p>
+
+<pre><code>/**
+ * Clean up unnecessary elements from the WordPress head
+ * Author: Shiv Parmar
+ */
+function shiv_cleanup_wp_head() {
+    // Remove emoji inline styles and scripts
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+
+    // Remove WordPress version number (Security &amp; Cleanliness)
+    remove_action('wp_head', 'wp_generator');
+
+    // Remove Windows Live Writer link &amp; Shortlinks
+    remove_action('wp_head', 'wlwmanifest_link');
+    remove_action('wp_head', 'wp_shortlink_wp_head');
+}
+add_action('init', 'shiv_cleanup_wp_head');
+</code></pre>
+
+<p>This simple cleanup reduces DOM size and eliminates unneeded network requests, improving your overall Core Web Vitals score.</p>
+
+<h2>2. Optimize Dynamic <code>robots.txt</code> and Crawl Budget</h2>
+
+<p>Search engine spiders don't have infinite time for your site; they operate on a strict <em>crawl budget</em>. If your site wastes crawler resources on internal search pages, admin files, or template parts, important pages might be missed.</p>
+
+<p>Instead of maintaining a static text file, you can programmatically control your <code>robots.txt</code> file directly via a native WordPress filter:</p>
+
+<pre><code>/**
+ * Programmatically modify virtual robots.txt
+ */
+function shiv_custom_robots_txt($output, $public) {
+    if ($public) {
+        $output .= "Disallow: /wp-admin/\n";
+        $output .= "Disallow: /?s=\n"; // Block search result pages
+        $output .= "Disallow: /readme.html\n";
+        $output .= "Allow: /wp-admin/admin-ajax.php\n\n";
+        $output .= "Sitemap: " . esc_url(home_url('/sitemap_index.xml')) . "\n";
+    }
+    return $output;
+}
+add_filter('robots_txt', 'shiv_custom_robots_txt', 10, 2);
+</code></pre>
+
+<h2>3. Implement Structured Data (JSON-LD) without Heavy Plugins</h2>
+
+<p>Rich snippets significantly enhance your Click-Through Rate (CTR) in Search Engine Result Pages (SERPs). While massive SEO plugins offer schema builders, they often load excess database queries. When building lean themes, I prefer outputting lightweight, valid JSON-LD schema natively.</p>
+
+<p>Here is how you can inject clean <code>BlogPosting</code> schema into your single posts:</p>
+
+<pre><code>/**
+ * Inject JSON-LD Schema on single blog posts
+ */
+function shiv_add_article_schema() {
+    if (is_single() &amp;&amp; !is_admin()) {
+        global $post;
+        
+        $schema = [
+            '@context'         =&gt; 'https://schema.org',
+            '@type'            =&gt; 'BlogPosting',
+            'headline'         =&gt; get_the_title(),
+            'datePublished'    =&gt; get_the_date('c'),
+            'dateModified'     =&gt; get_the_modified_date('c'),
+            'author'           =&gt; [
+                '@type' =&gt; 'Person',
+                'name'  =&gt; get_the_author_meta('display_name', $post-&gt;post_author)
+            ],
+            'publisher'        =&gt; [
+                '@type' =&gt; 'Organization',
+                'name'  =&gt; get_bloginfo('name'),
+                'logo'  =&gt; [
+                    '@type' =&gt; 'ImageObject',
+                    'url'   =&gt; get_site_icon_url()
+                ]
+            ]
+        ];
+
+        echo '&lt;script type="application/ld+json"&gt;' . json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '&lt;/script&gt;' . "\n";
+    }
+}
+add_action('wp_head', 'shiv_add_article_schema');
+</code></pre>
+
+blockquote>
+<p>"Technical SEO isn't about gaming the algorithm; it's about eliminating technical friction so search engines can read, comprehend, and value your content without obstacles."</p>
+</blockquote>
+
+<h2>4. Prevent Layout Shifts (CLS) with Modern CSS</h2>
+
+<p>Google’s <strong>Cumulative Layout Shift (CLS)</strong> measures visual stability. A high CLS score damages user experience and degrades your rankings. The most common technical cause in WordPress is un-dimensioned images and dynamically inserted media elements.</p>
+
+<p>In your main theme stylesheet (<code>style.css</code>), enforce aspect ratios and defensive styling to prevent elements from jumping while loading:</p>
+
+<pre><code>/* Global image aspect ratio management */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Reserve layout spaces for dynamic hero imagery */
+.post-thumbnail-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #f0f0f0; /* Fallback placeholder color */
+    overflow: hidden;
+}
+
+.post-thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</code></pre>
+
+<h2>5. Non-Blocking JavaScript: Deferring Scripts</h2>
+
+<p>JavaScript blocking execution is one of the biggest bottlenecks for mobile performance. To improve the render path, non-critical scripts should be executed asynchronously or deferred until after the primary page HTML parsing finishes.</p>
+
+<p>Using the <code>script_loader_tag</code> hook, you can cleanly inject the <code>defer</code> attribute onto specific enqueued scripts:</p>
+
+<pre><code>/**
+ * Defer non-critical scripts
+ */
+function shiv_defer_javascript($tag, $handle, $src) {
+    // List handles of scripts to defer
+    $defer_handles = ['custom-theme-js', 'comment-reply'];
+
+    if (in_array($handle, $defer_handles, true)) {
+        return str_replace(' src', ' defer="defer" src', $tag);
+    }
+    
+    return $tag;
+}
+add_filter('script_loader_tag', 'shiv_defer_javascript', 10, 3);
+</code></pre>
+
+<h2>6. Quick Architectural SEO Checklist</h2>
+
+<p>Along with custom code implementations, make sure you double-check these vital operational parameters:</p>
+
+<ul>
+    <li><strong>Force Canonical URLs:</strong> Ensure all HTTP variations automatically resolve to a single secure HTTPS address.</li>
+    <li><strong>Sitemaps:</strong> Use native WordPress Sitemaps (introduced in WP 5.5) or configure dedicated XML generation to keep search engines updated.</li>
+    <li><strong>Trailing Slash Consistency:</strong> Verify that permalinks enforce uniform URL structures across the entire website.</li>
+    <li><strong>Image Formats:</strong> Serve modern image formats like <code>.webp</code> or <code>.avif</code> via server rules or media conversion routines.</li>
+    <li><strong>Database Maintenance:</strong> Regularly purge post revisions, spam comments, and expired transients to maintain database query efficiency.</li>
+</ul>
+
+<h2>Wrapping Up</h2>
+
+<p>Technical SEO requires continuous care, but establishing a solid foundation from the start makes a world of difference. By eliminating core bloat, serving structured data, tuning layout stability, and controlling crawl paths, your WordPress site will be positioned high in Google search results.</p>
+
+<p>I hope you found these code snippets and technical tips actionable for your own projects! If you have any questions or want to discuss advanced WordPress architectural setups, feel free to drop a comment below or connect with me directly from Rajkot.</p>
+
+<p>Happy coding and happy optimizing!</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
