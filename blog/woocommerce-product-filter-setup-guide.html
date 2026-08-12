@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WooCommerce Product Filter Setup Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Product Filter Setup Guide - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Product Filter Setup Guide" title="WooCommerce Product Filter Setup Guide" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 5 min read</div>
+<h1>WooCommerce Product Filter Setup Guide</h1>
+<div class="content">
+<p>Hello! I am Shiv Parmar, a WordPress developer based in Rajkot, India. Over the past several years of building e-commerce solutions for clients worldwide, I have noticed one recurring issue that directly impacts conversion rates: poorly implemented product filtering. When customers visit a WooCommerce store, they want to find what they are looking for quickly, without digging through dozens of pagination links.</p>
+
+<p>In this guide, I will walk you through setting up a fast, intuitive WooCommerce product filter system. We will cover both native setup methods and custom code implementations using PHP, JavaScript, and CSS to give your store a polished, custom feel.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>Why Product Filters Matter for E-Commerce</h2>
+<p>Modern online shoppers expect instant results. According to recent user experience studies, shoppers who use site search and filtering convert at nearly double the rate of standard browsers. A well-designed product filter improves site usability, reduces bounce rates, and lowers cart abandonment.</p>
+
+<p>Whether you manage a small boutique store or a massive catalog with thousands of SKUs, organizing your product data through attributes, tags, and categories is the critical first step before writing any code or installing plugins.</p>
+
+<h2>Step 1: Setting Up Native Attributes and Categories</h2>
+<p>Before adding filters to your front-end, ensure your product data is structured properly in the WooCommerce backend.</p>
+
+<ol>
+    <li>Navigate to <strong>Products &gt; Attributes</strong> in your WordPress dashboard.</li>
+    <li>Create your global attributes (e.g., Color, Size, Brand, Material).</li>
+    <li>Configure terms for each attribute (e.g., Red, Blue, Green for Color).</li>
+    <li>Assign these attributes to your individual products under the <strong>Product Data &gt; Attributes</strong> tab.</li>
+</ol>
+
+<p>Once your attributes are configured, you can display basic WooCommerce filter widgets under <strong>Appearance &gt; Widgets</strong> by adding "Filter Products by Attribute" or "Filter Products by Price" to your Shop Sidebar.</p>
+
+<h2>Step 2: Custom Product Filtering via Code</h2>
+<p>While standard WooCommerce widgets work for simple stores, client projects often demand custom behavior—like AJAX filtering without page reloads, custom stock filters, or unique UI components. Let us build a lightweight, custom WooCommerce filter for in-stock products using hooks and clean code.</p>
+
+<h3>1. Adding PHP Query Logic</h3>
+<p>Add the following PHP code to your custom plugin or child theme's <code>functions.php</code> file. This snippet intercepts the main WooCommerce shop query and filters products based on an <code>in_stock_only</code> URL parameter.</p>
+
+<pre><code>/**
+ * Custom WooCommerce Query Filter for In-Stock Products
+ * Author: Shiv Parmar
+ */
+add_action('woocommerce_product_query', 'sp_filter_instock_products');
+
+function sp_filter_instock_products($query) {
+    if (!is_admin() &amp;&amp; $query-&gt;is_main_query() &amp;&amp; isset($_GET['in_stock_only']) &amp;&amp; $_GET['in_stock_only'] === '1') {
+        $meta_query = $query-&gt;get('meta_query');
+        if (!is_array($meta_query)) {
+            $meta_query = array();
+        }
+        
+        $meta_query[] = array(
+            'key'     => '_stock_status',
+            'value'   => 'instock',
+            'compare' => '='
+        );
+        
+        $query-&gt;set('meta_query', $meta_query);
+    }
+}
+</code></pre>
+
+<h3>2. Adding JavaScript for Dynamic Reloading</h3>
+<p>To provide a smooth experience, we can use JavaScript to trigger the filter seamlessly when a user toggles a custom filter checkbox on the front end.</p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', function() {
+    const stockCheckbox = document.getElementById('sp-instock-toggle');
+    
+    if (stockCheckbox) {
+        stockCheckbox.addEventListener('change', function() {
+            const currentUrl = new URL(window.location.href);
+            
+            if (this.checked) {
+                currentUrl.searchParams.set('in_stock_only', '1');
+            } else {
+                currentUrl.searchParams.delete('in_stock_only');
+            }
+            
+            // Reload page with new query parameter
+            window.location.href = currentUrl.toString();
+        });
+    }
+});
+</code></pre>
+
+<h3>3. Styling the Custom Filter Control with CSS</h3>
+<p>A functional filter must look great across devices. Here is modern, minimalist CSS to style our toggle element seamlessly into any WooCommerce theme.</p>
+
+<pre><code>/* Modern Toggle Filter Styling */
+.sp-filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.sp-filter-wrapper label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #2d3748;
+    cursor: pointer;
+}
+
+.sp-filter-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+</code></pre>
+
+<p>You can render this toggle in your theme template using simple HTML:</p>
+
+<pre><code>&lt;div class="sp-filter-wrapper"&gt;
+    &lt;input type="checkbox" id="sp-instock-toggle" name="in_stock_only" value="1" &lt;?php checked(isset($_GET['in_stock_only']) &amp;&amp; $_GET['in_stock_only'] === '1'); ?&gt;&gt;
+    &lt;label for="sp-instock-toggle"&gt;Show In-Stock Products Only&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+    <p><strong>Key Development Insight:</strong> Always rely on native <code>WC_Query</code> hooks like <code>woocommerce_product_query</code> rather than overriding database queries manually. Hooking directly into WooCommerce maintains full compatibility with third-party caching plugins and database indexes.</p>
+</blockquote>
+
+<h2>Optimizing Filter Performance for Large Catalogs</h2>
+<p>When working on large e-commerce websites with thousands of products, complex taxonomy queries can slow down database execution times. In my client work here in Rajkot, database bottlenecking is the most common filter issue I optimize.</p>
+
+<p>To ensure high performance, consider these best practices:</p>
+
+<ul>
+    <li><strong>Enable WooCommerce Lookup Tables:</strong> Go to <strong>WooCommerce &gt; Status &gt; Tools</strong> and regenerate the product attribute lookup tables. This significantly speeds up complex taxonomy filtering queries.</li>
+    <li><strong>Implement Transients for Filter Data:</strong> If you build custom widgets that list dynamically counted attributes, cache the output using WordPress Transients API.</li>
+    <li><strong>Avoid Overusing Meta Queries:</strong> Meta queries (filtering by custom fields) are noticeably slower than custom taxonomy queries because WordPress <code>wp_postmeta</code> tables are unindexed for random key-value lookups. Convert custom properties into attributes wherever possible.</li>
+</ul>
+
+<h2>Choosing Plugin Solutions vs. Custom Builds</h2>
+<p>While custom code grants maximum control, you don't always need to reinvent the wheel. If your client requires complex multi-layered filtering with slide-outs, color swatches, and instant AJAX updates, established plugins can save development time.</p>
+
+<p>Here are three top plugins I frequently recommend during custom shop builds:</p>
+
+<ul>
+    <li><strong>WOOF - Products Filter for WooCommerce:</strong> Extremely customizable and flexible for developer hooks.</li>
+    <li><strong>YITH WooCommerce Ajax Product Filter:</strong> Excellent off-the-shelf UI components, ideal for quick store builds.</li>
+    <li><strong>Search &amp; Filter Pro:</strong> My personal favorite for building highly customized layout integrations using custom templates.</li>
+</ul>
+
+<h2>Final Thoughts</h2>
+<p>Building an effective filtering system for WooCommerce is a balance between intuitive front-end design and optimized database queries. By combining native attribute setups, custom light-weight code hooks, and proper database management, you can create a blazing-fast shopping experience that turns casual visitors into buyers.</p>
+
+<p>Are you currently setting up WooCommerce filters or running into performance hiccups on your store? Feel free to reach out or leave your technical questions in the comments below!</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
