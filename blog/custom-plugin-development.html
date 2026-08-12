@@ -3,31 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building Custom WordPress Plugins from Scratch — Shiv Parmar</title>
-<meta name="description" content="A practical guide to building production-ready WordPress plugins with ACF, REST API integrations, proper architecture, and client-friendly settings pages.">
+<title>Building Custom WordPress Plugins from Scratch &mdash; Shiv Parmar</title>
+<meta name="description" content="Building Custom WordPress Plugins from Scratch - WordPress development guide by Shiv Parmar.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#f7f8fc;--bg-2:#fff;--bg-soft:#eef0f5;--ink:#0d1321;--muted:#5b6478;--line:#e4e8f0;--accent:#2456f0;--accent-soft:#eef1ff;--radius:14px;--container:720px}
-html[data-theme="dark"]{--bg:#0d1321;--bg-2:#141b2e;--bg-soft:#1b2440;--ink:#eef2ff;--muted:#9aa5c0;--line:#26324d;--accent:#5b8cff;--accent-soft:#182450}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:var(--container);margin:0 auto;padding:0 24px}
-header{padding:24px 0;border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.logo span{color:var(--accent)}
-.back{font-size:14px;font-weight:500;color:var(--muted)}
-.back:hover{color:var(--accent);text-decoration:none}
-.theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
 article{padding:64px 0}
 .date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
 h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
-.lead{font-size:18px;color:var(--muted);margin-bottom:40px;max-width:600px}
 .content{font-size:16px;color:var(--ink)}
 .content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
 .content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
@@ -35,29 +25,33 @@ h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:
 .content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
 .content li{margin-bottom:8px}
 .content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
-.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:14px;overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
 .content pre code{background:none;padding:0;color:inherit}
-.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 14px 14px 0;margin:0 0 24px;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
-/* Hero image */
-.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
-@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:14px;margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
-<header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">← Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></header>
+<header class="blog-header"><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div class="nav-right"><a class="back" href="../">&larr; Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">&#9790;</button><a href="../index.html#contact" style="background:var(--accent);color:#fff;padding:10px 20px;border-radius:8px;font-weight:600;font-size:14px">Hire Me</a></div></div></header>
 <article><div class="container">
-<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop" alt="Code on screen representing WordPress plugin development" class="hero-img">
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop" alt="Building Custom WordPress Plugins from Scratch" class="hero-img">
 <div class="date">Jun 2026 · 6 min read</div>
 <h1>Building Custom WordPress Plugins from Scratch</h1>
-<p class="lead">How I architect ACF-driven plugins with REST API integrations, clean hooks, and client-friendly settings pages that are built to last.</p>
 <div class="content">
 <p>Off-the-shelf plugins work until they don't. Once a client needs custom data structures, third-party API integrations, or behavior that no existing plugin supports, a custom plugin becomes the only viable path. Here's my approach to building production-ready WordPress plugins from scratch.</p>
 
 <h2>1. Plugin Architecture — Start with Structure</h2>
 <p>A well-organized plugin is maintainable and debuggable. I use a modular folder structure that separates concerns cleanly. The main plugin file acts as a bootstrap loader — it doesn't contain business logic, just autoloading and initialization:</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
 <pre><code>my-plugin/
 ├── my-plugin.php          // Main bootstrap file
 ├── includes/
@@ -325,13 +319,17 @@ class My_Plugin_Settings {
 <p>I also include a <code>readme.txt</code> following WordPress plugin standards, a changelog, and a support email. This makes future handoffs to other developers seamless.</p>
 
 <blockquote>Good plugins solve a specific problem well. Great plugins solve that problem while being maintainable, extensible, and friendly to both developers and the people who actually use WordPress every day.</blockquote>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
 </div>
-<div class="tags"><span class="tag">WordPress</span><span class="tag">Plugin Development</span><span class="tag">ACF</span><span class="tag">REST API</span></div>
+
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 </div></article>
-<footer><div class="container">© 2026 Shiv Parmar · WordPress Developer</div></footer>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
 <script>
-function toggleTheme(){const t=document.documentElement.getAttribute('data-theme');const n=t==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'☀️':'🌙'}
-if(localStorage.getItem('theme')){document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'));document.querySelector('.theme-btn').textContent=localStorage.getItem('theme')==='dark'?'☀️':'🌙'}
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 </script>
 </body>
 </html>
