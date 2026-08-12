@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a WordPress REST API from Scratch â€” Shiv Parmar</title>
+<meta name="description" content="Building a WordPress REST API from Scratch - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f7f8fc;--bg-2:#fff;--bg-soft:#eef0f5;--ink:#0d1321;--muted:#5b6478;--line:#e4e8f0;--accent:#2456f0;--accent-soft:#eef1ff;--radius:14px;--container:720px}
+html[data-theme="dark"]{--bg:#0d1321;--bg-2:#141b2e;--bg-soft:#1b2440;--ink:#eef2ff;--muted:#9aa5c0;--line:#26324d;--accent:#5b8cff;--accent-soft:#182450}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+header{padding:24px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.logo span{color:var(--accent)}
+.back{font-size:14px;font-weight:500;color:var(--muted)}
+.back:hover{color:var(--accent);text-decoration:none}
+.theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.lead{font-size:18px;color:var(--muted);margin-bottom:40px;max-width:600px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">&larr; Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">&#9790;</button></div></div></header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop" alt="Building a WordPress REST API from Scratch" class="hero-img">
+<div class="date">Aug 12, 2026 &middot; 7 min read</div>
+<h1>Building a WordPress REST API from Scratch</h1>
+<div class="content">
+<h2>Building a WordPress REST API Endpoint from Scratch: A Developer's Guide</h2>
+
+<p>Hello everyone! I'm <strong>Shiv Parmar</strong>, a passionate WordPress developer based out of the vibrant city of Rajkot, India. Over the years, I've spent countless hours building custom WordPress solutions, client websites, and decoupled headless architectures. One of the absolute game-changers in modern WordPress development is the <strong>WordPress REST API</strong>.</p>
+
+<p>While WordPress comes out of the box with a robust set of default REST routes for posts, pages, and custom post types, real-world project requirements often demand custom endpoints. Whether you are creating a custom dashboard, exposing data to a Mobile App, or integrating third-party services, knowing how to build a custom REST API endpoint from scratch is an essential skill for any modern WordPress developer.</p>
+
+<p>In this post, I will walk you through the entire process of registering, building, securing, and consuming custom REST API endpoints in WordPress.</p>
+
+<h2>Why Create Custom REST API Endpoints?</h2>
+
+<p>Before jumping into code, let's understand why default endpoints might not always be enough:</p>
+
+<ul>
+    <li><strong>Data Optimization:</strong> Default endpoints often return too much unnecessary metadata, inflating payloads. Custom endpoints let you serve light, targeted JSON structures.</li>
+    <li><strong>Custom Business Logic:</strong> Complex tasks like calculating post statistics, processing multi-step forms, or aggregating data across multiple tables require custom handling.</li>
+    <li><strong>Enhanced Security:</strong> You can apply fine-grained permission checks and strict input sanitization specific to your custom requirements.</li>
+</ul>
+
+<blockquote>
+    <p><strong>Key Insight:</strong> Never expose raw database queries directly through your REST API endpoints. Always pass parameters through <code>validate_callback</code> and <code>sanitize_callback</code> layers before processing data on the server side.</p>
+</blockquote>
+
+<h2>Step 1: Understanding the <code>rest_api_init</code> Hook</h2>
+
+<p>In WordPress, custom REST API endpoints are registered using the <code>register_rest_route()</code> function, which must always be attached to the <code>rest_api_init</code> action hook.</p>
+
+<p>The standard syntax for registering a route looks like this:</p>
+
+<pre><code>register_rest_route( string $namespace, string $route, array $args = array(), bool $override = false );</code></pre>
+
+<p>Let's break down the core components:</p>
+
+<ol>
+    <li><strong>Namespace:</strong> A unique prefix (e.g., <code>shiv-api/v1</code>) that prevents route collisions with other plugins or themes.</li>
+    <li><strong>Route:</strong> The endpoint path appended to the namespace (e.g., <code>/latest-posts</code>).</li>
+    <li><strong>Args:</strong> An array defining supported HTTP methods, callback functions, permission checks, and expected arguments.</li>
+</ol>
+
+<h2>Step 2: Registering Your First Custom Endpoint in PHP</h2>
+
+<p>Let's create a real-world scenario. Suppose we want to fetch a simplified list of recent posts containing only the post ID, title, excerpt, and permalink. Here is how we register this endpoint in our theme's <code>functions.php</code> file or a custom plugin:</p>
+
+<pre><code>&lt;?php
+/**
+ * Register custom REST API route
+ * Author: Shiv Parmar
+ */
+
+add_action('rest_api_init', 'shiv_register_custom_rest_routes');
+
+function shiv_register_custom_rest_routes() {
+    register_rest_route('shiv-api/v1', '/featured-posts', array(
+        'methods'             =&gt; WP_REST_Server::READABLE, // HTTP GET
+        'callback'            =&gt; 'shiv_get_featured_posts',
+        'permission_callback' =&gt; 'shiv_get_featured_posts_permissions',
+        'args'                =&gt; array(
+            'limit' =&gt; array(
+                'default'           =&gt; 5,
+                'sanitize_callback' =&gt; 'absint',
+                'validate_callback' =&gt; 'is_numeric',
+            ),
+        ),
+    ));
+}
+</code></pre>
+
+<p>Notice that we used <code>WP_REST_Server::READABLE</code> instead of writing <code>'GET'</code>. Using built-in WordPress constants is recommended practice because it ensures compatibility across different environments.</p>
+
+<h2>Step 3: Writing Callback and Permission Functions</h2>
+
+<p>Now, let's implement the callback function that queries the database and formats our JSON response, along with the permission function.</p>
+
+<pre><code>&lt;?php
+
+/**
+ * Permission Check
+ */
+function shiv_get_featured_posts_permissions() {
+    // Return true to allow public access.
+    // Replace with current_user_can('edit_posts') if restricted access is required.
+    return true; 
+}
+
+/**
+ * REST Endpoint Callback Function
+ */
+function shiv_get_featured_posts($request) {
+    // Retrieve sanitized argument
+    $limit = $request-&gt;get_param('limit');
+
+    $args = array(
+        'post_type'      =&gt; 'post',
+        'posts_per_page' =&gt; $limit,
+        'post_status'    =&gt; 'publish',
+    );
+
+    $query = new WP_Query($args);
+
+    if (empty($query-&gt;posts)) {
+        return new WP_Error('no_posts_found', 'No posts available', array('status' =&gt; 404));
+    }
+
+    $formatted_data = array();
+
+    foreach ($query-&gt;posts as $post) {
+        $formatted_data[] = array(
+            'id'        =&gt; $post-&gt;ID,
+            'title'     =&gt; get_the_title($post-&gt;ID),
+            'excerpt'   =&gt; get_the_excerpt($post-&gt;ID),
+            'permalink' =&gt; get_permalink($post-&gt;ID),
+        );
+    }
+
+    // Wrap the response in WP_REST_Response for better HTTP standard handling
+    return new WP_REST_Response($formatted_data, 200);
+}
+</code></pre>
+
+<p>By returning a <code>WP_REST_Response</code> object, WordPress automatically formats our array into a clean JSON output with the HTTP status code 200 (Success).</p>
+
+<h2>Step 4: Consuming the Custom Endpoint with JavaScript</h2>
+
+<p>Now that our endpoint is active at <code>https://yourdomain.com/wp-json/shiv-api/v1/featured-posts?limit=3</code>, let's fetch this data on the front end using native JavaScript (Fetch API).</p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', () =&gt; {
+    const container = document.getElementById('featured-posts-container');
+
+    if (!container) return;
+
+    fetch('/wp-json/shiv-api/v1/featured-posts?limit=3')
+        .then(response =&gt; {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data =&gt; {
+            let htmlContent = '';
+            data.forEach(post =&gt; {
+                htmlContent += `
+                    &lt;article class="api-card"&gt;
+                        &lt;h3 class="api-card-title"&gt;&lt;a href="${post.permalink}"&gt;${post.title}&lt;/a&gt;&lt;/h3&gt;
+                        &lt;p class="api-card-excerpt"&gt;${post.excerpt}&lt;/p&gt;
+                    &lt;/article&gt;
+                `;
+            });
+            container.innerHTML = htmlContent;
+        })
+        .catch(error =&gt; {
+            console.error('Error fetching REST data:', error);
+            container.innerHTML = '&lt;p&gt;Failed to load posts. Please try again later.&lt;/p&gt;';
+        });
+});
+</code></pre>
+
+<h2>Step 5: Styling the Output with CSS</h2>
+
+<p>To make our dynamic API content look clean and modern, we can add a simple CSS grid snippet to our theme stylesheet:</p>
+
+<pre><code>/* Styles for REST API Cards */
+#featured-posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.api-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.api-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.api-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.api-card-title a {
+    color: #1a202c;
+    text-decoration: none;
+}
+
+.api-card-title a:hover {
+    color: #3182ce;
+}
+
+.api-card-excerpt {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+</code></pre>
+
+<h2>Best Practices for Production-Ready REST APIs</h2>
+
+<p>Building functional REST routes is only half the battle. To ensure your custom API scales reliably in production environments, keep these best practices in mind:</p>
+
+<ul>
+    <li><strong>Always Require Permission Callbacks:</strong> Since WordPress 5.5, omitting <code>permission_callback</code> will trigger a PHP notice. If public access is intentional, explicitly return <code>__return_true</code>.</li>
+    <li><strong>Leverage Transients for Heavy Queries:</strong> If your API endpoint runs expensive DB queries, cache the computed JSON result using WordPress Transients API to reduce server load.</li>
+    <li><strong>Use Nonces for Non-GET Requests:</strong> When submitting data via <code>POST</code>, <code>PUT</code>, or <code>DELETE</code>, ensure you validate WordPress REST nonces (<code>X-WP-Nonce</code> header) to safeguard against CSRF attacks.</li>
+</ul>
+
+<h2>Wrapping Up</h2>
+
+<p>Creating custom REST API endpoints in WordPress gives you complete freedom to build modern, fast, and scalable web applications. From custom React integrations to headless deployments, mastering <code>register_rest_route</code> bridges the gap between classic WordPress development and modern web engineering.</p>
+
+<p>I hope this practical guide helps you take your WordPress API skills to the next level! If you have any questions or are working on interesting REST API projects, feel free to drop a comment below or reach out to me from Rajkot. Happy coding!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<footer><div class="container">&copy; 2026 Shiv Parmar &middot; WordPress Developer</div></footer>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+</script>
+</body>
+</html>
