@@ -208,14 +208,14 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:v
 <header><div class="container nav"><a class="logo" href="../">shiv<span>.</span>parmar</a><div style="display:flex;gap:16px;align-items:center"><a class="back" href="../">&larr; Back to Portfolio</a><button class="theme-btn" onclick="toggleTheme()">&#9790;</button></div></div></header>
 <article><div class="container">
 <img src="$imageUrl" alt="$title" class="hero-img">
-<div class="date">$date · $readTime read</div>
+<div class="date">$date &middot; $readTime read</div>
 <h1>$title</h1>
 <div class="content">
 $content
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 </div></article>
-<footer><div class="container">© $(Get-Date -Format 'yyyy') Shiv Parmar · WordPress Developer</div></footer>
+<footer><div class="container">&copy; $(Get-Date -Format 'yyyy') Shiv Parmar &middot; WordPress Developer</div></footer>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 </script>
