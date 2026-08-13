@@ -155,6 +155,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
 .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
@@ -206,7 +207,7 @@ $content
         </div>
         <div style="margin-bottom:16px">
           <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Subject *</label>
-          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:rgba(0,0,0,0.6);color:var(--text-primary);font-family:var(--font-primary)">
             <option value="" disabled selected>Select inquiry type</option>
             <option value="General Inquiry">General Inquiry</option>
             <option value="Project Request">Project Request</option>
