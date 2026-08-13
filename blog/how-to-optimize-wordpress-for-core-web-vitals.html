@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Optimize WordPress for Core Web Vitals &mdash; Shiv Parmar</title>
+<meta name="description" content="How to Optimize WordPress for Core Web Vitals - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--line)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg-2);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:64px 0}
+.date{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px}
+.content{font-size:16px;color:var(--ink)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--ink)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--ink)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content code{font-family:'JetBrains Mono',monospace;background:var(--bg-soft);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:var(--ink);color:#c7d2fe;padding:20px;border-radius:var(--radius);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-soft);border-radius:0 var(--radius) var(--radius) 0;margin:0 0 24px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius);margin-bottom:32px}
+.blog-footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="How to Optimize WordPress for Core Web Vitals" title="How to Optimize WordPress for Core Web Vitals" class="hero-img">
+<div class="date">Aug 13, 2026 &middot; 6 min read</div>
+<h1>How to Optimize WordPress for Core Web Vitals</h1>
+<div class="content">
+<p>Greetings from Rajkot, India! I am Shiv Parmar, a passionate WordPress developer who spends most of his days tinkering with code, debugging performance bottlenecks, and building custom web experiences. Over the years, I have worked with client sites of all sizes, and if there is one lesson I repeat like a mantra, it is this: <strong>a fast website is no longer a luxury—it is a baseline requirement.</strong></p>
+
+<p>When Google officially integrated Core Web Vitals into its ranking algorithm, performance optimization shifted from a pure technical exercise to a critical business strategy. Today, I want to walk you through my battle-tested approach to optimizing WordPress websites to achieve green scores in Google PageSpeed Insights and Search Console.</p>
+<div style="background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--ink)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>Understanding the Core Web Vitals Metric Trinity</h2>
+
+<p>Before writing a single line of code or installing plugins, we must understand what Google measures. The current Core Web Vitals suite focuses on three primary metrics:</p>
+
+<ul>
+    <li><strong>Largest Contentful Paint (LCP):</strong> Measures loading performance. To provide a good user experience, LCP should occur within 2.5 seconds of when the page first starts loading.</li>
+    <li><strong>Interaction to Next Paint (INP):</strong> Measures overall page responsiveness to user interactions (clicks, taps, keypresses). A good INP score is under 200 milliseconds. (Note: INP officially replaced FID in March 2024).</li>
+    <li><strong>Cumulative Layout Shift (CLS):</strong> Measures visual stability. Pages should maintain a CLS score of less than 0.1 to avoid annoying layout jumps while loading.</li>
+</ul>
+
+<blockquote>
+    <p>"Optimizing for Core Web Vitals isn't about gaming synthetic benchmark scores; it is about respecting your visitor's time and devices by delivering a stable, responsive, and immediate visual experience."</p>
+</blockquote>
+
+<h2>1. Optimizing LCP: Speeding Up Main Content Rendering</h2>
+
+<p>In most WordPress sites, the LCP element is either a hero image, a featured post image, or a main heading block. To improve LCP, you must shorten the time it takes for the browser to discover, fetch, and render this element.</p>
+
+<h3>Step A: Preload Your LCP Image</h3>
+
+<p>If your hero image is loaded via CSS or deep within the DOM, browsers might discover it late. You can tell the browser to prioritize fetching the LCP image by adding a high-priority preload tag inside your theme's <code>functions.php</code> file:</p>
+
+<pre><code>function shiv_preload_hero_image() {
+    if ( is_front_page() &amp;&amp; has_post_thumbnail() ) {
+        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+        if ( $image_url ) {
+            echo '&lt;link rel="preload" as="image" href="' . esc_url( $image_url ) . '" fetchpriority="high"&gt;';
+        }
+    }
+}
+add_action( 'wp_head', 'shiv_preload_hero_image', 1 );
+</code></pre>
+
+<h3>Step B: Disable Lazy-Loading on the LCP Image</h3>
+
+<p>WordPress automatically adds <code>loading="lazy"</code> to images. While lazy-loading is fantastic for off-screen images, applying it to your hero image will delay its rendering and damage your LCP score. Disable lazy loading specifically for the first featured image:</p>
+
+<pre><code>function shiv_disable_lazy_load_hero( $value, $image, $context ) {
+    if ( is_front_page() &amp;&amp; 'the_post_thumbnail' === $context ) {
+        return false; // Disable lazy loading for the main featured image
+    }
+    return $value;
+}
+add_filter( 'wp_img_tag_add_loading_attr', 'shiv_disable_lazy_load_hero', 10, 3 );
+</code></pre>
+
+<h2>2. Taming CLS: Eliminating Annoying Layout Jumps</h2>
+
+<p>Cumulative Layout Shift occurs when elements on your page move position without user input. Common culprits include images without set dimensions, dynamically inserted ads or banners, and late-loading web fonts.</p>
+
+<h3>Step A: Always Set Explicit Dimensions or Aspect Ratios</h3>
+
+<p>When browsers don't know the exact dimensions of an image before downloading it, they render a height of 0 pixels and suddenly push the text down once the image finishes loading. Always specify explicit width and height attributes in HTML, or define an aspect ratio in CSS:</p>
+
+<pre><code>/* Responsive image handling maintaining aspect ratio */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Reserving visual space for hero banners */
+.hero-banner-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #f0f0f0; /* Fallback placeholder color */
+}
+</code></pre>
+
+<h3>Step B: Fix FOIT/FOUT with Font Display Swap</h3>
+
+<p>When custom web fonts load, text can either be invisible (Flash of Invisible Text) or shift drastically when the custom font swaps with the fallback system font (Flash of Unstyled Text). Add <code>font-display: swap;</code> inside your <code>@font-face</code> declarations in CSS:</p>
+
+<pre><code>@font-face {
+    font-family: 'CustomSans';
+    src: url('/wp-content/themes/my-theme/fonts/custom-sans.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+</code></pre>
+
+<h2>3. Conquering INP: Delivering Instant Interaction Feedback</h2>
+
+<p>Interaction to Next Paint (INP) measures how quickly a page responds when a user interacts with it—such as clicking a menu, opening a toggle, or submitting a form. Poor INP is almost always caused by heavy, unoptimized JavaScript blocking the main browser thread.</p>
+
+<h3>Step A: Defer Non-Critical JavaScript Files</h3>
+
+<p>Avoid loading render-blocking scripts in the header. Instead, defer non-essential plugin scripts so they do not block the browser's execution thread during critical rendering phases:</p>
+
+<pre><code>function shiv_defer_non_essential_scripts( $tag, $handle, $src ) {
+    // List handles of scripts to defer
+    $defer_handles = array( 'contact-form-7', 'wp-embed', 'custom-analytics' );
+
+    if ( in_array( $handle, $defer_handles, true ) ) {
+        return '&lt;script src="' . esc_url( $src ) . '" defer&gt;&lt;/script&gt;';
+    }
+    
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'shiv_defer_non_essential_scripts', 10, 3 );
+</code></pre>
+
+<h3>Step B: Optimize JavaScript Event Handlers</h3>
+
+<p>When writing custom JavaScript for WordPress themes, avoid heavy synchronous computations inside event listeners like <code>scroll</code>, <code>resize</code>, or <code>click</code>. Use <code>requestAnimationFrame</code> or <code>setTimeout</code> to break up long tasks:</p>
+
+<pre><code>// Bad: Blocking the main thread instantly
+document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+    heavyDOMManipulation();
+});
+
+// Good: Yielding control to allow immediate paint response
+document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+    // Instantly toggle the visual visual class
+    this.classList.toggle('is-active');
+    
+    // Defer heavy processing to the next frame
+    requestAnimationFrame(() => {
+        heavyDOMManipulation();
+    });
+});
+</code></pre>
+
+<h2>4. Server Optimization and Caching Layer</h2>
+
+<p>All client-side code tweaks won't rescue a site running on poor infrastructure. To maintain top-tier performance, follow this checklist for your server setup:</p>
+
+<ol>
+    <li><strong>Upgrade to PHP 8.1 or higher:</strong> Modern PHP versions process WordPress execution cycles significantly faster than PHP 7.x.</li>
+    <li><strong>Implement Page Caching:</strong> Use server-level caching solutions like Nginx FastCGI, Litespeed, or plugins like WP Rocket to serve static HTML snapshots instead of executing PHP queries on every load.</li>
+    <li><strong>Enable Persistent Object Cache:</strong> Implement Redis or Memcached to store database query results in memory, drastically reducing dynamic page execution overhead.</li>
+    <li><strong>Utilize a modern CDN:</strong> Cloudflare or BunnyCDN brings your static assets closer to international users, drastically reducing physical latency.</li>
+</ol>
+
+<h2>Summary Checklist</h2>
+
+<p>Building high-performing WordPress sites isn't about luck—it requires a systematic workflow. Here is a quick reference guide to keep nearby during your next optimization audit:</p>
+
+<ul>
+    <li>Preload LCP elements and disable lazy loading on hero images.</li>
+    <li>Convert images to modern formats like WebP or AVIF.</li>
+    <li>Assign explicit dimensions (<code>width</code> and <code>height</code>) or dynamic CSS <code>aspect-ratio</code> values.</li>
+    <li>Use <code>font-display: swap;</code> for web font declarations.</li>
+    <li>Defer non-critical JavaScript to free up the browser's main thread.</li>
+    <li>Leverage server-level caching and a robust CDN network.</li>
+</ul>
+
+<p>I hope this deep dive helps you optimize your WordPress builds and achieve green scores on Core Web Vitals! If you run into any hurdles while implementing these optimizations, or if you have unique techniques that worked for your setups, feel free to drop a message or connect with me. Happy coding from Rajkot!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+
+<section style="padding:64px 0;border-top:1px solid var(--line)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px">
+          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
+          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
+          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
+          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink)">
+            <option value="" disabled selected>Select inquiry type</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Project Request">Project Request</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Freelance Work">Freelance Work</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
+          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--bg-2);color:var(--ink);resize:vertical"></textarea>
+        </div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+
+const bcForm = document.getElementById("blogContactForm");
+if(bcForm){
+  bcForm.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const btn = bcForm.querySelector("button[type=submit]");
+    const status = document.getElementById("bc-formStatus");
+    btn.textContent = "Sending..."; btn.disabled = true;
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec",{
+        method:"POST", mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+          name:document.getElementById("bc-name").value.trim(),
+          email:document.getElementById("bc-email").value.trim(),
+          phone:"",
+          subject:document.getElementById("bc-subject").value,
+          budget:"",
+          message:document.getElementById("bc-message").value.trim(),
+          pageUrl:window.location.href
+        })
+      });
+      status.textContent = "Message sent! I'll get back within 24 hours.";
+      status.style.color = "#22c55e";
+      bcForm.reset();
+    }catch(err){
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = "#ef4444";
+    }
+    btn.textContent = "Send Message"; btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
