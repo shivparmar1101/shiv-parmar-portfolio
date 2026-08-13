@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shivparmar1101.github.io/shiv-parmar-portfolio/sitemap.xml
+Sitemap: https://shiv-parmar-portfolio.netlify.app/sitemap.xml
