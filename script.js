@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Shiv Parmar — Portfolio Scripts
+   Shiv Parmar — Portfolio Scripts (Black & Glass)
    ========================================================================== */
 
 // --------------------------------------------------------------------------
@@ -11,7 +11,9 @@ const themeBtn = document.getElementById("themeBtn");
 const applyTheme = (theme) => {
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
-  themeBtn.textContent = theme === "dark" ? "☀️" : "🌙";
+  if (themeBtn) {
+    themeBtn.textContent = theme === "dark" ? "\u263E" : "\u2600";
+  }
 };
 
 // Restore saved theme on load
@@ -19,38 +21,101 @@ const savedTheme = localStorage.getItem("theme");
 if (savedTheme) {
   applyTheme(savedTheme);
 } else {
-  applyTheme(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light"
-  );
+  applyTheme("dark");
 }
 
-themeBtn.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  applyTheme(current === "dark" ? "light" : "dark");
-});
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+}
 
 // --------------------------------------------------------------------------
 // 2. Mobile Navigation
 // --------------------------------------------------------------------------
 
 const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+const mobileNav = document.getElementById("mobileNav");
 
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-});
-
-// Close menu when a link is clicked
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
+if (hamburger && mobileNav) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open");
+    document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : "";
   });
-});
+
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+      document.body.style.overflow = "";
+    });
+  });
+}
 
 // --------------------------------------------------------------------------
-// 3. Contact Form — Google Apps Script (SMTP)
+// 3. Active Navigation Highlight
+// --------------------------------------------------------------------------
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const updateActiveNav = () => {
+  const scrollPos = window.scrollY + 120;
+
+  sections.forEach((section) => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute("id");
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+};
+
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+updateActiveNav();
+
+// --------------------------------------------------------------------------
+// 4. Parallax Scrolling Effect
+// --------------------------------------------------------------------------
+
+const parallaxOrbs = document.querySelectorAll(".parallax-orb");
+
+const updateParallax = () => {
+  const scrollY = window.scrollY;
+
+  parallaxOrbs.forEach((orb, index) => {
+    const speed = 0.03 + (index * 0.015);
+    const yPos = scrollY * speed;
+    const xOffset = Math.sin(scrollY * 0.002 + index) * 20;
+    orb.style.transform = `translate(${xOffset}px, ${yPos}px)`;
+  });
+};
+
+let ticking = false;
+
+const onScroll = () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateParallax();
+      ticking = false;
+    });
+    ticking = true;
+  }
+};
+
+window.addEventListener("scroll", onScroll, { passive: true });
+
+// --------------------------------------------------------------------------
+// 5. Contact Form — Google Apps Script (SMTP)
 // --------------------------------------------------------------------------
 
 const contactForm = document.getElementById("contactForm");
@@ -60,45 +125,49 @@ const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbz1y8bYxZMjHM03gnyuV9GPKxNTcG4AfgVT6A6wHX9LDYbT4XkKYbeupBBBSR-bHJ-HjQ/exec";
 
 if (contactForm) {
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const submitBtn = contactForm.querySelector(".btn-primary");
-  submitBtn.textContent = "Sending...";
-  submitBtn.disabled = true;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
 
-  const formData = {
-    name: document.getElementById("name").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    subject: document.getElementById("subject").value,
-    budget: document.getElementById("budget").value,
-    message: document.getElementById("message").value.trim(),
-    pageUrl: window.location.href,
-  };
+    const formData = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      subject: document.getElementById("subject").value,
+      budget: document.getElementById("budget").value,
+      message: document.getElementById("message").value.trim(),
+      pageUrl: window.location.href,
+    };
 
-  try {
-    const response = await fetch(SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    formStatus.textContent =
-      "✅ Message sent successfully! I will get back to you within 24 hours.";
-    submitBtn.textContent = "✅ Sent!";
-    contactForm.reset();
-  } catch (error) {
-    formStatus.textContent = "❌ Something went wrong. Please try again.";
-    submitBtn.textContent = "Send Message";
-    submitBtn.disabled = false;
-  }
-});
+      formStatus.textContent =
+        "Message sent successfully! I will get back to you within 24 hours.";
+      submitBtn.innerHTML = "Sent &#10003;";
+      contactForm.reset();
+      setTimeout(() => {
+        submitBtn.innerHTML = "Send Message <span class='arrow'>&rarr;</span>";
+        submitBtn.disabled = false;
+      }, 3000);
+    } catch (error) {
+      formStatus.textContent = "Something went wrong. Please try again.";
+      submitBtn.innerHTML = "Send Message <span class='arrow'>&rarr;</span>";
+      submitBtn.disabled = false;
+    }
+  });
 }
 
 // --------------------------------------------------------------------------
-// 4. Reveal on Scroll (Intersection Observer)
+// 6. Reveal on Scroll (Intersection Observer)
 // --------------------------------------------------------------------------
 
 const revealObserver = new IntersectionObserver(
@@ -110,7 +179,7 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
 );
 
 document.querySelectorAll(".reveal").forEach((el) => {
@@ -118,28 +187,76 @@ document.querySelectorAll(".reveal").forEach((el) => {
 });
 
 // --------------------------------------------------------------------------
-// 5. Skill Bar Animation
+// 7. Skill Bar Animation
 // --------------------------------------------------------------------------
 
-const barObserver = new IntersectionObserver(
+const skillObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const width = entry.target.getAttribute("data-w");
         entry.target.style.width = `${width}%`;
-        barObserver.unobserve(entry.target);
+        skillObserver.unobserve(entry.target);
       }
     });
   },
   { threshold: 0.3 }
 );
 
-document.querySelectorAll(".bar i").forEach((el) => {
-  barObserver.observe(el);
+document.querySelectorAll(".skill-fill").forEach((el) => {
+  skillObserver.observe(el);
 });
 
 // --------------------------------------------------------------------------
-// 6. Smooth Scroll for Anchor Links
+// 8. Timeline Scroll Progress Line
+// --------------------------------------------------------------------------
+
+const timeline = document.querySelector(".timeline");
+const timelineProgress = document.querySelector(".timeline-progress");
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+if (timeline && timelineProgress) {
+  const timelineViewport = document.querySelector("#experience") || timeline;
+
+  const updateTimeline = () => {
+    const rect = timelineViewport.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    if (rect.bottom < 0 || rect.top > vh) {
+      timelineProgress.style.height = "0%";
+      timelineItems.forEach((item) => item.classList.remove("active"));
+      return;
+    }
+
+    const total = rect.height;
+    const scrolled = vh * 0.5 - rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / total));
+    timelineProgress.style.height = `${progress * 100}%`;
+
+    timelineItems.forEach((item) => {
+      const itemRect = item.getBoundingClientRect();
+      item.classList.toggle("active", itemRect.top < vh * 0.5);
+    });
+  };
+
+  let tlTicking = false;
+  const onTimelineScroll = () => {
+    if (!tlTicking) {
+      requestAnimationFrame(() => {
+        updateTimeline();
+        tlTicking = false;
+      });
+      tlTicking = true;
+    }
+  };
+
+  window.addEventListener("scroll", onTimelineScroll, { passive: true });
+  window.addEventListener("resize", onTimelineScroll);
+  updateTimeline();
+}
+
+// --------------------------------------------------------------------------
+// 9. Smooth Scroll for Anchor Links
 // --------------------------------------------------------------------------
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -151,11 +268,132 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
       if (target) {
         e.preventDefault();
+        const headerOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
-          top: target.offsetTop - 70,
+          top: offsetPosition,
           behavior: "smooth",
         });
       }
     }
   });
 });
+
+// --------------------------------------------------------------------------
+// 10. Header Background on Scroll
+// --------------------------------------------------------------------------
+
+const header = document.querySelector("header");
+
+const updateHeader = () => {
+  if (window.scrollY > 50) {
+    header.style.background = "rgba(0, 0, 0, 0.85)";
+    header.style.borderBottomColor = "rgba(255, 255, 255, 0.1)";
+  } else {
+    header.style.background = "rgba(0, 0, 0, 0.6)";
+    header.style.borderBottomColor = "rgba(255, 255, 255, 0.08)";
+  }
+};
+
+if (header) {
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+}
+
+// --------------------------------------------------------------------------
+// 11. Mouse Glow Effect on Glass Cards
+// --------------------------------------------------------------------------
+
+const glassCards = document.querySelectorAll(".glass, .service-card, .testimonial-card, .blog-card, .project-item");
+
+glassCards.forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  });
+});
+
+// --------------------------------------------------------------------------
+// 12. Magnetic Button Effect
+// --------------------------------------------------------------------------
+
+const magneticBtns = document.querySelectorAll(".btn-primary, .nav-cta");
+
+magneticBtns.forEach((btn) => {
+  btn.addEventListener("mousemove", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    btn.style.transform = "translate(0, 0)";
+  });
+});
+
+// --------------------------------------------------------------------------
+// 13. Tilt Effect on Hero Card
+// --------------------------------------------------------------------------
+
+const heroCard = document.querySelector(".hero-card");
+
+if (heroCard) {
+  heroCard.addEventListener("mousemove", (e) => {
+    const rect = heroCard.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    const browser = heroCard.querySelector(".browser");
+    if (browser) {
+      browser.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+    }
+  });
+
+  heroCard.addEventListener("mouseleave", () => {
+    const browser = heroCard.querySelector(".browser");
+    if (browser) {
+      browser.style.transform = "rotateY(-5deg) rotateX(2deg)";
+    }
+  });
+}
+
+// --------------------------------------------------------------------------
+// 14. Animated Counter
+// --------------------------------------------------------------------------
+
+const counterBlocks = document.querySelectorAll("[data-counter]");
+
+if (counterBlocks.length) {
+  const animateCounter = (el) => {
+    const target = parseInt(el.getAttribute("data-target"), 10);
+    const duration = 1800;
+    const start = performance.now();
+
+    const step = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased) + "+";
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll("strong[data-target]").forEach(animateCounter);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counterBlocks.forEach((block) => counterObserver.observe(block));
+}
