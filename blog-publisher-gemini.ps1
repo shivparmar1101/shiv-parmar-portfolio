@@ -282,52 +282,120 @@ $content
 
 <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
   <div class="container">
-    <div style="max-width:600px;margin:0 auto;text-align:center">
-      <p class="eyebrow" style="color:var(--accent)">Contact</p>
-      <h2 style="font-family:var(--font-primary);font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px;color:var(--text-primary)">Let's Work Together</h2>
-      <p style="color:var(--text-muted);margin-bottom:32px;font-family:var(--font-primary)">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
-      <form id="blogContactForm" novalidate style="text-align:left">
-        <div style="margin-bottom:16px">
-          <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Full Name *</label>
-          <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
+    <div class="cta-block" style="text-align:center;margin-bottom:48px">
+      <p class="eyebrow" style="justify-content:center;color:var(--accent)">Open to work</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Hire a WordPress Developer</h2>
+      <p style="color:var(--text-muted);max-width:540px;margin:0 auto">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="form-card">
+        <h3>Let's Work Together</h3>
+        <form id="blogContactForm" novalidate>
+          <div class="form-row">
+            <label for="bc-name">Full Name *</label>
+            <input type="text" id="bc-name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="bc-email">Email Address *</label>
+            <input type="email" id="bc-email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="bc-phone">Phone Number</label>
+            <input type="tel" id="bc-phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-row">
+            <label for="bc-subject">Subject *</label>
+            <select id="bc-subject" name="subject" required>
+              <option value="" disabled selected>Select an inquiry type</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Project Request">Project Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="bc-budget">Budget Range</label>
+            <select id="bc-budget" name="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under Rs.10,000">Under Rs.10,000</option>
+              <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+              <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+              <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+              <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="bc-message">Project Details *</label>
+            <textarea id="bc-message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+          <p class="form-note" id="bc-formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="26" rx="3"/>
+              <path d="M6 14l18 11 18-11"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com</a>
+          </div>
         </div>
-        <div style="margin-bottom:16px">
-          <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Email Address *</label>
-          <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="5"/>
+              <path d="M16 21v15"/>
+              <circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/>
+              <path d="M24 21v15"/>
+              <path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiv-parmar</a>
+          </div>
         </div>
-        <div style="margin-bottom:16px">
-          <label for="bc-phone" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Phone Number</label>
-          <input type="tel" id="bc-phone" name="phone" placeholder="+91 00000 00000" style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer">github.com/shivparmar1101</a>
+          </div>
         </div>
-        <div style="margin-bottom:16px">
-          <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Subject *</label>
-          <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:rgba(0,0,0,0.6);color:var(--text-primary);font-family:var(--font-primary)">
-            <option value="" disabled selected>Select an inquiry type</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Project Request">Project Request</option>
-            <option value="Collaboration">Collaboration</option>
-            <option value="Freelance Work">Freelance Work</option>
-            <option value="Other">Other</option>
-          </select>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+917359411663">+91 73594 11663</a>
+          </div>
         </div>
-        <div style="margin-bottom:16px">
-          <label for="bc-budget" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Budget Range</label>
-          <select id="bc-budget" name="budget" style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:rgba(0,0,0,0.6);color:var(--text-primary);font-family:var(--font-primary)">
-            <option value="" disabled selected>Select budget range</option>
-            <option value="Under Rs.10,000">Under Rs.10,000</option>
-            <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
-            <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
-            <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
-            <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
-          </select>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
+              <circle cx="24" cy="20" r="5"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Rajkot, India &middot; Remote-ready</span>
+          </div>
         </div>
-        <div style="margin-bottom:16px">
-          <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Project Details *</label>
-          <textarea id="bc-message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary);resize:vertical"></textarea>
-        </div>
-        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--font-primary)">Send Message <span>&rarr;</span></button>
-        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
-      </form>
+      </div>
     </div>
   </div>
 </section>
