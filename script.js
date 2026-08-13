@@ -36,86 +36,26 @@ if (themeBtn) {
 // --------------------------------------------------------------------------
 
 const hamburger = document.getElementById("hamburger");
-const mobileNav = document.getElementById("mobileNav");
+const navLinks = document.getElementById("navLinks");
 
-if (hamburger && mobileNav) {
+if (hamburger && navLinks) {
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("open");
-    mobileNav.classList.toggle("open");
-    document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : "";
+    navLinks.classList.toggle("open");
+    document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
   });
 
-  mobileNav.querySelectorAll("a").forEach((link) => {
+  navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       hamburger.classList.remove("open");
-      mobileNav.classList.remove("open");
+      navLinks.classList.remove("open");
       document.body.style.overflow = "";
     });
   });
 }
 
 // --------------------------------------------------------------------------
-// 3. Active Navigation Highlight
-// --------------------------------------------------------------------------
-
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-const updateActiveNav = () => {
-  const scrollPos = window.scrollY + 120;
-
-  sections.forEach((section) => {
-    const top = section.offsetTop;
-    const height = section.offsetHeight;
-    const id = section.getAttribute("id");
-
-    if (scrollPos >= top && scrollPos < top + height) {
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${id}`) {
-          link.classList.add("active");
-        }
-      });
-    }
-  });
-};
-
-window.addEventListener("scroll", updateActiveNav, { passive: true });
-updateActiveNav();
-
-// --------------------------------------------------------------------------
-// 4. Parallax Scrolling Effect
-// --------------------------------------------------------------------------
-
-const parallaxOrbs = document.querySelectorAll(".parallax-orb");
-
-const updateParallax = () => {
-  const scrollY = window.scrollY;
-
-  parallaxOrbs.forEach((orb, index) => {
-    const speed = 0.03 + (index * 0.015);
-    const yPos = scrollY * speed;
-    const xOffset = Math.sin(scrollY * 0.002 + index) * 20;
-    orb.style.transform = `translate(${xOffset}px, ${yPos}px)`;
-  });
-};
-
-let ticking = false;
-
-const onScroll = () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      updateParallax();
-      ticking = false;
-    });
-    ticking = true;
-  }
-};
-
-window.addEventListener("scroll", onScroll, { passive: true });
-
-// --------------------------------------------------------------------------
-// 5. Contact Form — Google Apps Script (SMTP)
+// 3. Contact Form — Google Apps Script (SMTP)
 // --------------------------------------------------------------------------
 
 const contactForm = document.getElementById("contactForm");
@@ -167,7 +107,36 @@ if (contactForm) {
 }
 
 // --------------------------------------------------------------------------
-// 6. Reveal on Scroll (Intersection Observer)
+// 4. Active Navigation Highlight
+// --------------------------------------------------------------------------
+
+const sections = document.querySelectorAll("section[id]");
+const allNavLinks = document.querySelectorAll(".nav-links a");
+
+const updateActiveNav = () => {
+  const scrollPos = window.scrollY + 120;
+
+  sections.forEach((section) => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute("id");
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      allNavLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+};
+
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+updateActiveNav();
+
+// --------------------------------------------------------------------------
+// 5. Reveal on Scroll (Intersection Observer)
 // --------------------------------------------------------------------------
 
 const revealObserver = new IntersectionObserver(
@@ -187,7 +156,7 @@ document.querySelectorAll(".reveal").forEach((el) => {
 });
 
 // --------------------------------------------------------------------------
-// 7. Skill Bar Animation
+// 6. Skill Bar Animation
 // --------------------------------------------------------------------------
 
 const skillObserver = new IntersectionObserver(
@@ -208,7 +177,7 @@ document.querySelectorAll(".skill-fill").forEach((el) => {
 });
 
 // --------------------------------------------------------------------------
-// 8. Timeline Scroll Progress Line
+// 7. Timeline Scroll Progress Line
 // --------------------------------------------------------------------------
 
 const timeline = document.querySelector(".timeline");
@@ -256,7 +225,7 @@ if (timeline && timelineProgress) {
 }
 
 // --------------------------------------------------------------------------
-// 9. Smooth Scroll for Anchor Links
+// 8. Smooth Scroll for Anchor Links
 // --------------------------------------------------------------------------
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -282,7 +251,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 // --------------------------------------------------------------------------
-// 10. Header Background on Scroll
+// 9. Header Background on Scroll
 // --------------------------------------------------------------------------
 
 const header = document.querySelector("header");
@@ -303,68 +272,7 @@ if (header) {
 }
 
 // --------------------------------------------------------------------------
-// 11. Mouse Glow Effect on Glass Cards
-// --------------------------------------------------------------------------
-
-const glassCards = document.querySelectorAll(".glass, .service-card, .testimonial-card, .blog-card, .project-item");
-
-glassCards.forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  });
-});
-
-// --------------------------------------------------------------------------
-// 12. Magnetic Button Effect
-// --------------------------------------------------------------------------
-
-const magneticBtns = document.querySelectorAll(".btn-primary, .nav-cta");
-
-magneticBtns.forEach((btn) => {
-  btn.addEventListener("mousemove", (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-  });
-
-  btn.addEventListener("mouseleave", () => {
-    btn.style.transform = "translate(0, 0)";
-  });
-});
-
-// --------------------------------------------------------------------------
-// 13. Tilt Effect on Hero Card
-// --------------------------------------------------------------------------
-
-const heroCard = document.querySelector(".hero-card");
-
-if (heroCard) {
-  heroCard.addEventListener("mousemove", (e) => {
-    const rect = heroCard.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    const browser = heroCard.querySelector(".browser");
-    if (browser) {
-      browser.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
-    }
-  });
-
-  heroCard.addEventListener("mouseleave", () => {
-    const browser = heroCard.querySelector(".browser");
-    if (browser) {
-      browser.style.transform = "rotateY(-5deg) rotateX(2deg)";
-    }
-  });
-}
-
-// --------------------------------------------------------------------------
-// 14. Animated Counter
+// 10. Animated Counter
 // --------------------------------------------------------------------------
 
 const counterBlocks = document.querySelectorAll("[data-counter]");
