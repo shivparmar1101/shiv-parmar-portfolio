@@ -186,27 +186,32 @@ function Create-BlogHTML {
 
 "@
 
-    # Find safe injection point after 2 top-level paragraphs
-    $paragraphCount = 0
+    # Find safe injection point: after a </p> that is NOT followed by <pre or <code
     $insertPos = -1
-    $i = 0
-    while ($i -lt $content.Length - 4) {
-        if ($content[$i] -eq '<' -and $content[$i+1] -eq 'p' -and $content[$i+2] -eq '>') {
-            $paragraphCount++
-            if ($paragraphCount -eq 2) {
-                # Find the closing </p>
-                $closeIdx = $content.IndexOf('</p>', $i)
-                if ($closeIdx -gt 0) {
-                    $insertPos = $closeIdx + 4
-                }
-                break
+    $searchStart = 0
+    while ($searchStart -lt $content.Length) {
+        $pIdx = $content.IndexOf('</p>', $searchStart)
+        if ($pIdx -lt 0) { break }
+        $afterP = $pIdx + 4
+        # Skip whitespace
+        while ($afterP -lt $content.Length -and $content[$afterP] -in ' ', "`n", "`r", "`t") { $afterP++ }
+        # Check what follows: skip if it's <pre or <code or another <p
+        $followsCode = $false
+        if ($afterP -lt $content.Length - 4) {
+            $nextTag = $content.Substring($afterP, [Math]::Min(10, $content.Length - $afterP)).ToLower()
+            if ($nextTag -match '^<(pre|code|ul|ol|blockquote|h[1-6])') {
+                $followsCode = $true
             }
         }
-        $i++
+        if (-not $followsCode) {
+            $insertPos = $pIdx + 4
+            break
+        }
+        $searchStart = $pIdx + 4
     }
 
     if ($insertPos -gt 0) {
-        $content = $content.Substring(0, $insertPos) + $cta + $content.Substring($insertPos)
+        $content = $content.Substring(0, $insertPos) + "`n" + $cta + "`n" + $content.Substring($insertPos)
     }
 
     # Add second CTA + contact form at end
