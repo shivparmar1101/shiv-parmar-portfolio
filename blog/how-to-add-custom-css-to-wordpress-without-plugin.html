@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +27,7 @@
 </div>
 
 
-<p>In this guide, I will walk you through four effective methods to add custom CSS to your WordPress site without using a single extra plugin. Whether you are a non-technical site owner or an aspiring developer, these methods will give you full control over your siteâ€™s design.</p>
+<p>In this guide, I will walk you through four effective methods to add custom CSS to your WordPress site without using a single extra plugin. Whether you are a non-technical site owner or an aspiring developer, these methods will give you full control over your site’s design.</p>
 
 <h2>1. The Native Theme Customizer (Quickest & Easiest Method)</h2>
 
@@ -118,9 +118,9 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
 <h2>3. Injecting Conditional CSS via Theme Functions Hook</h2>
 
-<p>Sometimes you only want to load specific CSS rules on particular pagesâ€”such as a custom checkout page, a single blog post category, or a landing page. Adding these styles to a global stylesheet forces users to download unnecessary code on pages where it isn't used.</p>
+<p>Sometimes you only want to load specific CSS rules on particular pages—such as a custom checkout page, a single blog post category, or a landing page. Adding these styles to a global stylesheet forces users to download unnecessary code on pages where it isn't used.</p>
 
-<p>Using the <code>wp_head</code> action hook inside your themeâ€™s <code>functions.php</code> file, you can output inline CSS conditionally based on specific WordPress conditional tags.</p>
+<p>Using the <code>wp_head</code> action hook inside your theme’s <code>functions.php</code> file, you can output inline CSS conditionally based on specific WordPress conditional tags.</p>
 
 <p>Consider this practical PHP example:</p>
 
@@ -193,7 +193,7 @@ add_action( 'wp_head', 'shiv_custom_conditional_styles', 100 );
 
 <p>Adding custom CSS without a plugin is one of the most effective ways to optimize your WordPress workflow while keeping your website fast and lightweight. For quick visual tweaks, the <strong>Customizer Additional CSS</strong> tool or <strong>Site Editor</strong> works wonders. For substantial redesigns or complex custom theme projects, a proper <strong>Child Theme with enqueued stylesheets</strong> is the undisputed professional choice.</p>
 
-<p>I hope this quick technical breakdown helps you streamline your WordPress customization process. Have questions about custom theme hooks, specificity issues, or CSS enqueueing? Drop a message or reach outâ€”I am always excited to discuss web development!</p>
+<p>I hope this quick technical breakdown helps you streamline your WordPress customization process. Have questions about custom theme hooks, specificity issues, or CSS enqueueing? Drop a message or reach out—I am always excited to discuss web development!</p>
 
 <p>Happy coding from Rajkot!</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:40px 0 32px;text-align:center">
@@ -277,6 +277,6 @@ if(bcForm){
 }
 </script>
   <div id="site-footer"></div>
-  <script src="../includes.js"></script>
+  
 </body>
 </html>

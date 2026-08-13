@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <div id="site-header"></div>
 <article><div class="container">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Payment Gateway Comparison 2026" title="WooCommerce Payment Gateway Comparison 2026" class="hero-img">
-<div class="date">Aug 2026 Â· 5 min read</div>
+<div class="date">Aug 2026 · 5 min read</div>
 <h1>WooCommerce Payment Gateway Comparison 2026</h1>
 <div class="content">
 <p>Hello fellow developers and store owners! I'm Shiv Parmar, a full-stack WordPress and WooCommerce developer working out of Rajkot, India. Over the last decade, I've built, optimized, and debugged hundreds of WooCommerce stores for clients across India, North America, Europe, and Australia.</p>
@@ -68,7 +68,7 @@
 </ul>
 
 <blockquote>
-    <p>"In 2026, payment gateway selection is no longer just a finance decisionâ€”it is a core UX strategy. A friction-filled payment step can cost you up to 25% in abandoned carts before the user ever sees your order confirmation page."</p>
+    <p>"In 2026, payment gateway selection is no longer just a finance decision—it is a core UX strategy. A friction-filled payment step can cost you up to 25% in abandoned carts before the user ever sees your order confirmation page."</p>
 </blockquote>
 
 <h2>Programmatically Customizing WooCommerce Gateways</h2>
@@ -128,7 +128,7 @@ function shiv_add_cod_gateway_surcharge() {
     $chosen_gateway = WC()-&gt;session-&gt;get( 'chosen_payment_method' );
 
     if ( 'cod' === $chosen_gateway ) {
-        $surcharge = 50.00; // Flat rate fee (e.g., â‚¹50 or $5)
+        $surcharge = 50.00; // Flat rate fee (e.g., ₹50 or $5)
         WC()-&gt;cart-&gt;add_fee( __( 'COD Handling Charge', 'text-domain' ), $surcharge, true, '' );
     }
 }
@@ -152,7 +152,7 @@ function shiv_add_cod_gateway_surcharge() {
 
 <p>There is no "one size fits all" payment gateway in 2026. If you are building a global e-commerce store, <strong>Stripe + PayPal</strong> remains the golden combination. If you are operating primarily in India, running <strong>Razorpay alongside Stripe</strong> for international orders will give you the best combination of low fees and maximum checkout success rates.</p>
 
-<p>As WordPress developers, our job goes beyond just installing a pluginâ€”we must optimize the user journey, manage webhooks effectively, and ensure secure transaction logging.</p>
+<p>As WordPress developers, our job goes beyond just installing a plugin—we must optimize the user journey, manage webhooks effectively, and ensure secure transaction logging.</p>
 
 <p>I hope this guide helps you choose and customize the right payment gateways for your WooCommerce projects this year! If you have any questions or need custom WooCommerce development assistance, feel free to reach out to me from my contact page.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:14px;padding:24px;margin:40px 0 32px;text-align:center">
@@ -234,6 +234,6 @@ if(bcForm){
 }
 </script>
   <div id="site-footer"></div>
-  <script src="../includes.js"></script>
+  
 </body>
 </html>

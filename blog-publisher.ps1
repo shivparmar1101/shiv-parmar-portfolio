@@ -160,26 +160,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#skills">Skills</a>
-        <a href="../index.html#experience">Experience</a>
-        <a href="../index.html#blog">Blog</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
-      </div>
-    </div>
-  </header>
+  <div id="site-header"></div>
 <article><div class="container">
 <img src="$imageUrl" alt="$title" title="$title" class="hero-img">
 <div class="date">$date · $readTime read</div>
@@ -263,6 +244,8 @@ if(bcForm){
   });
 }
 </script>
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../script.js"></script>
 </body>
 </html>
 "@

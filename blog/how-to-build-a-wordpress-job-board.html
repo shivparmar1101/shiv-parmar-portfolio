@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 <div class="content">
 <h1>How to Build a Custom, High-Performance WordPress Job Board</h1>
 
-<p>Namaste! Iâ€™m Shiv Parmar, a WordPress Developer based in the vibrant tech hub of Rajkot, India. Over the years, Iâ€™ve helped numerous clients build scalable, bespoke web solutions. One request that comes up surprisingly often is building a custom job board in WordPress.</p>
+<p>Namaste! I’m Shiv Parmar, a WordPress Developer based in the vibrant tech hub of Rajkot, India. Over the years, I’ve helped numerous clients build scalable, bespoke web solutions. One request that comes up surprisingly often is building a custom job board in WordPress.</p>
 
 <p>While off-the-shelf job board plugins exist, they frequently suffer from code bloat, inflexible layouts, and costly annual subscriptions. Building your own native solution gives you ultimate control over performance, database queries, and user experience. In this guide, I will walk you step-by-step through architecting a custom, lightweight WordPress job board engine from scratch.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
@@ -134,7 +134,7 @@ add_action('save_post', 'sp_save_job_meta_data');
 </code></pre>
 
 <blockquote>
-  <p>"Building a custom job board engine natively using WordPress APIs gives you 100% control over database performance, security, and user experienceâ€”without getting trapped in third-party plugin subscription ecosystems."</p>
+  <p>"Building a custom job board engine natively using WordPress APIs gives you 100% control over database performance, security, and user experience—without getting trapped in third-party plugin subscription ecosystems."</p>
 </blockquote>
 
 <h2>3. Building the Front-End Job Listing View</h2>
@@ -160,8 +160,8 @@ add_action('save_post', 'sp_save_job_meta_data');
                 &lt;/div&gt;
                 
                 &lt;div class="job-card-meta"&gt;
-                    &lt;span class="location"&gt;ðŸ“ &lt;?php echo esc_html($location); ?&gt;&lt;/span&gt;
-                    &lt;span class="salary"&gt;ðŸ’° &lt;?php echo esc_html($salary); ?&gt;&lt;/span&gt;
+                    &lt;span class="location"&gt;📍 &lt;?php echo esc_html($location); ?&gt;&lt;/span&gt;
+                    &lt;span class="salary"&gt;💰 &lt;?php echo esc_html($salary); ?&gt;&lt;/span&gt;
                     &lt;?php if ($job_types &amp;&amp; !is_wp_error($job_types)) : ?&gt;
                         &lt;span class="job-badge"&gt;&lt;?php echo esc_html($job_types[0]-&gt;name); ?&gt;&lt;/span&gt;
                     &lt;?php endif; ?&gt;
@@ -338,6 +338,6 @@ if(bcForm){
 }
 </script>
   <div id="site-footer"></div>
-  <script src="../includes.js"></script>
+  
 </body>
 </html>
