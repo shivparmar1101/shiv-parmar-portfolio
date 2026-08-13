@@ -2461,7 +2461,7 @@ article{padding:0}
 .content pre code{background:none;padding:0;color:inherit}
 .content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-glow-soft);border-radius:0 var(--radius-lg) var(--radius-lg) 0;margin:0 0 24px;color:var(--text-secondary)}
 .content blockquote em{color:var(--text-primary)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--border-glass)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
 .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}

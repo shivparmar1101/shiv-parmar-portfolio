@@ -150,7 +150,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .content pre code{background:none;padding:0;color:inherit}
 .content blockquote{border-left:3px solid var(--accent);padding:16px 20px;background:var(--accent-glow-soft);border-radius:0 var(--radius-lg) var(--radius-lg) 0;margin:0 0 24px;color:var(--text-secondary)}
 .content blockquote em{color:var(--text-primary)}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding-top:24px;border-top:1px solid var(--border-glass)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
 .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
@@ -187,21 +187,37 @@ $content
           <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
         </div>
         <div style="margin-bottom:16px">
+          <label for="bc-phone" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Phone Number</label>
+          <input type="tel" id="bc-phone" name="phone" placeholder="+91 00000 00000" style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary)">
+        </div>
+        <div style="margin-bottom:16px">
           <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Subject *</label>
           <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:rgba(0,0,0,0.6);color:var(--text-primary);font-family:var(--font-primary)">
-            <option value="" disabled selected>Select inquiry type</option>
+            <option value="" disabled selected>Select an inquiry type</option>
             <option value="General Inquiry">General Inquiry</option>
             <option value="Project Request">Project Request</option>
             <option value="Collaboration">Collaboration</option>
             <option value="Freelance Work">Freelance Work</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px">
+          <label for="bc-budget" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Budget Range</label>
+          <select id="bc-budget" name="budget" style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:rgba(0,0,0,0.6);color:var(--text-primary);font-family:var(--font-primary)">
+            <option value="" disabled selected>Select budget range</option>
+            <option value="Under Rs.10,000">Under Rs.10,000</option>
+            <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+            <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+            <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+            <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
           </select>
         </div>
         <div style="margin-bottom:16px">
           <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-primary);font-family:var(--font-primary)">Project Details *</label>
-          <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary);resize:vertical"></textarea>
+          <textarea id="bc-message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);font-family:var(--font-primary);resize:vertical"></textarea>
         </div>
-        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--font-primary)">Send Message</button>
-        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--font-primary)">Send Message <span>&rarr;</span></button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
       </form>
     </div>
   </div>
@@ -226,9 +242,9 @@ if(bcForm){
         body:JSON.stringify({
           name:document.getElementById("bc-name").value.trim(),
           email:document.getElementById("bc-email").value.trim(),
-          phone:"",
+          phone:document.getElementById("bc-phone").value.trim(),
           subject:document.getElementById("bc-subject").value,
-          budget:"",
+          budget:document.getElementById("bc-budget").value,
           message:document.getElementById("bc-message").value.trim(),
           pageUrl:window.location.href
         })
