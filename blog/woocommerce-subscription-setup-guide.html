@@ -12,26 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#skills">Skills</a>
-        <a href="../index.html#experience">Experience</a>
-        <a href="../index.html#blog">Blog</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
-      </div>
-    </div>
-  </header>
+  <div id="site-header"></div>
 <article><div class="container">
 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Subscription Setup Guide" title="WooCommerce Subscription Setup Guide" class="hero-img">
 <div class="date">Aug 2026 · 5 min read</div>
@@ -232,7 +213,7 @@ function shiv_custom_subscription_cart_button( $text, $product ) {
 </section>
 
 <footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
-<script src="../script.js"></script>
+<script src="../includes.js"></script>`n  <script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 
@@ -267,5 +248,7 @@ if(bcForm){
   });
 }
 </script>
+  <div id="site-footer"></div>
+  <script src="../includes.js"></script>
 </body>
 </html>

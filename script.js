@@ -3,36 +3,7 @@
    ========================================================================== */
 
 // --------------------------------------------------------------------------
-// 1. Dark Mode Toggle
-// --------------------------------------------------------------------------
-
-const themeBtn = document.getElementById("themeBtn");
-
-const applyTheme = (theme) => {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-  if (themeBtn) {
-    themeBtn.textContent = theme === "dark" ? "\u263E" : "\u2600";
-  }
-};
-
-// Restore saved theme on load
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-  applyTheme(savedTheme);
-} else {
-  applyTheme("dark");
-}
-
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    applyTheme(current === "dark" ? "light" : "dark");
-  });
-}
-
-// --------------------------------------------------------------------------
-// 2. Mobile Navigation
+// 1. Mobile Navigation
 // --------------------------------------------------------------------------
 
 const hamburger = document.getElementById("hamburger");
