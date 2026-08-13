@@ -282,11 +282,6 @@ $content
 
 <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
   <div class="container">
-    <div class="cta-block" style="text-align:center;margin-bottom:48px">
-      <p class="eyebrow" style="justify-content:center;color:var(--accent)">Open to work</p>
-      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Hire a WordPress Developer</h2>
-      <p style="color:var(--text-muted);max-width:540px;margin:0 auto">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
-    </div>
     <div class="contact-grid">
       <div class="form-card">
         <h3>Let's Work Together</h3>

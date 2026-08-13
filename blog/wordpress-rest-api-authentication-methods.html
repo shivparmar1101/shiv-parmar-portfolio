@@ -50,7 +50,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div class="content">
 <h1>Mastering WordPress REST API Authentication Methods: A Developer's Guide</h1>
 
-<p>Hello fellow developers! I’m Shiv Parmar, a WordPress developer based in the vibrant city of Rajkot, India. Over the years, I’ve built dozens of custom WordPress solutions, ranging from headless applications and mobile app backends to complex enterprise plugins. A recurring theme in almost every modern WordPress project I work on is interacting with the WordPress REST API.</p>
+<p>Hello fellow developers! Iï¿½m Shiv Parmar, a WordPress developer based in the vibrant city of Rajkot, India. Over the years, Iï¿½ve built dozens of custom WordPress solutions, ranging from headless applications and mobile app backends to complex enterprise plugins. A recurring theme in almost every modern WordPress project I work on is interacting with the WordPress REST API.</p>
 
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
   <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
@@ -65,7 +65,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>1. Cookie Authentication (Default Native Method)</h2>
 
-<p>If you are building a custom plugin or theme component that runs inside the WordPress admin dashboard or on the same domain as your WordPress site, Cookie Authentication is your best friend. It leverages WordPress’s built-in session cookies and requires a security token known as a <strong>Nonce</strong> (Number used Once) to prevent Cross-Site Request Forgery (CSRF) attacks.</p>
+<p>If you are building a custom plugin or theme component that runs inside the WordPress admin dashboard or on the same domain as your WordPress site, Cookie Authentication is your best friend. It leverages WordPressï¿½s built-in session cookies and requires a security token known as a <strong>Nonce</strong> (Number used Once) to prevent Cross-Site Request Forgery (CSRF) attacks.</p>
 
 <h3>How to Implement Cookie Authentication</h3>
 
@@ -122,7 +122,7 @@ async function createNewPost(title, content) {
 
 <h2>2. Application Passwords</h2>
 
-<p>Introduced natively in WordPress 5.6, Application Passwords allow external services, mobile apps, or desktop clients to authenticate without exposing the user’s primary account password. Each application password can be revoked individually from the user profile screen in WordPress.</p>
+<p>Introduced natively in WordPress 5.6, Application Passwords allow external services, mobile apps, or desktop clients to authenticate without exposing the userï¿½s primary account password. Each application password can be revoked individually from the user profile screen in WordPress.</p>
 
 <h3>How Application Passwords Work</h3>
 
@@ -151,12 +151,12 @@ async function fetchPrivateData() {
 <p><strong>Note:</strong> Never hardcode credentials in public-facing client-side scripts. Application Passwords are best suited for server-to-server communication or private node scripts.</p>
 
 <blockquote>
-<p>"Selecting the right authentication strategy isn't about choosing the newest technology—it is about matching the security layer to your architecture. Use Cookie Auth for internal frontends, Application Passwords for server scripts, and JWT for decoupled modern frameworks."</p>
+<p>"Selecting the right authentication strategy isn't about choosing the newest technologyï¿½it is about matching the security layer to your architecture. Use Cookie Auth for internal frontends, Application Passwords for server scripts, and JWT for decoupled modern frameworks."</p>
 </blockquote>
 
 <h2>3. JWT Authentication (JSON Web Tokens)</h2>
 
-<p>When I construct headless WordPress architectures—such as pairing WordPress with React, Next.js, or Vue.js—JWT Authentication is my go-to choice. Since REST calls in a decoupled environment are stateless, JWT allows users to log in, receive an encrypted token, and store it locally for subsequent API calls.</p>
+<p>When I construct headless WordPress architecturesï¿½such as pairing WordPress with React, Next.js, or Vue.jsï¿½JWT Authentication is my go-to choice. Since REST calls in a decoupled environment are stateless, JWT allows users to log in, receive an encrypted token, and store it locally for subsequent API calls.</p>
 
 <h3>Setting Up JWT Authentication</h3>
 
@@ -209,7 +209,7 @@ async function getProtectedProfile() {
 
 <h2>4. OAuth 1.0a and OAuth 2.0</h2>
 
-<p>If you are building an ecosystem where third-party developers need access to your site’s REST API on behalf of your users (similar to "Log in with Google" or Twitter integrations), OAuth is the industry standard.</p>
+<p>If you are building an ecosystem where third-party developers need access to your siteï¿½s REST API on behalf of your users (similar to "Log in with Google" or Twitter integrations), OAuth is the industry standard.</p>
 
 <p>OAuth allows users to authorize third-party apps without disclosing their actual usernames or passwords. While OAuth 1.0a is officially supported via a canonical plugin maintained by the WordPress team, OAuth 2.0 plugins are also widely available in the repository.</p>
 
@@ -273,11 +273,6 @@ function sp_get_custom_user_data() {
 
 <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
   <div class="container">
-    <div class="cta-block" style="text-align:center;margin-bottom:48px">
-      <p class="eyebrow" style="justify-content:center;color:var(--accent)">Open to work</p>
-      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Hire a WordPress Developer</h2>
-      <p style="color:var(--text-muted);max-width:540px;margin:0 auto">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
-    </div>
     <div class="contact-grid">
       <div class="form-card">
         <h3>Let's Work Together</h3>
