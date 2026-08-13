@@ -8,30 +8,29 @@
 
 function initMobileNav() {
   const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
+  const mobileNav = document.getElementById("mobileNav");
 
-  if (hamburger && navLinks) {
+  if (hamburger && mobileNav) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("open");
-      navLinks.classList.toggle("open");
-      document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
+      mobileNav.classList.toggle("open");
+      document.body.style.overflow = mobileNav.classList.contains("open") ? "hidden" : "";
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
+    mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         hamburger.classList.remove("open");
-        navLinks.classList.remove("open");
+        mobileNav.classList.remove("open");
         document.body.style.overflow = "";
       });
     });
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("partials-loaded", initMobileNav);
-} else {
-  initMobileNav();
-}
+// Always listen for async partials load
+document.addEventListener("partials-loaded", initMobileNav);
+// Also try immediately in case header is already in DOM
+initMobileNav();
 
 // --------------------------------------------------------------------------
 // 3. Contact Form — Google Apps Script (SMTP)
