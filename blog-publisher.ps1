@@ -136,7 +136,7 @@ function Create-BlogHTML {
 .blog-header .back:hover{color:var(--accent);text-decoration:none}
 .blog-header .nav-right{display:flex;gap:12px;align-items:center}
 .blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
-article{padding:64px 0}
+article{padding:0}
 .date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
 h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
 .content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
@@ -156,7 +156,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
 .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
 select option{background:#111;color:#f0f0f0;padding:8px}
-@media(max-width:640px){article{padding:40px 0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
