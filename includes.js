@@ -14,11 +14,12 @@
     if (el) el.innerHTML = html.replace(/__BASE__/g, base);
   }
 
-  fetch(base + "header.html")
-    .then(function (r) { return r.text(); })
-    .then(function (html) { inject("site-header", html); });
-
-  fetch(base + "footer.html")
-    .then(function (r) { return r.text(); })
-    .then(function (html) { inject("site-footer", html); });
+  Promise.all([
+    fetch(base + "header.html").then(function (r) { return r.text(); }),
+    fetch(base + "footer.html").then(function (r) { return r.text(); })
+  ]).then(function (results) {
+    inject("site-header", results[0]);
+    inject("site-footer", results[1]);
+    document.dispatchEvent(new Event("partials-loaded"));
+  });
 })();
