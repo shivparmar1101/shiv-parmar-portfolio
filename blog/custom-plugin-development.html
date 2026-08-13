@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -15,31 +15,31 @@
   <div id="site-header"></div>
 <article><div class="container">
 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop" alt="Building Custom WordPress Plugins from Scratch" title="Building Custom WordPress Plugins from Scratch" class="hero-img">
-<div class="date">Jun 2026 · 6 min read</div>
+<div class="date">Jun 2026 Â· 6 min read</div>
 <h1>Building Custom WordPress Plugins from Scratch</h1>
 <div class="content">
 <p>Off-the-shelf plugins work until they don't. Once a client needs custom data structures, third-party API integrations, or behavior that no existing plugin supports, a custom plugin becomes the only viable path. Here's my approach to building production-ready WordPress plugins from scratch.</p>
 
-<h2>1. Plugin Architecture — Start with Structure</h2>
-<p>A well-organized plugin is maintainable and debuggable. I use a modular folder structure that separates concerns cleanly. The main plugin file acts as a bootstrap loader — it doesn't contain business logic, just autoloading and initialization:</p>
+<h2>1. Plugin Architecture â€” Start with Structure</h2>
+<p>A well-organized plugin is maintainable and debuggable. I use a modular folder structure that separates concerns cleanly. The main plugin file acts as a bootstrap loader â€” it doesn't contain business logic, just autoloading and initialization:</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:14px;padding:24px;margin:32px 0;text-align:center">
   <p style="margin:0 0 12px;font-weight:600">Need a WordPress Developer for your project?</p>
   <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#000;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
 </div>
 
 <pre><code>my-plugin/
-├── my-plugin.php          // Main bootstrap file
-├── includes/
-│   ├── class-plugin-core.php
-│   ├── class-post-types.php
-│   ├── class-rest-api.php
-│   └── class-settings-page.php
-├── admin/
-│   ├── css/admin-style.css
-│   └── js/admin-scripts.js
-├── templates/
-│   └── single-template.php
-└── readme.txt</code></pre>
+â”œâ”€â”€ my-plugin.php          // Main bootstrap file
+â”œâ”€â”€ includes/
+â”‚   â”œâ”€â”€ class-plugin-core.php
+â”‚   â”œâ”€â”€ class-post-types.php
+â”‚   â”œâ”€â”€ class-rest-api.php
+â”‚   â””â”€â”€ class-settings-page.php
+â”œâ”€â”€ admin/
+â”‚   â”œâ”€â”€ css/admin-style.css
+â”‚   â””â”€â”€ js/admin-scripts.js
+â”œâ”€â”€ templates/
+â”‚   â””â”€â”€ single-template.php
+â””â”€â”€ readme.txt</code></pre>
 <p>The main plugin file registers everything through a single entry point:</p>
 <pre><code>&lt;?php
 /**
@@ -60,7 +60,7 @@ add_action('plugins_loaded', function() {
 });</code></pre>
 
 <h2>2. ACF-Driven Data Structures</h2>
-<p>Advanced Custom Fields gives clients a visual way to manage content without touching code. I register field groups programmatically so they ship with the plugin — not exported JSON files that can drift out of sync:</p>
+<p>Advanced Custom Fields gives clients a visual way to manage content without touching code. I register field groups programmatically so they ship with the plugin â€” not exported JSON files that can drift out of sync:</p>
 <pre><code>// includes/class-post-types.php
 class My_Plugin_Post_Types {
     
@@ -197,7 +197,7 @@ class My_Plugin_REST_API {
     }
 }</code></pre>
 
-<h2>4. Hooks and Filters — The Right Way</h2>
+<h2>4. Hooks and Filters â€” The Right Way</h2>
 <p>Hooks are how your plugin communicates with the rest of WordPress. Always document which hooks you provide and accept, and use <code>do_action</code> / <code>apply_filters</code> with descriptive names that include your plugin prefix:</p>
 <pre><code>// After saving a project, allow other code to react
 do_action('my_plugin_project_saved', $project_id, $post_data);
@@ -285,11 +285,11 @@ class My_Plugin_Settings {
 <h2>6. Making Plugins Client-Friendly</h2>
 <p>The technical implementation is only half the job. A plugin is only successful when clients can actually use it. Here are my non-negotiable practices:</p>
 <ul>
-<li><strong>Admin notices</strong> — Show clear status messages after actions, not cryptic errors</li>
-<li><strong>Help text</strong> — Every field should explain what it does in plain language</li>
-<li><strong>Validation feedback</strong> — Validate inline, not on page reload</li>
-<li><strong>Export/import</strong> — Let clients back up and migrate settings between environments</li>
-<li><strong>Minimal dependencies</strong> — Only require ACF Pro or other essentials; no unnecessary bloat</li>
+<li><strong>Admin notices</strong> â€” Show clear status messages after actions, not cryptic errors</li>
+<li><strong>Help text</strong> â€” Every field should explain what it does in plain language</li>
+<li><strong>Validation feedback</strong> â€” Validate inline, not on page reload</li>
+<li><strong>Export/import</strong> â€” Let clients back up and migrate settings between environments</li>
+<li><strong>Minimal dependencies</strong> â€” Only require ACF Pro or other essentials; no unnecessary bloat</li>
 </ul>
 <p>I also include a <code>readme.txt</code> following WordPress plugin standards, a changelog, and a support email. This makes future handoffs to other developers seamless.</p>
 
@@ -337,7 +337,7 @@ class My_Plugin_Settings {
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

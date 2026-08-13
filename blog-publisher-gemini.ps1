@@ -446,9 +446,12 @@ if (-not $ApiKey) {
 
 # Fallback: read from config file for scheduled task
 if (-not $ApiKey) {
-    $configFile = Join-Path $PSScriptRoot ".api-key"
+    $configDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Definition }
+    if (-not $configDir) { $configDir = "D:\xampp\htdocs\portfolio" }
+    $configFile = Join-Path $configDir ".api-key"
     if (Test-Path $configFile) {
-        $ApiKey = (Get-Content $configFile -Raw).Trim()
+        $raw = (Get-Content $configFile -Raw -ErrorAction SilentlyContinue)
+        if ($raw) { $ApiKey = $raw.Trim() }
     }
 }
 
@@ -457,9 +460,9 @@ if (-not $ApiKey) {
     Write-Host ""
     Write-Host "Options:" -ForegroundColor Yellow
     Write-Host "  1. Set environment variable: GEMINI_API_KEY"
-    Write-Host "  2. Pass parameter: .\blog-publisher-gemini.ps1 -ApiKey 'AIza...'"
+    Write-Host "  2. Pass parameter: .\blog-publisher-gemini.ps1 -ApiKey 'AQ...'"
     Write-Host ""
-    Write-Host "Get your FREE API key at: https://aistudio.google.com/app/apikey" -ForegroundColor Yellow
+    Write-Host "API key should be in .api-key file" -ForegroundColor Yellow
     exit 1
 }
 

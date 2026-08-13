@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <div class="date">Aug 12, 2026 &middot; 5 min read</div>
 <h1>WordPress Database Optimization Guide</h1>
 <div class="content">
-<p>Namaste! I’m Shiv Parmar, a dedicated WordPress developer based out of the bustling tech city of Rajkot, India. Over the past several years of building custom themes, plugins, and high-traffic web applications, I have lost count of how many times a client has come to me asking, <em>"Shiv, why is my site running so slow?"</em></p>
+<p>Namaste! Iâ€™m Shiv Parmar, a dedicated WordPress developer based out of the bustling tech city of Rajkot, India. Over the past several years of building custom themes, plugins, and high-traffic web applications, I have lost count of how many times a client has come to me asking, <em>"Shiv, why is my site running so slow?"</em></p>
 
 <p>While caching plugins and image compression get most of the spotlight, the true backbone of your WordPress site's performance is its database. Over time, every revision, transient, orphan metadata row, and autoloaded option adds weight. In this guide, I will walk you through actionable techniques and custom code snippets to clean, optimize, and maintain your WordPress database like a pro.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
@@ -81,7 +81,7 @@ LIMIT 10;
 
 <h2>3. Cleaning Up Expired Transients Programmatically</h2>
 
-<p>Transients are WordPress’s temporary caching mechanism stored in the <code>wp_options</code> table. Sometimes, expired transients are not automatically removed, leaving thousands of dead rows behind.</p>
+<p>Transients are WordPressâ€™s temporary caching mechanism stored in the <code>wp_options</code> table. Sometimes, expired transients are not automatically removed, leaving thousands of dead rows behind.</p>
 
 <p>Here is a lightweight PHP snippet you can place in your child theme's <code>functions.php</code> or inside a custom maintenance plugin to purge expired transients automatically using custom scheduled tasks:</p>
 
@@ -225,7 +225,7 @@ register_activation_hook( __FILE__, 'shiv_create_custom_log_table' );
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -36,7 +36,7 @@
 <p>While managed hosts offer "one-click" staging features, building a staging workflow manually or configuring custom programmatic safeguards ensures you maintain total control over your code base and data integrity.</p>
 
 <blockquote>
-<p>Testing directly on production is like walking a tightrope without a net—it might work ninety-nine times out of a hundred, but that single fall will destroy your client's trust and hours of hard work.</p>
+<p>Testing directly on production is like walking a tightrope without a netâ€”it might work ninety-nine times out of a hundred, but that single fall will destroy your client's trust and hours of hard work.</p>
 </blockquote>
 
 <h2>Step 1: Setting Up the Staging Subdomain and Database</h2>
@@ -131,7 +131,7 @@ function shiv_add_staging_admin_indicator( $wp_admin_bar ) {
     if ( defined( 'WP_ENVIRONMENT_TYPE' ) &amp;&amp; 'staging' === WP_ENVIRONMENT_TYPE ) {
         $args = array(
             'id'    =&gt; 'staging_badge',
-            'title' =&gt; '&lt;span style="background-color: #e74c3c; color: #ffffff; padding: 4px 10px; border-radius: 3px; font-weight: bold; text-transform: uppercase; font-size: 11px;"&gt;⚠️ Staging Environment&lt;/span&gt;',
+            'title' =&gt; '&lt;span style="background-color: #e74c3c; color: #ffffff; padding: 4px 10px; border-radius: 3px; font-weight: bold; text-transform: uppercase; font-size: 11px;"&gt;âš ï¸ Staging Environment&lt;/span&gt;',
             'href'  =&gt; '#',
             'meta'  =&gt; array( 'title' =&gt; 'You are currently on the Staging Site' ),
         );
@@ -155,7 +155,7 @@ function shiv_add_staging_admin_indicator( $wp_admin_bar ) {
 
 <h2>Conclusion</h2>
 
-<p>Building a staging environment is not an unnecessary luxury—it is a mandatory standard for professional developers. It grants you the freedom to test experimental ideas, refactor messy legacy code, and perform critical security updates with peace of mind.</p>
+<p>Building a staging environment is not an unnecessary luxuryâ€”it is a mandatory standard for professional developers. It grants you the freedom to test experimental ideas, refactor messy legacy code, and perform critical security updates with peace of mind.</p>
 
 <p>Whether you choose to automate your staging setups using WP-CLI or configure custom safeguards using the PHP snippets above, establishing this habit will elevate your development standard and protect your clients' businesses.</p>
 
@@ -204,7 +204,7 @@ function shiv_add_staging_admin_indicator( $wp_admin_bar ) {
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 <h1>WordPress Database Backup Strategies</h1>
 <div class="content">
 <h2>Introduction: Why Database Backups are Non-Negotiable</h2>
-<p>Greetings! I’m Shiv Parmar, a full-stack WordPress developer based out of Rajkot, Gujarat. Throughout my years of building custom WooCommerce platforms, client web applications, and enterprise portals, I’ve observed one universal truth in web development: server code can almost always be redeployed from a Git repository, but lost customer transactions, user profiles, and custom posts are irrecoverable without a reliable database backup.</p>
+<p>Greetings! Iâ€™m Shiv Parmar, a full-stack WordPress developer based out of Rajkot, Gujarat. Throughout my years of building custom WooCommerce platforms, client web applications, and enterprise portals, Iâ€™ve observed one universal truth in web development: server code can almost always be redeployed from a Git repository, but lost customer transactions, user profiles, and custom posts are irrecoverable without a reliable database backup.</p>
 
 <p>Your WordPress database (MySQL or MariaDB) houses the entire operational core of your application. While media uploads and theme files change infrequently, database tables like <code>wp_options</code>, <code>wp_posts</code>, and <code>wp_postmeta</code> are modified continuously. In this post, I want to share the exact strategies, workflows, and code snippets I use to safeguard WordPress databases across production environments.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
@@ -137,7 +137,7 @@ function sp_clear_db_backup_schedule() {
 </code></pre>
 
 <h2>Strategy 3: Offsite Storage Integration & Offloading</h2>
-<p>A local database backup stored on the same web server is only partially effective. If the server’s file system fails or experiences corruption, both your live database and your backup files are lost simultaneously. A robust strategy requires offloading backups to isolated cloud storage environments.</p>
+<p>A local database backup stored on the same web server is only partially effective. If the serverâ€™s file system fails or experiences corruption, both your live database and your backup files are lost simultaneously. A robust strategy requires offloading backups to isolated cloud storage environments.</p>
 
 <h3>Recommended Offsite Storage Workflow</h3>
 <ol>
@@ -224,7 +224,7 @@ gunzip &lt; /var/backups/wordpress/db/db_backup_2026-03-30.sql.gz | wp db import
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

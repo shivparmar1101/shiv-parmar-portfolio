@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <div class="date">Aug 12, 2026 &middot; 4 min read</div>
 <h1>WordPress Security Headers Configuration</h1>
 <div class="content">
-<p>Namaste! I am <strong>Shiv Parmar</strong>, a passionate WordPress Developer based out of the vibrant tech hub of Rajkot, India. Over the past few years, I have helped client sites across the globe optimize performance, clean up codebases, and—most importantly—fortify their site security. If there is one thing my years in WordPress engineering have taught me, it is that most security breaches are not sophisticated zero-day attacks; they are simple exploits targeting low-hanging fruit.</p>
+<p>Namaste! I am <strong>Shiv Parmar</strong>, a passionate WordPress Developer based out of the vibrant tech hub of Rajkot, India. Over the past few years, I have helped client sites across the globe optimize performance, clean up codebases, andâ€”most importantlyâ€”fortify their site security. If there is one thing my years in WordPress engineering have taught me, it is that most security breaches are not sophisticated zero-day attacks; they are simple exploits targeting low-hanging fruit.</p>
 
 <p>When securing a WordPress site, developers often install a heavy security plugin, tweak the login URL, and call it a day. However, one of the most powerful, lightweight, and effective defense layers is frequently overlooked: <strong>HTTP Security Headers</strong>.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
@@ -24,7 +24,7 @@
 </div>
 
 
-<p>In this guide, I will walk you through what security headers are, why they are essential for modern web applications, and how to configure them cleanly in WordPress using code—without cluttering your site with unnecessary plugins.</p>
+<p>In this guide, I will walk you through what security headers are, why they are essential for modern web applications, and how to configure them cleanly in WordPress using codeâ€”without cluttering your site with unnecessary plugins.</p>
 
 <h2>What Are HTTP Security Headers?</h2>
 
@@ -146,7 +146,7 @@ function sp_add_csp_header( $headers ) {
 add_filter( 'wp_headers', 'sp_add_csp_header' );
 </code></pre>
 
-<p>Once you monitor your browser’s Developer Tools console and confirm that legitimate assets are not being blocked, you can rename <code>Content-Security-Policy-Report-Only</code> to <code>Content-Security-Policy</code> to enforce it strictly.</p>
+<p>Once you monitor your browserâ€™s Developer Tools console and confirm that legitimate assets are not being blocked, you can rename <code>Content-Security-Policy-Report-Only</code> to <code>Content-Security-Policy</code> to enforce it strictly.</p>
 
 <h2>Testing and Verifying Your Headers</h2>
 
@@ -209,7 +209,7 @@ add_filter( 'wp_headers', 'sp_add_csp_header' );
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

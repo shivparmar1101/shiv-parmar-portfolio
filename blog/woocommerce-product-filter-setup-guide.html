@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -45,7 +45,7 @@
 <p>Once your attributes are configured, you can display basic WooCommerce filter widgets under <strong>Appearance &gt; Widgets</strong> by adding "Filter Products by Attribute" or "Filter Products by Price" to your Shop Sidebar.</p>
 
 <h2>Step 2: Custom Product Filtering via Code</h2>
-<p>While standard WooCommerce widgets work for simple stores, client projects often demand custom behavior—like AJAX filtering without page reloads, custom stock filters, or unique UI components. Let us build a lightweight, custom WooCommerce filter for in-stock products using hooks and clean code.</p>
+<p>While standard WooCommerce widgets work for simple stores, client projects often demand custom behaviorâ€”like AJAX filtering without page reloads, custom stock filters, or unique UI components. Let us build a lightweight, custom WooCommerce filter for in-stock products using hooks and clean code.</p>
 
 <h3>1. Adding PHP Query Logic</h3>
 <p>Add the following PHP code to your custom plugin or child theme's <code>functions.php</code> file. This snippet intercepts the main WooCommerce shop query and filters products based on an <code>in_stock_only</code> URL parameter.</p>
@@ -209,7 +209,7 @@ function sp_filter_instock_products($query) {
     </div>
   </div>
 </section>
-<script src="../includes.js"></script>`n  <script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 

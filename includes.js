@@ -11,7 +11,7 @@
 
   function inject(id, html) {
     var el = document.getElementById(id);
-    if (el) el.innerHTML = html.replace(/__BASE__/g, base);
+    if (el) el.innerHTML = html.replace(/__BASE__/g, base).trim();
   }
 
   Promise.all([
