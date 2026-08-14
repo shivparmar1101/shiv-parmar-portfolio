@@ -32,6 +32,35 @@ $topics = @(
     @{title="WooCommerce Email Template Customization"; cat="WooCommerce"; read="5 min"}
 )
 
+function Send-EmailNotification {
+    param(
+        [string]$status,
+        [string]$title,
+        [string]$filename,
+        [string]$url,
+        [string]$error = ""
+    )
+
+    $notificationUrl = "https://script.google.com/macros/s/AKfycbxZ5poh7MGyq-4nzpri5qtB4AujOWhIAsxT6uLiZ5NuJ7VzgRVuJKZRKY0VipBFli6D/exec"
+
+    $body = @{
+        type = "blog_notification"
+        status = $status
+        title = $title
+        filename = $filename
+        url = $url
+        error = $error
+        time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    } | ConvertTo-Json
+
+    try {
+        Invoke-RestMethod -Uri $notificationUrl -Method Post -ContentType "application/json" -Body $body
+        Write-Host "Email notification sent!" -ForegroundColor Green
+    } catch {
+        Write-Host "Email notification failed: $_" -ForegroundColor Yellow
+    }
+}
+
 function Generate-BlogPost {
     param(
         [string]$apiKey,
@@ -324,7 +353,7 @@ if(bcForm){
 }
 </script>
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../script.js"></script>
+<script src="../includes.js"></script>
 </body>
 </html>
 "@
@@ -334,7 +363,6 @@ if(bcForm){
 
 function Update-HomepageBlog {
     param(
-        [string]$blogDir,
         [string]$title,
         [string]$date,
         [string]$readTime,
@@ -355,28 +383,31 @@ function Update-HomepageBlog {
           </article>
 "@
 
-    # Find the blog section and replace all cards with just 3 latest
-    $blogSection = [regex]::Match($content, '<div class="grid-3">[\s\S]*?</div>', [System.Text.RegularExpressions.RegexOptions]::Multiline)
-    
-    if ($blogSection.Success) {
-        # Get existing blog cards
-        $existingCards = [regex]::Matches($blogSection.Value, '<article class="blog-card reveal">[\s\S]*?</article>')
-        
-        # Build new grid with new card first, then take first 2 existing cards
-        $newGrid = '<div class="grid-3">'
-        $newGrid += "`n" + $newCard
-        
+    # Use marker comments for reliable insertion
+    $startMarker = "<!-- BLOG_CARDS_START -->"
+    $endMarker = "<!-- BLOG_CARDS_END -->"
+    $startIdx = $content.IndexOf($startMarker)
+    $endIdx = $content.IndexOf($endMarker)
+
+    if ($startIdx -gt 0 -and $endIdx -gt $startIdx) {
+        # Extract existing cards between markers
+        $between = $content.Substring($startIdx + $startMarker.Length, $endIdx - $startIdx - $startMarker.Length)
+        $existingCards = [regex]::Matches($between, '<article class="blog-card reveal">[\s\S]*?</article>')
+
+        # Build new content: new card + keep only 2 most recent existing
+        $newBetween = "`n" + $newCard
         $count = 0
         foreach ($card in $existingCards) {
             if ($count -lt 2) {
-                $newGrid += "`n" + $card.Value
+                # Ensure consistent indentation
+                $cardText = $card.Value -replace '^\s+', '          '
+                $newBetween += "`n" + $cardText
                 $count++
             }
         }
-        $newGrid += "`n" + '</div>'
-        
-        # Replace the old grid with new one
-        $content = $content.Substring(0, $blogSection.Index) + $newGrid + $content.Substring($blogSection.Index + $blogSection.Length)
+
+        # Replace between markers
+        $content = $content.Substring(0, $startIdx + $startMarker.Length) + $newBetween + "`n          " + $content.Substring($endIdx)
     }
 
     $utf8NoBom = New-Object System.Text.UTF8Encoding $false
@@ -395,12 +426,24 @@ if (-not $ApiKey) {
     $ApiKey = $env:OPENAI_API_KEY
 }
 
+# Fallback: read from config file for scheduled task
+if (-not $ApiKey) {
+    $configDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Definition }
+    if (-not $configDir) { $configDir = "D:\xampp\htdocs\portfolio" }
+    $configFile = Join-Path $configDir ".api-key"
+    if (Test-Path $configFile) {
+        $raw = (Get-Content $configFile -Raw -ErrorAction SilentlyContinue)
+        if ($raw) { $ApiKey = $raw.Trim() }
+    }
+}
+
 if (-not $ApiKey) {
     Write-Host "ERROR: No API key provided!" -ForegroundColor Red
     Write-Host ""
     Write-Host "Options:" -ForegroundColor Yellow
     Write-Host "  1. Set environment variable: OPENAI_API_KEY"
     Write-Host "  2. Pass parameter: .\blog-publisher.ps1 -ApiKey 'sk-...'"
+    Write-Host "  3. Create .api-key file with your API key"
     Write-Host ""
     Write-Host "Get your API key at: https://platform.openai.com/api-keys" -ForegroundColor Yellow
     exit 1
@@ -430,6 +473,7 @@ $content = Generate-BlogPost -apiKey $ApiKey -topic $topic
 
 if (-not $content) {
     Write-Host "Failed to generate content!" -ForegroundColor Red
+    Send-EmailNotification -status "error" -title $topic.title -filename "" -url "" -error "Failed to generate blog content from OpenAI API"
     exit 1
 }
 
@@ -448,20 +492,21 @@ Write-Host "Image ready!" -ForegroundColor Green
 
 # Create slug and filename
 $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
-$date = Get-Date -Format "MMM yyyy"
+$date = Get-Date -Format "MMM dd, yyyy"
 $filename = "$slug.html"
 
 # Generate HTML
-$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.readTime -content $content -imageUrl $imageUrl -slug $slug
+$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug
 
 # Save file
 $filePath = Join-Path $BlogDir $filename
-$html | Out-File -FilePath $filePath -Encoding UTF8
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($filePath, $html, $utf8NoBom)
 Write-Host "Saved: $filename" -ForegroundColor Green
 
 # Update homepage
 Write-Host "Updating homepage..." -ForegroundColor Yellow
-Update-HomepageBlog -blogDir $BlogDir -title $topic.title -date $date -readTime $topic.readTime -slug $slug -description "$($topic.cat) development guide covering best practices, code examples and real-world use cases."
+Update-HomepageBlog -title $topic.title -date $date -readTime $topic.read -slug $slug -description "$($topic.cat) development guide covering best practices, code examples and real-world use cases."
 
 # Update blog listing page
 Write-Host "Updating blog listing page..." -ForegroundColor Yellow
@@ -470,7 +515,7 @@ $blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
 
 $listCard = @"
           <article class="blog-card reveal">
-            <div class="date">$date &middot; $($topic.readTime) read</div>
+            <div class="date">$date &middot; $($topic.read) read</div>
             <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
             <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>
             <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
@@ -502,7 +547,7 @@ Write-Host "Committing to GitHub..." -ForegroundColor Yellow
 Set-Location "D:\xampp\htdocs\portfolio"
 $gitExe = "git"
 & $gitExe add .
-& $gitExe commit -m "blog: auto-published - $topic.title"
+& $gitExe commit -m "blog: auto-published - $($topic.title)"
 & $gitExe push origin main
 
 Write-Host ""
@@ -511,3 +556,6 @@ Write-Host "  Blog published successfully!" -ForegroundColor Green
 Write-Host "  Title: $($topic.title)" -ForegroundColor Green
 Write-Host "  File: blog/$filename" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
+
+# Send success email
+Send-EmailNotification -status "success" -title $topic.title -filename "blog/$filename" -url "$SiteUrl/blog/$filename"

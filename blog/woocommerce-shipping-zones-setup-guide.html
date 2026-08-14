@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Create WordPress Widget Areas &mdash; Shiv Parmar</title>
-<meta name="description" content="How to Create WordPress Widget Areas - WordPress development guide by Shiv Parmar.">
+<title>WooCommerce Shipping Zones Setup Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Shipping Zones Setup Guide - WordPress development guide by Shiv Parmar.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
 .blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
@@ -25,7 +28,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
 .content li{margin-bottom:8px}
 .content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
-.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
 .content pre code{background:none;padding:0;color:inherit}
 .content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
 .content blockquote em{color:#fff}
@@ -39,226 +42,179 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#skills">Skills</a>
-        <a href="../index.html#experience">Experience</a>
-        <a href="../index.html#blog">Blog</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
-      </div>
-    </div>
-  </header>
+  <div id="site-header"></div>
 <article><div class="container">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop" alt="How to Create WordPress Widget Areas" title="How to Create WordPress Widget Areas" class="hero-img">
-<div class="date">Aug 13, 2026 &middot; 4 min read</div>
-<h1>How to Create WordPress Widget Areas</h1>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Shipping Zones Setup Guide" title="WooCommerce Shipping Zones Setup Guide" class="hero-img">
+<div class="date">Aug 14, 2026 &middot; 5 min read</div>
+<h1>WooCommerce Shipping Zones Setup Guide</h1>
 <div class="content">
-<p>Namaste! I’m Shiv Parmar, a WordPress developer based in Rajkot, India. Over the years of building custom client themes and bespoke WordPress solutions, if there is one feature clients consistently ask for, it is flexibility. Clients want the freedom to update call-to-actions, display dynamic menus, inject advertisements, or modify footer content without touching a single line of template code.</p>
+<p>Hey there! I'm Shiv Parmar, a WordPress developer based in Rajkot, India. Over the past several years of building, customizing, and scaling WooCommerce stores for clients around the globe, I've noticed one consistent roadblock store owners hit: <strong>shipping configuration</strong>.</p>
 
-<p>That is precisely where WordPress Widget Areas (historically known as dynamic sidebars) shine. Even with the emergence of Full Site Editing (FSE) and the Block Editor, registering classic widget areas remains an indispensable skill for theme developers building hybrid or classic themes. In this guide, I will walk you through the end-to-end process of creating, rendering, and styling custom widget areas in your WordPress theme.</p>
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
   <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
-  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#000;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
 </div>
 
 
-<h2>Understanding How WordPress Handles Widget Areas</h2>
 
-<p>Creating a widget area in WordPress is a two-step process:</p>
-<ol>
-    <li><strong>Registration:</strong> You tell WordPress that a widget area exists using the <code>register_sidebar()</code> function hooked into the <code>widgets_init</code> action.</li>
-    <li><strong>Display:</strong> You place the registered widget area into your theme template files (like <code>sidebar.php</code>, <code>footer.php</code>, or <code>header.php</code>) using <code>dynamic_sidebar()</code>.</li>
-</ol>
+<p>Shipping isn't just about moving a physical box from point A to point B. It directly influences your conversion rate, your profit margins, and your customer satisfaction. If you charge too much or display confusing shipping options at checkout, cart abandonment skyrockets.</p>
+
+<p>In this guide, I will walk you through setting up <strong>WooCommerce Shipping Zones</strong> step-by-step, explain how zone priority works under the hood, and share some practical PHP and CSS snippets we developers use to tailor shipping behavior for custom client requirements.</p>
+
+<h2>What Exactly Are WooCommerce Shipping Zones?</h2>
+
+<p>Introduced in WooCommerce 2.6, Shipping Zones represent geographic areas where you offer specific shipping methods and rates. A zone can be as broad as an entire continent or country, or as targeted as a specific set of postal/ZIP codes.</p>
+
+<p>When a customer reaches checkout, WooCommerce checks their shipping address and matches it to the <strong>first matching zone</strong> in your list from top to bottom. Once a match is found, only the shipping methods assigned to that specific zone are presented to the buyer.</p>
 
 <blockquote>
-    "A well-architected widget area isn't just about placing dynamic content on a page; it is about giving your non-technical clients layout flexibility while strictly preserving your theme's design integrity and markup structure."
+<p><strong>Key Insight:</strong> WooCommerce evaluates shipping zones strictly in top-to-bottom order. Always position your most specific zones (like local pincodes or state-level zones) at the top of the list, and broader fallback zones (like entire countries or "Rest of the World") at the bottom.</p>
 </blockquote>
 
-<h2>Step 1: Registering Custom Widget Areas in PHP</h2>
+<h2>Step-by-Step: Setting Up Your First Shipping Zone</h2>
 
-<p>Let's head into your theme’s <code>functions.php</code> file (or a dedicated <code>inc/widgets.php</code> file if you prefer keeping your codebase modular). We will hook our registration function into the <code>widgets_init</code> action.</p>
+<p>Let’s walk through setting up a structured shipping system in your WordPress admin dashboard.</p>
 
-<p>Here is how you register a primary blog sidebar and a multi-column footer widget area:</p>
+<h3>Step 1: Navigate to Shipping Settings</h3>
+<p>Log in to your WordPress admin panel, go to <strong>WooCommerce &gt; Settings</strong>, and click on the <strong>Shipping</strong> tab. By default, you will be on the <em>Shipping zones</em> screen.</p>
 
-<pre><code>/**
- * Register custom widget areas for the theme.
- * Author: Shiv Parmar
- */
-function shiv_register_custom_widget_areas() {
+<h3>Step 2: Add a New Zone</h3>
+<p>Click the <strong>Add shipping zone</strong> button. You will see three main fields:</p>
+<ol>
+    <li><strong>Zone name:</strong> A descriptive label for internal use (e.g., <em>Gujarat Local Delivery</em> or <em>US Domestic Express</em>).</li>
+    <li><strong>Zone regions:</strong> Select continents, countries, or states. You can also click <em>Limit to specific ZIP/postcodes</em> to enter wildcards (like <code>360*</code> for the Rajkot area) or individual postal codes.</li>
+    <li><strong>Shipping methods:</strong> The actual services and rates you offer to users inside this zone.</li>
+</ol>
 
-    // 1. Primary Blog Sidebar
-    register_sidebar( array(
-        'name'          =&gt; __( 'Primary Sidebar', 'shiv-theme' ),
-        'id'            =&gt; 'primary-sidebar',
-        'description'   =&gt; __( 'Widgets added here will appear in the main blog sidebar.', 'shiv-theme' ),
-        'before_widget' =&gt; '&lt;section id="%1$s" class="widget %2$s"&gt;',
-        'after_widget'  =&gt; '&lt;/section&gt;',
-        'before_title'  =&gt; '&lt;h3 class="widget-title"&gt;',
-        'after_title'   =&gt; '&lt;/h3&gt;',
-    ) );
-
-    // 2. Footer Widget Column 1
-    register_sidebar( array(
-        'name'          =&gt; __( 'Footer Column 1', 'shiv-theme' ),
-        'id'            =&gt; 'footer-col-1',
-        'description'   =&gt; __( 'Appears in the first column of the footer.', 'shiv-theme' ),
-        'before_widget' =&gt; '&lt;div id="%1$s" class="footer-widget %2$s"&gt;',
-        'after_widget'  =&gt; '&lt;/div&gt;',
-        'before_title'  =&gt; '&lt;h4 class="footer-widget-title"&gt;',
-        'after_title'   =&gt; '&lt;/h4&gt;',
-    ) );
-}
-add_action( 'widgets_init', 'shiv_register_custom_widget_areas' );
-</code></pre>
-
-<h3>Key Arguments Explained</h3>
+<h3>Step 3: Add Shipping Methods</h3>
+<p>Click <strong>Add shipping method</strong> within your zone. WooCommerce provides three default methods out of the box:</p>
 <ul>
-    <li><code>name</code>: The human-readable name displayed in the WordPress admin panel under <em>Appearance &gt; Widgets</em>.</li>
-    <li><code>id</code>: A unique, lowercase, URL-friendly string used to call this sidebar in your templates. Avoid using numbers only.</li>
-    <li><code>before_widget</code> / <code>after_widget</code>: The wrapper HTML for each widget. Using <code>id="%1$s"</code> and <code>class="%2$s"</code> allows WordPress to dynamically inject unique IDs and contextual CSS classes.</li>
-    <li><code>before_title</code> / <code>after_title</code>: The markup wrapping the widget heading. Keep semantic hierarchy in mind (e.g., using <code>&lt;h3&gt;</code> or <code>&lt;h4&gt;</code>).</li>
+    <li><strong>Flat rate:</strong> A standard fixed or formula-based fee (e.g., standard courier rates).</li>
+    <li><strong>Free shipping:</strong> Triggered by minimum order amounts, coupons, or both.</li>
+    <li><strong>Local pickup:</strong> Allows customers to collect orders from your physical store or warehouse.</li>
 </ul>
 
-<h2>Step 2: Rendering the Widget Area in Theme Templates</h2>
+<h3>Step 4: Advanced Cost Calculation Rules</h3>
+<p>When configuring a <strong>Flat Rate</strong> method, you don't have to settle for just a flat number. WooCommerce supports dynamic placeholders in the <em>Cost</em> field:</p>
+<ul>
+    <li><code>10.00 * [qty]</code> — Charges $10 per item in the cart.</li>
+    <li><code>20.00 + ( 5.00 * [qty] )</code> — A base fee of $20 plus $5 for every additional item.</li>
+    <li><code>[cost] * 0.10</code> — Charges 10% of the total cart product cost as shipping.</li>
+</ul>
 
-<p>Once registered, your widget area will be visible in the WordPress Admin dashboard, but it won't show up on your frontend until you add it to a template file.</p>
+<h2>Developer Customizations: Extending Shipping Logic</h2>
 
-<p>Always verify that the sidebar is active (contains widgets) before generating container markup. This prevents empty HTML wrapper elements from disrupting your CSS layout.</p>
+<p>While the standard settings cover basic stores, real-world eCommerce projects often demand custom business logic. Here are three practical code snippets I frequently implement in custom child themes or site-specific functionality plugins.</p>
 
-<p>Here is how you display your <code>primary-sidebar</code> inside <code>sidebar.php</code>:</p>
+<h3>1. Hide All Other Shipping Methods When Free Shipping is Available</h3>
+<p>By default, if an order qualifies for Free Shipping, WooCommerce continues to display Flat Rate and other methods. This confuses buyers. Add this filter snippet to your <code>functions.php</code> file to automatically hide paid methods when Free Shipping is unlocked:</p>
 
-<pre><code>&lt;?php
-/**
- * The sidebar template containing the primary widget area.
- *
- * @package ShivTheme
+<pre><code>/**
+ * Hide standard shipping rates when Free Shipping is available.
+ * Author: Shiv Parmar
  */
+add_filter( 'woocommerce_package_rates', 'sp_hide_shipping_when_free_is_available', 100, 2 );
 
-if ( ! is_active_sidebar( 'primary-sidebar' ) ) {
-    return;
+function sp_hide_shipping_when_free_is_available( $rates, $package ) {
+    $free_shipping = array();
+
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $free_shipping[ $rate_id ] = $rate;
+            break;
+        }
+    }
+
+    return ! empty( $free_shipping ) ? $free_shipping : $rates;
 }
-?&gt;
-
-&lt;aside id="secondary" class="widget-area sidebar-primary" role="complementary" aria-label="&lt;?php esc_attr_e( 'Primary Sidebar', 'shiv-theme' ); ?&gt;"&gt;
-    &lt;?php dynamic_sidebar( 'primary-sidebar' ); ?&gt;
-&lt;/aside&gt;
 </code></pre>
 
-<p>To pull this sidebar into your main templates (such as <code>index.php</code> or <code>single.php</code>), simply call:</p>
+<p><em>Note: Whenever you modify shipping code in WooCommerce, always clear the shipping cache by going to <strong>WooCommerce &gt; System Status &gt; Tools &gt; WooCommerce transients &gt; Clear transients</strong>.</em></p>
 
-<pre><code>&lt;?php get_sidebar(); ?&gt;
+<h3>2. Add a Dynamic Heavy Item Surcharge via PHP</h3>
+<p>If you sell bulky products and want to append a surcharge conditionally without setting up complex table rate plugins, use the <code>woocommerce_package_rates</code> hook to manipulate the rate object directly:</p>
+
+<pre><code>/**
+ * Add a surcharge to Flat Rate if cart weight exceeds 10kg.
+ * Author: Shiv Parmar
+ */
+add_filter( 'woocommerce_package_rates', 'sp_apply_heavy_weight_surcharge', 10, 2 );
+
+function sp_apply_heavy_weight_surcharge( $rates, $package ) {
+    $threshold_weight = 10; // in kg
+    $surcharge = 150; // Currency amount (e.g., INR or USD)
+
+    if ( WC()->cart && WC()->cart->get_cart_contents_weight() > $threshold_weight ) {
+        foreach ( $rates as $rate_key => $rate ) {
+            if ( 'flat_rate' === $rate->method_id ) {
+                // Increase the cost
+                $rates[ $rate_key ]->cost += $surcharge;
+                
+                // Recalculate taxes if applicable
+                if ( ! empty( $rates[ $rate_key ]->taxes ) ) {
+                    foreach ( $rates[ $rate_key ]->taxes as $tax_key => $tax_amount ) {
+                        // Optional: Adjust tax calculations here if required
+                    }
+                }
+            }
+        }
+    }
+
+    return $rates;
+}
 </code></pre>
 
-<p>If you created a specialized widget area like <code>footer-col-1</code>, you can render it directly in your <code>footer.php</code> like this:</p>
+<h3>3. Styling Shipping Methods on the Checkout Page</h3>
+<p>The standard list layout for shipping methods can look bland. You can clean up the checkout interface and give the selected shipping method a highlighted card look using a little CSS:</p>
 
-<pre><code>&lt;div class="footer-column"&gt;
-    &lt;?php if ( is_active_sidebar( 'footer-col-1' ) ) : ?&gt;
-        &lt;?php dynamic_sidebar( 'footer-col-1' ); ?&gt;
-    &lt;?php else : ?&gt;
-        &lt;!-- Fallback content if no widget is assigned --&gt;
-        &lt;p&gt;&lt;?php esc_html_e( 'Please add widgets to Footer Column 1 via WP Admin.', 'shiv-theme' ); ?&gt;&lt;/p&gt;
-    &lt;?php endif; ?&gt;
-&lt;/div&gt;
-</code></pre>
-
-<h2>Step 3: Styling the Widget Area with Modern CSS</h2>
-
-<p>WordPress widgets can output a variety of content—search bars, category lists, recent posts, custom HTML, and gallery blocks. Your CSS must handle these elements cleanly.</p>
-
-<p>Here is a clean, modern CSS snippet using CSS Grid and Flexbox to style the sidebar and its nested widgets:</p>
-
-<pre><code>/* Sidebar Base Styling */
-.widget-area.sidebar-primary {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 1.5rem;
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-}
-
-/* Individual Widget Styling */
-.widget {
-    margin-bottom: 0;
-}
-
-.widget .widget-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #3b82f6; /* Accent color */
-}
-
-/* Widget Lists (Categories, Archives, Menus) */
-.widget ul {
+<pre><code>/* Clean shipping method list styling by Shiv Parmar */
+#shipping_method {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.widget ul li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f3f4f6;
+#shipping_method li {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
-.widget ul li:last-child {
-    border-bottom: none;
+#shipping_method li:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
 }
 
-.widget ul li a {
-    color: #4b5563;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-.widget ul li a:hover {
-    color: #2563eb;
+#shipping_method input[type="radio"]:checked + label {
+    font-weight: 600;
+    color: #0f172a;
 }
 </code></pre>
 
-<h2>Handling Block-Based Widgets vs Classic Widgets</h2>
+<h2>Best Practices for Indian & Global Store Setups</h2>
 
-<p>Since WordPress 5.8, the Block Editor controls the widget management screen by default. The registration process remains 100% backward-compatible, meaning the <code>register_sidebar()</code> code shown above works seamlessly with block widgets.</p>
-
-<p>However, block widgets can introduce extra markup (such as <code>wp-block-*</code> classes). To ensure your custom styling does not clash with Gutenberg blocks, always test core blocks like <em>Latest Posts</em>, <em>Search</em>, and <em>Paragraph</em> inside your registered widget zones.</p>
-
-<h2>Pro Tip: Registering Dynamic Sidebars in Bulk</h2>
-
-<p>If your theme layout calls for multiple footer columns (for example, four dynamic columns), writing <code>register_sidebar()</code> four times can clutter your code. You can use <code>register_sidebars()</code> to register multiple sidebars concisely:</p>
-
-<pre><code>function shiv_register_footer_sidebars() {
-    register_sidebars( 4, array(
-        'name'          =&gt; __( 'Footer Column %d', 'shiv-theme' ),
-        'id'            =&gt; 'footer-sidebar',
-        'before_widget' =&gt; '&lt;div id="%1$s" class="footer-widget %2$s"&gt;',
-        'after_widget'  =&gt; '&lt;/div&gt;',
-        'before_title'  =&gt; '&lt;h4 class="footer-title"&gt;',
-        'after_title'   =&gt; '&lt;/h4&gt;',
-    ) );
-}
-add_action( 'widgets_init', 'shiv_register_footer_sidebars' );
-</code></pre>
-<p><em>Note: This automatically creates IDs formatted as <code>footer-sidebar-1</code>, <code>footer-sidebar-2</code>, etc.</em></p>
+<ul>
+    <li><strong>Leverage Pincode Wildcards:</strong> When building stores for regional clients in India, entering thousands of individual PIN codes is tedious. Use the wildcard feature (e.g., <code>36000*</code>, <code>380***</code>) to cover whole districts smoothly.</li>
+    <li><strong>Always Test the "Locations not covered by your other zones" Fallback:</strong> This default zone sits at the very bottom. If you ship worldwide, make sure you configure a default international flat rate here so visitors from unlisted countries aren't greeted with a "No shipping options available" error.</li>
+    <li><strong>Integrate Shipping Classes for Nuance:</strong> Use <em>Shipping Classes</em> (found under <strong>WooCommerce &gt; Settings &gt; Shipping &gt; Shipping classes</strong>) to differentiate rates for fragile, oversized, or digital-hybrid items within the exact same zone.</li>
+</ul>
 
 <h2>Wrapping Up</h2>
 
-<p>Creating custom widget areas in WordPress is straightforward, but taking care to register semantically correct wrappers, providing clear labels, and structuring your CSS defensively makes all the difference in delivering a clean, professional theme.</p>
+<p>Configuring WooCommerce Shipping Zones properly is one of the highest-ROI improvements you can make to your online store. It keeps your operational margins safe while providing transparency to your customers before they pull out their credit cards.</p>
 
-<p>Whether you're developing custom client portals from Rajkot or building commercial themes for global distribution, mastering WordPress widget zones ensures your themes remain versatile and intuitive for non-technical users. Try adding a custom sidebar to your next project and let me know if you run into any questions!</p>
+<p>Whether you manage a boutique store in Rajkot or an international multi-warehouse operation, mastering zones and combining them with custom hooks gives you complete control over your checkout workflow.</p>
+
+<p>Have questions about complex shipping logic, table rates, or debugging WooCommerce hooks? Drop a comment below or get in touch, and let’s discuss your implementation!</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:40px 0 32px;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Like what you read? Let's work together!</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#000;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+</div>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 </div></article>
@@ -378,8 +334,8 @@ add_action( 'widgets_init', 'shiv_register_footer_sidebars' );
   </div>
 </section>
 
-<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
-<script src="../script.js"></script>
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 
