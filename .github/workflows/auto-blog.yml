@@ -21,19 +21,18 @@ jobs:
       - name: Run Blog Publisher
         shell: pwsh
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_ONE }}
         run: |
-          $ErrorActionPreference = 'Continue'
-          
-          # Read API key from env
+          $ErrorActionPreference = 'Stop'
+
           $apiKey = $env:GEMINI_API_KEY
-          
           if (-not $apiKey) {
             Write-Host "ERROR: GEMINI_API_KEY secret not set!"
+            Write-Host "Go to GitHub repo > Settings > Secrets and variables > Actions > New repository secret"
+            Write-Host "Name: GEMINI_API_KEY, Value: your_gemini_api_key"
             exit 1
           }
-          
-          # Blog topics pool
+
           $topics = @(
             @{title="WordPress Gutenberg vs Elementor: Which is Better in 2026?"; cat="WordPress"; read="6 min"},
             @{title="How to Speed Up WooCommerce Product Pages"; cat="WooCommerce"; read="5 min"},
@@ -77,8 +76,10 @@ jobs:
             @{title="How to Optimize WordPress for Core Web Vitals"; cat="Performance"; read="6 min"}
           )
 
-          # Filter out already-published topics
           $blogDir = "blog"
+          if (-not (Test-Path $blogDir)) {
+            New-Item -ItemType Directory -Path $blogDir -Force | Out-Null
+          }
           $existingFiles = Get-ChildItem -Path $blogDir -Filter "*.html" -File | ForEach-Object { $_.BaseName }
           $availableTopics = $topics | Where-Object {
             $slug = $_.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
@@ -90,25 +91,11 @@ jobs:
             exit 0
           }
 
-          # Select random topic
           $topic = $availableTopics | Get-Random
           Write-Host "Topic: $($topic.title)"
+          Write-Host "Category: $($topic.cat)"
 
-          # Generate content
-          $prompt = @"
-          Write a professional WordPress development blog post about: $($topic.title)
-
-          Requirements:
-          - Write in first person as Shiv Parmar, a WordPress Developer from Rajkot, India
-          - Include practical code examples where relevant (PHP, CSS, JavaScript)
-          - Use HTML formatting with h2, h3, p, code, pre, ul, ol, blockquote tags
-          - Make it informative and actionable
-          - Include a blockquote with a key insight
-          - Length: 800-1200 words
-          - Tone: Professional but friendly
-
-          Return ONLY the blog content HTML. No backticks or tags, just raw HTML.
-          "@
+          $prompt = "Write a professional WordPress development blog post about: $($topic.title). Requirements: Write in first person as Shiv Parmar, a WordPress Developer from Rajkot, India. Include practical code examples where relevant (PHP, CSS, JavaScript). Use HTML formatting with h2, h3, p, code, pre, ul, ol, blockquote tags. Make it informative and actionable. Include a blockquote with a key insight. Length: 800-1200 words. Tone: Professional but friendly. Return ONLY the blog content HTML. No backticks or markdown tags, just raw HTML."
 
           $body = @{
             contents = @(
@@ -120,32 +107,35 @@ jobs:
             )
             generationConfig = @{
               temperature = 0.7
-              maxOutputTokens = 4096
+              maxOutputTokens = 16384
             }
           } | ConvertTo-Json -Depth 10
 
           try {
-            $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=$apiKey" -Method Post -ContentType "application/json" -Body $body
+            Write-Host "Calling Gemini API..."
+            $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$apiKey" -Method Post -ContentType "application/json; charset=utf-8" -Body ([System.Text.Encoding]::UTF8.GetBytes($body)) -TimeoutSec 180
             $content = $response.candidates[0].content.parts[0].text
           } catch {
-            Write-Host "Error generating content: $_"
+            Write-Host "Error calling Gemini API: $($_.Exception.Message)"
+            if ($_.Exception.Response) {
+              $reader = New-Object System.IO.StreamReader($_.Exception.Response.GetResponseStream())
+              Write-Host "API Response: $($reader.ReadToEnd())"
+            }
             exit 1
           }
 
           if (-not $content) {
-            Write-Host "Failed to generate content!"
+            Write-Host "Failed to generate content! Empty response from API."
             exit 1
           }
 
           Write-Host "Content generated! ($($content.Length) chars)"
 
-          # Image selection
           $topicImages = @{
             "speed" = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop"
             "performance" = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop"
             "woo" = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop"
             "ecommerce" = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop"
-            "shop" = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop"
             "plugin" = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop"
             "code" = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop"
             "develop" = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop"
@@ -168,22 +158,12 @@ jobs:
             }
           }
 
-          # Create slug and filename
           $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
           $date = Get-Date -Format "MMM dd, yyyy"
           $filename = "$slug.html"
 
-          # CTA
-          $cta = @"
+          $cta = "`n<div style=`"background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center`">`n  <p style=`"margin:0 0 12px;font-weight:600;color:var(--text-primary)`">Need a WordPress Developer for your project?</p>`n  <a href=`"../index.html#contact`" style=`"display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none`">Hire Me &rarr;</a>`n</div>`n"
 
-          <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
-            <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
-            <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
-          </div>
-
-          "@
-
-          # Find safe CTA injection point
           $paragraphCount = 0
           $insertPos = -1
           $idx = 0
@@ -203,173 +183,20 @@ jobs:
             $content = $content.Substring(0, $insertPos) + $cta + $content.Substring($insertPos)
           }
 
-          # Generate HTML page
-          $html = @"
-          <!DOCTYPE html>
-          <html lang="en" data-theme="light">
-          <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>$($topic.title) &mdash; Shiv Parmar</title>
-          <meta name="description" content="$($topic.title) - WordPress development guide by Shiv Parmar.">
-          <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-          <link rel="stylesheet" href="../style.css">
-          <style>
-          .blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
-          .blog-header .nav{display:flex;align-items:center;justify-content:space-between}
-          .blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
-          .blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
-          .blog-header .back:hover{color:var(--accent);text-decoration:none}
-          .blog-header .nav-right{display:flex;gap:12px;align-items:center}
-          .blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
-          article{padding:0}
-          .date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
-          h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
-          .content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
-          .content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
-          .content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
-          .content p{margin-bottom:16px;color:var(--text-secondary)}
-          .content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
-          .content li{margin-bottom:8px}
-          .content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
-          .content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
-          .content pre code{background:none;padding:0;color:inherit}
-          .content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
-          .content blockquote em{color:#fff}
-          .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
-          .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
-          .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
-          .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
-          .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
-          select option{background:#111;color:#f0f0f0;padding:8px}
-          @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
-          </style>
-          </head>
-          <body>
-            <header>
-              <div class="container nav">
-                <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
-                <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-                  <a href="../index.html#services">Services</a>
-                  <a href="../index.html#work">Work</a>
-                  <a href="../index.html#skills">Skills</a>
-                  <a href="../index.html#experience">Experience</a>
-                  <a href="../index.html#blog">Blog</a>
-                  <a href="../index.html#contact">Contact</a>
-                </nav>
-                <div class="nav-right">
-                  <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
-                  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
-                  </button>
-                  <a class="nav-cta" href="../index.html#contact">Hire Me</a>
-                </div>
-              </div>
-            </header>
-          <article><div class="container">
-          <img src="$imageUrl" alt="$($topic.title)" title="$($topic.title)" class="hero-img">
-          <div class="date">$date &middot; $($topic.read) read</div>
-          <h1>$($topic.title)</h1>
-          <div class="content">
-          $content
-          </div>
-          <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
-          </div></article>
+          $currentYear = Get-Date -Format 'yyyy'
 
-          <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
-            <div class="container">
-              <div style="max-width:600px;margin:0 auto;text-align:center">
-                <p class="eyebrow" style="color:var(--accent)">Contact</p>
-                <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
-                <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
-                <form id="blogContactForm" novalidate style="text-align:left">
-                  <div style="margin-bottom:16px">
-                    <label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label>
-                    <input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)">
-                  </div>
-                  <div style="margin-bottom:16px">
-                    <label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label>
-                    <input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)">
-                  </div>
-                  <div style="margin-bottom:16px">
-                    <label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label>
-                    <select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)">
-                      <option value="" disabled selected>Select inquiry type</option>
-                      <option value="General Inquiry">General Inquiry</option>
-                      <option value="Project Request">Project Request</option>
-                      <option value="Collaboration">Collaboration</option>
-                      <option value="Freelance Work">Freelance Work</option>
-                    </select>
-                  </div>
-                  <div style="margin-bottom:16px">
-                    <label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label>
-                    <textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea>
-                  </div>
-                  <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
-                  <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
-                </form>
-              </div>
-            </div>
-          </section>
+          $html = "<!DOCTYPE html>`n<html lang=`"en`" data-theme=`"light`">`n<head>`n<meta charset=`"UTF-8`">`n<meta name=`"viewport`" content=`"width=device-width, initial-scale=1.0`">`n<title>$($topic.title) &mdash; Shiv Parmar</title>`n<meta name=`"description`" content=`"$($topic.title) - WordPress development guide by Shiv Parmar.`">`n<link rel=`"icon`" type=`"image/svg+xml`" href=`"../favicon.svg`">`n<link rel=`"stylesheet`" href=`"../style.css`">`n<style>`n.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}`n.blog-header .nav{display:flex;align-items:center;justify-content:space-between}`n.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}`n.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}`n.blog-header .back:hover{color:var(--accent);text-decoration:none}`n.blog-header .nav-right{display:flex;gap:12px;align-items:center}`n.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}`narticle{padding:0}`n.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}`nh1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}`n.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}`n.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}`n.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}`n.content p{margin-bottom:16px;color:var(--text-secondary)}`n.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}`n.content li{margin-bottom:8px}`n.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}`n.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}`n.content pre code{background:none;padding:0;color:inherit}`n.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}`n.content blockquote em{color:#fff}`n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}`n.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}`n.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}`n.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}`n.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}`nselect option{background:#111;color:#f0f0f0;padding:8px}`n@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}`n</style>`n</head>`n<body>`n  <header>`n    <div class=`"container nav`">`n      <a class=`"logo`" href=`"../index.html`">shiv<span>.</span>parmar</a>`n      <nav class=`"nav-links`" id=`"navLinks`" aria-label=`"Main navigation`">`n        <a href=`"../index.html#services`">Services</a>`n        <a href=`"../index.html#work`">Work</a>`n        <a href=`"../index.html#skills`">Skills</a>`n        <a href=`"../index.html#experience`">Experience</a>`n        <a href=`"../index.html#blog`">Blog</a>`n        <a href=`"../index.html#contact`">Contact</a>`n      </nav>`n      <div class=`"nav-right`">`n        <button class=`"theme-btn`" id=`"themeBtn`" aria-label=`"Toggle dark mode`" onclick=`"toggleTheme()`">&#9790;</button>`n        <button class=`"hamburger`" id=`"hamburger`" aria-label=`"Toggle menu`">`n          <span></span><span></span><span></span>`n        </button>`n        <a class=`"nav-cta`" href=`"../index.html#contact`">Hire Me</a>`n      </div>`n    </div>`n  </header>`n<article><div class=`"container`">`n<img src=`"$imageUrl`" alt=`"$($topic.title)`" title=`"$($topic.title)`" class=`"hero-img`">`n<div class=`"date`">$date &middot; $($topic.read) read</div>`n<h1>$($topic.title)</h1>`n<div class=`"content`">`n$content`n</div>`n<div class=`"tags`"><span class=`"tag`">WordPress</span><span class=`"tag`">Development</span></div>`n</div></article>`n<section style=`"padding:64px 0;border-top:1px solid var(--border-glass)`">`n  <div class=`"container`">`n    <div style=`"max-width:600px;margin:0 auto;text-align:center`">`n      <p class=`"eyebrow`" style=`"color:var(--accent)`">Contact</p>`n      <h2 style=`"font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px`">Let's Work Together</h2>`n      <p style=`"color:var(--text-muted);margin-bottom:32px`">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>`n      <form id=`"blogContactForm`" novalidate style=`"text-align:left`">`n        <div style=`"margin-bottom:16px`"><label for=`"bc-name`" style=`"display:block;font-size:14px;font-weight:600;margin-bottom:6px`">Full Name *</label><input type=`"text`" id=`"bc-name`" name=`"name`" placeholder=`"John Doe`" required style=`"width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)`"></div>`n        <div style=`"margin-bottom:16px`"><label for=`"bc-email`" style=`"display:block;font-size:14px;font-weight:600;margin-bottom:6px`">Email Address *</label><input type=`"email`" id=`"bc-email`" name=`"email`" placeholder=`"john@example.com`" required style=`"width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)`"></div>`n        <div style=`"margin-bottom:16px`"><label for=`"bc-subject`" style=`"display:block;font-size:14px;font-weight:600;margin-bottom:6px`">Subject *</label><select id=`"bc-subject`" name=`"subject`" required style=`"width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)`"><option value=`"`" disabled selected>Select inquiry type</option><option value=`"General Inquiry`">General Inquiry</option><option value=`"Project Request`">Project Request</option><option value=`"Collaboration`">Collaboration</option><option value=`"Freelance Work`">Freelance Work</option></select></div>`n        <div style=`"margin-bottom:16px`"><label for=`"bc-message`" style=`"display:block;font-size:14px;font-weight:600;margin-bottom:6px`">Project Details *</label><textarea id=`"bc-message`" name=`"message`" rows=`"4`" placeholder=`"Tell me about your project...`" required style=`"width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical`"></textarea></div>`n        <button type=`"submit`" style=`"width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer`">Send Message</button>`n        <p id=`"bc-formStatus`" style=`"text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)`"></p>`n      </form>`n    </div>`n  </div>`n</section>`n<footer class=`"blog-footer`"><div class=`"container foot-inner`"><span>&copy; $currentYear Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>`n<script src=`"../script.js`"></script>`n<script>`nfunction toggleTheme(){const t=document.documentElement.getAttribute(`"data-theme`");document.documentElement.setAttribute(`"data-theme`,t===`"dark`"?`"light`":`"dark`")}`nconst bcForm=document.getElementById(`"blogContactForm`");if(bcForm){bcForm.addEventListener(`"submit`",async(e)=>{e.preventDefault();const btn=bcForm.querySelector(`"button[type=submit]`");const status=document.getElementById(`"bc-formStatus`");btn.textContent=`"Sending...`";btn.disabled=true;try{await fetch(`"https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec`",{method:`"POST`",mode:`"no-cors`",headers:{`"Content-Type`":`"application/json`"},body:JSON.stringify({name:document.getElementById(`"bc-name`").value.trim(),email:document.getElementById(`"bc-email`").value.trim(),phone:`"`",subject:document.getElementById(`"bc-subject`").value,budget:`"`",message:document.getElementById(`"bc-message`").value.trim(),pageUrl:window.location.href})});status.textContent=`"Message sent! I'll get back within 24 hours.`";status.style.color=`"#22c55e`";bcForm.reset()}catch(err){status.textContent=`"Something went wrong. Please try again.`";status.style.color=`"#ef4444`"}btn.textContent=`"Send Message`";btn.disabled=false})}`n</script>`n</body>`n</html>"
 
-          <footer class="blog-footer"><div class="container foot-inner"><span>&copy; $(Get-Date -Format 'yyyy') Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
-          <script src="../script.js"></script>
-          <script>
-          function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
-
-          const bcForm = document.getElementById("blogContactForm");
-          if(bcForm){
-            bcForm.addEventListener("submit", async(e)=>{
-              e.preventDefault();
-              const btn = bcForm.querySelector("button[type=submit]");
-              const status = document.getElementById("bc-formStatus");
-              btn.textContent = "Sending..."; btn.disabled = true;
-              try{
-                await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{
-                  method:"POST", mode:"no-cors",
-                  headers:{"Content-Type":"application/json"},
-                  body:JSON.stringify({
-                    name:document.getElementById("bc-name").value.trim(),
-                    email:document.getElementById("bc-email").value.trim(),
-                    phone:"",
-                    subject:document.getElementById("bc-subject").value,
-                    budget:"",
-                    message:document.getElementById("bc-message").value.trim(),
-                    pageUrl:window.location.href
-                  })
-                });
-                status.textContent = "Message sent! I'll get back within 24 hours.";
-                status.style.color = "#22c55e";
-                bcForm.reset();
-              }catch(err){
-                status.textContent = "Something went wrong. Please try again.";
-                status.style.color = "#ef4444";
-              }
-              btn.textContent = "Send Message"; btn.disabled = false;
-            });
-          }
-          </script>
-          </body>
-          </html>
-          "@
-
-          # Save blog file
           $filePath = Join-Path $blogDir $filename
-          $html | Out-File -FilePath $filePath -Encoding UTF8
+          $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+          [System.IO.File]::WriteAllText($filePath, $html, $utf8NoBom)
           Write-Host "Saved: $filePath"
 
-          # Update homepage
+          Write-Host "Updating homepage..."
           $indexPath = "index.html"
           $indexContent = Get-Content $indexPath -Raw -Encoding UTF8
 
-          $newCard = @"
-                    <article class="blog-card reveal">
-                      <div class="date">$date &middot; $($topic.read) read</div>
-                      <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
-                      <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>
-                      <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
-                    </article>
-          "@
+          $newCard = "<article class=`"blog-card reveal`">`n            <div class=`"date`">$date &middot; $($topic.read) read</div>`n            <h3><a href=`"blog/$slug.html`">$($topic.title)</a></h3>`n            <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>`n            <a class=`"read-more`" href=`"blog/$slug.html`">Read more &rarr;</a>`n          </article>"
 
           $startMarker = "<!-- BLOG_CARDS_START -->"
           $endMarker = "<!-- BLOG_CARDS_END -->"
@@ -393,21 +220,13 @@ jobs:
             $indexContent = $indexContent.Substring(0, $startIdx + $startMarker.Length) + $newBetween + "`n          " + $indexContent.Substring($endIdx)
           }
 
-          $utf8NoBom = New-Object System.Text.UTF8Encoding $false
           [System.IO.File]::WriteAllText($indexPath, $indexContent, $utf8NoBom)
 
-          # Update blog listing page
+          Write-Host "Updating blog listing page..."
           $blogHtmlPath = "blog.html"
           $blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
 
-          $listCard = @"
-                    <article class="blog-card reveal">
-                      <div class="date">$date &middot; $($topic.read) read</div>
-                      <h3><a href="blog/$slug.html">$($topic.title)</a></h3>
-                      <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>
-                      <a class="read-more" href="blog/$slug.html">Read more &rarr;</a>
-                    </article>
-          "@
+          $listCard = "<article class=`"blog-card reveal`">`n            <div class=`"date`">$date &middot; $($topic.read) read</div>`n            <h3><a href=`"blog/$slug.html`">$($topic.title)</a></h3>`n            <p>$($topic.cat) development guide covering best practices, code examples and real-world use cases.</p>`n            <a class=`"read-more`" href=`"blog/$slug.html`">Read more &rarr;</a>`n          </article>"
 
           $blogStartIdx = $blogContent.IndexOf($startMarker)
           $blogEndIdx = $blogContent.IndexOf($endMarker)
@@ -427,7 +246,8 @@ jobs:
 
           [System.IO.File]::WriteAllText($blogHtmlPath, $blogContent, $utf8NoBom)
 
-          Write-Host "Blog published: $($topic.title)"
+          Write-Host ""
+          Write-Host "Blog published successfully: $($topic.title)"
 
       - name: Commit and push changes
         run: |
