@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create a WordPress Booking System &mdash; Shiv Parmar</title>
+<meta name="description" content="How to Create a WordPress Booking System - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="How to Create a WordPress Booking System" title="How to Create a WordPress Booking System" class="hero-img">
+<div class="date">Aug 16, 2026 &middot; 6 min read</div>
+<h1>How to Create a WordPress Booking System</h1>
+<div class="content">
+<h2>Introduction: Why Build a Custom WordPress Booking System?</h2>
+<p>Namaste! I’m Shiv Parmar, a WordPress Developer based in Rajkot, India. Throughout my years of helping businesses scale their online presence, one recurring challenge I often tackle is managing appointments efficiently. While off-the-shelf booking plugins exist, many are bloated with features you will never use, charge heavy monthly subscription fees, or lack the exact customization your business logic requires.</p>
+<p>Building a lightweight, custom booking system tailored to your exact needs is often the best solution. In this guide, I will walk you through creating a bespoke WordPress booking system from scratch using native WordPress APIs, custom post types, and AJAX submission. Whether you are building a scheduler for a doctor’s clinic, a salon, or a consulting firm, this step-by-step approach will give you complete control over your code and performance.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>Step 1: Planning the Data Architecture</h2>
+<p>Before writing a single line of code, we must decide how to store our booking data within WordPress. For most small to mid-sized booking workflows, leveraging Custom Post Types (CPTs) combined with Custom Fields (Post Meta) offers the best balance of simplicity, flexibility, and integration with native features like the REST API and WordPress admin screens.</p>
+<p>Here is how our booking object model looks:</p>
+<ul>
+  <li><strong>Custom Post Type:</strong> <code>sp_booking</code></li>
+  <li><strong>Meta Fields:</strong> Customer Name, Customer Email, Booking Date, Time Slot, Status (Pending, Confirmed, Cancelled)</li>
+</ul>
+
+<h2>Step 2: Registering the Booking Custom Post Type</h2>
+<p>First, let’s register our custom post type in our theme’s <code>functions.php</code> file or, preferably, within a custom site plugin. This creates the backend container for all appointments.</p>
+
+<pre><code>&lt;?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+function sp_register_booking_cpt() {
+    $labels = array(
+        'name'               =&gt; _x( 'Bookings', 'post type general name', 'sp-booking' ),
+        'singular_name'      =&gt; _x( 'Booking', 'post type singular name', 'sp-booking' ),
+        'menu_name'          =&gt; _x( 'Bookings', 'admin menu', 'sp-booking' ),
+        'add_new'            =&gt; _x( 'Add New', 'booking', 'sp-booking' ),
+        'add_new_item'       =&gt; __( 'Add New Booking', 'sp-booking' ),
+        'edit_item'          =&gt; __( 'Edit Booking', 'sp-booking' ),
+        'new_item'           =&gt; __( 'New Booking', 'sp-booking' ),
+        'all_items'          =&gt; __( 'All Bookings', 'sp-booking' ),
+        'view_item'          =&gt; __( 'View Booking', 'sp-booking' ),
+        'search_items'       =&gt; __( 'Search Bookings', 'sp-booking' ),
+        'not_found'          =&gt; __( 'No bookings found', 'sp-booking' ),
+        'not_found_in_trash' =&gt; __( 'No bookings found in Trash', 'sp-booking' ),
+    );
+
+    $args = array(
+        'labels'             =&gt; $labels,
+        'public'             =&gt; false, // Keep hidden from front-end public searches
+        'show_ui'            =&gt; true,  // Show in WP Admin dashboard
+        'show_in_menu'       =&gt; true,
+        'query_var'          =&gt; true,
+        'rewrite'            =&gt; array( 'slug' =&gt; 'booking' ),
+        'capability_type'    =&gt; 'post',
+        'has_archive'        =&gt; false,
+        'hierarchical'       =&gt; false,
+        'menu_icon'          =&gt; 'dashicons-calendar-alt',
+        'supports'           =&gt; array( 'title' ),
+    );
+
+    register_post_type( 'sp_booking', $args );
+}
+add_action( 'init', 'sp_register_booking_cpt' );
+</code></pre>
+
+<h2>Step 3: Storing Booking Details with Meta Boxes</h2>
+<p>Now that our post type exists, we need fields to store specific details like email, phone number, and slot details. We can register custom meta boxes in the admin interface to view and edit these values easily.</p>
+
+<pre><code>&lt;?php
+function sp_add_booking_meta_boxes() {
+    add_meta_box(
+        'sp_booking_details',
+        __( 'Booking Details', 'sp-booking' ),
+        'sp_render_booking_meta_box',
+        'sp_booking',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'sp_add_booking_meta_boxes' );
+
+function sp_render_booking_meta_box( $post ) {
+    $email = get_post_meta( $post-&gt;ID, '_sp_booking_email', true );
+    $date  = get_post_meta( $post-&gt;ID, '_sp_booking_date', true );
+    $time  = get_post_meta( $post-&gt;ID, '_sp_booking_time', true );
+    wp_nonce_field( 'sp_save_booking_meta', 'sp_booking_nonce' );
+    ?&gt;
+    &lt;p&gt;
+        &lt;label for="sp_booking_email"&gt;&lt;strong&gt;Customer Email:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="email" id="sp_booking_email" name="sp_booking_email" value="&lt;?php echo esc_attr( $email ); ?&gt;" class="widefat" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="sp_booking_date"&gt;&lt;strong&gt;Booking Date:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="date" id="sp_booking_date" name="sp_booking_date" value="&lt;?php echo esc_attr( $date ); ?&gt;" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="sp_booking_time"&gt;&lt;strong&gt;Time Slot:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="sp_booking_time" name="sp_booking_time" value="&lt;?php echo esc_attr( $time ); ?&gt;" placeholder="e.g. 10:00 AM" /&gt;
+    &lt;/p&gt;
+    &lt;?php
+}
+</code></pre>
+
+<h2>Step 4: Creating the Front-End Booking Interface</h2>
+<p>To let clients submit bookings on your website, we will render a front-end HTML form via a custom shortcode <code>[sp_booking_form]</code> and process submissions seamlessly using AJAX.</p>
+
+<h3>The Shortcode Callback</h3>
+<pre><code>&lt;?php
+function sp_booking_form_shortcode() {
+    ob_start();
+    ?&gt;
+    &lt;form id="sp-booking-form" class="sp-booking-container"&gt;
+        &lt;div class="sp-form-group"&gt;
+            &lt;label for="cust_name"&gt;Your Name&lt;/label&gt;
+            &lt;input type="text" id="cust_name" name="cust_name" required /&gt;
+        &lt;/div&gt;
+        &lt;div class="sp-form-group"&gt;
+            &lt;label for="cust_email"&gt;Your Email&lt;/label&gt;
+            &lt;input type="email" id="cust_email" name="cust_email" required /&gt;
+        &lt;/div&gt;
+        &lt;div class="sp-form-group"&gt;
+            &lt;label for="booking_date"&gt;Select Date&lt;/label&gt;
+            &lt;input type="date" id="booking_date" name="booking_date" required /&gt;
+        &lt;/div&gt;
+        &lt;div class="sp-form-group"&gt;
+            &lt;label for="booking_time"&gt;Preferred Time&lt;/label&gt;
+            &lt;select id="booking_time" name="booking_time" required&gt;
+                &lt;option value="10:00 AM"&gt;10:00 AM&lt;/option&gt;
+                &lt;option value="02:00 PM"&gt;02:00 PM&lt;/option&gt;
+                &lt;option value="04:00 PM"&gt;04:00 PM&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;?php wp_nonce_field( 'sp_booking_front_action', 'sp_booking_front_nonce' ); ?&gt;
+        &lt;button type="submit" id="sp-submit-btn"&gt;Confirm Booking&lt;/button&gt;
+        &lt;div id="sp-booking-message"&gt;&lt;/div&gt;
+    &lt;/form&gt;
+    &lt;?php
+    return ob_get_clean();
+}
+add_shortcode( 'sp_booking_form', 'sp_booking_form_shortcode' );
+</code></pre>
+
+<h3>Handling Submissions via JavaScript and AJAX</h3>
+<p>To deliver a smooth user experience, we prevent traditional page reloads and submit data directly to the WordPress AJAX API endpoint.</p>
+
+<pre><code>// Include this in your theme/plugin main JS file
+document.addEventListener('DOMContentLoaded', function () {
+    const bookingForm = document.getElementById('sp-booking-form');
+    
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('sp-booking-message');
+            const formData = new FormData(bookingForm);
+            formData.append('action', 'sp_process_booking');
+            formData.append('ajax_url', '/wp-admin/admin-ajax.php'); // Or pass via wp_localize_script
+
+            messageDiv.innerHTML = 'Processing your reservation...';
+
+            fetch('/wp-admin/admin-ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response =&gt; response.json())
+            .then(data =&gt; {
+                if (data.success) {
+                    messageDiv.style.color = 'green';
+                    messageDiv.innerHTML = data.data.message;
+                    bookingForm.reset();
+                } else {
+                    messageDiv.style.color = 'red';
+                    messageDiv.innerHTML = data.data.message;
+                }
+            })
+            .catch(error =&gt; {
+                messageDiv.style.color = 'red';
+                messageDiv.innerHTML = 'An error occurred. Please try again.';
+            });
+        });
+    }
+});
+</code></pre>
+
+<h3>Processing AJAX in PHP</h3>
+<p>Now, let's write the backend PHP endpoint to handle the AJAX call, sanitize user inputs, check for security nonces, and create the booking post programmatically.</p>
+
+<pre><code>&lt;?php
+function sp_process_booking_ajax() {
+    // 1. Verify Nonce Security
+    if ( ! isset( $_POST['sp_booking_front_nonce'] ) || ! wp_verify_nonce( $_POST['sp_booking_front_nonce'], 'sp_booking_front_action' ) ) {
+        wp_send_json_error( array( 'message' =&gt; 'Security check failed. Please refresh.' ) );
+    }
+
+    // 2. Sanitize Fields
+    $name  = isset( $_POST['cust_name'] ) ? sanitize_text_field( $_POST['cust_name'] ) : '';
+    $email = isset( $_POST['cust_email'] ) ? sanitize_email( $_POST['cust_email'] ) : '';
+    $date  = isset( $_POST['booking_date'] ) ? sanitize_text_field( $_POST['booking_date'] ) : '';
+    $time  = isset( $_POST['booking_time'] ) ? sanitize_text_field( $_POST['booking_time'] ) : '';
+
+    if ( empty( $name ) || empty( $email ) || empty( $date ) || empty( $time ) ) {
+        wp_send_json_error( array( 'message' =&gt; 'Please fill out all required fields.' ) );
+    }
+
+    // 3. Create the Custom Post
+    $post_id = wp_insert_post( array(
+        'post_title'  =&gt; sprintf( 'Booking: %s - %s', $name, $date ),
+        'post_type'   =&gt; 'sp_booking',
+        'post_status' =&gt; 'publish',
+    ) );
+
+    if ( is_wp_error( $post_id ) ) {
+        wp_send_json_error( array( 'message' =&gt; 'Could not save booking. Try again.' ) );
+    }
+
+    // 4. Save Custom Meta Data
+    update_post_meta( $post_id, '_sp_booking_email', $email );
+    update_post_meta( $post_id, '_sp_booking_date', $date );
+    update_post_meta( $post_id, '_sp_booking_time', $time );
+
+    // 5. Send Success Response
+    wp_send_json_success( array( 'message' =&gt; 'Thank you! Your booking has been submitted.' ) );
+}
+add_action( 'wp_ajax_sp_process_booking', 'sp_process_booking_ajax' );
+add_action( 'wp_ajax_nopriv_sp_process_booking', 'sp_process_booking_ajax' );
+</code></pre>
+
+<h2>Step 5: Styling the Interface</h2>
+<p>To make our booking form visually engaging and responsive, we add modern CSS styles. Place this block inside your theme’s <code>style.css</code> file or enqueue it cleanly via your plugin.</p>
+
+<pre><code>.sp-booking-container {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.sp-form-group {
+    margin-bottom: 16px;
+}
+
+.sp-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.sp-form-group input,
+.sp-form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#sp-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#sp-submit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+#sp-booking-message {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+</code></pre>
+
+<h2>Architectural Best Practices & Security Insights</h2>
+
+<blockquote>
+  <p><strong>Key Insight:</strong> When building a booking system, validation must occur on both sides. Front-end validation improves user experience, but back-end sanitization and double-booking checks are what keep your database secure and reliable. Always run custom WP_Query validation calls before confirming a slot to prevent race conditions!</p>
+</blockquote>
+
+<p>To ensure your custom booking plugin is production-ready, consider implementing these additional architectural steps:</p>
+<ol>
+  <li><strong>Double-Booking Prevention:</strong> Before calling <code>wp_insert_post()</code>, perform a <code>WP_Query</code> search checking if a post with the exact same <code>_sp_booking_date</code> and <code>_sp_booking_time</code> already exists.</li>
+  <li><strong>Email Notifications:</strong> Hook into <code>wp_mail()</code> upon post creation to trigger automatic confirmation emails to both the customer and site administrator.</li>
+  <li><strong>Timezone Normalization:</strong> Always store dates and time slots in UTC or explicitly tie them to your local site timezone setting using <code>wp_date()</code> to prevent appointment confusion for global clients.</li>
+</ol>
+
+<h2>Conclusion</h2>
+<p>Creating a custom WordPress booking system gives you total control over performance, data security, and user experience without relying on bulky third-party plugins. By combining Custom Post Types, Meta Fields, and modern AJAX handling, you have built a firm foundation that you can expand with payment gateways like Razorpay or Stripe down the line.</p>
+<p>If you have any questions or need help customizing your WordPress development architecture, feel free to drop a comment below or connect with me from Rajkot! Happy coding!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
