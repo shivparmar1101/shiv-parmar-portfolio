@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress Database Optimization Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WordPress Database Optimization Guide - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="WordPress Database Optimization Guide" title="WordPress Database Optimization Guide" class="hero-img">
+<div class="date">Aug 16, 2026 &middot; 5 min read</div>
+<h1>WordPress Database Optimization Guide</h1>
+<div class="content">
+<p>Hello everyone! I’m Shiv Parmar, a WordPress developer based in Rajkot, India. Over the years working with agency clients and business owners globally, I have audited hundreds of sluggish WordPress sites. Time and time again, developers jump straight to installing heavy caching plugins or upgrading hosting packages whenever a site slows down. However, in my experience, the true bottleneck is frequently buried much deeper: an unoptimized, bloated MySQL database.</p>
+
+<p>A fresh WordPress installation is lightning fast because its database weighs only a few megabytes. But as your site grows—adding products, blog posts, form entries, plugin options, and revisions—that database expands rapidly. In this guide, I will walk you through actionable techniques and code snippets I use daily in my development workflow to keep WordPress databases lean, fast, and responsive.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>1. Controlling Post Revisions and Trash Retention</h2>
+
+<p>By default, WordPress stores an infinite number of post revisions. If you edit an article 30 times, WordPress saves 30 full copies of that article in your <code>wp_posts</code> table. Multiply that across hundreds of posts, and you have thousands of unnecessary rows cluttering your database and slowing down queries.</p>
+
+<p>To control this, open your <code>wp-config.php</code> file and limit the number of revisions WordPress retains. You can also shorten the time items remain in the trash before being permanently deleted.</p>
+
+<pre><code>// Limit post revisions to 5 per post
+define( 'WP_POST_REVISIONS', 5 );
+
+// Empty trash automatically every 7 days (default is 30)
+define( 'EMPTY_TRASH_DAYS', 7 );
+</code></pre>
+
+<p>If you want to completely disable revisions on dynamic news or e-commerce sites, you can set <code>WP_POST_REVISIONS</code> to <code>false</code>. However, retaining 3 to 5 revisions is generally a safer middle ground for content editors.</p>
+
+<h2>2. Taming the Autoloaded Data in `wp_options`</h2>
+
+<p>The <code>wp_options</code> table is often the single biggest contributor to high Time to First Byte (TTFB). Every time a user visits any page on your website, WordPress loads all database rows where the <code>autoload</code> column is set to <code>yes</code> in a single query.</p>
+
+<p>If your autoloaded data exceeds 800 KB to 1 MB, server performance starts degrading. I often see sites built with visual builders or unoptimized plugins carrying 5 MB to 10 MB of autoloaded data!</p>
+
+<h3>Identifying Heavy Autoloaded Options</h3>
+
+<p>You can run this SQL query in phpMyAdmin or MySQL CLI to list the largest autoloaded options on your site:</p>
+
+<pre><code>SELECT option_name, LENGTH(option_value) AS option_size 
+FROM wp_options 
+WHERE autoload = 'yes' 
+ORDER BY option_size DESC 
+LIMIT 20;
+</code></pre>
+
+<p>If you spot options from deleted plugins or massive transient caches, you should safely remove them or update their autoload status to <code>no</code>.</p>
+
+<h3>Cleaning Expired Transients Programmatically</h3>
+
+<p>Transients are temporary cached options, but expired transients often remain in the <code>wp_options</code> table longer than necessary. You can drop this custom PHP function into your theme's <code>functions.php</code> or a custom maintenance plugin to clean them automatically:</p>
+
+<pre><code>function shiv_clean_expired_transients() {
+    global $wpdb;
+    
+    $time = time();
+    $sql = "DELETE a, b FROM {$wpdb->options} a
+            INNER JOIN {$wpdb->options} b 
+            ON b.option_name = REPLACE(a.option_name, '_timeout_', '')
+            WHERE a.option_name LIKE '\_transient\_timeout\_%'
+            AND a.option_value &lt; %d";
+            
+    $deleted = $wpdb-&gt;query( $wpdb-&gt;prepare( $sql, $time ) );
+    return $deleted;
+}
+</code></pre>
+
+<blockquote>A bloated database is often the hidden bottleneck behind poor TTFB (Time to First Byte). You can add all the page caching plugins you want, but if your database queries take seconds to execute due to unindexed metadata or gigabytes of autoloaded options, your site will never feel truly responsive.</blockquote>
+
+<h2>3. Removing Orphaned Post Metadata and Term Relationships</h2>
+
+<p>When you delete a post, page, or product, WordPress sometimes leaves behind "orphaned" metadata in <code>wp_postmeta</code>, or unused tag/category relationships in <code>wp_term_relationships</code>. Over time, these orphaned rows take up valuable space and slow down join queries.</p>
+
+<p>Here is how you can clean up orphaned post meta safely using a direct SQL query:</p>
+
+<pre><code>DELETE pm 
+FROM wp_postmeta pm 
+LEFT JOIN wp_posts wp ON wp.ID = pm.post_id 
+WHERE wp.ID IS NULL;
+</code></pre>
+
+<p>Similarly, you can remove orphaned term relationships where the post no longer exists:</p>
+
+<pre><code>DELETE tr 
+FROM wp_term_relationships tr 
+LEFT JOIN wp_posts wp ON wp.ID = tr.object_id 
+WHERE wp.ID IS NULL;
+</code></pre>
+
+<p><em>Note: Always create a full database backup before executing direct <code>DELETE</code> queries on production environments!</em></p>
+
+<h2>4. Automating Database Maintenance with WP-Cron</h2>
+
+<p>Instead of running manual queries every month, I prefer automating routine maintenance tasks. We can attach a cleanup function to a custom scheduled task using WordPress's internal cron system.</p>
+
+<p>Here is an example script that schedules a weekly database cleanup for transients and spam comments:</p>
+
+<pre><code>// Schedule weekly event if not already scheduled
+if ( ! wp_next_scheduled( 'shiv_weekly_db_cleanup_event' ) ) {
+    wp_schedule_event( time(), 'weekly', 'shiv_weekly_db_cleanup_event' );
+}
+
+add_action( 'shiv_weekly_db_cleanup_event', 'shiv_run_database_cleanup' );
+
+function shiv_run_database_cleanup() {
+    global $wpdb;
+
+    // 1. Delete spam comments
+    $wpdb-&gt;query( "DELETE FROM {$wpdb-&gt;comments} WHERE comment_approved = 'spam'" );
+
+    // 2. Delete trashed comments
+    $wpdb-&gt;query( "DELETE FROM {$wpdb-&gt;comments} WHERE comment_approved = 'trash'" );
+
+    // 3. Delete expired transients
+    shiv_clean_expired_transients();
+
+    // 4. Optimize core tables
+    $wpdb-&gt;query( "OPTIMIZE TABLE {$wpdb-&gt;posts}, {$wpdb-&gt;postmeta}, {$wpdb-&gt;options}" );
+}
+</code></pre>
+
+<h2>5. Converting Legacy Storage Engines to InnoDB</h2>
+
+<p>If your WordPress site has been around for several years, some of your database tables might still be using the older <code>MyISAM</code> storage engine. Modern WordPress development strongly favors <code>InnoDB</code>.</p>
+
+<h3>Why InnoDB is Superior for WordPress:</h3>
+
+<ul>
+    <li><strong>Row-level Locking:</strong> MyISAM locks the entire database table during an update, causing queue delays. InnoDB only locks the specific row being modified.</li>
+    <li><strong>ACID Compliance:</strong> InnoDB offers better reliability and prevents database corruption during server crashes.</li>
+    <li><strong>Better Memory Utilization:</strong> InnoDB utilizes the <code>innodb_buffer_pool_size</code> setting in MySQL to cache both data and indexes efficiently in RAM.</li>
+</ul>
+
+<p>You can check your table engines in phpMyAdmin. If you find tables using MyISAM, convert them to InnoDB using the following SQL statement:</p>
+
+<pre><code>ALTER TABLE wp_posts ENGINE = InnoDB;
+ALTER TABLE wp_postmeta ENGINE = InnoDB;
+ALTER TABLE wp_options ENGINE = InnoDB;
+</code></pre>
+
+<h2>Best Practices Summary for WordPress Developers</h2>
+
+<p>To ensure your clients' sites stay fast over the long term, build these habits into your regular workflow:</p>
+
+<ol>
+    <li><strong>Audit Plugins Regularly:</strong> Deactivate and delete plugins that leave orphaned options or heavy custom tables behind.</li>
+    <li><strong>Keep Autoloaded Options Under 800 KB:</strong> Periodically check `wp_options` size.</li>
+    <li><strong>Maintain Staging Backups:</strong> Always run database optimizations on a staging environment first to verify stability.</li>
+    <li><strong>Use Offsite Backups:</strong> Before running custom SQL cleanups, take a full database snapshot using tools like WP-CLI, UpdraftPlus, or server-level backups.</li>
+</ol>
+
+<h2>Final Thoughts</h2>
+
+<p>Database optimization is not a one-time project—it is an ongoing maintenance duty for serious WordPress developers. By keeping your revisions under control, auditing autoloaded data in <code>wp_options</code>, converting to InnoDB, and automating cleanup tasks, you can ensure your WordPress sites remain blazing fast regardless of traffic or content size.</p>
+
+<p>I hope this guide helps you boost your WordPress performance! If you have any questions or have specific database optimization tricks you rely on in your own agency, feel free to drop a comment below or reach out to me from Rajkot. Happy coding!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
