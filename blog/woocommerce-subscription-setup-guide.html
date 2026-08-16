@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WooCommerce Subscription Setup Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Subscription Setup Guide - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Subscription Setup Guide" title="WooCommerce Subscription Setup Guide" class="hero-img">
+<div class="date">Aug 16, 2026 &middot; 5 min read</div>
+<h1>WooCommerce Subscription Setup Guide</h1>
+<div class="content">
+<h2>Mastering WooCommerce Subscriptions: A Complete Developer's Guide</h2>
+
+<p>Namaste! I am Shiv Parmar, a WordPress Developer based in the vibrant tech hub of Rajkot, India. Over my years of building and optimizing custom e-commerce stores for clients across the globe, one business model has consistently proven to be a game-changer: recurring subscriptions. Whether you are selling digital SaaS access, physical curated boxes, or monthly retainer services, adding subscriptions to your WooCommerce store creates predictable revenue and long-term customer value.</p>
+
+<p>In this step-by-step guide, I will walk you through setting up WooCommerce Subscriptions from both a functional and a developer standpoint. We will cover configuration steps, payment gateway setups, and practical code snippets in PHP, CSS, and JavaScript to tailor the user experience perfectly.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<blockquote>Building a successful WooCommerce subscription system isn't just about collecting recurring payments—it's about crafting a seamless user experience that reduces churn and keeps subscriber retention high from day one.</blockquote>
+
+<h2>Step 1: Choosing and Installing the Subscription Engine</h2>
+
+<p>To turn standard WooCommerce into a subscription power-house, the most robust starting point is the official <strong>WooCommerce Subscriptions</strong> extension. While free alternative plugins exist for basic use cases, the official extension provides deep integration with major payment gateways, dynamic recurring billing engines, and extensive developer hooks.</p>
+
+<p>To begin the setup process, follow these steps:</p>
+<ol>
+    <li>Purchase and download the <strong>WooCommerce Subscriptions</strong> zip package from the WooCommerce marketplace.</li>
+    <li>Log into your WordPress Dashboard, navigate to <strong>Plugins &gt; Add New &gt; Upload Plugin</strong>, select the file, and click <strong>Install Now</strong>.</li>
+    <li>Activate the plugin and ensure your WooCommerce core plugin is updated to the latest stable release.</li>
+</ol>
+
+<h2>Step 2: Configuring Subscription Products</h2>
+
+<p>Once activated, the plugin unlocks two new product types inside your WooCommerce product backend: <code>Simple subscription</code> and <code>Variable subscription</code>.</p>
+
+<p>When creating a new subscription product under <strong>Products &gt; Add New</strong>, scroll down to the <strong>Product Data</strong> dropdown and select <strong>Simple subscription</strong>. Here are the core fields you will need to configure:</p>
+
+<ul>
+    <li><strong>Subscription Price:</strong> Defines the billing amount and billing cycle (e.g., $29.99 every month).</li>
+    <li><strong>Expire After:</strong> Sets the lifetime duration of the subscription (e.g., 12 months or Never Expire).</li>
+    <li><strong>Sign-up Fee:</strong> An optional upfront charge applied at initial checkout (e.g., an onboarding fee).</li>
+    <li><strong>Free Trial:</strong> Allows you to set a risk-free trial period (e.g., 14 days or 1 month) before the first recurring charge occurs.</li>
+</ul>
+
+<h3>Handling Variable Subscriptions</h3>
+<p>If you offer different tiers—such as Basic, Pro, and Enterprise—choose <strong>Variable subscription</strong>. Define your product attributes (e.g., Tier level), create variations, and configure individual pricing and trial periods for each variation separately.</p>
+
+<h2>Step 3: Customizing the Experience with Code Snippets</h2>
+
+<p>As developers, standard WooCommerce defaults rarely meet specific client requirements. Let's look at how we can customize the frontend experience using PHP, CSS, and JavaScript.</p>
+
+<h3>1. Customizing Button Text via PHP</h3>
+<p>Standard button labels like "Sign up now" might not fit your brand tone. You might prefer something like "Start My Membership". Add the following snippet to your child theme's <code>functions.php</code> file or a custom functionality plugin:</p>
+
+<pre><code>/**
+ * Change Add to Cart text for subscription products
+ */
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'shiv_custom_subscription_button_text', 25, 2 );
+
+function shiv_custom_subscription_button_text( $text, $product ) {
+    if ( $product-&gt;is_type( 'subscription' ) || $product-&gt;is_type( 'variable-subscription' ) ) {
+        return __( 'Start My Membership', 'my-custom-theme' );
+    }
+    return $text;
+}
+</code></pre>
+
+<h3>2. Enhancing Subscription Display with Custom CSS</h3>
+<p>The default subscription price string can sometimes look cramped on modern single-product pages. You can clean up the formatting and highlight recurring pricing details with a bit of CSS:</p>
+
+<pre><code>/* Style WooCommerce Subscription price string */
+.single-product .price .subscription-details {
+    display: block;
+    font-size: 0.95rem;
+    color: #27ae60;
+    font-weight: 600;
+    margin-top: 6px;
+    background-color: #f4fbf7;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border-left: 3px solid #27ae60;
+}
+</code></pre>
+
+<h3>3. Enhancing UX with JavaScript</h3>
+<p>If you are using variable subscriptions, users might select different billing cycles on the fly. We can use vanilla JavaScript (or jQuery) to display a custom notification when a user chooses an annual tier, encouraging higher cart values:</p>
+
+<pre><code>/**
+ * Dynamic message selection for variable subscriptions
+ */
+jQuery( document ).ready( function( $ ) {
+    $( '.variations_form' ).on( 'found_variation', function( event, variation ) {
+        // Check if chosen variation price contains 'year'
+        if ( variation.price_html.indexOf('year') !== -1 ) {
+            if ( $( '.annual-savings-badge' ).length === 0 ) {
+                $( '.single_variation_wrap' ).append( '&lt;p class="annual-savings-badge" style="color: #d35400; font-weight: bold; margin-top: 10px;"&gt;🎉 You selected annual billing! You get 2 months free.&lt;/p&gt;' );
+            }
+        } else {
+            $( '.annual-savings-badge' ).remove();
+        }
+    });
+});
+</code></pre>
+
+<h2>Step 4: Setting Up Payment Gateways & Automatic Renewals</h2>
+
+<p>For recurring billing to work seamlessly without manual intervention, you must use a payment gateway that supports <strong>automatic recurring payments</strong> (tokenization). Popular options include:</p>
+
+<ul>
+    <li><strong>Stripe (WooCommerce Stripe Payment Gateway):</strong> Supports credit cards, Apple Pay, Google Pay, and SEPA direct debit. Highly recommended for international billing.</li>
+    <li><strong>PayPal Payments:</strong> Supports recurring billing via PayPal Reference Transactions.</li>
+    <li><strong>Authorize.Net / Square:</strong> Excellent alternatives for specific regional markets.</li>
+</ul>
+
+<p>When testing renewals, ensure automatic retries are enabled under <strong>WooCommerce &gt; Settings &gt; Subscriptions</strong>. Enabling <em>Automatic Retry Engine</em> automatically schedules retry attempts for failed payments and notifies customers to update their billing details before canceling the account.</p>
+
+<h2>Step 5: Staging and Performance Best Practices</h2>
+
+<p>Running a subscription site requires careful management of site performance and database execution. Here are three crucial practices I implement for every subscription project from my studio in Rajkot:</p>
+
+<ol>
+    <li><strong>Exclude Endpoints from Object Caching:</strong> Never cache dynamic My Account subscription pages (<code>/my-account/subscriptions/</code>) or Checkout endpoints in Redis, Memcached, or Varnish. Doing so risks displaying sensitive account data to the wrong user.</li>
+    <li><strong>Disable Staging Renewals:</strong> When staging a copy of your live site for updates, navigate to <strong>WooCommerce &gt; Settings &gt; Subscriptions</strong> and switch the store mode to <code>Staging Mode</code>. This prevents duplicate live recurring charges from firing from your staging server!</li>
+    <li><strong>Monitor Action Scheduler:</strong> WooCommerce Subscriptions relies heavily on WordPress Action Scheduler (`wp_cron`) to trigger recurring renewals. Ensure server-level CRON jobs are properly configured rather than relying on default page-visit triggers.</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>Setting up subscriptions in WooCommerce opens up powerful growth potential for any business. By properly setting up products, integrating tokenized payment gateways, and applying targeted custom code in PHP, CSS, and JavaScript, you can deliver a reliable subscription portal that keeps customers coming back month after month.</p>
+
+<p>I hope this setup guide helps you execute your next subscription project seamlessly! If you have any technical questions or need help customizing your WooCommerce platform, feel free to drop a comment below or reach out to me directly. Happy coding!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
