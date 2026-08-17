@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Secure WordPress Login Page &mdash; Shiv Parmar</title>
+<meta name="description" content="How to Secure WordPress Login Page - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="How to Secure WordPress Login Page" title="How to Secure WordPress Login Page" class="hero-img">
+<div class="date">Aug 17, 2026 &middot; 4 min read</div>
+<h1>How to Secure WordPress Login Page</h1>
+<div class="content">
+<h2>Securing the Gateway: A Developer's Guide to Hardening the WordPress Login Page</h2>
+
+<p>Hello! I am Shiv Parmar, a WordPress developer based out of Rajkot, India. Over the years, I have worked with clients across various industries, from local startups here in Gujarat to international e-commerce platforms. If there is one crucial lesson I have learned in my web development journey, it is this: security is never an afterthought. Every single day, thousands of automated botnets scan the web specifically looking for one file: <code>wp-login.php</code>.</p>
+
+<p>By default, WordPress uses a uniform URL for authentication across every installation. While this standard structure makes WordPress user-friendly, it also gives malicious actors a predictable target for brute-force attacks, credential stuffing, and resource exhaustion. Today, I want to walk you through practical, actionable, and code-based techniques that I implement on client projects to fortify the WordPress login page against unauthorized access.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<p>Whether you are a fellow developer, a site administrator, or a business owner, these strategies will significantly improve your website's defense perimeter.</p>
+
+<h2>1. Obscure Default Login Error Messages</h2>
+
+<p>When an authentication attempt fails on a standard WordPress login page, the system provides helpful feedback. It explicitly informs the user whether the username is invalid or the password was incorrect. While this is helpful for genuine users, it provides valuable hints to automated scripts trying to guess credentials.</p>
+
+<p>To eliminate this information leak, we can hook into WordPress using the <code>login_errors</code> filter and overwrite the default messages with a generic error statement.</p>
+
+<h3>Implementation Code (PHP)</h3>
+<p>Add the following code snippet to your active theme's <code>functions.php</code> file or a custom site-specific plugin:</p>
+
+<pre><code>/**
+ * Mask WordPress login errors to prevent user enumeration.
+ * Developer: Shiv Parmar
+ */
+function sp_generic_login_errors() {
+    return '<strong>ERROR:</strong> Invalid username or password combination.';
+}
+add_filter( 'login_errors', 'sp_generic_login_errors' );
+</code></pre>
+
+<p>Now, regardless of whether a bot enters an incorrect username or an incorrect password, WordPress returns the exact same message, preventing attackers from confirming valid usernames.</p>
+
+<h2>2. Limit Login Attempts Programmatically</h2>
+
+<p>Brute-force attacks rely on sending hundreds or thousands of password combinations per minute. Without rate limiting, your server CPU spikes, and eventually, a complex password might be cracked. While plugins like <em>Limit Login Attempts Reloaded</em> work great, you can also implement lightweight tracking directly using the WordPress Transient API.</p>
+
+<h3>Basic Rate-Limiting Hook (PHP)</h3>
+
+<pre><code>/**
+ * Track failed logins and block IP temporarily after 5 attempts.
+ */
+function sp_check_login_attempts( $user, $username, $password ) {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $transient_key = 'login_attempts_' . md5( $ip );
+    $attempts = get_transient( $transient_key );
+
+    if ( $attempts &amp;&amp; $attempts &gt;= 5 ) {
+        return new WP_Error( 
+            'too_many_attempts', 
+            '<strong>BLOCKED:</strong> Too many failed attempts. Please try again in 15 minutes.' 
+        );
+    }
+
+    return $user;
+}
+add_filter( 'authenticate', 'sp_check_login_attempts', 30, 3 );
+
+function sp_log_failed_attempt( $username ) {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $transient_key = 'login_attempts_' . md5( $ip );
+    $attempts = (int) get_transient( $transient_key );
+
+    $attempts++;
+    set_transient( $transient_key, $attempts, 15 * MINUTE_IN_SECONDS );
+}
+add_action( 'wp_login_failed', 'sp_log_failed_attempt' );
+</code></pre>
+
+<p>This code monitors failed authentication events per IP address and temporarily restricts access for 15 minutes once five consecutive failed attempts are recorded.</p>
+
+<h2>3. Implement a Honeypot Field via Custom Code</h2>
+
+<p>Bot scripts automatically populate every input field on a form. Humans, on the other hand, only fill out visible fields. A honeypot field is a hidden input designed specifically to catch automated bots in the act.</p>
+
+<h3>Injecting Honeypot (PHP, CSS, &amp; JavaScript)</h3>
+
+<p>First, inject a hidden field into the WordPress login form using PHP:</p>
+
+<pre><code>/**
+ * Render a honeypot field in the login form.
+ */
+function sp_add_login_honeypot() {
+    echo '&lt;p class="sp-hp-wrapper" style="display:none;"&gt;';
+    echo '&lt;label for="user_autofill_check"&gt;Leave this empty&lt;/label&gt;';
+    echo '&lt;input type="text" name="user_autofill_check" id="user_autofill_check" value="" autocomplete="off" /&gt;';
+    echo '&lt;/p&gt;';
+}
+add_action( 'login_form', 'sp_add_login_honeypot' );
+</code></pre>
+
+<p>Next, validate the submission server-side before WordPress processes authentication:</p>
+
+<pre><code>/**
+ * Validate honeypot value during authentication.
+ */
+function sp_validate_login_honeypot( $user, $username, $password ) {
+    if ( isset( $_POST['user_autofill_check'] ) &amp;&amp; ! empty( $_POST['user_autofill_check'] ) ) {
+        // If the honeypot field contains data, drop the request quietly
+        wp_die( 'Spam bot activity detected.', 'Access Denied', array( 'response' =&gt; 403 ) );
+    }
+    return $user;
+}
+add_filter( 'authenticate', 'sp_validate_login_honeypot', 1, 3 );
+</code></pre>
+
+<h2>4. Restrict Login Access by IP Address</h2>
+
+<p>If you or your client operate from a fixed location or a static IP address, restricting access at the server level provides maximum protection. Bots won't even be able to render the login page, saving server resources.</p>
+
+<h3>Apache Server (.htaccess Configuration)</h3>
+<p>If your WordPress site runs on an Apache web server, add these rules to your top-level <code>.htaccess</code> file:</p>
+
+<pre><code>&lt;Files wp-login.php&gt;
+    Order Deny,Allow
+    Deny from all
+    # Allow your office static IP address
+    Allow from 123.456.789.100
+    # Allow your home network IP address
+    Allow from 98.765.432.10
+&lt;/Files&gt;
+</code></pre>
+
+<blockquote>
+<p>"Security is not a single plugin you install and forget; it is a multi-layered process of reducing attack surfaces, enforcing strict access controls, and keeping code minimal and vigilant."</p>
+</blockquote>
+
+<h2>5. Essential WordPress Login Hardening Checklist</h2>
+
+<p>Beyond writing custom code snippets, follow these fundamental practices to ensure your site's authentication system stays ironclad:</p>
+
+<ol>
+    <li><strong>Enforce Strong Password Policies:</strong> Never allow simple passwords like <code>admin123</code> or <code>password</code>. Force the use of long, complex passphrases.</li>
+    <li><strong>Enable Two-Factor Authentication (2FA):</strong> Require users to enter a time-based dynamic OTP (via apps like Google Authenticator or Authy) alongside their standard password.</li>
+    <li><strong>Disable XML-RPC:</strong> Legacy XML-RPC capabilities allow attackers to try thousands of passwords in a single HTTP request using <code>system.multicall</code>. Disable it if you aren't using mobile apps or Jetpack.</li>
+    <li><strong>Change the Admin Username:</strong> Avoid standard account names like <code>admin</code> or <code>administrator</code>.</li>
+    <li><strong>Use SSL Encryption:</strong> Always serve your authentication page over secure HTTPS to prevent man-in-the-middle packet sniffing on public Wi-Fi networks.</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>Securing the WordPress login page does not require bloated security suites that degrade your web server's performance. By applying lightweight hooks, basic server rules, and practical developer techniques, you can successfully prevent unauthorized access attempts while keeping your codebase clean.</p>
+
+<p>I hope you found these technical snippets useful for your web development workflow! If you have any questions or want to discuss WordPress development, feel free to reach out. Sending warm greetings from Rajkot!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
