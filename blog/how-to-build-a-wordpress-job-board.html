@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a WordPress Job Board &mdash; Shiv Parmar</title>
+<meta name="description" content="How to Build a WordPress Job Board - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="How to Build a WordPress Job Board" title="How to Build a WordPress Job Board" class="hero-img">
+<div class="date">Aug 17, 2026 &middot; 7 min read</div>
+<h1>How to Build a WordPress Job Board</h1>
+<div class="content">
+<h2>How to Build a High-Performing Custom WordPress Job Board</h2>
+
+<p>Namaste! I am Shiv Parmar, a WordPress developer based out of Rajkot, Gujarat. In my years of freelancing and custom enterprise development, I have seen clients spend hundreds of dollars on bloated, heavy plugins just to create a job board. While plugins like WP Job Manager are great for quick setups, building a lightweight, custom job board gives you complete control over database performance, UX, and scalability.</p>
+
+<p>In this tutorial, I will walk you through building a bespoke WordPress job board from scratch using Custom Post Types (CPT), custom meta fields, AJAX filtering, and clean CSS styling.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>Step 1: Registering the Job Custom Post Type &amp; Taxonomies</h2>
+
+<p>First, we need to create a dedicated post type for our job listings and a custom taxonomy for job categories (e.g., Development, Design, Marketing). Add this code to your custom plugin or your theme's <code>functions.php</code> file.</p>
+
+<pre><code>function sp_register_job_board_cpt() {
+    $labels = array(
+        'name'               =&gt; 'Jobs',
+        'singular_name'      =&gt; 'Job',
+        'add_new'            =&gt; 'Add New Job',
+        'add_new_item'       =&gt; 'Add New Job Listing',
+        'edit_item'          =&gt; 'Edit Job',
+        'all_items'          =&gt; 'All Jobs',
+        'menu_name'          =&gt; 'Job Board',
+    );
+
+    $args = array(
+        'labels'             =&gt; $labels,
+        'public'             =&gt; true,
+        'has_archive'        =&gt; true,
+        'rewrite'            =&gt; array('slug' =&gt; 'jobs'),
+        'supports'           =&gt; array('title', 'editor', 'thumbnail'),
+        'menu_icon'          =&gt; 'dashicons-briefcase',
+        'show_in_rest'       =&gt; true, // Enables Gutenberg &amp; REST API
+    );
+
+    register_post_type('job_listing', $args);
+
+    // Register Job Type Taxonomy (Full-time, Part-time, Remote)
+    register_taxonomy('job_type', 'job_listing', array(
+        'label'        =&gt; 'Job Type',
+        'rewrite'      =&gt; array('slug' =&gt; 'job-type'),
+        'hierarchical' =&gt; true,
+        'show_in_rest' =&gt; true,
+    ));
+}
+add_action('init', 'sp_register_job_board_cpt');
+</code></pre>
+
+<h2>Step 2: Adding Custom Meta Fields for Job Details</h2>
+
+<p>A job listing needs structured data like Company Name, Location, and Salary Range. While you could use Advanced Custom Fields (ACF), I prefer writing native meta boxes for maximum speed and zero third-party dependencies.</p>
+
+<pre><code>// Add Meta Box
+function sp_add_job_meta_boxes() {
+    add_meta_box('job_details', 'Job Details', 'sp_job_meta_box_html', 'job_listing', 'normal', 'high');
+}
+add_action('add_meta_boxes', 'sp_add_job_meta_boxes');
+
+// Render Meta Box HTML
+function sp_job_meta_box_html($post) {
+    $company  = get_post_meta($post-&gt;ID, '_sp_company_name', true);
+    $location = get_post_meta($post-&gt;ID, '_sp_job_location', true);
+    $salary   = get_post_meta($post-&gt;ID, '_sp_job_salary', true);
+    wp_nonce_field('sp_save_job_meta', 'sp_job_nonce');
+    ?&gt;
+    &lt;p&gt;
+        &lt;label for="sp_company_name"&gt;&lt;strong&gt;Company Name:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="sp_company_name" name="sp_company_name" value="&lt;?php echo esc_attr($company); ?&gt;" class="widefat"&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="sp_job_location"&gt;&lt;strong&gt;Location:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="sp_job_location" name="sp_job_location" value="&lt;?php echo esc_attr($location); ?&gt;" class="widefat"&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="sp_job_salary"&gt;&lt;strong&gt;Salary Range:&lt;/strong&gt;&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="sp_job_salary" name="sp_job_salary" value="&lt;?php echo esc_attr($salary); ?&gt;" class="widefat"&gt;
+    &lt;/p&gt;
+    &lt;?php
+}
+
+// Save Meta Data
+function sp_save_job_meta($post_id) {
+    if (!isset($_POST['sp_job_nonce']) || !wp_verify_nonce($_POST['sp_job_nonce'], 'sp_save_job_meta')) return;
+    if (defined('DOING_AUTOSAVE') &amp;&amp; DOING_AUTOSAVE) return;
+
+    if (isset($_POST['sp_company_name'])) {
+        update_post_meta($post_id, '_sp_company_name', sanitize_text_field($_POST['sp_company_name']));
+    }
+    if (isset($_POST['sp_job_location'])) {
+        update_post_meta($post_id, '_sp_job_location', sanitize_text_field($_POST['sp_job_location']));
+    }
+    if (isset($_POST['sp_job_salary'])) {
+        update_post_meta($post_id, '_sp_job_salary', sanitize_text_field($_POST['sp_job_salary']));
+    }
+}
+add_action('save_post', 'sp_save_job_meta');
+</code></pre>
+
+<blockquote>
+<p><strong>Key Insight:</strong> When designing custom database schemas in WordPress, always prefix your meta keys with an underscore (e.g., <code>_sp_company_name</code>). This keeps them hidden from default custom field UI lists and prevents key collisions with other plugins, leading to cleaner data management.</p>
+</blockquote>
+
+<h2>Step 3: Frontend Template Markup</h2>
+
+<p>To display these job listings on your frontend archive template (<code>archive-job_listing.php</code>), loop through the posts and output the clean custom metadata.</p>
+
+<pre><code>&lt;div class="job-board-container"&gt;
+    &lt;div class="job-grid"&gt;
+        &lt;?php if (have_posts()) : while (have_posts()) : the_post(); 
+            $company  = get_post_meta(get_the_ID(), '_sp_company_name', true);
+            $location = get_post_meta(get_the_ID(), '_sp_job_location', true);
+            $salary   = get_post_meta(get_the_ID(), '_sp_job_salary', true);
+            $types    = get_the_terms(get_the_ID(), 'job_type');
+        ?&gt;
+            &lt;article class="job-card"&gt;
+                &lt;h3 class="job-title"&gt;&lt;a href="&lt;?php the_permalink(); ?&gt;"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;&lt;/h3&gt;
+                &lt;p class="job-meta"&gt;
+                    &lt;span class="company"&gt;&lt;?php echo esc_html($company); ?&gt;&lt;/span&gt; &amp;bull; 
+                    &lt;span class="location"&gt;&lt;?php echo esc_html($location); ?&gt;&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;div class="job-details"&gt;
+                    &lt;span class="salary"&gt;&lt;?php echo esc_html($salary); ?&gt;&lt;/span&gt;
+                    &lt;?php if ($types) : ?&gt;
+                        &lt;span class="job-badge"&gt;&lt;?php echo esc_html($types[0]-&gt;name); ?&gt;&lt;/span&gt;
+                    &lt;?php endif; ?&gt;
+                &lt;/div&gt;
+            &lt;/article&gt;
+        &lt;?php endwhile; endif; ?&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2>Step 4: Interactive Filtering with Modern JavaScript (Fetch API)</h2>
+
+<p>Users expect instant responses without full page reloads. Here is a simple JavaScript snippet using the native modern <code>fetch()</code> API to query jobs dynamically via WordPress AJAX or REST endpoints.</p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', function() {
+    const filterSelect = document.getElementById('job-type-filter');
+    
+    if (filterSelect) {
+        filterSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            
+            fetch(`/wp-json/wp/v2/job_listing?job_type=${selectedType}`)
+                .then(response =&gt; response.json())
+                .then(data =&gt; {
+                    const container = document.querySelector('.job-grid');
+                    container.innerHTML = ''; // Clear current jobs
+                    
+                    data.forEach(job =&gt; {
+                        container.innerHTML += `
+                            &lt;article class="job-card"&gt;
+                                &lt;h3 class="job-title"&gt;&lt;a href="${job.link}"&gt;${job.title.rendered}&lt;/a&gt;&lt;/h3&gt;
+                            &lt;/article&gt;
+                        `;
+                    });
+                })
+                .catch(error =&gt; console.error('Error fetching jobs:', error));
+        });
+    }
+});
+</code></pre>
+
+<h2>Step 5: Styling the Job Board UI</h2>
+
+<p>A clean presentation increases application completion rates dramatically. Here is a modern Flexbox layout CSS block for our custom markup.</p>
+
+<pre><code>.job-board-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.job-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.job-title {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+}
+
+.job-title a {
+    color: #1a202c;
+    text-decoration: none;
+}
+
+.job-meta {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.job-badge {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+</code></pre>
+
+<h2>Best Practices to Keep in Mind</h2>
+
+<p>When scaling your custom WordPress job board, consider implementing these additional developer strategies:</p>
+
+<ol>
+    <li><strong>Implement Transients for Queries:</strong> Cache complex custom loop queries using the <code>set_transient()</code> API to reduce database hits on high-traffic sites.</li>
+    <li><strong>Frontend Submission Form:</strong> Use <code>wp_insert_post()</code> along with proper nonces to allow guest or client job submissions securely from the frontend.</li>
+    <li><strong>Automated Expiration:</strong> Set up a WP-Cron task that automatically changes post status from <code>publish</code> to <code>draft</code> after 30 days to keep listings fresh.</li>
+</ol>
+
+<h2>Wrapping Up</h2>
+
+<p>By leveraging native WordPress APIs—Custom Post Types, Taxonomies, Custom Meta, and the REST API—you can build custom solution architectures that load under 1 second and offer complete UI flexibility. This custom approach has proven invaluable for my clients here in Rajkot and globally.</p>
+
+<p>Have any questions about custom post querying or REST endpoints in WordPress? Drop a comment below or feel free to reach out directly!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
