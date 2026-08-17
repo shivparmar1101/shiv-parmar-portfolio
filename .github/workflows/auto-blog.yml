@@ -87,7 +87,49 @@ jobs:
           }
 
           if ($availableTopics.Count -eq 0) {
-            Write-Host "All topics already published!"
+            Write-Host "All hardcoded topics published! Generating new topics with Gemini AI..."
+
+            $topicPrompt = "Generate 10 unique WordPress/WooCommerce blog post titles that are NOT in this list of already published topics: " + ($existingFiles -join ", ") + ". Return ONLY a JSON array like: [{`"title`": `"Topic Title`", `"cat`": `"WordPress`", `"read`": `"5 min`"}]. Categories can be: WordPress, WooCommerce, Security, SEO, Performance. Each title should be practical, specific, and useful for developers. No duplicates. Return ONLY the JSON array, nothing else."
+
+            $topicBody = @{
+              contents = @(
+                @{
+                  parts = @(
+                    @{text = $topicPrompt}
+                  )
+                }
+              )
+              generationConfig = @{
+                temperature = 0.9
+                maxOutputTokens = 2048
+              }
+            } | ConvertTo-Json -Depth 10
+
+            try {
+              $topicResponse = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$apiKey" -Method Post -ContentType "application/json; charset=utf-8" -Body ([System.Text.Encoding]::UTF8.GetBytes($topicBody)) -TimeoutSec 120
+              $topicText = $topicResponse.candidates[0].content.parts[0].text
+
+              $topicText = $topicText -replace '```json', '' -replace '```', '' -replace '^\s+|\s+$', ''
+
+              $newTopics = $topicText | ConvertFrom-Json
+
+              foreach ($t in $newTopics) {
+                $topics += $t
+              }
+
+              Write-Host "Generated $($newTopics.Count) new topics!"
+              $availableTopics = $topics | Where-Object {
+                $slug = $_.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
+                $existingFiles -notcontains $slug
+              }
+            } catch {
+              Write-Host "Error generating topics: $($_.Exception.Message)"
+              exit 1
+            }
+          }
+
+          if ($availableTopics.Count -eq 0) {
+            Write-Host "No more topics available even after generation!"
             exit 0
           }
 
