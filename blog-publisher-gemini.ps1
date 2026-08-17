@@ -173,15 +173,19 @@ function Create-BlogHTML {
         [string]$readTime,
         [string]$content,
         [string]$imageUrl,
-        [string]$slug
+        [string]$slug,
+        [string]$ctaHeading = "Need a WordPress Expert on Your Side?",
+        [string]$ctaSubtitle = "I build custom WordPress solutions that help businesses grow. Let's discuss what you need.",
+        [string]$ctaButton = "Get in Touch &rarr;"
     )
 
     # Insert CTA after first 2 paragraphs (safe injection)
     $cta = @"
 
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
-  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
-  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#000;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">$ctaHeading</p>
+  <p style="margin:0 0 12px;font-size:14px;color:var(--text-secondary)">$ctaSubtitle</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">$ctaButton</a>
 </div>
 
 "@
@@ -219,7 +223,7 @@ function Create-BlogHTML {
 
 <div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:40px 0 32px;text-align:center">
   <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Like what you read? Let's work together!</p>
-  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#000;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Get in Touch &rarr;</a>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">$ctaButton</a>
 </div>
 
 "@
@@ -668,8 +672,39 @@ $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
 $date = Get-Date -Format "MMM dd, yyyy"
 $filename = "$slug.html"
 
+# Generate topic-specific CTA text
+function Get-TopicCTA {
+    param([string]$title)
+    $t = $title.ToLower()
+    if ($t -match 'seo') {
+        return @{ heading="Want Better Rankings for Your WordPress Site?"; subtitle="I implement technical SEO strategies that actually move the needle. Let's audit your site together."; button="Let's Talk SEO &rarr;" }
+    } elseif ($t -match 'speed|performance|optimization|fast|cache') {
+        return @{ heading="Is Your WordPress Site Running Slow?"; subtitle="A fast site means more conversions. I optimize databases, hosting, and code for peak performance."; button="Boost Your Site Speed &rarr;" }
+    } elseif ($t -match 'gutenberg|elementor|page builder|block') {
+        return @{ heading="Not Sure Which Page Builder to Choose?"; subtitle="I build with both Gutenberg and Elementor. Let me help you pick the right one for your project."; button="Get Expert Advice &rarr;" }
+    } elseif ($t -match 'woocommerce|ecommerce|e-commerce|store|shop|cart|checkout|product|payment') {
+        return @{ heading="Need a WooCommerce Store That Actually Works?"; subtitle="From tax setup to payment gateways — I build stores that are ready to sell from day one."; button="Start Your Store &rarr;" }
+    } elseif ($t -match 'security|secure|login|hack') {
+        return @{ heading="Is Your WordPress Site Secure?"; subtitle="I harden WordPress sites against attacks. Let's make sure your business is protected."; button="Secure Your Site &rarr;" }
+    } elseif ($t -match 'database|sql|db') {
+        return @{ heading="Is Your WordPress Database Slowing You Down?"; subtitle="A clean database means faster queries and happier users. Let me optimize yours."; button="Clean Up Your DB &rarr;" }
+    } elseif ($t -match 'theme|template|design') {
+        return @{ heading="Need a Custom WordPress Theme?"; subtitle="I build fast, beautiful themes tailored to your brand. Let's create something unique."; button="Build Your Theme &rarr;" }
+    } elseif ($t -match 'plugin|custom|code|php|api') {
+        return @{ heading="Need Custom WordPress Development?"; subtitle="From plugins to REST APIs — I build solutions that extend WordPress beyond limits."; button="Let's Build It &rarr;" }
+    } elseif ($t -match 'migration|move|backup') {
+        return @{ heading="Planning a WordPress Migration?"; subtitle="I move sites safely with zero downtime. Let's handle your migration stress-free."; button="Plan Your Move &rarr;" }
+    } elseif ($t -match 'membership|course|learn|education') {
+        return @{ heading="Building a Membership Site?"; subtitle="I set up learning platforms and membership systems on WordPress. Let's get started."; button="Launch Your Platform &rarr;" }
+    } else {
+        return @{ heading="Need a WordPress Expert on Your Side?"; subtitle="I build custom WordPress solutions that help businesses grow. Let's discuss what you need."; button="Get in Touch &rarr;" }
+    }
+}
+
+$cta = Get-TopicCTA -title $topic.title
+
 # Generate HTML
-$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug
+$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug -ctaHeading $cta.heading -ctaSubtitle $cta.subtitle -ctaButton $cta.button
 
 # Save file
 $filePath = Join-Path $BlogDir $filename
