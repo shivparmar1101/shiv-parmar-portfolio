@@ -361,31 +361,39 @@ ALTER TABLE wp_options ENGINE = InnoDB;
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../script.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded",function(){
-  var toc=document.getElementById("tocList");
-  var headings=document.querySelectorAll(".content h2");
-  headings.forEach(function(h,i){
-    var id="section-"+i;
-    h.id=id;
-    var li=document.createElement("li");
-    var a=document.createElement("a");
-    a.href="#"+id;
-    a.textContent=h.textContent;
-    li.appendChild(a);
-    toc.appendChild(li);
-  });
-  var related=document.getElementById("relatedBlogs");
-  var posts=[
-    {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
-    {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
-  ];
-  posts.forEach(function(p){
-    var card=document.createElement("div");
-    card.className="related-card";
-    card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
-    related.appendChild(card);
-  });
-});
+(function(){
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      var headings=document.querySelectorAll(".content h2");
+      headings.forEach(function(h,i){
+        var id="section-"+i;
+        h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;
+        a.textContent=h.textContent;
+        li.appendChild(a);
+        toc.appendChild(li);
+      });
+    }
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[
+        {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
+        {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
+      ];
+      posts.forEach(function(p){
+        var card=document.createElement("div");
+        card.className="related-card";
+        card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+        related.appendChild(card);
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
+})();
+</script>
 const contactForm=document.getElementById("contactForm");if(contactForm){contactForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=contactForm.querySelector("button[type=submit]");const status=document.getElementById("formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("name").value.trim(),email:document.getElementById("email").value.trim(),phone:document.getElementById("phone").value.trim(),subject:document.getElementById("subject").value,budget:document.getElementById("budget").value,message:document.getElementById("message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";contactForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
 </script>
 </body>
