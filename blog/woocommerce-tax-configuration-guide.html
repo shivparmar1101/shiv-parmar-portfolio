@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WooCommerce Tax Configuration Guide &mdash; Shiv Parmar</title>
+<meta name="description" content="WooCommerce Tax Configuration Guide - WordPress development guide by Shiv Parmar.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
+article{padding:0}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border-glass);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid #c9a84c;padding:0 0 0 15px;margin:20px 0;font-style:italic;color:#fff;background:transparent;border-radius:0}
+.content blockquote em{color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">shiv<span>.</span>parmar</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#blog">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" onclick="toggleTheme()">&#9790;</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a class="nav-cta" href="../index.html#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+<article><div class="container">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop" alt="WooCommerce Tax Configuration Guide" title="WooCommerce Tax Configuration Guide" class="hero-img">
+<div class="date">Aug 17, 2026 &middot; 4 min read</div>
+<h1>WooCommerce Tax Configuration Guide</h1>
+<div class="content">
+<p>Hello everyone! I am Shiv Parmar, a WordPress developer based out of the vibrant city of Rajkot, India. Over the years, I have built and customized dozens of WooCommerce stores for business owners around the globe. If there is one topic that consistently brings store owners to a standstill during launch week, it is tax configuration.</p>
+
+<p>Tax setups can quickly get overwhelming, whether you are dealing with state-specific taxes, international VAT, or India's multi-tiered GST system. In this comprehensive guide, I will walk you through setting up WooCommerce tax rules from both a store management and custom developer perspective. By the end of this post, you will understand how to configure standard taxes, write custom PHP code to manipulate tax classes, and style frontend tax displays using CSS.</p>
+<div style="background:var(--accent-glow-soft);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:24px;margin:32px 0;text-align:center">
+  <p style="margin:0 0 12px;font-weight:600;color:var(--text-primary)">Need a WordPress Developer for your project?</p>
+  <a href="../index.html#contact" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none">Hire Me &rarr;</a>
+</div>
+
+
+<h2>Step 1: Enabling Tax Calculations in WooCommerce</h2>
+
+<p>Before you can add tax rates, you need to enable the core tax functionality inside WooCommerce. Out of the box, tax settings are hidden until toggled on.</p>
+
+<ol>
+    <li>Log into your WordPress admin dashboard.</li>
+    <li>Navigate to <strong>WooCommerce &gt; Settings &gt; General</strong>.</li>
+    <li>Scroll down to the <strong>Enable taxes</strong> option and check the box that says <em>"Enable tax rates and calculations"</em>.</li>
+    <li>Scroll to the bottom and click <strong>Save changes</strong>.</li>
+</ol>
+
+<p>Once saved, you will notice a brand-new <strong>Tax</strong> tab appear between the "Products" and "Shipping" tabs in your WooCommerce settings.</p>
+
+<h2>Step 2: Understanding Core WooCommerce Tax Options</h2>
+
+<p>Click on the newly visible <strong>Tax</strong> tab. Here, WooCommerce gives you control over how taxes are calculated and displayed across your shop. Let us look at the critical settings you need to configure:</p>
+
+<ul>
+    <li><strong>Prices entered with tax:</strong> Decide whether your product prices in the admin dashboard include tax (inclusive) or exclude tax (exclusive). In India and many European countries, inclusive pricing is standard for B2C stores. In the US, exclusive pricing is preferred.</li>
+    <li><strong>Calculate tax based on:</strong> Choose between Customer shipping address, Customer billing address, or Store base address. For most physical goods, shipping address is the legal standard.</li>
+    <li><strong>Shipping tax class:</strong> Determines how tax is applied to shipping fees. You can set this to match the cart items, or enforce a specific tax class.</li>
+    <li><strong>Display prices in the shop / cart:</strong> Controls whether prices shown to customers include or exclude tax.</li>
+</ul>
+
+<blockquote>
+    <p>Key Insight: Tax compliance is not just about calculating the right percentage; it is about transparency. Always ensure your shop and checkout pages clearly state whether listed prices are tax-inclusive or tax-exclusive to build customer trust and prevent checkout abandonment.</p>
+</blockquote>
+
+<h2>Step 3: Setting Up Tax Classes and Tax Rates</h2>
+
+<p>WooCommerce provides three default tax classes: <strong>Standard rates</strong>, <strong>Reduced rate rates</strong>, and <strong>Zero rate rates</strong>. You can also add custom tax classes if your product catalog requires special handling (for example, Digital Goods or Luxury Items).</p>
+
+<h3>Adding Tax Rates Manually</h3>
+
+<p>To insert rates, click on <strong>Standard rates</strong> under the Tax tab. Click <strong>Insert row</strong> and fill out the required columns:</p>
+
+<ul>
+    <li><strong>Country code:</strong> 2-digit ISO code (e.g., <code>IN</code> for India, <code>US</code> for United States). Leave wildcard <code>*</code> to apply to all countries.</li>
+    <li><strong>State code:</strong> 2-digit state code (e.g., <code>GJ</code> for Gujarat).</li>
+    <li><strong>Rate %:</strong> The tax percentage (e.g., <code>18.0000</code>).</li>
+    <li><strong>Tax name:</strong> The label displayed to customers at checkout (e.g., <code>GST</code> or <code>Sales Tax</code>).</li>
+    <li><strong>Compound:</strong> Check this if this tax rate is applied on top of other taxes.</li>
+    <li><strong>Shipping:</strong> Check this if the tax rate applies to shipping costs as well.</li>
+</ul>
+
+<h2>Step 4: Customizing Tax Behavior with PHP</h2>
+
+<p>As developers, standard WooCommerce settings often do not meet unique business rules. For instance, what if you want to exempt wholesale customers from paying sales tax? Or dynamically change a product's tax class based on user roles?</p>
+
+<p>Here is a practical PHP snippet I frequently use in client projects. This code hooks into WooCommerce to automatically apply a "Zero Rate" tax class to users who belong to a specific user role, such as <code>wholesale_customer</code>.</p>
+
+<p>You can add this snippet to your custom child theme's <code>functions.php</code> file or via a code snippets plugin:</p>
+
+<pre><code>/**
+ * Dynamically change product tax class based on user role.
+ * Developed by Shiv Parmar.
+ */
+add_filter( 'woocommerce_product_get_tax_class', 'shiv_exempt_tax_for_wholesale_users', 10, 2 );
+add_filter( 'woocommerce_product_variation_get_tax_class', 'shiv_exempt_tax_for_wholesale_users', 10, 2 );
+
+function shiv_exempt_tax_for_wholesale_users( $tax_class, $product ) {
+    // Check if user is logged in
+    if ( is_user_logged_in() ) {
+        $current_user = wp_get_current_user();
+        
+        // If the user has the 'wholesale_customer' role, set tax to Zero Rate
+        if ( in_array( 'wholesale_customer', (array) $current_user->roles ) ) {
+            return 'Zero Rate';
+        }
+    }
+    
+    return $tax_class;
+}
+</code></pre>
+
+<p>If you need to programmatically apply zero tax to the entire cart session based on custom conditions (like a VAT-exempt customer), you can use the <code>set_is_vat_exempt()</code> method on the customer object:</p>
+
+<pre><code>/**
+ * Exempt customer from tax based on custom cart total condition.
+ */
+add_action( 'woocommerce_calculate_totals', 'shiv_apply_conditional_tax_exemption' );
+
+function shiv_apply_conditional_tax_exemption( $cart ) {
+    if ( is_admin() &amp;&amp; ! defined( 'DOING_AJAX' ) ) {
+        return;
+    }
+
+    // Example condition: Exempt tax if cart subtotal exceeds 1000
+    if ( $cart-&gt;get_subtotal() &gt; 1000 ) {
+        WC()-&gt;customer-&gt;set_is_vat_exempt( true );
+    } else {
+        WC()-&gt;customer-&gt;set_is_vat_exempt( false );
+    }
+}
+</code></pre>
+
+<h2>Step 5: Styling Tax Displays with Custom CSS</h2>
+
+<p>Once tax settings are active, WooCommerce adds tax totals to product cards, cart tables, and checkout summaries. Sometimes, the default styling does not match your theme design. Here is a simple CSS snippet to make tax lines stand out clearly during checkout.</p>
+
+<p>Add the following snippet to your theme's <strong>Customizer &gt; Additional CSS</strong>:</p>
+
+<pre><code>/* Style Tax Row in WooCommerce Checkout Table */
+.woocommerce-checkout-review-order-table tr.tax-rate {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0073aa;
+}
+
+.woocommerce-checkout-review-order-table tr.tax-rate th,
+.woocommerce-checkout-review-order-table tr.tax-rate td {
+    padding: 12px 15px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Optional badge for tax inclusion on shop pages */
+.woocommerce-price-suffix {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 4px;
+    font-style: italic;
+}
+</code></pre>
+
+<h2>Handling Regional Tax Complexities (Indian GST Example)</h2>
+
+<p>Working from Rajkot, I frequently assist Indian merchants in setting up GST. Indian GST requires splitting taxes into CGST (Central) and SGST (State) for intra-state transactions, or applying IGST (Integrated) for inter-state transactions.</p>
+
+<p>To configure this natively in WooCommerce without extra plugins:</p>
+
+<ol>
+    <li>Create a row for your home state (e.g., State: <code>GJ</code>, Tax Name: <code>CGST</code>, Rate: <code>9%</code>, Priority: <code>1</code>).</li>
+    <li>Create a second row for your home state (e.g., State: <code>GJ</code>, Tax Name: <code>SGST</code>, Rate: <code>9%</code>, Priority: <code>2</code>).</li>
+    <li>Create a third row with wildcard state <code>*</code> (Tax Name: <code>IGST</code>, Rate: <code>18%</code>, Priority: <code>1</code>).</li>
+</ol>
+
+<p>WooCommerce automatically evaluates priorities. For buyers in Gujarat, both CGST and SGST will apply (totaling 18%), while buyers outside Gujarat will only match the IGST rule (18%).</p>
+
+<h2>Wrapping Up</h2>
+
+<p>Configuring WooCommerce taxes correctly is crucial for legal compliance and smooth operations. While basic tax setups can be completed using built-in settings, customized business workflows often require developer intervention through hooks and dynamic filters.</p>
+
+<p>I hope this practical guide helped demystify WooCommerce tax configuration for you! If you have any questions or run into tricky WooCommerce developer scenarios, feel free to drop a comment below or reach out to me directly. Happy coding!</p>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+</div></article>
+<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center">
+      <p class="eyebrow" style="color:var(--accent)">Contact</p>
+      <h2 style="font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:12px">Let's Work Together</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Have a project in mind? Send me a message and I'll get back within 24 hours.</p>
+      <form id="blogContactForm" novalidate style="text-align:left">
+        <div style="margin-bottom:16px"><label for="bc-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Full Name *</label><input type="text" id="bc-name" name="name" placeholder="John Doe" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Email Address *</label><input type="email" id="bc-email" name="email" placeholder="john@example.com" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"></div>
+        <div style="margin-bottom:16px"><label for="bc-subject" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Subject *</label><select id="bc-subject" name="subject" required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary)"><option value="" disabled selected>Select inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option></select></div>
+        <div style="margin-bottom:16px"><label for="bc-message" style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">Project Details *</label><textarea id="bc-message" name="message" rows="4" placeholder="Tell me about your project..." required style="width:100%;padding:12px 16px;border:1.5px solid var(--border-glass);border-radius:8px;font-size:14px;background:var(--bg-glass);color:var(--text-primary);resize:vertical"></textarea></div>
+        <button type="submit" style="width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer">Send Message</button>
+        <p id="bc-formStatus" style="text-align:center;margin-top:12px;font-size:14px;color:var(--text-muted)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
+<script src="../script.js"></script>
+<script>
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
+</script>
+</body>
+</html>
