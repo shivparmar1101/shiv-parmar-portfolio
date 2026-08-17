@@ -287,7 +287,9 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
 .related-card h4 a{color:var(--text-primary);text-decoration:none}
 .related-card h4 a:hover{color:var(--accent)}
-.hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
+.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg);margin-top:70px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.cta-section{padding:80px 0}
+.contact-grid{margin-top:0}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
 .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
 select option{background:#111;color:#f0f0f0;padding:8px}
@@ -328,27 +330,27 @@ $content
 </div>
 </div></article>
 
-<section style="padding:64px 0;border-top:1px solid var(--border-glass)">
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
   <div class="container">
     <div class="contact-grid">
-      <div class="form-card">
+      <div class="form-card reveal">
         <h3>Let's Work Together</h3>
-        <form id="blogContactForm" novalidate>
+        <form id="contactForm" novalidate>
           <div class="form-row">
-            <label for="bc-name">Full Name *</label>
-            <input type="text" id="bc-name" name="name" placeholder="John Doe" required>
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
           </div>
           <div class="form-row">
-            <label for="bc-email">Email Address *</label>
-            <input type="email" id="bc-email" name="email" placeholder="john@example.com" required>
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
           </div>
           <div class="form-row">
-            <label for="bc-phone">Phone Number</label>
-            <input type="tel" id="bc-phone" name="phone" placeholder="+91 00000 00000">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
           </div>
           <div class="form-row">
-            <label for="bc-subject">Subject *</label>
-            <select id="bc-subject" name="subject" required>
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
               <option value="" disabled selected>Select an inquiry type</option>
               <option value="General Inquiry">General Inquiry</option>
               <option value="Project Request">Project Request</option>
@@ -358,8 +360,8 @@ $content
             </select>
           </div>
           <div class="form-row">
-            <label for="bc-budget">Budget Range</label>
-            <select id="bc-budget" name="budget">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
               <option value="" disabled selected>Select budget range</option>
               <option value="Under Rs.10,000">Under Rs.10,000</option>
               <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
@@ -369,15 +371,15 @@ $content
             </select>
           </div>
           <div class="form-row">
-            <label for="bc-message">Project Details *</label>
-            <textarea id="bc-message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
           </div>
           <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
-          <p class="form-note" id="bc-formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+          <p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
         </form>
       </div>
       <div class="contact-info">
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <div class="contact-icon">
             <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="6" y="10" width="36" height="26" rx="3"/>
@@ -389,7 +391,7 @@ $content
             <a href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com</a>
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <div class="contact-icon">
             <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="6" y="6" width="36" height="36" rx="5"/>
@@ -404,7 +406,7 @@ $content
             <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiv-parmar</a>
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <div class="contact-icon">
             <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
               <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
@@ -415,7 +417,7 @@ $content
             <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer">github.com/shivparmar1101</a>
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <div class="contact-icon">
             <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
@@ -426,7 +428,7 @@ $content
             <a href="tel:+917359411663">+91 73594 11663</a>
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <div class="contact-icon">
             <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
@@ -446,66 +448,42 @@ $content
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../script.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded",function(){
-  var toc=document.getElementById("tocList");
-  var headings=document.querySelectorAll(".content h2");
-  headings.forEach(function(h,i){
-    var id="section-"+i;
-    h.id=id;
-    var li=document.createElement("li");
-    var a=document.createElement("a");
-    a.href="#"+id;
-    a.textContent=h.textContent;
-    li.appendChild(a);
-    toc.appendChild(li);
-  });
-  var related=document.getElementById("relatedBlogs");
-  var posts=[
-    {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
-    {title:"WordPress Database Optimization Guide",slug:"wordpress-database-optimization-guide",date:"Aug 16, 2026"},
-    {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
-  ];
-  var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-  posts.forEach(function(p){
-    if(p.slug!==currentSlug){
-      var card=document.createElement("div");
-      card.className="related-card";
-      card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
-      related.appendChild(card);
-    }
-  });
-});
-const bcForm = document.getElementById("blogContactForm");
-if(bcForm){
-  bcForm.addEventListener("submit", async(e)=>{
-    e.preventDefault();
-    const btn = bcForm.querySelector("button[type=submit]");
-    const status = document.getElementById("bc-formStatus");
-    btn.textContent = "Sending..."; btn.disabled = true;
-    try{
-      await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{
-        method:"POST", mode:"no-cors",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          name:document.getElementById("bc-name").value.trim(),
-          email:document.getElementById("bc-email").value.trim(),
-          phone:document.getElementById("bc-phone").value.trim(),
-          subject:document.getElementById("bc-subject").value,
-          budget:document.getElementById("bc-budget").value,
-          message:document.getElementById("bc-message").value.trim(),
-          pageUrl:window.location.href
-        })
+(function(){
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      var headings=document.querySelectorAll(".content h2");
+      headings.forEach(function(h,i){
+        var id="section-"+i;
+        h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;
+        a.textContent=h.textContent;
+        li.appendChild(a);
+        toc.appendChild(li);
       });
-      status.textContent = "Message sent! I'll get back within 24 hours.";
-      status.style.color = "#22c55e";
-      bcForm.reset();
-    }catch(err){
-      status.textContent = "Something went wrong. Please try again.";
-      status.style.color = "#ef4444";
     }
-    btn.textContent = "Send Message"; btn.disabled = false;
-  });
-}
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[
+        {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
+        {title:"WordPress Database Optimization Guide",slug:"wordpress-database-optimization-guide",date:"Aug 16, 2026"},
+        {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
+      ];
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      posts.forEach(function(p){
+        if(p.slug!==currentSlug){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+          related.appendChild(card);
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
+})();
 </script>
 </body>
 </html>
