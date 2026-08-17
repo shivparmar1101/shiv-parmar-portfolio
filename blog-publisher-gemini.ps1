@@ -246,8 +246,19 @@ function Create-BlogHTML {
 .blog-header .nav-right{display:flex;gap:12px;align-items:center}
 .blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
 article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
 .date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.date .updated{color:var(--accent);margin-left:12px}
 h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
 .content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
 .content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
 .content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
@@ -261,23 +272,61 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .content blockquote em{color:#fff}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-box .author-social{display:flex;gap:12px}
+.author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
+.author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin-top:48px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:border-color 0.3s}
+.related-card:hover{border-color:var(--accent)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
 .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
 .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
 select option{background:#111;color:#f0f0f0;padding:8px}
-@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
   <div id="site-header"></div>
 <article><div class="container">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>$title
+</nav>
 <img src="$imageUrl" alt="$title" title="$title" class="hero-img">
-<div class="date">$date &middot; $readTime read</div>
+<div class="date">$date &middot; $readTime read<span class="updated">Updated: $date</span></div>
 <h1>$title</h1>
+<div class="toc" id="toc">
+  <h3>Table of Contents</h3>
+  <ul id="tocList"></ul>
+</div>
 <div class="content">
 $content
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<div class="author-box">
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
+</div>
 </div></article>
 
 <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
@@ -399,7 +448,35 @@ $content
 <script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
-
+document.addEventListener("DOMContentLoaded",function(){
+  var toc=document.getElementById("tocList");
+  var headings=document.querySelectorAll(".content h2");
+  headings.forEach(function(h,i){
+    var id="section-"+i;
+    h.id=id;
+    var li=document.createElement("li");
+    var a=document.createElement("a");
+    a.href="#"+id;
+    a.textContent=h.textContent;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var related=document.getElementById("relatedBlogs");
+  var posts=[
+    {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
+    {title:"WordPress Database Optimization Guide",slug:"wordpress-database-optimization-guide",date:"Aug 16, 2026"},
+    {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
+  ];
+  var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+  posts.forEach(function(p){
+    if(p.slug!==currentSlug){
+      var card=document.createElement("div");
+      card.className="related-card";
+      card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+      related.appendChild(card);
+    }
+  });
+});
 const bcForm = document.getElementById("blogContactForm");
 if(bcForm){
   bcForm.addEventListener("submit", async(e)=>{

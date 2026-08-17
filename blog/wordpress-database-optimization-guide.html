@@ -31,11 +31,38 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .content blockquote em{color:#fff}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date .updated{color:var(--accent);margin-left:12px}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-box .author-social{display:flex;gap:12px}
+.author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
+.author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin-top:48px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:border-color 0.3s}
+.related-card:hover{border-color:var(--accent)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
 .hero-img{width:100%;height:360px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:32px;border:1px solid var(--border-glass)}
 .blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
 .blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
 select option{background:#111;color:#f0f0f0;padding:8px}
-@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
@@ -60,9 +87,16 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     </div>
   </header>
 <article><div class="container">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>WordPress Database Optimization Guide
+</nav>
 <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="WordPress Database Optimization Guide" title="WordPress Database Optimization Guide" class="hero-img">
-<div class="date">Aug 16, 2026 &middot; 5 min read</div>
+<div class="date">Aug 16, 2026 &middot; 5 min read<span class="updated">Updated: Aug 16, 2026</span></div>
 <h1>WordPress Database Optimization Guide</h1>
+<div class="toc" id="toc">
+  <h3>Table of Contents</h3>
+  <ul id="tocList"></ul>
+</div>
 <div class="content">
 <p>Hello everyone! I’m Shiv Parmar, a WordPress developer based in Rajkot, India. Over the years working with agency clients and business owners globally, I have audited hundreds of sluggish WordPress sites. Time and time again, developers jump straight to installing heavy caching plugins or upgrading hosting packages whenever a site slows down. However, in my experience, the true bottleneck is frequently buried much deeper: an unoptimized, bloated MySQL database.</p>
 
@@ -217,6 +251,21 @@ ALTER TABLE wp_options ENGINE = InnoDB;
 <p>I hope this guide helps you boost your WordPress performance! If you have any questions or have specific database optimization tricks you rely on in your own agency, feel free to drop a comment below or reach out to me from Rajkot. Happy coding!</p>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<div class="author-box">
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
+</div>
 </div></article>
 <section style="padding:64px 0;border-top:1px solid var(--border-glass)">
   <div class="container">
@@ -238,7 +287,32 @@ ALTER TABLE wp_options ENGINE = InnoDB;
 <footer class="blog-footer"><div class="container foot-inner"><span>&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><span>Full-time &middot; Contract &middot; Remote</span></div></footer>
 <script src="../script.js"></script>
 <script>
-function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme,t==="dark"?"light":"dark")}
+function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
+document.addEventListener("DOMContentLoaded",function(){
+  var toc=document.getElementById("tocList");
+  var headings=document.querySelectorAll(".content h2");
+  headings.forEach(function(h,i){
+    var id="section-"+i;
+    h.id=id;
+    var li=document.createElement("li");
+    var a=document.createElement("a");
+    a.href="#"+id;
+    a.textContent=h.textContent;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var related=document.getElementById("relatedBlogs");
+  var posts=[
+    {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
+    {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
+  ];
+  posts.forEach(function(p){
+    var card=document.createElement("div");
+    card.className="related-card";
+    card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+    related.appendChild(card);
+  });
+});
 const bcForm=document.getElementById("blogContactForm");if(bcForm){bcForm.addEventListener("submit",async(e)=>{e.preventDefault();const btn=bcForm.querySelector("button[type=submit]");const status=document.getElementById("bc-formStatus");btn.textContent="Sending...";btn.disabled=true;try{await fetch("https://script.google.com/macros/s/AKfycbyiVfJb1fVyOR4jrjHlA2mJkwmq8_6mhxe8OMMgp7GDNhNUrMr7GFTXl7lOjh8XigQF/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:document.getElementById("bc-name").value.trim(),email:document.getElementById("bc-email").value.trim(),phone:"",subject:document.getElementById("bc-subject").value,budget:"",message:document.getElementById("bc-message").value.trim(),pageUrl:window.location.href})});status.textContent="Message sent! I'll get back within 24 hours.";status.style.color="#22c55e";bcForm.reset()}catch(err){status.textContent="Something went wrong. Please try again.";status.style.color="#ef4444"}btn.textContent="Send Message";btn.disabled=false})}
 </script>
 </body>
