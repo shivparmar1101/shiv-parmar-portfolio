@@ -244,7 +244,6 @@ function Create-BlogHTML {
 .blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
 .blog-header .back:hover{color:var(--accent);text-decoration:none}
 .blog-header .nav-right{display:flex;gap:12px;align-items:center}
-.blog-header .theme-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border-glass);background:var(--bg-glass);color:var(--text-primary);font-size:16px;cursor:pointer;display:grid;place-items:center}
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
 .breadcrumb a{color:var(--accent);text-decoration:none}
@@ -447,7 +446,6 @@ $content
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../script.js"></script>
 <script>
-function toggleTheme(){const t=document.documentElement.getAttribute("data-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"light":"dark")}
 document.addEventListener("DOMContentLoaded",function(){
   var toc=document.getElementById("tocList");
   var headings=document.querySelectorAll(".content h2");
