@@ -146,20 +146,49 @@ function Send-EmailNotification {
         [string]$error = ""
     )
 
-    $notificationUrl = "https://script.google.com/macros/s/AKfycbxZ5poh7MGyq-4nzpri5qtB4AujOWhIAsxT6uLiZ5NuJ7VzgRVuJKZRKY0VipBFli6D/exec"
+    $smtpServer = "smtp.gmail.com"
+    $smtpPort = 587
+    $fromEmail = "parmarshiv1101@gmail.com"
+    $toEmail = "parmarshiv1101@gmail.com"
+    $appPassword = "xrwn drvb eqfi ahbv"
 
-    $body = @{
-        type = "blog_notification"
-        status = $status
-        title = $title
-        filename = $filename
-        url = $url
-        error = $error
-        time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    } | ConvertTo-Json
+    if ($status -eq "success") {
+        $subject = "New Blog Published: $title"
+        $body = @"
+<html>
+<body style="font-family:Arial,sans-serif;padding:20px">
+<h2 style="color:#c9a84c">New Blog Published!</h2>
+<table style="border-collapse:collapse;width:100%;max-width:500px">
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Title</td><td style="padding:8px;border-bottom:1px solid #eee">$title</td></tr>
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">File</td><td style="padding:8px;border-bottom:1px solid #eee">$filename</td></tr>
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">URL</td><td style="padding:8px;border-bottom:1px solid #eee"><a href="$url">$url</a></td></tr>
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Time</td><td style="padding:8px;border-bottom:1px solid #eee">$(Get-Date -Format "MMM dd, yyyy HH:mm:ss")</td></tr>
+</table>
+<p style="margin-top:20px;color:#666">- Shiv Parmar Auto Blog System</p>
+</body>
+</html>
+"@
+    } else {
+        $subject = "Blog Publish FAILED: $title"
+        $body = @"
+<html>
+<body style="font-family:Arial,sans-serif;padding:20px">
+<h2 style="color:#ef4444">Blog Publish Failed!</h2>
+<table style="border-collapse:collapse;width:100%;max-width:500px">
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Title</td><td style="padding:8px;border-bottom:1px solid #eee">$title</td></tr>
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Error</td><td style="padding:8px;border-bottom:1px solid #eee;color:#ef4444">$error</td></tr>
+<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Time</td><td style="padding:8px;border-bottom:1px solid #eee">$(Get-Date -Format "MMM dd, yyyy HH:mm:ss")</td></tr>
+</table>
+<p style="margin-top:20px;color:#666">- Shiv Parmar Auto Blog System</p>
+</body>
+</html>
+"@
+    }
 
     try {
-        Invoke-RestMethod -Uri $notificationUrl -Method Post -ContentType "application/json" -Body $body
+        $securePassword = ConvertTo-SecureString $appPassword -AsPlainText -Force
+        $credential = New-Object System.Management.Automation.PSCredential($fromEmail, $securePassword)
+        Send-MailMessage -From $fromEmail -To $toEmail -Subject $subject -Body $body -BodyAsHtml -SmtpServer $smtpServer -Port $smtpPort -UseSsl -Credential $credential -ErrorAction Stop
         Write-Host "Email notification sent!" -ForegroundColor Green
     } catch {
         Write-Host "Email notification failed: $_" -ForegroundColor Yellow
