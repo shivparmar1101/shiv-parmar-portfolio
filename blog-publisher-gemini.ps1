@@ -195,7 +195,8 @@ function Create-BlogHTML {
         [string]$slug,
         [string]$ctaHeading = "Need a WordPress Expert on Your Side?",
         [string]$ctaSubtitle = "I build custom WordPress solutions that help businesses grow. Let's discuss what you need.",
-        [string]$ctaButton = "Get in Touch &rarr;"
+        [string]$ctaButton = "Get in Touch &rarr;",
+        [string]$relatedPostsJson = "[]"
     )
 
     # Insert CTA after first 2 paragraphs (safe injection)
@@ -489,11 +490,7 @@ $content
     }
     var related=document.getElementById("relatedBlogs");
     if(related){
-      var posts=[
-        {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
-        {title:"WordPress Database Optimization Guide",slug:"wordpress-database-optimization-guide",date:"Aug 16, 2026"},
-        {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
-      ];
+      var posts=$relatedPostsJson;
       var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
       posts.forEach(function(p){
         if(p.slug!==currentSlug){
@@ -723,8 +720,27 @@ function Get-TopicCTA {
 
 $cta = Get-TopicCTA -title $topic.title
 
+# Build related posts list from existing blog files
+$relatedPosts = @()
+$blogFiles = Get-ChildItem -Path $BlogDir -Filter "*.html" -File | Where-Object { $_.Name -ne $filename }
+foreach ($file in $blogFiles) {
+    $fileContent = Get-Content -Path $file.FullName -Raw -ErrorAction SilentlyContinue
+    if ($fileContent) {
+        $fileTitle = ""
+        $fileDate = ""
+        if ($fileContent -match '<h1[^>]*>([^<]+)</h1>') { $fileTitle = $Matches[1].Trim() }
+        if ($fileContent -match '<div class="date">([^<]+)') { $fileDate = $Matches[1].Trim() }
+        $fileSlug = $file.BaseName
+        if ($fileTitle -and $fileSlug -ne $slug) {
+            $relatedPosts += @{ title = $fileTitle; slug = $fileSlug; date = $fileDate }
+        }
+    }
+}
+$relatedPostsJson = $relatedPosts | ConvertTo-Json -Compress
+if (-not $relatedPostsJson) { $relatedPostsJson = "[]" }
+
 # Generate HTML
-$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug -ctaHeading $cta.heading -ctaSubtitle $cta.subtitle -ctaButton $cta.button
+$html = Create-BlogHTML -title $topic.title -date $date -readTime $topic.read -content $content -imageUrl $imageUrl -slug $slug -ctaHeading $cta.heading -ctaSubtitle $cta.subtitle -ctaButton $cta.button -relatedPostsJson $relatedPostsJson
 
 # Save file
 $filePath = Join-Path $BlogDir $filename
