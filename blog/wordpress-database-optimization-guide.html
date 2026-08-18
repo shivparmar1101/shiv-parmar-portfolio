@@ -56,6 +56,11 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .related-card h4 a:hover{color:var(--accent)}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:240px}.author-box{flex-direction:column;align-items:center;text-align:center}}
 .cta-section{padding:80px 0}
+.cta-block{background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:80px 48px;text-align:center;position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:40px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5}
+.cta-block .eyebrow{justify-content:center}
+.cta-block h2{font-size:clamp(28px,3.8vw,48px);margin-bottom:16px;letter-spacing:-0.025em;color:var(--text-primary)}
+.cta-block p{color:var(--text-secondary);max-width:520px;margin:0 auto 36px;font-size:16px;line-height:1.75}
 .contact-grid{margin-top:0}
 </style>
 </head>
@@ -246,6 +251,13 @@ ALTER TABLE wp_options ENGINE = InnoDB;
 
 <section id="contact" class="cta-section" aria-labelledby="contact-heading">
   <div class="container">
+    <div class="cta-block reveal">
+      <p class="eyebrow" style="justify-content:center">Open to work</p>
+      <h2 id="contact-heading">Hire a WordPress Developer</h2>
+      <p>Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+      <a class="btn btn-primary" href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com <span class="arrow">&rarr;</span></a>
+    </div>
+
     <div class="contact-grid">
       <div class="form-card reveal">
         <h3>Let's Work Together</h3>
