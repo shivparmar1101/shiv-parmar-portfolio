@@ -125,7 +125,7 @@ function Generate-Image {
         foreach ($part in $response.candidates[0].content.parts) {
             if ($part.inlineData) {
                 $imageData = $part.inlineData.data
-                $imagePath = "D:\xampp\htdocs\portfolio\blog\temp-image.png"
+                $imagePath = Join-Path $BlogDir "temp-image.png"
                 [System.IO.File]::WriteAllBytes($imagePath, [System.Convert]::FromBase64String($imageData))
 
                 # Upload to imgbb or use placeholder
@@ -538,7 +538,7 @@ function Update-HomepageBlog {
         [string]$description
     )
 
-    $indexPath = "D:\xampp\htdocs\portfolio\index.html"
+    $indexPath = Join-Path (Split-Path $BlogDir -Parent) "index.html"
     $content = Get-Content $indexPath -Raw -Encoding UTF8
 
     # Create new blog card
@@ -770,7 +770,7 @@ Update-HomepageBlog -title $topic.title -date $date -readTime $topic.read -slug 
 
 # Update blog listing page
 Write-Host "Updating blog listing page..." -ForegroundColor Yellow
-$blogHtmlPath = "D:\xampp\htdocs\portfolio\blog.html"
+$blogHtmlPath = Join-Path (Split-Path $BlogDir -Parent) "blog.html"
 $blogContent = Get-Content $blogHtmlPath -Raw -Encoding UTF8
 
 # Create new blog card for listing page
@@ -811,11 +811,11 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 
 # Git commit and push
 Write-Host "Committing to GitHub..." -ForegroundColor Yellow
-Set-Location "D:\xampp\htdocs\portfolio"
-$gitExe = "git"
-& $gitExe add .
-& $gitExe commit -m "blog: auto-published - $($topic.title)"
-& $gitExe push origin main
+$repoRoot = Split-Path $BlogDir -Parent
+Set-Location $repoRoot
+& git add .
+& git diff --cached --quiet || & git commit -m "blog: auto-published - $($topic.title)"
+& git push origin main
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Green
