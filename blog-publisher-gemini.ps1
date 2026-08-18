@@ -155,9 +155,8 @@ function Send-EmailNotification {
         [string]$error = ""
     )
 
-    # Skip on Linux (GitHub Actions handles email via Python step)
     if ($IsLinux -or (-not (Get-Command Send-MailMessage -ErrorAction SilentlyContinue))) {
-        Write-Host "Email skipped (Linux/GitHub Actions — handled by workflow step)" -ForegroundColor Gray
+        Write-Host "Email skipped (Linux - handled by workflow step)" -ForegroundColor Gray
         return
     }
 
@@ -166,44 +165,20 @@ function Send-EmailNotification {
     $fromEmail = "parmarshiv1101@gmail.com"
     $toEmail = "parmarshiv1101@gmail.com"
     $appPassword = "xrwn drvb eqfi ahbv"
+    $time = Get-Date -Format "MMM dd, yyyy HH:mm:ss"
 
     if ($status -eq "success") {
         $subject = "New Blog Published: $title"
-        $body = @"
-<html>
-<body style="font-family:Arial,sans-serif;padding:20px">
-<h2 style="color:#c9a84c">New Blog Published!</h2>
-<table style="border-collapse:collapse;width:100%;max-width:500px">
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Title</td><td style="padding:8px;border-bottom:1px solid #eee">$title</td></tr>
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">File</td><td style="padding:8px;border-bottom:1px solid #eee">$filename</td></tr>
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">URL</td><td style="padding:8px;border-bottom:1px solid #eee"><a href="$url">$url</a></td></tr>
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Time</td><td style="padding:8px;border-bottom:1px solid #eee">$(Get-Date -Format "MMM dd, yyyy HH:mm:ss")</td></tr>
-</table>
-<p style="margin-top:20px;color:#666">- Shiv Parmar Auto Blog System</p>
-</body>
-</html>
-"@
+        $htmlBody = "<html><body style='font-family:Arial,sans-serif;padding:20px'><h2 style='color:#c9a84c'>New Blog Published!</h2><table style='border-collapse:collapse;width:100%;max-width:500px'><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>Title</td><td style='padding:8px;border-bottom:1px solid #eee'>$title</td></tr><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>File</td><td style='padding:8px;border-bottom:1px solid #eee'>$filename</td></tr><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>URL</td><td style='padding:8px;border-bottom:1px solid #eee'><a href='$url'>$url</a></td></tr><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>Time</td><td style='padding:8px;border-bottom:1px solid #eee'>$time</td></tr></table><p style='margin-top:20px;color:#666'>- Shiv Parmar Auto Blog System</p></body></html>"
     } else {
         $subject = "Blog Publish FAILED: $title"
-        $body = @"
-<html>
-<body style="font-family:Arial,sans-serif;padding:20px">
-<h2 style="color:#ef4444">Blog Publish Failed!</h2>
-<table style="border-collapse:collapse;width:100%;max-width:500px">
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Title</td><td style="padding:8px;border-bottom:1px solid #eee">$title</td></tr>
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Error</td><td style="padding:8px;border-bottom:1px solid #eee;color:#ef4444">$error</td></tr>
-<tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee">Time</td><td style="padding:8px;border-bottom:1px solid #eee">$(Get-Date -Format "MMM dd, yyyy HH:mm:ss")</td></tr>
-</table>
-<p style="margin-top:20px;color:#666">- Shiv Parmar Auto Blog System</p>
-</body>
-</html>
-"@
+        $htmlBody = "<html><body style='font-family:Arial,sans-serif;padding:20px'><h2 style='color:#ef4444'>Blog Publish Failed!</h2><table style='border-collapse:collapse;width:100%;max-width:500px'><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>Title</td><td style='padding:8px;border-bottom:1px solid #eee'>$title</td></tr><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>Error</td><td style='padding:8px;border-bottom:1px solid #eee;color:#ef4444'>$error</td></tr><tr><td style='padding:8px;font-weight:bold;border-bottom:1px solid #eee'>Time</td><td style='padding:8px;border-bottom:1px solid #eee'>$time</td></tr></table><p style='margin-top:20px;color:#666'>- Shiv Parmar Auto Blog System</p></body></html>"
     }
 
     try {
         $securePassword = ConvertTo-SecureString $appPassword -AsPlainText -Force
         $credential = New-Object System.Management.Automation.PSCredential($fromEmail, $securePassword)
-        Send-MailMessage -From $fromEmail -To $toEmail -Subject $subject -Body $body -BodyAsHtml -SmtpServer $smtpServer -Port $smtpPort -UseSsl -Credential $credential -ErrorAction Stop
+        Send-MailMessage -From $fromEmail -To $toEmail -Subject $subject -Body $htmlBody -BodyAsHtml -SmtpServer $smtpServer -Port $smtpPort -UseSsl -Credential $credential -ErrorAction Stop
         Write-Host "Email notification sent!" -ForegroundColor Green
     } catch {
         Write-Host "Email notification failed: $_" -ForegroundColor Yellow
@@ -720,28 +695,29 @@ $filename = "$slug.html"
 function Get-TopicCTA {
     param([string]$title)
     $t = $title.ToLower()
+    $arrow = [char]0x2192
     if ($t -match 'seo') {
-        return @{ heading="Want Better Rankings for Your WordPress Site?"; subtitle="I implement technical SEO strategies that actually move the needle. Let's audit your site together."; button="Let's Talk SEO &rarr;" }
+        return @{ heading="Want Better Rankings for Your WordPress Site?"; subtitle="I implement technical SEO strategies that actually move the needle. Let's audit your site together."; button="Let's Talk SEO $arrow" }
     } elseif ($t -match 'speed|performance|optimization|fast|cache') {
-        return @{ heading="Is Your WordPress Site Running Slow?"; subtitle="A fast site means more conversions. I optimize databases, hosting, and code for peak performance."; button="Boost Your Site Speed &rarr;" }
+        return @{ heading="Is Your WordPress Site Running Slow?"; subtitle="A fast site means more conversions. I optimize databases, hosting, and code for peak performance."; button="Boost Your Site Speed $arrow" }
     } elseif ($t -match 'gutenberg|elementor|page builder|block') {
-        return @{ heading="Not Sure Which Page Builder to Choose?"; subtitle="I build with both Gutenberg and Elementor. Let me help you pick the right one for your project."; button="Get Expert Advice &rarr;" }
+        return @{ heading="Not Sure Which Page Builder to Choose?"; subtitle="I build with both Gutenberg and Elementor. Let me help you pick the right one for your project."; button="Get Expert Advice $arrow" }
     } elseif ($t -match 'woocommerce|ecommerce|e-commerce|store|shop|cart|checkout|product|payment') {
-        return @{ heading="Need a WooCommerce Store That Actually Works?"; subtitle="From tax setup to payment gateways — I build stores that are ready to sell from day one."; button="Start Your Store &rarr;" }
+        return @{ heading="Need a WooCommerce Store That Actually Works?"; subtitle="From tax setup to payment gateways - I build stores that are ready to sell from day one."; button="Start Your Store $arrow" }
     } elseif ($t -match 'security|secure|login|hack') {
-        return @{ heading="Is Your WordPress Site Secure?"; subtitle="I harden WordPress sites against attacks. Let's make sure your business is protected."; button="Secure Your Site &rarr;" }
+        return @{ heading="Is Your WordPress Site Secure?"; subtitle="I harden WordPress sites against attacks. Let's make sure your business is protected."; button="Secure Your Site $arrow" }
     } elseif ($t -match 'database|sql|db') {
-        return @{ heading="Is Your WordPress Database Slowing You Down?"; subtitle="A clean database means faster queries and happier users. Let me optimize yours."; button="Clean Up Your DB &rarr;" }
+        return @{ heading="Is Your WordPress Database Slowing You Down?"; subtitle="A clean database means faster queries and happier users. Let me optimize yours."; button="Clean Up Your DB $arrow" }
     } elseif ($t -match 'theme|template|design') {
-        return @{ heading="Need a Custom WordPress Theme?"; subtitle="I build fast, beautiful themes tailored to your brand. Let's create something unique."; button="Build Your Theme &rarr;" }
+        return @{ heading="Need a Custom WordPress Theme?"; subtitle="I build fast, beautiful themes tailored to your brand. Let's create something unique."; button="Build Your Theme $arrow" }
     } elseif ($t -match 'plugin|custom|code|php|api') {
-        return @{ heading="Need Custom WordPress Development?"; subtitle="From plugins to REST APIs — I build solutions that extend WordPress beyond limits."; button="Let's Build It &rarr;" }
+        return @{ heading="Need Custom WordPress Development?"; subtitle="From plugins to REST APIs - I build solutions that extend WordPress beyond limits."; button="Let's Build It $arrow" }
     } elseif ($t -match 'migration|move|backup') {
-        return @{ heading="Planning a WordPress Migration?"; subtitle="I move sites safely with zero downtime. Let's handle your migration stress-free."; button="Plan Your Move &rarr;" }
+        return @{ heading="Planning a WordPress Migration?"; subtitle="I move sites safely with zero downtime. Let's handle your migration stress-free."; button="Plan Your Move $arrow" }
     } elseif ($t -match 'membership|course|learn|education') {
-        return @{ heading="Building a Membership Site?"; subtitle="I set up learning platforms and membership systems on WordPress. Let's get started."; button="Launch Your Platform &rarr;" }
+        return @{ heading="Building a Membership Site?"; subtitle="I set up learning platforms and membership systems on WordPress. Let's get started."; button="Launch Your Platform $arrow" }
     } else {
-        return @{ heading="Need a WordPress Expert on Your Side?"; subtitle="I build custom WordPress solutions that help businesses grow. Let's discuss what you need."; button="Get in Touch &rarr;" }
+        return @{ heading="Need a WordPress Expert on Your Side?"; subtitle="I build custom WordPress solutions that help businesses grow. Let's discuss what you need."; button="Get in Touch $arrow" }
     }
 }
 
