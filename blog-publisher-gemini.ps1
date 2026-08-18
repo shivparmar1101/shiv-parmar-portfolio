@@ -4,9 +4,18 @@
 
 param(
     [string]$ApiKey = "",
-    [string]$BlogDir = "D:\xampp\htdocs\portfolio\blog",
-    [string]$SiteUrl = "https://shivparmar1101.github.io/shiv-parmar-portfolio"
+    [string]$BlogDir = "",
+    [string]$SiteUrl = "https://shiv-parmar-portfolio.netlify.app"
 )
+
+# Auto-detect blog directory
+if (-not $BlogDir) {
+    if ($IsLinux -or $env:RUNNER_OS) {
+        $BlogDir = "blog"
+    } else {
+        $BlogDir = "D:\xampp\htdocs\portfolio\blog"
+    }
+}
 
 # Blog topics pool
 $topics = @(
@@ -145,6 +154,12 @@ function Send-EmailNotification {
         [string]$url,
         [string]$error = ""
     )
+
+    # Skip on Linux (GitHub Actions handles email via Python step)
+    if ($IsLinux -or (-not (Get-Command Send-MailMessage -ErrorAction SilentlyContinue))) {
+        Write-Host "Email skipped (Linux/GitHub Actions — handled by workflow step)" -ForegroundColor Gray
+        return
+    }
 
     $smtpServer = "smtp.gmail.com"
     $smtpPort = 587
