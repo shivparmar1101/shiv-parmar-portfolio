@@ -205,26 +205,38 @@ function Create-BlogHTML {
 
 "@
 
-    # Find safe injection point: after a </p> that is NOT followed by <pre or <code
+    # Find safe injection point: after a </p> that is NOT inside a <pre><code> block
     $insertPos = -1
     $searchStart = 0
     while ($searchStart -lt $content.Length) {
         $pIdx = $content.IndexOf('</p>', $searchStart)
         if ($pIdx -lt 0) { break }
-        $afterP = $pIdx + 4
-        # Skip whitespace
-        while ($afterP -lt $content.Length -and $content[$afterP] -in ' ', "`n", "`r", "`t") { $afterP++ }
-        # Check what follows: skip if it's <pre or <code or another <p
-        $followsCode = $false
-        if ($afterP -lt $content.Length - 4) {
-            $nextTag = $content.Substring($afterP, [Math]::Min(10, $content.Length - $afterP)).ToLower()
-            if ($nextTag -match '^<(pre|code|ul|ol|blockquote|h[1-6])') {
-                $followsCode = $true
+        
+        # Check if this </p> is inside a <pre> or <code> block
+        $beforeP = $content.Substring(0, $pIdx).ToLower()
+        $openPre = ([regex]::Matches($beforeP, '<pre[\s>]')).Count
+        $closePre = ([regex]::Matches($beforeP, '</pre>')).Count
+        $openCode = ([regex]::Matches($beforeP, '<code[\s>]')).Count
+        $closeCode = ([regex]::Matches($beforeP, '</code>')).Count
+        
+        $insideCodeBlock = ($openPre -gt $closePre) -or ($openCode -gt $closeCode)
+        
+        if (-not $insideCodeBlock) {
+            $afterP = $pIdx + 4
+            # Skip whitespace
+            while ($afterP -lt $content.Length -and $content[$afterP] -in ' ', "`n", "`r", "`t") { $afterP++ }
+            # Check what follows: skip if it's <pre or <code or another <p
+            $followsCode = $false
+            if ($afterP -lt $content.Length - 4) {
+                $nextTag = $content.Substring($afterP, [Math]::Min(10, $content.Length - $afterP)).ToLower()
+                if ($nextTag -match '^<(pre|code|ul|ol|blockquote|h[1-6])') {
+                    $followsCode = $true
+                }
             }
-        }
-        if (-not $followsCode) {
-            $insertPos = $pIdx + 4
-            break
+            if (-not $followsCode) {
+                $insertPos = $pIdx + 4
+                break
+            }
         }
         $searchStart = $pIdx + 4
     }
