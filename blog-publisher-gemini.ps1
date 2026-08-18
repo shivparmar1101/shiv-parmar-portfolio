@@ -90,7 +90,7 @@ Return ONLY the blog content HTML. No ```html or ``` tags, just raw HTML.
     } | ConvertTo-Json -Depth 10
 
     try {
-        $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$apiKey" -Method Post -ContentType "application/json; charset=utf-8" -Body ([System.Text.Encoding]::UTF8.GetBytes($body)) -TimeoutSec 180
+        $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey" -Method Post -ContentType "application/json; charset=utf-8" -Body ([System.Text.Encoding]::UTF8.GetBytes($body)) -TimeoutSec 180
         return $response.candidates[0].content.parts[0].text
     } catch {
         Write-Host "Error generating content: $_" -ForegroundColor Red
@@ -119,7 +119,7 @@ function Generate-Image {
     } | ConvertTo-Json -Depth 10
 
     try {
-        $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=$apiKey" -Method Post -ContentType "application/json" -Body $body
+        $response = Invoke-RestMethod -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey" -Method Post -ContentType "application/json" -Body $body
 
         # Extract image data from response
         foreach ($part in $response.candidates[0].content.parts) {
