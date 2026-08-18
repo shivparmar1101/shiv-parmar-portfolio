@@ -14,7 +14,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -24,17 +24,30 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_ONE }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
-          $ErrorActionPreference = 'Stop'
+          $ErrorActionPreference = 'Continue'
+          Write-Host "=== Blog Publisher Debug Info ==="
+          Write-Host "GEMINI_API_KEY set: $([bool]$env:GEMINI_API_KEY)"
+          Write-Host "GEMINI_API_KEY length: $($env:GEMINI_API_KEY.Length)"
+          Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
+          Write-Host "Current directory: $(Get-Location)"
+          Write-Host "Files in root: $(Get-ChildItem -Name | Out-String)"
+          Write-Host "================================="
+          
           $apiKey = $env:GEMINI_API_KEY
+          if (-not $apiKey -and (Test-Path ".api-key")) {
+            Write-Host "Fallback: Reading API key from .api-key file"
+            $apiKey = (Get-Content ".api-key" -Raw).Trim()
+          }
           if (-not $apiKey) {
-            Write-Host "ERROR: GEMINI_API_KEY secret not set!"
+            Write-Host "ERROR: No API key available!"
             exit 1
           }
+          Write-Host "API key found, starting blog publisher..."
           . ./blog-publisher-gemini.ps1 -ApiKey $apiKey
 
       - name: Send Email Notification
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
