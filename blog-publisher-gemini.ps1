@@ -359,13 +359,6 @@ $content
 
 <section id="contact" class="cta-section" aria-labelledby="contact-heading">
   <div class="container">
-    <div class="cta-block reveal">
-      <p class="eyebrow" style="justify-content:center">Open to work</p>
-      <h2 id="contact-heading">Hire a WordPress Developer</h2>
-      <p>Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
-      <a class="btn btn-primary" href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com <span class="arrow">&rarr;</span></a>
-    </div>
-
     <div class="contact-grid">
       <div class="form-card reveal">
         <h3>Let's Work Together</h3>
