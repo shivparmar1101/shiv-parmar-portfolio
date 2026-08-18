@@ -437,12 +437,14 @@ add_filter( 'the_content', 'shiv_restrict_premium_content' );
         {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
       ];
       var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
       posts.forEach(function(p){
-        if(p.slug!==currentSlug){
+        if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
           card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
           related.appendChild(card);
+          count++;
         }
       });
     }

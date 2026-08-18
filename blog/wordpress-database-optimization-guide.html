@@ -391,11 +391,16 @@ ALTER TABLE wp_options ENGINE = InnoDB;
         {title:"WordPress SEO Technical Checklist",slug:"wordpress-seo-technical-checklist",date:"Aug 15, 2026"},
         {title:"WordPress Gutenberg vs Elementor: Which is Better in 2026?",slug:"wordpress-gutenberg-vs-elementor-which-is-better-in-2026",date:"Aug 16, 2026"}
       ];
+      var count=0;
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
       posts.forEach(function(p){
-        var card=document.createElement("div");
-        card.className="related-card";
-        card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
-        related.appendChild(card);
+        if(p.slug!==currentSlug && count<3){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+          related.appendChild(card);
+          count++;
+        }
       });
     }
   }

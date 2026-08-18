@@ -455,12 +455,14 @@ endif;
     if(related){
       var posts=[{"date":"Aug 18, 2026 \u0026middot; 7 min read","title":"How to Build a WordPress Membership Site","slug":"how-to-build-a-wordpress-membership-site"},{"date":"Aug 18, 2026 \u0026middot; 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"Aug 17, 2026 \u0026middot; 4 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"Aug 16, 2026 \u0026middot; 5 min read","title":"WordPress Database Optimization Guide","slug":"wordpress-database-optimization-guide"},{"date":"Aug 16, 2026 \u0026middot; 6 min read","title":"WordPress Gutenberg vs Elementor: Which is Better in 2026?","slug":"wordpress-gutenberg-vs-elementor-which-is-better-in-2026"},{"date":"Aug 15, 2026 \u0026middot; 6 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"}];
       var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
       posts.forEach(function(p){
-        if(p.slug!==currentSlug){
+        if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
           card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
           related.appendChild(card);
+          count++;
         }
       });
     }
