@@ -302,7 +302,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .author-box .author-social{display:flex;gap:12px}
 .author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
 .author-box .author-social a:hover{text-decoration:underline}
-.related-blogs{margin-top:48px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs{margin:30px 0;padding-top:32px;border-top:1px solid var(--border-glass)}
 .related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:border-color 0.3s}
