@@ -54,7 +54,7 @@ function callGemini(prompt) {
       generationConfig: { temperature: 0.7, maxOutputTokens: 4096 }
     });
 
-    const url = new URL(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`);
+    const url = new URL(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`);
 
 
     const req = https.request(url, { method: 'POST', headers: { 'Content-Type': 'application/json' } }, (res) => {
@@ -192,7 +192,7 @@ function updateHTMLFile(filePath, newCard, startMarker, endMarker) {
 
 async function main() {
   console.log('Blog Auto-Publisher v2 (Node.js)');
-  console.log('Model: gemini-2.5-flash');
+  console.log('Model: gemini-3.6-flash');
   console.log('  ' + new Date().toISOString());
 
   if (!API_KEY) {
