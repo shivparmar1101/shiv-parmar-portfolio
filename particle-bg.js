@@ -196,9 +196,12 @@
     container.appendChild(canvas);
     ctx = canvas.getContext('2d');
 
+    // Listen on hero section (parent) since hero-grid blocks events on container
+    const heroSection = container.closest('.hero') || container;
+
     window.addEventListener('resize', resize);
-    container.addEventListener('mousemove', onMouseMove);
-    container.addEventListener('mouseleave', onMouseLeave);
+    heroSection.addEventListener('mousemove', onMouseMove);
+    heroSection.addEventListener('mouseleave', onMouseLeave);
 
     resize();
     frameId = requestAnimationFrame(animate);
