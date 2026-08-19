@@ -191,10 +191,9 @@ function updateHTMLFile(filePath, newCard, startMarker, endMarker) {
 }
 
 async function main() {
-  console.log('=========================================');
-  console.log('  Blog Auto-Publisher (Node.js)');
+  console.log('Blog Auto-Publisher v2 (Node.js)');
+  console.log('Model: gemini-2.5-flash');
   console.log('  ' + new Date().toISOString());
-  console.log('=========================================');
 
   if (!API_KEY) {
     console.error('ERROR: GEMINI_API_KEY not set!');
