@@ -355,7 +355,8 @@ function updateHTMLFile(filePath, newCard, startMarker, endMarker) {
   const endIdx = content.indexOf(endMarker);
 
   if (startIdx > 0 && endIdx > startIdx) {
-    const newContent = content.substring(0, startIdx + startMarker.length) + '\n' + newCard + content.substring(endIdx);
+    const existingCards = content.substring(startIdx + startMarker.length, endIdx).trim();
+    const newContent = content.substring(0, startIdx + startMarker.length) + '\n' + newCard + '\n' + existingCards + '\n' + content.substring(endIdx);
     fs.writeFileSync(filePath, newContent, 'utf-8');
     console.log('Updated: ' + filePath);
     return true;
