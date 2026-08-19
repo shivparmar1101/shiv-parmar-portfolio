@@ -91,7 +91,7 @@ html {
 body {
   font-family: var(--font-primary);
   color: var(--text-primary);
-  background: var(--bg-primary);
+  background: transparent;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,6 +135,7 @@ h1, h2, h3, h4 {
 section {
   padding: 120px 0;
   position: relative;
+  z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -565,7 +566,7 @@ html[data-theme="light"] header {
   height: 100%;
   z-index: 0;
   overflow: hidden;
-  background: #000;
+  background: #000000;
   pointer-events: none;
 }
 
@@ -985,7 +986,7 @@ html[data-theme="light"] .floating-pill {
 
 .tech-section {
   padding: 80px 0;
-  background: var(--bg-secondary);
+  background: transparent;
   border-top: 1px solid var(--border-glass);
   border-bottom: 1px solid var(--border-glass);
   position: relative;
@@ -1432,7 +1433,7 @@ html[data-theme="light"] .logo-item img {
    -------------------------------------------------------------------------- */
 
 .skills-section {
-  background: var(--bg-secondary);
+  background: transparent;
   border-top: 1px solid var(--border-glass);
   border-bottom: 1px solid var(--border-glass);
   position: relative;
@@ -1900,7 +1901,7 @@ html[data-theme="light"] .timeline::before {
    -------------------------------------------------------------------------- */
 
 .cta-section {
-  background: var(--bg-secondary);
+  background: transparent;
   border-top: 1px solid var(--border-glass);
   border-bottom: 1px solid var(--border-glass);
   position: relative;
