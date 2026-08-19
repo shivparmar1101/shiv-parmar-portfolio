@@ -556,9 +556,9 @@ html[data-theme="light"] header {
   pointer-events: none;
 }
 
-/* Particle Canvas Background */
-.particle-canvas-wrap {
-  position: absolute;
+/* Particle Canvas - Full Page Background */
+.particle-canvas-fullpage {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -566,6 +566,7 @@ html[data-theme="light"] header {
   z-index: 0;
   overflow: hidden;
   background: #000;
+  pointer-events: none;
 }
 
 .hero-grid {

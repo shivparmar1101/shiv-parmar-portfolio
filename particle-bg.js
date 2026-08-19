@@ -178,10 +178,8 @@
   }
 
   function onMouseMove(e) {
-    if (!container) return;
-    const rect = container.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
     mouse.active = true;
   }
 
@@ -196,12 +194,10 @@
     container.appendChild(canvas);
     ctx = canvas.getContext('2d');
 
-    // Listen on hero section (parent) since hero-grid blocks events on container
-    const heroSection = container.closest('.hero') || container;
-
+    // Listen on document for mouse since canvas has pointer-events: none
     window.addEventListener('resize', resize);
-    heroSection.addEventListener('mousemove', onMouseMove);
-    heroSection.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseleave', onMouseLeave);
 
     resize();
     frameId = requestAnimationFrame(animate);
