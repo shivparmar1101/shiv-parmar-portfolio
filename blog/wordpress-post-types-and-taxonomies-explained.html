@@ -75,6 +75,8 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </style>
 </head>
 <body>
+  <!-- Full Page Particle Background -->
+  <div id="particle-hero" class="particle-canvas-fullpage"></div>
   <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -470,5 +472,6 @@ endif;
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
 })();
 </script>
+<script src="../particle-bg.js" defer></script>
 </body>
 </html>

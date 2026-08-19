@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -74,8 +74,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
-<body>
-  <div id="site-header"></div>
+<body>`n  <!-- Full Page Particle Background -->`n  <div id="particle-hero" class="particle-canvas-fullpage"></div>`n  <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>How to Build a WordPress Membership Site
@@ -160,7 +159,7 @@ function shiv_restrict_premium_content( $content ) {
                 $login_url = wp_login_url( get_permalink() );
                 
                 $paywall_html  = '&lt;div class="membership-paywall-box"&gt;';
-                $paywall_html .= '&lt;h3&gt;🔒 Exclusive VIP Content&lt;/h3&gt;';
+                $paywall_html .= '&lt;h3&gt;?? Exclusive VIP Content&lt;/h3&gt;';
                 $paywall_html .= '&lt;p&gt;This article is available exclusively for active VIP members. Please sign in or upgrade your account to read the full guide.&lt;/p&gt;';
                 $paywall_html .= '&lt;a href="' . esc_url( $login_url ) . '" class="btn-membership-login"&gt;Log In to Access&lt;/a&gt;';
                 $paywall_html .= '&lt;/div&gt;';
@@ -411,7 +410,7 @@ add_filter( 'the_content', 'shiv_restrict_premium_content' );
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
 <script>
 (function(){
   function initBlog(){

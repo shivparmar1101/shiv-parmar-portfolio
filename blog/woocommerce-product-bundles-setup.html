@@ -74,8 +74,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
-<body>
-<div id="site-header"></div>
+<body>`n  <!-- Full Page Particle Background -->`n  <div id="particle-hero" class="particle-canvas-fullpage"></div>`n  <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>WooCommerce Product Bundles Setup
@@ -378,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
 <script>
 (function(){
   function initBlog(){

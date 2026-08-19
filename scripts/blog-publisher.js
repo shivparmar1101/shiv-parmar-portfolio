@@ -155,6 +155,8 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </style>
 </head>
 <body>
+<!-- Full Page Particle Background -->
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
 <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -312,7 +314,7 @@ ${content}
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
 <script>
 (function(){
   function initBlog(){
