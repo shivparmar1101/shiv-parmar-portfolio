@@ -77,7 +77,7 @@ function callGemini(prompt) {
   });
 }
 
-function generateBlogHTML(title, slug, date, readtime, imageUrl, content) {
+function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise) {
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -173,7 +173,7 @@ ${content}
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
   <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
-  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer</h3>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a ${expertise} Developer</h3>
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">parmarshiv1101@gmail.com <span>&rarr;</span></a>
 </div>
@@ -411,7 +411,16 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const rawContent = await callGemini(prompt);
   console.log('Content generated! (' + rawContent.length + ' chars)');
 
-  const topCta = '<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I build custom WordPress solutions that help businesses grow. Let\'s discuss what you need.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch &rarr; <span>&rarr;</span></a></div>';
+  const expertiseMap = {
+    WordPress: 'WordPress',
+    WooCommerce: 'WooCommerce',
+    SEO: 'SEO',
+    Security: 'WordPress Security',
+    Performance: 'WordPress Performance'
+  };
+  const expertise = expertiseMap[topic.cat] || 'WordPress';
+
+  const topCta = '<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a ' + expertise + ' Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I build custom ' + expertise + ' solutions that help businesses grow. Let\'s discuss what you need.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch &rarr; <span>&rarr;</span></a></div>';
 
   const firstPEnd = rawContent.indexOf('</p>');
   const content = firstPEnd > -1
@@ -422,7 +431,7 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const imageUrl = images[topic.cat] || images.default;
 
   // Save blog file
-  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content);
+  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content, expertise);
   const blogPath = path.join(BLOG_DIR, topic.slug + '.html');
   fs.writeFileSync(blogPath, blogHTML, 'utf-8');
   console.log('Saved: blog/' + topic.slug + '.html');
