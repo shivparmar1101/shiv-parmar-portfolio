@@ -56,6 +56,7 @@ function callGemini(prompt) {
 
     const url = new URL(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`);
 
+
     const req = https.request(url, { method: 'POST', headers: { 'Content-Type': 'application/json' } }, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
