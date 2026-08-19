@@ -96,6 +96,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content) {
 .blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
 .blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
 .blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
 .breadcrumb a{color:var(--accent);text-decoration:none}
@@ -130,8 +131,27 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .author-box .author-social{display:flex;gap:12px}
 .author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
 .author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin:30px 0;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:border-color 0.3s}
+.related-card:hover{border-color:var(--accent)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
 .hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg);margin-top:70px;margin-bottom:32px;border:1px solid var(--border-glass)}
-@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}}
+.cta-section{padding:80px 0}
+.cta-block{background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:80px 48px;text-align:center;position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:40px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5}
+.cta-block .eyebrow{justify-content:center}
+.cta-block h2{font-size:clamp(28px,3.8vw,48px);margin-bottom:16px;letter-spacing:-0.025em;color:var(--text-primary)}
+.cta-block p{color:var(--text-secondary);max-width:520px;margin:0 auto 36px;font-size:16px;line-height:1.75}
+.contact-grid{margin-top:0}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
@@ -149,26 +169,180 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </div>
 <div class="content">
 ${content}
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer</h3>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">parmarshiv1101@gmail.com <span>&rarr;</span></a>
+</div>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">
-<img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
-<div class="author-info">
-<h4>Shiv Parmar</h4>
-<p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
-<div class="author-social">
-<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
-<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
 </div>
-</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
 </div>
 </div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <h3>Let's Work Together</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-row">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select an inquiry type</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Project Request">Project Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under Rs.10,000">Under Rs.10,000</option>
+              <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+              <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+              <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+              <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+          <p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="26" rx="3"/>
+              <path d="M6 14l18 11 18-11"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="5"/>
+              <path d="M16 21v15"/>
+              <circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/>
+              <path d="M24 21v15"/>
+              <path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiv-parmar</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer">github.com/shivparmar1101</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+917359411663">+91 73594 11663</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
+              <circle cx="24" cy="20" r="5"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Rajkot, India &middot; Remote-ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../script.js"></script>
 <script>
 (function(){
-var toc=document.getElementById("tocList");
-if(toc){document.querySelectorAll(".content h2").forEach(function(h,i){var id="section-"+i;h.id=id;var li=document.createElement("li");var a=document.createElement("a");a.href="#"+id;a.textContent=h.textContent;li.appendChild(a);toc.appendChild(li);});}
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      document.querySelectorAll(".content h2").forEach(function(h,i){
+        var id="section-"+i;h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;a.textContent=h.textContent;
+        li.appendChild(a);toc.appendChild(li);
+      });
+    }
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[{"date":"Aug 19, 2026 \u0026middot; 6 min read","title":"WordPress Gutenberg vs Elementor: Which is Better in 2026?","slug":"wordpress-gutenberg-vs-elementor-which-is-better-in-2026"},{"date":"Aug 19, 2026 \u0026middot; 5 min read","title":"How to Speed Up WooCommerce Product Pages","slug":"how-to-speed-up-woocommerce-product-pages"},{"date":"Aug 19, 2026 \u0026middot; 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"Aug 19, 2026 \u0026middot; 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"Aug 19, 2026 \u0026middot; 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"Aug 19, 2026 \u0026middot; 5 min read","title":"WordPress Post Types and Taxonomies Explained","slug":"wordpress-post-types-and-taxonomies-explained"},{"date":"Aug 19, 2026 \u0026middot; 8 min read","title":"WordPress Database Optimization Guide","slug":"wordpress-database-optimization-guide"},{"date":"Aug 19, 2026 \u0026middot; 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"Aug 19, 2026 \u0026middot; 5 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"},{"date":"Aug 19, 2026 \u0026middot; 7 min read","title":"How to Build a WordPress Membership Site","slug":"how-to-build-a-wordpress-membership-site"}];
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
+      posts.forEach(function(p){
+        if(p.slug!==currentSlug && count<3){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
+          related.appendChild(card);
+          count++;
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
 })();
 </script>
 </body>
