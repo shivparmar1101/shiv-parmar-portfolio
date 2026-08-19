@@ -6,8 +6,8 @@
 (function () {
   'use strict';
 
-  const PARTICLE_DENSITY = 0.00015;
-  const BG_PARTICLE_DENSITY = 0.00005;
+  const PARTICLE_DENSITY = 0.0004;
+  const BG_PARTICLE_DENSITY = 0.00015;
   const MOUSE_RADIUS = 180;
   const RETURN_SPEED = 0.08;
   const DAMPING = 0.90;
