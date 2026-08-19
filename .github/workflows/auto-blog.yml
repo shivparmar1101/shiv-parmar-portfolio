@@ -34,3 +34,36 @@ jobs:
           git diff --cached --quiet || git commit -m "blog: auto-published new post"
           git pull --rebase origin main
           git push
+
+      - name: Send Success Email
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: parmarshiv1101@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "Blog Published Successfully"
+          to: parmarshiv1101@gmail.com
+          from: GitHub Actions <parmarshiv1101@gmail.com>
+          body: |
+            Blog published successfully!
+
+            Check your site: https://shiv-parmar-portfolio.netlify.app/blog.html
+            GitHub repo: https://github.com/shivparmar1101/shiv-parmar-portfolio
+
+      - name: Send Failure Email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: parmarshiv1101@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "Blog Publish Failed"
+          to: parmarshiv1101@gmail.com
+          from: GitHub Actions <parmarshiv1101@gmail.com>
+          body: |
+            Blog publish failed!
+
+            Check the error: https://github.com/shivparmar1101/shiv-parmar-portfolio/actions
