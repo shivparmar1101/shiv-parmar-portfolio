@@ -1,29 +1,29 @@
 /* ============================================
    Zero Gravity Particle Background
-   Canvas-based particle system with mouse interaction
+   Floating particle system with mouse interaction
    ============================================ */
 
 (function () {
   'use strict';
 
-  const PARTICLE_DENSITY = 0.00012;
+  const PARTICLE_DENSITY = 0.0001;
   const BG_PARTICLE_DENSITY = 0.00004;
-  const MOUSE_RADIUS = 160;
-  const RETURN_SPEED = 0.06;
-  const DAMPING = 0.92;
-  const REPULSION_STRENGTH = 1.4;
+  const MOUSE_RADIUS = 200;
+  const RETURN_SPEED = 0.008;
+  const DAMPING = 0.985;
+  const REPULSION_STRENGTH = 2.5;
+  const DRIFT_STRENGTH = 0.03;
 
   let canvas, ctx, container;
   let particles = [];
   let bgParticles = [];
   let mouse = { x: -1000, y: -1000, active: false };
   let frameId;
-  let lastTime = 0;
+  let w, h;
 
   function rand(min, max) { return Math.random() * (max - min) + min; }
 
-  function initParticles(w, h) {
-    // Main interactive particles
+  function initParticles() {
     const count = Math.floor(w * h * PARTICLE_DENSITY);
     particles = [];
     for (let i = 0; i < count; i++) {
@@ -32,24 +32,25 @@
       particles.push({
         x: x, y: y,
         ox: x, oy: y,
-        vx: 0, vy: 0,
-        size: rand(1, 2.5),
+        vx: rand(-0.5, 0.5),
+        vy: rand(-0.5, 0.5),
+        size: rand(1, 2.8),
         color: Math.random() > 0.88 ? '#c9a84c' : '#ffffff',
-        angle: Math.random() * Math.PI * 2
+        angle: Math.random() * Math.PI * 2,
+        driftPhase: Math.random() * Math.PI * 2
       });
     }
 
-    // Background ambient particles (stars/dust)
     const bgCount = Math.floor(w * h * BG_PARTICLE_DENSITY);
     bgParticles = [];
     for (let i = 0; i < bgCount; i++) {
       bgParticles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
         size: rand(0.5, 1.5),
-        alpha: rand(0.08, 0.35),
+        alpha: rand(0.08, 0.4),
         phase: Math.random() * Math.PI * 2
       });
     }
@@ -57,8 +58,6 @@
 
   function animate(time) {
     if (!canvas || !ctx) return;
-    const w = canvas.width / (window.devicePixelRatio || 1);
-    const h = canvas.height / (window.devicePixelRatio || 1);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -95,6 +94,11 @@
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
+      // Continuous organic drift
+      p.driftPhase += 0.01;
+      p.vx += Math.sin(p.driftPhase) * DRIFT_STRENGTH * 0.1;
+      p.vy += Math.cos(p.driftPhase * 0.7) * DRIFT_STRENGTH * 0.1;
+
       // Mouse repulsion
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
@@ -102,11 +106,11 @@
       if (mouse.active && dist < MOUSE_RADIUS && dist > 0.1) {
         const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
         const repulse = force * REPULSION_STRENGTH;
-        p.vx -= (dx / dist) * repulse * 5;
-        p.vy -= (dy / dist) * repulse * 5;
+        p.vx -= (dx / dist) * repulse * 8;
+        p.vy -= (dy / dist) * repulse * 8;
       }
 
-      // Spring back to origin
+      // Very soft spring back to origin
       p.vx += (p.ox - p.x) * RETURN_SPEED;
       p.vy += (p.oy - p.y) * RETURN_SPEED;
     }
@@ -148,8 +152,14 @@
       p.x += p.vx;
       p.y += p.vy;
 
+      // Wrap around screen edges
+      if (p.x < -20) p.x = w + 20;
+      if (p.x > w + 20) p.x = -20;
+      if (p.y < -20) p.y = h + 20;
+      if (p.y > h + 20) p.y = -20;
+
       const vel = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      const opacity = Math.min(0.25 + vel * 0.08, 1);
+      const opacity = Math.min(0.3 + vel * 0.06, 1);
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -168,13 +178,15 @@
     if (!container || !canvas) return;
     const rect = container.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = rect.width + 'px';
-    canvas.style.height = rect.height + 'px';
+    w = rect.width;
+    h = rect.height;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
     ctx = canvas.getContext('2d');
     if (ctx) ctx.scale(dpr, dpr);
-    initParticles(rect.width, rect.height);
+    initParticles();
   }
 
   function onMouseMove(e) {
