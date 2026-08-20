@@ -12,7 +12,8 @@
   const RETURN_SPEED = 0.08;
   const DAMPING = 0.90;
   const REPULSION_STRENGTH = 1.2;
-  const SCROLL_FACTOR = 0.15;            // How much particles move with scroll
+  const SCROLL_FACTOR = 0.05;            // Reduced from 0.15 for smoother
+  const SCROLL_DAMPING = 0.92;           // Smooth scroll velocity decay
 
   let canvas, ctx, container;
   let particles = [];
@@ -91,8 +92,8 @@
     ctx.globalAlpha = 1;
 
     // --- Main particles: Phase 1 - Apply Forces ---
-    // Calculate scroll velocity
-    scroll.velocity = scroll.y - scroll.lastY;
+    // Calculate scroll velocity with damping for smoothness
+    scroll.velocity = (scroll.y - scroll.lastY) * 0.3 + scroll.velocity * SCROLL_DAMPING;
     scroll.lastY = scroll.y;
 
     for (let i = 0; i < particles.length; i++) {
