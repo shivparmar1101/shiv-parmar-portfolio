@@ -437,7 +437,7 @@ add_action('wp_enqueue_scripts', 'shiv_remove_block_styles', 100);
         var li=document.createElement("li");
         var a=document.createElement("a");
         a.href="#"+id;
-        a.textContent=h.textContent;
+        a.textContent=h.textContent;a.title=h.textContent;
         li.appendChild(a);
         toc.appendChild(li);
       });
@@ -454,7 +454,7 @@ add_action('wp_enqueue_scripts', 'shiv_remove_block_styles', 100);
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

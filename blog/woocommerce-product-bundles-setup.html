@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var id="section-"+i;h.id=id;
         var li=document.createElement("li");
         var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;
+        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;a.title=h.textContent;
         li.appendChild(a);toc.appendChild(li);
       });
     }
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }
