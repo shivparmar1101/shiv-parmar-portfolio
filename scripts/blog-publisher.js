@@ -78,13 +78,53 @@ function callGemini(prompt) {
 }
 
 function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise) {
+  const canonicalUrl = `https://shiv-parmar-portfolio.netlify.app/blog/${slug}.html`;
+  const metaDesc = content.substring(0, 155).replace(/<[^>]*>/g, '').replace(/\n/g, ' ').trim() + '...';
+  
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title} - Shiv Parmar</title>
-<meta name="description" content="${title} - WordPress development guide by Shiv Parmar.">
+<title>${title}</title>
+<meta name="description" content="${metaDesc}">
+<meta name="keywords" content="WordPress, ${expertise}, WooCommerce, WordPress developer, Rajkot">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${canonicalUrl}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${metaDesc}">
+<meta property="og:url" content="${canonicalUrl}">
+<meta property="og:image" content="${imageUrl}">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${metaDesc}">
+<meta name="twitter:image" content="${imageUrl}">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "${title}",
+  "description": "${metaDesc}",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "${date}",
+  "dateModified": "${date}",
+  "image": "${imageUrl}",
+  "mainEntityOfPage": "${canonicalUrl}"
+}
+</script>
+
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

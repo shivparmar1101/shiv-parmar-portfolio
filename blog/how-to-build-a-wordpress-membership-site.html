@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Build a WordPress Membership Site &mdash; Shiv Parmar</title>
-<meta name="description" content="How to Build a WordPress Membership Site - WordPress development guide by Shiv Parmar.">
+<title>Build WordPress Membership Site with Custom Roles</title>
+<meta name="description" content="Complete guide to building a WordPress membership site from scratch. Learn custom user roles, content restriction by role, paywall logic, and subscription management using native PHP hooks — no expensive plugins required.">
+<meta name="keywords" content="WordPress membership site, content restriction, user roles, paywall, premium content">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build WordPress Membership Site with Custom Roles">
+<meta property="og:description" content="Complete guide to building a WordPress membership site from scratch. Learn custom user roles, content restriction by role, paywall logic, and subscription management using native PHP hooks — no expensive plugins required.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build WordPress Membership Site with Custom Roles">
+<meta name="twitter:description" content="Complete guide to building a WordPress membership site from scratch. Learn custom user roles, content restriction by role, paywall logic, and subscription management using native PHP hooks — no expensive plugins required.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Build WordPress Membership Site with Custom Roles",
+  "description": "Complete guide to building a WordPress membership site from scratch. Learn custom user roles, content restriction by role, paywall logic, and subscription management using native PHP hooks — no expensive plugins required.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html"
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -441,7 +477,7 @@ add_filter( 'the_content', 'shiv_restrict_premium_content' );
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress Post Types and Taxonomies Explained &mdash; Shiv Parmar</title>
-<meta name="description" content="WordPress Post Types and Taxonomies Explained - WordPress development guide by Shiv Parmar.">
+<title>WordPress Custom Post Types and Taxonomies Explained</title>
+<meta name="description" content="Learn WordPress custom post types and taxonomies from scratch. Register CPTs with register_post_type, build custom taxonomies, query with WP_Query, and architect your content properly with practical PHP code examples.">
+<meta name="keywords" content="custom post types, WordPress taxonomies, register_post_type">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-post-types-and-taxonomies-explained.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress Custom Post Types and Taxonomies Explained">
+<meta property="og:description" content="Learn WordPress custom post types and taxonomies from scratch. Register CPTs with register_post_type, build custom taxonomies, query with WP_Query, and architect your content properly with practical PHP code examples.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-post-types-and-taxonomies-explained.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress Custom Post Types and Taxonomies Explained">
+<meta name="twitter:description" content="Learn WordPress custom post types and taxonomies from scratch. Register CPTs with register_post_type, build custom taxonomies, query with WP_Query, and architect your content properly with practical PHP code examples.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress Custom Post Types and Taxonomies Explained",
+  "description": "Learn WordPress custom post types and taxonomies from scratch. Register CPTs with register_post_type, build custom taxonomies, query with WP_Query, and architect your content properly with practical PHP code examples.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-post-types-and-taxonomies-explained.html"
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -462,7 +498,7 @@ endif;
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

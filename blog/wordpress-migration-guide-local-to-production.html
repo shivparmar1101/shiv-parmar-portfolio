@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress Migration Guide: Local to Production - Shiv Parmar</title>
-<meta name="description" content="WordPress Migration Guide: Local to Production - WordPress development guide by Shiv Parmar.">
+<title>WordPress Migration Guide: Local to Production Deploy</title>
+<meta name="description" content="Migrate your WordPress site from localhost to production with confidence. Covers file transfer via rsync and SSH, database search-replace with WP-CLI, wp-config.php production config, and post-deployment QA checklist.">
+<meta name="keywords" content="WordPress migration, local to production, WP-CLI migration">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress Migration Guide: Local to Production Deploy">
+<meta property="og:description" content="Migrate your WordPress site from localhost to production with confidence. Covers file transfer via rsync and SSH, database search-replace with WP-CLI, wp-config.php production config, and post-deployment QA checklist.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress Migration Guide: Local to Production Deploy">
+<meta name="twitter:description" content="Migrate your WordPress site from localhost to production with confidence. Covers file transfer via rsync and SSH, database search-replace with WP-CLI, wp-config.php production config, and post-deployment QA checklist.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress Migration Guide: Local to Production Deploy",
+  "description": "Migrate your WordPress site from localhost to production with confidence. Covers file transfer via rsync and SSH, database search-replace with WP-CLI, wp-config.php production config, and post-deployment QA checklist.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production.html"
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

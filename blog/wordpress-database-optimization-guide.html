@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress Database Optimization Guide &mdash; Shiv Parmar</title>
-<meta name="description" content="WordPress Database Optimization Guide - WordPress development guide by Shiv Parmar.">
+<title>WordPress Database Optimization Guide for Developers</title>
+<meta name="description" content="Optimize your WordPress database for peak performance. Learn to limit post revisions, clean wp_options autoload bloat, remove orphaned metadata, convert MyISAM to InnoDB, and automate weekly maintenance with PHP cron jobs.">
+<meta name="keywords" content="database optimization, WordPress database cleanup, wp_options autoload">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-optimization-guide.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress Database Optimization Guide for Developers">
+<meta property="og:description" content="Optimize your WordPress database for peak performance. Learn to limit post revisions, clean wp_options autoload bloat, remove orphaned metadata, convert MyISAM to InnoDB, and automate weekly maintenance with PHP cron jobs.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-optimization-guide.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress Database Optimization Guide for Developers">
+<meta name="twitter:description" content="Optimize your WordPress database for peak performance. Learn to limit post revisions, clean wp_options autoload bloat, remove orphaned metadata, convert MyISAM to InnoDB, and automate weekly maintenance with PHP cron jobs.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress Database Optimization Guide for Developers",
+  "description": "Optimize your WordPress database for peak performance. Learn to limit post revisions, clean wp_options autoload bloat, remove orphaned metadata, convert MyISAM to InnoDB, and automate weekly maintenance with PHP cron jobs.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-optimization-guide.html"
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -396,7 +432,7 @@ ALTER TABLE wp_options ENGINE = InnoDB;
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="'+p.slug+'.html">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }
