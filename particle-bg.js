@@ -6,17 +6,19 @@
 (function () {
   'use strict';
 
-  const PARTICLE_DENSITY = 0.0004;
-  const BG_PARTICLE_DENSITY = 0.00015;
+  const PARTICLE_DENSITY = 0.0002;      // 50% less from 0.0004
+  const BG_PARTICLE_DENSITY = 0.000075;  // 50% less from 0.00015
   const MOUSE_RADIUS = 180;
   const RETURN_SPEED = 0.08;
   const DAMPING = 0.90;
   const REPULSION_STRENGTH = 1.2;
+  const SCROLL_FACTOR = 0.15;            // How much particles move with scroll
 
   let canvas, ctx, container;
   let particles = [];
   let bgParticles = [];
   let mouse = { x: -1000, y: -1000, active: false };
+  let scroll = { y: 0, lastY: 0, velocity: 0 };
   let frameId;
   let w, h;
 
@@ -89,8 +91,15 @@
     ctx.globalAlpha = 1;
 
     // --- Main particles: Phase 1 - Apply Forces ---
+    // Calculate scroll velocity
+    scroll.velocity = scroll.y - scroll.lastY;
+    scroll.lastY = scroll.y;
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
+
+      // Scroll-based movement (particles move with scroll direction)
+      p.vy += scroll.velocity * SCROLL_FACTOR;
 
       // Mouse repulsion
       const dx = mouse.x - p.x;
@@ -106,6 +115,12 @@
       // Spring force back to origin
       p.vx += (p.ox - p.x) * RETURN_SPEED;
       p.vy += (p.oy - p.y) * RETURN_SPEED;
+    }
+
+    // --- Background particles: Apply scroll movement ---
+    for (let i = 0; i < bgParticles.length; i++) {
+      const p = bgParticles[i];
+      p.vy = (p.vy || 0) + scroll.velocity * SCROLL_FACTOR * 0.5;
     }
 
     // --- Main particles: Phase 2 - Collision ---
@@ -198,6 +213,9 @@
     window.addEventListener('resize', resize);
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseleave', onMouseLeave);
+    window.addEventListener('scroll', function() {
+      scroll.y = window.pageYOffset || document.documentElement.scrollTop;
+    }, { passive: true });
 
     resize();
     frameId = requestAnimationFrame(animate);
