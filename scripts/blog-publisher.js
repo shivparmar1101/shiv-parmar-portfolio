@@ -200,9 +200,9 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>${title}
+<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>${title}
 </nav>
-<img src="${imageUrl}" alt="${title}" title="${title}" class="hero-img">
+<img src="${imageUrl}" alt="${title} - WordPress development guide by Shiv Parmar" title="${title} - Complete guide by Shiv Parmar" class="hero-img">
 <div class="date">${date} &middot; ${readtime} read<span class="updated">Updated: ${date}</span></div>
 <h1>${title}</h1>
 <div class="toc" id="toc">
@@ -217,18 +217,18 @@ ${content}
   <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
   <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a ${expertise} Developer</h3>
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
-  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">parmarshiv1101@gmail.com <span>&rarr;</span></a>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">parmarshiv1101@gmail.com <span>&rarr;</span></a>
 </div>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">
-  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
     <div class="author-social">
-      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">GitHub</a>
     </div>
   </div>
 </div>
@@ -296,7 +296,7 @@ ${content}
           </div>
           <div>
             <strong>Email</strong>
-            <a href="mailto:parmarshiv1101@gmail.com">parmarshiv1101@gmail.com</a>
+            <a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a>
           </div>
         </div>
         <div class="contact-card reveal">
@@ -311,7 +311,7 @@ ${content}
           </div>
           <div>
             <strong>LinkedIn</strong>
-            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiv-parmar</a>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a>
           </div>
         </div>
         <div class="contact-card reveal">
@@ -322,7 +322,7 @@ ${content}
           </div>
           <div>
             <strong>GitHub</strong>
-            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer">github.com/shivparmar1101</a>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a>
           </div>
         </div>
         <div class="contact-card reveal">
@@ -333,7 +333,7 @@ ${content}
           </div>
           <div>
             <strong>Phone</strong>
-            <a href="tel:+917359411663">+91 73594 11663</a>
+            <a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a>
           </div>
         </div>
         <div class="contact-card reveal">
