@@ -77,7 +77,7 @@ function callGemini(prompt) {
   });
 }
 
-function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise) {
+function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise, ctaHeadline, ctaButton) {
   const canonicalUrl = `https://shiv-parmar-portfolio.netlify.app/blog/${slug}.html`;
   const metaDesc = content.substring(0, 155).replace(/<[^>]*>/g, '').replace(/\n/g, ' ').trim() + '...';
   
@@ -215,9 +215,9 @@ ${content}
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
   <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
-  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a ${expertise} Developer</h3>
-  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
-  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">parmarshiv1101@gmail.com <span>&rarr;</span></a>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">${ctaHeadline}</h3>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote ${expertise} development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for ${expertise} development projects">${ctaButton} <span>&rarr;</span></a>
 </div>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
@@ -457,13 +457,111 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const expertiseMap = {
     WordPress: 'WordPress',
     WooCommerce: 'WooCommerce',
-    SEO: 'SEO',
+    SEO: 'WordPress SEO',
     Security: 'WordPress Security',
     Performance: 'WordPress Performance'
   };
   const expertise = expertiseMap[topic.cat] || 'WordPress';
 
-  const topCta = '<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a ' + expertise + ' Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I build custom ' + expertise + ' solutions that help businesses grow. Let\'s discuss what you need.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch <span>&rarr;</span></a></div>';
+  // Dynamic CTA generation based on category and topic
+  const ctaVariants = {
+    WordPress: {
+      headlines: [
+        'Need a WordPress Expert on Your Side?',
+        'Want to Build Something Similar?',
+        'Let\'s Create Your WordPress Solution',
+        'Looking for a WordPress Developer?',
+        'Your WordPress Project Deserves Expert Help'
+      ],
+      descriptions: [
+        'I specialize in building custom WordPress solutions that drive results. Let\'s discuss your project.',
+        'From custom themes to complex plugins — I build WordPress solutions that work. Let\'s talk.',
+        'Whether it\'s a simple site or complex platform, I deliver WordPress projects on time and on budget.',
+        'I help businesses unlock WordPress\'s full potential. Let\'s see what I can do for you.',
+        'Custom WordPress development with clean code and fast delivery. Let\'s start your project.'
+      ],
+      buttons: ['Start a Project', 'Get in Touch', 'Let\'s Talk', 'Hire Me', 'Discuss My Project']
+    },
+    WooCommerce: {
+      headlines: [
+        'Need a WooCommerce Expert on Your Side?',
+        'Want to Boost Your Online Store?',
+        'Let\'s Optimize Your WooCommerce Store',
+        'Looking for a WooCommerce Developer?',
+        'Your WooCommerce Store Deserves Expert Help'
+      ],
+      descriptions: [
+        'I build WooCommerce stores that convert visitors into customers. Let\'s discuss your e-commerce needs.',
+        'From payment gateways to inventory management — I make WooCommerce work for your business.',
+        'Custom WooCommerce solutions that increase sales and streamline operations. Let\'s talk.',
+        'I help businesses maximize their WooCommerce potential. Ready to grow your store?',
+        'Expert WooCommerce development that drives revenue. Let\'s build something amazing together.'
+      ],
+      buttons: ['Boost My Store', 'Get in Touch', 'Let\'s Talk', 'Hire Me', 'Discuss My Project']
+    },
+    Security: {
+      headlines: [
+        'Need a WordPress Security Expert on Your Side?',
+        'Worried About Your Site\'s Security?',
+        'Let\'s Secure Your WordPress Site',
+        'Looking for a Security Specialist?',
+        'Your Website Security Can\'t Wait'
+      ],
+      descriptions: [
+        'I help businesses protect their WordPress sites from threats. Let\'s assess your security needs.',
+        'From security audits to malware removal — I keep your WordPress site safe and secure.',
+        'Don\'t wait for a breach. I implement proactive security measures that protect your business.',
+        'I specialize in WordPress security hardening. Let\'s make your site attack-resistant.',
+        'Expert security solutions that give you peace of mind. Let\'s protect your digital assets.'
+      ],
+      buttons: ['Secure My Site', 'Get in Touch', 'Let\'s Talk', 'Hire Me', 'Discuss My Project']
+    },
+    SEO: {
+      headlines: [
+        'Need Help With WordPress SEO?',
+        'Want to Rank Higher on Google?',
+        'Let\'s Improve Your Search Rankings',
+        'Looking for an SEO Expert?',
+        'Your Website Deserves More Traffic'
+      ],
+      descriptions: [
+        'I help businesses improve their WordPress SEO and drive organic traffic. Let\'s discuss your goals.',
+        'From technical SEO to content optimization — I make WordPress sites rank higher.',
+        'Custom SEO strategies that deliver measurable results. Let\'s grow your organic presence.',
+        'I specialize in WordPress SEO that works. Ready to dominate search results?',
+        'Expert SEO solutions that increase visibility and drive qualified leads. Let\'s talk.'
+      ],
+      buttons: ['Rank Higher', 'Get in Touch', 'Let\'s Talk', 'Hire Me', 'Discuss My Project']
+    },
+    Performance: {
+      headlines: [
+        'Need a WordPress Performance Expert?',
+        'Is Your Site Running Slow?',
+        'Let\'s Speed Up Your WordPress Site',
+        'Looking for a Performance Specialist?',
+        'Your Website Speed Matters'
+      ],
+      descriptions: [
+        'I help businesses optimize WordPress performance for faster load times. Let\'s assess your site.',
+        'From caching to CDN setup — I make WordPress sites lightning fast.',
+        'Custom performance solutions that improve user experience and SEO. Let\'s optimize your site.',
+        'I specialize in WordPress speed optimization. Ready to leave competitors behind?',
+        'Expert performance tuning that boosts conversions. Let\'s make your site blazing fast.'
+      ],
+      buttons: ['Speed Up My Site', 'Get in Touch', 'Let\'s Talk', 'Hire Me', 'Discuss My Project']
+    }
+  };
+
+  const variants = ctaVariants[topic.cat] || ctaVariants.WordPress;
+  const headlineIdx = Math.floor(Math.random() * variants.headlines.length);
+  const descIdx = Math.floor(Math.random() * variants.descriptions.length);
+  const btnIdx = Math.floor(Math.random() * variants.buttons.length);
+  
+  const ctaHeadline = variants.headlines[headlineIdx];
+  const ctaDescription = variants.descriptions[descIdx];
+  const ctaButton = variants.buttons[btnIdx];
+
+  const topCta = '<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">' + ctaHeadline + '</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">' + ctaDescription + '</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">' + ctaButton + ' <span>&rarr;</span></a></div>';
 
   const firstPEnd = rawContent.indexOf('</p>');
   const content = firstPEnd > -1
@@ -474,7 +572,7 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const imageUrl = images[topic.cat] || images.default;
 
   // Save blog file
-  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content, expertise);
+  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content, expertise, ctaHeadline, ctaButton);
   const blogPath = path.join(BLOG_DIR, topic.slug + '.html');
   fs.writeFileSync(blogPath, blogHTML, 'utf-8');
   console.log('Saved: blog/' + topic.slug + '.html');
