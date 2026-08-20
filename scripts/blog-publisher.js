@@ -211,6 +211,18 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </div>
 <div class="content">
 ${content}
+${(() => {
+  // Close any unclosed <pre> or <code> tags before bottom CTA
+  let fixed = content;
+  const preOpen = (fixed.match(/<pre>/g) || []).length;
+  const preClose = (fixed.match(/<\/pre>/g) || []).length;
+  const codeOpen = (fixed.match(/<code>/g) || []).length;
+  const codeClose = (fixed.match(/<\/code>/g) || []).length;
+  let closingTags = '';
+  if (preOpen > preClose) closingTags += '</code></pre>';
+  if (codeOpen > codeClose) closingTags += '</code>';
+  return closingTags;
+})()}
 
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
@@ -563,9 +575,38 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
 
   const topCta = '<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">' + ctaHeadline + '</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">' + ctaDescription + '</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">' + ctaButton + ' <span>&rarr;</span></a></div>';
 
-  const firstPEnd = rawContent.indexOf('</p>');
-  const content = firstPEnd > -1
-    ? rawContent.substring(0, firstPEnd + 4) + '\n' + topCta + '\n' + rawContent.substring(firstPEnd + 4)
+  // Find first </p> that is NOT inside <pre> or <code> block
+  let insertPos = -1;
+  let searchFrom = 0;
+  while (searchFrom < rawContent.length) {
+    const pEnd = rawContent.indexOf('</p>', searchFrom);
+    if (pEnd === -1) break;
+    
+    // Check if this </p> is inside a <pre> block
+    const beforeP = rawContent.substring(0, pEnd);
+    const lastPreOpen = beforeP.lastIndexOf('<pre');
+    const lastPreClose = beforeP.lastIndexOf('</pre>');
+    
+    // If last <pre> is after last </pre>, we're inside a <pre> block - skip
+    if (lastPreOpen > lastPreClose) {
+      searchFrom = pEnd + 4;
+      continue;
+    }
+    
+    // Also check for <code> blocks (inline code won't have newlines, but block code might)
+    const lastCodeOpen = beforeP.lastIndexOf('<code');
+    const lastCodeClose = beforeP.lastIndexOf('</code>');
+    if (lastCodeOpen > lastCodeClose) {
+      searchFrom = pEnd + 4;
+      continue;
+    }
+    
+    insertPos = pEnd;
+    break;
+  }
+  
+  const content = insertPos > -1
+    ? rawContent.substring(0, insertPos + 4) + '\n' + topCta + '\n' + rawContent.substring(insertPos + 4)
     : rawContent;
 
   const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
