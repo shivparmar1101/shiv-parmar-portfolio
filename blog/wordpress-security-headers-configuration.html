@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress Security Headers Configuration Guide</title>
-<meta name="description" content="Configure WordPress HTTP security headers to protect against XSS, clickjacking, and MIME sniffing attacks. Complete PHP, Apache, and Nginx configuration examples for Content-Security-Policy, HSTS, and X-Frame-Options.">
-<meta name="keywords" content="security headers, WordPress HTTP headers, Content Security Policy">
+<title>WordPress Security Headers Configuration</title>
+<meta name="description" content="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...">
+<meta name="keywords" content="WordPress, WordPress Security, WooCommerce, WordPress developer, Rajkot">
 <meta name="author" content="Shiv Parmar">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress Security Headers Configuration Guide">
-<meta property="og:description" content="Configure WordPress HTTP security headers to protect against XSS, clickjacking, and MIME sniffing attacks. Complete PHP, Apache, and Nginx configuration examples for Content-Security-Policy, HSTS, and X-Frame-Options.">
+<meta property="og:title" content="WordPress Security Headers Configuration">
+<meta property="og:description" content="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration.html">
 <meta property="og:image" content="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
@@ -21,8 +21,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress Security Headers Configuration Guide">
-<meta name="twitter:description" content="Configure WordPress HTTP security headers to protect against XSS, clickjacking, and MIME sniffing attacks. Complete PHP, Apache, and Nginx configuration examples for Content-Security-Policy, HSTS, and X-Frame-Options.">
+<meta name="twitter:title" content="WordPress Security Headers Configuration">
+<meta name="twitter:description" content="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -31,16 +31,17 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "WordPress Security Headers Configuration Guide",
-  "description": "Configure WordPress HTTP security headers to protect against XSS, clickjacking, and MIME sniffing attacks. Complete PHP, Apache, and Nginx configuration examples for Content-Security-Policy, HSTS, and X-Frame-Options.",
+  "headline": "WordPress Security Headers Configuration",
+  "description": "Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Person", "name": "Shiv Parmar" },
-  "datePublished": "2026-08-19",
-  "dateModified": "2026-08-19",
+  "datePublished": "Aug 20, 2026",
+  "dateModified": "Aug 20, 2026",
   "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration.html"
 }
 </script>
+
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,6 +53,7 @@
 .blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
 .blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
 .blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
 .breadcrumb a{color:var(--accent);text-decoration:none}
@@ -86,201 +88,379 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .author-box .author-social{display:flex;gap:12px}
 .author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
 .author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin:30px 0;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:rgba(255, 255, 255, 0.04);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255, 255, 255, 0.08);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);background:rgba(255, 255, 255, 0.08);box-shadow:0 8px 32px rgba(0, 0, 0, 0.2)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
 .hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg);margin-top:70px;margin-bottom:32px;border:1px solid var(--border-glass)}
-@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}}
+.cta-section{padding:80px 0}
+.cta-block{background:rgba(255, 255, 255, 0.05);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255, 255, 255, 0.1);padding:80px 48px;text-align:center;position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:40px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5}
+.cta-block .eyebrow{justify-content:center}
+.cta-block h2{font-size:clamp(28px,3.8vw,48px);margin-bottom:16px;letter-spacing:-0.025em;color:var(--text-primary)}
+.cta-block p{color:var(--text-secondary);max-width:520px;margin:0 auto 36px;font-size:16px;line-height:1.75}
+.contact-grid{margin-top:0}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
 </head>
-<body>`n  <!-- Full Page Particle Background -->`n  <div id="particle-hero" class="particle-canvas-fullpage"></div>`n  <div id="site-header"></div>
+<body>
+<!-- Full Page Particle Background -->
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>WordPress Security Headers Configuration
+<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress Security Headers Configuration
 </nav>
-<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop" alt="WordPress Security Headers Configuration - WordPress development guide by Shiv Parmar" title="WordPress Security Headers Configuration" class="hero-img">
-<div class="date">Aug 19, 2026 &middot; 4 min read<span class="updated">Updated: Aug 19, 2026</span></div>
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop" alt="WordPress Security Headers Configuration - WordPress development guide by Shiv Parmar" title="WordPress Security Headers Configuration - Complete guide by Shiv Parmar" class="hero-img">
+<div class="date">Aug 20, 2026 &middot; 4 min read<span class="updated">Updated: Aug 20, 2026</span></div>
 <h1>WordPress Security Headers Configuration</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
 <ul id="tocList"></ul>
 </div>
 <div class="content">
-<p>Hello everyone! I am Shiv Parmar, a full-stack WordPress developer working from Rajkot, India. Over the years spent building, scaling, and maintaining client sites across the globe, I have noticed a recurring trend: site owners often invest heavily in security plugins, complex firewalls, and malware scanners, yet completely ignore one of the most effective, lightweight, and built-in defensive mechanisms available—HTTP Security Headers.</p>
-<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Security Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I build custom WordPress Security solutions that help businesses grow. Let's discuss what you need.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch <span>&rarr;</span></a></div>
+<h2>Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers</h2>
+
+<p>Hello there! I am Shiv Parmar, a passionate WordPress developer based out of the bustling city of Rajkot, India. Throughout my years of building custom themes, optimizing site performance, and hardening enterprise WordPress websites, I have noticed a recurring pattern: most site owners focus heavily on security plugins, strong passwords, and two-factor authentication, but completely overlook one of the most effective browser-level defenses available—<strong>HTTP Security Headers</strong>.</p>
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Looking for a Security Specialist?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses protect their WordPress sites from threats. Let's assess your security needs.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
 
 
-<p>Security headers act as a crucial dialogue between your WordPress web server and your visitor’s browser. By telling the browser exactly how to behave when handling your site's content, you can eliminate entire vectors of attack such as Cross-Site Scripting (XSS), Clickjacking, and MIME-type sniffing—all without adding bloat to your WordPress database or slowing down your page render times.</p>
+<p>Security headers act as a first line of defense between your web server and the user's browser. When configured properly, they tell the browser how to behave when handling your site's content, effectively preventing common vectors of attack like Cross-Site Scripting (XSS), Clickjacking, MIME-sniffing, and data injection attacks. In this guide, I will walk you through the essential security headers every WordPress site needs and demonstrate how to configure them cleanly through code.</p>
 
-<p>In this post, I am going to walk you through what these security headers are, why they matter, and how to implement them cleanly using custom PHP code, Apache server rules, and Nginx configurations.</p>
+<h2>Why WordPress Sites Need Security Headers</h2>
 
-<h2>Understanding Key HTTP Security Headers</h2>
+<p>WordPress powers over 40% of the web, making it a primary target for automated scripts and malicious actors. While plugins like Wordfence or Sucuri provide application-layer filtering, HTTP security headers operate at the browser level. They dictate strictly what resources can be loaded, where requests can be sent, and how framing is handled.</p>
 
-<p>When a browser requests a page from your WordPress site, the server responds with the content along with HTTP response headers. By default, standard WordPress installations ship with minimal response headers. Here are the core headers you should configure to fortify your application stack:</p>
-
-<ul>
-  <li><code>HTTP Strict Transport Security (HSTS)</code>: Forces the browser to communicate strictly over encrypted HTTPS connections, preventing man-in-the-middle downgrade attacks.</li>
-  <li><code>X-Frame-Options</code>: Protects your site against Clickjacking by controlling whether your site can be embedded within an <code>iframe</code> or <code>frame</code> element on external domains.</li>
-  <li><code>X-Content-Type-Options</code>: Stops browsers from MIME-sniffing a response away from the declared content-type, reducing the risk of executable script injections disguised as images.</li>
-  <li><code>Referrer-Policy</code>: Governs how much user dynamic referral information is sent along when a user clicks a link that navigates away from your site.</li>
-  <li><code>Permissions-Policy</code>: Controls which hardware and browser APIs (like camera, microphone, geolocation, or autoplay) your site is allowed to access.</li>
-  <li><code>Content-Security-Policy (CSP)</code>: The heavyweight champion of web security. It allows you to restrict the sources from which scripts, stylesheets, images, and other resources can be loaded and executed.</li>
-</ul>
+<p>By enforcing security headers, you eliminate entire classes of vulnerabilities without adding extra runtime overhead or database queries to your WordPress site.</p>
 
 <blockquote>
-  <p>"Security headers are the highest ROI security improvement in web development. They add zero execution latency, require no database queries, and block advanced client-side vulnerabilities directly at the browser layer."</p>
+<p>Setting up security headers is not about adding complex software; it is about establishing clear rules of engagement between your server and your visitor's browser. It is lightweight, zero-overhead defense at its finest.</p>
 </blockquote>
 
-<h2>Method 1: Configuring Headers via PHP (WordPress Hook)</h2>
+<h2>The Essential HTTP Security Headers Explained</h2>
 
-<p>If you prefer a purely WordPress-centric approach that works regardless of whether your web host uses Apache, Nginx, or LiteSpeed, you can hook into the <code>send_headers</code> action within PHP. I usually encapsulate this logic inside a custom functionality plugin or directly inside a child theme's <code>functions.php</code> file.</p>
+<p>Let us look at the key headers you should configure on your WordPress site, along with what each standard directive actually accomplishes.</p>
 
-<p>Here is a clean PHP implementation showing how to attach these headers securely:</p>
+<h3>1. Content Security Policy (CSP)</h3>
+<p>The <code>Content-Security-Policy</code> header is arguably the most powerful header available. It restricts the origins from which scripts, stylesheets, images, and other assets can be loaded. This significantly mitigates Cross-Site Scripting (XSS) risks.</p>
 
-<pre><code>/**
- * Set HTTP Security Headers in WordPress
+<h3>2. Strict-Transport-Security (HSTS)</h3>
+<p>The <code>Strict-Transport-Security</code> header forces the browser to communicate with your website exclusively over HTTPS connections. It protects your visitors against SSL stripping attacks and cookie hijacking.</p>
+
+<h3>3. X-Frame-Options</h3>
+<p>This header protects your site against clickjacking attacks by dictating whether your website can be embedded inside an <code>&lt;iframe&gt;</code>, <code>&lt;frame&gt;</code>, or <code>&lt;object&gt;</code> tag on external domains.</p>
+
+<h3>4. X-Content-Type-Options</h3>
+<p>Setting this header to <code>nosniff</code> prevents modern browsers from trying to "guess" or "sniff" the MIME type of a file. It stops attackers from disguising executable scripts as harmless images or text files.</p>
+
+<h3>5. Referrer-Policy</h3>
+<p>The <code>Referrer-Policy</code> header governs how much user referrer information (URL details) is passed along when a user clicks a link that leads away from your site.</p>
+
+<h3>6. Permissions-Policy</h3>
+<p>Formerly known as Feature-Policy, this allows you to restrict which browser hardware capabilities (such as the camera, microphone, geolocation, or payment APIs) your site and third-party embeds can access.</p>
+
+<h2>Implementing Security Headers in WordPress via PHP</h2>
+
+<p>While you can use server configuration files like <code>.htaccess</code> or <code>nginx.conf</code>, implementing headers directly in your custom WordPress functionality plugin or child theme's <code>functions.php</code> file gives you finer control. In WordPress, the ideal hook to attach headers is <code>send_headers</code>.</p>
+
+<p>Here is a production-ready snippet I frequently use across projects built for my clients here in Rajkot:</p>
+
+<pre><code>&lt;?php
+/**
+ * Implement HTTP Security Headers in WordPress
  * Author: Shiv Parmar
  */
+
 function sp_add_security_headers() {
-    // Only send headers on the frontend and admin, avoid REST API or XML-RPC if unneeded
+    // Only send these headers on the front-end to avoid conflicts in wp-admin
     if ( ! is_admin() ) {
-        // Enforce HTTPS across subdomains for 1 year
+        // Enforce HTTPS communication for 1 year including subdomains
         header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
 
-        // Prevent framing to stop Clickjacking attacks
+        // Prevent your site from being embedded in frames externally (Clickjacking Protection)
         header( 'X-Frame-Options: SAMEORIGIN' );
 
-        // Prevent MIME type sniffing
+        // Disable MIME-type sniffing
         header( 'X-Content-Type-Options: nosniff' );
 
-        // Strict Referrer Policy
+        // Control referrer privacy
         header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 
         // Restrict unnecessary browser features
         header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
 
-        // Basic Content Security Policy (Adjust based on external scripts)
+        // Basic Content Security Policy (Adjust domains as needed for your site)
         header( "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com;" );
     }
 }
 add_action( 'send_headers', 'sp_add_security_headers' );
 </code></pre>
 
-<p>Notice the <code>Content-Security-Policy</code> directive above. WordPress themes and plugins often rely on inline styles or dynamic JavaScript evaluation. While restricting everything to <code>'self'</code> is ideal, applying strict CSP settings right away can break your layout or JavaScript features. Always test thoroughly before deploying CSP on live production environments!</p>
+<h2>Handling Dynamic Nonces in JavaScript and CSS for CSP</h2>
 
-<h2>Method 2: Configuring Headers at the Web Server Level</h2>
+<p>A common issue developers run into when implementing a strict Content Security Policy is inline JavaScript or CSS breaking because modern browsers block <code>'unsafe-inline'</code>. To resolve this cleanly without sacrificing safety, we can generate a cryptographic nonce (number used once) in PHP and pass it to inline script tags.</p>
 
-<p>While handling headers in PHP is convenient, setting them directly on your web server layer (Apache or Nginx) is generally faster because response processing occurs before the PHP runtime engine initializes.</p>
+<p>Here is how you can set up dynamic nonce generation in PHP and enforce it in JavaScript:</p>
 
-<h3>1. Apache Configuration (.htaccess)</h3>
-
-<p>If your WordPress application is hosted on an Apache environment, you can append the following block to your root <code>.htaccess</code> file:</p>
-
-<pre><code>&lt;IfModule mod_headers.c&gt;
-    # Enforce HTTPS via HSTS
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
-
-    # Block Clickjacking
-    Header always set X-Frame-Options "SAMEORIGIN"
-
-    # Block MIME Sniffing
-    Header always set X-Content-Type-Options "nosniff"
-
-    # Set Referrer Policy
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-
-    # Set Permissions Policy
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-
-    # Basic Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';"
-&lt;/IfModule&gt;
-</code></pre>
-
-<h3>2. Nginx Configuration</h3>
-
-<p>For Nginx power-users, you can place these directives directly inside your site’s server block configuration (typically located in <code>/etc/nginx/sites-available/your-domain.conf</code>):</p>
-
-<pre><code># Security Headers Configuration
-add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-add_header X-Frame-Options "SAMEORIGIN" always;
-add_header X-Content-Type-Options "nosniff" always;
-add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
-add_header Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'" always;
-</code></pre>
-
-<h2>Handling Frontend CSP Assets (CSS & JavaScript Considerations)</h2>
-
-<p>When enforcing strict Content Security Policies, third-party libraries, tracking scripts, and dynamic CSS styling injections can get blocked by the browser. If you inspect your Web Developer Tools Console in Chrome or Firefox, you might see errors like this:</p>
-
-<pre><code>Refused to load the script 'https://example-cdn.com/library.js' because it violates the following Content Security Policy directive: "script-src 'self'".
-</code></pre>
-
-<p>To dynamically check if your frontend scripts are throwing CSP errors, you can add a short JavaScript listener to log violations locally or send them to an monitoring endpoint:</p>
-
-<pre><code>// Dynamic JS Listener for CSP Violations
-document.addEventListener("securitypolicyviolation", (e) => {
-    console.warn("CSP Violation Blocked!");
-    console.warn("Blocked URI:", e.blockedURI);
-    console.warn("Violated Directive:", e.violatedDirective);
-    console.warn("Original Policy:", e.originalPolicy);
-});
-</code></pre>
-
-<p>In addition, if your plugin needs to output dynamic inline styles securely without using <code>'unsafe-inline'</code> in your CSP, you should ideally enqueue styles properly using WordPress functions such as <code>wp_add_inline_style()</code> rather than injecting raw HTML <code>&lt;style&gt;</code> tags:</p>
-
-<pre><code>/**
- * Proper Way to Enqueue Dynamic Styles in WordPress
- */
-function sp_enqueue_custom_styles() {
-    wp_enqueue_style( 'sp-main-style', get_template_directory_uri() . '/css/main.css', array(), '1.0.0' );
-    
-    // Dynamic CSS variables safely attached
-    $custom_css = "
-        :root {
-            --primary-color: #0073aa;
-            --accent-color: #23282d;
-        }";
-    wp_add_inline_style( 'sp-main-style', $custom_css );
+<pre><code>&lt;?php
+// Generate a unique nonce for the request session
+function sp_get_csp_nonce() {
+    static $nonce;
+    if ( ! $nonce ) {
+        $nonce = base64_encode( random_bytes( 16 ) );
+    }
+    return $nonce;
 }
-add_action( 'wp_enqueue_scripts', 'sp_enqueue_custom_styles' );
+
+// Function to output script tag with nonce
+function sp_enqueue_custom_js() {
+    $nonce = sp_get_csp_nonce();
+    
+    // Inject dynamic script with CSP nonce attribute
+    echo '&lt;script nonce="' . esc_attr( $nonce ) . '"&gt;';
+    echo '  document.addEventListener("DOMContentLoaded", function() {';
+    echo '      console.log("Secure custom JS executed with Nonce!");';
+    echo '  });';
+    echo '&lt;/script&gt;';
+}
+add_action( 'wp_footer', 'sp_enqueue_custom_js' );
+?&gt;
 </code></pre>
 
-<h2>Testing and Verifying Your Headers</h2>
+<p>And if you need to fetch resources via JavaScript, ensure your script handles modern secure cross-origin requests by specifying credentials and modes properly:</p>
 
-<p>Once you have added these headers via PHP or web server config files, it's time to verify that they are working. Here is how I test sites locally and in production:</p>
+<pre><code>// Secure fetch call complying with strict CORS and CSP policies
+async function fetchSecureData(endpoint) {
+    try {
+        const response = await fetch(endpoint, {
+            method: 'GET',
+            mode: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Secure Fetch Error:', error);
+    }
+}
+</code></pre>
+
+<h2>Step-by-Step Implementation Strategy</h2>
+
+<p>If you are applying security headers to an existing WordPress website with dozens of plugins, applying strict policies immediately can break functionality. Here is the implementation roadmap I follow:</p>
 
 <ol>
-  <li><strong>Browser Developer Tools:</strong> Open your browser console, navigate to the <strong>Network</strong> tab, reload your website, click on your domain's primary document request, and inspect the <strong>Response Headers</strong> section.</li>
-  <li><strong>cURL Command Line:</strong> Run <code>curl -I https://yourwebsite.com</code> in your terminal to view the raw HTTP headers returned by the server.</li>
-  <li><strong>Online Testing Tools:</strong> Free services like <code>SecurityHeaders.com</code> or <code>Mozilla Observatory</code> allow you to scan your URL and receive an instant security rating from F to A+.</li>
+    <li><strong>Audit Your Site Assets:</strong> List all third-party services your site uses (Google Fonts, Analytics, Stripe, YouTube embeds, CDNs).</li>
+    <li><strong>Start with CSP Report-Only Mode:</strong> Instead of using <code>Content-Security-Policy</code>, use <code>Content-Security-Policy-Report-Only</code> header. This logs potential violations to your browser console or a logging endpoint without breaking site features.</li>
+    <li><strong>Apply Basic Headers First:</strong> Enable <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, and <code>Referrer-Policy</code> first, as they rarely break legitimate functionality.</li>
+    <li><strong>Enforce Strict Policies:</strong> Once your CSP rules are tested and optimized, switch to enforcing headers permanently.</li>
 </ol>
+
+<h2>Testing Your Headers</h2>
+
+<p>After deploying your updated code, always verify your configuration. You can check your site's headers using:</p>
+
+<ul>
+    <li><strong>Browser Developer Tools:</strong> Open the Network tab, reload your page, click on the primary document request, and inspect the <em>Response Headers</em> section.</li>
+    <li><strong>Online Testing Tools:</strong> Sites like <a href="https://securityheaders.com" target="_blank" rel="noopener">SecurityHeaders.com</a> give your setup an instant letter grade (aim for an A or A+!).</li>
+</ul>
 
 <h2>Final Thoughts</h2>
 
-<p>Securing a WordPress application is a multi-layered journey. While plugins and strong passwords do their job on the database and authentication sides, configuring HTTP security headers guarantees that your site's visitors are protected at the server-to-browser boundary.</p>
+<p>Securing a WordPress platform doesn't always mean purchasing expensive third-party security subscriptions. By harnessing the power of HTTP Security Headers directly through PHP and clean code practices, you build a robust defense boundary right at the browser interface.</p>
 
-<p>Start by testing these header configurations in a staging environment first, monitor your developer browser console for any broken assets or script blocks, and then roll them out to production. It takes less than 10 minutes to set up, but the security benefits will last as long as your site remains online.</p>
+<p>I hope this guide helps you secure your WordPress sites more effectively! Have questions about configuring your CSP or encountering issues with specific plugins? Drop a comment below, or get in touch. Happy coding from Rajkot!</p>
 
-<p>Have any questions about configuring Content Security Policies or dealing with broken scripts? Feel free to reach out to me or drop your comments below. Happy coding from Rajkot!</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Looking for a Security Specialist?</h3>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress Security development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress Security development projects">Discuss My Project <span>&rarr;</span></a>
+</div>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">
-<img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
-<div class="author-info">
-<h4>Shiv Parmar</h4>
-<p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
-<div class="author-social">
-<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">LinkedIn</a>
-<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">GitHub</a>
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">GitHub</a>
+    </div>
+  </div>
 </div>
-</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
 </div>
 </div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <h3>Let's Work Together</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-row">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select an inquiry type</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Project Request">Project Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under Rs.10,000">Under Rs.10,000</option>
+              <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+              <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+              <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+              <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+          <p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="26" rx="3"/>
+              <path d="M6 14l18 11 18-11"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="5"/>
+              <path d="M16 21v15"/>
+              <circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/>
+              <path d="M24 21v15"/>
+              <path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
+              <circle cx="24" cy="20" r="5"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Rajkot, India &middot; Remote-ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
 <script>
 (function(){
-var toc=document.getElementById("tocList");
-if(toc){document.querySelectorAll(".content h2").forEach(function(h,i){var id="section-"+i;h.id=id;var li=document.createElement("li");var a=document.createElement("a");a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;a.title=h.textContent;li.appendChild(a);toc.appendChild(li);});}
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      document.querySelectorAll(".content h2").forEach(function(h,i){
+        var id="section-"+i;h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
+        li.appendChild(a);toc.appendChild(li);
+      });
+    }
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[{"date":"Aug 19, 2026 &middot; 6 min read","title":"WordPress Gutenberg vs Elementor: Which is Better in 2026?","slug":"wordpress-gutenberg-vs-elementor-which-is-better-in-2026"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"How to Speed Up WooCommerce Product Pages","slug":"how-to-speed-up-woocommerce-product-pages"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress Post Types and Taxonomies Explained","slug":"wordpress-post-types-and-taxonomies-explained"},{"date":"Aug 19, 2026 &middot; 8 min read","title":"WordPress Database Optimization Guide","slug":"wordpress-database-optimization-guide"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"},{"date":"Aug 19, 2026 &middot; 7 min read","title":"How to Build a WordPress Membership Site","slug":"how-to-build-a-wordpress-membership-site"}];
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
+      posts.forEach(function(p){
+        if(p.slug!==currentSlug && count<3){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          related.appendChild(card);
+          count++;
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
 })();
 </script>
 </body>
