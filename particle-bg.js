@@ -12,8 +12,8 @@
   const RETURN_SPEED = 0.08;
   const DAMPING = 0.90;
   const REPULSION_STRENGTH = 1.2;
-  const SCROLL_FACTOR = 0.01;            // Very subtle movement
-  const SCROLL_DAMPING = 0.95;           // Smooth deceleration
+  const SCROLL_FACTOR = 0.005;           // Ultra subtle movement
+  const SCROLL_DAMPING = 0.95;
 
   let canvas, ctx, container;
   let particles = [];
@@ -93,7 +93,7 @@
 
     // --- Main particles: Phase 1 - Apply Forces ---
     // Calculate scroll velocity with damping for smoothness
-    scroll.velocity = (scroll.y - scroll.lastY) * 0.1 + scroll.velocity * SCROLL_DAMPING;
+    scroll.velocity = (scroll.y - scroll.lastY) * 0.05 + scroll.velocity * SCROLL_DAMPING;
     scroll.lastY = scroll.y;
 
     for (let i = 0; i < particles.length; i++) {
@@ -157,10 +157,16 @@
     // --- Main particles: Phase 3 - Integrate & Draw ---
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.vx *= 0.95;  // Heavy damping - no bounce
-      p.vy *= 0.95;  // Heavy damping - no bounce
+      p.vx *= 0.95;
+      p.vy *= 0.95;
       p.x += p.vx;
       p.y += p.vy;
+
+      // Wrap particles around when they go off-screen
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
 
       const vel = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
       const opacity = Math.min(0.3 + vel * 0.1, 1);
