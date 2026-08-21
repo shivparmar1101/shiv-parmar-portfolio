@@ -99,7 +99,7 @@
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
-      // Scroll-based movement (particles move with scroll direction)
+      // Scroll-based movement (particles follow scroll direction)
       p.vy += scroll.velocity * SCROLL_FACTOR;
 
       // Mouse repulsion
@@ -113,9 +113,7 @@
         p.vy -= (dy / dist) * repulse * 5;
       }
 
-      // Spring force back to origin
-      p.vx += (p.ox - p.x) * RETURN_SPEED;
-      p.vy += (p.oy - p.y) * RETURN_SPEED;
+      // NO spring force - particles just follow scroll, no bounce back
     }
 
     // --- Background particles: Apply scroll movement ---
@@ -159,8 +157,8 @@
     // --- Main particles: Phase 3 - Integrate & Draw ---
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.vx *= DAMPING;
-      p.vy *= DAMPING;
+      p.vx *= 0.95;  // Heavy damping - no bounce
+      p.vy *= 0.95;  // Heavy damping - no bounce
       p.x += p.vx;
       p.y += p.vy;
 
