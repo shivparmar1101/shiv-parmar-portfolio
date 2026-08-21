@@ -547,7 +547,7 @@ html[data-theme="light"] header {
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;  /* Changed from hidden to visible */
 }
 
 .hero::before {
