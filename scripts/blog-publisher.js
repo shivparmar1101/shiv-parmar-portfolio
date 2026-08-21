@@ -77,9 +77,8 @@ function callGemini(prompt) {
   });
 }
 
-function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise, ctaHeadline, ctaButton) {
+function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise, ctaHeadline, ctaButton, metaDesc, metaKeywords) {
   const canonicalUrl = `https://shiv-parmar-portfolio.netlify.app/blog/${slug}.html`;
-  const metaDesc = content.substring(0, 155).replace(/<[^>]*>/g, '').replace(/\n/g, ' ').trim() + '...';
   
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -88,7 +87,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expert
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <meta name="description" content="${metaDesc}">
-<meta name="keywords" content="WordPress, ${expertise}, WooCommerce, WordPress developer, Rajkot">
+<meta name="keywords" content="${metaKeywords}">
 <meta name="author" content="Shiv Parmar">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${canonicalUrl}">
@@ -612,8 +611,29 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   const imageUrl = images[topic.cat] || images.default;
 
+  // Meta Description = Category template + Blog title
+  const metaDescTemplates = {
+    'WordPress': `Learn WordPress development with this guide on ${topic.title}. Tips, code examples and best practices.`,
+    'WooCommerce': `Master WooCommerce with this guide on ${topic.title}. Expert tips for online store success.`,
+    'Security': `Secure your WordPress site with this guide on ${topic.title}. Best practices and tips.`,
+    'SEO': `Boost your rankings with this guide on ${topic.title}. WordPress SEO tips and strategies.`,
+    'Performance': `Speed up your site with this guide on ${topic.title}. WordPress performance tips.`
+  };
+  const metaDesc = metaDescTemplates[topic.cat] || metaDescTemplates['WordPress'];
+
+  // Keywords = Category base + Title keywords (auto-extracted)
+  const catKeywords = {
+    'WordPress': 'WordPress, WordPress development, WordPress tips',
+    'WooCommerce': 'WooCommerce, WooCommerce tips, online store',
+    'Security': 'WordPress security, website security, security tips',
+    'SEO': 'WordPress SEO, SEO tips, search engine optimization',
+    'Performance': 'WordPress speed, website performance, page speed'
+  };
+  const titleWords = topic.title.toLowerCase().split(' ').filter(w => w.length > 4 && !['guide','tips','best','practices','complete','comparison'].includes(w)).slice(0, 4).join(', ');
+  const metaKeywords = `${catKeywords[topic.cat] || catKeywords['WordPress']}, ${titleWords}`;
+
   // Save blog file
-  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content, expertise, ctaHeadline, ctaButton);
+  const blogHTML = generateBlogHTML(topic.title, topic.slug, date, topic.read, imageUrl, content, expertise, ctaHeadline, ctaButton, metaDesc, metaKeywords);
   const blogPath = path.join(BLOG_DIR, topic.slug + '.html');
   fs.writeFileSync(blogPath, blogHTML, 'utf-8');
   console.log('Saved: blog/' + topic.slug + '.html');
