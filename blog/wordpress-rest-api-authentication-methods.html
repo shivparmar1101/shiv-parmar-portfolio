@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress REST API Authentication Methods</title>
+<meta name="description" content="Hello everyone! I am Shiv Parmar, a passionate WordPress developer based in Rajkot, India. Over the years working with clients across the globe and runn...">
+<meta name="keywords" content="WordPress, WordPress, WooCommerce, WordPress developer, Rajkot">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress REST API Authentication Methods">
+<meta property="og:description" content="Hello everyone! I am Shiv Parmar, a passionate WordPress developer based in Rajkot, India. Over the years working with clients across the globe and runn...">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods.html">
+<meta property="og:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress REST API Authentication Methods">
+<meta name="twitter:description" content="Hello everyone! I am Shiv Parmar, a passionate WordPress developer based in Rajkot, India. Over the years working with clients across the globe and runn...">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress REST API Authentication Methods",
+  "description": "Hello everyone! I am Shiv Parmar, a passionate WordPress developer based in Rajkot, India. Over the years working with clients across the globe and runn...",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "Aug 21, 2026",
+  "dateModified": "Aug 21, 2026",
+  "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods.html"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.date .updated{color:var(--accent);margin-left:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content blockquote em{color:var(--text-primary)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-box .author-social{display:flex;gap:12px}
+.author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
+.author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin:30px 0;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:rgba(255, 255, 255, 0.04);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255, 255, 255, 0.08);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);background:rgba(255, 255, 255, 0.08);box-shadow:0 8px 32px rgba(0, 0, 0, 0.2)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg);margin-top:70px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.cta-section{padding:80px 0}
+.cta-block{background:rgba(255, 255, 255, 0.05);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255, 255, 255, 0.1);padding:80px 48px;text-align:center;position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:40px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5}
+.cta-block .eyebrow{justify-content:center}
+.cta-block h2{font-size:clamp(28px,3.8vw,48px);margin-bottom:16px;letter-spacing:-0.025em;color:var(--text-primary)}
+.cta-block p{color:var(--text-secondary);max-width:520px;margin:0 auto 36px;font-size:16px;line-height:1.75}
+.contact-grid{margin-top:0}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+<!-- Full Page Particle Background -->
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header"></div>
+<article><div class="container">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress REST API Authentication Methods
+</nav>
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop" alt="WordPress REST API Authentication Methods - WordPress development guide by Shiv Parmar" title="WordPress REST API Authentication Methods - Complete guide by Shiv Parmar" class="hero-img">
+<div class="date">Aug 21, 2026 &middot; 6 min read<span class="updated">Updated: Aug 21, 2026</span></div>
+<h1>WordPress REST API Authentication Methods</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList"></ul>
+</div>
+<div class="content">
+<p>Hello everyone! I am Shiv Parmar, a passionate WordPress developer based in Rajkot, India. Over the years working with clients across the globe and running custom development sprints here in Gujarat, I’ve seen WordPress evolve from a simple blogging engine into a headless, decoupled powerhouse. At the center of this modern architecture is the WordPress REST API.</p>
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses unlock WordPress's full potential. Let's see what I can do for you.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch <span>&rarr;</span></a></div>
+
+
+<p>While building endpoints and fetching data is straightforward, securing those endpoints is where things get serious. Whether you are building an iOS app, a React dashboard, or an internal integration for a client, choosing the correct authentication method for your WordPress REST API is vital. In this guide, I will walk you through the primary REST API authentication methods available in WordPress, complete with code snippets and real-world recommendations.</p>
+
+<h2>Understanding WordPress REST API Authentication</h2>
+
+<p>By default, public endpoints in the REST API (like reading published posts) do not require authentication. However, when you want to create, update, delete, or fetch private data, WordPress needs to know two things:</p>
+
+<ul>
+    <li><strong>Who is making the request?</strong> (Authentication)</li>
+    <li><strong>Are they allowed to perform this action?</strong> (Authorization)</li>
+</ul>
+
+<p>WordPress provides multiple ways to handle this, depending on where your request originates from—whether it is inside the WordPress admin dashboard, a decoupled frontend, or a remote server-to-server script.</p>
+
+<blockquote dir="ltr">
+    <p>"Authentication identifies the user, but permission callbacks protect the ecosystem. Never rely solely on authentication without checking user capabilities inside your REST API endpoints."</p>
+</blockquote>
+
+<h2>1. Cookie Authentication (Default Internal Method)</h2>
+
+<p>If you are building custom Gutenberg blocks, AJAX functionality inside your theme, or admin panels, Cookie Authentication is your best friend. It is built right into WordPress core and requires zero additional plugin setup.</p>
+
+<p>When a user logs into WordPress, a cookie is set in their browser. For API calls made from the frontend, WordPress uses a <strong>Nonce</strong> (Number used ONCE) passed in the request header to verify that the request is legitimate and prevent Cross-Site Request Forgery (CSRF) attacks.</p>
+
+<h3>Enqueuing Nonces in PHP</h3>
+
+<p>To pass the nonce to JavaScript, use <code>wp_localize_script()</code> or <code>wp_add_inline_script()</code> in your plugin or theme functions file:</p>
+
+<pre><code>function shiv_enqueue_rest_script() {
+    wp_enqueue_script( 'shiv-app', get_template_directory_uri() . '/js/app.js', array('jquery'), '1.0.0', true );
+
+    wp_localize_script( 'shiv-app', 'wpApiSettings', array(
+        'root'  =&gt; esc_url_raw( rest_url() ),
+        'nonce' =&gt; wp_create_nonce( 'wp_rest' )
+    ) );
+}
+add_action( 'wp_enqueue_scripts', 'shiv_enqueue_rest_script' );
+</code></pre>
+
+<h3>Making the Fetch Call in JavaScript</h3>
+
+<p>In your JavaScript file, include the nonce in the <code>X-WP-Nonce</code> header:</p>
+
+<pre><code>fetch( wpApiSettings.root + 'wp/v2/posts/1', {
+    method: 'POST',
+    headers: {
+        'X-WP-Nonce': wpApiSettings.nonce,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        title: 'Updated Post Title from Rajkot!'
+    })
+})
+.then( response =&gt; response.json() )
+.then( data =&gt; console.log( data ) )
+.catch( error =&gt; console.error( 'Error:', error ) );
+</code></pre>
+
+<h2>2. Application Passwords (Best for External Scripts & Quick Integrations)</h2>
+
+<p>Introduced in WordPress 5.6, <strong>Application Passwords</strong> allow external applications (like mobile apps, Zapier, or Node.js scripts) to authenticate without sharing the user's actual password. Each application gets its own 24-character random password, which can be revoked at any time from the User Profile screen.</p>
+
+<p>This method uses HTTP Basic Authentication, sending a base64-encoded string of <code>username:application_password</code> in the HTTP request headers.</p>
+
+<h3>Example: Making a Request with Node.js / JavaScript</h3>
+
+<p>Here is how you can perform an authenticated API request using JavaScript running outside the browser context:</p>
+
+<pre><code>const username = 'shivparmar';
+const appPassword = 'abcd 1234 efgh 5678 ijkl 9012'; // Generated in WP Admin
+const credentials = btoa(`${username}:${appPassword}`);
+
+fetch('https://example.com/wp-json/wp/v2/posts', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Basic ${credentials}`
+    }
+})
+.then(res =&gt; res.json())
+.then(data =&gt; console.log(data));
+</code></pre>
+
+<p><em>Note: Application Passwords should ONLY be used over HTTPS. Sending plain base64 credentials over plain HTTP exposes sensitive data to interception.</em></p>
+
+<h2>3. JWT Authentication (Best for Decoupled Frontends & Mobile Apps)</h2>
+
+<p>If you are building a decoupled web application using React, Next.js, or Vue, <strong>JSON Web Tokens (JWT)</strong> offer a clean, stateless solution. Unlike cookies, JWTs don't suffer from CSRF issues and work seamlessly cross-domain.</p>
+
+<p>Since core WordPress doesn't support JWT natively, you can use popular plugins such as <strong>JWT Authentication for WP REST API</strong> by Enrique Chavez.</p>
+
+<h3>How JWT Flow Works:</h3>
+
+<ol>
+    <li>The client sends user credentials (username and password) to the <code>/wp-json/jwt-auth/v1/token</code> endpoint.</li>
+    <li>WordPress validates credentials and returns a signed JWT token.</li>
+    <li>The client stores the token (e.g., in memory or local storage) and sends it in the HTTP header for subsequent requests: <code>Authorization: Bearer &lt;TOKEN&gt;</code>.</li>
+</ol>
+
+<h3>Requesting a Token in JavaScript:</h3>
+
+<pre><code>async function getJwtToken() {
+    const response = await fetch('https://example.com/wp-json/jwt-auth/v1/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: 'shiv_developer',
+            password: 'MySecurePassword123!'
+        })
+    });
+
+    const data = await response.json();
+    if (data.token) {
+        localStorage.setItem('user_token', data.token);
+        console.log('Authenticated successfully!');
+    }
+}
+</code></pre>
+
+<h3>Using the Token for API Endpoints:</h3>
+
+<pre><code>const token = localStorage.getItem('user_token');
+
+fetch('https://example.com/wp-json/wp/v2/posts', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+        title: 'New Headless Post',
+        status: 'publish'
+    })
+});
+</code></pre>
+
+<h2>4. OAuth 1.0a / OAuth 2.0 (Enterprise-Level Applications)</h2>
+
+<p>For complex applications where third-party apps need access to WordPress resources on behalf of users without asking for their credentials, OAuth is the industry standard. WordPress has an official <strong>OAuth 1.0a Server plugin</strong> maintained by the core team.</p>
+
+<p>While OAuth is extremely secure, setting it up requires an authorization server flow, redirect URLs, and client key exchanges. It is best suited for enterprise integrations, SaaS platforms, and desktop software.</p>
+
+<h2>Enforcing Security with Permission Callbacks</h2>
+
+<p>Regardless of which authentication method you implement, you must secure your custom REST API routes using proper permission callbacks in PHP. Here is a custom endpoint pattern I frequently use in my plugins:</p>
+
+<pre><code>add_action( 'rest_api_init', function () {
+    register_rest_route( 'shiv/v1', '/settings', array(
+        'methods'             =&gt; 'POST',
+        'callback'            =&gt; 'shiv_update_settings',
+        'permission_callback' =&gt; 'shiv_check_permissions'
+    ) );
+} );
+
+function shiv_check_permissions( $request ) {
+    // Check if the authenticated user has capability to edit theme options
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return new WP_Error( 'rest_forbidden', __( 'You do not have permissions to access this endpoint.', 'text-domain' ), array( 'status' =&gt; 401 ) );
+    }
+    return true;
+}
+
+function shiv_update_settings( $request ) {
+    $params = $request-&gt;get_json_params();
+    // Perform update logic here
+    return rest_ensure_response( array( 'success' =&gt; true, 'message' =&gt; 'Settings saved successfully.' ) );
+}
+</code></pre>
+
+<h2>Which Method Should You Choose?</h2>
+
+<p>To summarize, here is a quick cheat sheet based on my day-to-day work building custom solutions in Rajkot:</p>
+
+<ul>
+    <li><strong>Building custom Gutenberg blocks or Admin UI?</strong> Use <em>Cookie Authentication + Nonce</em>.</li>
+    <li><strong>Connecting external Python/Node scripts or Server Cron Jobs?</strong> Use <em>Application Passwords</em>.</li>
+    <li><strong>Building Headless Frontends (Next.js/React/Gatsby) or Mobile Apps?</strong> Use <em>JWT Authentication</em>.</li>
+    <li><strong>Allowing third-party tools to access user data securely?</strong> Use <em>OAuth 1.0a / 2.0</em>.</li>
+</ul>
+
+<h2>Final Thoughts</h2>
+
+<p>The WordPress REST API has unlocked endless possibilities for modern web applications. However, API endpoints can easily become security vulnerabilities if authentication and capability checks are overlooked. Always enforce HTTPS, sanitize incoming request parameters, and choose the right authentication model for your architecture.</p>
+
+<p>I hope this post helped clear up any confusion around REST API security in WordPress. If you have questions or want to discuss modern WordPress architecture, feel free to drop a comment below or get in touch. Happy coding from Rajkot!</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Get in Touch <span>&rarr;</span></a>
+</div>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<div class="author-box">
+  <img src="https://avatars.githubusercontent.com/u/shivparmar1101" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" onerror="this.src='https://ui-avatars.com/api/?name=Shiv+Parmar&background=c9a84c&color=fff&size=80'">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">LinkedIn</a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">GitHub</a>
+    </div>
+  </div>
+</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <h3>Let's Work Together</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-row">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select an inquiry type</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Project Request">Project Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under Rs.10,000">Under Rs.10,000</option>
+              <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+              <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+              <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+              <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+          <p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="26" rx="3"/>
+              <path d="M6 14l18 11 18-11"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="5"/>
+              <path d="M16 21v15"/>
+              <circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/>
+              <path d="M24 21v15"/>
+              <path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
+              <circle cx="24" cy="20" r="5"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Rajkot, India &middot; Remote-ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
+<script>
+(function(){
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      document.querySelectorAll(".content h2").forEach(function(h,i){
+        var id="section-"+i;h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
+        li.appendChild(a);toc.appendChild(li);
+      });
+    }
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[{"date":"Aug 19, 2026 &middot; 6 min read","title":"WordPress Gutenberg vs Elementor: Which is Better in 2026?","slug":"wordpress-gutenberg-vs-elementor-which-is-better-in-2026"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"How to Speed Up WooCommerce Product Pages","slug":"how-to-speed-up-woocommerce-product-pages"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress Post Types and Taxonomies Explained","slug":"wordpress-post-types-and-taxonomies-explained"},{"date":"Aug 19, 2026 &middot; 8 min read","title":"WordPress Database Optimization Guide","slug":"wordpress-database-optimization-guide"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"},{"date":"Aug 19, 2026 &middot; 7 min read","title":"How to Build a WordPress Membership Site","slug":"how-to-build-a-wordpress-membership-site"}];
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
+      posts.forEach(function(p){
+        if(p.slug!==currentSlug && count<3){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          related.appendChild(card);
+          count++;
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
+})();
+</script>
+</body>
+</html>
