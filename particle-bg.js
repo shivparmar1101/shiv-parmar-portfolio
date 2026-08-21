@@ -8,10 +8,10 @@
 
   const PARTICLE_DENSITY = 0.0002;      // 50% less from 0.0004
   const BG_PARTICLE_DENSITY = 0.000075;  // 50% less from 0.00015
-  const MOUSE_RADIUS = 180;
+  const MOUSE_RADIUS = 120;              // Reduced from 180
   const RETURN_SPEED = 0.08;
   const DAMPING = 0.90;
-  const REPULSION_STRENGTH = 1.2;
+  const REPULSION_STRENGTH = 0.4;        // Reduced from 1.2
   const SCROLL_FACTOR = 0.005;           // Ultra subtle movement
   const SCROLL_DAMPING = 0.95;
 
@@ -109,8 +109,8 @@
       if (mouse.active && dist < MOUSE_RADIUS && dist > 0.01) {
         const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
         const repulse = force * REPULSION_STRENGTH;
-        p.vx -= (dx / dist) * repulse * 5;
-        p.vy -= (dy / dist) * repulse * 5;
+        p.vx -= (dx / dist) * repulse * 2;   // Reduced from 5
+        p.vy -= (dy / dist) * repulse * 2;   // Reduced from 5
       }
 
       // NO spring force - particles just follow scroll, no bounce back
