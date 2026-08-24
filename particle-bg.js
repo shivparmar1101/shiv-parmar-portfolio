@@ -6,6 +6,12 @@
 (function () {
   'use strict';
 
+  // Skip particles on mobile for better performance
+  if (window.matchMedia('(max-width: 900px)').matches ||
+      navigator.hardwareConcurrency <= 2) {
+    return;
+  }
+
   const PARTICLE_DENSITY = 0.0002;      // 50% less from 0.0004
   const BG_PARTICLE_DENSITY = 0.000075;  // 50% less from 0.00015
   const MOUSE_RADIUS = 120;              // Reduced from 180

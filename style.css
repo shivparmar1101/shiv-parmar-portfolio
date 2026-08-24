@@ -2539,3 +2539,33 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   pointer-events: none;
   z-index: 0;
 }
+
+/* --------------------------------------------------------------------------
+   24. Mobile Performance Optimizations
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  /* Disable backdrop-filter on mobile - major GPU killer */
+  header, .glass, .glass-strong, .btn-secondary, .btn-ghost,
+  .floating-pill, .about-stats, .service-card, .project-item,
+  .testimonial-card, .blog-card, .education-card, .cta-block,
+  .form-card, .contact-card, .nav-cta, .logo-item, .skill-item,
+  .mobile-overlay, .hero .lead, .hero-card .browser {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Disable expensive CSS animations on mobile */
+  .parallax-bg::before { animation: none !important; }
+  .parallax-orb { animation: none !important; opacity: 0.08 !important; }
+  .floating-pill { animation: none !important; }
+  .logo-strip { animation-duration: 60s !important; }
+  .skel::after { animation: none !important; }
+  .svgi-theme circle,
+  .svgi-plugin, .svgi-zap, .svi-search, .svgi-gear, .svgi-cart {
+    animation: none !important;
+  }
+
+  /* Reduce particle canvas impact */
+  .particle-canvas-fullpage { display: none !important; }
+}
