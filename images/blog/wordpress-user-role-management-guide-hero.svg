@@ -42,13 +42,13 @@
   <!-- Icon illustration -->
   <g transform="translate(900, 200)">
     <circle cx="50" cy="50" r="60" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-    <rect x="30" y="35" width="40" height="30" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><rect x="35" y="40" width="30" height="10" rx="2" fill="url(#goldGrad)" opacity="0.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="url(#goldGrad)" stroke-width="2"/>
+    <circle cx="50" cy="35" r="10" fill="url(#goldGrad)"/><circle cx="30" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><path d="M35 65 Q50 55 65 65" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M15 70 Q30 60 45 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/><path d="M55 70 Q70 60 85 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>
   </g>
   
   <!-- Title -->
-  <text x="80" y="180" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">Product</text>
-  <text x="80" y="240" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#goldGrad)">Bundles</text>
-  <text x="80" y="300" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#a0a0a0">Setup Guide</text>
+  <text x="80" y="180" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">User</text>
+  <text x="80" y="240" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#goldGrad)">Roles</text>
+  <text x="80" y="300" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#a0a0a0">Management Guide</text>
   
   <!-- Gold accent line -->
   <rect x="80" y="330" width="120" height="4" rx="2" fill="url(#goldGrad)"/>
@@ -62,7 +62,7 @@
   
   <!-- Badge -->
   <rect x="80" y="500" width="140" height="32" rx="16" fill="rgba(201,168,76,0.15)" stroke="url(#goldGrad)" stroke-width="1"/>
-  <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">WooCommerce</text>
+  <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">WordPress</text>
   
   <!-- Code snippets decoration -->
   <g transform="translate(80, 520)" opacity="0.4">
