@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -63,7 +64,27 @@
 
 <body>
 
-  <div id="site-header"></div>
+  <div id="site-header">
+    <noscript>
+      <header>
+        <div class="container nav">
+          <a class="logo" href="/">shiv<span class="dot">.</span>parmar</a>
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div class="nav-right">
+            <a class="nav-cta" href="#contact">Hire Me</a>
+          </div>
+        </div>
+      </header>
+    </noscript>
+  </div>
 
   <main id="top">
 
@@ -138,20 +159,21 @@
             <p class="about-role">WordPress Developer &middot; Rajkot, India</p>
             <p>I'm a passionate WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, and plugin solutions. I specialize in creating fast, secure, and scalable WordPress websites that help businesses grow online.</p>
             <p>My expertise includes ACF, Elementor, REST API integrations, and performance optimization. I love solving complex problems and turning ideas into reality through clean, maintainable code.</p>
-            <div class="about-stats" data-counter>
+              <div class="about-stats" data-counter>
               <div class="about-stat">
-                <strong data-target="4">0</strong>
+                <strong data-target="4"><span class="counter-fallback">4</span></strong>
                 <span>Years Experience</span>
               </div>
               <div class="about-stat">
-                <strong data-target="50">0</strong>
+                <strong data-target="50"><span class="counter-fallback">50</span></strong>
                 <span>Projects Completed</span>
               </div>
               <div class="about-stat">
-                <strong data-target="30">0</strong>
+                <strong data-target="30"><span class="counter-fallback">30</span></strong>
                 <span>Happy Clients</span>
               </div>
             </div>
+            <noscript><style>.counter-fallback{display:inline!important}</style></noscript>
             <a class="btn btn-primary" href="#contact">Let's Connect <span class="arrow">&rarr;</span></a>
           </div>
         </div>
@@ -529,6 +551,10 @@
           <div class="form-card reveal">
             <h3>Let's Work Together</h3>
             <form id="contactForm" novalidate>
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              </div>
               <div class="form-row">
                 <label for="name">Full Name *</label>
                 <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -641,11 +667,40 @@
 
   </main>
 
-  <div id="site-footer"></div>
+  <div id="site-footer">
+    <noscript>
+      <footer>
+        <div class="container footer-inner">
+          <span class="footer-left">&copy; 2026 Shiv Parmar &middot; WordPress Developer</span>
+          <div class="footer-right">
+            <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a>
+            <span style="color:var(--text-muted);font-size:13px">Full-time &middot; Contract &middot; Remote</span>
+          </div>
+        </div>
+      </footer>
+    </noscript>
+  </div>
 
   <div id="particle-hero" class="particle-canvas-fullpage"></div>
   <script src="includes.js"></script>
-  <script src="particle-bg.js" defer></script>
+  <script>
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function() {
+        var s = document.createElement('script');
+        s.src = 'particle-bg.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+    } else {
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'particle-bg.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+    }
+  </script>
   <script src="script.js" defer></script>
 </body>
 </html>

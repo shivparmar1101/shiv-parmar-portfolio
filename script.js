@@ -46,6 +46,9 @@ if (contactForm) {
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const honeypot = document.getElementById("website");
+    if (honeypot && honeypot.value.trim() !== "") return;
+
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
@@ -258,6 +261,8 @@ const counterBlocks = document.querySelectorAll("[data-counter]");
 if (counterBlocks.length) {
   const animateCounter = (el) => {
     const target = parseInt(el.getAttribute("data-target"), 10);
+    const fallback = el.querySelector(".counter-fallback");
+    if (fallback) fallback.style.display = "none";
     const duration = 1800;
     const start = performance.now();
 
