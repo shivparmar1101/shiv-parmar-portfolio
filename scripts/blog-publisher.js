@@ -221,6 +221,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expert
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../liquid-glass.css">
 <style>
 .blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
 .blog-header .nav{display:flex;align-items:center;justify-content:space-between}
@@ -286,6 +287,13 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </style>
 </head>
 <body>
+<!-- Liquid Glass Background -->
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div>
+<div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div>
+<div class="liquid-blob liquid-blob-4"></div>
+</div>
 <!-- Full Page Particle Background -->
 <div id="particle-hero" class="particle-canvas-fullpage"></div>
 <div id="site-header">
