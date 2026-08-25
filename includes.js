@@ -14,7 +14,56 @@
     var el = document.getElementById(id);
     if (!el) return;
     var processed = html.replace(/__BASE__/g, base).trim();
+
+    // For blog pages, add .html to clean URLs
+    if (isBlog) {
+      processed = processed.replace(/href="(\.\.\/(?:about|services|work|skills|experience|blog|contact))"/g, 'href="$1.html"');
+    }
+
     el.innerHTML = processed;
+
+    // Set active page
+    setActiveLink();
+  }
+
+  function setActiveLink() {
+    var currentPath = window.location.pathname;
+    var links = document.querySelectorAll('#site-header a, #mobileNav a');
+    
+    links.forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (!href) return;
+      
+      var isActive = false;
+      
+      // Check if current path matches the link
+      if (currentPath === '/' || currentPath === '' || currentPath.endsWith('/index.html')) {
+        // Home page - no active link
+        isActive = false;
+      } else if (href === '/' || href === 'index.html' || href === '../index.html') {
+        isActive = false;
+      } else {
+        // Check if current path contains the link path
+        var linkPage = href.replace(/^\.\.?\//, '').replace(/\.html$/, '').replace(/\/$/, '');
+        var currentPage = currentPath.replace(/^\//, '').replace(/\.html$/, '').replace(/\/$/, '');
+        
+        // Handle blog subpages
+        if (currentPage.indexOf('blog/') === 0) {
+          currentPage = 'blog';
+        }
+        if (linkPage.indexOf('blog/') === 0) {
+          linkPage = 'blog';
+        }
+        
+        isActive = linkPage === currentPage;
+      }
+      
+      if (isActive) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
   }
 
   // Blog Image Auto-Generation

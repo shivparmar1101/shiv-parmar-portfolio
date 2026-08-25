@@ -199,7 +199,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div id="site-header"></div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>${title}
+<a href="../" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>${title}
 </nav>
 <img src="${imageUrl}" alt="${title} - WordPress development guide by Shiv Parmar" title="${title} - Complete guide by Shiv Parmar" class="hero-img">
 <div class="date">${date} &middot; ${readtime} read<span class="updated">Updated: ${date}</span></div>
