@@ -82,7 +82,7 @@ function addInternalLinks(content, currentSlug, blogs) {
 
       if (matches && matches.length > 0) {
         const firstMatch = matches[0];
-        const link = `<a href="/blog/${slug}">${firstMatch}</a>`;
+        const link = `<a href="/blog/${slug}.html">${firstMatch}</a>`;
         linkedContent = linkedContent.replace(firstMatch, link);
         processedSlugs.add(slug);
       }

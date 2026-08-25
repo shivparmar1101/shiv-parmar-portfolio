@@ -124,7 +124,7 @@ function addInternalLinks(content, currentSlug) {
       if (matches && matches.length > 0) {
         // Only link first occurrence
         const firstMatch = matches[0];
-        const link = `<a href="/blog/${slug}">${firstMatch}</a>`;
+        const link = `<a href="/blog/${slug}.html">${firstMatch}</a>`;
         linkedContent = linkedContent.replace(firstMatch, link);
         processedSlugs.add(slug);
       }
@@ -742,6 +742,16 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const blogPath = path.join(BLOG_DIR, topic.slug + '.html');
   fs.writeFileSync(blogPath, blogHTML, 'utf-8');
   console.log('Saved: blog/' + topic.slug + '.html');
+
+  // Update sitemap.xml
+  const sitemapPath = path.join(__dirname, '..', 'sitemap.xml');
+  if (fs.existsSync(sitemapPath)) {
+    let sitemap = fs.readFileSync(sitemapPath, 'utf-8');
+    const newUrl = `  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/${topic.slug}</loc><lastmod>${date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`;
+    sitemap = sitemap.replace('</urlset>', newUrl + '\n</urlset>');
+    fs.writeFileSync(sitemapPath, sitemap, 'utf-8');
+    console.log('Updated: sitemap.xml');
+  }
 
   // Update blog.html
   const listCard = `<article class="blog-card reveal">

@@ -49,17 +49,36 @@ if (contactForm) {
     const honeypot = document.getElementById("website");
     if (honeypot && honeypot.value.trim() !== "") return;
 
+    // Validate required fields
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      formStatus.textContent = "Please fill in all required fields.";
+      formStatus.style.color = "#ef4444";
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      formStatus.textContent = "Please enter a valid email address.";
+      formStatus.style.color = "#ef4444";
+      return;
+    }
+
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
     const formData = {
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
+      name: name,
+      email: email,
       phone: document.getElementById("phone").value.trim(),
       subject: document.getElementById("subject").value,
       budget: document.getElementById("budget").value,
-      message: document.getElementById("message").value.trim(),
+      message: message,
       pageUrl: window.location.href,
     };
 
@@ -73,6 +92,7 @@ if (contactForm) {
 
       formStatus.textContent =
         "Message sent successfully! I will get back to you within 24 hours.";
+      formStatus.style.color = "";
       submitBtn.innerHTML = "Sent &#10003;";
       contactForm.reset();
       setTimeout(() => {
@@ -81,6 +101,7 @@ if (contactForm) {
       }, 3000);
     } catch (error) {
       formStatus.textContent = "Something went wrong. Please try again.";
+      formStatus.style.color = "#ef4444";
       submitBtn.innerHTML = "Send Message <span class='arrow'>&rarr;</span>";
       submitBtn.disabled = false;
     }
@@ -90,12 +111,15 @@ if (contactForm) {
 // --------------------------------------------------------------------------
 // 4. Active Navigation Highlight
 // --------------------------------------------------------------------------
-
-const sections = document.querySelectorAll("section[id]");
-const allNavLinks = document.querySelectorAll(".nav-links a");
-
+// 4. Active Nav Link on Scroll (index.html only)
+// --------------------------------------------------------------------------
 const updateActiveNav = () => {
-  const scrollPos = window.scrollY + 120;
+  // Only run on index page (has section anchors)
+  const sections = document.querySelectorAll("section[id]");
+  if (sections.length === 0) return;
+
+  const scrollPos = window.scrollY + 100;
+  const allNavLinks = document.querySelectorAll(".nav-links a");
 
   sections.forEach((section) => {
     const top = section.offsetTop;
