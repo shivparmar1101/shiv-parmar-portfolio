@@ -160,7 +160,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>Step 3: Creating Custom Tax Classes Programmatically</h2>
 
-<p>WooCommerce includes three tax classes out of the box: <em>Standard rate</em>, <em>Reduced rate</em>, and <em>Zero rate</em>. However, complex stores often require custom tax classes, such as "Digital Services" or "Luxury Goods". While you can add these manually in the WooCommerce admin settings, as developers, we often prefer doing this via code to maintain control across local, staging, and production environments.</p>
+<p>WooCommerce includes three tax classes out of the box: <em>Standard rate</em>, <em>Reduced rate</em>, and <em>Zero rate</em>. However, complex stores often require custom tax classes, such as "Digital Services" or "Luxury Goods". While you can add these manually in the WooCommerce admin settings, as developers, we often prefer doing this via code to maintain control across local, <a href="/blog/how-to-set-up-wordpress-staging-environment">staging</a>, and production environments.</p>
 
 <p>Here is a PHP snippet you can place inside your theme's <code>functions.php</code> file or a custom plugin to add custom tax classes dynamically:</p>
 
@@ -182,7 +182,7 @@ function shiv_add_custom_tax_classes( $tax_classes ) {
 }
 </code></pre>
 
-<h2>Step 4: Advanced Logic Exemption for Specific User Roles</h2>
+<h2>Step 4: Advanced Logic Exemption for Specific <a href="/blog/wordpress-user-role-management-guide">User Roles</a></h2>
 
 <p>A common scenario I encounter when developing custom WooCommerce platforms for clients in Rajkot and abroad is B2B tax exemptions. Wholesale buyers or verified business accounts often need tax-exempt purchasing.</p>
 
