@@ -22,9 +22,13 @@ jobs:
           node-version: '22'
 
       - name: Generate and Publish Blog
+        id: publish
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_ONE }}
-        run: node scripts/blog-publisher.js
+        run: |
+          node scripts/blog-publisher.js | tee output.log
+          echo "blog_url=$(grep 'URL:' output.log | awk '{print $3}')" >> $GITHUB_OUTPUT
+          echo "blog_title=$(grep 'Title:' output.log | sed 's/.*Title: //')" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
         run: |
@@ -43,13 +47,15 @@ jobs:
           server_port: 587
           username: parmarshiv1101@gmail.com
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          subject: "Blog Published Successfully"
+          subject: "Blog Published: ${{ steps.publish.outputs.blog_title }}"
           to: parmarshiv1101@gmail.com
           from: GitHub Actions <parmarshiv1101@gmail.com>
           body: |
             Blog published successfully!
 
-            Check your site: https://shiv-parmar-portfolio.netlify.app/blog.html
+            Title: ${{ steps.publish.outputs.blog_title }}
+            Check your blog: ${{ steps.publish.outputs.blog_url }}
+            All blogs: https://shiv-parmar-portfolio.netlify.app/blog
             GitHub repo: https://github.com/shivparmar1101/shiv-parmar-portfolio
 
       - name: Send Failure Email
