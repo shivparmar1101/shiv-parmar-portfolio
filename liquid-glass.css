@@ -1045,11 +1045,21 @@ html[data-theme="light"] .project-image::after { background: linear-gradient(to 
 }
 
 .timeline::before {
-  display: none;
+  display: none !important;
 }
 
 .timeline-progress {
-  display: none !important;
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 14px rgba(201, 168, 76, 0.5);
+  z-index: 1;
+  transition: height 0.15s linear;
+  pointer-events: none;
 }
 
 .timeline-item {
