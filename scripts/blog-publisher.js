@@ -483,7 +483,7 @@ ${(() => {
 <footer><div class="container footer-inner"><span class="footer-left">&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><div class="footer-right"><a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a><span style="color:var(--text-muted);font-size:13px">Full-time &middot; Contract &middot; Remote</span></div></div></footer>
 </noscript>
 </div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
 <script>
 (function(){
   function initBlog(){
