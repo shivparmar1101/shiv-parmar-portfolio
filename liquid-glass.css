@@ -355,7 +355,7 @@ html[data-theme="light"] .nav-links a.active { color: #fff; }
   box-shadow: 0 2px 12px rgba(201, 168, 76, 0.25);
 }
 
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
+.nav-cta:hover { color: #000; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
 
 .hamburger { display: none; }
 
