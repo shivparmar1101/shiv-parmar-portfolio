@@ -88,6 +88,27 @@ const blogPosts = [
     subtitle: 'Management Guide',
     badge: 'WordPress',
     icon: 'users'
+  },
+  {
+    slug: 'how-to-set-up-wordpress-staging-environment',
+    title: 'Staging Environment',
+    subtitle: 'Setup Guide',
+    badge: 'WordPress',
+    icon: 'server'
+  },
+  {
+    slug: 'woocommerce-coupon-system-complete-guide',
+    title: 'Coupon System',
+    subtitle: 'Complete Guide',
+    badge: 'WooCommerce',
+    icon: 'tag'
+  },
+  {
+    slug: 'woocommerce-product-filter-setup-guide',
+    title: 'Product Filter',
+    subtitle: 'Setup Guide',
+    badge: 'WooCommerce',
+    icon: 'filter'
   }
 ];
 
@@ -104,7 +125,9 @@ function getIconSVG(icon) {
     network: '<circle cx="50" cy="50" r="12" fill="url(#goldGrad)"/><circle cx="30" cy="30" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="30" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="30" cy="70" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="70" r="6" fill="url(#goldGrad)" opacity="0.7"/><line x1="50" y1="50" x2="30" y2="30" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="70" y2="30" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="30" y2="70" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="70" y2="70" stroke="url(#goldGrad)" stroke-width="2"/>',
     api: '<circle cx="50" cy="50" r="25" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M50 25 L50 75" stroke="url(#goldGrad)" stroke-width="2"/><path d="M25 50 L75 50" stroke="url(#goldGrad)" stroke-width="2"/><circle cx="50" cy="50" r="8" fill="url(#goldGrad)"/>',
     shield: '<path d="M50 20 L75 35 L75 55 L50 80 L25 55 L25 35 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M50 35 L60 45 L50 55 L40 45 Z" fill="url(#goldGrad)"/>',
-    users: '<circle cx="50" cy="35" r="10" fill="url(#goldGrad)"/><circle cx="30" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><path d="M35 65 Q50 55 65 65" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M15 70 Q30 60 45 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/><path d="M55 70 Q70 60 85 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>'
+    users: '<circle cx="50" cy="35" r="10" fill="url(#goldGrad)"/><circle cx="30" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><path d="M35 65 Q50 55 65 65" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M15 70 Q30 60 45 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/><path d="M55 70 Q70 60 85 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>',
+    tag: '<path d="M50 20 L75 35 L55 60 L30 45 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><circle cx="60" cy="30" r="5" fill="url(#goldGrad)"/>',
+    filter: '<rect x="30" y="25" width="40" height="50" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><line x1="30" y1="40" x2="70" y2="40" stroke="url(#goldGrad)" stroke-width="2"/><line x1="30" y1="55" x2="70" y2="55" stroke="url(#goldGrad)" stroke-width="2"/><circle cx="50" cy="40" r="5" fill="url(#goldGrad)"/><circle cx="50" cy="55" r="5" fill="url(#goldGrad)"/>'
   };
   return icons[icon] || icons.code;
 }

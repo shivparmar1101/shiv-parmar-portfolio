@@ -4,7 +4,7 @@ const path = require('path');
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 
 const newAuthorBox = `<div class="author-box">
-  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" loading="lazy" width="120" height="120">
+  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India">
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>

@@ -492,7 +492,7 @@ Write-Host "Image ready!" -ForegroundColor Green
 
 # Create slug and filename
 $slug = $topic.title.ToLower() -replace '[^a-z0-9]+', '-' -replace '^-|-$', ''
-$date = Get-Date -Format "MMM dd, yyyy"
+$date = Get-Date -Format "yyyy-MM-dd"
 $filename = "$slug.html"
 
 # Generate HTML

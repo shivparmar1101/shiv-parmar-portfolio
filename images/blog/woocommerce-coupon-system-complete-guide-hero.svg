@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a84c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e8d48b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#darkGrad)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="500" r="200" fill="rgba(201,168,76,0.05)"/>
+  <circle cx="1100" cy="150" r="150" fill="rgba(201,168,76,0.03)"/>
+  
+  <!-- Grid pattern -->
+  <g stroke="rgba(201,168,76,0.08)" stroke-width="1" fill="none">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  
+  <!-- Icon illustration -->
+  <g transform="translate(900, 200)">
+    <circle cx="50" cy="50" r="60" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+    <path d="M50 20 L75 35 L55 60 L30 45 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><circle cx="60" cy="30" r="5" fill="url(#goldGrad)"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="80" y="180" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">Coupon</text>
+  <text x="80" y="240" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#goldGrad)">System</text>
+  <text x="80" y="300" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#a0a0a0">Complete Guide</text>
+  
+  <!-- Gold accent line -->
+  <rect x="80" y="330" width="120" height="4" rx="2" fill="url(#goldGrad)"/>
+  
+  <!-- Subtitle -->
+  <text x="80" y="380" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#666666">Complete Developer Guide</text>
+  
+  <!-- Author -->
+  <text x="80" y="440" font-family="JetBrains Mono, monospace" font-size="14" fill="url(#goldGrad)">Shiv Parmar</text>
+  <text x="80" y="460" font-family="Inter, -apple-system, sans-serif" font-size="12" fill="#666666">WordPress Developer · Rajkot, India</text>
+  
+  <!-- Badge -->
+  <rect x="80" y="500" width="140" height="32" rx="16" fill="rgba(201,168,76,0.15)" stroke="url(#goldGrad)" stroke-width="1"/>
+  <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">WooCommerce</text>
+  
+  <!-- Code snippets decoration -->
+  <g transform="translate(80, 520)" opacity="0.4">
+    <text font-family="JetBrains Mono, monospace" font-size="10" fill="#c9a84c">&lt;?php</text>
+  </g>
+</svg>
