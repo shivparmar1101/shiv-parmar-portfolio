@@ -1044,8 +1044,12 @@ html[data-theme="light"] .project-image::after { background: linear-gradient(to 
   padding-left: 40px;
 }
 
-.timeline-progress {
+.timeline::before {
   display: none;
+}
+
+.timeline-progress {
+  display: none !important;
 }
 
 .timeline-item {
