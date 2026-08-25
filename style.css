@@ -149,6 +149,7 @@ section {
   bottom: 0;
   overflow: hidden;
   z-index: 0;
+  pointer-events: none;
 }
 
 .parallax-bg::before {
@@ -158,8 +159,8 @@ section {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
-  animation: float 20s ease-in-out infinite;
+  background: transparent;
+  animation: none;
 }
 
 @keyframes float {
@@ -172,7 +173,7 @@ section {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.15;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -401,15 +402,15 @@ header {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(var(--blur-lg));
-  -webkit-backdrop-filter: blur(var(--blur-lg));
-  border-bottom: 1px solid var(--border-glass);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
   transition: all var(--transition-base);
 }
 
 html[data-theme="light"] header {
-  background: rgba(245, 243, 239, 0.85);
+  background: transparent;
 }
 
 .nav {
@@ -974,9 +975,9 @@ html[data-theme="light"] .floating-pill {
 
 .tech-section {
   padding: 80px 0;
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-glass);
-  border-bottom: 1px solid var(--border-glass);
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
   position: relative;
   overflow: hidden;
 }
@@ -1421,9 +1422,9 @@ html[data-theme="light"] .logo-item img {
    -------------------------------------------------------------------------- */
 
 .skills-section {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-glass);
-  border-bottom: 1px solid var(--border-glass);
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
   position: relative;
 }
 
@@ -1543,11 +1544,9 @@ html[data-theme="light"] .timeline::before {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--bg-primary);
+  background: var(--bg-glass);
   border: 2px solid var(--accent);
   z-index: 2;
-  box-shadow: 0 0 16px rgba(201, 168, 76, 0.4);
-  transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .timeline-marker::after {
@@ -1889,9 +1888,9 @@ html[data-theme="light"] .timeline::before {
    -------------------------------------------------------------------------- */
 
 .cta-section {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-glass);
-  border-bottom: 1px solid var(--border-glass);
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
   position: relative;
 }
 
