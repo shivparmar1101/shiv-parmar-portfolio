@@ -114,7 +114,11 @@ if (contactForm) {
 // 4. Active Nav Link on Scroll (index.html only)
 // --------------------------------------------------------------------------
 const updateActiveNav = () => {
-  // Only run on index page (has section anchors)
+  // Only run on index page (standalone pages use includes.js setActiveLink)
+  var path = window.location.pathname;
+  var isIndex = path === '/' || path === '' || path.endsWith('/index.html') || path.endsWith('/index');
+  if (!isIndex) return;
+
   const sections = document.querySelectorAll("section[id]");
   if (sections.length === 0) return;
 
