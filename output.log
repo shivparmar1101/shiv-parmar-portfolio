@@ -1,0 +1,23 @@
+Blog Auto-Publisher v2 (Node.js)
+Model: gemini-3.6-flash
+  2026-08-25T14:03:52.181Z
+API key found: AQ.Ab8RN6I...
+Existing blogs: 17
+Available topics: 14
+Selected: WooCommerce Shipping Zones Setup Guide
+Generating content with Gemini...
+Content generated! (8524 chars)
+Internal links added!
+Saved: blog/woocommerce-shipping-zones-setup-guide.html
+Updated: sitemap.xml
+Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
+Updated: index.html
+
+=========================================
+  Blog published successfully!
+  Title: WooCommerce Shipping Zones Setup Guide
+  File: blog/woocommerce-shipping-zones-setup-guide.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide.html
+=========================================
+::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide.html
+::set-output name=blog_title::WooCommerce Shipping Zones Setup Guide
