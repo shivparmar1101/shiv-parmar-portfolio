@@ -6,18 +6,15 @@
   var base = "";
   var path = window.location.pathname;
   var isBlog = path.indexOf("/blog/") !== -1 || path.match(/\/blog\/[^/]*\.html/);
-  var isIndex = path.endsWith("/") || path.endsWith("/index.html") || path === "/" || path === "";
   if (isBlog) {
     base = "../";
-  } else if (isIndex) {
-    base = "";
   }
 
   function inject(id, html) {
     var el = document.getElementById(id);
     if (!el) return;
     var processed = html.replace(/__BASE__/g, base).trim();
-    if (isIndex) {
+    if (!isBlog) {
       processed = processed.replace(/index\.html#/g, "#");
     }
     el.innerHTML = processed;
