@@ -169,7 +169,7 @@ function callGemini(prompt) {
 }
 
 function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expertise, ctaHeadline, ctaButton, metaDesc, metaKeywords) {
-  const canonicalUrl = `https://shiv-parmar-portfolio.netlify.app/blog/${slug}.html`;
+  const canonicalUrl = `https://shiv-parmar-portfolio.netlify.app/blog/${slug}`;
   
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -197,6 +197,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expert
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${metaDesc}">
 <meta name="twitter:image" content="${imageUrl}">
+<meta name="twitter:image:alt" content="${title} - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
 <!-- Schema.org Structured Data -->
@@ -287,7 +288,11 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <body>
 <!-- Full Page Particle Background -->
 <div id="particle-hero" class="particle-canvas-fullpage"></div>
-<div id="site-header"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links" aria-label="Main navigation"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
 <article><div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>${title}
@@ -465,7 +470,11 @@ ${(() => {
   </div>
 </section>
 
-<div id="site-footer"></div>
+<div id="site-footer">
+<noscript>
+<footer><div class="container footer-inner"><span class="footer-left">&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><div class="footer-right"><a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a><span style="color:var(--text-muted);font-size:13px">Full-time &middot; Contract &middot; Remote</span></div></div></footer>
+</noscript>
+</div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
 <script>
 (function(){
