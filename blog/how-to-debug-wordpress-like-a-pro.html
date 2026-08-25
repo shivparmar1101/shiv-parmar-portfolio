@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Debug WordPress Like a Pro</title>
+<meta name="description" content="Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.">
+<meta name="keywords" content="WordPress debugging, debug WordPress, WP_DEBUG, WordPress errors, debugging tools, WordPress developer">
+<meta name="author" content="Shiv Parmar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Debug WordPress Like a Pro">
+<meta property="og:description" content="Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro.html">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Debug WordPress Like a Pro">
+<meta name="twitter:description" content="Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Debug WordPress Like a Pro",
+  "description": "Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "datePublished": "Aug 25, 2026",
+  "dateModified": "Aug 25, 2026",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro.html"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.blog-header{padding:20px 0;border-bottom:1px solid var(--border-glass)}
+.blog-header .nav{display:flex;align-items:center;justify-content:space-between}
+.blog-header .logo{font-family:var(--font-primary);font-weight:800;font-size:19px;color:var(--text-primary);text-decoration:none}.blog-header .logo span{color:var(--accent)}
+.blog-header .back{font-size:14px;font-weight:500;color:var(--text-muted)}
+.blog-header .back:hover{color:var(--accent);text-decoration:none}
+.blog-header .nav-right{display:flex;gap:12px;align-items:center}
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.date .updated{color:var(--accent);margin-left:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content blockquote em{color:var(--text-primary)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-box .author-social{display:flex;gap:12px}
+.author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}
+.author-box .author-social a:hover{text-decoration:underline}
+.related-blogs{margin:30px 0;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin-bottom:20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.related-card{background:rgba(255, 255, 255, 0.04);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255, 255, 255, 0.08);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);background:rgba(255, 255, 255, 0.08);box-shadow:0 8px 32px rgba(0, 0, 0, 0.2)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0 0 8px;color:var(--text-primary)}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg);margin-top:70px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.cta-section{padding:80px 0}
+.cta-block{background:rgba(255, 255, 255, 0.05);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255, 255, 255, 0.1);padding:80px 48px;text-align:center;position:relative;border-radius:var(--radius-xl);overflow:hidden;margin-bottom:40px}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5}
+.cta-block .eyebrow{justify-content:center}
+.cta-block h2{font-size:clamp(28px,3.8vw,48px);margin-bottom:16px;letter-spacing:-0.025em;color:var(--text-primary)}
+.cta-block p{color:var(--text-secondary);max-width:520px;margin:0 auto 36px;font-size:16px;line-height:1.75}
+.contact-grid{margin-top:0}
+.blog-footer{border-top:1px solid var(--border-glass);padding:32px 0;text-align:center;color:var(--text-muted);font-size:14px;font-family:var(--font-primary)}
+.blog-footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+select option{background:#111;color:#f0f0f0;padding:8px}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+<!-- Full Page Particle Background -->
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header"></div>
+<article><div class="container">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href='/' title='Shiv Parmar - WordPress Developer Portfolio'>Home</a><span>/</span><a href='/blog' title='WordPress Development Blog - Tips, Tutorials & Guides'>Blog</a><span>/</span>How to Debug WordPress Like a Pro
+</nav>
+<img src="../images/blog/how-to-debug-wordpress-like-a-pro-hero.svg" alt="How to Debug WordPress Like a Pro - WordPress debugging guide by Shiv Parmar" title="How to Debug WordPress Like a Pro - Complete guide by Shiv Parmar" class="hero-img">
+<div class="date">Aug 25, 2026 &middot; 6 min read<span class="updated">Updated: Aug 25, 2026</span></div>
+<h1>How to Debug WordPress Like a Pro</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList"></ul>
+</div>
+<div class="content">
+<h2>Mastering WordPress Debugging: A Complete Developer's Guide</h2>
+
+<p>Hello everyone! I am Shiv Parmar, a WordPress developer based in Rajkot, India. Over the years of building custom themes, plugins, and optimizing WooCommerce stores, one skill that has saved me countless hours is <strong>WordPress debugging</strong>. In this comprehensive guide, I will walk you through the techniques, tools, and best practices to debug WordPress like a professional developer.</p>
+
+<p>Whether you are dealing with the dreaded White Screen of Death, PHP errors, plugin conflicts, or performance issues, knowing how to properly debug WordPress is essential for any serious developer.</p>
+
+<h2>Why Proper Debugging Matters</h2>
+
+<p>Before diving into the technical details, let us understand why debugging is crucial:</p>
+
+<ul>
+    <li><strong>Save Development Time:</strong> Proper debugging tools can reduce troubleshooting time from hours to minutes.</li>
+    <li><strong>Better Code Quality:</strong> Understanding errors helps you write cleaner, more maintainable code.</li>
+    <li><strong>Client Satisfaction:</strong> Quick issue resolution means happier clients and fewer support tickets.</li>
+    <li><strong>Security:</strong> Many security vulnerabilities can be identified through proper error logging.</li>
+</ul>
+
+<blockquote>
+    <p>"Debugging is not a chore; it is a skill that separates amateur developers from professionals. The ability to quickly identify and fix issues is what makes you valuable to clients."</p>
+</blockquote>
+
+<h2>Step 1: Enable WordPress Debug Mode</h2>
+
+<p>The first step in any WordPress debugging process is to enable the built-in debug mode. This is done by editing your <code>wp-config.php</code> file.</p>
+
+<pre><code>// Enable WordPress Debug Mode
+define( 'WP_DEBUG', true );
+
+// Log errors to a file (recommended for production)
+define( 'WP_DEBUG_LOG', true );
+
+// Hide errors from displaying on screen (use false during development)
+define( 'WP_DEBUG_DISPLAY', false );
+
+// Ensure PHP errors are also logged
+@ini_set( 'log_errors', 1 );
+@ini_set( 'error_log', WP_CONTENT_DIR . '/debug.log' );
+</code></pre>
+
+<p>Once enabled, WordPress will log all PHP errors, warnings, and notices to <code>wp-content/debug.log</code>. This file is invaluable for identifying issues.</p>
+
+<h2>Step 2: Understanding WordPress Error Types</h2>
+
+<p>WordPress errors fall into several categories. Understanding each type helps you diagnose issues faster:</p>
+
+<h3>PHP Fatal Errors</h3>
+<p>These stop script execution immediately. Common causes include:</p>
+<ul>
+    <li>Missing files or functions</li>
+    <li>Syntax errors in PHP code</li>
+    <li>Memory limit exceeded</li>
+    <li>Unsupported PHP versions</li>
+</ul>
+
+<h3>PHP Warnings and Notices</h3>
+<p>These do not stop execution but indicate potential problems:</p>
+<ul>
+    <li>Undefined variables or functions</li>
+    <li>Deprecated function usage</li>
+    <li>Missing array keys</li>
+</ul>
+
+<h3>Database Errors</h3>
+<p>WordPress stores all content in a database. Common database errors include:</p>
+<ul>
+    <li>"Error establishing a database connection"</li>
+    <li>"wp_posts table does not exist"</li>
+    <li>Corrupted database tables</li>
+</ul>
+
+<h2>Step 3: Using Query Monitor Plugin</h2>
+
+<p>One of the most powerful debugging tools for WordPress developers is the <strong>Query Monitor</strong> plugin. It provides detailed information about:</p>
+
+<ul>
+    <li>Database queries (including slow queries)</li>
+    <li>PHP errors and hooks</li>
+    <li>HTTP API calls</li>
+    <li>Enqueued scripts and styles</li>
+    <li>Conditional query information</li>
+</ul>
+
+<pre><code>// Install Query Monitor via WP-CLI
+wp plugin install query-monitor --activate
+</code></pre>
+
+<p>Once activated, Query Monitor adds a new menu item in the admin bar showing real-time debugging information.</p>
+
+<h2>Step 4: Debugging with Browser Developer Tools</h2>
+
+<p>Not all WordPress issues are server-side. Frontend debugging is equally important:</p>
+
+<h3>Console Tab</h3>
+<p>Check for JavaScript errors that may affect functionality:</p>
+<ul>
+    <li>Look for red error messages</li>
+    <li>Check for failed network requests</li>
+    <li>Verify AJAX calls are working correctly</li>
+</ul>
+
+<h3>Network Tab</h3>
+<p>Monitor all HTTP requests to identify:</p>
+<ul>
+    <li>Failed API calls (4xx and 5xx errors)</li>
+    <li>Slow-loading resources</li>
+    <li>Missing assets (CSS, JS, images)</li>
+</ul>
+
+<h3>Elements Tab</h3>
+<p>Inspect HTML structure to verify:</p>
+<ul>
+    <li>Proper hook placement</li>
+    <li>CSS class applications</li>
+    <li>Dynamic content injection</li>
+</ul>
+
+<h2>Step 5: Common WordPress Issues and Fixes</h2>
+
+<h3>White Screen of Death (WSOD)</h3>
+<p>The most feared WordPress error. Here is how to debug it:</p>
+<ol>
+    <li>Enable WP_DEBUG to see the actual error</li>
+    <li>Check <code>wp-content/debug.log</code> for PHP errors</li>
+    <li>Disable all plugins and re-enable one by one</li>
+    <li>Switch to a default theme temporarily</li>
+    <li>Increase PHP memory limit in <code>wp-config.php</code></li>
+</ol>
+
+<h3>Plugin Conflicts</h3>
+<p>When plugins conflict, follow this systematic approach:</p>
+<ol>
+    <li>Deactivate all plugins</li>
+    <li>Reactivate plugins one by one, testing after each</li>
+    <li>Identify the conflicting plugin</li>
+    <li>Check for plugin compatibility with your WordPress version</li>
+    <li>Contact plugin developer or find alternatives</li>
+</ol>
+
+<h3>Performance Issues</h3>
+<p>Slow WordPress sites can be debugged by:</p>
+<ul>
+    <li>Checking for slow database queries with Query Monitor</li>
+    <li>Reviewing plugin impact on page load</li>
+    <li>Analyzing CSS and JS file sizes</li>
+    <li>Monitoring server response times</li>
+</ul>
+
+<h2>Step 6: Advanced Debugging Techniques</h2>
+
+<h3>Error Logging with Custom Functions</h3>
+<p>Create custom logging functions for specific scenarios:</p>
+
+<pre><code>&lt;?php
+/**
+ * Custom debug logging function
+ * @param string $message The message to log
+ * @param string $level Error level (error, warning, info)
+ */
+function shiv_debug_log( $message, $level = 'info' ) {
+    if ( WP_DEBUG ) {
+        $timestamp = date( 'Y-m-d H:i:s' );
+        $log_entry = "[{$timestamp}] [{$level}] {$message}" . PHP_EOL;
+        $log_file = WP_CONTENT_DIR . '/debug.log';
+        error_log( $log_entry, 3, $log_file );
+    }
+}
+
+// Usage examples:
+shiv_debug_log( 'Plugin initialized successfully' );
+shiv_debug_log( 'API request failed: ' . $error_message, 'error' );
+shiv_debug_log( 'Query executed in ' . $time . ' seconds', 'warning' );
+</code></pre>
+
+<h3>Debugging WooCommerce</h3>
+<p>WooCommerce has its own debugging mode. Enable it in <code>wp-config.php</code>:</p>
+
+<pre><code>// Enable WooCommerce Debug Mode
+define( 'WC_DEBUG', true );
+define( 'WC_DEBUG_LOG', true );
+define( 'WC_DEBUG_DISPLAY', false );
+</code></pre>
+
+<h2>Step 7: Best Practices for Production</h2>
+
+<p>Debugging in production requires extra caution:</p>
+
+<ul>
+    <li><strong>Never leave WP_DEBUG enabled on production</strong> - it exposes sensitive information</li>
+    <li><strong>Use error logging instead of display</strong> - keep errors in logs, not on screen</li>
+    <li><strong>Monitor log files regularly</strong> - set up alerts for critical errors</li>
+    <li><strong>Implement proper error handling</strong> - use try-catch blocks for critical operations</li>
+    <li><strong>Use staging environments</strong> - test all changes before deploying to production</li>
+</ul>
+
+<h2>Recommended Debugging Tools</h2>
+
+<p>Here are my top recommendations for WordPress debugging:</p>
+
+<ul>
+    <li><strong>Query Monitor</strong> - Comprehensive debugging toolbar</li>
+    <li><strong>Debug Bar</strong> - Lightweight debugging panel</li>
+    <li><strong>WP-CLI</strong> - Command-line debugging and management</li>
+    <li><strong>Browser Developer Tools</strong> - Frontend debugging</li>
+    <li><strong>PHP Error Log</strong> - Server-side error tracking</li>
+    <li><strong>New Relic / Query Monitor</strong> - Performance monitoring</li>
+</ul>
+
+<h2>Wrapping Up</h2>
+
+<p>Debugging WordPress is a skill that improves with practice. By following the techniques in this guide, you will be able to quickly identify and resolve issues, making you a more efficient and valuable developer.</p>
+
+<p>Remember: the goal is not just to fix errors, but to understand why they occurred and how to prevent them in future development.</p>
+
+<p>Happy debugging from Rajkot!</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+  <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Debugging Expert?</h3>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Start a Project <span>&rarr;</span></a>
+</div>
+</div>
+<div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<div class="author-box">
+  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer from Rajkot, India" loading="lazy" width="60" height="60">
+  <div class="author-info">
+    <h4>Shiv Parmar</h4>
+    <p>WordPress Developer from Rajkot, India. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+    <div class="author-social">
+      <a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://twitter.com/shivparmar1101" target="_blank" rel="noopener" title="Follow Shiv Parmar on Twitter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter
+      </a>
+    </div>
+  </div>
+</div>
+<div class="related-blogs">
+  <h3>Related Posts</h3>
+  <div class="related-grid" id="relatedBlogs"></div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <h3>Let's Work Together</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-row">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select an inquiry type</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Project Request">Project Request</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under Rs.10,000">Under Rs.10,000</option>
+              <option value="Rs.10,000 - Rs.25,000">Rs.10,000 - Rs.25,000</option>
+              <option value="Rs.25,000 - Rs.50,000">Rs.25,000 - Rs.50,000</option>
+              <option value="Rs.50,000 - Rs.1,00,000">Rs.50,000 - Rs.1,00,000</option>
+              <option value="Above Rs.1,00,000">Above Rs.1,00,000</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+          <p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="26" rx="3"/>
+              <path d="M6 14l18 11 18-11"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="5"/>
+              <path d="M16 21v15"/>
+              <circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/>
+              <path d="M24 21v15"/>
+              <path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true">
+              <path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>GitHub</strong>
+            <a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/>
+              <circle cx="24" cy="20" r="5"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Rajkot, India &middot; Remote-ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script>
+<script>
+(function(){
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      document.querySelectorAll(".content h2").forEach(function(h,i){
+        var id="section-"+i;h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
+        li.appendChild(a);toc.appendChild(li);
+      });
+    }
+    var related=document.getElementById("relatedBlogs");
+    if(related){
+      var posts=[{"date":"Aug 19, 2026 &middot; 6 min read","title":"WordPress Gutenberg vs Elementor: Which is Better in 2026?","slug":"wordpress-gutenberg-vs-elementor-which-is-better-in-2026"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"How to Speed Up WooCommerce Product Pages","slug":"how-to-speed-up-woocommerce-product-pages"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress Post Types and Taxonomies Explained","slug":"wordpress-post-types-and-taxonomies-explained"},{"date":"Aug 19, 2026 &middot; 8 min read","title":"WordPress Database Optimization Guide","slug":"wordpress-database-optimization-guide"},{"date":"Aug 19, 2026 &middot; 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"Aug 19, 2026 &middot; 5 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"},{"date":"Aug 19, 2026 &middot; 7 min read","title":"How to Build a WordPress Membership Site","slug":"how-to-build-a-wordpress-membership-site"}];
+      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
+      var count=0;
+      posts.forEach(function(p){
+        if(p.slug!==currentSlug && count<3){
+          var card=document.createElement("div");
+          card.className="related-card";
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          related.appendChild(card);
+          count++;
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
+})();
+</script>
+</body>
+</html>
