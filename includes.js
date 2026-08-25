@@ -6,7 +6,6 @@
   var base = "";
   var path = window.location.pathname;
   var isBlog = path.indexOf("/blog/") !== -1 || path.match(/\/blog\/[^/]*\.html/);
-  var isIndex = path.endsWith("/") || path.endsWith("/index.html") || path === "/" || path === "";
   if (isBlog) {
     base = "../";
   }
@@ -15,11 +14,6 @@
     var el = document.getElementById(id);
     if (!el) return;
     var processed = html.replace(/__BASE__/g, base).trim();
-    if (isIndex) {
-      processed = processed.replace(/index\.html#/g, "#");
-    } else if (!isBlog) {
-      processed = processed.replace(/index\.html#/g, "/index.html#");
-    }
     el.innerHTML = processed;
   }
 
