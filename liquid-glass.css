@@ -1050,8 +1050,8 @@ html[data-theme="light"] .project-image::after { background: linear-gradient(to 
 
 .timeline-progress {
   position: absolute;
-  left: 7px;
-  top: 8px;
+  left: 13px;
+  top: 29px;
   width: 2px;
   height: 0%;
   background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 100%);
