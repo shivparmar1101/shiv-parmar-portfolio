@@ -175,6 +175,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expert
 <meta name="description" content="${metaDesc}">
 <meta name="keywords" content="${metaKeywords}">
 <meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="${canonicalUrl}">
 
