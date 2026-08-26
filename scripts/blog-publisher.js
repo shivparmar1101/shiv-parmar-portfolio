@@ -39,13 +39,7 @@ const topics = [
   { slug: "how-to-build-a-wordpress-membership-site", title: "How to Build a WordPress Membership Site", cat: "WordPress", read: "7 min" }
 ];
 
-const images = {
-  WooCommerce: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop",
-  SEO: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
-  Security: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=600&fit=crop",
-  Performance: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=600&fit=crop",
-  default: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop"
-};
+// Image path will be set after topic is selected
 
 // Auto internal linking - scan existing blogs and create keyword mapping
 function addInternalLinks(content, currentSlug) {
@@ -731,7 +725,7 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
     : linkedContent;
 
   const date = new Date().toISOString().split('T')[0];
-  const imageUrl = images[topic.cat] || images.default;
+  const imageUrl = `../images/blog/${topic.slug}-hero.svg`;
 
   // Meta Description = Category template + Blog title (120-320 chars, SEO optimized)
   const metaDescTemplates = {
