@@ -1,24 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-26T10:03:52.433Z
+  2026-08-26T11:15:26.283Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 19
-Available topics: 12
-Selected: How to Build a WordPress Membership Site
+Existing blogs: 20
+Available topics: 11
+Selected: WooCommerce Cart Abandonment Recovery
 Generating content with Gemini...
-Content generated! (9121 chars)
+Content generated! (8640 chars)
 Internal links added!
-Generated: images/blog/how-to-build-a-wordpress-membership-site-hero.svg
-Saved: blog/how-to-build-a-wordpress-membership-site.html
+Generated: images/blog/woocommerce-cart-abandonment-recovery-hero.svg
+Saved: blog/woocommerce-cart-abandonment-recovery.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: How to Build a WordPress Membership Site
-  File: blog/how-to-build-a-wordpress-membership-site.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html
+  Title: WooCommerce Cart Abandonment Recovery
+  File: blog/woocommerce-cart-abandonment-recovery.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery.html
 =========================================
-::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html
-::set-output name=blog_title::How to Build a WordPress Membership Site
+::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery.html
+::set-output name=blog_title::WooCommerce Cart Abandonment Recovery
