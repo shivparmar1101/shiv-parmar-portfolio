@@ -1,71 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c9a84c;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#e8d48b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:1" />
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#e8d48b"/>
     </linearGradient>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.6"/>
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
+  <rect width="1200" height="630" fill="#060918"/>
+
   
-  <!-- Background -->
-  <rect width="1200" height="630" fill="url(#darkGrad)"/>
-  
-  <!-- Decorative circles -->
-  <circle cx="100" cy="500" r="200" fill="rgba(201,168,76,0.02)"/>
-  <circle cx="1100" cy="150" r="150" fill="rgba(201,168,76,0.015)"/>
-  
-  <!-- Grid pattern -->
-  <g stroke="rgba(201,168,76,0.03)" stroke-width="1" fill="none">
-    <line x1="0" y1="100" x2="1200" y2="100"/>
-    <line x1="0" y1="200" x2="1200" y2="200"/>
-    <line x1="0" y1="300" x2="1200" y2="300"/>
-    <line x1="0" y1="400" x2="1200" y2="400"/>
-    <line x1="0" y1="500" x2="1200" y2="500"/>
-    <line x1="200" y1="0" x2="200" y2="630"/>
-    <line x1="400" y1="0" x2="400" y2="630"/>
-    <line x1="600" y1="0" x2="600" y2="630"/>
-    <line x1="800" y1="0" x2="800" y2="630"/>
-    <line x1="1000" y1="0" x2="1000" y2="630"/>
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="10" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.7"/>
+        <rect x="45" y="10" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.5"/>
+        <rect x="10" y="45" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.5"/>
+        <rect x="45" y="45" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.3"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>
+
+  <!-- 26 text -->
+  <g transform="translate(1050, 450)" opacity="0.06">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="80" fill="#c9a84c" font-weight="bold">26</text>
   </g>
-  
-  <!-- Icon illustration -->
-  <g transform="translate(900, 200)" opacity="0.15">
-    <circle cx="50" cy="50" r="60" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-    <rect x="25" y="30" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.7"/><rect x="55" y="30" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.5"/><rect x="25" y="60" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.5"/><rect x="55" y="60" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.3"/>
+
+  <!-- Pixel dots -->
+  <g fill="#c9a84c" opacity="0.04">
+    <rect x="700" y="100" width="4" height="4"/>
+    <rect x="710" y="100" width="4" height="4"/>
+    <rect x="720" y="100" width="4" height="4"/>
+    <rect x="700" y="110" width="4" height="4"/>
+    <rect x="720" y="110" width="4" height="4"/>
+    <rect x="700" y="120" width="4" height="4"/>
+    <rect x="710" y="120" width="4" height="4"/>
+    <rect x="720" y="120" width="4" height="4"/>
   </g>
-  
+
+  <!-- Corner brackets -->
+  <g opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="2">
+    <path d="M40,40 L40,80 M40,40 L80,40"/>
+    <path d="M1160,40 L1160,80 M1160,40 L1120,40"/>
+    <path d="M40,590 L40,550 M40,590 L80,590"/>
+    <path d="M1160,590 L1160,550 M1160,590 L1120,590"/>
+  </g>
+
   <!-- Title -->
-  <text x="80" y="180" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">Block</text>
-  <text x="80" y="240" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#goldGrad)">Theme</text>
-  <text x="80" y="300" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#a0a0a0">Development Guide</text>
+  <text x="600" y="530" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#D9BF6E" text-anchor="middle" font-weight="bold">Block Theme</text>
   
-  <!-- Gold accent line -->
-  <rect x="80" y="330" width="120" height="4" rx="2" fill="url(#goldGrad)"/>
+  <!-- Underline -->
+  <rect x="350" y="555" width="500" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.6"/>
   
-  <!-- Subtitle -->
-  <text x="80" y="380" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#666666">Complete Developer Guide</text>
-  
-  <!-- Author -->
-  <text x="80" y="440" font-family="JetBrains Mono, monospace" font-size="14" fill="url(#goldGrad)">Shiv Parmar</text>
-  <text x="80" y="460" font-family="Inter, -apple-system, sans-serif" font-size="12" fill="#666666">WordPress Developer · Rajkot, India</text>
-  
-  <!-- Badge -->
-  <rect x="80" y="500" width="140" height="32" rx="16" fill="rgba(201,168,76,0.15)" stroke="url(#goldGrad)" stroke-width="1"/>
-  <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">WordPress</text>
-  
-  <!-- Code snippets decoration -->
-  <g transform="translate(80, 520)" opacity="0.15">
-    <text font-family="JetBrains Mono, monospace" font-size="10" fill="#c9a84c">&lt;?php</text>
+  <!-- Year badge -->
+  <g transform="translate(600, 590)" opacity="0.4">
+    <rect x="-35" y="-12" width="70" height="24" rx="12" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#c9a84c" text-anchor="middle">2026</text>
   </g>
 </svg>

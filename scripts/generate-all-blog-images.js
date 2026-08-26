@@ -109,99 +109,270 @@ const blogPosts = [
     subtitle: 'Setup Guide',
     badge: 'WooCommerce',
     icon: 'filter'
+  },
+  {
+    slug: 'wordpress-caching-plugins-compared-2026',
+    title: 'WordPress Caching Plugins',
+    subtitle: 'Compared 2026',
+    badge: 'Performance',
+    icon: 'speed'
+  },
+  {
+    slug: 'how-to-create-wordpress-mega-menu',
+    title: 'WordPress Mega Menu',
+    subtitle: 'Complete Guide',
+    badge: 'WordPress',
+    icon: 'menu'
+  },
+  {
+    slug: 'woocommerce-shipping-zones-setup-guide',
+    title: 'WooCommerce Shipping',
+    subtitle: 'Zones Setup Guide',
+    badge: 'WooCommerce',
+    icon: 'shipping'
   }
 ];
 
-function getIconSVG(icon) {
-  const icons = {
-    code: '<path d="M30 50 L50 30 L70 50 L50 70 Z" fill="url(#goldGrad)" filter="url(#glow)"/><circle cx="50" cy="50" r="8" fill="#000"/>',
-    calendar: '<rect x="30" y="35" width="40" height="35" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><line x1="30" y1="45" x2="70" y2="45" stroke="url(#goldGrad)" stroke-width="2"/><circle cx="40" cy="55" r="3" fill="url(#goldGrad)"/><circle cx="50" cy="55" r="3" fill="url(#goldGrad)"/><circle cx="60" cy="55" r="3" fill="url(#goldGrad)"/>',
-    payment: '<rect x="25" y="35" width="50" height="30" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><line x1="25" y1="45" x2="75" y2="45" stroke="url(#goldGrad)" stroke-width="3"/><rect x="30" y="52" width="20" height="8" rx="2" fill="url(#goldGrad)"/>',
-    box: '<rect x="30" y="35" width="40" height="30" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><rect x="35" y="40" width="30" height="10" rx="2" fill="url(#goldGrad)" opacity="0.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="url(#goldGrad)" stroke-width="2"/>',
-    options: '<circle cx="50" cy="50" r="20" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><circle cx="50" cy="50" r="8" fill="url(#goldGrad)"/><line x1="50" y1="30" x2="50" y2="20" stroke="url(#goldGrad)" stroke-width="3"/><line x1="50" y1="70" x2="50" y2="80" stroke="url(#goldGrad)" stroke-width="3"/><line x1="30" y1="50" x2="20" y2="50" stroke="url(#goldGrad)" stroke-width="3"/><line x1="70" y1="50" x2="80" y2="50" stroke="url(#goldGrad)" stroke-width="3"/>',
-    calculator: '<rect x="30" y="25" width="40" height="55" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><rect x="35" y="30" width="30" height="15" rx="2" fill="url(#goldGrad)" opacity="0.5"/><circle cx="40" cy="55" r="3" fill="url(#goldGrad)"/><circle cx="50" cy="55" r="3" fill="url(#goldGrad)"/><circle cx="60" cy="55" r="3" fill="url(#goldGrad)"/><circle cx="40" cy="65" r="3" fill="url(#goldGrad)"/><circle cx="50" cy="65" r="3" fill="url(#goldGrad)"/><circle cx="60" cy="65" r="3" fill="url(#goldGrad)"/>',
-    blocks: '<rect x="25" y="30" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.7"/><rect x="55" y="30" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.5"/><rect x="25" y="60" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.5"/><rect x="55" y="60" width="20" height="20" rx="3" fill="url(#goldGrad)" opacity="0.3"/>',
-    server: '<rect x="25" y="25" width="50" height="25" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><rect x="25" y="55" width="50" height="25" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><circle cx="35" cy="37" r="3" fill="url(#goldGrad)"/><circle cx="35" cy="67" r="3" fill="url(#goldGrad)"/><line x1="45" y1="37" x2="65" y2="37" stroke="url(#goldGrad)" stroke-width="2"/><line x1="45" y1="67" x2="65" y2="67" stroke="url(#goldGrad)" stroke-width="2"/>',
-    network: '<circle cx="50" cy="50" r="12" fill="url(#goldGrad)"/><circle cx="30" cy="30" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="30" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="30" cy="70" r="6" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="70" r="6" fill="url(#goldGrad)" opacity="0.7"/><line x1="50" y1="50" x2="30" y2="30" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="70" y2="30" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="30" y2="70" stroke="url(#goldGrad)" stroke-width="2"/><line x1="50" y1="50" x2="70" y2="70" stroke="url(#goldGrad)" stroke-width="2"/>',
-    api: '<circle cx="50" cy="50" r="25" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M50 25 L50 75" stroke="url(#goldGrad)" stroke-width="2"/><path d="M25 50 L75 50" stroke="url(#goldGrad)" stroke-width="2"/><circle cx="50" cy="50" r="8" fill="url(#goldGrad)"/>',
-    shield: '<path d="M50 20 L75 35 L75 55 L50 80 L25 55 L25 35 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M50 35 L60 45 L50 55 L40 45 Z" fill="url(#goldGrad)"/>',
-    users: '<circle cx="50" cy="35" r="10" fill="url(#goldGrad)"/><circle cx="30" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><circle cx="70" cy="40" r="7" fill="url(#goldGrad)" opacity="0.7"/><path d="M35 65 Q50 55 65 65" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><path d="M15 70 Q30 60 45 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/><path d="M55 70 Q70 60 85 70" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>',
-    tag: '<path d="M50 20 L75 35 L55 60 L30 45 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><circle cx="60" cy="30" r="5" fill="url(#goldGrad)"/>',
-    filter: '<rect x="30" y="25" width="40" height="50" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="3"/><line x1="30" y1="40" x2="70" y2="40" stroke="url(#goldGrad)" stroke-width="2"/><line x1="30" y1="55" x2="70" y2="55" stroke="url(#goldGrad)" stroke-width="2"/><circle cx="50" cy="40" r="5" fill="url(#goldGrad)"/><circle cx="50" cy="55" r="5" fill="url(#goldGrad)"/>'
+function getDecorativeElements(slug) {
+  const elements = {
+    'how-to-add-custom-css-to-wordpress-without-plugin': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <polygon points="30,0 10,35 25,35 15,65 50,25 32,25 45,0" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+        <rect x="0" y="165" width="200" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>
+      <g transform="translate(100, 300)" opacity="0.08">
+        <rect x="0" y="0" width="120" height="80" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        <text x="60" y="50" font-family="Arial, sans-serif" font-size="14" fill="#c9a84c" text-anchor="middle" opacity="0.6">CSS</text>
+      </g>`,
+    'how-to-create-a-wordpress-booking-system': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="10" width="60" height="50" rx="6" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <line x1="10" y1="25" x2="70" y2="25" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="25" cy="40" r="4" fill="#c9a84c"/>
+        <circle cx="45" cy="40" r="4" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>
+      <g transform="translate(950, 160)" opacity="0.1">
+        <path d="M0,80 A80,80 0 1,1 -80,80" fill="none" stroke="#c9a84c" stroke-width="3"/>
+        <line x1="0" y1="80" x2="40" y2="20" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="0" cy="80" r="5" fill="#c9a84c"/>
+      </g>`,
+    'woocommerce-payment-gateway-comparison-2026': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="15" width="60" height="40" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <line x1="10" y1="30" x2="70" y2="30" stroke="#c9a84c" stroke-width="2"/>
+      </g>
+      <g opacity="0.08">
+        <rect x="500" y="320" width="250" height="20" rx="4" fill="#c9a84c" opacity="0.3"/>
+        <rect x="500" y="355" width="200" height="20" rx="4" fill="#c9a84c" opacity="0.25"/>
+        <rect x="500" y="390" width="180" height="20" rx="4" fill="#c9a84c" opacity="0.2"/>
+      </g>
+      <g font-family="Arial, sans-serif" font-size="11" fill="#c9a84c" opacity="0.1">
+        <text x="760" y="335">Stripe</text>
+        <text x="710" y="370">PayPal</text>
+        <text x="690" y="405">Razorpay</text>
+      </g>`,
+    'woocommerce-product-bundles-setup': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="10" width="25" height="25" rx="3" fill="#c9a84c"/>
+        <rect x="45" y="10" width="25" height="25" rx="3" fill="#c9a84c"/>
+        <rect x="10" y="45" width="25" height="25" rx="3" fill="#c9a84c"/>
+        <rect x="45" y="45" width="25" height="25" rx="3" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="400" width="320" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="425" width="250" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'woocommerce-product-variation-best-practices': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <circle cx="40" cy="40" r="25" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="40" cy="40" r="8" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'woocommerce-tax-configuration-guide': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="15" y="10" width="50" height="60" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <text x="40" y="45" font-family="Arial, sans-serif" font-size="16" fill="#c9a84c" text-anchor="middle">%</text>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-block-theme-development-guide': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="10" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.7"/>
+        <rect x="45" y="10" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.5"/>
+        <rect x="10" y="45" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.5"/>
+        <rect x="45" y="45" width="25" height="25" rx="3" fill="#c9a84c" opacity="0.3"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-migration-guide-local-to-production': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="20" width="30" height="40" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <rect x="50" y="20" width="30" height="40" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <path d="M40,40 L50,40" stroke="#c9a84c" stroke-width="2" marker-end="url(#arrow)"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-multisite-configuration-tips': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <circle cx="40" cy="40" r="12" fill="#c9a84c"/>
+        <circle cx="20" cy="25" r="6" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="60" cy="25" r="6" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="20" cy="55" r="6" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="60" cy="55" r="6" fill="#c9a84c" opacity="0.7"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-rest-api-authentication-methods': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <circle cx="40" cy="40" r="25" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="40" cy="40" r="8" fill="#c9a84c"/>
+        <line x1="40" y1="15" x2="40" y2="65" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="15" y1="40" x2="65" y2="40" stroke="#c9a84c" stroke-width="1.5"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-security-headers-configuration': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <path d="M40,15 L65,28 L65,48 L40,68 L15,48 L15,28 Z" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <path d="M40,30 L50,38 L40,46 L30,38 Z" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'wordpress-user-role-management-guide': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <circle cx="40" cy="30" r="10" fill="#c9a84c"/>
+        <circle cx="25" cy="35" r="7" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="55" cy="35" r="7" fill="#c9a84c" opacity="0.7"/>
+        <path d="M30,55 Q40,48 50,55" fill="none" stroke="#c9a84c" stroke-width="2"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'how-to-set-up-wordpress-staging-environment': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="10" y="20" width="30" height="40" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <rect x="50" y="20" width="30" height="40" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <path d="M40,40 L50,40" stroke="#c9a84c" stroke-width="2"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'woocommerce-coupon-system-complete-guide': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <path d="M40,15 L65,30 L50,55 L25,40 Z" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="55" cy="25" r="5" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`,
+    'woocommerce-product-filter-setup-guide': `
+      <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+        <rect x="15" y="10" width="50" height="60" rx="4" fill="none" stroke="#c9a84c" stroke-width="2"/>
+        <line x1="15" y1="30" x2="65" y2="30" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="15" y1="50" x2="65" y2="50" stroke="#c9a84c" stroke-width="1.5"/>
+        <circle cx="40" cy="30" r="5" fill="#c9a84c"/>
+        <circle cx="40" cy="50" r="5" fill="#c9a84c"/>
+      </g>
+      <g opacity="0.06">
+        <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+        <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+      </g>`
   };
-  return icons[icon] || icons.code;
+  return elements[slug] || `
+    <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+      <polygon points="30,0 10,35 25,35 15,65 50,25 32,25 45,0" fill="#c9a84c"/>
+    </g>
+    <g opacity="0.06">
+      <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
+      <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
+    </g>`;
 }
 
 function generateSVG(post) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  const decorative = getDecorativeElements(post.slug);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c9a84c;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#e8d48b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:1" />
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#e8d48b"/>
     </linearGradient>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.6"/>
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  
-  <!-- Background -->
-  <rect width="1200" height="630" fill="url(#darkGrad)"/>
-  
-  <!-- Decorative circles -->
-  <circle cx="100" cy="500" r="200" fill="rgba(201,168,76,0.02)"/>
-  <circle cx="1100" cy="150" r="150" fill="rgba(201,168,76,0.015)"/>
-  
-  <!-- Grid pattern -->
-  <g stroke="rgba(201,168,76,0.03)" stroke-width="1" fill="none">
-    <line x1="0" y1="100" x2="1200" y2="100"/>
-    <line x1="0" y1="200" x2="1200" y2="200"/>
-    <line x1="0" y1="300" x2="1200" y2="300"/>
-    <line x1="0" y1="400" x2="1200" y2="400"/>
-    <line x1="0" y1="500" x2="1200" y2="500"/>
-    <line x1="200" y1="0" x2="200" y2="630"/>
-    <line x1="400" y1="0" x2="400" y2="630"/>
-    <line x1="600" y1="0" x2="600" y2="630"/>
-    <line x1="800" y1="0" x2="800" y2="630"/>
-    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  <rect width="1200" height="630" fill="#060918"/>
+
+  ${decorative}
+
+  <!-- 26 text -->
+  <g transform="translate(1050, 450)" opacity="0.06">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="80" fill="#c9a84c" font-weight="bold">26</text>
   </g>
-  
-  <!-- Icon illustration -->
-  <g transform="translate(900, 200)" opacity="0.15">
-    <circle cx="50" cy="50" r="60" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
-    ${getIconSVG(post.icon)}
+
+  <!-- Pixel dots -->
+  <g fill="#c9a84c" opacity="0.04">
+    <rect x="700" y="100" width="4" height="4"/>
+    <rect x="710" y="100" width="4" height="4"/>
+    <rect x="720" y="100" width="4" height="4"/>
+    <rect x="700" y="110" width="4" height="4"/>
+    <rect x="720" y="110" width="4" height="4"/>
+    <rect x="700" y="120" width="4" height="4"/>
+    <rect x="710" y="120" width="4" height="4"/>
+    <rect x="720" y="120" width="4" height="4"/>
   </g>
-  
+
+  <!-- Corner brackets -->
+  <g opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="2">
+    <path d="M40,40 L40,80 M40,40 L80,40"/>
+    <path d="M1160,40 L1160,80 M1160,40 L1120,40"/>
+    <path d="M40,590 L40,550 M40,590 L80,590"/>
+    <path d="M1160,590 L1160,550 M1160,590 L1120,590"/>
+  </g>
+
   <!-- Title -->
-  <text x="80" y="180" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">${post.title.split(' ')[0]}</text>
-  <text x="80" y="240" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#goldGrad)">${post.title.split(' ').slice(1).join(' ') || post.title.split(' ')[0]}</text>
-  <text x="80" y="300" font-family="Inter, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#a0a0a0">${post.subtitle}</text>
+  <text x="600" y="530" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#D9BF6E" text-anchor="middle" font-weight="bold">${post.title}</text>
   
-  <!-- Gold accent line -->
-  <rect x="80" y="330" width="120" height="4" rx="2" fill="url(#goldGrad)"/>
+  <!-- Underline -->
+  <rect x="350" y="555" width="500" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.6"/>
   
-  <!-- Subtitle -->
-  <text x="80" y="380" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#666666">Complete Developer Guide</text>
-  
-  <!-- Author -->
-  <text x="80" y="440" font-family="JetBrains Mono, monospace" font-size="14" fill="url(#goldGrad)">Shiv Parmar</text>
-  <text x="80" y="460" font-family="Inter, -apple-system, sans-serif" font-size="12" fill="#666666">WordPress Developer · Rajkot, India</text>
-  
-  <!-- Badge -->
-  <rect x="80" y="500" width="140" height="32" rx="16" fill="rgba(201,168,76,0.15)" stroke="url(#goldGrad)" stroke-width="1"/>
-  <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">${post.badge}</text>
-  
-  <!-- Code snippets decoration -->
-  <g transform="translate(80, 520)" opacity="0.15">
-    <text font-family="JetBrains Mono, monospace" font-size="10" fill="#c9a84c">&lt;?php</text>
+  <!-- Year badge -->
+  <g transform="translate(600, 590)" opacity="0.4">
+    <rect x="-35" y="-12" width="70" height="24" rx="12" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#c9a84c" text-anchor="middle">2026</text>
   </g>
 </svg>`;
 }
