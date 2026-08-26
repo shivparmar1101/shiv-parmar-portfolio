@@ -761,6 +761,11 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
       <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
       <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.6"/>
     </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f2a"/>
+      <stop offset="50%" stop-color="#0d1225"/>
+      <stop offset="100%" stop-color="#111830"/>
+    </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -769,30 +774,30 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
       </feMerge>
     </filter>
   </defs>
-  <rect width="1200" height="630" fill="#060918"/>
-  <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <g transform="translate(180, 150)" opacity="0.2" filter="url(#glow)">
     <polygon points="30,0 10,35 25,35 15,65 50,25 32,25 45,0" fill="#c9a84c"/>
   </g>
-  <g opacity="0.06">
+  <g opacity="0.1">
     <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
     <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
     <rect x="0" y="165" width="200" height="2" rx="1" fill="url(#speedGrad)"/>
   </g>
-  <g transform="translate(1050, 450)" opacity="0.06">
+  <g transform="translate(1050, 450)" opacity="0.1">
     <text x="0" y="0" font-family="Arial, sans-serif" font-size="80" fill="#c9a84c" font-weight="bold">26</text>
   </g>
-  <g fill="#c9a84c" opacity="0.04">
+  <g fill="#c9a84c" opacity="0.06">
     <rect x="700" y="100" width="4" height="4"/><rect x="710" y="100" width="4" height="4"/><rect x="720" y="100" width="4" height="4"/>
     <rect x="700" y="110" width="4" height="4"/><rect x="720" y="110" width="4" height="4"/>
     <rect x="700" y="120" width="4" height="4"/><rect x="710" y="120" width="4" height="4"/><rect x="720" y="120" width="4" height="4"/>
   </g>
-  <g opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="2">
+  <g opacity="0.12" fill="none" stroke="#c9a84c" stroke-width="2">
     <path d="M40,40 L40,80 M40,40 L80,40"/><path d="M1160,40 L1160,80 M1160,40 L1120,40"/>
     <path d="M40,590 L40,550 M40,590 L80,590"/><path d="M1160,590 L1160,550 M1160,590 L1120,590"/>
   </g>
   <text x="600" y="530" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#D9BF6E" text-anchor="middle" font-weight="bold">${title}</text>
-  <rect x="350" y="555" width="500" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.6"/>
-  <g transform="translate(600, 590)" opacity="0.4">
+  <rect x="350" y="555" width="500" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.7"/>
+  <g transform="translate(600, 590)" opacity="0.5">
     <rect x="-35" y="-12" width="70" height="24" rx="12" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
     <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#c9a84c" text-anchor="middle">2026</text>
   </g>
