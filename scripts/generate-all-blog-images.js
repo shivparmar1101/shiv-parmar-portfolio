@@ -157,11 +157,11 @@ function generateSVG(post) {
   <rect width="1200" height="630" fill="url(#darkGrad)"/>
   
   <!-- Decorative circles -->
-  <circle cx="100" cy="500" r="200" fill="rgba(201,168,76,0.05)"/>
-  <circle cx="1100" cy="150" r="150" fill="rgba(201,168,76,0.03)"/>
+  <circle cx="100" cy="500" r="200" fill="rgba(201,168,76,0.02)"/>
+  <circle cx="1100" cy="150" r="150" fill="rgba(201,168,76,0.015)"/>
   
   <!-- Grid pattern -->
-  <g stroke="rgba(201,168,76,0.08)" stroke-width="1" fill="none">
+  <g stroke="rgba(201,168,76,0.03)" stroke-width="1" fill="none">
     <line x1="0" y1="100" x2="1200" y2="100"/>
     <line x1="0" y1="200" x2="1200" y2="200"/>
     <line x1="0" y1="300" x2="1200" y2="300"/>
@@ -175,7 +175,7 @@ function generateSVG(post) {
   </g>
   
   <!-- Icon illustration -->
-  <g transform="translate(900, 200)">
+  <g transform="translate(900, 200)" opacity="0.15">
     <circle cx="50" cy="50" r="60" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
     ${getIconSVG(post.icon)}
   </g>
@@ -200,7 +200,7 @@ function generateSVG(post) {
   <text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">${post.badge}</text>
   
   <!-- Code snippets decoration -->
-  <g transform="translate(80, 520)" opacity="0.4">
+  <g transform="translate(80, 520)" opacity="0.15">
     <text font-family="JetBrains Mono, monospace" font-size="10" fill="#c9a84c">&lt;?php</text>
   </g>
 </svg>`;

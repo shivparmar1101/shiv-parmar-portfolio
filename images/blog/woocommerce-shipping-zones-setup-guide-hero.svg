@@ -19,7 +19,7 @@
   <rect width="1200" height="630" fill="#060918"/>
 
   <!-- World map outline (simplified) -->
-  <g opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="1.5">
+  <g opacity="0.03" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <ellipse cx="300" cy="280" rx="180" ry="120"/>
     <ellipse cx="650" cy="250" rx="150" ry="140"/>
     <ellipse cx="950" cy="300" rx="130" ry="100"/>
@@ -28,36 +28,36 @@
   </g>
 
   <!-- Shipping zones as concentric regions -->
-  <g opacity="0.2">
+  <g opacity="0.07">
     <circle cx="600" cy="280" r="200" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="8,4"/>
     <circle cx="600" cy="280" r="160" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="6,3"/>
     <circle cx="600" cy="280" r="120" fill="none" stroke="#c9a84c" stroke-width="2"/>
-    <circle cx="600" cy="280" r="80" fill="#c9a84c" opacity="0.1" stroke="#c9a84c" stroke-width="2"/>
+    <circle cx="600" cy="280" r="80" fill="#c9a84c" opacity="0.03" stroke="#c9a84c" stroke-width="2"/>
   </g>
 
   <!-- Location pin markers -->
   <g filter="url(#glow)">
     <!-- Zone markers -->
-    <g transform="translate(400, 200)" opacity="0.6">
+    <g transform="translate(400, 200)" opacity="0.2">
       <path d="M0,-20 C-11,-20 -20,-11 -20,0 C0,25 0,25 0,25 C0,25 0,25 20,0 C20,-11 11,-20 0,-20Z" fill="#c9a84c"/>
       <circle cx="0" cy="-2" r="6" fill="#060918"/>
     </g>
-    <g transform="translate(750, 180)" opacity="0.5">
+    <g transform="translate(750, 180)" opacity="0.17">
       <path d="M0,-16 C-9,-16 -16,-9 -16,0 C0,20 0,20 0,20 C0,20 0,20 16,0 C16,-9 9,-16 0,-16Z" fill="#c9a84c"/>
       <circle cx="0" cy="-2" r="5" fill="#060918"/>
     </g>
-    <g transform="translate(550, 380)" opacity="0.45">
+    <g transform="translate(550, 380)" opacity="0.15">
       <path d="M0,-18 C-10,-18 -18,-10 -18,0 C0,22 0,22 0,22 C0,22 0,22 18,0 C18,-10 10,-18 0,-18Z" fill="#c9a84c"/>
       <circle cx="0" cy="-2" r="5.5" fill="#060918"/>
     </g>
-    <g transform="translate(850, 320)" opacity="0.4">
+    <g transform="translate(850, 320)" opacity="0.13">
       <path d="M0,-14 C-8,-14 -14,-8 -14,0 C0,18 0,18 0,18 C0,18 0,18 14,0 C14,-8 8,-14 0,-14Z" fill="#c9a84c"/>
       <circle cx="0" cy="-2" r="4.5" fill="#060918"/>
     </g>
   </g>
 
   <!-- Shipping routes (dotted lines connecting pins) -->
-  <g stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.25" stroke-dasharray="6,4">
+  <g stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.08" stroke-dasharray="6,4">
     <path d="M400,200 Q575,150 750,180"/>
     <path d="M400,200 Q475,290 550,380"/>
     <path d="M750,180 Q800,250 850,320"/>
@@ -65,7 +65,7 @@
   </g>
 
   <!-- Package/box icons -->
-  <g opacity="0.2" fill="none" stroke="#c9a84c" stroke-width="1.5">
+  <g opacity="0.07" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <rect x="200" y="140" width="40" height="35" rx="3"/>
     <line x1="220" y1="140" x2="220" y2="175"/>
     <line x1="200" y1="155" x2="240" y2="155"/>
@@ -80,7 +80,7 @@
   </g>
 
   <!-- Truck icon (shipping) -->
-  <g transform="translate(100, 350)" opacity="0.2" fill="none" stroke="#c9a84c" stroke-width="1.5">
+  <g transform="translate(100, 350)" opacity="0.07" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <rect x="0" y="5" width="60" height="30" rx="3"/>
     <rect x="60" y="12" width="25" height="23" rx="3"/>
     <circle cx="15" cy="40" r="6"/>
@@ -89,14 +89,14 @@
   </g>
 
   <!-- Speed lines -->
-  <g stroke="#c9a84c" stroke-width="1" opacity="0.15">
+  <g stroke="#c9a84c" stroke-width="1" opacity="0.05">
     <line x1="50" y1="370" x2="90" y2="370"/>
     <line x1="40" y1="380" x2="85" y2="380"/>
     <line x1="55" y1="390" x2="95" y2="390"/>
   </g>
 
   <!-- Globe grid lines -->
-  <g opacity="0.06" fill="none" stroke="#c9a84c" stroke-width="0.8">
+  <g opacity="0.02" fill="none" stroke="#c9a84c" stroke-width="0.8">
     <ellipse cx="600" cy="280" rx="250" ry="180"/>
     <ellipse cx="600" cy="280" rx="250" ry="90"/>
     <ellipse cx="600" cy="280" rx="125" ry="180"/>
@@ -105,7 +105,7 @@
   </g>
 
   <!-- Zone labels -->
-  <g font-family="Arial, sans-serif" font-size="12" fill="#c9a84c" opacity="0.3">
+  <g font-family="Arial, sans-serif" font-size="12" fill="#c9a84c" opacity="0.1">
     <text x="400" y="170">Zone 1</text>
     <text x="740" y="155">Zone 2</text>
     <text x="540" y="410">Zone 3</text>
@@ -113,7 +113,7 @@
   </g>
 
   <!-- Decorative corner elements -->
-  <g opacity="0.2" fill="none" stroke="#c9a84c" stroke-width="1.5">
+  <g opacity="0.07" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <path d="M30,30 L30,70 M30,30 L70,30"/>
     <path d="M1170,30 L1170,70 M1170,30 L1130,30"/>
     <path d="M30,600 L30,560 M30,600 L70,600"/>
