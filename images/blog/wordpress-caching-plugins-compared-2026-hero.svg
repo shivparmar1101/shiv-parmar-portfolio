@@ -15,24 +15,16 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="softGlow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
   <rect width="1200" height="630" fill="#060918"/>
 
-  <!-- Speed/performance concept -->
   <!-- Lightning bolt -->
-  <g transform="translate(180, 150)" opacity="0.35" filter="url(#glow)">
+  <g transform="translate(180, 150)" opacity="0.12" filter="url(#glow)">
     <polygon points="30,0 10,35 25,35 15,65 50,25 32,25 45,0" fill="#c9a84c"/>
   </g>
 
-  <!-- Speed lines background -->
-  <g opacity="0.15">
+  <!-- Speed lines -->
+  <g opacity="0.06">
     <rect x="0" y="120" width="350" height="3" rx="1.5" fill="url(#speedGrad)"/>
     <rect x="0" y="145" width="280" height="2" rx="1" fill="url(#speedGrad)"/>
     <rect x="0" y="165" width="200" height="2" rx="1" fill="url(#speedGrad)"/>
@@ -41,26 +33,24 @@
     <rect x="0" y="445" width="180" height="2" rx="1" fill="url(#speedGrad)"/>
   </g>
 
-  <!-- Speedometer/gauge -->
-  <g transform="translate(950, 160)" opacity="0.25">
+  <!-- Speedometer -->
+  <g transform="translate(950, 160)" opacity="0.1">
     <path d="M0,80 A80,80 0 1,1 -80,80" fill="none" stroke="#c9a84c" stroke-width="3"/>
     <path d="M-60,80 A60,60 0 1,1 -40,30" fill="none" stroke="#c9a84c" stroke-width="2" stroke-dasharray="4,3"/>
-    <!-- Gauge needle -->
     <line x1="0" y1="80" x2="40" y2="20" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
     <circle cx="0" cy="80" r="5" fill="#c9a84c"/>
   </g>
 
-  <!-- Caching concept: layered cache -->
-  <g transform="translate(100, 300)" opacity="0.2">
+  <!-- Cache layers -->
+  <g transform="translate(100, 300)" opacity="0.08">
     <rect x="0" y="0" width="120" height="80" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
     <rect x="15" y="-10" width="120" height="80" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
     <rect x="30" y="-20" width="120" height="80" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
     <text x="90" y="50" font-family="Arial, sans-serif" font-size="14" fill="#c9a84c" text-anchor="middle" opacity="0.6">CACHE</text>
   </g>
 
-  <!-- Server/database icons -->
-  <g opacity="0.15" fill="none" stroke="#c9a84c" stroke-width="1.5">
-    <!-- Server stack -->
+  <!-- Server stack -->
+  <g opacity="0.06" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <g transform="translate(450, 100)">
       <rect x="0" y="0" width="80" height="25" rx="4"/>
       <rect x="0" y="30" width="80" height="25" rx="4"/>
@@ -71,8 +61,8 @@
     </g>
   </g>
 
-  <!-- Comparison bars (representing plugin performance) -->
-  <g opacity="0.2">
+  <!-- Comparison bars -->
+  <g opacity="0.08">
     <rect x="500" y="320" width="250" height="20" rx="4" fill="#c9a84c" opacity="0.3"/>
     <rect x="500" y="355" width="200" height="20" rx="4" fill="#c9a84c" opacity="0.25"/>
     <rect x="500" y="390" width="180" height="20" rx="4" fill="#c9a84c" opacity="0.2"/>
@@ -80,45 +70,45 @@
   </g>
 
   <!-- Bar labels -->
-  <g font-family="Arial, sans-serif" font-size="11" fill="#c9a84c" opacity="0.25">
+  <g font-family="Arial, sans-serif" font-size="11" fill="#c9a84c" opacity="0.1">
     <text x="760" y="335">WP Rocket</text>
     <text x="710" y="370">W3 Total Cache</text>
     <text x="690" y="405">LiteSpeed Cache</text>
     <text x="730" y="440">WP Super Cache</text>
   </g>
 
-  <!-- 2026 text -->
-  <g transform="translate(1050, 450)" opacity="0.15">
+  <!-- 26 text -->
+  <g transform="translate(1050, 450)" opacity="0.06">
     <text x="0" y="0" font-family="Arial, sans-serif" font-size="80" fill="#c9a84c" font-weight="bold">26</text>
   </g>
 
-  <!-- Rocket icon -->
-  <g transform="translate(350, 400)" opacity="0.2" fill="none" stroke="#c9a84c" stroke-width="1.5">
+  <!-- Rocket -->
+  <g transform="translate(350, 400)" opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="1.5">
     <path d="M25,50 L25,10 C25,5 30,0 35,0 C40,0 45,5 45,10 L45,50"/>
     <path d="M20,40 L10,55 L25,50"/>
     <path d="M50,40 L60,55 L45,50"/>
     <circle cx="35" cy="20" r="5"/>
   </g>
 
-  <!-- Floating performance metrics -->
-  <g font-family="Arial, sans-serif" opacity="0.2">
+  <!-- Metrics -->
+  <g font-family="Arial, sans-serif" opacity="0.08">
     <text x="850" y="380" font-size="28" fill="#c9a84c" font-weight="bold">0.3s</text>
     <text x="850" y="400" font-size="11" fill="#c9a84c">load time</text>
   </g>
-  <g font-family="Arial, sans-serif" opacity="0.15">
+  <g font-family="Arial, sans-serif" opacity="0.06">
     <text x="850" y="450" font-size="22" fill="#c9a84c" font-weight="bold">98</text>
     <text x="850" y="468" font-size="11" fill="#c9a84c">score</text>
   </g>
 
   <!-- Data flow arrows -->
-  <g stroke="#c9a84c" stroke-width="1" opacity="0.12" fill="none">
-    <path d="M300,300 Q400,280 500,320" marker-end="url(#arrow)"/>
+  <g stroke="#c9a84c" stroke-width="1" opacity="0.05" fill="none">
+    <path d="M300,300 Q400,280 500,320"/>
     <path d="M300,340 Q400,360 500,355"/>
     <path d="M300,380 Q400,400 500,390"/>
   </g>
 
-  <!-- Pixel dots pattern -->
-  <g fill="#c9a84c" opacity="0.08">
+  <!-- Pixel dots -->
+  <g fill="#c9a84c" opacity="0.04">
     <rect x="700" y="100" width="4" height="4"/>
     <rect x="710" y="100" width="4" height="4"/>
     <rect x="720" y="100" width="4" height="4"/>
@@ -129,8 +119,8 @@
     <rect x="720" y="120" width="4" height="4"/>
   </g>
 
-  <!-- Decorative corner brackets -->
-  <g opacity="0.2" fill="none" stroke="#c9a84c" stroke-width="2">
+  <!-- Corner brackets -->
+  <g opacity="0.08" fill="none" stroke="#c9a84c" stroke-width="2">
     <path d="M40,40 L40,80 M40,40 L80,40"/>
     <path d="M1160,40 L1160,80 M1160,40 L1120,40"/>
     <path d="M40,590 L40,550 M40,590 L80,590"/>
@@ -140,7 +130,7 @@
   <!-- Title -->
   <text x="600" y="530" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#D9BF6E" text-anchor="middle" font-weight="bold">WordPress Caching Plugins</text>
   
-  <!-- Subtle underline -->
+  <!-- Underline -->
   <rect x="350" y="555" width="500" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.6"/>
   
   <!-- Year badge -->
