@@ -184,6 +184,7 @@ function generateBlogHTML(title, slug, date, readtime, imageUrl, content, expert
 <meta property="og:description" content="${metaDesc}">
 <meta property="og:url" content="${canonicalUrl}">
 <meta property="og:image" content="${imageUrl}">
+<meta property="og:image:alt" content="${title} - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_IN">
 
