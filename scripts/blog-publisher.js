@@ -733,13 +733,13 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   const date = new Date().toISOString().split('T')[0];
   const imageUrl = images[topic.cat] || images.default;
 
-  // Meta Description = Category template + Blog title
+  // Meta Description = Category template + Blog title (120-320 chars, SEO optimized)
   const metaDescTemplates = {
-    'WordPress': `Learn WordPress development with this guide on ${topic.title}. Tips, code examples and best practices.`,
-    'WooCommerce': `Master WooCommerce with this guide on ${topic.title}. Expert tips for online store success.`,
-    'Security': `Secure your WordPress site with this guide on ${topic.title}. Best practices and tips.`,
-    'SEO': `Boost your rankings with this guide on ${topic.title}. WordPress SEO tips and strategies.`,
-    'Performance': `Speed up your site with this guide on ${topic.title}. WordPress performance tips.`
+    'WordPress': `Learn ${topic.title} with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.`,
+    'WooCommerce': `Master ${topic.title} with this detailed WooCommerce guide by Shiv Parmar. Expert tips, step-by-step instructions, and real-world examples to grow your online store.`,
+    'Security': `Protect your WordPress site with this in-depth guide on ${topic.title} by Shiv Parmar. Learn security best practices, vulnerability fixes, and hardening techniques.`,
+    'SEO': `Improve your search rankings with this complete guide on ${topic.title} by Shiv Parmar. WordPress SEO strategies, technical tips, and actionable steps for better visibility.`,
+    'Performance': `Boost your website speed with this expert guide on ${topic.title} by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.`
   };
   const metaDesc = metaDescTemplates[topic.cat] || metaDescTemplates['WordPress'];
 
