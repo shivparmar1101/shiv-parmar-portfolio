@@ -1,23 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-25T20:59:53.140Z
+  2026-08-26T10:03:52.433Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 18
-Available topics: 13
-Selected: WordPress Caching Plugins Compared 2026
+Existing blogs: 19
+Available topics: 12
+Selected: How to Build a WordPress Membership Site
 Generating content with Gemini...
-Content generated! (3490 chars)
+Content generated! (9121 chars)
 Internal links added!
-Saved: blog/wordpress-caching-plugins-compared-2026.html
+Generated: images/blog/how-to-build-a-wordpress-membership-site-hero.svg
+Saved: blog/how-to-build-a-wordpress-membership-site.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: WordPress Caching Plugins Compared 2026
-  File: blog/wordpress-caching-plugins-compared-2026.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026.html
+  Title: How to Build a WordPress Membership Site
+  File: blog/how-to-build-a-wordpress-membership-site.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html
 =========================================
-::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026.html
-::set-output name=blog_title::WordPress Caching Plugins Compared 2026
+::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site.html
+::set-output name=blog_title::How to Build a WordPress Membership Site
