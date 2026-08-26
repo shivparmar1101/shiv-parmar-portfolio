@@ -31,6 +31,8 @@ function initMobileNav() {
 document.addEventListener("partials-loaded", initMobileNav);
 // Also try immediately in case header is already in DOM
 initMobileNav();
+// Back to Top button
+initBackToTop();
 
 // --------------------------------------------------------------------------
 // 3. Contact Form — Google Apps Script (SMTP)
@@ -315,4 +317,23 @@ if (counterBlocks.length) {
   }, { threshold: 0.4 });
 
   counterBlocks.forEach((block) => counterObserver.observe(block));
+}
+
+// --------------------------------------------------------------------------
+// Back to Top Button
+// --------------------------------------------------------------------------
+
+function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
