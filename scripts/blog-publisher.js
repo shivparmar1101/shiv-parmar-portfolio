@@ -297,10 +297,10 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </noscript>
 </div>
 <article><div class="container">
+<img src="${imageUrl}" alt="${title} - WordPress development guide by Shiv Parmar" title="${title} - Complete guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>${title}
 </nav>
-<img src="${imageUrl}" alt="${title} - WordPress development guide by Shiv Parmar" title="${title} - Complete guide by Shiv Parmar" class="hero-img">
 <div class="date">${date} &middot; ${readtime} read</div>
 <h1>${title}</h1>
 <div class="toc" id="toc">
