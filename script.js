@@ -29,6 +29,7 @@ function initMobileNav() {
 
 // Always listen for async partials load
 document.addEventListener("partials-loaded", initMobileNav);
+document.addEventListener("partials-loaded", initBackToTop);
 // Also try immediately in case header is already in DOM
 initMobileNav();
 // Back to Top button
