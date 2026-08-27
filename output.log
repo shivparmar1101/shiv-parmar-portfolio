@@ -1,24 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-26T11:15:26.283Z
+  2026-08-27T05:57:31.100Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 20
-Available topics: 11
-Selected: WooCommerce Cart Abandonment Recovery
+Existing blogs: 22
+Available topics: 9
+Selected: Building a WordPress REST API from Scratch
 Generating content with Gemini...
-Content generated! (8640 chars)
+Content generated! (9597 chars)
 Internal links added!
-Generated: images/blog/woocommerce-cart-abandonment-recovery-hero.svg
-Saved: blog/woocommerce-cart-abandonment-recovery.html
+Generated: images/blog/building-a-wordpress-rest-api-from-scratch-hero.svg
+Saved: blog/building-a-wordpress-rest-api-from-scratch.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: WooCommerce Cart Abandonment Recovery
-  File: blog/woocommerce-cart-abandonment-recovery.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery.html
+  Title: Building a WordPress REST API from Scratch
+  File: blog/building-a-wordpress-rest-api-from-scratch.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch.html
 =========================================
-::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery.html
-::set-output name=blog_title::WooCommerce Cart Abandonment Recovery
+blog_url=https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch.html
+blog_title=Building a WordPress REST API from Scratch
