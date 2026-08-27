@@ -41,7 +41,7 @@ jobs:
 
       - name: Send Success Email
         if: success()
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v3.1.0
         with:
           server_address: smtp.gmail.com
           server_port: 587
@@ -60,7 +60,7 @@ jobs:
 
       - name: Send Failure Email
         if: failure()
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v3.1.0
         with:
           server_address: smtp.gmail.com
           server_port: 587

@@ -867,9 +867,9 @@ Return ONLY the blog content HTML. No markdown code blocks, no backticks, just r
   console.log('  URL: https://shiv-parmar-portfolio.netlify.app/blog/' + topic.slug + '.html');
   console.log('=========================================');
   
-  // Output for GitHub Actions
-  console.log('::set-output name=blog_url::https://shiv-parmar-portfolio.netlify.app/blog/' + topic.slug + '.html');
-  console.log('::set-output name=blog_title::' + topic.title);
+  // Output for GitHub Actions (using env file)
+  console.log('blog_url=https://shiv-parmar-portfolio.netlify.app/blog/' + topic.slug + '.html');
+  console.log('blog_title=' + topic.title);
 }
 
 main().catch(err => {
