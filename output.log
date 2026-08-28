@@ -1,24 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-28T02:18:48.686Z
+  2026-08-28T21:57:22.461Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 24
-Available topics: 7
-Selected: WooCommerce Inventory Management Best Practices
+Existing blogs: 25
+Available topics: 6
+Selected: How to Speed Up WooCommerce Product Pages
 Generating content with Gemini...
-Content generated! (8316 chars)
+Content generated! (9504 chars)
 Internal links added!
-Generated: images/blog/woocommerce-inventory-management-best-practices-hero.svg
-Saved: blog/woocommerce-inventory-management-best-practices.html
+Generated: images/blog/how-to-speed-up-woocommerce-product-pages-hero.svg
+Saved: blog/how-to-speed-up-woocommerce-product-pages.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: WooCommerce Inventory Management Best Practices
-  File: blog/woocommerce-inventory-management-best-practices.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices.html
+  Title: How to Speed Up WooCommerce Product Pages
+  File: blog/how-to-speed-up-woocommerce-product-pages.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages.html
 =========================================
-blog_url=https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices.html
-blog_title=WooCommerce Inventory Management Best Practices
+blog_url=https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages.html
+blog_title=How to Speed Up WooCommerce Product Pages
