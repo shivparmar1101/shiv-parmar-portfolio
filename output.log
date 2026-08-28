@@ -1,24 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-27T13:07:57.662Z
+  2026-08-28T02:18:48.686Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 23
-Available topics: 8
-Selected: WordPress Image Optimization for Speed
+Existing blogs: 24
+Available topics: 7
+Selected: WooCommerce Inventory Management Best Practices
 Generating content with Gemini...
-Content generated! (7368 chars)
+Content generated! (8316 chars)
 Internal links added!
-Generated: images/blog/wordpress-image-optimization-for-speed-hero.svg
-Saved: blog/wordpress-image-optimization-for-speed.html
+Generated: images/blog/woocommerce-inventory-management-best-practices-hero.svg
+Saved: blog/woocommerce-inventory-management-best-practices.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: WordPress Image Optimization for Speed
-  File: blog/wordpress-image-optimization-for-speed.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed.html
+  Title: WooCommerce Inventory Management Best Practices
+  File: blog/woocommerce-inventory-management-best-practices.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices.html
 =========================================
-blog_url=https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed.html
-blog_title=WordPress Image Optimization for Speed
+blog_url=https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices.html
+blog_title=WooCommerce Inventory Management Best Practices
