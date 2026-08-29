@@ -1,24 +1,24 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-28T21:57:22.461Z
+  2026-08-29T10:02:35.408Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 25
-Available topics: 6
-Selected: How to Speed Up WooCommerce Product Pages
+Existing blogs: 26
+Available topics: 5
+Selected: WordPress Database Backup Strategies
 Generating content with Gemini...
-Content generated! (9504 chars)
+Content generated! (8792 chars)
 Internal links added!
-Generated: images/blog/how-to-speed-up-woocommerce-product-pages-hero.svg
-Saved: blog/how-to-speed-up-woocommerce-product-pages.html
+Generated: images/blog/wordpress-database-backup-strategies-hero.svg
+Saved: blog/wordpress-database-backup-strategies.html
 Updated: sitemap.xml
 Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
 Updated: index.html
 
 =========================================
   Blog published successfully!
-  Title: How to Speed Up WooCommerce Product Pages
-  File: blog/how-to-speed-up-woocommerce-product-pages.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages.html
+  Title: WordPress Database Backup Strategies
+  File: blog/wordpress-database-backup-strategies.html
+  URL: https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies.html
 =========================================
-blog_url=https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages.html
-blog_title=How to Speed Up WooCommerce Product Pages
+blog_url=https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies.html
+blog_title=WordPress Database Backup Strategies
