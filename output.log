@@ -1,24 +1,7 @@
 Blog Auto-Publisher v2 (Node.js)
 Model: gemini-3.6-flash
-  2026-08-31T10:02:15.378Z
+  2026-08-31T20:02:17.247Z
 API key found: AQ.Ab8RN6I...
-Existing blogs: 30
-Available topics: 1
-Selected: How to Add Schema Markup to WordPress
-Generating content with Gemini...
-Content generated! (9042 chars)
-Internal links added!
-Generated: images/blog/how-to-add-schema-markup-to-wordpress-hero.svg
-Saved: blog/how-to-add-schema-markup-to-wordpress.html
-Updated: sitemap.xml
-Updated: /home/runner/work/shiv-parmar-portfolio/shiv-parmar-portfolio/blog.html
-Updated: index.html
-
-=========================================
-  Blog published successfully!
-  Title: How to Add Schema Markup to WordPress
-  File: blog/how-to-add-schema-markup-to-wordpress.html
-  URL: https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress.html
-=========================================
-blog_url=https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress.html
-blog_title=How to Add Schema Markup to WordPress
+Existing blogs: 31
+Available topics: 0
+All topics published!
