@@ -1,0 +1,16 @@
+{
+  "name": "Shiv Parmar - WordPress Developer Portfolio",
+  "short_name": "Shiv Parmar",
+  "description": "WordPress Developer portfolio showcasing WooCommerce stores, custom themes, plugins and performance optimization projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#c9a84c",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
