@@ -16,7 +16,7 @@
 <meta property="og:title" content="WordPress Cron Jobs: Complete Guide">
 <meta property="og:description" content="Learn WordPress Cron Jobs: Complete Guide with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide">
-<meta property="og:image" content="../images/blog/wordpress-cron-jobs-complete-guide-hero.svg">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-cron-jobs-complete-guide-hero.svg">
 <meta property="og:image:alt" content="WordPress Cron Jobs: Complete Guide - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_IN">
@@ -37,10 +37,10 @@
   "headline": "WordPress Cron Jobs: Complete Guide",
   "description": "Learn WordPress Cron Jobs: Complete Guide with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
-  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-30",
   "dateModified": "2026-08-30",
-  "image": "../images/blog/wordpress-cron-jobs-complete-guide-hero.svg",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-cron-jobs-complete-guide-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide"
 }
 </script>
@@ -142,7 +142,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul id="tocList"></ul>
 </div>
 <div class="content">
-<p>Hello, fellow developers! I’m Shiv Parmar, a dedicated WordPress developer based in Rajkot, India. Over the years spent building custom solutions and optimizing high-traffic client sites, I’ve found that background task management is often the unsung hero of site <a href="/blog/how-to-<a href="/blog/how-to-<a href="/blog/wordpress-image-optimization-for-speed.html">speed</a>-up-woocommerce-product-pages.html">speed</a>-up-woocommerce-product-pages.html"><a href="/blog/wordpress-image-optimization-for-speed.html">performance</a></a>. Today, I want to dive deep into a topic that every serious WordPress developer must master: <strong>WordPress Cron Jobs (WP-Cron)</strong>.</p>
+<p>Hello, fellow developers! I’m Shiv Parmar, a dedicated WordPress developer based in Rajkot, India. Over the years spent building custom solutions and optimizing high-traffic client sites, I’ve found that background task management is often the unsung hero of site <a href="/blog/wordpress-image-optimization-for-speed.html">performance</a>. Today, I want to dive deep into a topic that every serious WordPress developer must master: <strong>WordPress Cron Jobs (WP-Cron)</strong>.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Custom WordPress development with clean code and fast delivery. Let's start your project.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Let's Talk <span>&rarr;</span></a></div>
 
 
@@ -275,7 +275,7 @@ register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
 
 <p>Running WP-CLI directly via server cron is considerably faster because it avoids making HTTP <a href="/blog/wordpress-multisite-configuration-tips.html">network</a> requests completely, running directly through the local PHP CLI engine.</p>
 
-<h2>Essential Tools for <a href="/blog/how-to-<a href="/blog/how-to-debug-wordpress-like-a-pro.html">debug</a>-wordpress-like-a-pro.html">Debugging</a> WP-Cron</h2>
+<h2>Essential Tools for <a href="/blog/how-to-debug-wordpress-like-a-pro.html">Debugging</a> WP-Cron</h2>
 
 <p>When developing custom cron integrations, debugging scheduled hooks can feel tricky because they happen implicitly. Here are the tools I rely on in my workflow:</p>
 

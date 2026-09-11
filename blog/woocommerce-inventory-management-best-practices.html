@@ -16,7 +16,7 @@
 <meta property="og:title" content="WooCommerce Inventory Management Best Practices">
 <meta property="og:description" content="Master WooCommerce Inventory Management Best Practices with this detailed WooCommerce guide by Shiv Parmar. Expert tips, step-by-step instructions, and real-world examples to grow your online store.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices">
-<meta property="og:image" content="../images/blog/woocommerce-inventory-management-best-practices-hero.svg">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-inventory-management-best-practices-hero.svg">
 <meta property="og:image:alt" content="WooCommerce Inventory Management Best Practices - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_IN">
@@ -37,10 +37,10 @@
   "headline": "WooCommerce Inventory Management Best Practices",
   "description": "Master WooCommerce Inventory Management Best Practices with this detailed WooCommerce guide by Shiv Parmar. Expert tips, step-by-step instructions, and real-world examples to grow your online store.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
-  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-28",
   "dateModified": "2026-08-28",
-  "image": "../images/blog/woocommerce-inventory-management-best-practices-hero.svg",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-inventory-management-best-practices-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices"
 }
 </script>
@@ -248,11 +248,11 @@ jQuery(document).ready(function($) {
     <li><strong>Deactivate Heavy Inventory Plugins During Sales:</strong> Real-time syncing tools that make external API calls on every order completion can bottleneck your database transactions. Delay syncing jobs using WordPress Action Scheduler.</li>
 </ol>
 
-<h2>5. Automating Inventory Updates via <a href="/blog/building-a-wordpress-rest-api-from-scratch.html"><a href="/blog/wordpress-rest-api-authentication-methods.html">REST API</a></a></h2>
+<h2>5. Automating Inventory Updates via <a href="/blog/wordpress-rest-api-authentication-methods.html">REST API</a></h2>
 
 <p>If your clients store inventory in an external ERP (like SAP, Tally, or Zoho Inventory), manual updates are out of the question. WooCommerce provides a powerful REST API that allows external tools to push real-time stock updates directly to your store.</p>
 
-<p>Here is an example of how an external node or script can update product stock programmatically via the WooCommerce REST <a href="/blog/building-a-wordpress-rest-api-from-scratch.html"><a href="/blog/wordpress-rest-api-authentication-methods.html">API endpoint</a></a> using Javascript/Node.js syntax:</p>
+<p>Here is an example of how an external node or script can update product stock programmatically via the WooCommerce REST <a href="/blog/wordpress-rest-api-authentication-methods.html">API endpoint</a> using Javascript/Node.js syntax:</p>
 
 <pre><code>// Example: Batch update stock via REST API
 const WooCommerceAPI = require('@woocommerce/woocommerce-rest-api').default;

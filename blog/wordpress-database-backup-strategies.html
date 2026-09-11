@@ -16,7 +16,7 @@
 <meta property="og:title" content="WordPress Database Backup Strategies">
 <meta property="og:description" content="Learn WordPress Database Backup Strategies with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies">
-<meta property="og:image" content="../images/blog/wordpress-database-backup-strategies-hero.svg">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-database-backup-strategies-hero.svg">
 <meta property="og:image:alt" content="WordPress Database Backup Strategies - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_IN">
@@ -37,10 +37,10 @@
   "headline": "WordPress Database Backup Strategies",
   "description": "Learn WordPress Database Backup Strategies with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
-  "publisher": { "@type": "Person", "name": "Shiv Parmar" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-29",
   "dateModified": "2026-08-29",
-  "image": "../images/blog/wordpress-database-backup-strategies-hero.svg",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-database-backup-strategies-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies"
 }
 </script>
@@ -166,7 +166,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>Strategy 1: Automated Backups via WP-CLI and Server Cron</h2>
 
-<p>For high-<a href="/blog/how-to-<a href="/blog/how-to-<a href="/blog/wordpress-image-optimization-for-speed.html">speed</a>-up-woocommerce-product-pages.html">speed</a>-up-woocommerce-product-pages.html"><a href="/blog/wordpress-image-optimization-for-speed.html">performance</a></a> websites hosted on VPS or managed servers where SSH access is available, reliance on heavy WordPress plugins running inside the PHP request execution pipeline is sub-optimal. Instead, offloading the backup process to system-level cron jobs using <code>WP-CLI</code> guarantees execution even if WordPress hits an execution timeout or memory limit.</p>
+<p>For high-<a href="/blog/wordpress-image-optimization-for-speed.html">performance</a> websites hosted on VPS or managed servers where SSH access is available, reliance on heavy WordPress plugins running inside the PHP request execution pipeline is sub-optimal. Instead, offloading the backup process to system-level cron jobs using <code>WP-CLI</code> guarantees execution even if WordPress hits an execution timeout or memory limit.</p>
 
 <p>Here is a battle-tested Bash script I frequently implement for my agency clients in Rajkot. It creates a compressed, timestamped database dump and cleans up old backups automatically:</p>
 
