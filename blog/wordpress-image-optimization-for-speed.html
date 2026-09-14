@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WordPress Image Optimization for Speed">
 <meta name="twitter:description" content="Boost your website speed with this expert guide on WordPress Image Optimization for Speed by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.">
-<meta name="twitter:image" content="../images/blog/wordpress-image-optimization-for-speed-hero.svg">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-image-optimization-for-speed-hero.svg">
 <meta name="twitter:image:alt" content="WordPress Image Optimization for Speed - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -436,7 +436,7 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

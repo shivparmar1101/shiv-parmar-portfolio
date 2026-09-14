@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WooCommerce Inventory Management Best Practices">
 <meta name="twitter:description" content="Master WooCommerce Inventory Management Best Practices with this detailed WooCommerce guide by Shiv Parmar. Expert tips, step-by-step instructions, and real-world examples to grow your online store.">
-<meta name="twitter:image" content="../images/blog/woocommerce-inventory-management-best-practices-hero.svg">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-inventory-management-best-practices-hero.svg">
 <meta name="twitter:image:alt" content="WooCommerce Inventory Management Best Practices - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -186,7 +186,7 @@ function sp_custom_category_low_stock_threshold( $threshold, $product ) {
 
 <h2>3. Improve Front-End User Experience for Variable Products</h2>
 
-<p>Out-of-stock product <a href="/blog/woocommerce-product-variation-best-practices.html">variations</a> can severely hurt user experience if customers continuously select options only to realize they are unavailable. By default, WooCommerce disables out-of-stock variations in the dropdown, but visually fading them out makes the browsing experience much smoother.</p>
+<p>Out-of-stock product <a href="/blog/woocommerce-product-variation-best-practices">variations</a> can severely hurt user experience if customers continuously select options only to realize they are unavailable. By default, WooCommerce disables out-of-stock variations in the dropdown, but visually fading them out makes the browsing experience much smoother.</p>
 
 <h3>Styling Out-of-Stock Options with CSS</h3>
 
@@ -240,19 +240,19 @@ jQuery(document).ready(function($) {
     <p>"Accurate inventory management during flash sales isn't just about display text; it's about database locking, background job processing, and reducing database write latency to prevent overselling."</p>
 </blockquote>
 
-<p>To prevent race conditions and improve inventory <a href="/blog/wordpress-image-optimization-for-speed.html">speed</a> on high-traffic sites, apply these standard practices:</p>
+<p>To prevent race conditions and improve inventory <a href="/blog/wordpress-image-optimization-for-speed">speed</a> on high-traffic sites, apply these standard practices:</p>
 
 <ol>
     <li><strong>Enable WooCommerce Lookup Tables:</strong> Go to <strong>WooCommerce &gt; Status &gt; Tools</strong> and regenerate the product lookup tables. This speeds up stock filtering queries substantially.</li>
-    <li><strong>Use Redis or Mem<a href="/blog/wordpress-caching-plugins-compared-2026.html">cache</a>d Object <a href="/blog/wordpress-caching-plugins-compared-2026.html">Caching</a>:</strong> Offload transient stock reads from MySQL to memory cache.</li>
+    <li><strong>Use Redis or Mem<a href="/blog/wordpress-caching-plugins-compared-2026">cache</a>d Object <a href="/blog/wordpress-caching-plugins-compared-2026">Caching</a>:</strong> Offload transient stock reads from MySQL to memory cache.</li>
     <li><strong>Deactivate Heavy Inventory Plugins During Sales:</strong> Real-time syncing tools that make external API calls on every order completion can bottleneck your database transactions. Delay syncing jobs using WordPress Action Scheduler.</li>
 </ol>
 
-<h2>5. Automating Inventory Updates via <a href="/blog/wordpress-rest-api-authentication-methods.html">REST API</a></h2>
+<h2>5. Automating Inventory Updates via <a href="/blog/wordpress-rest-api-authentication-methods">REST API</a></h2>
 
 <p>If your clients store inventory in an external ERP (like SAP, Tally, or Zoho Inventory), manual updates are out of the question. WooCommerce provides a powerful REST API that allows external tools to push real-time stock updates directly to your store.</p>
 
-<p>Here is an example of how an external node or script can update product stock programmatically via the WooCommerce REST <a href="/blog/wordpress-rest-api-authentication-methods.html">API endpoint</a> using Javascript/Node.js syntax:</p>
+<p>Here is an example of how an external node or script can update product stock programmatically via the WooCommerce REST <a href="/blog/wordpress-rest-api-authentication-methods">API endpoint</a> using Javascript/Node.js syntax:</p>
 
 <pre><code>// Example: Batch update stock via REST API
 const WooCommerceAPI = require('@woocommerce/woocommerce-rest-api').default;
@@ -469,7 +469,7 @@ WooCommerce.post("products/batch", data)
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

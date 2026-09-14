@@ -159,7 +159,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul>
     <li><strong>Zero PHP Overhead:</strong> Static pages are served directly by the LiteSpeed web server without invoking PHP or firing up database queries.</li>
     <li><strong>ESI (Edge Side Includes) Support:</strong> Essential for modern WooCommerce stores. You can cache full pages while keeping personalized elements (like cart fragments or user greetings) dynamic.</li>
-    <li><strong>QUIC.cloud Integration:</strong> Exceptional global CDN <a href="/blog/wordpress-user-role-management-guide.html">capabilities</a> with image optimization and localized WebP/AVIF generation baked right in.</li>
+    <li><strong>QUIC.cloud Integration:</strong> Exceptional global CDN <a href="/blog/wordpress-user-role-management-guide">capabilities</a> with image optimization and localized WebP/AVIF generation baked right in.</li>
 </ul>
 <p><strong>Best for:</strong> Sites hosted on LiteSpeed server environments (Hostinger, Namecheap, custom VPS setups with OpenLiteSpeed).</p>
 
@@ -357,7 +357,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

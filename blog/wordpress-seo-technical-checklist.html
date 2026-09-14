@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WordPress SEO Technical Checklist">
 <meta name="twitter:description" content="Improve your search rankings with this complete guide on WordPress SEO Technical Checklist by Shiv Parmar. WordPress SEO strategies, technical tips, and actionable steps for better visibility.">
-<meta name="twitter:image" content="../images/blog/wordpress-seo-technical-checklist-hero.svg">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-seo-technical-checklist-hero.svg">
 <meta name="twitter:image:alt" content="WordPress SEO Technical Checklist - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -142,7 +142,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul id="tocList"></ul>
 </div>
 <div class="content">
-<p>Namaste! I'm Shiv Parmar, a passionate WordPress developer working out of Rajkot, Gujarat, India. Over the last several years building custom themes, plugins, and high-<a href="/blog/how-to-speed-up-woocommerce-product-pages.html">speed</a> <a href="/blog/wordpress-image-optimization-for-speed.html">performance</a> websites for clients globally, I've learned a fundamental truth: great SEO isn't just about tweaking meta titles or stuffing keywords into blog posts. It starts in the codebase.</p>
+<p>Namaste! I'm Shiv Parmar, a passionate WordPress developer working out of Rajkot, Gujarat, India. Over the last several years building custom themes, plugins, and high-<a href="/blog/how-to-speed-up-woocommerce-product-pages">speed</a> <a href="/blog/wordpress-image-optimization-for-speed">performance</a> websites for clients globally, I've learned a fundamental truth: great SEO isn't just about tweaking meta titles or stuffing keywords into blog posts. It starts in the codebase.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help With WordPress SEO?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Custom SEO strategies that deliver measurable results. Let's grow your organic presence.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Rank Higher <span>&rarr;</span></a></div>
 
 
@@ -396,7 +396,7 @@ function shiv_add_custom_article_schema() {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

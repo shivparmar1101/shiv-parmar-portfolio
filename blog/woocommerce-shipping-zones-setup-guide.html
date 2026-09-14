@@ -470,7 +470,7 @@ WC_Cache_Helper::get_transient_version( 'shipping', true );
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WordPress Database Backup Strategies">
 <meta name="twitter:description" content="Learn WordPress Database Backup Strategies with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
-<meta name="twitter:image" content="../images/blog/wordpress-database-backup-strategies-hero.svg">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-database-backup-strategies-hero.svg">
 <meta name="twitter:image:alt" content="WordPress Database Backup Strategies - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -152,7 +152,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>Why Database Backups Demand a Dedicated Strategy</h2>
 
-<p>It is common to see site owners <a href="/blog/woocommerce-product-bundles-setup.html">bundle</a> their entire file directory (wp-content, core files, media uploads) into a single massive backup zip file. While full site backups have their place, your database requires special attention for several reasons:</p>
+<p>It is common to see site owners <a href="/blog/woocommerce-product-bundles-setup">bundle</a> their entire file directory (wp-content, core files, media uploads) into a single massive backup zip file. While full site backups have their place, your database requires special attention for several reasons:</p>
 
 <ul>
   <li><strong>High Velocity of Change:</strong> Database records change continuously—every page view, comment, order, or transient update alters the state of your database.</li>
@@ -166,7 +166,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>Strategy 1: Automated Backups via WP-CLI and Server Cron</h2>
 
-<p>For high-<a href="/blog/wordpress-image-optimization-for-speed.html">performance</a> websites hosted on VPS or managed servers where SSH access is available, reliance on heavy WordPress plugins running inside the PHP request execution pipeline is sub-optimal. Instead, offloading the backup process to system-level cron jobs using <code>WP-CLI</code> guarantees execution even if WordPress hits an execution timeout or memory limit.</p>
+<p>For high-<a href="/blog/wordpress-image-optimization-for-speed">performance</a> websites hosted on VPS or managed servers where SSH access is available, reliance on heavy WordPress plugins running inside the PHP request execution pipeline is sub-optimal. Instead, offloading the backup process to system-level cron jobs using <code>WP-CLI</code> guarantees execution even if WordPress hits an execution timeout or memory limit.</p>
 
 <p>Here is a battle-tested Bash script I frequently implement for my agency clients in Rajkot. It creates a compressed, timestamped database dump and cleans up old backups automatically:</p>
 
@@ -257,7 +257,7 @@ function shiv_pre_update_db_backup( $upgrader_object, $options ) {
 
 <h2>Strategy 3: Trimming the Noise – Excluding Unnecessary Data</h2>
 
-<p>A major mistake developers make is exporting temporary <a href="/blog/wordpress-caching-plugins-compared-2026.html">cache</a> tables and transient logs. Huge databases take longer to export, consume server CPU, and prolong recovery time during an outage.</p>
+<p>A major mistake developers make is exporting temporary <a href="/blog/wordpress-caching-plugins-compared-2026">cache</a> tables and transient logs. Huge databases take longer to export, consume server CPU, and prolong recovery time during an outage.</p>
 
 <p>To keep your backups lean, you should exclude non-essential dynamic data such as transients, WooCommerce sessions, and spam comments. If you are using <code>WP-CLI</code>, you can pass specific tables to ignore:</p>
 
@@ -283,7 +283,7 @@ function shiv_pre_update_db_backup( $upgrader_object, $options ) {
 
 <h3>Verifying Database Integrity Post-Restoration</h3>
 
-<p>Restoring a database is more than executing <code>wp db import dump.sql</code>. Always follow these steps when importing database dumps back to <a href="/blog/how-to-set-up-wordpress-staging-environment.html">staging</a> or production environments:</p>
+<p>Restoring a database is more than executing <code>wp db import dump.sql</code>. Always follow these steps when importing database dumps back to <a href="/blog/how-to-set-up-wordpress-staging-environment">staging</a> or production environments:</p>
 
 <pre><code># 1. Import the SQL file
 wp db import production_backup.sql
@@ -482,7 +482,7 @@ wp db check
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

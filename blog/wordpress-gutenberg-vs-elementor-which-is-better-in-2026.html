@@ -148,7 +148,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Let's Create Your WordPress Solution</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to complex plugins — I build WordPress solutions that work. Let's talk.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Start a Project <span>&rarr;</span></a></div>
 
 
-<p>As we navigate 2026, the WordPress ecosystem has evolved drastically. Gutenberg is no longer just a "block-based content editor"—it is a full-fledged, highly integrated design system powered by advanced features like the Interactivity API, site-wide <a href="/blog/wordpress-block-theme-development-guide.html">block themes</a>, and real-time collaborative editing. Meanwhile, Elementor continues to hold a massive share of the market with its vast ecosystem, polished UI, and rapid prototyping <a href="/blog/wordpress-user-role-management-guide.html">capabilities</a>. So, which one is better for your project in 2026? Let us break it down from a developer's perspective.</p>
+<p>As we navigate 2026, the WordPress ecosystem has evolved drastically. Gutenberg is no longer just a "block-based content editor"—it is a full-fledged, highly integrated design system powered by advanced features like the Interactivity API, site-wide <a href="/blog/wordpress-block-theme-development-guide">block themes</a>, and real-time collaborative editing. Meanwhile, Elementor continues to hold a massive share of the market with its vast ecosystem, polished UI, and rapid prototyping <a href="/blog/wordpress-user-role-management-guide">capabilities</a>. So, which one is better for your project in 2026? Let us break it down from a developer's perspective.</p>
 
 <h2>The State of Gutenberg in 2026: Fast, Native, and Lightweight</h2>
 
@@ -208,7 +208,7 @@ function shiv_add_elementor_custom_widget( $widgets_manager ) {
 }
 add_action( 'elementor/widgets/register', 'shiv_add_elementor_custom_widget' );
 
-// <a href="/blog/how-to-add-custom-css-to-wordpress-without-plugin.html">Custom CSS</a> tweaks hooked specifically when Elementor assets load
+// <a href="/blog/how-to-add-custom-css-to-wordpress-without-plugin">Custom CSS</a> tweaks hooked specifically when Elementor assets load
 function shiv_enqueue_elementor_overrides() {
     wp_enqueue_style(
         'shiv-elementor-style',
@@ -220,7 +220,7 @@ function shiv_enqueue_elementor_overrides() {
 add_action( 'elementor/frontend/after_enqueue_styles', 'shiv_enqueue_elementor_overrides' );
 </code></pre>
 
-<p>While extending Elementor is straightforward, you must actively manage site performance by disabling unused elements, optimizing fonts, and utilizing server-level <a href="/blog/wordpress-caching-plugins-compared-2026.html">caching</a> aggressively.</p>
+<p>While extending Elementor is straightforward, you must actively manage site performance by disabling unused elements, optimizing fonts, and utilizing server-level <a href="/blog/wordpress-caching-plugins-compared-2026">caching</a> aggressively.</p>
 
 <h2>Performance Comparison: DOM Depth &amp; Asset Overhead</h2>
 
@@ -455,7 +455,7 @@ add_action( 'elementor/frontend/after_enqueue_styles', 'shiv_enqueue_elementor_o
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

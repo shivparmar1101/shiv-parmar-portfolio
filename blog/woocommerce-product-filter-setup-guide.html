@@ -43,7 +43,7 @@
   "datePublished": "2026-08-24",
   "dateModified": "2026-08-24",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-product-filter-setup-guide-hero.svg",
-  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide.html"
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide"
 }
 </script>
 
@@ -328,7 +328,7 @@ ul.products {
 
 <ul>
     <li><strong>WOOF - Products Filter for WooCommerce:</strong> Extremely feature-rich, flexible shortcodes, and strong native support for AJAX and custom taxonomies.</li>
-    <li><strong>YITH WooCommerce Ajax Product Filter:</strong> Excellent UI design right out of the box with strong mobile optimization <a href="/blog/wordpress-user-role-management-guide.html">capabilities</a>.</li>
+    <li><strong>YITH WooCommerce Ajax Product Filter:</strong> Excellent UI design right out of the box with strong mobile optimization <a href="/blog/wordpress-user-role-management-guide">capabilities</a>.</li>
     <li><strong>FacetWP:</strong> My top developer choice for advanced search and filtering builds. It builds dedicated index tables for incredible speed on large enterprise catalogs.</li>
 </ul>
 
@@ -514,7 +514,7 @@ ul.products {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

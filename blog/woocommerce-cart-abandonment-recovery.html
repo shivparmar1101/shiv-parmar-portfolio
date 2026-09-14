@@ -164,7 +164,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <ul>
 <li><strong>Unexpected Checkout Friction:</strong> Mandatory account registration, complex address forms, or slow AJAX updates on checkout fields.</li>
-<li><strong>Lack of Price Transparency:</strong> Surprise <a href="/blog/woocommerce-shipping-zones-setup-guide.html">shipping</a> costs or unexpected taxes calculated late at the final checkout step.</li>
+<li><strong>Lack of Price Transparency:</strong> Surprise <a href="/blog/woocommerce-shipping-zones-setup-guide">shipping</a> costs or unexpected taxes calculated late at the final checkout step.</li>
 <li><strong>Distractions and Interruption:</strong> The buyer gets distracted, closes the browser, or switches devices.</li>
 <li><strong>Slow Page Speeds:</strong> Excessive tracking scripts or bloated plugins slowing down the final step.</li>
 </ul>
@@ -521,7 +521,7 @@ function shiv_process_recovery_email($email) {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

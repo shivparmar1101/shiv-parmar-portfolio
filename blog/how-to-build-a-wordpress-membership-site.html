@@ -156,11 +156,11 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>My rule of thumb is simple:</p>
 <ul>
-    <li><strong>Use established plugins</strong> for standard subscription management, <a href="/blog/woocommerce-payment-gateway-comparison-2026.html">payment gateway</a> integrations (Stripe, Razorpay, PayPal), and automated email sequences.</li>
-    <li><strong>Use custom code</strong> to extend <a href="/blog/wordpress-user-role-management-guide.html">user roles</a>, build tailored member dashboards, apply fine-grained content access control, and optimize database queries for speed.</li>
+    <li><strong>Use established plugins</strong> for standard subscription management, <a href="/blog/woocommerce-payment-gateway-comparison-2026">payment gateway</a> integrations (Stripe, Razorpay, PayPal), and automated email sequences.</li>
+    <li><strong>Use custom code</strong> to extend <a href="/blog/wordpress-user-role-management-guide">user roles</a>, build tailored member dashboards, apply fine-grained content access control, and optimize database queries for speed.</li>
 </ul>
 
-<h2>2. Setting Up Custom Member <a href="/blog/wordpress-user-role-management-guide.html">Roles</a> and <a href="/blog/wordpress-user-role-management-guide.html">Capabilities</a></h2>
+<h2>2. Setting Up Custom Member <a href="/blog/wordpress-user-role-management-guide">Roles</a> and <a href="/blog/wordpress-user-role-management-guide">Capabilities</a></h2>
 
 <p>WordPress comes with a robust Role and Capability system. Instead of cluttering your code with custom user metadata checks everywhere, leverage native WordPress roles and capabilities. This keeps your application fast, maintainable, and compatible with security plugins.</p>
 
@@ -185,7 +185,7 @@ add_action( 'init', 'sp_register_membership_roles' );
 
 <h2>3. Restricting Content at the Filter Level</h2>
 
-<p>Rather than manually hiding parts of every single post inside the Block Editor, you can programmatically restrict premium posts based on user capabilities using the <code>the_content</code> filter hook. This guarantees that your restricted content will never leak into RSS feeds or <a href="/blog/wordpress-rest-api-authentication-methods.html">REST API</a> responses accidentally.</p>
+<p>Rather than manually hiding parts of every single post inside the Block Editor, you can programmatically restrict premium posts based on user capabilities using the <code>the_content</code> filter hook. This guarantees that your restricted content will never leak into RSS feeds or <a href="/blog/wordpress-rest-api-authentication-methods">REST API</a> responses accidentally.</p>
 
 <p>Here is an example of filtering content based on user authorization:</p>
 
@@ -300,7 +300,7 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
 </code></pre>
 
 <blockquote>
-    "A successful WordPress membership site isn't just about blocking content behind a paywall; it is fundamentally about database optimization, <a href="/blog/wordpress-caching-plugins-compared-2026.html">caching</a> strategy, and session management as your user base scales from hundreds to tens of thousands."
+    "A successful WordPress membership site isn't just about blocking content behind a paywall; it is fundamentally about database optimization, <a href="/blog/wordpress-caching-plugins-compared-2026">caching</a> strategy, and session management as your user base scales from hundreds to tens of thousands."
 </blockquote>
 
 <h2>6. Crucial Performance and Security Tips for Membership Sites</h2>
@@ -309,7 +309,7 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
 
 <ol>
     <li><strong>Implement Object Caching:</strong> Use Redis or Memcached to store transient data and user meta in memory. This drastically reduces SQL queries on page loads for authenticated users.</li>
-    <li><strong>Exclude Membership Pages from <a href="/blog/wordpress-caching-plugins-compared-2026.html">Page <a href="/blog/wordpress-caching-plugins-compared-2026.html">Cache</a></a>:</strong> Ensure that dynamic pages like Account Details, Checkout, and Login are excluded from server-level page caching (e.g., Nginx FastCGI cache or WP Rocket) to prevent user data leaks.</li>
+    <li><strong>Exclude Membership Pages from <a href="/blog/wordpress-caching-plugins-compared-2026">Page <a href="/blog/wordpress-caching-plugins-compared-2026">Cache</a></a>:</strong> Ensure that dynamic pages like Account Details, Checkout, and Login are excluded from server-level page caching (e.g., Nginx FastCGI cache or WP Rocket) to prevent user data leaks.</li>
     <li><strong>Protect Direct File Uploads:</strong> If your site offers downloadable PDFs or media assets for paid members, do not store them in the public <code>/wp-content/uploads/</code> folder. Store them outside the root directory or use Amazon S3 with short-lived pre-signed URLs to prevent hotlinking.</li>
 </ol>
 
@@ -499,7 +499,7 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

@@ -43,7 +43,7 @@
   "datePublished": "2026-08-21",
   "dateModified": "2026-08-21",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-multisite-configuration-tips-hero.svg",
-  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips.html"
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips"
 }
 </script>
 
@@ -124,7 +124,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <article><div class="container">
 <img src="../images/blog/wordpress-multisite-configuration-tips-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress Multisite Configuration Tips
+<a href="/" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="/blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress Multisite Configuration Tips
 </nav>
 <div class="date">2026-08-21 &middot; 6 min read</div>
 <h1>WordPress Multisite Configuration Tips</h1>
@@ -289,7 +289,7 @@ function shiv_enqueue_network_admin_styles() {
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
   <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
   <h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3>
-  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development <a href="/blog/wordpress-user-role-management-guide.html">roles</a>. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
+  <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development <a href="/blog/wordpress-user-role-management-guide">roles</a>. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Get in Touch <span>&rarr;</span></a>
 </div>
 </div>
@@ -460,7 +460,7 @@ function shiv_enqueue_network_admin_styles() {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

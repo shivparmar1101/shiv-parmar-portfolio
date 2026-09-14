@@ -43,7 +43,7 @@
   "datePublished": "2026-08-21",
   "dateModified": "2026-08-21",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-rest-api-authentication-methods-hero.svg",
-  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods.html"
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods"
 }
 </script>
 
@@ -124,7 +124,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <article><div class="container">
 <img src="../images/blog/wordpress-rest-api-authentication-methods-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../index.html" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog.html" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress REST API Authentication Methods
+<a href="/" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="/blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress REST API Authentication Methods
 </nav>
 <div class="date">2026-08-21 &middot; 6 min read</div>
 <h1>WordPress REST API Authentication Methods</h1>
@@ -151,7 +151,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <p>WordPress provides multiple ways to handle this, depending on where your request originates from—whether it is inside the WordPress admin dashboard, a decoupled frontend, or a remote server-to-server script.</p>
 
 <blockquote dir="ltr">
-    <p>"Authentication identifies the user, but permission callbacks protect the ecosystem. Never rely solely on authentication without checking user <a href="/blog/wordpress-user-role-management-guide.html">capabilities</a> inside your REST API endpoints."</p>
+    <p>"Authentication identifies the user, but permission callbacks protect the ecosystem. Never rely solely on authentication without checking user <a href="/blog/wordpress-user-role-management-guide">capabilities</a> inside your REST API endpoints."</p>
 </blockquote>
 
 <h2>1. Cookie Authentication (Default Internal Method)</h2>
@@ -499,7 +499,7 @@ function shiv_update_settings( $request ) {
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }

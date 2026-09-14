@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to Speed Up WooCommerce Product Pages">
 <meta name="twitter:description" content="Master How to Speed Up WooCommerce Product Pages with this detailed WooCommerce guide by Shiv Parmar. Expert tips, step-by-step instructions, and real-world examples to grow your online store.">
-<meta name="twitter:image" content="../images/blog/how-to-speed-up-woocommerce-product-pages-hero.svg">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-speed-up-woocommerce-product-pages-hero.svg">
 <meta name="twitter:image:alt" content="How to Speed Up WooCommerce Product Pages - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
@@ -142,7 +142,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul id="tocList"></ul>
 </div>
 <div class="content">
-<p>Namaste! I’m Shiv Parmar, a passionate WordPress and WooCommerce developer based in Rajkot, India. Over the past several years, I’ve helped dozens of e-commerce brands optimize their custom WooCommerce builds for maximum efficiency, stability, and <a href="/blog/wordpress-image-optimization-for-speed.html">speed</a>.</p>
+<p>Namaste! I’m Shiv Parmar, a passionate WordPress and WooCommerce developer based in Rajkot, India. Over the past several years, I’ve helped dozens of e-commerce brands optimize their custom WooCommerce builds for maximum efficiency, stability, and <a href="/blog/wordpress-image-optimization-for-speed">speed</a>.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WooCommerce Store Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From payment gateways to inventory management — I make WooCommerce work for your business.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Let's Talk <span>&rarr;</span></a></div>
 
 
@@ -152,7 +152,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>1. Disable WooCommerce Cart Fragments on Single Product Pages</h2>
 
-<p>One of the biggest silent <a href="/blog/wordpress-image-optimization-for-speed.html">performance</a> bottlenecks in WooCommerce is the <code>wc-cart-fragments</code> AJAX call. By default, WooCommerce triggers an AJAX request on page load to update the cart total and widget across the site. While useful for static <a href="/blog/wordpress-caching-plugins-compared-2026.html">caching</a> strategies on simple blogs, it frequently slows down dynamic rendering on individual product pages.</p>
+<p>One of the biggest silent <a href="/blog/wordpress-image-optimization-for-speed">performance</a> bottlenecks in WooCommerce is the <code>wc-cart-fragments</code> AJAX call. By default, WooCommerce triggers an AJAX request on page load to update the cart total and widget across the site. While useful for static <a href="/blog/wordpress-caching-plugins-compared-2026">caching</a> strategies on simple blogs, it frequently slows down dynamic rendering on individual product pages.</p>
 
 <p>If your header cart updates fine upon adding an item to the cart, you can safely dequeue this script on single product pages to save an extra HTTP request and bypass execution overhead.</p>
 
@@ -216,11 +216,11 @@ function sp_optimize_lcp_product_image( $attr, $attachment, $size ) {
 add_filter( 'wp_get_attachment_image_attributes', 'sp_optimize_lcp_product_image', 10, 3 );
 </code></pre>
 
-<p>Additionally, ensure your product images are served in modern formats like WebP or AVIF using <a href="/blog/wordpress-image-optimization-for-speed.html">image optimization</a> tools or server-level solutions like LiteSpeed Web Server or NGINX modules.</p>
+<p>Additionally, ensure your product images are served in modern formats like WebP or AVIF using <a href="/blog/wordpress-image-optimization-for-speed">image optimization</a> tools or server-level solutions like LiteSpeed Web Server or NGINX modules.</p>
 
-<h2>4. Lower the WooCommerce <a href="/blog/woocommerce-product-variation-best-practices.html">Variable Product</a> Threshold</h2>
+<h2>4. Lower the WooCommerce <a href="/blog/woocommerce-product-variation-best-practices">Variable Product</a> Threshold</h2>
 
-<p>If you sell variable products with dozens of <a href="/blog/woocommerce-product-variation-best-practices.html">variations</a> (such as colors, sizes, materials), WooCommerce loads all variation data into a JSON attribute in the HTML DOM (<code>data-product_variations</code>). When a product has 50+ variations, this JSON object can add hundreds of kilobytes of uncompressed text directly into your HTML response, dramatically delaying DOM interactive time.</p>
+<p>If you sell variable products with dozens of <a href="/blog/woocommerce-product-variation-best-practices">variations</a> (such as colors, sizes, materials), WooCommerce loads all variation data into a JSON attribute in the HTML DOM (<code>data-product_variations</code>). When a product has 50+ variations, this JSON object can add hundreds of kilobytes of uncompressed text directly into your HTML response, dramatically delaying DOM interactive time.</p>
 
 <blockquote>
 <p>Key Insight: Slow WooCommerce product pages are rarely caused by poor hosting alone. More often, they suffer from DOM bloat caused by excessive JSON payloads in variable products and unoptimized script execution during page rendering.</p>
@@ -298,7 +298,7 @@ add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
     <li>Lower the AJAX variation threshold for dynamic variable products.</li>
     <li>Unload global assets from third-party plugins using <code>wp_dequeue_script()</code>.</li>
     <li>Defer gallery scripts like PhotoSwipe and FlexSlider.</li>
-    <li>Enable Redis Persistent Object <a href="/blog/wordpress-caching-plugins-compared-2026.html">Cache</a> at the server level.</li>
+    <li>Enable Redis Persistent Object <a href="/blog/wordpress-caching-plugins-compared-2026">Cache</a> at the server level.</li>
 </ul>
 
 <p>Optimizing WooCommerce requires a balance between functionality, user experience, and technical execution. By applying these focused strategies, you can lower your load times under the critical 1.5-second mark, enhance your Google Core Web Vitals, and ultimately generate more sales.</p>
@@ -485,7 +485,7 @@ add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
         if(p.slug!==currentSlug && count<3){
           var card=document.createElement("div");
           card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'.html" title="'+p.title+'">'+p.title+'</a></h4>';
+          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
           related.appendChild(card);
           count++;
         }
