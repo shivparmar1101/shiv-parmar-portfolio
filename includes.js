@@ -139,7 +139,7 @@
       '<rect x="80" y="330" width="120" height="4" rx="2" fill="url(#goldGrad)"/>' +
       '<text x="80" y="380" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#666666">WordPress Developer Guide</text>' +
       '<text x="80" y="440" font-family="JetBrains Mono, monospace" font-size="14" fill="url(#goldGrad)">Shiv Parmar</text>' +
-      '<text x="80" y="460" font-family="Inter, -apple-system, sans-serif" font-size="12" fill="#666666">WordPress Developer · Rajkot, India</text>' +
+      '<text x="80" y="460" font-family="Inter, -apple-system, sans-serif" font-size="12" fill="#666666">WordPress Developer · Available Worldwide</text>' +
       '<rect x="80" y="500" width="140" height="32" rx="16" fill="rgba(201,168,76,0.15)" stroke="url(#goldGrad)" stroke-width="1"/>' +
       '<text x="150" y="520" font-family="Inter, -apple-system, sans-serif" font-size="12" font-weight="600" fill="url(#goldGrad)" text-anchor="middle">WordPress</text>' +
       '</svg>';
