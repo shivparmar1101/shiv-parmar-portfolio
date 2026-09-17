@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-gutenberg-block-development-hero.svg">
 <meta property="og:image:alt" content="WordPress Gutenberg Block Development - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
-<meta property="og:locale" content="en_IN">
+<meta property="og:locale" content="en_US">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -159,7 +159,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul>
     <li><strong>Full Site Editing (FSE) Compatibility:</strong> Native blocks integrate seamlessly into FSE templates and block patterns.</li>
     <li><strong>Better <a href="/blog/wordpress-image-optimization-for-speed">Performance</a>:</strong> Native blocks eliminate extra database queries often introduced by heavy third-party option frameworks.</li>
-    <li><strong>Reusable UX Components:</strong> You can leverage WordPressâ€™s rich library of UI components like color pickers, alignment controls, and rich text fields.</li>
+    <li><strong>Reusable UX Components:</strong> You can leverage WordPress’s rich library of UI components like color pickers, alignment controls, and rich text fields.</li>
 </ul>
 
 <h2>Setting Up Your Block Development Environment</h2>
@@ -300,7 +300,7 @@ export default function save({ attributes }) {
 
 <h2>Static vs. Dynamic Blocks: When to Use PHP</h2>
 
-<p>The code example above demonstrates a <strong>static block</strong>, where HTML is generated in JavaScript and saved directly in <code>post_content</code>. However, if your block needs to display real-time database contentâ€”such as recent blog posts, dynamic metadata, or WooCommerce productsâ€”you should build a <strong>dynamic block</strong>.</p>
+<p>The code example above demonstrates a <strong>static block</strong>, where HTML is generated in JavaScript and saved directly in <code>post_content</code>. However, if your block needs to display real-time database content—such as recent blog posts, dynamic metadata, or WooCommerce products—you should build a <strong>dynamic block</strong>.</p>
 
 <p>To render dynamically on the server side, omit the return statement in <code>save.js</code> (or return <code>null</code>), and define a <code>render.php</code> file inside your block directory, or use the <code>render_callback</code> parameter when registering the block in PHP:</p>
 
@@ -504,7 +504,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' =&gt; 'custom
     }
     var related=document.getElementById("relatedBlogs");
     if(related){
-      var posts=[{"date":"2026-08-20 Â· 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 Â· 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 Â· 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 Â· 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 Â· 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 Â· 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 Â· 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 Â· 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
+      var posts=[{"date":"2026-08-20 · 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 · 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 · 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 · 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 · 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 · 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 · 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 · 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 · 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 · 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 · 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 · 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 · 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
       var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
       var count=0;
       posts.forEach(function(p){

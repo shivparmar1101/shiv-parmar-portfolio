@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-add-custom-css-to-wordpress-without-plugin-hero.svg">
 <meta property="og:image:alt" content="How To Add Custom Css To Wordpress Without Plugin - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
-<meta property="og:locale" content="en_IN">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
 <meta property="article:published_time" content="2026-08-20">
 
@@ -181,7 +181,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2>Method 2: Adding CSS via a Child Theme (Recommended for Developers)</h2>
 
-<p>As a developer globally, whenever I take on a full custom site development project, I always implement a <strong>Child Theme</strong>. Modifying the parent theme’s stylesheet directly is a fatal mistake—the moment the theme author releases an update, all your custom code will be completely overwritten.</p>
+<p>As a developer globally, whenever I take on a full custom site development project, I always implement a <strong>Child Theme</strong>. Modifying the parent theme�s stylesheet directly is a fatal mistake�the moment the theme author releases an update, all your custom code will be completely overwritten.</p>
 
 <p>A child theme inherits all the functionality and styling of the parent theme while giving you a clean slate to add your own customizations.</p>
 
@@ -239,7 +239,7 @@ add_action( 'wp_enqueue_scripts', 'my_child_theme_enqueue_styles' );
 </code></pre>
 
 <blockquote>
-    <p>“Writing clean, modular code through child themes and native WordPress hooks isn't just about good aesthetics; it directly impacts rendering speed, code maintainability, and long-term security. A plugin-free approach forces you to understand the architecture you build upon.”</p>
+    <p>�Writing clean, modular code through child themes and native WordPress hooks isn't just about good aesthetics; it directly impacts rendering speed, code maintainability, and long-term security. A plugin-free approach forces you to understand the architecture you build upon.�</p>
 </blockquote>
 
 <h2>Method 3: Advanced CSS Enqueueing via functions.php Hook</h2>
@@ -289,7 +289,7 @@ add_action( 'wp_enqueue_scripts', 'shiv_add_dynamic_inline_css' );
 
 <p>What if you need a tiny piece of custom CSS to load exclusively on singular blog posts or a specific page ID? Loading a heavy global CSS file for page-specific styles hurts performance. Instead, you can hook directly into the site's <code>&lt;head&gt;</code> element conditionally.</p>
 
-<p>Add this code block inside your theme’s <code>functions.php</code> file:</p>
+<p>Add this code block inside your theme�s <code>functions.php</code> file:</p>
 
 <pre><code>function shiv_conditional_single_post_css() {
     // Target only single blog posts
@@ -316,11 +316,11 @@ add_action( 'wp_enqueue_scripts', 'shiv_add_dynamic_inline_css' );
 add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
 </code></pre>
 
-<p>This method ensures that your site’s HTML output stays lean by serving style tags only to visitors navigating those specific single posts.</p>
+<p>This method ensures that your site�s HTML output stays lean by serving style tags only to visitors navigating those specific single posts.</p>
 
 <h2>Best Practices for Writing Custom CSS in WordPress</h2>
 
-<p>As developers, our job is not just to make elements look beautiful—it is to keep code clean and maintainable. Here are a few key practices I follow on every client site in India and globally:</p>
+<p>As developers, our job is not just to make elements look beautiful�it is to keep code clean and maintainable. Here are a few key practices I follow on every client site globally:</p>
 
 <ul>
     <li><strong>Use Specific Selectors:</strong> Avoid overusing <code>!important</code>. Instead, leverage parent container selectors to raise specificity naturally.</li>
@@ -515,7 +515,7 @@ add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
     }
     var related=document.getElementById("relatedBlogs");
     if(related){
-      var posts=[{"date":"2026-08-20 � 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 � 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 � 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 � 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 � 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 � 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 � 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 � 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 � 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 � 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
+      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
       var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
       var count=0;
       posts.forEach(function(p){
