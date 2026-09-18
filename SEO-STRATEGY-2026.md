@@ -41,11 +41,11 @@
 ### Meta Title Examples by Page
 | Page | Title Example | Chars |
 |------|---------------|-------|
-| **Homepage** | `Hire WordPress Developer | Shiv Parmar` | 41 |
-| **Services** | `Hire Web Developer | WordPress Development Services - Shiv Parmar` | 63 |
-| **About** | `About Shiv Parmar - Freelance WordPress Developer | 4+ Years Experience` | 62 |
-| **Contact** | `Hire WordPress Developer | Contact Shiv Parmar` | 46 |
-| **Work** | `WordPress Portfolio | Projects & Work - Shiv Parmar` | 51 |
+| **Homepage** | `Hire WordPress Developer \| Shiv Parmar` | 41 |
+| **Services** | `Hire Web Developer \| WordPress Development Services - Shiv Parmar` | 63 |
+| **About** | `About Shiv Parmar - Freelance WordPress Developer` | 48 |
+| **Contact** | `Hire WordPress Developer \| Contact Shiv Parmar` | 46 |
+| **Work** | `WordPress Portfolio \| Projects & Work - Shiv Parmar` | 51 |
 | **Skills** | `WordPress Developer Skills - Shiv Parmar` | 43 |
 | **Experience** | `WordPress Development Experience - Shiv Parmar` | 45 |
 | **Blog** | `WordPress Development Blog - Shiv Parmar` | 44 |
@@ -61,17 +61,17 @@
 | **Work** | `View WordPress portfolio by Shiv Parmar. Real projects: WooCommerce stores, corporate websites, fitness studios. Hire WordPress Developer for your next project.` | 158 |
 
 ### Current Meta Tags Status
-| Page | Title Length | Description Length | Status |
-|------|-------------|-------------------|--------|
-| Homepage | 41 chars | 140 chars | ✅ Good |
-| Services | 63 chars | 170 chars | ✅ Good |
-| About | 62 chars | 157 chars | ✅ Good |
-| Contact | 46 chars | 162 chars | ✅ Good |
-| Work | 51 chars | 158 chars | ✅ Good |
-| Skills | 43 chars | 152 chars | ✅ Good |
-| Experience | 45 chars | 168 chars | ✅ Good |
-| Blog | 44 chars | 187 chars | ✅ Good |
-| Projects | 48 chars | 198 chars | ✅ Good |
+| Page | Title | Title Length | Description Length | Status |
+|------|-------|-------------|-------------------|--------|
+| Homepage | `Hire WordPress Developer \| Shiv Parmar` | 41 chars | 140 chars | ✅ Good |
+| Services | `Hire Web Developer \| WordPress Development Services - Shiv Parmar` | 63 chars | 170 chars | ✅ Good |
+| About | `About Shiv Parmar - Freelance WordPress Developer` | 48 chars | 157 chars | ✅ Good |
+| Contact | `Hire WordPress Developer \| Contact Shiv Parmar` | 46 chars | 162 chars | ✅ Good |
+| Work | `WordPress Portfolio \| Projects & Work - Shiv Parmar` | 51 chars | 158 chars | ✅ Good |
+| Skills | `WordPress Developer Skills - Shiv Parmar` | 43 chars | 152 chars | ✅ Good |
+| Experience | `WordPress Development Experience - Shiv Parmar` | 45 chars | 168 chars | ✅ Good |
+| Blog | `WordPress Development Blog - Shiv Parmar` | 44 chars | 187 chars | ✅ Good |
+| Projects | `WordPress Projects - Shiv Parmar` | 48 chars | 198 chars | ✅ Good |
 
 ---
 
