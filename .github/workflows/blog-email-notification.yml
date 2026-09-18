@@ -45,11 +45,12 @@ jobs:
           echo "blog_slug=$BLOG_SLUG" >> $GITHUB_OUTPUT
           echo "has_new_blog=true" >> $GITHUB_OUTPUT
           
-          TITLE=$(grep -oP '(?<=<title>).*?(?=</title>)' "$NEW_BLOG" | head -n 1)
+          TITLE=$(sed -n 's/.*<title>\(.*\)<\/title>.*/\1/p' "$NEW_BLOG" | head -n 1)
           echo "Blog title: $TITLE"
           echo "blog_title=$TITLE" >> $GITHUB_OUTPUT
           
-          DESC=$(grep -oP '(?<=<meta name="description" content=").*?(?=")' "$NEW_BLOG" | head -n 1)
+          DESC=$(sed -n 's/.*<meta name="description" content="\([^"]*\)".*/\1/p' "$NEW_BLOG" | head -n 1)
+          echo "Blog description: $DESC"
           echo "blog_description=$DESC" >> $GITHUB_OUTPUT
           
           BLOG_URL="https://shiv-parmar-portfolio.netlify.app/blog/$BLOG_SLUG"
