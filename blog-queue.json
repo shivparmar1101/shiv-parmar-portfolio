@@ -1,0 +1,220 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "WordPress 7.0 AI Client: Complete Setup Guide 2026",
+      "slug": "wordpress-7-0-ai-client-complete-setup-guide-2026",
+      "keywords": ["WordPress 7.0", "AI Client", "WordPress AI", "AI integration"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-19",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "title": "WooCommerce 11.1: New Features & Setup Guide 2026",
+      "slug": "woocommerce-11-1-new-features-setup-guide-2026",
+      "keywords": ["WooCommerce 11.1", "WooCommerce update", "WooCommerce features"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-19",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "title": "How to Use Abilities API in WordPress 7.0",
+      "slug": "how-to-use-abilities-api-in-wordpress-7-0",
+      "keywords": ["Abilities API", "WordPress 7.0", "WordPress API"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-20",
+      "status": "pending"
+    },
+    {
+      "id": 4,
+      "title": "WooCommerce Variation Galleries: Complete Setup Guide",
+      "slug": "woocommerce-variation-galleries-complete-setup-guide",
+      "keywords": ["WooCommerce variation galleries", "product variations", "WooCommerce images"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-20",
+      "status": "pending"
+    },
+    {
+      "id": 5,
+      "title": "WordPress AI Integration: OpenAI, Gemini & Claude Setup",
+      "slug": "wordpress-ai-integration-openai-gemini-claude-setup",
+      "keywords": ["WordPress AI", "OpenAI", "Gemini", "Claude", "AI integration"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-21",
+      "status": "pending"
+    },
+    {
+      "id": 6,
+      "title": "WooCommerce HPOS: Why It Matters in 2026",
+      "slug": "woocommerce-hpos-why-it-matters-2026",
+      "keywords": ["WooCommerce HPOS", "High-Performance Order Storage", "WooCommerce performance"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-21",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "title": "How to Build AI-Powered WordPress Plugins in 2026",
+      "slug": "how-to-build-ai-powered-wordpress-plugins-2026",
+      "keywords": ["AI WordPress plugins", "WordPress plugin development", "AI integration"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-22",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "title": "WooCommerce AI Agents: Prepare Your Store Now",
+      "slug": "woocommerce-ai-agents-prepare-your-store-now",
+      "keywords": ["WooCommerce AI agents", "AI commerce", "agentic commerce"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-22",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "title": "WordPress MCP Adapter: Agentic Web Guide 2026",
+      "slug": "wordpress-mcp-adapter-agentic-web-guide-2026",
+      "keywords": ["WordPress MCP", "Model Context Protocol", "agentic web"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-23",
+      "status": "pending"
+    },
+    {
+      "id": 10,
+      "title": "WooCommerce vs Shopify 2026: Which is Better?",
+      "slug": "woocommerce-vs-shopify-2026-which-is-better",
+      "keywords": ["WooCommerce vs Shopify", "ecommerce platform comparison", "2026"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-23",
+      "status": "pending"
+    },
+    {
+      "id": 11,
+      "title": "How to Block AI Crawlers from Scraping WordPress Content",
+      "slug": "how-to-block-ai-crawlers-scraping-wordpress-content",
+      "keywords": ["AI crawlers", "WordPress security", "content protection"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-24",
+      "status": "pending"
+    },
+    {
+      "id": 12,
+      "title": "WordPress Core Web Vitals: INP Optimization Guide 2026",
+      "slug": "wordpress-core-web-vitals-inp-optimization-guide-2026",
+      "keywords": ["WordPress INP", "Core Web Vitals", "page speed", "performance"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-24",
+      "status": "pending"
+    },
+    {
+      "id": 13,
+      "title": "WordPress Speculative Loading: Complete Setup Guide",
+      "slug": "wordpress-speculative-loading-complete-setup-guide",
+      "keywords": ["speculative loading", "WordPress performance", "page speed"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "id": 14,
+      "title": "WordPress Full Site Editing: Complete Guide 2026",
+      "slug": "wordpress-full-site-editing-complete-guide-2026",
+      "keywords": ["WordPress FSE", "Full Site Editing", "block themes"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "id": 15,
+      "title": "WordPress Block Theme Performance Optimization",
+      "slug": "wordpress-block-theme-performance-optimization",
+      "keywords": ["block theme", "WordPress speed", "theme optimization"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-26",
+      "status": "pending"
+    },
+    {
+      "id": 16,
+      "title": "Gutenberg 23.9: New Features & Block Patterns",
+      "slug": "gutenberg-23-9-new-features-block-patterns",
+      "keywords": ["Gutenberg 23.9", "block patterns", "WordPress editor"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-26",
+      "status": "pending"
+    },
+    {
+      "id": 17,
+      "title": "How to Reduce WordPress Plugin Bloat in 2026",
+      "slug": "how-to-reduce-wordpress-plugin-bloat-2026",
+      "keywords": ["WordPress plugin bloat", "site speed", "optimization"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-27",
+      "status": "pending"
+    },
+    {
+      "id": 18,
+      "title": "WordPress Design System Theming: Complete Guide",
+      "slug": "wordpress-design-system-theming-complete-guide",
+      "keywords": ["WordPress theming", "design system", "block themes"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-27",
+      "status": "pending"
+    },
+    {
+      "id": 19,
+      "title": "How to Build Custom Gutenberg Blocks in 2026",
+      "slug": "how-to-build-custom-gutenberg-blocks-2026",
+      "keywords": ["custom Gutenberg blocks", "WordPress development", "block editor"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "id": 20,
+      "title": "WordPress Zero Trust Security Guide 2026",
+      "slug": "wordpress-zero-trust-security-guide-2026",
+      "keywords": ["WordPress security", "Zero Trust", "website security"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "id": 21,
+      "title": "WordPress AI Firewall: Protect Your Site from Bots",
+      "slug": "wordpress-ai-firewall-protect-your-site-from-bots",
+      "keywords": ["WordPress firewall", "AI bots", "security"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-29",
+      "status": "pending"
+    },
+    {
+      "id": 22,
+      "title": "llms.txt: Control AI Crawlers on WordPress",
+      "slug": "llms-txt-control-ai-crawlers-on-wordpress",
+      "keywords": ["llms.txt", "AI crawlers", "content control"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-29",
+      "status": "pending"
+    },
+    {
+      "id": 23,
+      "title": "Headless WordPress with Next.js: Complete Setup 2026",
+      "slug": "headless-wordpress-with-nextjs-complete-setup-2026",
+      "keywords": ["headless WordPress", "Next.js", "API-first"],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "id": 24,
+      "title": "WordPress REST API vs GraphQL: Which to Use?",
+      "slug": "wordpress-rest-api-vs-graphql-which-to-use",
+      "keywords": ["WordPress REST API", "GraphQL", "API comparison"],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-09-30",
+      "status": "pending"
+    }
+  ]
+}

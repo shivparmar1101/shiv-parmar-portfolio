@@ -1,0 +1,139 @@
+name: Auto Blog Publisher
+on:
+  schedule:
+    # Runs at 3:00 AM and 3:00 PM IST (9:30 AM and 9:30 PM UTC)
+    - cron: '30 9 * * *'
+    - cron: '30 21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate and Publish Blog
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          echo "========================================="
+          echo "Auto Blog Publisher"
+          echo "Time: $(date)"
+          echo "========================================="
+          
+          # Create blog directory if not exists
+          mkdir -p blog
+          mkdir -p images/blog
+          
+          # Run auto blog generator
+          node scripts/auto-blog-generator.js
+          
+          echo "========================================="
+          echo "Blog generation complete"
+          echo "========================================="
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Check if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Auto: Publish new blog post"
+            git push
+            echo "Changes pushed to repository"
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Send Email Notification
+        if: success()
+        run: |
+          # Get the latest commit message
+          COMMIT_MSG=$(git log -1 --pretty=%s)
+          echo "Latest commit: $COMMIT_MSG"
+          
+          # Get the latest blog file
+          LATEST_BLOG=$(git diff --name-only HEAD~1 2>/dev/null | grep "^blog/.*\.html$" | head -1)
+          
+          if [ -n "$LATEST_BLOG" ]; then
+            # Extract blog title from HTML
+            TITLE=$(grep -oP '(?<=<title>)[^|]+' "$LATEST_BLOG" | head -1)
+            SLUG=$(basename "$LATEST_BLOG" .html)
+            
+            echo "Blog: $TITLE"
+            echo "URL: https://shiv-parmar-portfolio.netlify.app/blog/$SLUG"
+            
+            # Send email using Node.js
+            node -e "
+              const nodemailer = require('nodemailer');
+              const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'parmarshiv1101@gmail.com',
+                  pass: process.env.EMAIL_PASSWORD || 'wwok yben jcoh atqj'
+                }
+              });
+              
+              const mailOptions = {
+                from: 'parmarshiv1101@gmail.com',
+                to: 'parmarshiv1101@gmail.com',
+                subject: 'New Blog Published: $TITLE',
+                html: \`
+                  <div style=\"font-family:Inter,sans-serif;max-width:600px;margin:0 auto;background:#000;color:#f0f0f0;border-radius:12px;overflow:hidden;border:1px solid #333\">
+                    <div style=\"background:#c9a84c;padding:20px;text-align:center\">
+                      <h1 style=\"color:#000;margin:0;font-size:24px\">New Blog Published!</h1>
+                    </div>
+                    <div style=\"padding:24px\">
+                      <h2 style=\"color:#f0f0f0;margin-top:0\">$TITLE</h2>
+                      <p style=\"color:#888;font-size:14px;line-height:1.6\">A new blog post has been published on your portfolio website.</p>
+                      <div style=\"text-align:center;margin:24px 0\">
+                        <a href=\"https://shiv-parmar-portfolio.netlify.app/blog/$SLUG\" style=\"display:inline-block;background:#c9a84c;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600\">Read Blog &rarr;</a>
+                      </div>
+                      <hr style=\"border:0;border-top:1px solid #333;margin:20px 0\">
+                      <p style=\"color:#666;font-size:12px\">Auto-published by GitHub Actions</p>
+                    </div>
+                  </div>
+                \`
+              };
+              
+              transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                  console.error('Email error:', error);
+                } else {
+                  console.log('Email sent:', info.messageId);
+                }
+              });
+            "
+          else
+            echo "No new blog found"
+          fi
+
+      - name: Add to Google Search Console
+        if: success()
+        run: |
+          # Get the latest blog file
+          LATEST_BLOG=$(git diff --name-only HEAD~1 2>/dev/null | grep "^blog/.*\.html$" | head -1)
+          
+          if [ -n "$LATEST_BLOG" ]; then
+            SLUG=$(basename "$LATEST_BLOG" .html)
+            URL="https://shiv-parmar-portfolio.netlify.app/blog/$SLUG"
+            
+            echo "Submitting to Google Search Console: $URL"
+            
+            # Note: Google Search Console API requires OAuth2 authentication
+            # This is a placeholder - manual submission recommended
+            echo "URL: $URL"
+            echo "Please submit manually to Google Search Console"
+            echo "https://search.google.com/search-console"
+          fi
