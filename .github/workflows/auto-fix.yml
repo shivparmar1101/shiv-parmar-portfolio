@@ -1,0 +1,41 @@
+# Auto SEO Fixer - Issues Automatically Fix Kare
+name: Auto SEO Fix
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Daily 8 AM UTC (1:30 PM IST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      
+      - name: Install Dependencies
+        run: npm install cheerio
+      
+      - name: Auto Fix SEO Issues
+        run: node scripts/auto-fix-seo.js
+      
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "SEO Auto-Fixer"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "SEO: Auto-fix issues [skip ci]"
+            git push
+          fi
