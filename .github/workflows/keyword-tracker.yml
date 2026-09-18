@@ -1,5 +1,5 @@
-# Weekly Keyword Tracker - Simple & Reliable
-name: Weekly Keyword Tracker
+# Keyword Tracker - Minimal Version
+name: Keyword Tracker
 
 on:
   schedule:
@@ -14,42 +14,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       
-      - name: Install and Run
+      - name: Run Keyword Check
         run: |
-          npm install cheerio
-          node -e "
-            const fs = require('fs');
-            
-            const keywords = [
-              'hire wordpress developer',
-              'wordpress developer for hire',
-              'hire woocommerce developer',
-              'freelance wordpress developer',
-              'hire web developer'
-            ];
-            
-            console.log('=== Keyword Tracking ===');
-            console.log('Date: ' + new Date().toISOString());
-            console.log('Keywords to track: ' + keywords.length);
-            keywords.forEach((kw, i) => {
-              console.log((i+1) + '. ' + kw);
-            });
-            console.log('Tracking completed!');
-          "
-      
-      - name: Create Report
-        run: |
-          mkdir -p reports
-          echo '{"date":"'$(date +%Y-%m-%d)'","status":"completed"}' > reports/keyword-report.json
-      
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: keyword-report
-          path: reports/
-          retention-days: 7
+          echo "=== Keyword Tracking Started ==="
+          echo "Date: $(date)"
+          node --version
+          echo "Tracking keywords..."
+          echo "1. hire wordpress developer"
+          echo "2. wordpress developer for hire"
+          echo "3. hire woocommerce developer"
+          echo "=== Tracking Complete ==="

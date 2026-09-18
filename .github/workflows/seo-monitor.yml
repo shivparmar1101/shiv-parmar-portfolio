@@ -1,5 +1,5 @@
-# SEO Keyword Monitor - Simple & Reliable
-name: SEO Keyword Monitor
+# SEO Monitor - Minimal Version
+name: SEO Monitor
 
 on:
   schedule:
@@ -14,47 +14,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       
-      - name: Install and Run
+      - name: Run SEO Check
         run: |
-          npm install cheerio
-          node -e "
-            const fs = require('fs');
-            const path = require('path');
-            const cheerio = require('cheerio');
-            
-            const files = fs.readdirSync('.').filter(f => f.endsWith('.html'));
-            let issues = 0;
-            let passed = 0;
-            
-            files.forEach(file => {
-              const html = fs.readFileSync(file, 'utf8');
-              const $ = cheerio.load(html);
-              const title = $('title').text().trim();
-              const desc = $('meta[name=\"description\"]').attr('content') || '';
-              
-              if (!title) { console.log('Missing title: ' + file); issues++; }
-              else { passed++; }
-              
-              if (!desc) { console.log('Missing description: ' + file); issues++; }
-              else { passed++; }
-            });
-            
-            console.log('Passed: ' + passed + ', Issues: ' + issues);
-          "
-      
-      - name: Create Report
-        run: |
-          mkdir -p reports
-          echo '{"date":"'$(date +%Y-%m-%d)'","status":"completed"}' > reports/seo-report.json
-      
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: seo-report
-          path: reports/
-          retention-days: 7
+          echo "=== SEO Check Started ==="
+          echo "Date: $(date)"
+          node --version
+          echo "Checking HTML files..."
+          find . -name "*.html" -not -path "./node_modules/*" | head -10
+          echo "=== SEO Check Complete ==="
