@@ -1,0 +1,54 @@
+# Content Monitor - Check for SEO Issues
+# Runs on every push to main
+
+name: Content SEO Check
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - 'blog/**'
+  
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  content-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install cheerio
+      
+      - name: Check All HTML Files
+        run: node scripts/check-html-seo.js
+      
+      - name: Check Blog Post SEO
+        run: node scripts/check-blog-seo.js
+      
+      - name: Validate Schema Markup
+        run: node scripts/validate-schema.js
+      
+      - name: Check Image Alt Tags
+        run: node scripts/check-images.js
+      
+      - name: Generate Validation Report
+        run: node scripts/validation-report.js
+      
+      - name: Upload Validation Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30

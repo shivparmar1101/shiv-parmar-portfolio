@@ -3,3 +3,14 @@ node_modules/
 config.json
 .api-key
 last-run.log
+
+# Local Netlify folder
+.netlify
+
+# SEO Reports (keep structure, ignore generated reports)
+reports/*.json
+seo-data/*.json
+
+# Keep directory structure
+!reports/.gitkeep
+!seo-data/.gitkeep

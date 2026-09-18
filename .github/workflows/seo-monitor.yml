@@ -1,0 +1,79 @@
+# SEO Keyword Monitor - Runs Daily Automatically
+# GitHub Actions - System Off Hoi To Pan Run Thase
+
+name: SEO Keyword Monitor
+
+on:
+  # Daily 6 AM UTC automatic run (11:30 AM IST)
+  schedule:
+    - cron: '0 6 * * *'
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      keyword:
+        description: 'Keyword to check'
+        required: false
+        default: 'hire wordpress developer'
+  
+  # Run on push to main (when you update content)
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - '**.xml'
+
+# Only one workflow at a time
+concurrency:
+  group: seo-monitor
+  cancel-in-progress: true
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install cheerio axios
+      
+      - name: Run SEO Audit Script
+        run: node scripts/seo-audit.js
+        env:
+          INPUT_KEYWORD: ${{ github.event.inputs.keyword || 'hire wordpress developer' }}
+      
+      - name: Check Meta Tags
+        run: node scripts/check-meta-tags.js
+      
+      - name: Validate Sitemap
+        run: node scripts/validate-sitemap.js
+      
+      - name: Check Page Speed (Basic)
+        run: node scripts/check-pagespeed.js
+      
+      - name: Generate SEO Report
+        run: node scripts/generate-report.js
+      
+      - name: Upload SEO Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30
+      
+      - name: Commit Updated SEO Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add seo-data/ reports/
+          git diff --staged --quiet || git commit -m "SEO: Auto-update audit data [skip ci]"
+          git push

@@ -1,0 +1,29 @@
+{
+  "name": "shiv-parmar-portfolio",
+  "version": "1.0.0",
+  "description": "SEO monitoring scripts for Shiv Parmar Portfolio",
+  "scripts": {
+    "seo:audit": "node scripts/seo-audit.js",
+    "seo:meta": "node scripts/check-meta-tags.js",
+    "seo:sitemap": "node scripts/validate-sitemap.js",
+    "seo:speed": "node scripts/check-pagespeed.js",
+    "seo:keywords": "node scripts/track-keywords.js",
+    "seo:competitors": "node scripts/check-competitors.js",
+    "seo:html": "node scripts/check-html-seo.js",
+    "seo:blog": "node scripts/check-blog-seo.js",
+    "seo:report": "node scripts/generate-report.js",
+    "seo:all": "npm run seo:audit && npm run seo:meta && npm run seo:sitemap && npm run seo:speed && npm run seo:report"
+  },
+  "keywords": [
+    "seo",
+    "wordpress",
+    "portfolio",
+    "keyword-tracking"
+  ],
+  "author": "Shiv Parmar",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0"
+  }
+}
