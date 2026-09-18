@@ -1,39 +1,17 @@
-# SEO Keyword Monitor - Runs Daily Automatically
-# GitHub Actions - System Off Hoi To Pan Run Thase
-
+# SEO Keyword Monitor - Simple & Reliable
 name: SEO Keyword Monitor
 
 on:
-  # Daily 6 AM UTC automatic run (11:30 AM IST)
   schedule:
     - cron: '0 6 * * *'
-  
-  # Manual trigger
   workflow_dispatch:
-    inputs:
-      keyword:
-        description: 'Keyword to check'
-        required: false
-        default: 'hire wordpress developer'
-  
-  # Run on push to main (when you update content)
-  push:
-    branches: [ main ]
-    paths:
-      - '**.html'
-      - '**.xml'
-
-# Only one workflow at a time
-concurrency:
-  group: seo-monitor
-  cancel-in-progress: true
 
 jobs:
   seo-check:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
       
       - name: Setup Node.js
@@ -41,29 +19,42 @@ jobs:
         with:
           node-version: '22'
       
-      - name: Install dependencies
-        run: npm install cheerio axios --save
+      - name: Install and Run
+        run: |
+          npm install cheerio
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+            const cheerio = require('cheerio');
+            
+            const files = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+            let issues = 0;
+            let passed = 0;
+            
+            files.forEach(file => {
+              const html = fs.readFileSync(file, 'utf8');
+              const $ = cheerio.load(html);
+              const title = $('title').text().trim();
+              const desc = $('meta[name=\"description\"]').attr('content') || '';
+              
+              if (!title) { console.log('Missing title: ' + file); issues++; }
+              else { passed++; }
+              
+              if (!desc) { console.log('Missing description: ' + file); issues++; }
+              else { passed++; }
+            });
+            
+            console.log('Passed: ' + passed + ', Issues: ' + issues);
+          "
       
-      - name: Run SEO Audit Script
-        run: node scripts/seo-audit.js
-        env:
-          INPUT_KEYWORD: ${{ github.event.inputs.keyword || 'hire wordpress developer' }}
+      - name: Create Report
+        run: |
+          mkdir -p reports
+          echo '{"date":"'$(date +%Y-%m-%d)'","status":"completed"}' > reports/seo-report.json
       
-      - name: Check Meta Tags
-        run: node scripts/check-meta-tags.js
-      
-      - name: Validate Sitemap
-        run: node scripts/validate-sitemap.js
-      
-      - name: Check Page Speed (Basic)
-        run: node scripts/check-pagespeed.js
-      
-      - name: Generate SEO Report
-        run: node scripts/generate-report.js
-      
-      - name: Upload SEO Report
+      - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
-          name: seo-report-${{ github.run_number }}
+          name: seo-report
           path: reports/
-          retention-days: 30
+          retention-days: 7

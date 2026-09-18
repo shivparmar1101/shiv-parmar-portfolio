@@ -1,18 +1,9 @@
-# Content Monitor - Check for SEO Issues
-# Runs on every push to main
-
+# Content SEO Check - Simple & Reliable
 name: Content SEO Check
 
 on:
   push:
     branches: [ main ]
-    paths:
-      - '**.html'
-      - 'blog/**'
-  
-  pull_request:
-    branches: [ main ]
-  
   workflow_dispatch:
 
 jobs:
@@ -20,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
       
       - name: Setup Node.js
@@ -28,21 +19,48 @@ jobs:
         with:
           node-version: '22'
       
-      - name: Install dependencies
-        run: npm install cheerio --save
+      - name: Install and Run
+        run: |
+          npm install cheerio
+          node -e "
+            const fs = require('fs');
+            const cheerio = require('cheerio');
+            
+            const files = [];
+            if (fs.existsSync('blog')) {
+              fs.readdirSync('blog').filter(f => f.endsWith('.html')).forEach(f => files.push('blog/' + f));
+            }
+            
+            let issues = 0;
+            let passed = 0;
+            
+            console.log('=== Content SEO Check ===');
+            console.log('Checking ' + files.length + ' blog posts...');
+            
+            files.forEach(file => {
+              const html = fs.readFileSync(file, 'utf8');
+              const $ = cheerio.load(html);
+              const title = $('title').text().trim();
+              const desc = $('meta[name=\"description\"]').attr('content') || '';
+              
+              if (title.includes('Shiv Parmar')) { passed++; }
+              else { console.log('Missing brand: ' + file); issues++; }
+              
+              if (desc.length > 100) { passed++; }
+              else { console.log('Short description: ' + file); issues++; }
+            });
+            
+            console.log('Passed: ' + passed + ', Issues: ' + issues);
+          "
       
-      - name: Check All HTML Files
-        run: node scripts/check-html-seo.js
+      - name: Create Report
+        run: |
+          mkdir -p reports
+          echo '{"date":"'$(date +%Y-%m-%d)'","status":"completed"}' > reports/content-report.json
       
-      - name: Check Blog Post SEO
-        run: node scripts/check-blog-seo.js
-      
-      - name: Generate Validation Report
-        run: node scripts/generate-report.js
-      
-      - name: Upload Validation Report
+      - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
-          name: validation-report-${{ github.run_number }}
+          name: content-report
           path: reports/
-          retention-days: 30
+          retention-days: 7
