@@ -68,7 +68,7 @@ jobs:
           
           if [ -n "$LATEST_BLOG" ]; then
             # Extract blog title from HTML
-            TITLE=$(grep -oP '(?<=<title>)[^|]+' "$LATEST_BLOG" | head -1)
+            TITLE=$(sed -n 's/.*<title>\([^|]*\).*/\1/p' "$LATEST_BLOG" | head -1)
             SLUG=$(basename "$LATEST_BLOG" .html)
             
             echo "Blog: $TITLE"
