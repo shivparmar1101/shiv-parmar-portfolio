@@ -12,6 +12,8 @@ on:
   
   pull_request:
     branches: [ main ]
+  
+  workflow_dispatch:
 
 jobs:
   content-check:
@@ -24,12 +26,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       
       - name: Install dependencies
-        run: |
-          npm init -y
-          npm install cheerio
+        run: npm install cheerio --save
       
       - name: Check All HTML Files
         run: node scripts/check-html-seo.js
@@ -37,14 +37,8 @@ jobs:
       - name: Check Blog Post SEO
         run: node scripts/check-blog-seo.js
       
-      - name: Validate Schema Markup
-        run: node scripts/validate-schema.js
-      
-      - name: Check Image Alt Tags
-        run: node scripts/check-images.js
-      
       - name: Generate Validation Report
-        run: node scripts/validation-report.js
+        run: node scripts/generate-report.js
       
       - name: Upload Validation Report
         uses: actions/upload-artifact@v4

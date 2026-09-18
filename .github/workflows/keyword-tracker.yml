@@ -31,12 +31,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       
       - name: Install dependencies
-        run: |
-          npm init -y
-          npm install cheerio axios
+        run: npm install cheerio axios --save
       
       - name: Track Keyword Rankings
         run: node scripts/track-keywords.js
@@ -44,11 +42,8 @@ jobs:
       - name: Check Competitor Rankings
         run: node scripts/check-competitors.js
       
-      - name: Analyze Trending Topics
-        run: node scripts/analyze-trends.js
-      
       - name: Generate Keyword Report
-        run: node scripts/keyword-report.js
+        run: node scripts/generate-report.js
       
       - name: Upload Keyword Report
         uses: actions/upload-artifact@v4
@@ -56,11 +51,3 @@ jobs:
           name: keyword-report-${{ github.run_number }}
           path: reports/
           retention-days: 30
-      
-      - name: Commit Keyword Data
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add seo-data/ reports/
-          git diff --staged --quiet || git commit -m "SEO: Weekly keyword tracking update [skip ci]"
-          git push

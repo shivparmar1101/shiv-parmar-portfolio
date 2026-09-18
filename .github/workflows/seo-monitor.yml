@@ -39,12 +39,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       
       - name: Install dependencies
-        run: |
-          npm init -y
-          npm install cheerio axios
+        run: npm install cheerio axios --save
       
       - name: Run SEO Audit Script
         run: node scripts/seo-audit.js
@@ -69,11 +67,3 @@ jobs:
           name: seo-report-${{ github.run_number }}
           path: reports/
           retention-days: 30
-      
-      - name: Commit Updated SEO Data
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add seo-data/ reports/
-          git diff --staged --quiet || git commit -m "SEO: Auto-update audit data [skip ci]"
-          git push
