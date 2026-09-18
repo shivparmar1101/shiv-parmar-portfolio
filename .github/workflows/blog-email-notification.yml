@@ -1,0 +1,106 @@
+name: Blog Publish Email Notification
+
+on:
+  push:
+    paths:
+      - 'blog/*.html'
+    branches:
+      - main
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect new blog posts
+        id: detect
+        run: |
+          # Get changed files
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'blog/*.html')
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No blog files changed"
+            echo "has_new_blog=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "Changed blog files:"
+          echo "$CHANGED_FILES"
+          
+          # Get the first new blog file
+          NEW_BLOG=$(echo "$CHANGED_FILES" | head -n 1)
+          BLOG_SLUG=$(basename "$NEW_BLOG" .html)
+          
+          echo "New blog detected: $BLOG_SLUG"
+          echo "blog_slug=$BLOG_SLUG" >> $GITHUB_OUTPUT
+          echo "has_new_blog=true" >> $GITHUB_OUTPUT
+          
+          # Extract title from HTML file
+          TITLE=$(grep -oP '(?<=<title>).*?(?=</title>)' "$NEW_BLOG" | head -n 1)
+          echo "Blog title: $TITLE"
+          echo "blog_title=$TITLE" >> $GITHUB_OUTPUT
+          
+          # Extract description
+          DESC=$(grep -oP '(?<=<meta name="description" content=").*?(?=")' "$NEW_BLOG" | head -n 1)
+          echo "blog_description=$DESC" >> $GITHUB_OUTPUT
+          
+          # Create blog URL
+          BLOG_URL="https://shiv-parmar-portfolio.netlify.app/blog/$BLOG_SLUG"
+          echo "Blog URL: $BLOG_URL"
+          echo "blog_url=$BLOG_URL" >> $GITHUB_OUTPUT
+
+      - name: Send email notification
+        if: steps.detect.outputs.has_new_blog == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "New Blog Published: ${{ steps.detect.outputs.blog_title }}"
+          to: ${{ secrets.EMAIL_TO }}
+          from: ${{ secrets.EMAIL_FROM }}
+          html_body: |
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #f0f0f0; margin: 0; padding: 20px; }
+                .container { max-width: 600px; margin: 0 auto; background: #111; border-radius: 16px; overflow: hidden; border: 1px solid #333; }
+                .header { background: linear-gradient(135deg, #c9a84c, #e8c547); padding: 30px; text-align: center; }
+                .header h1 { color: #000; margin: 0; font-size: 24px; font-weight: 800; }
+                .content { padding: 30px; }
+                .blog-title { font-size: 20px; font-weight: 700; color: #c9a84c; margin-bottom: 15px; line-height: 1.4; }
+                .blog-desc { color: #a0a0a0; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
+                .blog-url { color: #c9a84c; font-size: 14px; word-break: break-all; margin-bottom: 25px; }
+                .cta-btn { display: inline-block; background: linear-gradient(135deg, #c9a84c, #e8c547); color: #000; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+                .footer { padding: 20px 30px; text-align: center; color: #666; font-size: 12px; border-top: 1px solid #333; }
+                .badge { display: inline-block; background: #c9a84c; color: #000; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 15px; }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1>New Blog Published!</h1>
+                </div>
+                <div class="content">
+                  <span class="badge">Just Published</span>
+                  <div class="blog-title">${{ steps.detect.outputs.blog_title }}</div>
+                  <p class="blog-desc">${{ steps.detect.outputs.blog_description }}</p>
+                  <div class="blog-url">
+                    <strong>URL:</strong><br>
+                    ${{ steps.detect.outputs.blog_url }}
+                  </div>
+                  <a href="${{ steps.detect.outputs.blog_url }}" class="cta-btn">Read Blog &rarr;</a>
+                </div>
+                <div class="footer">
+                  <p>Shiv Parmar - WordPress Developer Portfolio</p>
+                  <p>This is an automated notification from your blog workflow.</p>
+                </div>
+              </div>
+            </body>
+            </html>

@@ -12,7 +12,11 @@
     "seo:html": "node scripts/check-html-seo.js",
     "seo:blog": "node scripts/check-blog-seo.js",
     "seo:report": "node scripts/generate-report.js",
-    "seo:all": "npm run seo:audit && npm run seo:meta && npm run seo:sitemap && npm run seo:speed && npm run seo:report"
+    "seo:all": "npm run seo:audit && npm run seo:meta && npm run seo:sitemap && npm run seo:speed && npm run seo:report",
+    "blog:publish": "node scripts/publish-blog.js",
+    "blog:quick": "node scripts/quick-publish.js",
+    "blog:check": "node scripts/check-blog-seo.js",
+    "blog:list": "ls blog/*.html | xargs -I {} basename {} .html"
   },
   "keywords": [
     "seo",
@@ -23,7 +27,8 @@
   "author": "Shiv Parmar",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
-    "axios": "^1.6.0"
+    "axios": "^1.20.0",
+    "cheerio": "^1.2.0",
+    "nodemailer": "^10.0.10"
   }
 }
