@@ -447,5 +447,22 @@ function shiv_ai_product_recommendations($product_id) {
 <script src="../includes.js"></script>
 <script src="../script.js"></script>
 <script src="../particle-bg.js"></script>
+<script>
+(function(){
+  function initBlog(){
+    var toc=document.getElementById("tocList");
+    if(toc){
+      document.querySelectorAll(".content h2").forEach(function(h,i){
+        var id="section-"+i;h.id=id;
+        var li=document.createElement("li");
+        var a=document.createElement("a");
+        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
+        li.appendChild(a);toc.appendChild(li);
+      });
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
+})();
+</script>
 </body>
 </html>
