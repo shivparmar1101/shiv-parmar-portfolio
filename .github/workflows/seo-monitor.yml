@@ -1,4 +1,4 @@
-# SEO Monitor - Minimal Version
+# SEO Monitor - With Report Upload
 name: SEO Monitor
 
 on:
@@ -14,16 +14,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       
       - name: Run SEO Check
         run: |
-          echo "=== SEO Check Started ==="
-          echo "Date: $(date)"
-          node --version
-          echo "Checking HTML files..."
-          find . -name "*.html" -not -path "./node_modules/*" | head -10
-          echo "=== SEO Check Complete ==="
+          mkdir -p reports
+          echo "# SEO Monitor Report" > reports/SEO-REPORT.md
+          echo "**Date:** $(date)" >> reports/SEO-REPORT.md
+          echo "" >> reports/SEO-REPORT.md
+          echo "## Files Checked:" >> reports/SEO-REPORT.md
+          find . -name "*.html" -not -path "./node_modules/*" -exec echo "- {}" \; >> reports/SEO-REPORT.md
+          echo "" >> reports/SEO-REPORT.md
+          echo "## Status: ✅ Completed" >> reports/SEO-REPORT.md
+      
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-monitor-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30

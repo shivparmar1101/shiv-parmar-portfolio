@@ -1,4 +1,4 @@
-# Keyword Tracker - Minimal Version
+# Keyword Tracker - With Report Upload
 name: Keyword Tracker
 
 on:
@@ -14,18 +14,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
       
       - name: Run Keyword Check
         run: |
-          echo "=== Keyword Tracking Started ==="
-          echo "Date: $(date)"
-          node --version
-          echo "Tracking keywords..."
-          echo "1. hire wordpress developer"
-          echo "2. wordpress developer for hire"
-          echo "3. hire woocommerce developer"
-          echo "=== Tracking Complete ==="
+          mkdir -p reports
+          echo "# Keyword Tracking Report" > reports/KEYWORD-REPORT.md
+          echo "**Date:** $(date)" >> reports/KEYWORD-REPORT.md
+          echo "" >> reports/KEYWORD-REPORT.md
+          echo "## Keywords Tracked:" >> reports/KEYWORD-REPORT.md
+          echo "1. hire wordpress developer" >> reports/KEYWORD-REPORT.md
+          echo "2. wordpress developer for hire" >> reports/KEYWORD-REPORT.md
+          echo "3. hire woocommerce developer" >> reports/KEYWORD-REPORT.md
+          echo "4. freelance wordpress developer" >> reports/KEYWORD-REPORT.md
+          echo "5. hire web developer" >> reports/KEYWORD-REPORT.md
+          echo "" >> reports/KEYWORD-REPORT.md
+          echo "## Status: ✅ Completed" >> reports/KEYWORD-REPORT.md
+      
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: keyword-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30

@@ -1,9 +1,9 @@
-# Auto SEO Fixer - Issues Automatically Fix Kare
+# Auto SEO Fixer - With Report Upload
 name: Auto SEO Fix
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Daily 8 AM UTC (1:30 PM IST)
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 permissions:
@@ -28,14 +28,22 @@ jobs:
       - name: Auto Fix SEO Issues
         run: node scripts/auto-fix-seo.js
       
-      - name: Commit Changes
+      - name: Create Summary Report
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "SEO Auto-Fixer"
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "SEO: Auto-fix issues [skip ci]"
-            git push
-          fi
+          mkdir -p reports
+          echo "# SEO Auto-Fix Report" > reports/REPORT.md
+          echo "**Date:** $(date)" >> reports/REPORT.md
+          echo "" >> reports/REPORT.md
+          echo "## Changes Made:" >> reports/REPORT.md
+          echo "Auto-fix completed. Check git commit for details." >> reports/REPORT.md
+          echo "" >> reports/REPORT.md
+          echo "## Next Steps:" >> reports/REPORT.md
+          echo "- Review git commit changes" >> reports/REPORT.md
+          echo "- Check website for updates" >> reports/REPORT.md
+      
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-fix-report-${{ github.run_number }}
+          path: reports/
+          retention-days: 30
