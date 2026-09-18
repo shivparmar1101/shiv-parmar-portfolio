@@ -15,6 +15,63 @@
 | **Helpful Content** | Human-first content wins | Real case studies, not generic descriptions |
 | **No Parasite SEO** | Third-party content on trusted sites = spam | Build authority on own domain |
 | **AI Overviews** | Same foundational SEO applies | Structured data + clear answers |
+| **Meta Title Length** | 30-65 characters optimal | Keep titles concise with primary keyword |
+| **Meta Description Length** | 120-320 characters optimal | Write compelling descriptions with CTA |
+
+---
+
+## 📏 META TAGS RULES (CRITICAL)
+
+### Meta Title Rules
+| Rule | Details |
+|------|---------|
+| **Length** | 30-65 characters (including spaces) |
+| **Primary Keyword** | Must include "Hire WordPress Developer" or variation |
+| **Brand Name** | Add " | Shiv Parmar" at the end |
+| **Example** | `Hire WordPress Developer | Shiv Parmar` (41 chars) |
+
+### Meta Description Rules
+| Rule | Details |
+|------|---------|
+| **Length** | 120-320 characters (including spaces) |
+| **Primary Keyword** | Include target keyword naturally |
+| **CTA** | End with "Get a free quote today" or similar |
+| **Example** | `Hire WordPress Developer Shiv Parmar with 4+ years experience. Expert in WooCommerce, custom themes, plugins. Get a free quote today.` (132 chars) |
+
+### Meta Title Examples by Page
+| Page | Title Example | Chars |
+|------|---------------|-------|
+| **Homepage** | `Hire WordPress Developer | Shiv Parmar` | 41 |
+| **Services** | `Hire Web Developer | WordPress Development Services - Shiv Parmar` | 63 |
+| **About** | `About Shiv Parmar - Freelance WordPress Developer | 4+ Years Experience` | 62 |
+| **Contact** | `Hire WordPress Developer | Contact Shiv Parmar` | 46 |
+| **Work** | `WordPress Portfolio | Projects & Work - Shiv Parmar` | 51 |
+| **Skills** | `WordPress Developer Skills - Shiv Parmar` | 43 |
+| **Experience** | `WordPress Development Experience - Shiv Parmar` | 45 |
+| **Blog** | `WordPress Development Blog - Shiv Parmar` | 44 |
+| **Projects** | `WordPress Projects - Shiv Parmar` | 48 |
+
+### Meta Description Examples by Page
+| Page | Description Example | Chars |
+|------|---------------------|-------|
+| **Homepage** | `Hire WordPress Developer Shiv Parmar with 4+ years experience. Expert in WooCommerce, custom themes, plugins, REST API. Get a free quote today.` | 140 |
+| **Services** | `Hire Web Developer Shiv Parmar for WordPress, WooCommerce, Shopify, Squarespace, Wix development. Custom themes, plugins, performance optimization. Get a free quote today.` | 170 |
+| **About** | `About Shiv Parmar, Freelance WordPress Developer with 4+ years experience. Expert in WooCommerce, custom themes, plugins, REST API. Available for hire worldwide.` | 157 |
+| **Contact** | `Hire WordPress Developer Shiv Parmar. Get in touch for WordPress, WooCommerce, Shopify development projects. Available worldwide. Get a free quote within 24 hours.` | 162 |
+| **Work** | `View WordPress portfolio by Shiv Parmar. Real projects: WooCommerce stores, corporate websites, fitness studios. Hire WordPress Developer for your next project.` | 158 |
+
+### Current Meta Tags Status
+| Page | Title Length | Description Length | Status |
+|------|-------------|-------------------|--------|
+| Homepage | 41 chars | 140 chars | ✅ Good |
+| Services | 63 chars | 170 chars | ✅ Good |
+| About | 62 chars | 157 chars | ✅ Good |
+| Contact | 46 chars | 162 chars | ✅ Good |
+| Work | 51 chars | 158 chars | ✅ Good |
+| Skills | 43 chars | 152 chars | ✅ Good |
+| Experience | 45 chars | 168 chars | ✅ Good |
+| Blog | 44 chars | 187 chars | ✅ Good |
+| Projects | 48 chars | 198 chars | ✅ Good |
 
 ---
 
@@ -56,6 +113,8 @@
 
 ### 1. Homepage (index.html)
 **Primary Keyword:** "Hire WordPress Developer"
+**Meta Title:** `Hire WordPress Developer | Shiv Parmar` (41 chars) ✅
+**Meta Description:** `Hire WordPress Developer Shiv Parmar with 4+ years experience. Expert in WooCommerce, custom themes, plugins, REST API. Get a free quote today.` (140 chars) ✅
 **Current Status:** ✅ Already has meta tags
 **Improvements Needed:**
 - [ ] Add "Hire WordPress Developer" in H1 or hero section
@@ -64,7 +123,9 @@
 - [ ] Update schema markup to include ProfessionalService
 
 ### 2. Services Page (services.html)
-**Primary Keyword:** "WordPress Development Services"
+**Primary Keyword:** "Hire Web Developer"
+**Meta Title:** `Hire Web Developer | WordPress Development Services - Shiv Parmar` (63 chars) ✅
+**Meta Description:** `Hire Web Developer Shiv Parmar for WordPress, WooCommerce, Shopify, Squarespace, Wix development. Custom themes, plugins, performance optimization. Get a free quote today.` (170 chars) ✅
 **Improvements Needed:**
 - [ ] Add pricing tiers (transparent pricing builds trust)
 - [ ] Add "Hire Me" CTA after each service
@@ -72,6 +133,8 @@
 
 ### 3. About Page (about.html)
 **Primary Keyword:** "Freelance WordPress Developer"
+**Meta Title:** `About Shiv Parmar - Freelance WordPress Developer | 4+ Years Experience` (62 chars) ✅
+**Meta Description:** `About Shiv Parmar, Freelance WordPress Developer with 4+ years experience. Expert in WooCommerce, custom themes, plugins, REST API. Available for hire worldwide.` (157 chars) ✅
 **Improvements Needed:**
 - [ ] Add "Why Hire Me" section
 - [ ] Add client logos/brands worked with
@@ -79,6 +142,8 @@
 
 ### 4. Work Page (work.html)
 **Primary Keyword:** "WordPress Portfolio"
+**Meta Title:** `WordPress Portfolio | Projects & Work - Shiv Parmar` (51 chars) ✅
+**Meta Description:** `View WordPress portfolio by Shiv Parmar. Real projects: WooCommerce stores, corporate websites, fitness studios. Hire WordPress Developer for your next project.` (158 chars) ✅
 **Improvements Needed:**
 - [ ] Add detailed case studies (not just images)
 - [ ] Add "Before/After" comparisons
@@ -86,6 +151,8 @@
 
 ### 5. Contact Page (contact.html)
 **Primary Keyword:** "Hire WordPress Developer"
+**Meta Title:** `Hire WordPress Developer | Contact Shiv Parmar` (46 chars) ✅
+**Meta Description:** `Hire WordPress Developer Shiv Parmar. Get in touch for WordPress, WooCommerce, Shopify development projects. Available worldwide. Get a free quote within 24 hours.` (162 chars) ✅
 **Improvements Needed:**
 - [ ] Add "Hire Me" as primary CTA
 - [ ] Add availability status
@@ -229,6 +296,8 @@ Each case study should include:
 3. **NO Fake Testimonials** - Only real client feedback
 4. **NO Black Hat SEO** - No buying links, no spam
 5. **NO Generic Content** - Specific, detailed, helpful content only
+6. **Meta Title** - 30-65 characters with primary keyword
+7. **Meta Description** - 120-320 characters with CTA
 
 ---
 
