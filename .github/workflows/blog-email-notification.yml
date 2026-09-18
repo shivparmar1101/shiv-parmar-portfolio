@@ -16,6 +16,14 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install nodemailer
+
       - name: Detect new blog posts
         id: detect
         run: |
@@ -55,16 +63,28 @@ jobs:
 
       - name: Send email notification
         if: steps.detect.outputs.has_new_blog == 'true'
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "New Blog Published: ${{ steps.detect.outputs.blog_title }}"
-          to: ${{ secrets.EMAIL_TO }}
-          from: ${{ secrets.EMAIL_FROM }}
-          html_body: |
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          BLOG_TITLE: ${{ steps.detect.outputs.blog_title }}
+          BLOG_DESC: ${{ steps.detect.outputs.blog_description }}
+          BLOG_URL: ${{ steps.detect.outputs.blog_url }}
+        run: |
+          node -e "
+          const nodemailer = require('nodemailer');
+          
+          async function sendEmail() {
+            const transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: process.env.EMAIL_USERNAME,
+                pass: process.env.EMAIL_PASSWORD
+              }
+            });
+          
+            const htmlContent = \`
             <!DOCTYPE html>
             <html>
             <head>
@@ -83,24 +103,38 @@ jobs:
               </style>
             </head>
             <body>
-              <div class="container">
-                <div class="header">
+              <div class=\"container\">
+                <div class=\"header\">
                   <h1>New Blog Published!</h1>
                 </div>
-                <div class="content">
-                  <span class="badge">Just Published</span>
-                  <div class="blog-title">${{ steps.detect.outputs.blog_title }}</div>
-                  <p class="blog-desc">${{ steps.detect.outputs.blog_description }}</p>
-                  <div class="blog-url">
+                <div class=\"content\">
+                  <span class=\"badge\">Just Published</span>
+                  <div class=\"blog-title\">\${process.env.BLOG_TITLE}</div>
+                  <p class=\"blog-desc\">\${process.env.BLOG_DESC}</p>
+                  <div class=\"blog-url\">
                     <strong>URL:</strong><br>
-                    ${{ steps.detect.outputs.blog_url }}
+                    <a href=\"\${process.env.BLOG_URL}\" style=\"color: #c9a84c;\">\${process.env.BLOG_URL}</a>
                   </div>
-                  <a href="${{ steps.detect.outputs.blog_url }}" class="cta-btn">Read Blog &rarr;</a>
+                  <a href=\"\${process.env.BLOG_URL}\" class=\"cta-btn\">Read Blog &rarr;</a>
                 </div>
-                <div class="footer">
+                <div class=\"footer\">
                   <p>Shiv Parmar - WordPress Developer Portfolio</p>
                   <p>This is an automated notification from your blog workflow.</p>
                 </div>
               </div>
             </body>
             </html>
+            \`;
+          
+            const info = await transporter.sendMail({
+              from: process.env.EMAIL_FROM,
+              to: process.env.EMAIL_TO,
+              subject: 'New Blog Published: ' + process.env.BLOG_TITLE,
+              html: htmlContent
+            });
+          
+            console.log('Email sent successfully:', info.messageId);
+          }
+          
+          sendEmail().catch(console.error);
+          "
