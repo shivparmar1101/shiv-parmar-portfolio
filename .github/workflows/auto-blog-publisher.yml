@@ -21,9 +21,13 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Generate and Publish Blog
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
           echo "========================================="
           echo "Auto Blog Publisher"
@@ -58,6 +62,8 @@ jobs:
 
       - name: Send Email Notification
         if: success()
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
           # Get the latest commit message
           COMMIT_MSG=$(git log -1 --pretty=%s)
