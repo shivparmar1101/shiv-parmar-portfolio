@@ -130,7 +130,14 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Add Custom CSS to WordPress without Plugin</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Method 1: Using the Built-In WordPress Customizer">Method 1: Using the Built-In WordPress Customizer</a></li>
+<li><a href="#section-1" title="Method 2: Adding CSS via a Child Theme (Recommended for Developers)">Method 2: Adding CSS via a Child Theme (Recommended for Developers)</a></li>
+<li><a href="#section-2" title="Method 3: Advanced CSS Enqueueing via functions.php Hook">Method 3: Advanced CSS Enqueueing via functions.php Hook</a></li>
+<li><a href="#section-3" title="Method 4: Injecting CSS conditionally using wp_head Action">Method 4: Injecting CSS conditionally using wp_head Action</a></li>
+<li><a href="#section-4" title="Best Practices for Writing Custom CSS in WordPress">Best Practices for Writing Custom CSS in WordPress</a></li>
+<li><a href="#section-5" title="Final Thoughts">Final Thoughts</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello fellow WordPress creators! I am Shiv Parmar, a dedicated WordPress developer with global experience. Over the past several years of building custom themes, optimizing site performance, and helping client businesses scale, I have learned one fundamental truth: every extra plugin you install adds potential bloat, security vulnerabilities, and maintenance overhead.</p>
@@ -141,7 +148,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>In this comprehensive guide, I am going to walk you through four native, professional methods to add custom CSS to WordPress. Whether you want a quick visual tweak or an enterprise-grade codebase setup, these methods will keep your site fast, clean, and secure.</p>
 
-<h2>Method 1: Using the Built-In WordPress Customizer</h2>
+<h2 id="section-0">Method 1: Using the Built-In WordPress Customizer</h2>
 
 <p>If you need to make quick, visual adjustments to your site without touching theme files, the WordPress Customizer is your best friend. Introduced in WordPress 4.7, the <strong>Additional CSS</strong> feature allows you to write custom styling with real-time preview <a href="/blog/wordpress-user-role-management-guide">capabilities</a>.</p>
 
@@ -179,7 +186,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <p><strong>Pros:</strong> Immediate live preview, syntax highlighting, basic error checking, and update-safe styling (it persists even if you update your theme).</p>
 <p><strong>Cons:</strong> Styles are stored in the database (`wp_options` table) rather than a physical file, which can slightly slow down site rendering on very large stylesheets.</p>
 
-<h2>Method 2: Adding CSS via a Child Theme (Recommended for Developers)</h2>
+<h2 id="section-1">Method 2: Adding CSS via a Child Theme (Recommended for Developers)</h2>
 
 <p>As a developer globally, whenever I take on a full custom site development project, I always implement a <strong>Child Theme</strong>. Modifying the parent theme�s stylesheet directly is a fatal mistake�the moment the theme author releases an update, all your custom code will be completely overwritten.</p>
 
@@ -242,7 +249,7 @@ add_action( 'wp_enqueue_scripts', 'my_child_theme_enqueue_styles' );
     <p>�Writing clean, modular code through child themes and native WordPress hooks isn't just about good aesthetics; it directly impacts rendering speed, code maintainability, and long-term security. A plugin-free approach forces you to understand the architecture you build upon.�</p>
 </blockquote>
 
-<h2>Method 3: Advanced CSS Enqueueing via functions.php Hook</h2>
+<h2 id="section-2">Method 3: Advanced CSS Enqueueing via functions.php Hook</h2>
 
 <p>Sometimes you need to load a dedicated, modular CSS file for specific layouts, or inject inline custom CSS dynamic values programmatically. In these scenarios, using the <code>wp_enqueue_scripts</code> action hook gives you complete control over when and where your CSS loads.</p>
 
@@ -285,7 +292,7 @@ add_action( 'wp_enqueue_scripts', 'shiv_enqueue_custom_css_file' );
 add_action( 'wp_enqueue_scripts', 'shiv_add_dynamic_inline_css' );
 </code></pre>
 
-<h2>Method 4: Injecting CSS conditionally using wp_head Action</h2>
+<h2 id="section-3">Method 4: Injecting CSS conditionally using wp_head Action</h2>
 
 <p>What if you need a tiny piece of custom CSS to load exclusively on singular blog posts or a specific page ID? Loading a heavy global CSS file for page-specific styles hurts performance. Instead, you can hook directly into the site's <code>&lt;head&gt;</code> element conditionally.</p>
 
@@ -318,7 +325,7 @@ add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
 
 <p>This method ensures that your site�s HTML output stays lean by serving style tags only to visitors navigating those specific single posts.</p>
 
-<h2>Best Practices for Writing Custom CSS in WordPress</h2>
+<h2 id="section-4">Best Practices for Writing Custom CSS in WordPress</h2>
 
 <p>As developers, our job is not just to make elements look beautiful�it is to keep code clean and maintainable. Here are a few key practices I follow on every client site globally:</p>
 
@@ -338,7 +345,7 @@ add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
     <li><strong>Leverage Browser Developer Tools:</strong> Press <code>F12</code> or right-click and choose "Inspect" in Google Chrome to <a href="/blog/how-to-debug-wordpress-like-a-pro">debug</a> styles live before committing them to your files.</li>
 </ul>
 
-<h2>Final Thoughts</h2>
+<h2 id="section-5">Final Thoughts</h2>
 
 <p>Learning how to handle custom CSS without relying on third-party plugins is an essential step in becoming a proficient WordPress creator. By using native methods like the WordPress Customizer for small tweaks, or child themes and <code>wp_enqueue_scripts</code> for advanced development, you ensure high performance, security, and developer control over your website.</p>
 
@@ -379,7 +386,20 @@ add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -500,37 +520,6 @@ add_action( 'wp_head', 'shiv_conditional_single_post_css', 100 );
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

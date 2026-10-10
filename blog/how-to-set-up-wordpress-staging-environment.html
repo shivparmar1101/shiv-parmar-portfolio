@@ -130,10 +130,18 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Set Up WordPress Staging Environment</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Mastering WordPress Staging: How to Safely Build, Test, and Deploy Without Breaking Production">Mastering WordPress Staging: How to Safely Build, Test, and Deploy Without Breaking Production</a></li>
+<li><a href="#section-1" title="What is a WordPress Staging Environment?">What is a WordPress Staging Environment?</a></li>
+<li><a href="#section-2" title="Method 1: Setting Up a Staging Site Manually (The Developer Way)">Method 1: Setting Up a Staging Site Manually (The Developer Way)</a></li>
+<li><a href="#section-3" title="Essential Configurations for Your Staging Environment">Essential Configurations for Your Staging Environment</a></li>
+<li><a href="#section-4" title="Alternative Staging Solutions for Fast Workflows">Alternative Staging Solutions for Fast Workflows</a></li>
+<li><a href="#section-5" title="Best Practices When Syncing Staging Back to Live">Best Practices When Syncing Staging Back to Live</a></li>
+<li><a href="#section-6" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Mastering WordPress Staging: How to Safely Build, Test, and Deploy Without Breaking Production</h2>
+<h2 id="section-0">Mastering WordPress Staging: How to Safely Build, Test, and Deploy Without Breaking Production</h2>
 
 <p>Namaste! I am Shiv Parmar, a full-stack WordPress developer with global experience. Over the years, working with clients across the globe, I have seen one cardinal rule broken far too often: <strong>never test, update, or experiment directly on a live site</strong>.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WordPress Project Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Custom WordPress development with clean code and fast delivery. Let's start your project.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Start a Project <span>&rarr;</span></a></div>
@@ -143,7 +151,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>In this comprehensive guide, I am going to walk you through setting up a staging site, configuring it properly for development, and establishing a safe deployment workflow. Whether you build custom themes, manage enterprise clients, or run your own WordPress site, this guide will help you elevate your development standards.</p>
 
-<h2>What is a WordPress Staging Environment?</h2>
+<h2 id="section-1">What is a WordPress Staging Environment?</h2>
 
 <p>A staging environment is an exact clone of your live (production) website hosted on a private server or subfolder. It serves as a sandbox where you can safely:</p>
 
@@ -158,7 +166,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p>"Testing on production is a gamble with your brand's trust. A staging environment is not an extra step in your workflow�it is your safety net, your sandbox, and your single best insurance policy against downtime."</p>
 </blockquote>
 
-<h2>Method 1: Setting Up a Staging Site Manually (The Developer Way)</h2>
+<h2 id="section-2">Method 1: Setting Up a Staging Site Manually (The Developer Way)</h2>
 
 <p>While hosting control panels and plugins offer one-click staging solutions, every senior developer should understand how to manually set up a staging site. This gives you complete control over your database and server configurations.</p>
 
@@ -195,7 +203,7 @@ define( 'DB_HOST',     'localhost' );
 
 <pre><code>wp search-replace 'https://yourwebsite.com' 'https://staging.yourwebsite.com' --skip-columns=guid</code></pre>
 
-<h2>Essential Configurations for Your Staging Environment</h2>
+<h2 id="section-3">Essential Configurations for Your Staging Environment</h2>
 
 <p>Simply cloning your site is not enough. You must ensure your staging site does not interfere with search engine indexing, user emails, or analytics tracking.</p>
 
@@ -251,7 +259,7 @@ function dev_reroute_staging_emails( $args ) {
 }
 </code></pre>
 
-<h2>Alternative Staging Solutions for Fast Workflows</h2>
+<h2 id="section-4">Alternative Staging Solutions for Fast Workflows</h2>
 
 <p>While manual setup gives you complete architectural visibility, time is often money. Depending on your hosting and project scale, you can leverage alternative solutions:</p>
 
@@ -261,7 +269,7 @@ function dev_reroute_staging_emails( $args ) {
     <li><strong>Local Development Environments:</strong> Tools like <em>LocalWP</em>, <em>Docker</em>, or <em>DDEV</em> allow you to create staging environments locally on your machine before pushing code up to remote servers.</li>
 </ol>
 
-<h2>Best Practices When Syncing Staging Back to Live</h2>
+<h2 id="section-5">Best Practices When Syncing Staging Back to Live</h2>
 
 <p>Pushing changes back to live is where many developers face challenges, especially on active blogs or e-commerce stores where live database content changes constantly (e.g., new orders, comments, user registrations).</p>
 
@@ -271,7 +279,7 @@ function dev_reroute_staging_emails( $args ) {
     <li><strong>Take a Fresh Production Backup:</strong> Always create a restore point for your production database and files right before executing a deployment.</li>
 </ul>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-6">Wrapping Up</h2>
 
 <p>Setting up a proper WordPress staging environment is a fundamental habit that distinguishes amateur site owners from professional WordPress engineering practitioners. It allows you to build features faster, test risky code freely, and deliver a zero-downtime experience for end users.</p>
 
@@ -312,7 +320,20 @@ function dev_reroute_staging_emails( $args ) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -433,37 +454,6 @@ function dev_reroute_staging_emails( $args ) {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

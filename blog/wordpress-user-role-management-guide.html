@@ -130,10 +130,19 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress User Role Management Guide</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Mastering WordPress User Role Management: A Developer&#39;s Practical Guide">Mastering WordPress User Role Management: A Developer&#39;s Practical Guide</a></li>
+<li><a href="#section-1" title="Understanding WordPress Roles and Capabilities">Understanding WordPress Roles and Capabilities</a></li>
+<li><a href="#section-2" title="Creating Custom User Roles Programmatically">Creating Custom User Roles Programmatically</a></li>
+<li><a href="#section-3" title="Modifying Capabilities of Existing Roles">Modifying Capabilities of Existing Roles</a></li>
+<li><a href="#section-4" title="Cleaning Up the Admin Dashboard via PHP and CSS">Cleaning Up the Admin Dashboard via PHP and CSS</a></li>
+<li><a href="#section-5" title="Enhancing User Role Interactions with JavaScript">Enhancing User Role Interactions with JavaScript</a></li>
+<li><a href="#section-6" title="Best Practices for WordPress User Role Management">Best Practices for WordPress User Role Management</a></li>
+<li><a href="#section-7" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Mastering WordPress User Role Management: A Developer's Practical Guide</h2>
+<h2 id="section-0">Mastering WordPress User Role Management: A Developer's Practical Guide</h2>
 
 <p>Hello everyone! I'm Shiv Parmar, a WordPress developer with global experience. Throughout my career building custom WordPress solutions for clients worldwide, one challenge consistently surfaces: managing user permissions securely and efficiently. Whether you are constructing a complex membership platform, an e-commerce marketplace, or a corporate portal, mastering WordPress user role management is essential for long-term site stability, client satisfaction, and security.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need a WordPress Expert on Your Side?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to complex plugins � I build WordPress solutions that work. Let's talk.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get in Touch <span>&rarr;</span></a></div>
@@ -141,7 +150,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>WordPress comes with a robust built-in Role-Based Access Control (RBAC) system. However, standard default roles often fall short when dealing with custom client requirements. In this comprehensive guide, I will walk you through how WordPress handles roles and capabilities under the hood, how to programmatically create custom roles, modify existing permissions, and customize the admin interface using PHP, CSS, and JavaScript.</p>
 
-<h2>Understanding WordPress Roles and Capabilities</h2>
+<h2 id="section-1">Understanding WordPress Roles and Capabilities</h2>
 
 <p>Before diving into custom code, it is critical to understand the distinction between <strong>Roles</strong> and <strong>Capabilities</strong>:</p>
 
@@ -152,7 +161,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>When custom development demands granular control�such as creating a "Store Manager" who can only manage products or a "Content Auditor" who can review drafts without publishing�relying on third-party plugins can clutter your codebase. Programmatic control is clean, lightweight, and version-controllable.</p>
 
-<h2>Creating Custom User Roles Programmatically</h2>
+<h2 id="section-2">Creating Custom User Roles Programmatically</h2>
 
 <p>To register a custom role in WordPress, we use the <code>add_role()</code> function. The best practice is to execute this function during plugin activation or within the <code>init</code> action hook guarded by a check, ensuring it doesn't run unnecessarily on every page load.</p>
 
@@ -182,7 +191,7 @@ function sp_register_custom_user_role() {
 add_action( 'init', 'sp_register_custom_user_role' );
 </code></pre>
 
-<h2>Modifying Capabilities of Existing Roles</h2>
+<h2 id="section-3">Modifying Capabilities of Existing Roles</h2>
 
 <p>Sometimes you do not need an entirely new role; instead, you need to grant or revoke specific rights for an existing role. For instance, you might want Editors to manage navigation menus (which requires <code>edit_theme_options</code>), but restrict them from changing themes.</p>
 
@@ -211,7 +220,7 @@ add_action( 'admin_init', 'sp_modify_existing_role_capabilities' );
   <p>"Security in WordPress isn't just about blocking malicious traffic; it begins internally with the Principle of Least Privilege. Never assign a user more access capabilities than required to perform their daily tasks."</p>
 </blockquote>
 
-<h2>Cleaning Up the Admin Dashboard via PHP and CSS</h2>
+<h2 id="section-4">Cleaning Up the Admin Dashboard via PHP and CSS</h2>
 
 <p>Modifying backend capabilities restricts access, but users might still see menu items that lead to "You do not have permission to access this page" screens. Cleaning up the WordPress admin menu based on user roles leads to a vastly improved user experience.</p>
 
@@ -266,7 +275,7 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_custom_admin_styles' );
 }
 </code></pre>
 
-<h2>Enhancing User Role Interactions with JavaScript</h2>
+<h2 id="section-5">Enhancing User Role Interactions with JavaScript</h2>
 
 <p>Client-side interactivity can further improve user experiences within the WordPress dashboard. For example, if you want to dynamically adjust UI elements depending on whether a user has administrative privileges, you can pass capability states to custom JavaScript files using <code>wp_localize_script()</code>.</p>
 
@@ -305,7 +314,7 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
 });
 </code></pre>
 
-<h2>Best Practices for WordPress User Role Management</h2>
+<h2 id="section-6">Best Practices for WordPress User Role Management</h2>
 
 <p>Throughout my years of building enterprise solutions globally, I follow a set of core principles when customizing roles:</p>
 
@@ -315,7 +324,7 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
   <li><strong>Keep Custom Capabilities Prefixed:</strong> Use unique prefixes like <code>sp_manage_reports</code> to prevent capability namespace collisions with third-party plugins.</li>
 </ol>
 
-<h2>Conclusion</h2>
+<h2 id="section-7">Conclusion</h2>
 
 <p>Tailoring WordPress user roles empowers you to build tailored, secure, and intuitive web experiences. By moving beyond default roles and writing custom PHP, CSS, and JS routines, you keep your WordPress installations secure and user-friendly for non-technical clients.</p>
 
@@ -354,7 +363,20 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -475,37 +497,6 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

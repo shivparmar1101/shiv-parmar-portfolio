@@ -130,10 +130,19 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress Security Headers Configuration</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers">Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers</a></li>
+<li><a href="#section-1" title="Why WordPress Sites Need Security Headers">Why WordPress Sites Need Security Headers</a></li>
+<li><a href="#section-2" title="The Essential HTTP Security Headers Explained">The Essential HTTP Security Headers Explained</a></li>
+<li><a href="#section-3" title="Implementing Security Headers in WordPress via PHP">Implementing Security Headers in WordPress via PHP</a></li>
+<li><a href="#section-4" title="Handling Dynamic Nonces in JavaScript and CSS for CSP">Handling Dynamic Nonces in JavaScript and CSS for CSP</a></li>
+<li><a href="#section-5" title="Step-by-Step Implementation Strategy">Step-by-Step Implementation Strategy</a></li>
+<li><a href="#section-6" title="Testing Your Headers">Testing Your Headers</a></li>
+<li><a href="#section-7" title="Final Thoughts">Final Thoughts</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers</h2>
+<h2 id="section-0">Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers</h2>
 
 <p>Hello there! I am Shiv Parmar, a passionate WordPress developer with global experience. Throughout my years of building custom themes, optimizing site performance, and hardening enterprise WordPress websites, I have noticed a recurring pattern: most site owners focus heavily on security plugins, strong passwords, and two-factor authentication, but completely overlook one of the most effective browser-level defenses available�<strong>HTTP Security Headers</strong>.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Looking for a Security Specialist?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses protect their WordPress sites from threats. Let's assess your security needs.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
@@ -141,7 +150,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>Security headers act as a first line of defense between your web server and the user's browser. When configured properly, they tell the browser how to behave when handling your site's content, effectively preventing common vectors of attack like Cross-Site Scripting (XSS), Clickjacking, MIME-sniffing, and data injection attacks. In this guide, I will walk you through the essential security headers every WordPress site needs and demonstrate how to configure them cleanly through code.</p>
 
-<h2>Why WordPress Sites Need Security Headers</h2>
+<h2 id="section-1">Why WordPress Sites Need Security Headers</h2>
 
 <p>WordPress powers over 40% of the web, making it a primary target for automated scripts and malicious actors. While plugins like Wordfence or Sucuri provide application-layer filtering, HTTP security headers operate at the browser level. They dictate strictly what resources can be loaded, where requests can be sent, and how framing is handled.</p>
 
@@ -151,7 +160,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <p>Setting up security headers is not about adding complex software; it is about establishing clear rules of engagement between your server and your visitor's browser. It is lightweight, zero-overhead defense at its finest.</p>
 </blockquote>
 
-<h2>The Essential HTTP Security Headers Explained</h2>
+<h2 id="section-2">The Essential HTTP Security Headers Explained</h2>
 
 <p>Let us look at the key headers you should configure on your WordPress site, along with what each standard directive actually accomplishes.</p>
 
@@ -173,7 +182,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h3>6. Permissions-Policy</h3>
 <p>Formerly known as Feature-Policy, this allows you to restrict which browser hardware <a href="/blog/wordpress-user-role-management-guide">capabilities</a> (such as the camera, microphone, geolocation, or payment APIs) your site and third-party embeds can access.</p>
 
-<h2>Implementing Security Headers in WordPress via PHP</h2>
+<h2 id="section-3">Implementing Security Headers in WordPress via PHP</h2>
 
 <p>While you can use server configuration files like <code>.htaccess</code> or <code>nginx.conf</code>, implementing headers directly in your custom WordPress functionality plugin or child theme's <code>functions.php</code> file gives you finer control. In WordPress, the ideal hook to attach headers is <code>send_headers</code>.</p>
 
@@ -210,7 +219,7 @@ function sp_add_security_headers() {
 add_action( 'send_headers', 'sp_add_security_headers' );
 </code></pre>
 
-<h2>Handling Dynamic Nonces in JavaScript and CSS for CSP</h2>
+<h2 id="section-4">Handling Dynamic Nonces in JavaScript and CSS for CSP</h2>
 
 <p>A common issue developers run into when implementing a strict Content Security Policy is inline JavaScript or CSS breaking because modern browsers block <code>'unsafe-inline'</code>. To resolve this cleanly without sacrificing safety, we can generate a cryptographic nonce (number used once) in PHP and pass it to inline script tags.</p>
 
@@ -267,7 +276,7 @@ async function fetchSecureData(endpoint) {
 }
 </code></pre>
 
-<h2>Step-by-Step Implementation Strategy</h2>
+<h2 id="section-5">Step-by-Step Implementation Strategy</h2>
 
 <p>If you are applying security headers to an existing WordPress website with dozens of plugins, applying strict policies immediately can break functionality. Here is the implementation roadmap I follow:</p>
 
@@ -278,7 +287,7 @@ async function fetchSecureData(endpoint) {
     <li><strong>Enforce Strict Policies:</strong> Once your CSP rules are tested and optimized, switch to enforcing headers permanently.</li>
 </ol>
 
-<h2>Testing Your Headers</h2>
+<h2 id="section-6">Testing Your Headers</h2>
 
 <p>After deploying your updated code, always verify your configuration. You can check your site's headers using:</p>
 
@@ -287,7 +296,7 @@ async function fetchSecureData(endpoint) {
     <li><strong>Online Testing Tools:</strong> Sites like <a href="https://securityheaders.com" target="_blank" rel="noopener">SecurityHeaders.com</a> give your setup an instant letter grade (aim for an A or A+!).</li>
 </ul>
 
-<h2>Final Thoughts</h2>
+<h2 id="section-7">Final Thoughts</h2>
 
 <p>Securing a WordPress platform doesn't always mean purchasing expensive third-party security subscriptions. By harnessing the power of HTTP Security Headers directly through PHP and clean code practices, you build a robust defense boundary right at the browser interface.</p>
 
@@ -326,7 +335,20 @@ async function fetchSecureData(endpoint) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -447,37 +469,6 @@ async function fetchSecureData(endpoint) {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

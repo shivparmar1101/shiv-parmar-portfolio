@@ -130,7 +130,15 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress Migration Guide: Local to Production</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Phase 1: Pre-Migration Cleanup and Preparation">Phase 1: Pre-Migration Cleanup and Preparation</a></li>
+<li><a href="#section-1" title="Phase 2: Transferring WordPress Files">Phase 2: Transferring WordPress Files</a></li>
+<li><a href="#section-2" title="Phase 3: Database Export and Search/Replace">Phase 3: Database Export and Search/Replace</a></li>
+<li><a href="#section-3" title="Phase 4: Configuring the Live wp-config.php File">Phase 4: Configuring the Live wp-config.php File</a></li>
+<li><a href="#section-4" title="Phase 5: Post-Migration Optimization and Asset Fixes">Phase 5: Post-Migration Optimization and Asset Fixes</a></li>
+<li><a href="#section-5" title="Phase 6: Final Verification Checklist">Phase 6: Final Verification Checklist</a></li>
+<li><a href="#section-6" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello fellow developers! I am Shiv Parmar, a WordPress developer with global experience. Over the years, whether I am building custom themes for clients globally or scaling enterprise solutions for international businesses, my workflow always starts on a local environment. Tools like Local, LocalWP, XAMPP, or Docker give us the speed and safety to write clean code without breaking a live site.</p>
@@ -139,7 +147,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>However, moving a polished local website to a live production server can often feel intimidating. A single broken serialized array in the database or an incorrect URL path in your CSS assets can trigger the dreaded White Screen of Death (WSOD) or mixed content warnings. In this comprehensive guide, I will walk you step-by-step through my bulletproof process for migrating a WordPress site from local to production manually and efficiently.</p>
 
-<h2>Phase 1: Pre-Migration Cleanup and Preparation</h2>
+<h2 id="section-0">Phase 1: Pre-Migration Cleanup and Preparation</h2>
 <p>Before touching any file transfer protocol or database dump, your local installation needs a thorough audit. Developing locally often leaves behind trash posts, unused plugins, debug logs, and unminified assets.</p>
 
 <ul>
@@ -148,7 +156,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <li><strong>Clear Debug Logs:</strong> Check your <code>wp-content/debug.log</code> file and delete it so you do not upload massive text files to production.</li>
 </ul>
 
-<h2>Phase 2: Transferring WordPress Files</h2>
+<h2 id="section-1">Phase 2: Transferring WordPress Files</h2>
 <p>There are two primary ways to move your files: uploading everything, or uploading only the custom directory. Since production environments usually have fresh core files, I prefer compressing and transferring only the custom assets.</p>
 
 <ol>
@@ -157,7 +165,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <li>Extract the archive into your live site's root directory, overwriting the default <code>wp-content</code> folder.</li>
 </ol>
 
-<h2>Phase 3: Database Export and Search/Replace</h2>
+<h2 id="section-2">Phase 3: Database Export and Search/Replace</h2>
 <p>This is where most WordPress migrations run into trouble. WordPress stores configuration settings, widget configurations, and plugin options as <em>serialized data</em> in the database. If you perform a simple find-and-replace text operation on a raw <code>.sql</code> file, you will corrupt serialized strings because length counts will no longer match.</p>
 
 <blockquote>
@@ -171,7 +179,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>If you do not have SSH access, I recommend uploading the standalone PHP script <strong>Better Search Replace</strong> or <strong>InterconnectIT's Search Replace DB</strong> to your server, running the replacement safely, and immediately deleting the script afterward.</p>
 
-<h2>Phase 4: Configuring the Live <code>wp-config.php</code> File</h2>
+<h2 id="section-3">Phase 4: Configuring the Live <code>wp-config.php</code> File</h2>
 <p>Once your database is imported and updated, you must link your live core files to the production database. Update your production <code>wp-config.php</code> file with your new database credentials, unique authentication keys, and production flags.</p>
 
 <p>Here is an example snippet showing how I structure environment configurations inside <code>wp-config.php</code> for maximum security and performance:</p>
@@ -200,7 +208,7 @@ define( 'WP_DEBUG_LOG', false );
 define( 'WP_DEBUG_DISPLAY', false );
 ?&gt;</code></pre>
 
-<h2>Phase 5: Post-Migration Optimization and Asset Fixes</h2>
+<h2 id="section-4">Phase 5: Post-Migration Optimization and Asset Fixes</h2>
 <p>After updating the database and configuration files, log in to your live WordPress admin dashboard (<code>https://example.com/wp-admin</code>). You will need to complete a few mandatory post-migration checks:</p>
 
 <h3>1. Reset Permalinks</h3>
@@ -235,7 +243,7 @@ img {
     });
 });</code></pre>
 
-<h2>Phase 6: Final Verification Checklist</h2>
+<h2 id="section-5">Phase 6: Final Verification Checklist</h2>
 <p>Before handing over the website to your client or launching it publicly, run through this quick sanity check:</p>
 
 <ul>
@@ -245,7 +253,7 @@ img {
     <li><strong>Set Up Automated Backups:</strong> Install a reliable backup solution like UpdraftPlus or rely on hosting-level daily snapshots.</li>
 </ul>
 
-<h2>Conclusion</h2>
+<h2 id="section-6">Conclusion</h2>
 <p>Migrating a WordPress site from local to production does not have to be stressful. By following a structured approach�cleaning up local files, handling database array serialization with WP-CLI or safe search-replace scripts, securing your <code>wp-config.php</code> file, and verifying permalinks�you guarantee a smooth transition every single time.</p>
 
 <p>I hope this guide helps you streamline your WordPress deployment workflow! If you have any questions or run into specific edge-case bugs during your migrations, feel free to drop a comment below or reach out to me directly directly. Happy coding!</p>
@@ -283,7 +291,20 @@ img {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -404,37 +425,6 @@ img {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

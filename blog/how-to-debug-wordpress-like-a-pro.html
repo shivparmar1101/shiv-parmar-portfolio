@@ -130,16 +130,28 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Debug WordPress Like a Pro</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Mastering WordPress Debugging: A Complete Developer&#39;s Guide">Mastering WordPress Debugging: A Complete Developer&#39;s Guide</a></li>
+<li><a href="#section-1" title="Why Proper Debugging Matters">Why Proper Debugging Matters</a></li>
+<li><a href="#section-2" title="Step 1: Enable WordPress Debug Mode">Step 1: Enable WordPress Debug Mode</a></li>
+<li><a href="#section-3" title="Step 2: Understanding WordPress Error Types">Step 2: Understanding WordPress Error Types</a></li>
+<li><a href="#section-4" title="Step 3: Using Query Monitor Plugin">Step 3: Using Query Monitor Plugin</a></li>
+<li><a href="#section-5" title="Step 4: Debugging with Browser Developer Tools">Step 4: Debugging with Browser Developer Tools</a></li>
+<li><a href="#section-6" title="Step 5: Common WordPress Issues and Fixes">Step 5: Common WordPress Issues and Fixes</a></li>
+<li><a href="#section-7" title="Step 6: Advanced Debugging Techniques">Step 6: Advanced Debugging Techniques</a></li>
+<li><a href="#section-8" title="Step 7: Best Practices for Production">Step 7: Best Practices for Production</a></li>
+<li><a href="#section-9" title="Recommended Debugging Tools">Recommended Debugging Tools</a></li>
+<li><a href="#section-10" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Mastering WordPress Debugging: A Complete Developer's Guide</h2>
+<h2 id="section-0">Mastering WordPress Debugging: A Complete Developer's Guide</h2>
 
 <p>Hello everyone! I am Shiv Parmar, a WordPress developer with global experience. Over the years of building custom themes, plugins, and optimizing WooCommerce stores, one skill that has saved me countless hours is <strong>WordPress debugging</strong>. In this comprehensive guide, I will walk you through the techniques, tools, and best practices to debug WordPress like a professional developer.</p>
 
 <p>Whether you are dealing with the dreaded White Screen of Death, PHP errors, plugin conflicts, or performance issues, knowing how to properly debug WordPress is essential for any serious developer.</p>
 
-<h2>Why Proper Debugging Matters</h2>
+<h2 id="section-1">Why Proper Debugging Matters</h2>
 
 <p>Before diving into the technical details, let us understand why debugging is crucial:</p>
 
@@ -154,7 +166,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p>"Debugging is not a chore; it is a skill that separates amateur developers from professionals. The ability to quickly identify and fix issues is what makes you valuable to clients."</p>
 </blockquote>
 
-<h2>Step 1: Enable WordPress Debug Mode</h2>
+<h2 id="section-2">Step 1: Enable WordPress Debug Mode</h2>
 
 <p>The first step in any WordPress debugging process is to enable the built-in debug mode. This is done by editing your <code>wp-config.php</code> file.</p>
 
@@ -174,7 +186,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 <p>Once enabled, WordPress will log all PHP errors, warnings, and notices to <code>wp-content/debug.log</code>. This file is invaluable for identifying issues.</p>
 
-<h2>Step 2: Understanding WordPress Error Types</h2>
+<h2 id="section-3">Step 2: Understanding WordPress Error Types</h2>
 
 <p>WordPress errors fall into several categories. Understanding each type helps you diagnose issues faster:</p>
 
@@ -203,7 +215,7 @@ define( 'WP_DEBUG_DISPLAY', false );
     <li>Corrupted database tables</li>
 </ul>
 
-<h2>Step 3: Using Query Monitor Plugin</h2>
+<h2 id="section-4">Step 3: Using Query Monitor Plugin</h2>
 
 <p>One of the most powerful debugging tools for WordPress developers is the <strong>Query Monitor</strong> plugin. It provides detailed information about:</p>
 
@@ -221,7 +233,7 @@ wp plugin install query-monitor --activate
 
 <p>Once activated, Query Monitor adds a new menu item in the admin bar showing real-time debugging information.</p>
 
-<h2>Step 4: Debugging with Browser Developer Tools</h2>
+<h2 id="section-5">Step 4: Debugging with Browser Developer Tools</h2>
 
 <p>Not all WordPress issues are server-side. Frontend debugging is equally important:</p>
 
@@ -249,7 +261,7 @@ wp plugin install query-monitor --activate
     <li>Dynamic content injection</li>
 </ul>
 
-<h2>Step 5: Common WordPress Issues and Fixes</h2>
+<h2 id="section-6">Step 5: Common WordPress Issues and Fixes</h2>
 
 <h3>White Screen of Death (WSOD)</h3>
 <p>The most feared WordPress error. Here is how to debug it:</p>
@@ -280,7 +292,7 @@ wp plugin install query-monitor --activate
     <li>Monitoring server response times</li>
 </ul>
 
-<h2>Step 6: Advanced Debugging Techniques</h2>
+<h2 id="section-7">Step 6: Advanced Debugging Techniques</h2>
 
 <h3>Error Logging with Custom Functions</h3>
 <p>Create custom logging functions for specific scenarios:</p>
@@ -315,7 +327,7 @@ define( 'WC_DEBUG_LOG', true );
 define( 'WC_DEBUG_DISPLAY', false );
 </code></pre>
 
-<h2>Step 7: Best Practices for Production</h2>
+<h2 id="section-8">Step 7: Best Practices for Production</h2>
 
 <p>Debugging in production requires extra caution:</p>
 
@@ -327,7 +339,7 @@ define( 'WC_DEBUG_DISPLAY', false );
     <li><strong>Use <a href="/blog/how-to-set-up-wordpress-staging-environment">staging</a> environments</strong> - test all changes before deploying to production</li>
 </ul>
 
-<h2>Recommended Debugging Tools</h2>
+<h2 id="section-9">Recommended Debugging Tools</h2>
 
 <p>Here are my top recommendations for WordPress debugging:</p>
 
@@ -340,7 +352,7 @@ define( 'WC_DEBUG_DISPLAY', false );
     <li><strong>New Relic / Query Monitor</strong> - Performance monitoring</li>
 </ul>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-10">Wrapping Up</h2>
 
 <p>Debugging WordPress is a skill that improves with practice. By following the techniques in this guide, you will be able to quickly identify and resolve issues, making you a more efficient and valuable developer.</p>
 
@@ -381,7 +393,20 @@ define( 'WC_DEBUG_DISPLAY', false );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -502,37 +527,6 @@ define( 'WC_DEBUG_DISPLAY', false );
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

@@ -197,19 +197,40 @@ function countPublishedBlogs() {
 function getRelatedPosts(currentSlug) {
   try {
     const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.html') && f !== `${currentSlug}.html`);
-    const posts = files.slice(0, 6).map(f => {
+    const posts = files.map(f => {
       const slug = f.replace('.html', '');
       const html = fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8');
-      const titleMatch = html.match(/<title>([^|]+)/);
-      const dateMatch = html.match(/<div class="date">([^&]+)/);
-      return {
-        slug,
-        title: titleMatch ? titleMatch[1].trim() : slug.replace(/-/g, ' '),
-        date: dateMatch ? dateMatch[1].trim() : '2026-10-01'
-      };
+      const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
+      let title = titleMatch ? titleMatch[1] : slug.replace(/-/g, ' ');
+      title = title.split('|')[0].replace(/\s+/g, ' ').trim();
+      const dateMatch = html.match(/<div class="date">([^<]*)<\/div>/i);
+      let date = dateMatch ? dateMatch[1] : '';
+      date = date.split(/&middot;|·/)[0].replace(/\s+/g, ' ').trim();
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) date = '2026-10-01';
+      return { slug, title: escapeHtml(title), date };
     });
+    posts.sort((a, b) => b.date.localeCompare(a.date));
     return posts.slice(0, 6);
   } catch { return []; }
+}
+
+function buildRelatedHTML(posts) {
+  return posts.slice(0, 3).map(p => `<div class="related-card">
+<div class="date">${p.date} &middot; 8 min read</div>
+<h4><a href="../blog/${p.slug}" title="${p.title}">${p.title}</a></h4>
+</div>`).join('\n');
+}
+
+function buildTOC(html) {
+  let idx = 0;
+  const items = [];
+  const out = html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/g, (m, inner) => {
+    const id = `section-${idx++}`;
+    const text = inner.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    items.push(`<li><a href="#${id}" title="${escapeHtml(text)}">${escapeHtml(text)}</a></li>`);
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { content: out, tocHTML: items.join('\n') };
 }
 
 function createBlogHTML(blog, content, metaDesc, conclusion) {
@@ -230,7 +251,8 @@ function createBlogHTML(blog, content, metaDesc, conclusion) {
 </div>`;
 
   const relatedPosts = getRelatedPosts(blog.slug);
-  const relatedJSON = JSON.stringify(relatedPosts.map(p => ({ date: p.date + ' · 8 min read', title: p.title, slug: p.slug })));
+  const relatedHTML = buildRelatedHTML(relatedPosts);
+  const bodyParts = buildTOC(`${fullContent}\n\n${preConclusionCTA}\n\n${conclusion}`);
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -376,14 +398,12 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <h1>${safeTitle}</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+${bodyParts.tocHTML}
+</ul>
 </div>
 <div class="content">
-${fullContent}
-
-${preConclusionCTA}
-
-${conclusion}
+${bodyParts.content}
 </div>
 
 <div class="tags">
@@ -411,7 +431,9 @@ Email</a>
 
 <div class="related-blogs">
 <h3>Related Posts</h3>
-<div class="related-grid" id="relatedBlogs"></div>
+<div class="related-grid" id="relatedBlogs">
+${relatedHTML}
+</div>
 </div>
 </div></article>
 
@@ -459,38 +481,6 @@ Email</a>
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=${relatedJSON};
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title.replace(/"/g,'&quot;')+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
 </body>
 </html>`;
 }
@@ -659,7 +649,11 @@ async function main() {
   console.log('========================================');
 }
 
-main().catch((err) => {
-  console.error('Fatal error:', err.message || err);
-  process.exit(1);
-});
+module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, BLOG_DIR };
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('Fatal error:', err.message || err);
+    process.exit(1);
+  });
+}

@@ -141,7 +141,16 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Create WordPress Mega Menu</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Why Build a Custom Mega Menu?">Why Build a Custom Mega Menu?</a></li>
+<li><a href="#section-1" title="Step 1: Register Your Navigation Menu Location">Step 1: Register Your Navigation Menu Location</a></li>
+<li><a href="#section-2" title="Step 2: Create a Custom Walker Class in PHP">Step 2: Create a Custom Walker Class in PHP</a></li>
+<li><a href="#section-3" title="Step 3: Display the Menu in Your Header">Step 3: Display the Menu in Your Header</a></li>
+<li><a href="#section-4" title="Step 4: Style the Mega Menu with CSS Grid">Step 4: Style the Mega Menu with CSS Grid</a></li>
+<li><a href="#section-5" title="Step 5: Enhancing Usability with JavaScript">Step 5: Enhancing Usability with JavaScript</a></li>
+<li><a href="#section-6" title="Configuring Menu Items in WP Admin">Configuring Menu Items in WP Admin</a></li>
+<li><a href="#section-7" title="Final Thoughts">Final Thoughts</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello everyone! Shiv Parmar here, a passionate WordPress developer with global experience. Over the years, I have built dozens of custom WordPress themes and enterprise-grade websites. One requirement that pops up constantly�especially in e-commerce stores and content-heavy portals�is a robust, responsive Mega Menu.</p>
@@ -150,7 +159,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>While there are plenty of heavy WordPress plugins available on the repository that promise single-click mega menus, they often bloat your site with unnecessary scripts and stylesheets. As developers, we want complete control over performance, markup, and user experience. Today, I am going to walk you through how to create a custom WordPress Mega Menu from scratch using native WordPress functions, clean PHP, <a href="/blog/how-to-add-custom-css-to-wordpress-without-plugin">custom CSS</a>, and lightweight JavaScript.</p>
 
-<h2>Why Build a Custom Mega Menu?</h2>
+<h2 id="section-0">Why Build a Custom Mega Menu?</h2>
 
 <p>Before jumping into the code, let us understand why building a custom solution is worth the effort:</p>
 
@@ -165,7 +174,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p>"A great mega menu is not just about stacking links in columns; it is about providing clear information hierarchy without compromising site performance or screen reader accessibility."</p>
 </blockquote>
 
-<h2>Step 1: Register Your Navigation Menu Location</h2>
+<h2 id="section-1">Step 1: Register Your Navigation Menu Location</h2>
 
 <p>First, we need to ensure our WordPress theme supports custom nav menus. Open your theme's <code>functions.php</code> file and register your main navigation menu if you haven't already:</p>
 
@@ -177,7 +186,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 </code></pre>
 
-<h2>Step 2: Create a Custom Walker Class in PHP</h2>
+<h2 id="section-2">Step 2: Create a Custom Walker Class in PHP</h2>
 
 <p>WordPress uses the <code>Walker_Nav_Menu</code> class to render HTML menu structures. To output custom containers, grids, and classes for our mega menu items, we will extend this class.</p>
 
@@ -248,7 +257,7 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 }
 </code></pre>
 
-<h2>Step 3: Display the Menu in Your Header</h2>
+<h2 id="section-3">Step 3: Display the Menu in Your Header</h2>
 
 <p>Now, open your <code>header.php</code> file where your menu should render, and pass an instance of our new Walker class into <code>wp_nav_menu()</code>:</p>
 
@@ -264,7 +273,7 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 &lt;/nav&gt;
 </code></pre>
 
-<h2>Step 4: Style the Mega Menu with CSS Grid</h2>
+<h2 id="section-4">Step 4: Style the Mega Menu with CSS Grid</h2>
 
 <p>To turn our nested structure into an attractive, multi-column mega menu, we will use modern CSS Flexbox and CSS Grid. Add the following styles to your theme's <code>style.css</code> file:</p>
 
@@ -357,7 +366,7 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 }
 </code></pre>
 
-<h2>Step 5: Enhancing Usability with JavaScript</h2>
+<h2 id="section-5">Step 5: Enhancing Usability with JavaScript</h2>
 
 <p>Hover menus can be tricky on touch devices. A quick snippet of vanilla JavaScript ensures that menu toggles work smoothly across all screen sizes without relying on jQuery:</p>
 
@@ -378,7 +387,7 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 });
 </code></pre>
 
-<h2>Configuring Menu Items in WP Admin</h2>
+<h2 id="section-6">Configuring Menu Items in WP Admin</h2>
 
 <p>Once your code is set up, configuring your mega menu inside the WordPress dashboard is straightforward:</p>
 
@@ -391,7 +400,7 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
     <li>Save your menu and test it on your front-end!</li>
 </ol>
 
-<h2>Final Thoughts</h2>
+<h2 id="section-7">Final Thoughts</h2>
 
 <p>Creating a custom WordPress mega menu using a Custom Walker Class provides maximum control over your markup, CSS, and site speed. By skipping extra plugins, you keep your client's web applications clean, fast, and completely customizable.</p>
 
@@ -432,7 +441,20 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -557,37 +579,6 @@ add_action( 'after_setup_theme', 'sp_register_custom_menus' );
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

@@ -130,10 +130,22 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Block AI Crawlers from Scraping WordPress Content</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Why AI Crawlers Are a Growing Concern for WordPress Owners">Why AI Crawlers Are a Growing Concern for WordPress Owners</a></li>
+<li><a href="#section-1" title="Identify Which AI Crawlers Are Hitting Your Site">Identify Which AI Crawlers Are Hitting Your Site</a></li>
+<li><a href="#section-2" title="Method 1: Block AI Crawlers with robots.txt">Method 1: Block AI Crawlers with robots.txt</a></li>
+<li><a href="#section-3" title="Method 2: Block AI Crawlers in .htaccess (Apache)">Method 2: Block AI Crawlers in .htaccess (Apache)</a></li>
+<li><a href="#section-4" title="Method 3: Use a Security Plugin Firewall">Method 3: Use a Security Plugin Firewall</a></li>
+<li><a href="#section-5" title="Method 4: Serve the robots.txt Meta Tag Dynamically">Method 4: Serve the robots.txt Meta Tag Dynamically</a></li>
+<li><a href="#section-6" title="Method 5: Rate Limiting and Challenge Pages">Method 5: Rate Limiting and Challenge Pages</a></li>
+<li><a href="#section-7" title="What NOT to Block (and Why)">What NOT to Block (and Why)</a></li>
+<li><a href="#section-8" title="Verify Your Blocking Is Working">Verify Your Blocking Is Working</a></li>
+<li><a href="#section-9" title="Best Practices for Long-Term AI Crawler Management">Best Practices for Long-Term AI Crawler Management</a></li>
+<li><a href="#section-10" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Why AI Crawlers Are a Growing Concern for WordPress Owners</h2>
+<h2 id="section-0">Why AI Crawlers Are a Growing Concern for WordPress Owners</h2>
 
 <p>Over the past two years, artificial intelligence companies have deployed a new generation of web crawlers to harvest massive volumes of content for training large language models. Unlike traditional search engine bots such as Googlebot or Bingbot, AI crawlers like GPTBot, CCBot, ClaudeBot and Bytespider do not send traffic back to your website. They ingest your articles, documentation, and product descriptions, then use that material to power chatbots that can answer the same questions without ever visiting your site.</p>
 
@@ -141,7 +153,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>For content creators, agencies and businesses that rely on organic search, this is a real problem. Studies from 2025 and 2026 show that AI overviews in search results can reduce click-through rates by 30 to 50 percent for informational queries. When your content is also being scraped directly, you lose both the traffic and the attribution. In this guide I will walk you through the exact methods I use to block AI crawlers from WordPress installations, from the simplest robots.txt rules all the way to server-level firewall rules.</p>
 
-<h2>Identify Which AI Crawlers Are Hitting Your Site</h2>
+<h2 id="section-1">Identify Which AI Crawlers Are Hitting Your Site</h2>
 
 <p>Before you block anything, you need to know who is knocking. The most common AI crawlers in 2026 include:</p>
 
@@ -159,7 +171,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>The easiest way to spot them is in your server access logs or in a security plugin's firewall log. Look for user-agent strings containing the names above. If you are on shared hosting, ask your host for a recent access log sample, or install a lightweight logging plugin such as <a href="/blog/wordpress-caching-plugins-compared-2026" title="WordPress Caching Plugins Compared 2026">a caching plugin with bot logging</a> to capture the data over a week.</p>
 
-<h2>Method 1: Block AI Crawlers with robots.txt</h2>
+<h2 id="section-2">Method 1: Block AI Crawlers with robots.txt</h2>
 
 <p>The simplest and most universal approach is editing your <code>robots.txt</code> file. In WordPress this file lives at the root of your installation, but the built-in editor only exposes a small subset. I recommend using a plugin like <strong>Yoast SEO</strong> or <strong>Rank Math</strong>, which let you append custom rules, or editing the file directly via FTP/SFTP.</p>
 
@@ -199,7 +211,7 @@ Disallow: /
 
 <p>Keep in mind that robots.txt is a voluntary compliance mechanism. Malicious scrapers ignore it entirely. That is why you need server-level enforcement as well.</p>
 
-<h2>Method 2: Block AI Crawlers in .htaccess (Apache)</h2>
+<h2 id="section-3">Method 2: Block AI Crawlers in .htaccess (Apache)</h2>
 
 <p>For Apache hosts (which cover a large share of WordPress installations), you can enforce the block at the server level using <code>.htaccess</code>. Add these rules inside your site's <code>.htaccess</code> file, typically located in the public_html directory:</p>
 
@@ -230,7 +242,7 @@ server {
 
 <p>Nginx configuration changes usually require host support, since most managed WordPress hosts do not give you direct access to the server config. In that case, method 1 plus method 3 is your best combination.</p>
 
-<h2>Method 3: Use a Security Plugin Firewall</h2>
+<h2 id="section-4">Method 3: Use a Security Plugin Firewall</h2>
 
 <p>If you prefer not to touch code, several WordPress security plugins now include dedicated AI crawler blocking features. Here is a quick comparison:</p>
 
@@ -243,7 +255,7 @@ server {
 
 <p>For most of my client projects I recommend a Cloudflare WAF rule combined with the robots.txt rules above. Cloudflare's free plan already proxies your DNS, so adding a firewall rule takes less than five minutes and offloads the filtering from your origin server.</p>
 
-<h2>Method 4: Serve the robots.txt Meta Tag Dynamically</h2>
+<h2 id="section-5">Method 4: Serve the robots.txt Meta Tag Dynamically</h2>
 
 <p>If you cannot edit robots.txt directly, WordPress can output the meta tag equivalent from your theme's header. Add this to your <code>header.php</code> or via a snippets plugin:</p>
 
@@ -255,7 +267,7 @@ server {
 
 <blockquote>Blocking AI crawlers is not about hiding your content from the world &mdash; it is about making sure that when your content is used, it is used with your permission and drives traffic back to your site.</blockquote>
 
-<h2>Method 5: Rate Limiting and Challenge Pages</h2>
+<h2 id="section-6">Method 5: Rate Limiting and Challenge Pages</h2>
 
 <p>For sites that attract aggressive scraping regardless of user-agent, rate limiting is the next layer. Cloudflare lets you create rate-limiting rules per path. For example, you might limit any IP to 60 requests per minute on your <code>/blog/</code> directory. IPs that exceed the threshold receive a challenge page (JS challenge or managed challenge), which most AI scrapers fail to solve.</p>
 
@@ -269,7 +281,7 @@ server {
 
 <p>This does not specifically target AI bots, but it is highly effective against them because they rarely execute JavaScript. Combined with user-agent blocking, it creates two independent layers of defense.</p>
 
-<h2>What NOT to Block (and Why)</h2>
+<h2 id="section-7">What NOT to Block (and Why)</h2>
 
 <p>Not every AI-related bot should be blocked. Here is my recommended policy for most WordPress sites:</p>
 
@@ -327,7 +339,7 @@ server {
 
 <p>The key principle: allow bots that send you traffic, block bots that only consume. Search-oriented AI bots like OAI-SearchBot and PerplexityBot cite sources and drive referral visits. Training-oriented bots like GPTBot and CCBot take your content with no reciprocal benefit.</p>
 
-<h2>Verify Your Blocking Is Working</h2>
+<h2 id="section-8">Verify Your Blocking Is Working</h2>
 
 <p>After implementing any of the methods above, test them. The quickest check is running a user-agent simulation from your terminal:</p>
 
@@ -340,7 +352,7 @@ curl -A "Googlebot" -I https://yourdomain.com/
 
 <p>If GPTBot returns 403 and Googlebot returns 200, your rules are working correctly. You can also monitor your Cloudflare or hosting firewall logs over the next few days to confirm the blocked user agents no longer appear with successful responses.</p>
 
-<h2>Best Practices for Long-Term AI Crawler Management</h2>
+<h2 id="section-9">Best Practices for Long-Term AI Crawler Management</h2>
 
 <p>AI crawler lists evolve quickly. New bots appear every few months, and user-agent strings change. Here is how I keep client sites protected over time:</p>
 
@@ -360,7 +372,7 @@ curl -A "Googlebot" -I https://yourdomain.com/
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress security projects">Get Free Quote <span>&rarr;</span></a>
 </div>
 
-<h2>Conclusion</h2>
+<h2 id="section-10">Conclusion</h2>
 
 <p>AI crawlers are not going away. As large language models continue to expand, the pressure on your content will only increase. The good news is that WordPress gives you multiple effective tools to control what gets scraped: robots.txt for voluntary compliance, .htaccess and Nginx rules for hard enforcement, security plugin firewalls for managed protection, and Cloudflare WAF for edge-level filtering.</p>
 
@@ -392,7 +404,20 @@ curl -A "Googlebot" -I https://yourdomain.com/
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-core-web-vitals-inp-optimization-guide-2026" title="WordPress Core Web Vitals: INP Optimization Guide 2026">WordPress Core Web Vitals: INP Optimization Guide 2026</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -513,37 +538,6 @@ curl -A "Googlebot" -I https://yourdomain.com/
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-09-19 · 10 min read","title":"WordPress 7.0 AI Client: Complete Setup Guide 2026","slug":"wordpress-7-0-ai-client-complete-setup-guide-2026"},{"date":"2026-09-19 · 10 min read","title":"WooCommerce 11.1: New Features & Setup Guide 2026","slug":"woocommerce-11-1-new-features-setup-guide-2026"},{"date":"2026-09-18 · 8 min read","title":"How to Add AI to WordPress: Complete Guide 2026","slug":"how-to-add-ai-to-wordpress-complete-guide-2026"},{"date":"2026-08-31 · 5 min read","title":"How to Add Schema Markup to WordPress","slug":"how-to-add-schema-markup-to-wordpress"},{"date":"2026-08-30 · 6 min read","title":"WordPress SEO Technical Checklist","slug":"wordpress-seo-technical-checklist"},{"date":"2026-08-20 · 5 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

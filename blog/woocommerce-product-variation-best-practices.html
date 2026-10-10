@@ -130,7 +130,15 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WooCommerce Product Variation Best Practices</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="1. Understand How Variations Impact Database Performance">1. Understand How Variations Impact Database Performance</a></li>
+<li><a href="#section-1" title="2. Adjust the AJAX Variation Threshold">2. Adjust the AJAX Variation Threshold</a></li>
+<li><a href="#section-2" title="3. Use Global Attributes Instead of Custom Attributes">3. Use Global Attributes Instead of Custom Attributes</a></li>
+<li><a href="#section-3" title="4. Improve Frontend UX with Custom Color Swatches &amp;amp; CSS">4. Improve Frontend UX with Custom Color Swatches &amp;amp; CSS</a></li>
+<li><a href="#section-4" title="5. Handle Out-of-Stock Variations Gracefully">5. Handle Out-of-Stock Variations Gracefully</a></li>
+<li><a href="#section-5" title="6. Clean Up Unused and Orphaned Variations">6. Clean Up Unused and Orphaned Variations</a></li>
+<li><a href="#section-6" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Namaste! I am Shiv Parmar, a WordPress developer with global experience. Over the last several years of building, customizing, and scaling WooCommerce stores for international clients, I have noticed one recurring pain point that continuously challenges store owners and developers alike: <strong>WooCommerce product variations</strong>.</p>
@@ -139,12 +147,12 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>Variable products are fantastic for sales�they let customers pick colors, sizes, materials, and configurations right from a single page. However, improperly configured variations can severely degrade site performance, bloat your database, and frustrate online shoppers. In this post, I am going to share my field-tested best practices for managing, optimizing, and extending WooCommerce product variations efficiently.</p>
 
-<h2>1. Understand How Variations Impact Database Performance</h2>
+<h2 id="section-0">1. Understand How Variations Impact Database Performance</h2>
 <p>To optimize variations, you must first understand how WooCommerce stores them. In WordPress, every single product variation is saved as an individual post in the <code>wp_posts</code> table with a post type of <code>product_variation</code>. Furthermore, each variation stores its own meta values (price, SKU, stock quantity, weight, dimensions) in the <code>wp_postmeta</code> table.</p>
 
 <p>If you create a t-shirt with 5 sizes, 5 colors, and 4 fabric types, you are not creating 1 product�you are creating 100 variation posts, generating hundreds of meta rows. Multiply this across thousands of catalog items, and your database query times will skyrocket.</p>
 
-<h2>2. Adjust the AJAX Variation Threshold</h2>
+<h2 id="section-1">2. Adjust the AJAX Variation Threshold</h2>
 <p>By default, WooCommerce loads all variation data into a JSON attribute on the page load if a product has 30 or fewer variations. If a product has 31 or more variations, WooCommerce switches to AJAX requests to fetch variation data dynamically when dropdown options are selected.</p>
 
 <p>Depending on your server hardware and caching setup, this limit of 30 might be too low or too high. If you have a high-performance server, increasing this threshold reduces AJAX overhead on the single product page. You can adjust this using the <code>woocommerce_ajax_variation_threshold</code> filter in your theme's <code>functions.php</code> or custom plugin:</p>
@@ -162,7 +170,7 @@ function shiv_custom_variation_threshold( $qty, $product ) {
 
 <p>If your server is on cheap shared hosting, keep this number lower (e.g., 15 to 20) so initial page payloads remain lightweight.</p>
 
-<h2>3. Use Global Attributes Instead of Custom Attributes</h2>
+<h2 id="section-2">3. Use Global Attributes Instead of Custom Attributes</h2>
 <p>When setting up variable products, WooCommerce allows you to choose between global attributes (defined under <strong>Products &gt; Attributes</strong>) and custom attributes created directly inside the product edit screen.</p>
 
 <p>I always advise my clients to stick with global attributes for the following reasons:</p>
@@ -172,7 +180,7 @@ function shiv_custom_variation_threshold( $qty, $product ) {
     <li><strong>Maintainability:</strong> If you need to rename "Navy Blue" to "Midnight Blue", doing it globally takes two seconds instead of editing hundreds of products manually.</li>
 </ul>
 
-<h2>4. Improve Frontend UX with Custom Color Swatches &amp; CSS</h2>
+<h2 id="section-3">4. Improve Frontend UX with Custom Color Swatches &amp; CSS</h2>
 <p>Native WooCommerce variation selectors rely on browser-default HTML <code>&lt;select&gt;</code> dropdowns. They work, but they offer a poor user experience�especially on mobile screens. Replacing dropdowns with image or color swatches drastically increases conversion rates.</p>
 
 <p>While plugins like <em>Variation Swatches for WooCommerce</em> are popular, you can also write <a href="/blog/how-to-add-custom-css-to-wordpress-without-plugin">custom CSS</a> to highlight active variations and give selection controls a modern pill-style look:</p>
@@ -206,7 +214,7 @@ function shiv_custom_variation_threshold( $qty, $product ) {
 }
 </code></pre>
 
-<h2>5. Handle Out-of-Stock Variations Gracefully</h2>
+<h2 id="section-4">5. Handle Out-of-Stock Variations Gracefully</h2>
 <p>Few things frustrate shoppers more than clicking through three dropdown choices only to see an abrupt "Out of Stock" notification. To solve this, you can auto-disable or visually strike through out-of-stock options dynamically using frontend JavaScript.</p>
 
 <p>Here is a lightweight JavaScript snippet that hooks into WooCommerce's native frontend variation script to add a custom CSS class when an unavailable variation is selected:</p>
@@ -240,7 +248,7 @@ jQuery(document).ready(function($) {
     <p>"A product page with 100 variations is often not a technical challenge�it is a user experience design failure. Simplify choices for your buyers, and your database will thank you too."</p>
 </blockquote>
 
-<h2>6. Clean Up Unused and Orphaned Variations</h2>
+<h2 id="section-5">6. Clean Up Unused and Orphaned Variations</h2>
 <p>Over time, as clients delete attributes or uncheck the "Used for variations" box, orphaned variation posts linger in the database. These empty post entries add unnecessary overhead during backup processes and search indexing.</p>
 
 <p>Here is an actionable step-by-step cleanup strategy I execute during routine site maintenance:</p>
@@ -251,7 +259,7 @@ jQuery(document).ready(function($) {
     <li><strong>Run Maintenance Tools:</strong> Navigate to <strong>WooCommerce &gt; Status &gt; Tools</strong> and clear <em>WooCommerce Transients</em> and <em>Expired Transients</em>.</li>
 </ol>
 
-<h2>Conclusion</h2>
+<h2 id="section-6">Conclusion</h2>
 <p>Optimizing WooCommerce product variations requires balancing database efficiency with clean frontend user interface design. By utilizing global attributes, tuning the AJAX variation threshold, improving UI feedback through CSS/JS, and keeping your database sanitized, you ensure your store remains blazingly fast even as your inventory expands.</p>
 
 <p>Have questions about managing large product catalogs or writing custom hooks for WooCommerce? Feel free to drop a comment below or get in touch. Happy coding!</p>
@@ -289,7 +297,20 @@ jQuery(document).ready(function($) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -410,37 +431,6 @@ jQuery(document).ready(function($) {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

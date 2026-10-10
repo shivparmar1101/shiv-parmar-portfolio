@@ -139,7 +139,14 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress Image Optimization for Speed</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="1. Embrace Next-Generation Formats (WebP and AVIF)">1. Embrace Next-Generation Formats (WebP and AVIF)</a></li>
+<li><a href="#section-1" title="2. Disable Lazy Loading for Above-the-Fold (Hero) Images">2. Disable Lazy Loading for Above-the-Fold (Hero) Images</a></li>
+<li><a href="#section-2" title="3. Register Precise Image Sizes to Prevent Upscaling">3. Register Precise Image Sizes to Prevent Upscaling</a></li>
+<li><a href="#section-3" title="4. Prevent Cumulative Layout Shift (CLS) with CSS">4. Prevent Cumulative Layout Shift (CLS) with CSS</a></li>
+<li><a href="#section-4" title="5. Optimization Checklist for WordPress Developers">5. Optimization Checklist for WordPress Developers</a></li>
+<li><a href="#section-5" title="Summary">Summary</a></li>
+</ul>
 </div>
 <div class="content">
 <article>
@@ -149,7 +156,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
     <p>Clients often upload 5MB camera photos straight to the WordPress media library without realizing how much bandwidth they are consuming. As developers, it is our job to build robust systems that handle image optimization programmatically. In this guide, I will share the exact strategies, code snippets, and workflows I use to keep WordPress sites blazingly fast while preserving visual quality.</p>
 
-    <h2>1. Embrace Next-Generation Formats (WebP and AVIF)</h2>
+    <h2 id="section-0">1. Embrace Next-Generation Formats (WebP and AVIF)</h2>
     <p>Traditional JPEG and PNG formats are legacy standards for the web. Modern formats like WebP and AVIF offer significantly better compression algorithms, allowing you to reduce file sizes by 30% to 50% without any perceptible loss in visual quality.</p>
     
     <p>WordPress 5.8 introduced native support for WebP, and WordPress 6.5 added native AVIF support. However, if your server environment supports GD or ImageMagick, you can adjust the default compression quality that WordPress applies when creating image sub-sizes.</p>
@@ -165,7 +172,7 @@ add_filter( 'jpeg_quality', 'shiv_custom_jpeg_quality' );
 add_filter( 'wp_editor_set_quality', 'shiv_custom_jpeg_quality' );
 </code></pre>
 
-    <h2>2. Disable Lazy Loading for Above-the-Fold (Hero) Images</h2>
+    <h2 id="section-1">2. Disable Lazy Loading for Above-the-Fold (Hero) Images</h2>
     <p>WordPress automatically adds <code>loading="lazy"</code> to images via <code>wp_filter_content_tags()</code>. While lazy loading is fantastic for images further down the page, lazy loading your hero image or main banner harms your <strong>Largest Contentful Paint (LCP)</strong> score.</p>
     
     <p>The browser should download critical hero images immediately. Here is how you can programmatically remove lazy loading from the first image in post content or target specific image attachments:</p>
@@ -187,7 +194,7 @@ add_filter( 'wp_img_tag_add_loading_attr', 'shiv_optimize_hero_lcp', 10, 3 );
 
     <p>Furthermore, you should set <code>fetchpriority="high"</code> on your main hero image so the browser prioritizes downloading it over non-critical JavaScript or CSS files.</p>
 
-    <h2>3. Register Precise Image Sizes to Prevent Upscaling</h2>
+    <h2 id="section-2">3. Register Precise Image Sizes to Prevent Upscaling</h2>
     <p>Serving a 2500px wide image inside a 300px wide sidebar block wastes unnecessary bandwidth. WordPress automatically creates default sizes (thumbnail, medium, large), but custom layouts often require custom aspect ratios.</p>
 
     <p>Use <code>add_image_size()</code> to define exact dimensions for your theme components. This ensures WordPress automatically generates correctly proportioned crops upon image upload.</p>
@@ -219,7 +226,7 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
         "Image optimization isn't merely about aggressive file compression�it is about delivering the exact required resolution for the user's specific viewport at the exact instant they need it."
     </blockquote>
 
-    <h2>4. Prevent Cumulative Layout Shift (CLS) with CSS</h2>
+    <h2 id="section-3">4. Prevent Cumulative Layout Shift (CLS) with CSS</h2>
     <p><strong>Cumulative Layout Shift (CLS)</strong> measures visual stability. If your images do not have explicit width and height ratios set, the page content will jump around while images load, leading to a frustrating user experience and lower Google rankings.</p>
 
     <p>Always ensure your image containers utilize modern CSS layout properties like <code>aspect-ratio</code> and <code>object-fit</code> to reserve space before the image asset finishes downloading:</p>
@@ -240,7 +247,7 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
 }
 </code></pre>
 
-    <h2>5. Optimization Checklist for WordPress Developers</h2>
+    <h2 id="section-4">5. Optimization Checklist for WordPress Developers</h2>
     <p>When delivering custom WordPress projects, I follow a strict verification workflow before launching a client website:</p>
 
     <ol>
@@ -250,7 +257,7 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
         <li><strong>Audit Layout Shift:</strong> Check performance using Chrome DevTools Lighthouse to ensure no layout instability occurs during render.</li>
     </ol>
 
-    <h2>Summary</h2>
+    <h2 id="section-5">Summary</h2>
     <p>Speed optimization is not a one-time fix; it requires careful development practices. By implementing modern image formats (AVIF/WebP), managing your media sub-sizes efficiently, and eliminating lazy loading on critical above-the-fold content, you can drastically boost your WordPress site's PageSpeed scores and offer a superior user experience.</p>
 
     <p>How do you handle image pipelines in your custom WordPress projects? Drop your thoughts or questions in the comments below, or reach out to me directly here !</p>
@@ -289,7 +296,20 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -414,37 +434,6 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 � 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 � 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 � 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 � 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 � 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 � 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 � 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 � 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 � 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 � 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

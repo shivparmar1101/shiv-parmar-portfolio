@@ -139,7 +139,15 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>How to Speed Up WooCommerce Product Pages</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="1. Disable WooCommerce Cart Fragments on Single Product Pages">1. Disable WooCommerce Cart Fragments on Single Product Pages</a></li>
+<li><a href="#section-1" title="2. Dequeue Unnecessary Plugin Scripts and Styles">2. Dequeue Unnecessary Plugin Scripts and Styles</a></li>
+<li><a href="#section-2" title="3. Optimize the Main Product Image for LCP (Largest Contentful Paint)">3. Optimize the Main Product Image for LCP (Largest Contentful Paint)</a></li>
+<li><a href="#section-3" title="4. Lower the WooCommerce Variable Product Threshold">4. Lower the WooCommerce Variable Product Threshold</a></li>
+<li><a href="#section-4" title="5. Defer Non-Critical JavaScript and De-clutter WooCommerce Styles">5. Defer Non-Critical JavaScript and De-clutter WooCommerce Styles</a></li>
+<li><a href="#section-5" title="6. Optimize Database Queries and Object Caching">6. Optimize Database Queries and Object Caching</a></li>
+<li><a href="#section-6" title="Summary Checklist for WooCommerce Speed Optimization">Summary Checklist for WooCommerce Speed Optimization</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Namaste! I�m Shiv Parmar, a passionate WordPress and WooCommerce developer with global experience. Over the past several years, I�ve helped dozens of e-commerce brands optimize their custom WooCommerce builds for maximum efficiency, stability, and <a href="/blog/wordpress-image-optimization-for-speed">speed</a>.</p>
@@ -150,7 +158,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>In this guide, I will walk you through actionable, code-level techniques that I regularly implement for my clients to drastically reduce page load times, improve Core Web Vitals (especially LCP and INP), and boost conversion rates.</p>
 
-<h2>1. Disable WooCommerce Cart Fragments on Single Product Pages</h2>
+<h2 id="section-0">1. Disable WooCommerce Cart Fragments on Single Product Pages</h2>
 
 <p>One of the biggest silent <a href="/blog/wordpress-image-optimization-for-speed">performance</a> bottlenecks in WooCommerce is the <code>wc-cart-fragments</code> AJAX call. By default, WooCommerce triggers an AJAX request on page load to update the cart total and widget across the site. While useful for static <a href="/blog/wordpress-caching-plugins-compared-2026">caching</a> strategies on simple blogs, it frequently slows down dynamic rendering on individual product pages.</p>
 
@@ -170,7 +178,7 @@ function sp_disable_cart_fragments_on_products() {
 add_action( 'wp_enqueue_scripts', 'sp_disable_cart_fragments_on_products', 99 );
 </code></pre>
 
-<h2>2. Dequeue Unnecessary Plugin Scripts and Styles</h2>
+<h2 id="section-1">2. Dequeue Unnecessary Plugin Scripts and Styles</h2>
 
 <p>Many popular WordPress plugins load their JavaScript and CSS files globally across every single URL on your website, whether they are needed on that page or not. Form builders, social sharing toolkits, and secondary gallery plugins are notorious for this.</p>
 
@@ -193,7 +201,7 @@ function sp_optimize_product_page_assets() {
 add_action( 'wp_enqueue_scripts', 'sp_optimize_product_page_assets', 100 );
 </code></pre>
 
-<h2>3. Optimize the Main Product Image for LCP (Largest Contentful Paint)</h2>
+<h2 id="section-2">3. Optimize the Main Product Image for LCP (Largest Contentful Paint)</h2>
 
 <p>On single product pages, the main featured product image is almost always the <strong>Largest Contentful Paint (LCP)</strong> element. Native browser lazy-loading (<code>loading="lazy"</code>) on your primary product image actually hurts performance because it instructs the browser to delay rendering that image until after layout calculation.</p>
 
@@ -218,7 +226,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'sp_optimize_lcp_product_image
 
 <p>Additionally, ensure your product images are served in modern formats like WebP or AVIF using <a href="/blog/wordpress-image-optimization-for-speed">image optimization</a> tools or server-level solutions like LiteSpeed Web Server or NGINX modules.</p>
 
-<h2>4. Lower the WooCommerce <a href="/blog/woocommerce-product-variation-best-practices">Variable Product</a> Threshold</h2>
+<h2 id="section-3">4. Lower the WooCommerce <a href="/blog/woocommerce-product-variation-best-practices">Variable Product</a> Threshold</h2>
 
 <p>If you sell variable products with dozens of <a href="/blog/woocommerce-product-variation-best-practices">variations</a> (such as colors, sizes, materials), WooCommerce loads all variation data into a JSON attribute in the HTML DOM (<code>data-product_variations</code>). When a product has 50+ variations, this JSON object can add hundreds of kilobytes of uncompressed text directly into your HTML response, dramatically delaying DOM interactive time.</p>
 
@@ -238,7 +246,7 @@ function sp_custom_ajax_variation_threshold( $qty, $product ) {
 add_filter( 'woocommerce_ajax_variation_threshold', 'sp_custom_ajax_variation_threshold', 10, 2 );
 </code></pre>
 
-<h2>5. Defer Non-Critical JavaScript and De-clutter WooCommerce Styles</h2>
+<h2 id="section-4">5. Defer Non-Critical JavaScript and De-clutter WooCommerce Styles</h2>
 
 <p>To reduce render-blocking resources, ensure non-critical scripts on single product pages are deferred. While plugins like Flying Scripts or Perfmatters do this well through UI controls, you can also apply custom script attributes directly in your theme layer using PHP or lightweight JavaScript.</p>
 
@@ -276,7 +284,7 @@ function sp_remove_wc_gallery_features() {
 add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
 </code></pre>
 
-<h2>6. Optimize Database Queries and Object Caching</h2>
+<h2 id="section-5">6. Optimize Database Queries and Object Caching</h2>
 
 <p>WooCommerce single product pages query related products, upsells, cross-sells, reviews, and stock statuses. On high-traffic WooCommerce stores, hitting the MySQL database repeatedly for identical queries ruins performance.</p>
 
@@ -288,7 +296,7 @@ add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
     <li><strong>Clean Transients:</strong> Frequently clear expired transients from the <code>wp_options</code> table using WP-CLI or plugins like WP-Optimize.</li>
 </ol>
 
-<h2>Summary Checklist for WooCommerce Speed Optimization</h2>
+<h2 id="section-6">Summary Checklist for WooCommerce Speed Optimization</h2>
 
 <p>To quickly wrap up, here is the optimization sequence I follow when tuning product pages for high performance:</p>
 
@@ -338,7 +346,20 @@ add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -463,37 +484,6 @@ add_action( 'after_setup_theme', 'sp_remove_wc_gallery_features', 100 );
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 � 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 � 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 � 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 � 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 � 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 � 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 � 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 � 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 � 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 � 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

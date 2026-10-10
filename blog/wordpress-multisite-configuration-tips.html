@@ -130,7 +130,14 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress Multisite Configuration Tips</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="1. Bulletproof Your wp-config.php Setup">1. Bulletproof Your wp-config.php Setup</a></li>
+<li><a href="#section-1" title="2. Advanced Server Rules: Apache vs. Nginx">2. Advanced Server Rules: Apache vs. Nginx</a></li>
+<li><a href="#section-2" title="3. Harnessing Must-Use (MU) Plugins for Network Rules">3. Harnessing Must-Use (MU) Plugins for Network Rules</a></li>
+<li><a href="#section-3" title="4. Managing Database Scaling and Cache Isolation">4. Managing Database Scaling and Cache Isolation</a></li>
+<li><a href="#section-4" title="5. Native Domain Mapping Clean Up">5. Native Domain Mapping Clean Up</a></li>
+<li><a href="#section-5" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Namaste! I'm Shiv Parmar, a WordPress developer with global experience. Over the past several years of building custom web applications and enterprise portals, I have encountered few features as powerful�or as easily misunderstood�as WordPress Multisite. When configured correctly, a single WordPress installation can efficiently power dozens, hundreds, or even thousands of sub-sites from a single dashboard.</p>
@@ -139,7 +146,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>However, running a multisite network requires a different mindset than managing a standalone WordPress installation. Database structures change, server configurations become crucial, and simple administrative oversights can impact your entire network. Today, I want to share my practical battle-tested configuration tips to help you set up, optimize, and maintain a high-performing WordPress Multisite network.</p>
 
-<h2>1. Bulletproof Your <code>wp-config.php</code> Setup</h2>
+<h2 id="section-0">1. Bulletproof Your <code>wp-config.php</code> Setup</h2>
 
 <p>The journey to a stable multisite setup begins in your <code>wp-config.php</code> file. While the standard WordPress installation process gives you basic definitions, enterprise-grade setups require fine-tuning.</p>
 
@@ -165,7 +172,7 @@ define( 'COOKIE_DOMAIN', '' ); // Prevents cookie leakage across subdomains
 
 <p><strong>Pro Tip:</strong> Pay special attention to <code>SUBDOMAIN_INSTALL</code>. Changing between subdomains (e.g., <code>site1.example.com</code>) and subdirectories (e.g., <code>example.com/site1</code>) after launching a live network is difficult and requires complex search-and-replace queries across your database tables.</p>
 
-<h2>2. Advanced Server Rules: Apache vs. Nginx</h2>
+<h2 id="section-1">2. Advanced Server Rules: Apache vs. Nginx</h2>
 
 <p>WordPress Multisite relies heavily on server-level rewrite rules to route traffic to sub-sites dynamically without physically creating directory folders on the server.</p>
 
@@ -210,7 +217,7 @@ location ~ \.php$ {
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 }</code></pre>
 
-<h2>3. Harnessing Must-Use (MU) Plugins for Network Rules</h2>
+<h2 id="section-2">3. Harnessing Must-Use (MU) Plugins for Network Rules</h2>
 
 <p>One common issue I see in network audits is administrators allowing individual sub-site admins to modify critical settings or disable shared functionality. In WordPress Multisite, standard plugins can be deactivated by sub-site admins unless Network Activated. However, for core functionality that <em>must</em> run unconditionally, you should use Must-Use (MU) plugins.</p>
 
@@ -251,7 +258,7 @@ function shiv_enqueue_network_admin_styles() {
 <p>WordPress Multisite is not just a tool to manage multiple websites; it is a framework for architecting scalable web ecosystems. Treat your network root as an operating system kernel and your individual sites as user applications.</p>
 </blockquote>
 
-<h2>4. Managing Database Scaling and Cache Isolation</h2>
+<h2 id="section-3">4. Managing Database Scaling and Cache Isolation</h2>
 
 <p>Understanding how Multisite handles data is critical for long-term server health. When you create a new site in Multisite, WordPress creates a new prefix in your database: <code>wp_2_options</code>, <code>wp_2_posts</code>, <code>wp_2_postmeta</code>, and so forth.</p>
 
@@ -265,7 +272,7 @@ function shiv_enqueue_network_admin_styles() {
 
 <pre><code>wp site list --field=url | xargs -I % wp transient delete --clear-all --url=%</code></pre>
 
-<h2>5. Native Domain Mapping Clean Up</h2>
+<h2 id="section-4">5. Native Domain Mapping Clean Up</h2>
 
 <p>Prior to WordPress 4.5, domain mapping required custom third-party plugins and complex database hooks. Today, domain mapping is native to WordPress core, but many developers still overcomplicate it.</p>
 
@@ -278,7 +285,7 @@ function shiv_enqueue_network_admin_styles() {
     <li>Configure an SSL certificate (such as Let's Encrypt with wildcard or multi-domain support) at the reverse-proxy level to prevent SSL handshake errors.</li>
 </ul>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-5">Wrapping Up</h2>
 
 <p>Configuring a WordPress Multisite network requires careful attention to detail, but once configured properly, it provides incredible flexibility and efficiency. By locking down your baseline server configuration, enforcing rules using MU-plugins, and optimizing your database strategy, you set up your platform for long-term stability.</p>
 
@@ -317,7 +324,20 @@ function shiv_enqueue_network_admin_styles() {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -438,37 +458,6 @@ function shiv_enqueue_network_admin_styles() {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

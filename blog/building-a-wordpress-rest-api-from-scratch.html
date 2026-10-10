@@ -141,10 +141,20 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>Building a WordPress REST API from Scratch</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Building a WordPress REST API Endpoint from Scratch: A Developer�s Guide">Building a WordPress REST API Endpoint from Scratch: A Developer�s Guide</a></li>
+<li><a href="#section-1" title="Why Build Custom REST API Endpoints?">Why Build Custom REST API Endpoints?</a></li>
+<li><a href="#section-2" title="Step 1: Understanding the Hook and Function">Step 1: Understanding the Hook and Function</a></li>
+<li><a href="#section-3" title="Step 2: Writing the PHP Backend Endpoint">Step 2: Writing the PHP Backend Endpoint</a></li>
+<li><a href="#section-4" title="Step 3: Securing and Sanitizing Your Endpoint">Step 3: Securing and Sanitizing Your Endpoint</a></li>
+<li><a href="#section-5" title="Step 4: Consuming the Custom Endpoint via JavaScript">Step 4: Consuming the Custom Endpoint via JavaScript</a></li>
+<li><a href="#section-6" title="Step 5: Adding Modern Styling">Step 5: Adding Modern Styling</a></li>
+<li><a href="#section-7" title="Testing Your REST Endpoint">Testing Your REST Endpoint</a></li>
+<li><a href="#section-8" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Building a WordPress REST <a href="/blog/wordpress-rest-api-authentication-methods">API Endpoint</a> from Scratch: A Developer�s Guide</h2>
+<h2 id="section-0">Building a WordPress REST <a href="/blog/wordpress-rest-api-authentication-methods">API Endpoint</a> from Scratch: A Developer�s Guide</h2>
 
 <p>Namaste! I am Shiv Parmar, a WordPress developer with global experience. Over the years working with clients across the globe, I have seen WordPress transform from a simple blogging tool into a powerful headless CMS. Today, modern web development often demands that WordPress communicate seamlessly with React, Vue, mobile apps, or third-party CRM systems.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WordPress Project Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I specialize in building custom WordPress solutions that drive results. Let's discuss your project.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Let's Talk <span>&rarr;</span></a></div>
@@ -152,7 +162,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>While WordPress ships with a robust default <a href="/blog/wordpress-rest-api-authentication-methods">REST API</a> out of the box, standard endpoints like <code>/wp/v2/posts</code> or <code>/wp/v2/pages</code> often return unnecessary payload data or lack the exact fields your app needs. That is where custom REST API endpoints come into play. In this guide, I will walk you through building a custom WordPress REST API endpoint from scratch, complete with validation, security, and frontend integration.</p>
 
-<h2>Why Build Custom REST API Endpoints?</h2>
+<h2 id="section-1">Why Build Custom REST API Endpoints?</h2>
 
 <p>Before diving into code, let us understand when you should register custom endpoints instead of using default ones:</p>
 
@@ -163,7 +173,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <li><strong>Enhanced Security:</strong> Obfuscate default database query structures and control exact access rules.</li>
 </ul>
 
-<h2>Step 1: Understanding the Hook and Function</h2>
+<h2 id="section-2">Step 1: Understanding the Hook and Function</h2>
 
 <p>To register a custom route in WordPress, we use the <code>rest_api_init</code> action hook along with the <code>register_rest_route()</code> function. This function takes three main parameters:</p>
 
@@ -173,7 +183,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <li><strong>Arguments:</strong> An array specifying HTTP methods, callback functions, permission checks, and argument sanitization.</li>
 </ol>
 
-<h2>Step 2: Writing the PHP Backend Endpoint</h2>
+<h2 id="section-3">Step 2: Writing the PHP Backend Endpoint</h2>
 
 <p>Let us create a practical custom endpoint that fetches a lightweight list of recent custom post types or WooCommerce products. Add the following code inside your custom plugin or your theme's <code>functions.php</code> file:</p>
 
@@ -247,7 +257,7 @@ function sp_get_latest_items_callback( $request ) {
     <p>Key Insight: Always wrap your API responses in <code>WP_REST_Response</code> and handle errors with <code>WP_Error</code>. Returning structured HTTP status codes like 404 or 403 ensures mobile apps and front-end JS frameworks can handle errors gracefully without breaking execution.</p>
 </blockquote>
 
-<h2>Step 3: Securing and Sanitizing Your Endpoint</h2>
+<h2 id="section-4">Step 3: Securing and Sanitizing Your Endpoint</h2>
 
 <p>Security is non-negotiable when building custom endpoints. WordPress provides built-in parameter sanitization and validation callbacks. Notice how we used <code>'sanitize_callback' =&gt; 'absint'</code> in our registration code above. This guarantees that any value passed to the <code>count</code> query parameter is cast into an absolute integer before our logic touches it.</p>
 
@@ -261,7 +271,7 @@ function sp_get_latest_items_callback( $request ) {
 }
 </code></pre>
 
-<h2>Step 4: Consuming the Custom Endpoint via JavaScript</h2>
+<h2 id="section-5">Step 4: Consuming the Custom Endpoint via JavaScript</h2>
 
 <p>Now that our PHP endpoint is live at <code>https://yourdomain.com/wp-json/sp-api/v1/latest-items/</code>, let us consume it on the frontend using JavaScript's native <code>fetch</code> API.</p>
 
@@ -303,7 +313,7 @@ function sp_get_latest_items_callback( $request ) {
 });
 </code></pre>
 
-<h2>Step 5: Adding Modern Styling</h2>
+<h2 id="section-6">Step 5: Adding Modern Styling</h2>
 
 <p>To give our dynamically injected dynamic grid a clean layout, add a bit of CSS to your stylesheet:</p>
 
@@ -348,7 +358,7 @@ function sp_get_latest_items_callback( $request ) {
 }
 </code></pre>
 
-<h2>Testing Your REST Endpoint</h2>
+<h2 id="section-7">Testing Your REST Endpoint</h2>
 
 <p>Once you save your PHP changes, testing your custom API endpoint is straightforward. You can test public endpoints right in your web browser by navigating to:</p>
 
@@ -356,7 +366,7 @@ function sp_get_latest_items_callback( $request ) {
 
 <p>For testing complex endpoints that handle <code>POST</code>, <code>PUT</code>, or <code>DELETE</code> requests, I strongly recommend using desktop API clients like Postman or Insomnia. They allow you to test authentication headers, query parameters, and payload bodies cleanly before deploying your code to production servers.</p>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-8">Wrapping Up</h2>
 
 <p>Extending the WordPress REST API with custom endpoints gives you complete control over how data enters and leaves your server. It turns WordPress into an incredibly flexible back-end engine capable of powering modern frontend frameworks, mobile applications, and internal automation workflows.</p>
 
@@ -395,7 +405,20 @@ function sp_get_latest_items_callback( $request ) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -520,37 +543,6 @@ function sp_get_latest_items_callback( $request ) {
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 � 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 � 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 � 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 � 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 � 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 � 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 � 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 � 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 � 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 � 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

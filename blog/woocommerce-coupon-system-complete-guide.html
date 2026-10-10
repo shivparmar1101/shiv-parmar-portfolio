@@ -130,7 +130,15 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WooCommerce Coupon System Complete Guide</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Understanding the Built-in WooCommerce Coupon Architecture">Understanding the Built-in WooCommerce Coupon Architecture</a></li>
+<li><a href="#section-1" title="Programmatically Creating WooCommerce Coupons via PHP">Programmatically Creating WooCommerce Coupons via PHP</a></li>
+<li><a href="#section-2" title="Auto-Applying Coupons to Cart Based on Conditions">Auto-Applying Coupons to Cart Based on Conditions</a></li>
+<li><a href="#section-3" title="Extending Validation: Custom Coupon Rules">Extending Validation: Custom Coupon Rules</a></li>
+<li><a href="#section-4" title="Enhancing the Coupon UX with Frontend Code">Enhancing the Coupon UX with Frontend Code</a></li>
+<li><a href="#section-5" title="Best Practices for Managing WooCommerce Coupons">Best Practices for Managing WooCommerce Coupons</a></li>
+<li><a href="#section-6" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Namaste! I�m Shiv Parmar, a WordPress developer with global experience. Over the last seven years, I have built and customized dozens of WooCommerce stores for clients ranging from small local startups to large international enterprise brands. If there is one feature that consistently drives conversions and customer retention across almost every store I have worked on, it is a well-architected discount and coupon system.</p>
@@ -139,7 +147,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>WooCommerce comes with a robust native coupon engine right out of the box. However, as store requirements grow, standard settings often fall short. Clients frequently ask for dynamic discount rules, automatic application of vouchers, role-based restrictions, and customized checkout UX. In this comprehensive guide, I will take you from the fundamentals of the WooCommerce coupon engine to advanced programmatic customizations using PHP, JavaScript, and CSS.</p>
 
-<h2>Understanding the Built-in WooCommerce Coupon Architecture</h2>
+<h2 id="section-0">Understanding the Built-in WooCommerce Coupon Architecture</h2>
 
 <p>Before diving into custom code, let us review what WooCommerce offers natively. To enable coupons, navigate to <strong>WooCommerce &gt; Settings &gt; General</strong> and check the box labeled <em>"Enable the use of coupon codes"</em>. Once enabled, you can manage your vouchers under <strong>Marketing &gt; Coupons</strong>.</p>
 
@@ -153,7 +161,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>While these settings cover basic marketing campaigns, custom business logic often demands a programmatic approach.</p>
 
-<h2>Programmatically Creating WooCommerce Coupons via PHP</h2>
+<h2 id="section-1">Programmatically Creating WooCommerce Coupons via PHP</h2>
 
 <p>There are scenarios where you need to generate discount codes dynamically�such as rewarding a customer after their fifth purchase, sending a unique birthday discount, or integration with external CRMs. WooCommerce provides the <code>WC_Coupon</code> object class to handle coupon creation effortlessly.</p>
 
@@ -189,7 +197,7 @@ function shiv_generate_dynamic_coupon( $user_email ) {
 
 <p>This snippet uses WooCommerce's CRUD architecture, ensuring clean interactions with the database without risking corrupt meta values.</p>
 
-<h2>Auto-Applying Coupons to Cart Based on Conditions</h2>
+<h2 id="section-2">Auto-Applying Coupons to Cart Based on Conditions</h2>
 
 <p>Forcing customers to manually search for and paste discount codes can create friction during checkout, leading to cart abandonment. A common client request I handle is automatically applying a promotional code when the cart meets a certain criteria (e.g., cart subtotal exceeding $100).</p>
 
@@ -228,7 +236,7 @@ function shiv_auto_apply_cart_coupon() {
 }
 </code></pre>
 
-<h2>Extending Validation: Custom Coupon Rules</h2>
+<h2 id="section-3">Extending Validation: Custom Coupon Rules</h2>
 
 <p>Standard WooCommerce settings do not allow restricting coupons based on <a href="/blog/wordpress-user-role-management-guide">user roles</a> or customer meta data out of the box. By leveraging the <code>woocommerce_coupon_is_valid</code> filter hook, we can inject specialized validation rules seamlessly.</p>
 
@@ -265,7 +273,7 @@ function shiv_custom_coupon_error_message( $err, $err_code, $coupon ) {
 }
 </code></pre>
 
-<h2>Enhancing the Coupon UX with Frontend Code</h2>
+<h2 id="section-4">Enhancing the Coupon UX with Frontend Code</h2>
 
 <p>Providing clear visual cues when a coupon is applied improves store confidence. Here is a simple CSS block you can append to your child theme stylesheet to highlight applied coupon tags and success messages gracefully:</p>
 
@@ -302,7 +310,7 @@ function shiv_custom_coupon_error_message( $err, $err_code, $coupon ) {
 });
 </code></pre>
 
-<h2>Best Practices for Managing WooCommerce Coupons</h2>
+<h2 id="section-5">Best Practices for Managing WooCommerce Coupons</h2>
 
 <p>Throughout my engineering work on client sites across the globe, I have seen improperly optimized discount systems degrade store performance or cause revenue loss through coupon stacking exploits. Here are a few golden rules I live by:</p>
 
@@ -316,7 +324,7 @@ function shiv_custom_coupon_error_message( $err, $err_code, $coupon ) {
     <p>�A great discount strategy is not just about giving price drops; it is about building a seamless checkout experience where discounts feel targeted, effortless, and computationally lightweight on your store's database.� � Shiv Parmar</p>
 </blockquote>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-6">Wrapping Up</h2>
 
 <p>The WooCommerce coupon ecosystem offers incredible flexibility. Whether you rely on basic native settings or build custom PHP filters to implement dynamic pricing algorithms, mastering these developer hooks gives you complete control over your store's promotional strategy.</p>
 
@@ -355,7 +363,20 @@ function shiv_custom_coupon_error_message( $err, $err_code, $coupon ) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -476,37 +497,6 @@ function shiv_custom_coupon_error_message( $err, $err_code, $coupon ) {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

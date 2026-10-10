@@ -141,10 +141,17 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WooCommerce Shipping Zones Setup Guide</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Mastering WooCommerce Shipping Zones: A Complete Setup &amp; Developer Guide">Mastering WooCommerce Shipping Zones: A Complete Setup &amp; Developer Guide</a></li>
+<li><a href="#section-1" title="What Are WooCommerce Shipping Zones?">What Are WooCommerce Shipping Zones?</a></li>
+<li><a href="#section-2" title="Step-by-Step: Setting Up Shipping Zones in WooCommerce">Step-by-Step: Setting Up Shipping Zones in WooCommerce</a></li>
+<li><a href="#section-3" title="Developer Tricks: Customizing Shipping Zones via Code">Developer Tricks: Customizing Shipping Zones via Code</a></li>
+<li><a href="#section-4" title="Best Practices for WooCommerce Shipping Zones">Best Practices for WooCommerce Shipping Zones</a></li>
+<li><a href="#section-5" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Mastering WooCommerce Shipping Zones: A Complete Setup & Developer Guide</h2>
+<h2 id="section-0">Mastering WooCommerce Shipping Zones: A Complete Setup & Developer Guide</h2>
 
 <p>Namaste! I'm Shiv Parmar, a dedicated WordPress developer with global experience. Throughout my career building custom e-commerce solutions for businesses globally and clients across the globe, I've noticed one consistent pain point online store owners face: shipping configuration. Setting up shipping rules incorrectly leads to abandoned carts, lost profit margins, or frustrated customers who get billed the wrong rate.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WooCommerce Store Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses maximize their WooCommerce potential. Ready to grow your store?</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Let's Talk <span>&rarr;</span></a></div>
@@ -152,7 +159,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>WooCommerce handles complex logistics through a native feature called <strong>Shipping Zones</strong>. In this comprehensive guide, I will take you step-by-step through setting up WooCommerce Shipping Zones via the standard administrative interface, followed by advanced custom code snippets to tailor shipping logic specifically for your store's requirements.</p>
 
-<h2>What Are WooCommerce Shipping Zones?</h2>
+<h2 id="section-1">What Are WooCommerce Shipping Zones?</h2>
 
 <p>A <strong>Shipping Zone</strong> is a geographic region where specific shipping methods and rates apply. Instead of assigning shipping rates individually to every product or country, WooCommerce groups regions together�allowing you to apply set rules to those defined areas.</p>
 
@@ -164,7 +171,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   <li><strong>International Zone:</strong> Rest of the world, calculated via live carrier APIs like DHL or FedEx.</li>
 </ul>
 
-<h2>Step-by-Step: Setting Up Shipping Zones in WooCommerce</h2>
+<h2 id="section-2">Step-by-Step: Setting Up Shipping Zones in WooCommerce</h2>
 
 <p>Let's walk through creating and configuring your shipping zones directly inside the WooCommerce admin dashboard.</p>
 
@@ -200,7 +207,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   <p><strong>Key Insight:</strong> WooCommerce evaluates Shipping Zones from top to bottom on the settings list. As soon as a customer's address matches a zone, WooCommerce stops searching and applies that zone's rules. Always place your most specific zones (like local postal code matches) at the top of the list, and broader zones (like entire continents) near the bottom.</p>
 </blockquote>
 
-<h2>Developer Tricks: Customizing Shipping Zones via Code</h2>
+<h2 id="section-3">Developer Tricks: Customizing Shipping Zones via Code</h2>
 
 <p>As developers, the standard GUI settings sometimes aren't enough to satisfy unique client requirements. Below are practical PHP code snippets you can add to your theme's <code>functions.php</code> file or a custom plugin to manipulate shipping zone behavior programmatically.</p>
 
@@ -276,7 +283,7 @@ function shiv_add_weight_heavy_surcharge( $rates, $package ) {
 WC_Cache_Helper::get_transient_version( 'shipping', true );
 </code></pre>
 
-<h2>Best Practices for WooCommerce Shipping Zones</h2>
+<h2 id="section-4">Best Practices for WooCommerce Shipping Zones</h2>
 
 <ul>
   <li><strong>Always Test Customer Workflows:</strong> Use incognito windows and test addresses from different postcodes to ensure zones trigger correctly.</li>
@@ -284,7 +291,7 @@ WC_Cache_Helper::get_transient_version( 'shipping', true );
   <li><strong>Keep Shipping Classes Updated:</strong> Combine Shipping Zones with Shipping Classes to handle bulky items, heavy products, or fragile goods effectively across regions.</li>
 </ul>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-5">Wrapping Up</h2>
 
 <p>Configuring WooCommerce Shipping Zones correctly is crucial for building a friction-free checkout flow for your online store. Understanding the hierarchy of zone matching along with utilizing backend hooks allows you to build highly personalized shipping architectures for any client site.</p>
 
@@ -323,7 +330,20 @@ WC_Cache_Helper::get_transient_version( 'shipping', true );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -448,37 +468,6 @@ WC_Cache_Helper::get_transient_version( 'shipping', true );
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

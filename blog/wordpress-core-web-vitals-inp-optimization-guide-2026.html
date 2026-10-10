@@ -111,7 +111,14 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <h1>WordPress Core Web Vitals: INP Optimization Guide 2026</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="What is Interaction to Next Paint (INP)?">What is Interaction to Next Paint (INP)?</a></li>
+<li><a href="#section-1" title="Why WordPress INP Matters in 2026">Why WordPress INP Matters in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide to Optimizing INP in WordPress">Step-by-Step Guide to Optimizing INP in WordPress</a></li>
+<li><a href="#section-3" title="Best Practices for Sustained Performance">Best Practices for Sustained Performance</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
 <p>In the evolving landscape of web performance, website owners and developers have shifted their focus toward a critical metric: <strong>Interaction to Next Paint (INP)</strong>. Since officially superseding First Input Delay (FID) as a stable Core Web Vital, INP has fundamentally transformed how Google evaluates user experience. While legacy performance audits prioritized how quickly a page loaded its initial visual elements, current web standards evaluate how rapidly and reliably an interface reacts to ongoing user input throughout an entire browsing session.</p>
@@ -120,7 +127,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>Achieving a "Good" INP score—consistently clocking in at 200 milliseconds or lower at the 75th percentile of real-world visits—is no longer optional. It directly influences search visibility, bounce rates, and e-commerce conversions. This comprehensive guide covers the technical nuances of the metric, practical diagnostics, and production-tested optimization techniques specifically designed to elevate your WordPress <strong>page speed</strong> and achieve seamless <strong>Core Web Vitals</strong> compliance in 2026.</p>
 
-<h2>What is Interaction to Next Paint (INP)?</h2>
+<h2 id="section-0">What is Interaction to Next Paint (INP)?</h2>
 
 <p>Interaction to Next Paint (INP) is a Core Web Vitals field metric that assesses a page's overall responsiveness to user interactions. Rather than recording solely the first interaction like its predecessor FID, INP monitors all user interactions—such as clicks, taps, and keyboard inputs—that take place across the entire lifecycle of a page visit. The single worst interaction (or, on pages with hundreds of interactions, an outlier-filtered high percentile) represents the page's final INP score.</p>
 
@@ -142,7 +149,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>Importantly, INP does not measure operations like continuous scrolling or hovering directly. It focuses on discrete, intentional inputs where users expect clear visual confirmation: expanding an accordion, submitting a search query, opening a mobile navigation drawer, or adding an item to a WooCommerce basket.</p>
 
-<h2>Why WordPress INP Matters in 2026</h2>
+<h2 id="section-1">Why WordPress INP Matters in 2026</h2>
 
 <p>The transition toward INP marks a permanent shift toward Real User Monitoring (RUM) and field-measured performance. While synthetic lab tools like Google Lighthouse provide useful debugging snapshots, Google's ranking algorithms rely entirely on the Chrome User Experience Report (CrUX) dataset. If real users visiting your WordPress site experience frozen inputs on mid-tier mobile hardware, your search visibility will reflect that friction.</p>
 
@@ -150,7 +157,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>Furthermore, device disparities remain a critical consideration. While developers often build sites on powerful desktop machines, your visitors browse using budget mobile devices with thermal-throttling CPUs. These processors take significantly longer to parse and evaluate JavaScript. Ensuring optimal <strong>WordPress INP</strong> performance protects your organic ranking, optimizes mobile conversion funnels, and elevates overall technical <strong>page speed</strong> across your user base.</p>
 
-<h2>Step-by-Step Guide to Optimizing INP in WordPress</h2>
+<h2 id="section-2">Step-by-Step Guide to Optimizing INP in WordPress</h2>
 
 <p>Remediating high interaction latency requires an orderly approach. Follow this tactical workflow to isolate execution delays, clear the main thread, and guarantee visual updates within the 200ms threshold.</p>
 
@@ -325,7 +332,7 @@ add_action( 'wp_enqueue_scripts', 'register_deferred_assets' );
     <li>Utilize web workers via tools like Partytown to run analytics scripts (Google Analytics 4, Meta Pixel) entirely off the main thread.</li>
 </ul>
 
-<h2>Best Practices for Sustained Performance</h2>
+<h2 id="section-3">Best Practices for Sustained Performance</h2>
 
 <p>Achieving a compliant INP metric is an ongoing discipline, not a one-time fix. As plugins receive updates and marketing teams introduce new tracking assets, your site performance can degrade quickly without deliberate governance. Implement these established practices to maintain optimal speeds over time:</p>
 
@@ -373,7 +380,7 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 <h3>4. Adopt Edge Caching and Full-Page Cache Preloading</h3>
 <p>While caching primarily targets Time to First Byte (TTFB), a slow server response has downstream effects on INP. If dynamic operations (such as adding items to a cart) require round trips to a slow server, the client UI often freezes waiting for the response. Deploy robust object caching via Redis and dynamic edge caching (via Cloudflare or fast CDN providers) to minimize network latency during transactional interactions.</p>
 
-<h2>Common Mistakes to Avoid</h2>
+<h2 id="section-4">Common Mistakes to Avoid</h2>
 
 <p>When working to improve <strong>Core Web Vitals</strong>, developers often deploy sweeping performance fixes that can unintentionally degrade responsiveness. Be sure to avoid these widespread pitfalls:</p>
 
@@ -389,7 +396,7 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 <h3>Running Synchronous Layout Thrashing Loops</h3>
 <p>Avoid interleaving style reads and writes within your interaction handlers. Calling properties like <code>offsetHeight</code>, <code>offsetWidth</code>, or <code>getBoundingClientRect()</code> directly after altering an element's inline styles forces the browser into immediate, synchronous layout calculations. Group all style reads together before executing any DOM writes.</p>
 
-<h2>Conclusion</h2>
+<h2 id="section-5">Conclusion</h2>
 
 <p>Optimizing for Interaction to Next Paint represents the contemporary standard for modern web performance. The era of purely focusing on initial load speed has given way to runtime efficiency and sustained user responsiveness. For WordPress sites, achieving INP success demands an intentional architectural approach: decluttering redundant plugins, modernizing asset delivery, pruning the DOM tree, and yielding main-thread execution back to the browser.</p>
 
@@ -423,6 +430,25 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 <a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank">LinkedIn</a>
 <a href="https://github.com/shivparmar1101" target="_blank">GitHub</a>
 <a href="mailto:parmarshiv1101@gmail.com">Email</a>
+</div>
+</div>
+</div>
+
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
 </div>
 </div>
 </div>

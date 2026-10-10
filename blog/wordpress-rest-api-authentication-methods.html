@@ -130,7 +130,16 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress REST API Authentication Methods</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Understanding WordPress REST API Authentication">Understanding WordPress REST API Authentication</a></li>
+<li><a href="#section-1" title="1. Cookie Authentication (Default Internal Method)">1. Cookie Authentication (Default Internal Method)</a></li>
+<li><a href="#section-2" title="2. Application Passwords (Best for External Scripts &amp; Quick Integrations)">2. Application Passwords (Best for External Scripts &amp; Quick Integrations)</a></li>
+<li><a href="#section-3" title="3. JWT Authentication (Best for Decoupled Frontends &amp; Mobile Apps)">3. JWT Authentication (Best for Decoupled Frontends &amp; Mobile Apps)</a></li>
+<li><a href="#section-4" title="4. OAuth 1.0a / OAuth 2.0 (Enterprise-Level Applications)">4. OAuth 1.0a / OAuth 2.0 (Enterprise-Level Applications)</a></li>
+<li><a href="#section-5" title="Enforcing Security with Permission Callbacks">Enforcing Security with Permission Callbacks</a></li>
+<li><a href="#section-6" title="Which Method Should You Choose?">Which Method Should You Choose?</a></li>
+<li><a href="#section-7" title="Final Thoughts">Final Thoughts</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello everyone! I am Shiv Parmar, a passionate WordPress developer with global experience. Over the years working with clients across the globe and running custom development sprints, I�ve seen WordPress evolve from a simple blogging engine into a headless, decoupled powerhouse. At the center of this modern architecture is the WordPress REST API.</p>
@@ -139,7 +148,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>While building endpoints and fetching data is straightforward, securing those endpoints is where things get serious. Whether you are building an iOS app, a React dashboard, or an internal integration for a client, choosing the correct authentication method for your WordPress REST API is vital. In this guide, I will walk you through the primary REST API authentication methods available in WordPress, complete with code snippets and real-world recommendations.</p>
 
-<h2>Understanding WordPress REST API Authentication</h2>
+<h2 id="section-0">Understanding WordPress REST API Authentication</h2>
 
 <p>By default, public endpoints in the REST API (like reading published posts) do not require authentication. However, when you want to create, update, delete, or fetch private data, WordPress needs to know two things:</p>
 
@@ -154,7 +163,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p>"Authentication identifies the user, but permission callbacks protect the ecosystem. Never rely solely on authentication without checking user <a href="/blog/wordpress-user-role-management-guide">capabilities</a> inside your REST API endpoints."</p>
 </blockquote>
 
-<h2>1. Cookie Authentication (Default Internal Method)</h2>
+<h2 id="section-1">1. Cookie Authentication (Default Internal Method)</h2>
 
 <p>If you are building custom Gutenberg blocks, AJAX functionality inside your theme, or admin panels, Cookie Authentication is your best friend. It is built right into WordPress core and requires zero additional plugin setup.</p>
 
@@ -194,7 +203,7 @@ add_action( 'wp_enqueue_scripts', 'shiv_enqueue_rest_script' );
 .catch( error =&gt; console.error( 'Error:', error ) );
 </code></pre>
 
-<h2>2. Application Passwords (Best for External Scripts & Quick Integrations)</h2>
+<h2 id="section-2">2. Application Passwords (Best for External Scripts & Quick Integrations)</h2>
 
 <p>Introduced in WordPress 5.6, <strong>Application Passwords</strong> allow external applications (like mobile apps, Zapier, or Node.js scripts) to authenticate without sharing the user's actual password. Each application gets its own 24-character random password, which can be revoked at any time from the User Profile screen.</p>
 
@@ -220,7 +229,7 @@ fetch('https://example.com/wp-json/wp/v2/posts', {
 
 <p><em>Note: Application Passwords should ONLY be used over HTTPS. Sending plain base64 credentials over plain HTTP exposes sensitive data to interception.</em></p>
 
-<h2>3. JWT Authentication (Best for Decoupled Frontends & Mobile Apps)</h2>
+<h2 id="section-3">3. JWT Authentication (Best for Decoupled Frontends & Mobile Apps)</h2>
 
 <p>If you are building a decoupled web application using React, Next.js, or Vue, <strong>JSON Web Tokens (JWT)</strong> offer a clean, stateless solution. Unlike cookies, JWTs don't suffer from CSRF issues and work seamlessly cross-domain.</p>
 
@@ -273,13 +282,13 @@ fetch('https://example.com/wp-json/wp/v2/posts', {
 });
 </code></pre>
 
-<h2>4. OAuth 1.0a / OAuth 2.0 (Enterprise-Level Applications)</h2>
+<h2 id="section-4">4. OAuth 1.0a / OAuth 2.0 (Enterprise-Level Applications)</h2>
 
 <p>For complex applications where third-party apps need access to WordPress resources on behalf of users without asking for their credentials, OAuth is the industry standard. WordPress has an official <strong>OAuth 1.0a Server plugin</strong> maintained by the core team.</p>
 
 <p>While OAuth is extremely secure, setting it up requires an authorization server flow, redirect URLs, and client key exchanges. It is best suited for enterprise integrations, SaaS platforms, and desktop software.</p>
 
-<h2>Enforcing Security with Permission Callbacks</h2>
+<h2 id="section-5">Enforcing Security with Permission Callbacks</h2>
 
 <p>Regardless of which authentication method you implement, you must secure your custom REST API routes using proper permission callbacks in PHP. Here is a custom endpoint pattern I frequently use in my plugins:</p>
 
@@ -306,7 +315,7 @@ function shiv_update_settings( $request ) {
 }
 </code></pre>
 
-<h2>Which Method Should You Choose?</h2>
+<h2 id="section-6">Which Method Should You Choose?</h2>
 
 <p>To summarize, here is a quick cheat sheet based on my day-to-day work building custom solutions globally:</p>
 
@@ -317,7 +326,7 @@ function shiv_update_settings( $request ) {
     <li><strong>Allowing third-party tools to access user data securely?</strong> Use <em>OAuth 1.0a / 2.0</em>.</li>
 </ul>
 
-<h2>Final Thoughts</h2>
+<h2 id="section-7">Final Thoughts</h2>
 
 <p>The WordPress REST API has unlocked endless possibilities for modern web applications. However, API endpoints can easily become security vulnerabilities if authentication and capability checks are overlooked. Always enforce HTTPS, sanitize incoming request parameters, and choose the right authentication model for your architecture.</p>
 
@@ -356,7 +365,20 @@ function shiv_update_settings( $request ) {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -477,37 +499,6 @@ function shiv_update_settings( $request ) {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

@@ -139,7 +139,13 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WordPress Cron Jobs: Complete Guide</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="What is WP-Cron and How Does It Work?">What is WP-Cron and How Does It Work?</a></li>
+<li><a href="#section-1" title="Creating a Custom WP-Cron Job: Step-by-Step">Creating a Custom WP-Cron Job: Step-by-Step</a></li>
+<li><a href="#section-2" title="Setting Up a True Server Cron Job for Production">Setting Up a True Server Cron Job for Production</a></li>
+<li><a href="#section-3" title="Essential Tools for Debugging WP-Cron">Essential Tools for Debugging WP-Cron</a></li>
+<li><a href="#section-4" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello, fellow developers! I�m Shiv Parmar, a dedicated WordPress developer with global experience. Over the years spent building custom solutions and optimizing high-traffic client sites, I�ve found that background task management is often the unsung hero of site <a href="/blog/wordpress-image-optimization-for-speed">performance</a>. Today, I want to dive deep into a topic that every serious WordPress developer must master: <strong>WordPress Cron Jobs (WP-Cron)</strong>.</p>
@@ -148,7 +154,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>Whether you need to send scheduled automated emails, process WooCommerce subscriptions, clear expired database transients, or fetch third-party API data, WP-Cron is the mechanism that powers it all. In this guide, we will unpack how WP-Cron works, how to schedule custom tasks safely, and how to configure a real server cron for maximum reliability.</p>
 
-<h2>What is WP-Cron and How Does It Work?</h2>
+<h2 id="section-0">What is WP-Cron and How Does It Work?</h2>
 
 <p>If you come from a UNIX or Linux background, you are likely familiar with system cron�a command-line daemon that runs scheduled tasks at exact times. WordPress Cron (WP-Cron) operates on a similar concept, but with a major architectural difference: <strong>it is a virtual cron</strong>.</p>
 
@@ -165,7 +171,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p><strong>Key Insight:</strong> WP-Cron is not a true background process; it is triggered by user traffic. For mission-critical tasks or high-performance applications, relying on default WP-Cron behavior can lead to race conditions, missed execution schedules, or severe performance bottlenecks.</p>
 </blockquote>
 
-<h2>Creating a Custom WP-Cron Job: Step-by-Step</h2>
+<h2 id="section-1">Creating a Custom WP-Cron Job: Step-by-Step</h2>
 
 <p>Let's walk through how to build custom scheduled tasks programmatically using PHP. To schedule a cron event properly in WordPress, you need three main components: a custom schedule interval (optional), an event hook setup upon plugin or theme activation, and a callback function.</p>
 
@@ -246,7 +252,7 @@ function shiv_deactivate_cron_jobs() {
 register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
 </code></pre>
 
-<h2>Setting Up a True Server Cron Job for Production</h2>
+<h2 id="section-2">Setting Up a True Server Cron Job for Production</h2>
 
 <p>For client projects hosted globally or anywhere globally, my default recommendation is to replace WordPress's request-based execution with a proper Linux cPanel/Crontab task. This offloads task evaluation entirely from frontend visitors.</p>
 
@@ -275,7 +281,7 @@ register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
 
 <p>Running WP-CLI directly via server cron is considerably faster because it avoids making HTTP <a href="/blog/wordpress-multisite-configuration-tips">network</a> requests completely, running directly through the local PHP CLI engine.</p>
 
-<h2>Essential Tools for <a href="/blog/how-to-debug-wordpress-like-a-pro">Debugging</a> WP-Cron</h2>
+<h2 id="section-3">Essential Tools for <a href="/blog/how-to-debug-wordpress-like-a-pro">Debugging</a> WP-Cron</h2>
 
 <p>When developing custom cron integrations, debugging scheduled hooks can feel tricky because they happen implicitly. Here are the tools I rely on in my workflow:</p>
 
@@ -291,7 +297,7 @@ register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
     <li><strong>PHP Debug Logs:</strong> Wrap your scheduled functions with <code>error_log()</code> statements during testing to trace execution flows in <code>wp-content/debug.log</code>.</li>
 </ol>
 
-<h2>Conclusion</h2>
+<h2 id="section-4">Conclusion</h2>
 
 <p>Mastering WP-Cron is essential for any developer looking to build robust, scalable WordPress applications. By moving from default browser-triggered cron execution to server-level system execution, you ensure precise execution times while keeping site load speeds snappy for your users.</p>
 
@@ -332,7 +338,20 @@ register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -457,37 +476,6 @@ register_deactivation_hook( __FILE__, 'shiv_deactivate_cron_jobs' );
 </noscript>
 </div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 � 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 � 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 � 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 � 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 � 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 � 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 � 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 � 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 � 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 � 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 � 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 � 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

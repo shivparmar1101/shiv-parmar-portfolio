@@ -141,7 +141,15 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WooCommerce 11.1: New Features & Setup Guide 2026</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Why Add AI to WordPress in 2026?">Why Add AI to WordPress in 2026?</a></li>
+<li><a href="#section-1" title="Method 1: Add AI Chatbot to WordPress">Method 1: Add AI Chatbot to WordPress</a></li>
+<li><a href="#section-2" title="Method 2: AI Content Generation API">Method 2: AI Content Generation API</a></li>
+<li><a href="#section-3" title="Method 3: AI-Powered Product Recommendations">Method 3: AI-Powered Product Recommendations</a></li>
+<li><a href="#section-4" title="Best Practices for WordPress AI Integration">Best Practices for WordPress AI Integration</a></li>
+<li><a href="#section-5" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-6" title="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
 <p>Hello, fellow developers! I am Shiv Parmar, a WordPress developer with global experience. Artificial Intelligence has transformed how we build and manage websites. In 2026, AI integration in WordPress is no longer optional—it is essential for staying competitive. In this guide, I will show you exactly how to add AI to your WordPress website with practical code examples.</p>
@@ -150,7 +158,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>Whether you want to add a <a href="/blog/woocommerce-product-filter-setup-guide">smart chatbot</a>, automate content generation, or create personalized user experiences, this guide covers everything you need to know about WordPress AI integration.</p>
 
-<h2>Why Add AI to WordPress in 2026?</h2>
+<h2 id="section-0">Why Add AI to WordPress in 2026?</h2>
 
 <p>AI is not just a buzzword anymore. It provides real, measurable benefits for WordPress websites:</p>
 
@@ -166,7 +174,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p><strong>Pro Tip:</strong> The most successful WordPress AI implementations solve specific user problems, not just add fancy features. Focus on what your users actually need.</p>
 </blockquote>
 
-<h2>Method 1: Add AI Chatbot to WordPress</h2>
+<h2 id="section-1">Method 1: Add AI Chatbot to WordPress</h2>
 
 <p>The most popular AI integration is adding a chatbot. Here is how to build a custom AI chatbot using OpenAI API in WordPress:</p>
 
@@ -292,7 +300,7 @@ jQuery(document).ready(function($) {
 });
 </code></pre>
 
-<h2>Method 2: AI Content Generation API</h2>
+<h2 id="section-2">Method 2: AI Content Generation API</h2>
 
 <p>Integrate AI content generation directly into your WordPress editor. This allows you to generate blog posts, product descriptions, and meta content with one click:</p>
 
@@ -323,7 +331,7 @@ function shiv_ai_generator_render($attributes) {
 }
 </code></pre>
 
-<h2>Method 3: AI-Powered Product Recommendations</h2>
+<h2 id="section-3">Method 3: AI-Powered Product Recommendations</h2>
 
 <p>For WooCommerce stores, AI-powered product recommendations can increase sales by 30% or more. Here is how to implement it:</p>
 
@@ -372,7 +380,7 @@ function shiv_ai_product_recommendations($product_id) {
 
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Available for Hire<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire WordPress Developer for AI Integration</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Expert in WordPress + AI integration. Chatbots, content generation, recommendations. Available worldwide.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Get Free Quote <span>&rarr;</span></a></div>
 
-<h2>Best Practices for WordPress AI Integration</h2>
+<h2 id="section-4">Best Practices for WordPress AI Integration</h2>
 
 <ol>
     <li><strong>API Key Security:</strong> Never hardcode API keys in theme files. Use WordPress options API or environment variables</li>
@@ -382,7 +390,7 @@ function shiv_ai_product_recommendations($product_id) {
     <li><strong>User Privacy:</strong> Inform users when they are interacting with AI, and handle data according to GDPR</li>
 </ol>
 
-<h2>Common Mistakes to Avoid</h2>
+<h2 id="section-5">Common Mistakes to Avoid</h2>
 
 <ul>
     <li><strong>Over-relying on AI:</strong> AI should assist humans, not replace them entirely</li>
@@ -391,7 +399,7 @@ function shiv_ai_product_recommendations($product_id) {
     <li><strong>No fallback:</strong> Always have a manual backup option when AI fails</li>
 </ul>
 
-<h2>Conclusion</h2>
+<h2 id="section-6">Conclusion</h2>
 
 <p>Adding AI to WordPress in 2026 is easier than ever with the available APIs and tools. Whether you choose to build a chatbot, automate content generation, or add smart recommendations, the key is to start small and iterate based on user feedback. Focus on solving real problems, not just adding AI for the sake of it.</p>
 
@@ -447,22 +455,6 @@ function shiv_ai_product_recommendations($product_id) {
 <script src="../includes.js"></script>
 <script src="../script.js"></script>
 <script src="../particle-bg.js"></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>

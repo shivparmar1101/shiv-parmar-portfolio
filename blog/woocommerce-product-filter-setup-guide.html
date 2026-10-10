@@ -130,10 +130,18 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <h1>WooCommerce Product Filter Setup Guide</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
-<ul id="tocList"></ul>
+<ul id="tocList">
+<li><a href="#section-0" title="Mastering WooCommerce Product Filters: A Developer&#39;s Practical Guide">Mastering WooCommerce Product Filters: A Developer&#39;s Practical Guide</a></li>
+<li><a href="#section-1" title="Why Native WooCommerce Filters Are Often Not Enough">Why Native WooCommerce Filters Are Often Not Enough</a></li>
+<li><a href="#section-2" title="Setting Up Custom AJAX Product Filters">Setting Up Custom AJAX Product Filters</a></li>
+<li><a href="#section-3" title="Styling Filter UI Controls for High Conversions">Styling Filter UI Controls for High Conversions</a></li>
+<li><a href="#section-4" title="Optimizing Database Performance for Large Catalogs">Optimizing Database Performance for Large Catalogs</a></li>
+<li><a href="#section-5" title="Choosing the Right Plugin (When Custom Code Isn&#39;t Feasible)">Choosing the Right Plugin (When Custom Code Isn&#39;t Feasible)</a></li>
+<li><a href="#section-6" title="Wrapping Up">Wrapping Up</a></li>
+</ul>
 </div>
 <div class="content">
-<h2>Mastering WooCommerce Product Filters: A Developer's Practical Guide</h2>
+<h2 id="section-0">Mastering WooCommerce Product Filters: A Developer's Practical Guide</h2>
 
 <p>Hello everyone! I'm Shiv Parmar, a WordPress developer with global experience. Over the past several years, I have built and optimized dozens of WooCommerce stores for clients around the globe. If there is one thing I have learned from analyzing user behavior on e-commerce sites, it is this: your navigation architecture can make or break your store's conversion rate.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Let's Optimize Your WooCommerce Store</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Expert WooCommerce development that drives revenue. Let's build something amazing together.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
@@ -141,7 +149,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>When an online store grows beyond 50 or 100 products, customers need a fast, intuitive way to slice and dice through inventory. Standard navigation menus simply won't cut it anymore. That is where a robust product filter setup comes into play. In this guide, I will walk you through setting up, customizing, and optimizing WooCommerce product filters�both natively and through custom code�to create a frictionless shopping experience.</p>
 
-<h2>Why Native WooCommerce Filters Are Often Not Enough</h2>
+<h2 id="section-1">Why Native WooCommerce Filters Are Often Not Enough</h2>
 
 <p>WooCommerce includes basic filtering widgets out of the box, such as "Filter Products by Attribute", "Filter Products by Price", and "Filter Products by Rating". While these default widgets work fine for smaller stores with basic requirements, they come with significant limitations for growing platforms:</p>
 
@@ -155,7 +163,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
     <p>"A product filter isn't just a navigation tool; it is a direct conversation with your customer. If your filters are slow or confusing, you are essentially closing the digital door on potential buyers."</p>
 </blockquote>
 
-<h2>Setting Up Custom AJAX Product Filters</h2>
+<h2 id="section-2">Setting Up Custom AJAX Product Filters</h2>
 
 <p>To eliminate full page reloads, we can build a lightweight, custom AJAX-based product filter system. This approach intercepts standard attribute selection, sends an asynchronous request to the server, and updates the product grid instantly without reloading the header, sidebar, or footer.</p>
 
@@ -268,7 +276,7 @@ add_action('wp_ajax_nopriv_shiv_filter_products', 'shiv_ajax_filter_products_han
 });
 </code></pre>
 
-<h2>Styling Filter UI Controls for High Conversions</h2>
+<h2 id="section-3">Styling Filter UI Controls for High Conversions</h2>
 
 <p>Clean visually descriptive inputs perform significantly better than standard dropdown menus. Here is some clean, modern CSS to turn basic filter controls into responsive, touch-friendly UI buttons that look slick on both mobile devices and desktops.</p>
 
@@ -312,7 +320,7 @@ ul.products {
 }
 </code></pre>
 
-<h2>Optimizing Database Performance for Large Catalogs</h2>
+<h2 id="section-4">Optimizing Database Performance for Large Catalogs</h2>
 
 <p>When running custom tax queries across large store catalogs (e.g., stores with 10,000+ products), database execution times can skyrocket. As WooCommerce developers, we must ensure query efficiency. Here are three quick optimization tips I always recommend:</p>
 
@@ -322,7 +330,7 @@ ul.products {
     <li><strong>Index Custom Database Tables:</strong> If using complex custom table structures for filtering instead of core taxonomies, ensure proper database indexing on filtered columns like price, SKU, and stock status.</li>
 </ol>
 
-<h2>Choosing the Right Plugin (When Custom Code Isn't Feasible)</h2>
+<h2 id="section-5">Choosing the Right Plugin (When Custom Code Isn't Feasible)</h2>
 
 <p>While custom code grants maximum flexibility, project deadlines or client budgets may sometimes call for a reliable off-the-shelf plugin solution. Over my career, I have routinely recommended these solutions:</p>
 
@@ -332,7 +340,7 @@ ul.products {
     <li><strong>FacetWP:</strong> My top developer choice for advanced search and filtering builds. It builds dedicated index tables for incredible speed on large enterprise catalogs.</li>
 </ul>
 
-<h2>Wrapping Up</h2>
+<h2 id="section-6">Wrapping Up</h2>
 
 <p>Building a robust WooCommerce product filter setup isn't just about adding UI controls to a sidebar. It requires a thoughtful balance of frontend user experience, backend performance, and clean maintainable code. By implementing AJAX-based dynamic filters and optimizing your queries, you can deliver an enterprise-grade shopping experience that delights users and keeps them buying.</p>
 
@@ -371,7 +379,20 @@ ul.products {
 </div>
 <div class="related-blogs">
   <h3>Related Posts</h3>
-  <div class="related-grid" id="relatedBlogs"></div>
+  <div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/block-ai-crawlers-wordpress" title="How to Block AI Crawlers from Scraping WordPress Content">How to Block AI Crawlers from Scraping WordPress Content</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability: Fix Your Site Now">Bricksforge Critical Vulnerability: Fix Your Site Now</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-10 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-7-1-3-security-release-guide" title="WordPress 7.1.3 Security Release: What You Need to Know">WordPress 7.1.3 Security Release: What You Need to Know</a></h4>
+</div>
+
 </div>
 </div></article>
 
@@ -492,37 +513,6 @@ ul.products {
 
 <div id="site-footer"></div>
 <script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
-<script>
-(function(){
-  function initBlog(){
-    var toc=document.getElementById("tocList");
-    if(toc){
-      document.querySelectorAll(".content h2").forEach(function(h,i){
-        var id="section-"+i;h.id=id;
-        var li=document.createElement("li");
-        var a=document.createElement("a");
-        a.href="#"+id;a.textContent=h.textContent;a.title=h.textContent;
-        li.appendChild(a);toc.appendChild(li);
-      });
-    }
-    var related=document.getElementById("relatedBlogs");
-    if(related){
-      var posts=[{"date":"2026-08-20 ? 4 min read","title":"How to Add Custom CSS to WordPress without Plugin","slug":"how-to-add-custom-css-to-wordpress-without-plugin"},{"date":"2026-08-20 ? 5 min read","title":"How to Create a WordPress Booking System","slug":"how-to-create-a-wordpress-booking-system"},{"date":"2026-08-20 ? 5 min read","title":"How to Create WordPress Mega Menu","slug":"how-to-create-wordpress-mega-menu"},{"date":"2026-08-20 ? 4 min read","title":"How to Debug WordPress Like a Pro","slug":"how-to-debug-wordpress-like-a-pro"},{"date":"2026-08-20 ? 4 min read","title":"How to Set Up WordPress Staging Environment","slug":"how-to-set-up-wordpress-staging-environment"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Coupon System Complete Guide","slug":"woocommerce-coupon-system-complete-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Payment Gateway Comparison 2026","slug":"woocommerce-payment-gateway-comparison-2026"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Bundles Setup","slug":"woocommerce-product-bundles-setup"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Filter Setup Guide","slug":"woocommerce-product-filter-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Product Variation Best Practices","slug":"woocommerce-product-variation-best-practices"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Shipping Zones Setup Guide","slug":"woocommerce-shipping-zones-setup-guide"},{"date":"2026-08-20 ? 5 min read","title":"WooCommerce Tax Configuration Guide","slug":"woocommerce-tax-configuration-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Block Theme Development Guide","slug":"wordpress-block-theme-development-guide"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Caching Plugins Compared 2026","slug":"wordpress-caching-plugins-compared-2026"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Migration Guide Local to Production","slug":"wordpress-migration-guide-local-to-production"},{"date":"2026-08-20 ? 5 min read","title":"WordPress Multisite Configuration Tips","slug":"wordpress-multisite-configuration-tips"},{"date":"2026-08-20 ? 5 min read","title":"WordPress REST API Authentication Methods","slug":"wordpress-rest-api-authentication-methods"},{"date":"2026-08-20 ? 4 min read","title":"WordPress Security Headers Configuration","slug":"wordpress-security-headers-configuration"},{"date":"2026-08-20 ? 5 min read","title":"WordPress User Role Management Guide","slug":"wordpress-user-role-management-guide"}];
-      var currentSlug=window.location.pathname.split("/").pop().replace(".html","");
-      var count=0;
-      posts.forEach(function(p){
-        if(p.slug!==currentSlug && count<3){
-          var card=document.createElement("div");
-          card.className="related-card";
-          card.innerHTML='<div class="date">'+p.date+'</div><h4><a href="../blog/'+p.slug+'" title="'+p.title+'">'+p.title+'</a></h4>';
-          related.appendChild(card);
-          count++;
-        }
-      });
-    }
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initBlog)}else{initBlog()}
-})();
-</script>
+
 </body>
 </html>
