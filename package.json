@@ -19,7 +19,10 @@
     "blog:list": "ls blog/*.html | xargs -I {} basename {} .html",
     "setup:apis": "node scripts/setup-apis.js",
     "email:test": "node scripts/test-email.js",
-    "blog:auto": "node scripts/auto-blog-generator.js"
+    "email:fail-test": "node scripts/send-failure-email.js --dry-run",
+    "blog:auto": "node scripts/auto-blog-generator.js",
+    "blog:retry": "node scripts/retry-generate.js",
+    "test": "node scripts/test-retry.js && node scripts/test-idempotency.js && node scripts/check-blogs.js"
   },
   "keywords": [
     "seo",

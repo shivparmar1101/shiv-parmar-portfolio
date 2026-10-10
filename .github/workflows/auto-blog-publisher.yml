@@ -29,24 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate and Publish Blog
+      - name: Generate and Publish Blog (auto-retry x2)
+        id: generate
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.8-flash
-        run: |
-          echo "========================================="
-          echo "Auto Blog Publisher"
-          echo "Time: $(date)"
-          echo "========================================="
-
-          mkdir -p blog
-          mkdir -p images/blog
-
-          node scripts/auto-blog-generator.js
-
-          echo "========================================="
-          echo "Blog generation complete"
-          echo "========================================="
+          MAX_ATTEMPTS: '2'
+          RETRY_DELAY_MS: '30000'
+        run: node scripts/retry-generate.js
 
       - name: Commit and Push
         run: |
@@ -111,3 +101,9 @@ jobs:
           else
             echo "Skipping email (no new blog or EMAIL_PASSWORD not set)"
           fi
+
+      - name: Send Failure Email
+        if: failure()
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: node scripts/send-failure-email.js

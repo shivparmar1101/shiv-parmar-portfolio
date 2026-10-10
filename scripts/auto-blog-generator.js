@@ -499,9 +499,11 @@ function buildBlogCard(blog) {
 function updateBlogHTML(blog) {
   const blogHTMLPath = path.join(__dirname, '..', 'blog.html');
   let blogHTML = fs.readFileSync(blogHTMLPath, 'utf-8');
-  const newCard = buildBlogCard(blog);
-  if (blogHTML.includes('<!-- BLOG_CARDS_START -->')) {
-    blogHTML = blogHTML.replace('<!-- BLOG_CARDS_START -->', '<!-- BLOG_CARDS_START -->\n' + newCard);
+  const cardHref = `blog/${blog.slug}.html`;
+  if (blogHTML.includes(cardHref)) {
+    console.log('blog.html: card already present (skipped insert)');
+  } else if (blogHTML.includes('<!-- BLOG_CARDS_START -->')) {
+    blogHTML = blogHTML.replace('<!-- BLOG_CARDS_START -->', '<!-- BLOG_CARDS_START -->\n' + buildBlogCard(blog));
   }
   const total = countPublishedBlogs();
   blogHTML = blogHTML.replace(/"numberOfItems":\s*\d+/, `"numberOfItems": ${total}`);
@@ -519,7 +521,12 @@ function updateIndexHTML(blog) {
   if (startIdx === -1 || endIdx === -1) return;
   const section = html.substring(startIdx + startTag.length, endIdx);
   const cards = section.match(/<article class="blog-card[\s\S]*?<\/article>/g) || [];
-  cards.unshift(buildBlogCard(blog));
+  if (!section.includes(`blog/${blog.slug}.html`)) {
+    cards.unshift(buildBlogCard(blog));
+    console.log('index.html: card added');
+  } else {
+    console.log('index.html: card already present (skipped)');
+  }
   html = html.substring(0, startIdx + startTag.length) + '\n' + cards.slice(0, 3).join('\n') + html.substring(endIdx);
   fs.writeFileSync(indexPath, html);
   console.log('index.html updated');
@@ -548,6 +555,8 @@ function submitToIndexNow(blog) {
   });
 
   return new Promise((resolve) => {
+    let done = false;
+    const finish = () => { if (!done) { done = true; resolve(); } };
     const options = {
       hostname: 'api.indexnow.org',
       path: '/indexnow',
@@ -556,9 +565,11 @@ function submitToIndexNow(blog) {
     };
     const req = https.request(options, (res) => {
       console.log(`IndexNow: ${res.statusCode} ${res.statusCode === 200 || res.statusCode === 202 ? 'Submitted' : 'Failed'}`);
-      resolve();
+      res.resume();
+      finish();
     });
-    req.on('error', (e) => { console.log('IndexNow error:', e.message); resolve(); });
+    req.setTimeout(15000, () => { console.log('IndexNow: timeout'); req.destroy(); finish(); });
+    req.on('error', (e) => { console.log('IndexNow error:', e.message); finish(); });
     req.write(payload);
     req.end();
   });
@@ -566,11 +577,16 @@ function submitToIndexNow(blog) {
 
 function pingGoogleSitemap() {
   return new Promise((resolve) => {
+    let done = false;
+    const finish = () => { if (!done) { done = true; resolve(); } };
     const url = `https://www.google.com/ping?sitemap=${encodeURIComponent(SITE_URL + '/sitemap.xml')}`;
-    https.get(url, (res) => {
+    const req = https.get(url, (res) => {
       console.log(`Google ping: ${res.statusCode}`);
-      resolve();
-    }).on('error', () => resolve());
+      res.resume();
+      finish();
+    });
+    req.setTimeout(15000, () => { req.destroy(); finish(); });
+    req.on('error', (e) => { console.log('Google ping error:', e.message); finish(); });
   });
 }
 
@@ -597,38 +613,44 @@ async function main() {
   }
 
   const blogPath = path.join(BLOG_DIR, `${nextBlog.slug}.html`);
+  let reusedExisting = false;
   if (fs.existsSync(blogPath)) {
-    console.log(`Blog exists: ${nextBlog.slug} — marking published.`);
-    nextBlog.status = 'published';
-    nextBlog.published_at = new Date().toISOString();
-    fs.writeFileSync(QUEUE_FILE, JSON.stringify(queue, null, 2));
-    process.exit(0);
+    const existing = fs.readFileSync(blogPath, 'utf-8');
+    if (existing.includes('</html>') && existing.length > 5000 && existing.includes('tocList')) {
+      reusedExisting = true;
+      console.log(`Valid HTML already exists: ${nextBlog.slug} — recovering (skipping generation).`);
+    } else {
+      console.log(`Partial/corrupt file found: ${nextBlog.slug} — regenerating.`);
+      fs.unlinkSync(blogPath);
+    }
   }
 
-  console.log(`Blog: ${nextBlog.title}`);
-  console.log(`Keywords: ${nextBlog.keywords.join(', ')}\n`);
+  if (!reusedExisting) {
+    console.log(`Blog: ${nextBlog.title}`);
+    console.log(`Keywords: ${nextBlog.keywords.join(', ')}\n`);
 
-  const [content, metaDesc, conclusion] = await Promise.all([
-    generateBlogContent(nextBlog),
-    generateMetaDescription(nextBlog.title, nextBlog.keywords),
-    generateConclusion(nextBlog.title, nextBlog.keywords)
-  ]);
+    const [content, metaDesc, conclusion] = await Promise.all([
+      generateBlogContent(nextBlog),
+      generateMetaDescription(nextBlog.title, nextBlog.keywords),
+      generateConclusion(nextBlog.title, nextBlog.keywords)
+    ]);
 
-  if (!content || content.length < 500) {
-    console.error('Content generation failed (too short)');
-    process.exit(1);
+    if (!content || content.length < 500) {
+      console.error('Content generation failed (too short)');
+      process.exit(1);
+    }
+    console.log(`Content: ${content.length} chars`);
+    console.log('Meta description: OK');
+    console.log('Conclusion: OK');
+
+    const heroSVG = createHeroSVG(nextBlog);
+    fs.writeFileSync(path.join(IMAGES_DIR, `${nextBlog.slug}-hero.svg`), heroSVG);
+    console.log('Hero SVG: created');
+
+    const blogHTML = createBlogHTML(nextBlog, content, metaDesc, conclusion);
+    fs.writeFileSync(blogPath, blogHTML);
+    console.log('Blog HTML: created');
   }
-  console.log(`Content: ${content.length} chars`);
-  console.log('Meta description: OK');
-  console.log('Conclusion: OK');
-
-  const heroSVG = createHeroSVG(nextBlog);
-  fs.writeFileSync(path.join(IMAGES_DIR, `${nextBlog.slug}-hero.svg`), heroSVG);
-  console.log('Hero SVG: created');
-
-  const blogHTML = createBlogHTML(nextBlog, content, metaDesc, conclusion);
-  fs.writeFileSync(blogPath, blogHTML);
-  console.log('Blog HTML: created');
 
   updateBlogHTML(nextBlog);
   updateIndexHTML(nextBlog);
@@ -649,7 +671,7 @@ async function main() {
   console.log('========================================');
 }
 
-module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, BLOG_DIR };
+module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, updateBlogHTML, updateIndexHTML, updateSitemap, BLOG_DIR };
 
 if (require.main === module) {
   main().catch((err) => {
