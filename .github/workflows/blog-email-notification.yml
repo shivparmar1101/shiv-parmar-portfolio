@@ -60,10 +60,10 @@ jobs:
       - name: Send email notification
         if: steps.detect.outputs.has_new_blog == 'true'
         env:
-          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME || 'parmarshiv1101@gmail.com' }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO || 'parmarshiv1101@gmail.com' }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM || 'parmarshiv1101@gmail.com' }}
           BLOG_TITLE: ${{ steps.detect.outputs.blog_title }}
           BLOG_DESC: ${{ steps.detect.outputs.blog_description }}
           BLOG_URL: ${{ steps.detect.outputs.blog_url }}

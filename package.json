@@ -16,7 +16,10 @@
     "blog:publish": "node scripts/publish-blog.js",
     "blog:quick": "node scripts/quick-publish.js",
     "blog:check": "node scripts/check-blog-seo.js",
-    "blog:list": "ls blog/*.html | xargs -I {} basename {} .html"
+    "blog:list": "ls blog/*.html | xargs -I {} basename {} .html",
+    "setup:apis": "node scripts/setup-apis.js",
+    "email:test": "node scripts/test-email.js",
+    "blog:auto": "node scripts/auto-blog-generator.js"
   },
   "keywords": [
     "seo",

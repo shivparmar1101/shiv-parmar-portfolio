@@ -6,13 +6,47 @@
  */
 
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
 
-// Email Config
+// Load .env if exists
+(function loadEnv() {
+  const envPath = path.join(__dirname, '..', '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf-8').split('\n')) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const eq = t.indexOf('=');
+    if (eq === -1) continue;
+    const key = t.substring(0, eq).trim();
+    let val = t.substring(eq + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!process.env[key]) process.env[key] = val;
+  }
+})();
+
+// Email Config (from environment variables)
+const EMAIL_USER = process.env.EMAIL_USERNAME || 'parmarshiv1101@gmail.com';
+const EMAIL_PASS = process.env.EMAIL_PASSWORD;
+
+if (!EMAIL_PASS) {
+  console.error('ERROR: EMAIL_PASSWORD environment variable is not set.');
+  console.error('');
+  console.error('Set it first:');
+  console.error('  Windows: set EMAIL_PASSWORD=your-16-char-app-password');
+  console.error('  Linux/Mac: export EMAIL_PASSWORD=your-16-char-app-password');
+  console.error('');
+  console.error('Or add it to .env file in project root.');
+  process.exit(1);
+}
+
 const config = {
-  from: 'parmarshiv1101@gmail.com',
-  to: 'parmarshiv1101@gmail.com',
+  from: EMAIL_USER,
+  to: EMAIL_USER,
   subject: 'Test Email - Blog Notification System Working!',
-  password: 'wwok yben jcoh atqj'
+  password: EMAIL_PASS
 };
 
 // Email HTML Template

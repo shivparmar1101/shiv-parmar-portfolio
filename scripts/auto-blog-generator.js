@@ -7,32 +7,54 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Config
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyAb8RN6L4f_unA2inGFnJ5hslmY0rYHGZkpUvi2OP6-789ru6tA';
+// Load .env if exists
+(function loadEnv() {
+  const envPath = path.join(__dirname, '..', '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf-8').split('\n')) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const eq = t.indexOf('=');
+    if (eq === -1) continue;
+    const key = t.substring(0, eq).trim();
+    let val = t.substring(eq + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!process.env[key]) process.env[key] = val;
+  }
+})();
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 const SITE_URL = 'https://shiv-parmar-portfolio.netlify.app';
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const QUEUE_FILE = path.join(__dirname, '..', 'blog-queue.json');
 const IMAGES_DIR = path.join(__dirname, '..', 'images', 'blog');
 
-/**
- * Call Gemini API
- */
-async function callGeminiAPI(prompt) {
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function callGeminiAPI(prompt) {
   return new Promise((resolve, reject) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
-    
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
     const postData = JSON.stringify({
-      contents: [{
-        parts: [{
-          text: prompt
-        }]
-      }]
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
     });
 
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-goog-api-key': GEMINI_API_KEY
       }
     };
 
@@ -45,7 +67,7 @@ async function callGeminiAPI(prompt) {
           if (response.candidates && response.candidates[0]) {
             resolve(response.candidates[0].content.parts[0].text);
           } else {
-            reject(new Error('No response from Gemini API'));
+            reject(new Error(data.substring(0, 500)));
           }
         } catch (e) {
           reject(e);
@@ -59,15 +81,12 @@ async function callGeminiAPI(prompt) {
   });
 }
 
-/**
- * Generate blog content using Gemini API
- */
 async function generateBlogContent(blog) {
   const prompt = `Write a comprehensive, SEO-optimized blog post about "${blog.title}".
 
 Requirements:
 1. Write 2000-2500 words
-2. Use proper HTML formatting with h2 and h3 headings
+2. Use proper HTML formatting with h2 and h3 headings only (no html/head/body tags)
 3. Include practical code examples where relevant
 4. Write in a professional, helpful tone
 5. Include an introduction that hooks the reader
@@ -83,47 +102,106 @@ Structure:
 - Common Mistakes to Avoid (h2)
 - Conclusion (2-3 paragraphs)
 
+Primary keywords to use naturally: ${blog.keywords.join(', ')}.
+
 Return ONLY the HTML content (no head, no body tags, just the article content).`;
 
-  try {
-    console.log('Generating content with Gemini API...');
-    const content = await callGeminiAPI(prompt);
-    return content;
-  } catch (error) {
-    console.error('Error generating content:', error.message);
-    return null;
-  }
+  console.log(`Generating content with ${GEMINI_MODEL}...`);
+  const content = await callGeminiAPI(prompt);
+  return content.replace(/```html\n?|```/g, '').trim();
 }
 
-/**
- * Generate meta description
- */
-async function generateMetaDescription(title) {
-  const prompt = `Write a compelling meta description (120-160 characters) for a blog post titled "${title}". Include the primary keyword naturally. Return ONLY the meta description text, nothing else.`;
+async function generateMetaDescription(title, keywords) {
+  const prompt = `Write a compelling meta description (120-160 characters) for a blog post titled "${title}". Include the primary keyword naturally: ${keywords[0]}. Return ONLY the meta description text, nothing else.`;
 
   try {
     const desc = await callGeminiAPI(prompt);
-    return desc.trim().substring(0, 160);
+    return desc.trim().replace(/^["']|["']$/g, '').substring(0, 160);
   } catch (error) {
     return `Learn about ${title} with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.`;
   }
 }
 
-/**
- * Create blog HTML file
- */
+function wrapTitle(title, maxChars = 36) {
+  const words = title.split(' ');
+  const lines = [];
+  let current = '';
+  for (const word of words) {
+    if ((current + ' ' + word).trim().length > maxChars && current) {
+      lines.push(current.trim());
+      current = word;
+    } else {
+      current = (current + ' ' + word).trim();
+    }
+  }
+  if (current) lines.push(current.trim());
+  return lines.slice(0, 4);
+}
+
+function createHeroSVG(blog) {
+  const lines = wrapTitle(blog.title);
+  const startY = 315 - (lines.length - 1) * 28;
+  const titleSvg = lines.map((line, i) =>
+    `<text x="600" y="${startY + i * 56}" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="48" font-weight="800" fill="#f0f0f0">${escapeHtml(line)}</text>`
+  ).join('\n  ');
+
+  const keyword = escapeHtml(blog.keywords[0] || 'WordPress');
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f2a"/>
+      <stop offset="50%" stop-color="#0d1225"/>
+      <stop offset="100%" stop-color="#111830"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#c9a84c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#e8d48b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <circle cx="150" cy="120" r="180" fill="#c9a84c" opacity="0.05"/>
+  <circle cx="1050" cy="520" r="220" fill="#c9a84c" opacity="0.04"/>
+  <rect x="400" y="140" width="400" height="2" fill="url(#goldGrad)" opacity="0.6"/>
+  ${titleSvg}
+  <rect x="450" y="${startY + lines.length * 56 - 10}" width="300" height="2" fill="url(#goldGrad)" opacity="0.4"/>
+  <text x="600" y="${startY + lines.length * 56 + 40}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="22" font-weight="500" fill="#c9a84c" filter="url(#glow)">${keyword}</text>
+  <text x="600" y="560" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="18" fill="#666">shiv-parmar-portfolio.netlify.app</text>
+  <text x="600" y="590" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="16" fill="#555">WordPress Developer Guide by Shiv Parmar</text>
+</svg>`;
+}
+
+function countPublishedBlogs() {
+  try {
+    return fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.html')).length;
+  } catch {
+    return 0;
+  }
+}
+
 function createBlogHTML(blog, content, metaDesc) {
   const today = new Date().toISOString().split('T')[0];
-  const readTime = Math.ceil(content.split(' ').length / 200);
+  const readTime = Math.max(5, Math.ceil(content.replace(/<[^>]*>/g, ' ').split(/\s+/).length / 200));
+  const safeTitle = escapeHtml(blog.title);
+  const safeDesc = escapeHtml(metaDesc);
+  const safeKeywords = escapeHtml(blog.keywords.join(', '));
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${blog.title} | Shiv Parmar</title>
-<meta name="description" content="${metaDesc}">
-<meta name="keywords" content="${blog.keywords.join(', ')}">
+<title>${safeTitle} | Shiv Parmar</title>
+<meta name="description" content="${safeDesc}">
+<meta name="keywords" content="${safeKeywords}">
 <meta name="author" content="Shiv Parmar">
 <meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
 <meta name="robots" content="index, follow">
@@ -131,10 +209,11 @@ function createBlogHTML(blog, content, metaDesc) {
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="${blog.title}">
-<meta property="og:description" content="${metaDesc}">
+<meta property="og:title" content="${safeTitle}">
+<meta property="og:description" content="${safeDesc}">
 <meta property="og:url" content="${SITE_URL}/blog/${blog.slug}">
-<meta property="og:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.png">
+<meta property="og:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.svg">
+<meta property="og:image:alt" content="${safeTitle} - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
@@ -142,9 +221,10 @@ function createBlogHTML(blog, content, metaDesc) {
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${blog.title}">
-<meta name="twitter:description" content="${metaDesc}">
-<meta name="twitter:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.png">
+<meta name="twitter:title" content="${safeTitle}">
+<meta name="twitter:description" content="${safeDesc}">
+<meta name="twitter:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.svg">
+<meta name="twitter:image:alt" content="${safeTitle} - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
 <!-- Schema.org -->
@@ -152,13 +232,13 @@ function createBlogHTML(blog, content, metaDesc) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "${blog.title}",
-  "description": "${metaDesc}",
+  "headline": ${JSON.stringify(blog.title)},
+  "description": ${JSON.stringify(metaDesc)},
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "${SITE_URL}/" },
   "datePublished": "${today}",
   "dateModified": "${today}",
-  "image": "${SITE_URL}/images/blog/${blog.slug}-hero.png",
+  "image": "${SITE_URL}/images/blog/${blog.slug}-hero.svg",
   "mainEntityOfPage": "${SITE_URL}/blog/${blog.slug}"
 }
 </script>
@@ -201,8 +281,8 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
 .author-box .author-social{display:flex;gap:12px}
 .author-box .author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500}
-.hero-img{width:100%;height:400px;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
-@media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}}
 </style>
 </head>
 <body>
@@ -219,12 +299,12 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </noscript>
 </div>
 <article><div class="container">
-<img src="../images/blog/${blog.slug}-hero.png" alt="${blog.title} - WordPress development guide by Shiv Parmar" class="hero-img">
+<img src="../images/blog/${blog.slug}-hero.svg" alt="${safeTitle} - WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>${blog.title}
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>${safeTitle}
 </nav>
 <div class="date">${today} &middot; ${readTime} min read</div>
-<h1>${blog.title}</h1>
+<h1>${safeTitle}</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
 <ul id="tocList"></ul>
@@ -244,7 +324,7 @@ ${content}
 </div>
 
 <div class="tags">
-${blog.keywords.map(k => `<a href="/blog" class="tag">${k}</a>`).join('\n')}
+${blog.keywords.map(k => `<a href="/blog" class="tag">${escapeHtml(k)}</a>`).join('\n')}
 </div>
 
 <div class="author-box">
@@ -289,84 +369,139 @@ ${blog.keywords.map(k => `<a href="/blog" class="tag">${k}</a>`).join('\n')}
 </html>`;
 }
 
-/**
- * Update blog.html with new card
- */
+function buildBlogCard(blog) {
+  const today = new Date().toISOString().split('T')[0];
+  const desc = escapeHtml(blog.keywords.slice(0, 2).join(', ') + ' - comprehensive guide by Shiv Parmar.');
+  return `<article class="blog-card reveal">
+            <div class="date">${today} &middot; 8 min read</div>
+            <h3><a href="blog/${blog.slug}.html">${escapeHtml(blog.title)}</a></h3>
+            <p>${desc}</p>
+            <a class="read-more" href="blog/${blog.slug}.html">Read more &rarr;</a>
+          </article>`;
+}
+
 function updateBlogHTML(blog) {
   const blogHTMLPath = path.join(__dirname, '..', 'blog.html');
   let blogHTML = fs.readFileSync(blogHTMLPath, 'utf-8');
-  
-  const today = new Date().toISOString().split('T')[0];
-  const newCard = `<article class="blog-card reveal">
-            <div class="date">${today} &middot; 8 min read</div>
-            <h3><a href="blog/${blog.slug}.html">${blog.title}</a></h3>
-            <p>${blog.keywords.slice(0, 2).join(', ')} - comprehensive guide by Shiv Parmar.</p>
-            <a class="read-more" href="blog/${blog.slug}.html">Read more &rarr;</a>
-          </article>`;
+  const newCard = buildBlogCard(blog);
 
-  // Insert after BLOG_CARDS_START
-  blogHTML = blogHTML.replace(
-    '<!-- BLOG_CARDS_START -->',
-    '<!-- BLOG_CARDS_START -->\n' + newCard
-  );
+  if (blogHTML.includes('<!-- BLOG_CARDS_START -->')) {
+    blogHTML = blogHTML.replace(
+      '<!-- BLOG_CARDS_START -->',
+      '<!-- BLOG_CARDS_START -->\n' + newCard
+    );
+  }
 
-  // Update blog count in schema
-  blogHTML = blogHTML.replace(
-    /"numberOfItems": \d+/,
-    '"numberOfItems": ' + (33)
-  );
+  const total = countPublishedBlogs();
+  blogHTML = blogHTML.replace(/"numberOfItems":\s*\d+/, `"numberOfItems": ${total}`);
 
   fs.writeFileSync(blogHTMLPath, blogHTML);
-  console.log('blog.html updated');
+  console.log(`blog.html updated (total blogs: ${total})`);
 }
 
-/**
- * Main function
- */
+function updateIndexHTML(blog) {
+  const indexPath = path.join(__dirname, '..', 'index.html');
+  let html = fs.readFileSync(indexPath, 'utf-8');
+  const startTag = '<!-- BLOG_CARDS_START -->';
+  const endTag = '<!-- BLOG_CARDS_END -->';
+
+  const startIdx = html.indexOf(startTag);
+  const endIdx = html.indexOf(endTag);
+  if (startIdx === -1 || endIdx === -1) return;
+
+  const section = html.substring(startIdx + startTag.length, endIdx);
+  const cardRe = /<article class="blog-card[\s\S]*?<\/article>/g;
+  const cards = section.match(cardRe) || [];
+
+  const newCard = buildBlogCard(blog);
+  cards.unshift(newCard);
+  const top3 = cards.slice(0, 3).join('\n');
+
+  html = html.substring(0, startIdx + startTag.length) + '\n' + top3 + html.substring(endIdx);
+  fs.writeFileSync(indexPath, html);
+  console.log('index.html updated (top 3 cards)');
+}
+
+function updateSitemap(blog) {
+  const sitemapPath = path.join(__dirname, '..', 'sitemap.xml');
+  if (!fs.existsSync(sitemapPath)) return;
+
+  let sitemap = fs.readFileSync(sitemapPath, 'utf-8');
+  const today = new Date().toISOString().split('T')[0];
+  const url = `${SITE_URL}/blog/${blog.slug}`;
+
+  if (sitemap.includes(url)) return;
+
+  const entry = `  <url>
+    <loc>${url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+
+  sitemap = sitemap.replace('</urlset>', entry + '</urlset>');
+  fs.writeFileSync(sitemapPath, sitemap);
+  console.log('sitemap.xml updated');
+}
+
 async function main() {
   console.log('========================================');
   console.log('Auto Blog Generator');
+  console.log(`Model: ${GEMINI_MODEL}`);
   console.log('========================================\n');
 
-  // Read queue
+  if (!GEMINI_API_KEY) {
+    console.error('ERROR: GEMINI_API_KEY environment variable is not set.');
+    process.exit(1);
+  }
+
+  if (!fs.existsSync(BLOG_DIR)) fs.mkdirSync(BLOG_DIR, { recursive: true });
+  if (!fs.existsSync(IMAGES_DIR)) fs.mkdirSync(IMAGES_DIR, { recursive: true });
+
   const queue = JSON.parse(fs.readFileSync(QUEUE_FILE, 'utf-8'));
-  
-  // Find next pending blog
   const nextBlog = queue.blogs.find(b => b.status === 'pending');
-  
+
   if (!nextBlog) {
     console.log('No pending blogs in queue!');
     process.exit(0);
   }
 
-  console.log(`Next blog: ${nextBlog.title}`);
-  console.log(`Publish time: ${nextBlog.publish_time}`);
-  console.log(`Keywords: ${nextBlog.keywords.join(', ')}\n`);
-
-  // Generate content
-  const content = await generateBlogContent(nextBlog);
-  
-  if (!content) {
-    console.error('Failed to generate content');
-    process.exit(1);
+  const blogPath = path.join(BLOG_DIR, `${nextBlog.slug}.html`);
+  if (fs.existsSync(blogPath)) {
+    console.log(`Blog already exists: ${nextBlog.slug}.html — marking as published.`);
+    nextBlog.status = 'published';
+    nextBlog.published_at = new Date().toISOString();
+    fs.writeFileSync(QUEUE_FILE, JSON.stringify(queue, null, 2));
+    process.exit(0);
   }
 
-  console.log('Content generated successfully!');
+  console.log(`Next blog: ${nextBlog.title}`);
+  console.log(`Keywords: ${nextBlog.keywords.join(', ')}\n`);
 
-  // Generate meta description
-  const metaDesc = await generateMetaDescription(nextBlog.title);
+  const content = await generateBlogContent(nextBlog);
+  if (!content || content.length < 500) {
+    console.error('Failed to generate content (too short or empty)');
+    process.exit(1);
+  }
+  console.log(`Content generated (${content.length} chars)`);
+
+  const metaDesc = await generateMetaDescription(nextBlog.title, nextBlog.keywords);
   console.log('Meta description generated');
 
-  // Create blog HTML
+  const heroSVG = createHeroSVG(nextBlog);
+  const heroPath = path.join(IMAGES_DIR, `${nextBlog.slug}-hero.svg`);
+  fs.writeFileSync(heroPath, heroSVG);
+  console.log(`Hero SVG created: ${heroPath}`);
+
   const blogHTML = createBlogHTML(nextBlog, content, metaDesc);
-  const blogPath = path.join(BLOG_DIR, `${nextBlog.slug}.html`);
   fs.writeFileSync(blogPath, blogHTML);
   console.log(`Blog file created: ${blogPath}`);
 
-  // Update blog.html
   updateBlogHTML(nextBlog);
+  updateIndexHTML(nextBlog);
+  updateSitemap(nextBlog);
 
-  // Update queue status
   nextBlog.status = 'published';
   nextBlog.published_at = new Date().toISOString();
   fs.writeFileSync(QUEUE_FILE, JSON.stringify(queue, null, 2));
@@ -378,5 +513,7 @@ async function main() {
   console.log('========================================');
 }
 
-// Run
-main().catch(console.error);
+main().catch((err) => {
+  console.error('Fatal error:', err.message || err);
+  process.exit(1);
+});

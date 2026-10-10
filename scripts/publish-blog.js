@@ -10,6 +10,24 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+// Load .env if exists
+(function loadEnv() {
+  const envPath = path.join(__dirname, '..', '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf-8').split('\n')) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const eq = t.indexOf('=');
+    if (eq === -1) continue;
+    const key = t.substring(0, eq).trim();
+    let val = t.substring(eq + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!process.env[key]) process.env[key] = val;
+  }
+})();
+
 // Config
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const SITE_URL = 'https://shiv-parmar-portfolio.netlify.app';

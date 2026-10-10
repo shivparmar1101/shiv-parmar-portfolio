@@ -5,6 +5,26 @@
  */
 
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
+
+// Load .env if exists
+(function loadEnv() {
+  const envPath = path.join(__dirname, '..', '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf-8').split('\n')) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const eq = t.indexOf('=');
+    if (eq === -1) continue;
+    const key = t.substring(0, eq).trim();
+    let val = t.substring(eq + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!process.env[key]) process.env[key] = val;
+  }
+})();
 
 async function sendEmail() {
   const { EMAIL_USERNAME, EMAIL_PASSWORD, EMAIL_TO, EMAIL_FROM, BLOG_TITLE, BLOG_DESC, BLOG_URL } = process.env;
