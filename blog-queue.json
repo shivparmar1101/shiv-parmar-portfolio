@@ -2,26 +2,26 @@
   "blogs": [
     {
       "id": 1,
-      "title": "WordPress Core Web Vitals: INP Optimization Guide 2026",
-      "slug": "wordpress-core-web-vitals-inp-optimization-guide-2026",
+      "title": "WordPress 7.1.3 Security Release: What You Need to Know",
+      "slug": "wordpress-7-1-3-security-release-guide",
       "keywords": [
-        "WordPress INP",
-        "Core Web Vitals",
-        "page speed"
+        "WordPress 7.1.3",
+        "security update",
+        "WordPress patch"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-10",
       "status": "published",
-      "published_at": "2026-10-10T10:41:29.154Z"
+      "published_at": "2026-10-10T12:58:53.693Z"
     },
     {
       "id": 2,
-      "title": "WordPress Speculative Loading: Complete Setup Guide",
-      "slug": "wordpress-speculative-loading-complete-setup-guide",
+      "title": "Bricksforge Critical Vulnerability: Fix Your Site Now",
+      "slug": "bricksforge-critical-vulnerability-fix-guide",
       "keywords": [
-        "speculative loading",
-        "WordPress performance",
-        "page speed"
+        "Bricksforge",
+        "critical vulnerability",
+        "file upload"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-10",
@@ -29,12 +29,12 @@
     },
     {
       "id": 3,
-      "title": "WordPress Full Site Editing: Complete Guide 2026",
-      "slug": "wordpress-full-site-editing-complete-guide-2026",
+      "title": "Elementor CSRF Vulnerability: 2 Million Sites at Risk",
+      "slug": "elementor-csrf-vulnerability-2-million-sites",
       "keywords": [
-        "WordPress FSE",
-        "Full Site Editing",
-        "block themes"
+        "Elementor",
+        "CSRF",
+        "WordPress security"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-11",
@@ -42,12 +42,12 @@
     },
     {
       "id": 4,
-      "title": "WordPress Block Theme Performance Optimization",
-      "slug": "wordpress-block-theme-performance-optimization",
+      "title": "WordPress Plugin Auto-Update Cooldown: Protect The Shire",
+      "slug": "wordpress-plugin-auto-update-cooldown-protect-shire",
       "keywords": [
-        "block theme",
-        "WordPress speed",
-        "theme optimization"
+        "auto-update",
+        "plugin security",
+        "WordPress.org"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-11",
@@ -55,12 +55,12 @@
     },
     {
       "id": 5,
-      "title": "Gutenberg 23.9: New Features & Block Patterns",
-      "slug": "gutenberg-23-9-new-features-block-patterns",
+      "title": "Best WordPress MCP Plugins 2026: 21 Tested & Compared",
+      "slug": "best-wordpress-mcp-plugins-2026-tested-compared",
       "keywords": [
-        "Gutenberg 23.9",
-        "block patterns",
-        "WordPress editor"
+        "WordPress MCP",
+        "MCP plugins",
+        "AI integration"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-12",
@@ -68,12 +68,12 @@
     },
     {
       "id": 6,
-      "title": "How to Reduce WordPress Plugin Bloat in 2026",
-      "slug": "how-to-reduce-wordpress-plugin-bloat-2026",
+      "title": "WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide",
+      "slug": "wordpress-mcp-oauth-2-1-secure-ai-access",
       "keywords": [
-        "WordPress plugin bloat",
-        "site speed",
-        "optimization"
+        "MCP OAuth",
+        "WordPress security",
+        "AI access"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-12",
@@ -81,12 +81,12 @@
     },
     {
       "id": 7,
-      "title": "WordPress Design System Theming: Complete Guide",
-      "slug": "wordpress-design-system-theming-complete-guide",
+      "title": "Connect Claude to WordPress via MCP: Complete Setup",
+      "slug": "connect-claude-to-wordpress-via-mcp-setup",
       "keywords": [
-        "WordPress theming",
-        "design system",
-        "block themes"
+        "Claude WordPress",
+        "MCP setup",
+        "AI assistant"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-13",
@@ -94,12 +94,12 @@
     },
     {
       "id": 8,
-      "title": "WordPress Zero Trust Security Guide 2026",
-      "slug": "wordpress-zero-trust-security-guide-2026",
+      "title": "Manage WordPress with ChatGPT: MCP Plugin Guide 2026",
+      "slug": "manage-wordpress-with-chatgpt-mcp-plugin-2026",
       "keywords": [
-        "WordPress security",
-        "Zero Trust",
-        "website security"
+        "ChatGPT WordPress",
+        "MCP plugin",
+        "site management"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-13",
@@ -107,12 +107,12 @@
     },
     {
       "id": 9,
-      "title": "WordPress AI Firewall: Protect Your Site from Bots",
-      "slug": "wordpress-ai-firewall-protect-your-site-from-bots",
+      "title": "Best WordPress Plugins 2026: Top 30 Ranked by Category",
+      "slug": "best-wordpress-plugins-2026-top-30-ranked",
       "keywords": [
-        "WordPress firewall",
-        "AI bots",
-        "security"
+        "best WordPress plugins",
+        "plugin comparison",
+        "2026"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-14",
@@ -120,12 +120,12 @@
     },
     {
       "id": 10,
-      "title": "llms.txt: Control AI Crawlers on WordPress",
-      "slug": "llms-txt-control-ai-crawlers-on-wordpress",
+      "title": "Best WordPress Themes 2026: Speed & Design Compared",
+      "slug": "best-wordpress-themes-2026-speed-design-compared",
       "keywords": [
-        "llms.txt",
-        "AI crawlers",
-        "content control"
+        "best WordPress themes",
+        "theme comparison",
+        "2026"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-14",
@@ -133,12 +133,12 @@
     },
     {
       "id": 11,
-      "title": "Headless WordPress with Next.js: Complete Setup 2026",
-      "slug": "headless-wordpress-with-nextjs-complete-setup-2026",
+      "title": "Best WordPress Booking Plugins 2026: 6 Picks Tested",
+      "slug": "best-wordpress-booking-plugins-2026-tested",
       "keywords": [
-        "headless WordPress",
-        "Next.js",
-        "API-first"
+        "booking plugins",
+        "appointments",
+        "WordPress booking"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-15",
@@ -146,12 +146,12 @@
     },
     {
       "id": 12,
-      "title": "WordPress REST API vs GraphQL: Which to Use?",
-      "slug": "wordpress-rest-api-vs-graphql-which-to-use",
+      "title": "Best WordPress Migration Plugins 2026: 6 Picks Tested",
+      "slug": "best-wordpress-migration-plugins-2026-tested",
       "keywords": [
-        "WordPress REST API",
-        "GraphQL",
-        "API comparison"
+        "migration plugins",
+        "site transfer",
+        "WordPress migration"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-15",
@@ -159,12 +159,12 @@
     },
     {
       "id": 13,
-      "title": "WooCommerce Subscriptions: Complete Setup Guide 2026",
-      "slug": "woocommerce-subscriptions-complete-setup-guide-2026",
+      "title": "Best WordPress Security Plugins 2026: Full Protection Guide",
+      "slug": "best-wordpress-security-plugins-2026-protection",
       "keywords": [
-        "WooCommerce Subscriptions",
-        "recurring payments",
-        "ecommerce"
+        "security plugins",
+        "Wordfence",
+        "protection"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-16",
@@ -172,12 +172,12 @@
     },
     {
       "id": 14,
-      "title": "WordPress Multisite: Advanced Management Tips",
-      "slug": "wordpress-multisite-advanced-management-tips",
+      "title": "Best WordPress Caching Plugins 2026: WP Rocket vs LiteSpeed",
+      "slug": "best-wordpress-caching-plugins-2026-compared",
       "keywords": [
-        "WordPress Multisite",
-        "network admin",
-        "multi-site"
+        "caching plugins",
+        "WP Rocket",
+        "site speed"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-16",
@@ -185,12 +185,12 @@
     },
     {
       "id": 15,
-      "title": "WordPress Membership Sites: Plugins Compared 2026",
-      "slug": "wordpress-membership-sites-plugins-compared-2026",
+      "title": "WordPress 7.1 Mary Lou: Complete Feature Breakdown",
+      "slug": "wordpress-7-1-mary-lou-feature-breakdown",
       "keywords": [
-        "membership plugins",
-        "WordPress membership",
-        "restrict content"
+        "WordPress 7.1",
+        "Mary Lou",
+        "new features"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-17",
@@ -198,13 +198,12 @@
     },
     {
       "id": 16,
-      "title": "WooCommerce Payment Gateways: Best Options 2026",
-      "slug": "woocommerce-payment-gateways-best-options-2026",
+      "title": "WordPress 7.1 AI Client: Streaming & Embeddings Guide",
+      "slug": "wordpress-7-1-ai-client-streaming-embeddings",
       "keywords": [
-        "WooCommerce payments",
-        "payment gateways",
-        "Stripe",
-        "PayPal"
+        "AI Client",
+        "embeddings",
+        "WordPress AI"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-17",
@@ -212,12 +211,12 @@
     },
     {
       "id": 17,
-      "title": "WordPress Image Optimization: Ultimate Guide 2026",
-      "slug": "wordpress-image-optimization-ultimate-guide-2026",
+      "title": "WordPress Abilities API: Build AI Features in Plugins",
+      "slug": "wordpress-abilities-api-build-ai-features",
       "keywords": [
-        "image optimization",
-        "WebP",
-        "WordPress media"
+        "Abilities API",
+        "AI features",
+        "plugin development"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-18",
@@ -225,12 +224,12 @@
     },
     {
       "id": 18,
-      "title": "WordPress Email SMTP: Fix Email Delivery Issues",
-      "slug": "wordpress-email-smtp-fix-email-delivery",
+      "title": "WordPress 7.1 Image Processing: WebAssembly Editor",
+      "slug": "wordpress-7-1-image-processing-webassembly",
       "keywords": [
-        "WordPress SMTP",
-        "email delivery",
-        "contact form"
+        "WebAssembly",
+        "image editor",
+        "browser processing"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-18",
@@ -238,12 +237,12 @@
     },
     {
       "id": 19,
-      "title": "WooCommerce Shipping: Advanced Zone Rates Guide",
-      "slug": "woocommerce-shipping-advanced-zone-rates-guide",
+      "title": "WordPress Command Palette 7.1: Master Ctrl+K Shortcuts",
+      "slug": "wordpress-command-palette-master-ctrl-k",
       "keywords": [
-        "WooCommerce shipping",
-        "shipping zones",
-        "ecommerce logistics"
+        "command palette",
+        "shortcuts",
+        "productivity"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-19",
@@ -251,12 +250,12 @@
     },
     {
       "id": 20,
-      "title": "WordPress Accessibility: WCAG Compliance Guide 2026",
-      "slug": "wordpress-accessibility-wcag-compliance-guide-2026",
+      "title": "WordPress Notes Feature: Block-Level Team Collaboration",
+      "slug": "wordpress-notes-block-level-collaboration",
       "keywords": [
-        "WordPress accessibility",
-        "WCAG",
-        "ADA compliance"
+        "WordPress Notes",
+        "collaboration",
+        "review"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-19",
@@ -264,12 +263,12 @@
     },
     {
       "id": 21,
-      "title": "How to Create a WordPress Child Theme Correctly",
-      "slug": "how-to-create-wordpress-child-theme-correctly",
+      "title": "Answer Engine Optimization: Complete AEO Guide 2026",
+      "slug": "answer-engine-optimization-complete-aeo-guide",
       "keywords": [
-        "child theme",
-        "WordPress theming",
-        "customization"
+        "AEO",
+        "answer engine",
+        "AI search"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-20",
@@ -277,12 +276,12 @@
     },
     {
       "id": 22,
-      "title": "WordPress Cron Jobs: Performance Issues & Fixes",
-      "slug": "wordpress-cron-jobs-performance-issues-fixes-2026",
+      "title": "Rank in Google AI Overviews: WordPress Optimization",
+      "slug": "rank-google-ai-overviews-wordpress-optimization",
       "keywords": [
-        "WP-Cron",
-        "WordPress performance",
-        "scheduled tasks"
+        "AI Overviews",
+        "Google AI",
+        "ranking"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-20",
@@ -290,12 +289,12 @@
     },
     {
       "id": 23,
-      "title": "WooCommerce Product Import: CSV Complete Guide",
-      "slug": "woocommerce-product-import-csv-complete-guide",
+      "title": "ChatGPT SEO: Get Your WordPress Site Cited by AI",
+      "slug": "chatgpt-seo-get-wordpress-cited-by-ai",
       "keywords": [
-        "WooCommerce CSV",
-        "product import",
-        "bulk upload"
+        "ChatGPT SEO",
+        "AI citations",
+        "visibility"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-21",
@@ -303,12 +302,12 @@
     },
     {
       "id": 24,
-      "title": "WordPress Security Hardening: 20 Essential Steps",
-      "slug": "wordpress-security-hardening-essential-steps",
+      "title": "FAQ Schema for AI Search: WordPress Implementation Guide",
+      "slug": "faq-schema-ai-search-wordpress-guide",
       "keywords": [
-        "WordPress security",
-        "hardening",
-        "best practices"
+        "FAQ schema",
+        "structured data",
+        "AI search"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-21",
@@ -316,12 +315,12 @@
     },
     {
       "id": 25,
-      "title": "How to Speed Up WordPress: 15 Actionable Tips",
-      "slug": "how-to-speed-up-wordpress-actionable-tips-2026",
+      "title": "Zero-Click Searches: WordPress Strategy for AI Era",
+      "slug": "zero-click-searches-wordpress-ai-strategy",
       "keywords": [
-        "WordPress speed",
-        "performance",
-        "caching"
+        "zero-click",
+        "AI search",
+        "traffic"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-22",
@@ -329,12 +328,12 @@
     },
     {
       "id": 26,
-      "title": "WordPress Backup: Best Plugins & Strategies 2026",
-      "slug": "wordpress-backup-best-plugins-strategies-2026",
+      "title": "Agentic Commerce: AI Agents Shopping WooCommerce Stores",
+      "slug": "agentic-commerce-ai-agents-woocommerce",
       "keywords": [
-        "WordPress backup",
-        "disaster recovery",
-        "UpdraftPlus"
+        "agentic commerce",
+        "AI shopping",
+        "WooCommerce AI"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-22",
@@ -342,12 +341,12 @@
     },
     {
       "id": 27,
-      "title": "WooCommerce SEO: Complete Store Optimization Guide",
-      "slug": "woocommerce-seo-complete-store-optimization",
+      "title": "WooCommerce MCP: Connect Store to AI Assistants",
+      "slug": "woocommerce-mcp-connect-ai-assistants",
       "keywords": [
-        "WooCommerce SEO",
-        "product schema",
-        "store ranking"
+        "WooCommerce MCP",
+        "AI agents",
+        "store integration"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-23",
@@ -355,12 +354,12 @@
     },
     {
       "id": 28,
-      "title": "WordPress vs Wix vs Squarespace: 2026 Comparison",
-      "slug": "wordpress-vs-wix-vs-squarespace-2026",
+      "title": "Stripe Agentic Commerce Protocol for WooCommerce Setup",
+      "slug": "stripe-agentic-commerce-protocol-woocommerce",
       "keywords": [
-        "website builders",
-        "WordPress comparison",
-        "CMS comparison"
+        "Stripe ACP",
+        "agentic checkout",
+        "WooCommerce"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-23",
@@ -368,12 +367,12 @@
     },
     {
       "id": 29,
-      "title": "How to Migrate WordPress Site Without Downtime",
-      "slug": "how-to-migrate-wordpress-site-without-downtime-2026",
+      "title": "Make WooCommerce Store AI-Agent Readable: Complete Guide",
+      "slug": "make-woocommerce-ai-agent-readable-guide",
       "keywords": [
-        "WordPress migration",
-        "zero downtime",
-        "site transfer"
+        "AI-readable",
+        "product data",
+        "structured content"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-24",
@@ -381,12 +380,12 @@
     },
     {
       "id": 30,
-      "title": "WordPress Custom Post Types: Developer Guide",
-      "slug": "wordpress-custom-post-types-developer-guide",
+      "title": "WordPress Visual Revisions: Scrub Through History Guide",
+      "slug": "wordpress-visual-revisions-complete-guide",
       "keywords": [
-        "custom post types",
-        "WordPress development",
-        "CPT"
+        "visual revisions",
+        "WordPress 7.0",
+        "rollback"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-24",
@@ -394,12 +393,12 @@
     },
     {
       "id": 31,
-      "title": "WooCommerce Analytics: Track Store Performance",
-      "slug": "woocommerce-analytics-track-store-performance",
+      "title": "WordPress Font Manager: Upload Custom Fonts in 7.0",
+      "slug": "wordpress-font-manager-custom-fonts",
       "keywords": [
-        "WooCommerce analytics",
-        "store metrics",
-        "reports"
+        "font manager",
+        "custom fonts",
+        "typography"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-25",
@@ -407,12 +406,12 @@
     },
     {
       "id": 32,
-      "title": "WordPress AI Content Tools: What Works in 2026",
-      "slug": "wordpress-ai-content-tools-what-works-2026",
+      "title": "WordPress Breadcrumb Block: Native SEO Navigation",
+      "slug": "wordpress-breadcrumb-block-native-seo",
       "keywords": [
-        "AI content",
-        "WordPress AI",
-        "content tools"
+        "breadcrumb block",
+        "navigation",
+        "SEO"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-25",
@@ -420,12 +419,12 @@
     },
     {
       "id": 33,
-      "title": "WordPress Theme Development: From Scratch Guide",
-      "slug": "wordpress-theme-development-from-scratch-guide",
+      "title": "Block-Level CSS WordPress 7.0: Style Every Block",
+      "slug": "block-level-css-wordpress-7-style-blocks",
       "keywords": [
-        "theme development",
-        "WordPress themes",
-        "coding guide"
+        "block CSS",
+        "custom styling",
+        "Gutenberg"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-26",
@@ -433,12 +432,12 @@
     },
     {
       "id": 34,
-      "title": "WooCommerce Abandoned Cart Recovery Setup Guide",
-      "slug": "woocommerce-abandoned-cart-recovery-setup-guide",
+      "title": "WordPress View Transitions API: Smooth Page Animations",
+      "slug": "wordpress-view-transitions-smooth-animations",
       "keywords": [
-        "abandoned cart",
-        "WooCommerce recovery",
-        "conversion"
+        "View Transitions",
+        "animations",
+        "UX"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-26",
@@ -446,12 +445,12 @@
     },
     {
       "id": 35,
-      "title": "WordPress Comment Spam: Complete Blocking Guide",
-      "slug": "wordpress-comment-spam-complete-blocking-guide",
+      "title": "WordPress Speculative Loading 7.1: Moderate Mode Guide",
+      "slug": "wordpress-speculative-loading-7-1-guide",
       "keywords": [
-        "comment spam",
-        "Akismet",
-        "WordPress moderation"
+        "speculative loading",
+        "performance",
+        "preloading"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-27",
@@ -459,12 +458,12 @@
     },
     {
       "id": 36,
-      "title": "How to Optimize WordPress Database for Speed",
-      "slug": "how-to-optimize-wordpress-database-for-speed-2026",
+      "title": "Progressive Web Apps WordPress: PWA Setup Guide 2026",
+      "slug": "progressive-web-apps-wordpress-pwa-guide",
       "keywords": [
-        "database optimization",
-        "WordPress performance",
-        "cleanup"
+        "PWA",
+        "mobile app",
+        "WordPress"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-27",
@@ -472,12 +471,12 @@
     },
     {
       "id": 37,
-      "title": "WordPress Hosting Compared: Bluehost vs SiteGround vs Cloudways",
-      "slug": "wordpress-hosting-compared-bluehost-siteground-cloudways",
+      "title": "Core Web Vitals 2026: WordPress Performance Checklist",
+      "slug": "core-web-vitals-2026-wordpress-checklist",
       "keywords": [
-        "WordPress hosting",
-        "hosting comparison",
-        "web hosting"
+        "Core Web Vitals",
+        "performance",
+        "LCP INP CLS"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-28",
@@ -485,12 +484,12 @@
     },
     {
       "id": 38,
-      "title": "How to Build a WordPress Plugin That Sells",
-      "slug": "how-to-build-wordpress-plugin-that-sells",
+      "title": "Best AI Plugins for WordPress 2026: Tested & Compared",
+      "slug": "best-ai-plugins-wordpress-2026-tested",
       "keywords": [
-        "premium plugins",
-        "plugin business",
-        "WordPress products"
+        "AI plugins",
+        "WordPress AI",
+        "ChatGPT plugin"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-28",
@@ -498,12 +497,12 @@
     },
     {
       "id": 39,
-      "title": "WordPress Translation & Multilingual Setup 2026",
-      "slug": "wordpress-translation-multilingual-setup-2026",
+      "title": "WordPress AI Content Workflow: Gemini Claude ChatGPT",
+      "slug": "wordpress-ai-content-workflow-gemini-claude",
       "keywords": [
-        "multilingual WordPress",
-        "WPML",
-        "TranslatePress"
+        "AI content",
+        "workflow",
+        "WordPress AI"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-29",
@@ -511,12 +510,12 @@
     },
     {
       "id": 40,
-      "title": "WooCommerce Product Bundles: Sales Boost Guide",
-      "slug": "woocommerce-product-bundles-sales-boost-guide",
+      "title": "AI Visibility Tracking: Monitor Brand in ChatGPT Gemini",
+      "slug": "ai-visibility-tracking-chatgpt-gemini",
       "keywords": [
-        "product bundles",
-        "WooCommerce sales",
-        "upsells"
+        "AI visibility",
+        "brand tracking",
+        "AI mentions"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-29",
@@ -524,12 +523,12 @@
     },
     {
       "id": 41,
-      "title": "WordPress Login Security: 2FA & Protection Tips",
-      "slug": "wordpress-login-security-2fa-protection-tips",
+      "title": "Content Optimization for AI: Write for Humans & LLMs",
+      "slug": "content-optimization-ai-humans-llms",
       "keywords": [
-        "WordPress login",
-        "2FA",
-        "brute force protection"
+        "AI content",
+        "dual audience",
+        "optimization"
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-30",
@@ -537,28 +536,15 @@
     },
     {
       "id": 42,
-      "title": "How to Create a WordPress AJAX Search",
-      "slug": "how-to-create-wordpress-ajax-search",
+      "title": "WordPress Login Security 2026: 2FA Brute Force Protection",
+      "slug": "wordpress-login-security-2fa-brute-force",
       "keywords": [
-        "AJAX search",
-        "live search",
-        "WordPress search"
+        "login security",
+        "2FA",
+        "brute force"
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-30",
-      "status": "pending"
-    },
-    {
-      "id": 43,
-      "title": "WordPress Video Optimization for Faster Sites",
-      "slug": "wordpress-video-optimization-faster-sites",
-      "keywords": [
-        "video optimization",
-        "lazy load",
-        "WordPress media"
-      ],
-      "publish_time": "3:00 AM",
-      "publish_date": "2026-10-31",
       "status": "pending"
     }
   ]
