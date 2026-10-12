@@ -16,10 +16,12 @@ concurrency:
 jobs:
   publish-blog:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -45,12 +47,39 @@ jobs:
 
           if [ -n "$(git status --porcelain)" ]; then
             git add blog-queue.json blog/ images/blog/ blog.html index.html sitemap.xml
-            git commit -m "Auto: Publish new blog post [skip ci]"
+            git commit -m "Auto: Publish new blog post"
             git push
             echo "Changes pushed to repository"
           else
             echo "No changes to commit"
           fi
+
+      - name: Verify blog is live on Netlify
+        run: |
+          LATEST_BLOG=$(git diff --name-only HEAD~1 2>/dev/null | grep "^blog/.*\.html$" | head -1 || true)
+
+          if [ -z "$LATEST_BLOG" ]; then
+            echo "No new blog file in this commit - skipping live check"
+            exit 0
+          fi
+
+          SLUG=$(basename "$LATEST_BLOG" .html)
+          URL="https://shiv-parmar-portfolio.netlify.app/blog/${SLUG}.html"
+          echo "Waiting for Netlify deploy: $URL"
+
+          for i in $(seq 1 40); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$URL" || echo "000")
+            echo "attempt ${i}/40 -> ${STATUS}"
+            if [ "$STATUS" = "200" ]; then
+              echo "LIVE: $URL"
+              exit 0
+            fi
+            sleep 20
+          done
+
+          echo "::error::Blog still not live after ~13 minutes: $URL"
+          echo "Possible causes: Netlify build skipped/failed, or Ignore Builds setting is active."
+          exit 1
 
       - name: Send Email Notification
         if: success()
