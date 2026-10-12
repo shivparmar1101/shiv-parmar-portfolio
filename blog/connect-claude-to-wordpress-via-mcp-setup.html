@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Claude to WordPress via MCP: Complete Setup | Shiv Parmar</title>
+<meta name="description" content="Master the Claude WordPress integration using MCP. Follow our complete, step-by-step setup guide to automate and manage your website with AI today.">
+<meta name="keywords" content="Claude WordPress, MCP setup, AI assistant">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Connect Claude to WordPress via MCP: Complete Setup">
+<meta property="og:description" content="Master the Claude WordPress integration using MCP. Follow our complete, step-by-step setup guide to automate and manage your website with AI today.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/connect-claude-to-wordpress-via-mcp-setup-hero.svg">
+<meta property="og:image:alt" content="Connect Claude to WordPress via MCP: Complete Setup - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-10-12">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Connect Claude to WordPress via MCP: Complete Setup">
+<meta name="twitter:description" content="Master the Claude WordPress integration using MCP. Follow our complete, step-by-step setup guide to automate and manage your website with AI today.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/connect-claude-to-wordpress-via-mcp-setup-hero.svg">
+<meta name="twitter:image:alt" content="Connect Claude to WordPress via MCP: Complete Setup - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Connect Claude to WordPress via MCP: Complete Setup",
+  "description": "Master the Claude WordPress integration using MCP. Follow our complete, step-by-step setup guide to automate and manage your website with AI today.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/connect-claude-to-wordpress-via-mcp-setup-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../liquid-glass.css">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:14px}
+.content th{background:var(--bg-glass);padding:10px 8px;text-align:left;color:var(--text-primary);border-bottom:2px solid var(--accent)}
+.content td{padding:10px 8px;border-bottom:1px solid var(--border-glass);color:var(--text-secondary)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img src="../images/blog/connect-claude-to-wordpress-via-mcp-setup-hero.svg" alt="Connect Claude to WordPress via MCP: Complete Setup - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>Connect Claude to WordPress via MCP: Complete Setup
+</nav>
+<div class="date">2026-10-12 &middot; 14 min read</div>
+<h1>Connect Claude to WordPress via MCP: Complete Setup</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What is Model Context Protocol (MCP) and WordPress Integration?">What is Model Context Protocol (MCP) and WordPress Integration?</a></li>
+<li><a href="#section-1" title="Why Connecting Claude to WordPress via MCP Matters in 2026">Why Connecting Claude to WordPress via MCP Matters in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide: Connect Claude to WordPress via MCP">Step-by-Step Guide: Connect Claude to WordPress via MCP</a></li>
+<li><a href="#section-3" title="Advanced Capabilities: Expanding Your WordPress MCP Toolset">Advanced Capabilities: Expanding Your WordPress MCP Toolset</a></li>
+<li><a href="#section-4" title="Best Practices for Managing WordPress with Claude MCP">Best Practices for Managing WordPress with Claude MCP</a></li>
+<li><a href="#section-5" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-6" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+<p>Imagine commanding your AI assistant to update thirty stale blog posts, optimize their schema markup, organize them into newly structured categories, and queue them as drafts—all from a single prompt inside your desktop chat interface. Until recently, bridging the gap between large language models and content management systems required clunky custom webhooks, rigid Zapier automations, or endless rounds of copying and pasting Markdown into the WordPress Gutenberg editor.</p>
+
+<p>The introduction of Anthropic's Model Context Protocol (MCP) fundamentally changes this dynamic. MCP provides an open, standardized bridge between local or hosted AI interfaces like Claude Desktop and external data environments. By implementing a dedicated WordPress MCP server, you transform Claude from a passive text generator into an active, contextual content operator capable of interacting directly with your database, media library, and taxonomy structure.</p>
+
+<p>Whether you manage a high-traffic affiliate portal, an enterprise digital publication, or a personal tech blog, mastering the <strong>Claude WordPress</strong> integration via <strong>MCP setup</strong> elevates your editorial workflow into a seamless, bidirectional pipeline. In this comprehensive technical guide, you will learn how MCP operates, how to configure WordPress authentication, and how to build and connect an MCP server to Claude Desktop to run real-time content operations safely and efficiently.</p>
+
+<h2 id="section-0">What is Model Context Protocol (MCP) and WordPress Integration?</h2>
+
+<p>The Model Context Protocol (MCP) is an open-standard communication specification introduced by Anthropic. It standardizes how AI applications securely access resources, execute tools, and retrieve context from local and remote services. Traditionally, integrating an LLM with an external API required proprietary wrappers, bespoke function-calling schemas, or fragile middleware. MCP replaces this fragmentation with a standardized client-host-server architecture operating via JSON-RPC 2.0 messages.</p>
+
+<p>In an MCP ecosystem, there are three primary components:</p>
+<ul>
+    <li><strong>The MCP Host:</strong> The front-facing application coordinating the conversation and user interaction (in this case, Claude Desktop or an enterprise Claude client).</li>
+    <li><strong>The MCP Client:</strong> A module embedded within the host that connects one-to-one with specialized external servers, discovering their tools and relaying requests.</li>
+    <li><strong>The MCP Server:</strong> A lightweight service exposing specific tools (functions), resources (data streams), and prompts (templates) via standardized JSON-RPC protocols.</li>
+</ul>
+
+<p>When you connect Claude to WordPress using MCP, you place an MCP server between Claude Desktop and your WordPress site's REST API. The MCP server translates Claude's natural language intentions into authorized, structured HTTP requests targeting WordPress endpoints like <code>/wp/v2/posts</code>, <code>/wp/v2/categories</code>, and <code>/wp/v2/media</code>.</p>
+
+<p>Unlike standard webhooks, this connection is bidirectional and state-aware. Claude does not merely transmit text to WordPress; it queries your existing articles to prevent duplicate coverage, inspects existing tags before creating new ones, audits current SEO metadata, and updates live drafts—all while maintaining full awareness of your site's operational context.</p>
+
+<h2 id="section-1">Why Connecting Claude to WordPress via MCP Matters in 2026</h2>
+
+<p>Digital publishing has shifted from raw content volume to speed of iteration, precision updates, and structured entity management. Search engines reward authoritative content that remains accurate, comprehensive, and well-linked. Manual administrative tasks—formatting, uploading assets, populating excerpts, setting internal tags, and adjusting metadata—often consume more time than the actual research and writing phases.</p>
+
+<p>Connecting an intelligent <strong>AI assistant</strong> directly to your site architecture eliminates these administrative bottlenecks. Instead of treating your LLM as an external scratchpad, Claude functions as an embedded editorial partner that reads from and writes to your production environment under your explicit supervision.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #e2e8f0;">
+    <thead>
+        <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Workflow Dimension</th>
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Traditional AI Copy-Paste Workflow</th>
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Claude via MCP Setup</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px 15px; font-weight: 600;">Context Retrieval</td>
+            <td style="padding: 12px 15px;">Manual copy-pasting of old posts or site guidelines into the chat window.</td>
+            <td style="padding: 12px 15px;">Live retrieval of existing posts, slugs, and categories directly via tools.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
+            <td style="padding: 12px 15px; font-weight: 600;">Content Insertion</td>
+            <td style="padding: 12px 15px;">Manual block conversion, formatting cleanups, and title/excerpt transfers.</td>
+            <td style="padding: 12px 15px;">Direct insertion into WordPress drafts with valid Gutenberg-compatible HTML.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px 15px; font-weight: 600;">Taxonomy Consistency</td>
+            <td style="padding: 12px 15px;">Prone to duplicate tag creation and inconsistent category structures.</td>
+            <td style="padding: 12px 15px;">Claude queries existing taxonomies first, mapping IDs accurately before publishing.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
+            <td style="padding: 12px 15px; font-weight: 600;">Bulk Optimization</td>
+            <td style="padding: 12px 15px;">Painstakingly slow; requires opening dozens of browser tabs.</td>
+            <td style="padding: 12px 15px;">Automated batch audits and updates driven by multi-step iterative prompts.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 15px; font-weight: 600;">Human Oversight</td>
+            <td style="padding: 12px 15px;">High manual labor required for basic data entry.</td>
+            <td style="padding: 12px 15px;">Effort redirected to final review, strategy, and editorial governance.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>By leveraging an open protocol rather than a walled-garden SaaS connector, you maintain full sovereignty over your data. There are no per-task middleware fees, your private credentials remain on your local machine, and your custom post types or bespoke metadata fields can be exposed on your own terms.</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement Claude WordPress with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<h2 id="section-2">Step-by-Step Guide: Connect Claude to WordPress via MCP</h2>
+
+<p>Setting up your <strong>Claude WordPress</strong> MCP architecture involves three distinct layers: preparing your WordPress site for authenticated programmatic access, setting up a local or containerized MCP server, and configuring Claude Desktop to execute operations through that server. Follow this step-by-step walkthrough to get up and running.</p>
+
+<h3>1. Prerequisites and Environment Preparation</h3>
+<p>Before writing code or altering configurations, verify that your environment satisfies these baseline requirements:</p>
+<ul>
+    <li><strong>Claude Desktop:</strong> Installed on macOS or Windows (MCP local client support is currently standard on the desktop app).</li>
+    <li><strong>Node.js:</strong> Version 18.x or higher installed locally (check via <code>node -v</code> in your terminal).</li>
+    <li><strong>WordPress Environment:</strong> WordPress 5.6 or later (which includes native support for Application Passwords), running over HTTPS with standard REST API endpoints enabled.</li>
+    <li><strong>User Permissions:</strong> An administrative or editor-level user account on the target WordPress instance.</li>
+</ul>
+
+<h3>2. Generate WordPress Application Passwords</h3>
+<p>Never expose your master administrative password inside integration scripts or configuration files. WordPress includes an isolated authentication system known as Application Passwords. These credentials allow programmatic API access without exposing your primary login credentials and can be revoked instantly at any time.</p>
+
+<p>To generate an Application Password:</p>
+<ol>
+    <li>Log into your WordPress Dashboard.</li>
+    <li>Navigate to <strong>Users &gt; Profile</strong> (or <strong>Users &gt; All Users</strong>, then edit your target profile).</li>
+    <li>Scroll down to the <strong>Application Passwords</strong> section.</li>
+    <li>In the <strong>New Application Password Name</strong> field, input a distinct label such as <code>Claude Desktop MCP</code>.</li>
+    <li>Click <strong>Add New Application Password</strong>.</li>
+    <li>WordPress will display a randomly generated password in the format <code>xxxx xxxx xxxx xxxx</code>. Copy this string immediately and store it securely; it will not be displayed again.</li>
+</ol>
+
+<p>Ensure that basic authentication is not blocked by your hosting firewall or security plugins like Wordfence or Cloudflare. You can verify your credentials by running a simple cURL request in your terminal:</p>
+
+<pre><code>curl -X GET https://your-domain.com/wp-json/wp/v2/users/me \
+  -u "your_username:xxxx xxxx xxxx xxxx"</code></pre>
+
+<p>If the response returns your user profile in JSON format, your site is ready for programmatic interaction.</p>
+
+<h3>3. Build or Install the WordPress MCP Server</h3>
+<p>An MCP server for WordPress can be constructed using the official Model Context Protocol SDK (available for TypeScript/Node.js or Python). Below, we will construct a lightweight, high-performance Node.js MCP server using <code>@modelcontextprotocol/sdk</code> that provides tools for creating, reading, and updating posts.</p>
+
+<p>Create a dedicated directory for your project and initialize it:</p>
+
+<pre><code>mkdir wordpress-mcp-server
+cd wordpress-mcp-server
+npm init -y
+npm install @modelcontextprotocol/sdk axios dotenv</code></pre>
+
+<p>Open <code>package.json</code> and ensure <code>"type": "module"</code> is set. Next, create a file named <code>index.js</code> and insert the following server implementation:</p>
+
+<pre><code>import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
+import axios from "axios";
+
+const WP_URL = process.env.WP_SITE_URL?.replace(/\/$/, "");
+const WP_USER = process.env.WP_USERNAME;
+const WP_APP_PASS = process.env.WP_APP_PASSWORD;
+
+if (!WP_URL || !WP_USER || !WP_APP_PASS) {
+  console.error("Missing required environment variables.");
+  process.exit(1);
+}
+
+const authHeader = `Basic ${Buffer.from(`${WP_USER}:${WP_APP_PASS}`).toString("base64")}`;
+
+const wpClient = axios.create({
+  baseURL: `${WP_URL}/wp-json/wp/v2`,
+  headers: {
+    Authorization: authHeader,
+    "Content-Type": "application/json",
+  },
+});
+
+const server = new Server(
+  {
+    name: "wordpress-mcp-server",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+    },
+  }
+);
+
+// Register available tools
+server.setRequestHandler(ListToolsRequestSchema, async () => {
+  return {
+    tools: [
+      {
+        name: "get_posts",
+        description: "Retrieve recent posts from the WordPress site",
+        inputSchema: {
+          type: "object",
+          properties: {
+            per_page: { type: "number", description: "Number of posts to fetch (default: 5)" },
+            status: { type: "string", description: "Status of posts: publish, draft, pending, etc." },
+          },
+        },
+      },
+      {
+        name: "create_post",
+        description: "Create a new post or draft in WordPress",
+        inputSchema: {
+          type: "object",
+          properties: {
+            title: { type: "string", description: "Title of the post" },
+            content: { type: "string", description: "HTML or Gutenberg block content" },
+            status: { type: "string", enum: ["draft", "publish", "pending"], default: "draft" },
+            excerpt: { type: "string", description: "Optional excerpt" },
+          },
+          required: ["title", "content"],
+        },
+      },
+      {
+        name: "update_post",
+        description: "Update an existing WordPress post by ID",
+        inputSchema: {
+          type: "object",
+          properties: {
+            id: { type: "number", description: "The ID of the post to update" },
+            title: { type: "string", description: "New title" },
+            content: { type: "string", description: "New HTML content" },
+            status: { type: "string", description: "New status" },
+          },
+          required: ["id"],
+        },
+      },
+    ],
+  };
+});
+
+// Handle tool executions
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  const { name, arguments: args } = request.params;
+
+  try {
+    if (name === "get_posts") {
+      const response = await wpClient.get("/posts", {
+        params: { per_page: args?.per_page || 5, status: args?.status || "any" },
+      });
+      const posts = response.data.map((p) => ({
+        id: p.id,
+        title: p.title.rendered,
+        slug: p.slug,
+        status: p.status,
+        link: p.link,
+      }));
+      return {
+        content: [{ type: "text", text: JSON.stringify(posts, null, 2) }],
+      };
+    }
+
+    if (name === "create_post") {
+      const response = await wpClient.post("/posts", {
+        title: args.title,
+        content: args.content,
+        status: args.status || "draft",
+        excerpt: args.excerpt || "",
+      });
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Post created successfully! ID: ${response.data.id}, Link: ${response.data.link}`,
+          },
+        ],
+      };
+    }
+
+    if (name === "update_post") {
+      const { id, ...data } = args;
+      const response = await wpClient.post(`/posts/${id}`, data);
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Post ${response.data.id} updated successfully. Status: ${response.data.status}`,
+          },
+        ],
+      };
+    }
+
+    throw new Error(`Tool not found: ${name}`);
+  } catch (error) {
+    const errorDetails = error.response?.data?.message || error.message;
+    return {
+      content: [{ type: "text", text: `Error executing ${name}: ${errorDetails}` }],
+      isError: true,
+    };
+  }
+});
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+</code></pre>
+
+<h3>4. Configure Claude Desktop</h3>
+<p>To let Claude Desktop know that this MCP server exists and how to run it, add it to your <code>claude_desktop_config.json</code> configuration file. The location of this file depends on your operating system:</p>
+<ul>
+    <li><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+    <li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+</ul>
+
+<p>Open this configuration file in your preferred code editor and define your new WordPress MCP service under the <code>mcpServers</code> object:</p>
+
+<pre><code>{
+  "mcpServers": {
+    "wordpress": {
+      "command": "node",
+      "args": [
+        "/ABSOLUTE/PATH/TO/wordpress-mcp-server/index.js"
+      ],
+      "env": {
+        "WP_SITE_URL": "https://your-domain.com",
+        "WP_USERNAME": "your_wp_username",
+        "WP_APP_PASSWORD": "xxxx xxxx xxxx xxxx"
+      }
+    }
+  }
+}</code></pre>
+
+<p><em>Note: Make sure to replace <code>/ABSOLUTE/PATH/TO/wordpress-mcp-server/index.js</code> with the real absolute path to your file. On Windows, use properly escaped backslashes (e.g., <code>C:\\Users\\Username\\...</code>) or forward slashes.</em></p>
+
+<h3>5. Verify and Test the MCP Connection</h3>
+<p>Once you save your configuration file, restart Claude Desktop entirely (quit the application fully via the system tray or menu bar, then relaunch it).</p>
+
+<p>Look at the bottom right corner of the Claude Desktop prompt interface. You should see a small <strong>hammer icon</strong> (or tool indicator). Clicking this icon reveals the tools exposed by your local server: <code>get_posts</code>, <code>create_post</code>, and <code>update_post</code>.</p>
+
+<p>To verify that communication is working, enter a simple test prompt:</p>
+<blockquote>
+<p><em>"Claude, please use the WordPress tool to fetch the last 3 posts from my site and show me their titles, IDs, and statuses."</em></p>
+</blockquote>
+
+<p>Claude will formulate an MCP tool request, invoke <code>get_posts</code> through your local Node.js process, receive the JSON payload from your WordPress REST API, and render a clear summary in the chat interface. You can now publish drafts, inspect content, or update fields using simple natural language commands.</p>
+
+<h2 id="section-3">Advanced Capabilities: Expanding Your WordPress MCP Toolset</h2>
+
+<p>A basic read-write implementation for blog posts is just the beginning. The WordPress REST API exposes nearly every corner of your CMS. By adding more tool definitions to your MCP server, you can expand Claude into a comprehensive publishing engine.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #e2e8f0;">
+    <thead>
+        <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">MCP Tool Name</th>
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">REST API Endpoint</th>
+            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Practical Use Case</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px 15px; font-family: monospace;">manage_taxonomies</td>
+            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/categories, /wp/v2/tags</td>
+            <td style="padding: 12px 15px;">Check for existing topic tags before publishing to avoid creating duplicates.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
+            <td style="padding: 12px 15px; font-family: monospace;">upload_media</td>
+            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/media</td>
+            <td style="padding: 12px 15px;">Upload AI-generated charts or assets and automatically bind them to post IDs.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 12px 15px; font-family: monospace;">update_seo_meta</td>
+            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/posts/{id} (meta field)</td>
+            <td style="padding: 12px 15px;">Update Yoast or RankMath titles, descriptions, and canonical URLs directly.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
+            <td style="padding: 12px 15px; font-family: monospace;">audit_revisions</td>
+            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/posts/{id}/revisions</td>
+            <td style="padding: 12px 15px;">Compare content differences across revisions to assess editorial modifications.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Gutenberg Block Formatting and Structural Integrity</h3>
+<p>One major hurdle when using AI with WordPress is ensuring the generated output doesn't disrupt layout builders or block parsers. The block editor stores layout elements as HTML comments containing JSON attributes (e.g., <code>&lt;!-- wp:paragraph --&gt;</code>, <code>&lt;!-- wp:heading {"level":2} --&gt;</code>).</p>
+
+<p>You can train Claude to output valid block grammar natively by specifying formatting standards within your system prompt or custom MCP server prompt definitions:</p>
+
+<pre><code>When generating content for the create_post or update_post tools, 
+always structure the post body using valid WordPress Gutenberg block markup.
+
+Example format:
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Your introductory paragraph text goes here.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:heading {"level":2} --&gt;
+&lt;h2 class="wp-block-heading"&gt;Section Title&lt;/h2&gt;
+&lt;!-- /wp:heading --&gt;
+
+Do not wrap the output in Markdown code fences when sending arguments to the tool.</code></pre>
+
+<p>Instructing Claude to structure its output this way ensures that drafts can be opened immediately inside the WordPress block editor without triggering "Attempt Block Recovery" validation errors.</p>
+
+<h2 id="section-4">Best Practices for Managing WordPress with Claude MCP</h2>
+
+<p>Integrating an autonomous model with a live content management system requires solid safeguards to ensure site stability, security, and editorial quality.</p>
+
+<h3>Enforce a Draft-First Policy</h3>
+<p>Never allow your MCP server to publish posts directly to live status (<code>status: "publish"</code>) by default. Set the default state for any post creation or revision tool to <code>"draft"</code> or <code>"pending"</code>. This guarantees that a human editor must review layout accuracy, verify affiliate links, and check factual claims before changes go live.</p>
+
+<h3>Implement Least-Privilege API Accounts</h3>
+<p>Do not attach your MCP server to your primary Administrator account. Instead, create a dedicated WordPress user with the <strong>Editor</strong> or <strong>Author</strong> role specifically for your <strong>AI assistant</strong>. This limits the blast radius of any unexpected operations, preventing the model from altering themes, modifying plugins, or managing other users.</p>
+
+<h3>Sanitize and Validate HTML Payloads</h3>
+<p>Even though Claude produces clean HTML most of the time, your MCP server should validate input payloads using libraries like <code>sanitize-html</code> or native WordPress sanitization routines. This prevents unclosed tags, malformed iframes, or invalid script tags from landing in your database.</p>
+
+<h3>Handle API Rate Limiting and Caching</h3>
+<p>When running complex multi-step routines (such as auditing the last 50 published articles), your server may send rapid-fire requests that trigger hosting-level rate limits. Configure your MCP server client with exponential backoff retry mechanisms, and avoid hitting endpoints that bypass caching unless you're modifying data.</p>
+
+<h2 id="section-5">Common Mistakes to Avoid</h2>
+
+<p>When connecting an <strong>AI assistant</strong> to WordPress via MCP, developers and publishers frequently encounter a few common pitfalls. Here is how to diagnose and resolve them:</p>
+
+<h3>1. Cloudflare or Hosting Security Blocking Application Passwords</h3>
+<p>Many managed WordPress hosts and web application firewalls (WAFs) block standard HTTP Basic Authentication headers by default to prevent brute-force attacks. If your MCP tools return <code>401 Unauthorized</code> or <code>403 Forbidden</code> errors despite using valid credentials, check your security rules:</p>
+<ul>
+    <li>In <strong>Cloudflare</strong>: Create a WAF Skip rule for requests targeting <code>/wp-json/*</code> containing your designated user-agent or coming from your development IP.</li>
+    <li>In <strong>Security Plugins</strong>: Ensure that settings such as "Disable XML-RPC / REST API Basic Auth" are toggled to allow authenticated REST requests.</li>
+</ul>
+
+<h3>2. Path Resolution Failures in Claude Desktop Config</h3>
+<p>A common error during <strong>MCP setup</strong> is referencing relative file paths or relying on user environment variables inside <code>claude_desktop_config.json</code>. The Claude Desktop application runs in an isolated process that might not inherit your shell's <code>$PATH</code> or <code>.bashrc</code> exports.</p>
+<p>Always provide absolute paths to both the runtime executable and the server entry point:</p>
+<pre><code>// Correct configuration pattern
+"command": "/usr/local/bin/node",
+"args": ["/Users/username/projects/wordpress-mcp/index.js"]</code></pre>
+
+<h3>3. Passing Giant Contexts Unnecessarily</h3>
+<p>A common mistake when running bulk operations is requesting complete post objects. The WordPress REST API returns extensive schema metadata, raw rendered output, revision histories, and link arrays for every single post. Requesting 50 full posts can quickly overflow Claude's context window or inflate token usage.</p>
+<p>Keep your tool outputs lean. Design your MCP server tools to strip out unnecessary fields, returning only the <code>id</code>, <code>title</code>, <code>slug</code>, <code>date</code>, and essential <code>excerpt</code> fields back to Claude unless the prompt explicitly asks for full content analysis.</p>
+
+<h3>4. Forgetting Custom Post Types (CPTs) Exposure</h3>
+<p>If your WordPress site relies on custom post types (such as "Products", "Documentation", or "Case Studies"), you might find that Claude cannot see them through standard endpoints. Custom post types are hidden from the REST API by default unless explicitly enabled in their registration settings.</p>
+<p>Ensure that your custom post types have <code>show_in_rest</code> set to <code>true</code> in your theme's <code>functions.php</code> or plugin code:</p>
+<pre><code>register_post_type('documentation', array(
+    'labels' => array('name' => __('Documentation')),
+    'public' => true,
+    'has_archive' => true,
+    'show_in_rest' => true, // Essential for REST API & MCP visibility
+    'rest_base' => 'documentation',
+));</code></pre>
+
+<p>Once exposed, simply add matching tool endpoints to your MCP server to let Claude manage your custom post types with the same ease as standard blog posts.</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-6">Conclusion</h2>
+<p>Integrating your site with a modern language model transforms everyday content creation and site administration. By completing this <strong>MCP setup</strong>, you turn Claude into an active, context-aware <strong>AI assistant</strong> capable of drafting content, updating metadata, and streamlining editorial workflows directly from your desktop. This seamless <strong>Claude WordPress</strong> connection bridges the gap between advanced artificial intelligence and practical, day-to-day website management, saving you hours of manual effort.</p>
+
+<p>As the Model Context Protocol continues to mature, the potential for extending site capabilities will only grow. Embracing this workflow now positions your publishing pipeline ahead of the curve, enabling faster iterations, smarter automation, and a drastically reduced administrative burden across your entire digital presence.</p>
+
+<p>If you need expert assistance tailoring this integration, setting up secure custom tools, or building bespoke website solutions, <strong>Shiv Parmar is available for WordPress development work worldwide</strong>. Whether you want to implement cutting-edge AI features, optimize your site's performance, or develop custom plugins and themes, reach out today to bring your project to life.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">Claude WordPress</a>
+<a href="/blog" class="tag">MCP setup</a>
+<a href="/blog" class="tag">AI assistant</a>
+</div>
+
+<div class="author-box">
+<img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-12 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-mcp-oauth-2-1-secure-ai-access" title="WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide">WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-11 &middot; 8 min read</div>
+<h4><a href="../blog/best-wordpress-mcp-plugins-2026-tested-compared" title="Best WordPress MCP Plugins 2026: 21 Tested &amp;amp; Compared">Best WordPress MCP Plugins 2026: 21 Tested &amp;amp; Compared</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-11 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-plugin-auto-update-cooldown-protect-shire" title="WordPress Plugin Auto-Update Cooldown: Protect The Shire">WordPress Plugin Auto-Update Cooldown: Protect The Shire</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+</body>
+</html>
