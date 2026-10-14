@@ -1,0 +1,16 @@
+# Pretty URLs for local XAMPP - matches Netlify clean URL behaviour.
+# Netlify ignores this file on deploy (it serves clean URLs natively).
+
+RewriteEngine On
+RewriteBase /
+
+# Never serve dotfiles (.env, .git, .api-key, ...)
+RewriteRule (^\.|/\.) - [F]
+
+# Serve existing files/dirs as-is (css, js, images, sitemap.xml, robots.txt, ...)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Extensionless -> .html (blog/foo -> blog/foo.html, about -> about.html)
+RewriteRule ^(.+)$ $1.html [L]

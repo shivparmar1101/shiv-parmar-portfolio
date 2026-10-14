@@ -548,16 +548,16 @@ function buildBlogCard(blog) {
   const desc = escapeHtml(blog.keywords.slice(0, 2).join(', ') + ' - comprehensive guide by Shiv Parmar.');
   return `<article class="blog-card reveal">
             <div class="date">${today} &middot; 8 min read</div>
-            <h3><a href="blog/${blog.slug}.html">${escapeHtml(blog.title)}</a></h3>
+            <h3><a href="blog/${blog.slug}">${escapeHtml(blog.title)}</a></h3>
             <p>${desc}</p>
-            <a class="read-more" href="blog/${blog.slug}.html">Read more &rarr;</a>
+            <a class="read-more" href="blog/${blog.slug}">Read more &rarr;</a>
           </article>`;
 }
 
 function updateBlogHTML(blog) {
   const blogHTMLPath = path.join(__dirname, '..', 'blog.html');
   let blogHTML = fs.readFileSync(blogHTMLPath, 'utf-8');
-  const cardHref = `blog/${blog.slug}.html`;
+  const cardHref = `blog/${blog.slug}`;
   if (blogHTML.includes(cardHref)) {
     console.log('blog.html: card already present (skipped insert)');
   } else if (blogHTML.includes('<!-- BLOG_CARDS_START -->')) {
@@ -579,7 +579,7 @@ function updateIndexHTML(blog) {
   if (startIdx === -1 || endIdx === -1) return;
   const section = html.substring(startIdx + startTag.length, endIdx);
   const cards = section.match(/<article class="blog-card[\s\S]*?<\/article>/g) || [];
-  if (!section.includes(`blog/${blog.slug}.html`)) {
+  if (!section.includes(`blog/${blog.slug}`)) {
     cards.unshift(buildBlogCard(blog));
     console.log('index.html: card added');
   } else {
@@ -630,21 +630,6 @@ function submitToIndexNow(blog) {
     req.on('error', (e) => { console.log('IndexNow error:', e.message); finish(); });
     req.write(payload);
     req.end();
-  });
-}
-
-function pingGoogleSitemap() {
-  return new Promise((resolve) => {
-    let done = false;
-    const finish = () => { if (!done) { done = true; resolve(); } };
-    const url = `https://www.google.com/ping?sitemap=${encodeURIComponent(SITE_URL + '/sitemap.xml')}`;
-    const req = https.get(url, (res) => {
-      console.log(`Google ping: ${res.statusCode}`);
-      res.resume();
-      finish();
-    });
-    req.setTimeout(15000, () => { req.destroy(); finish(); });
-    req.on('error', (e) => { console.log('Google ping error:', e.message); finish(); });
   });
 }
 
@@ -714,10 +699,10 @@ async function main() {
   updateIndexHTML(nextBlog);
   updateSitemap(nextBlog);
 
-  // Google indexing
+  // Google indexing: IndexNow covers Bing/Yandex. Google reads the sitemap on its
+  // own schedule - the gsc-indexing workflow submits it to Search Console daily.
   console.log('\nSubmitting for indexing...');
   await submitToIndexNow(nextBlog);
-  await pingGoogleSitemap();
 
   nextBlog.status = 'published';
   nextBlog.published_at = new Date().toISOString();

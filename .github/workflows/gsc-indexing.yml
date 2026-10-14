@@ -1,0 +1,39 @@
+# Google Search Console: submit sitemap + inspect index status
+# Skips gracefully when GSC_SERVICE_ACCOUNT secret is not set up.
+name: GSC Indexing
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gsc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Submit sitemap + inspect URLs
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+          GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
+        run: node scripts/gsc-indexing.js
+
+      - name: Upload index status report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsc-status-${{ github.run_number }}
+          path: seo-data/gsc-status.json
+          retention-days: 30
+          if-no-files-found: ignore

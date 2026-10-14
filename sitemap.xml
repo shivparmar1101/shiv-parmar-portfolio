@@ -101,4 +101,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

@@ -11,13 +11,15 @@ const paths = {
 };
 
 // use an already-listed blog so the "already present" branch is exercised
-const blog = queue.blogs.find(b => b.status === 'published');
-
 const before = {};
 for (const k of Object.keys(paths)) before[k] = fs.readFileSync(paths[k], 'utf8');
 
+const blog = queue.blogs.find(b => b.status === 'published' && before.index.includes(`blog/${b.slug}`))
+  || queue.blogs.find(b => b.status === 'published');
+if (!blog) { console.error('No published blog in queue'); process.exit(1); }
+
 function countCards(html) { return (html.match(/class="blog-card/g) || []).length; }
-function countSlug(html, slug) { return (html.split('blog/' + slug + '.html').length - 1); }
+function countSlug(html, slug) { return (html.split('blog/' + slug).length - 1); }
 
 console.log(`Testing with slug: ${blog.slug}`);
 console.log(`blog.html cards BEFORE: ${countCards(before.blog)}`);

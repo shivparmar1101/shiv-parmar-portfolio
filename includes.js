@@ -5,7 +5,7 @@
 (function () {
   var base = "";
   var path = window.location.pathname;
-  var isBlog = path.indexOf("/blog/") !== -1 || path.match(/\/blog\/[^/]*\.html/);
+  var isBlog = path.indexOf("/blog/") !== -1;
   if (isBlog) {
     base = "../";
   }
@@ -14,11 +14,6 @@
     var el = document.getElementById(id);
     if (!el) return;
     var processed = html.replace(/__BASE__/g, base).trim();
-
-    // For blog pages, add .html to clean URLs
-    if (isBlog) {
-      processed = processed.replace(/href="(\.\.\/(?:about|services|work|skills|experience|blog|contact))"/g, 'href="$1.html"');
-    }
 
     el.innerHTML = processed;
 

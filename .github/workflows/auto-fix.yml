@@ -27,7 +27,21 @@ jobs:
       
       - name: Auto Fix SEO Issues
         run: node scripts/auto-fix-seo.js
-      
+
+      - name: Commit and push fixes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Auto SEO fix: apply detected fixes"
+            git push
+            echo "SEO fixes pushed"
+          else
+            echo "No SEO changes to commit"
+          fi
+
       - name: Create Summary Report
         run: |
           mkdir -p reports
