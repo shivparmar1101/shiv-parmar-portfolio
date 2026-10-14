@@ -35,6 +35,24 @@ function logSkip(file, type, reason) {
   console.log(`  ⏭️ SKIP: ${type} in ${file} - ${reason}`);
 }
 
+// SEO meta rules for blog/page titles
+const TITLE_MIN = 30;
+const TITLE_MAX = 65;
+const BRAND = ' | Shiv Parmar';
+
+// Build a brand title that never exceeds TITLE_MAX chars
+function fitBrandTitle(title) {
+  const base = title.replace(/\s*\|\s*Shiv Parmar\s*$/, '').replace(/\s+/g, ' ').trim();
+  let words = base.split(' ');
+  let result = words.join(' ') + BRAND;
+
+  while (result.length > TITLE_MAX && words.length > 3) {
+    words.pop();
+    result = words.join(' ') + BRAND;
+  }
+  return result;
+}
+
 // Fix 1: Add brand name to blog titles
 function fixBlogTitles() {
   console.log('\n📝 Fix 1: Blog Title Branding...');
@@ -50,14 +68,20 @@ function fixBlogTitles() {
     const $ = cheerio.load(html);
     
     const title = $('title').text().trim();
-    
-    if (!title.includes('Shiv Parmar')) {
-      const newTitle = title + ' | Shiv Parmar';
-      html = html.replace(/<title>.*?<\/title>/, `<title>${newTitle}</title>`);
+    const newTitle = fitBrandTitle(title);
+
+    if (newTitle.length > TITLE_MAX || newTitle.length < TITLE_MIN) {
+      logSkip(file, 'title-brand', `cannot fit ${TITLE_MIN}-${TITLE_MAX} chars: "${newTitle}" (${newTitle.length})`);
+      return;
+    }
+
+    if (newTitle !== title) {
+      const escaped = newTitle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      html = html.replace(/<title>.*?<\/title>/, `<title>${escaped}</title>`);
       fs.writeFileSync(filepath, html);
       logFix(file, 'title-brand', title, newTitle);
     } else {
-      logSkip(file, 'title-brand', 'Already has brand');
+      logSkip(file, 'title-brand', 'Already correct');
     }
   });
 }

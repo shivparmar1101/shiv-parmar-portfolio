@@ -40,6 +40,58 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+// SEO meta rules: <title> must be 30-65 chars, meta description 120-320 chars
+const SEO_RULES = { titleMin: 30, titleMax: 65, descMin: 120, descMax: 320 };
+const BRAND_SUFFIX = ' | Shiv Parmar';
+
+function buildMetaTitle(baseTitle) {
+  const base = String(baseTitle).replace(/\s+/g, ' ').trim();
+  let title = `${base}${BRAND_SUFFIX}`;
+
+  if (title.length > SEO_RULES.titleMax) {
+    const words = base.split(' ');
+    while (words.length > 3 && `${words.join(' ')}${BRAND_SUFFIX}`.length > SEO_RULES.titleMax) {
+      words.pop();
+    }
+    title = `${words.join(' ')}${BRAND_SUFFIX}`;
+  }
+
+  if (title.length > SEO_RULES.titleMax) {
+    throw new Error(`Meta title too long (${title.length} > ${SEO_RULES.titleMax}): ${title}`);
+  }
+  if (title.length < SEO_RULES.titleMin) {
+    throw new Error(`Meta title too short (${title.length} < ${SEO_RULES.titleMin}): ${title}`);
+  }
+  return title;
+}
+
+function clampMetaDescription(desc) {
+  let d = String(desc).replace(/\s+/g, ' ').trim().replace(/^["']|["']$/g, '');
+
+  if (d.length > SEO_RULES.descMax) {
+    const cut = d.slice(0, SEO_RULES.descMax);
+    d = cut.slice(0, Math.max(cut.lastIndexOf('.'), cut.lastIndexOf(' '))).trim();
+    if (!/[.!?]$/.test(d)) d += '.';
+  }
+
+  const fillers = [
+    ' Step-by-step instructions and expert tips included.',
+    ' Learn how to do it right in this complete guide by Shiv Parmar.',
+  ];
+  let i = 0;
+  while (d.length < SEO_RULES.descMin && i < fillers.length) {
+    d += fillers[i++];
+  }
+
+  if (d.length < SEO_RULES.descMin) {
+    throw new Error(`Meta description too short (${d.length} < ${SEO_RULES.descMin}): ${d}`);
+  }
+  if (d.length > SEO_RULES.descMax) {
+    throw new Error(`Meta description too long (${d.length} > ${SEO_RULES.descMax}): ${d}`);
+  }
+  return d;
+}
+
 function callGeminiAPI(prompt) {
   return new Promise((resolve, reject) => {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
@@ -102,12 +154,12 @@ Return ONLY the HTML content (article body, no head/body tags).`;
 }
 
 async function generateMetaDescription(title, keywords) {
-  const prompt = `Write a compelling meta description (120-160 characters) for a blog post titled "${title}". Include the primary keyword naturally: ${keywords[0]}. Return ONLY the meta description text, nothing else.`;
+  const prompt = `Write a compelling meta description (120-180 characters) for a blog post titled "${title}". Include the primary keyword naturally: ${keywords[0]}. Return ONLY the meta description text, nothing else.`;
   try {
     const desc = await callGeminiAPI(prompt);
-    return desc.trim().replace(/^["']|["']$/g, '').substring(0, 160);
+    return clampMetaDescription(desc.trim().replace(/^["']|["']$/g, ''));
   } catch (error) {
-    return `Learn about ${title} with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.`;
+    return clampMetaDescription(`Learn about ${title} with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.`);
   }
 }
 
@@ -236,8 +288,14 @@ function buildTOC(html) {
 function createBlogHTML(blog, content, metaDesc, conclusion) {
   const today = new Date().toISOString().split('T')[0];
   const readTime = Math.max(5, Math.ceil(content.replace(/<[^>]*>/g, ' ').split(/\s+/).length / 200));
-  const safeTitle = escapeHtml(blog.title);
-  const safeDesc = escapeHtml(metaDesc);
+  const baseTitle = String(blog.title).replace(/\s+/g, ' ').trim();
+  if (baseTitle.length > SEO_RULES.titleMax) {
+    throw new Error(`Queue title too long for og:title (${baseTitle.length} > ${SEO_RULES.titleMax}): ${baseTitle}`);
+  }
+  const safeTitle = escapeHtml(buildMetaTitle(baseTitle));
+  const safeBaseTitle = escapeHtml(baseTitle);
+  const metaDescText = clampMetaDescription(metaDesc);
+  const safeDesc = escapeHtml(metaDescText);
   const safeKeywords = escapeHtml(blog.keywords.join(', '));
   const fullContent = insertMidCTA(content, blog);
 
@@ -259,7 +317,7 @@ function createBlogHTML(blog, content, metaDesc, conclusion) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${safeTitle} | Shiv Parmar</title>
+<title>${safeTitle}</title>
 <meta name="description" content="${safeDesc}">
 <meta name="keywords" content="${safeKeywords}">
 <meta name="author" content="Shiv Parmar">
@@ -269,11 +327,11 @@ function createBlogHTML(blog, content, metaDesc, conclusion) {
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="${safeTitle}">
+<meta property="og:title" content="${safeBaseTitle}">
 <meta property="og:description" content="${safeDesc}">
 <meta property="og:url" content="${SITE_URL}/blog/${blog.slug}">
 <meta property="og:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.svg">
-<meta property="og:image:alt" content="${safeTitle} - WordPress development guide by Shiv Parmar">
+<meta property="og:image:alt" content="${safeBaseTitle} - WordPress development guide by Shiv Parmar">
 <meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
@@ -281,10 +339,10 @@ function createBlogHTML(blog, content, metaDesc, conclusion) {
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${safeTitle}">
+<meta name="twitter:title" content="${safeBaseTitle}">
 <meta name="twitter:description" content="${safeDesc}">
 <meta name="twitter:image" content="${SITE_URL}/images/blog/${blog.slug}-hero.svg">
-<meta name="twitter:image:alt" content="${safeTitle} - WordPress development guide by Shiv Parmar">
+<meta name="twitter:image:alt" content="${safeBaseTitle} - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
 
 <!-- Schema.org -->
@@ -293,7 +351,7 @@ function createBlogHTML(blog, content, metaDesc, conclusion) {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": ${JSON.stringify(blog.title)},
-  "description": ${JSON.stringify(metaDesc)},
+  "description": ${JSON.stringify(metaDescText)},
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "${SITE_URL}/" },
   "datePublished": "${today}",
@@ -640,7 +698,7 @@ async function main() {
       process.exit(1);
     }
     console.log(`Content: ${content.length} chars`);
-    console.log('Meta description: OK');
+    console.log(`Meta description: ${metaDesc.length} chars (allowed ${SEO_RULES.descMin}-${SEO_RULES.descMax})`);
     console.log('Conclusion: OK');
 
     const heroSVG = createHeroSVG(nextBlog);
@@ -671,7 +729,7 @@ async function main() {
   console.log('========================================');
 }
 
-module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, updateBlogHTML, updateIndexHTML, updateSitemap, BLOG_DIR };
+module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, updateBlogHTML, updateIndexHTML, updateSitemap, buildMetaTitle, clampMetaDescription, SEO_RULES, BLOG_DIR };
 
 if (require.main === module) {
   main().catch((err) => {

@@ -74,8 +74,10 @@ function checkBlogPost(filename) {
   } else {
     if (result.title.length < RULES.title.min) {
       result.title.issues.push(`Title too short (${result.title.length} chars)`);
+      result.issues.push(`Title too short (${result.title.length} chars)`);
     } else if (result.title.length > RULES.title.max) {
       result.title.issues.push(`Title too long (${result.title.length} chars)`);
+      result.issues.push(`Title too long (${result.title.length} chars)`);
     } else {
       result.passed.push('Title length OK');
     }
@@ -92,8 +94,10 @@ function checkBlogPost(filename) {
   } else {
     if (result.description.length < RULES.description.min) {
       result.description.issues.push(`Description too short (${result.description.length} chars)`);
+      result.issues.push(`Description too short (${result.description.length} chars)`);
     } else if (result.description.length > RULES.description.max) {
       result.description.issues.push(`Description too long (${result.description.length} chars)`);
+      result.issues.push(`Description too long (${result.description.length} chars)`);
     } else {
       result.passed.push('Description length OK');
     }
@@ -201,10 +205,24 @@ function main() {
         priority: 'high',
       });
     }
-    if (result.description.length < 120) {
+    if (result.title.length < RULES.title.min || result.title.length > RULES.title.max) {
+      report.actionItems.push({
+        file: result.file,
+        action: `Fix meta title length (${result.title.length} chars, must be ${RULES.title.min}-${RULES.title.max})`,
+        priority: 'high',
+      });
+    }
+    if (result.description.length < RULES.description.min) {
       report.actionItems.push({
         file: result.file,
         action: 'Rewrite meta description (too short)',
+        priority: 'high',
+      });
+    }
+    if (result.description.length > RULES.description.max) {
+      report.actionItems.push({
+        file: result.file,
+        action: `Shorten meta description (${result.description.length} chars, max ${RULES.description.max})`,
         priority: 'high',
       });
     }
