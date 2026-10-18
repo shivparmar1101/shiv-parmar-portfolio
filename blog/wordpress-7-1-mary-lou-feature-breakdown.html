@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress 7.1 Mary Lou: Complete Feature Breakdown | Shiv Parmar</title>
+<meta name="description" content="Explore our complete WordPress 7.1 feature breakdown! Discover what&#39;s new in the &quot;Mary Lou&quot; release, from performance upgrades to enhanced site editing tools.">
+<meta name="keywords" content="WordPress 7.1, Mary Lou, new features">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown">
+<meta property="og:description" content="Explore our complete WordPress 7.1 feature breakdown! Discover what&#39;s new in the &quot;Mary Lou&quot; release, from performance upgrades to enhanced site editing tools.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg">
+<meta property="og:image:alt" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-10-18">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown">
+<meta name="twitter:description" content="Explore our complete WordPress 7.1 feature breakdown! Discover what&#39;s new in the &quot;Mary Lou&quot; release, from performance upgrades to enhanced site editing tools.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg">
+<meta name="twitter:image:alt" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress 7.1 Mary Lou: Complete Feature Breakdown",
+  "description": "Explore our complete WordPress 7.1 feature breakdown! Discover what's new in the \"Mary Lou\" release, from performance upgrades to enhanced site editing tools.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-10-18",
+  "dateModified": "2026-10-18",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../liquid-glass.css">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:14px}
+.content th{background:var(--bg-glass);padding:10px 8px;text-align:left;color:var(--text-primary);border-bottom:2px solid var(--accent)}
+.content td{padding:10px 8px;border-bottom:1px solid var(--border-glass);color:var(--text-secondary)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img src="../images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg" alt="WordPress 7.1 Mary Lou: Complete Feature Breakdown | Shiv Parmar - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress 7.1 Mary Lou: Complete Feature Breakdown | Shiv Parmar
+</nav>
+<div class="date">2026-10-18 &middot; 13 min read</div>
+<h1>WordPress 7.1 Mary Lou: Complete Feature Breakdown | Shiv Parmar</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What is WordPress 7.1 &quot;Mary Lou&quot;?">What is WordPress 7.1 &quot;Mary Lou&quot;?</a></li>
+<li><a href="#section-1" title="Why WordPress 7.1 Matters in 2026">Why WordPress 7.1 Matters in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide: Implementing WordPress 7.1 New Features">Step-by-Step Guide: Implementing WordPress 7.1 New Features</a></li>
+<li><a href="#section-3" title="Best Practices for Updating to WordPress 7.1">Best Practices for Updating to WordPress 7.1</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+<p>The release of <strong>WordPress 7.1</strong>, code-named <strong>"Mary Lou"</strong> in honor of pioneering jazz pianist, composer, and arranger Mary Lou Williams, marks a watershed moment in the history of the world's most dominant content management system. As the digital ecosystem of 2026 demands unprecedented performance, real-time interactivity, and enterprise-grade multi-author workflows, this release pushes WordPress beyond its traditional boundaries. Rather than delivering simple incremental patches, WordPress 7.1 introduces fundamental architectural modernization to the core software.</p>
+
+<p>For site builders, core developers, agency leads, and enterprise publishers, Mary Lou represents the full fruition of WordPress Phase 3: Collaboration, alongside an aggressive overhaul of the frontend runtime and administrative dashboard. From native, conflict-free collaborative editing to the high-performance Interactivity API v2, the platform bridges the gap between the flexibility of monolithic systems and the agility of modern headless architectures.</p>
+
+<p>In this comprehensive guide, we dissect every major architectural leap, performance enhancement, and developer tool introduced in WordPress 7.1. Whether you maintain enterprise multisite networks or run high-traffic e-commerce experiences, this deep dive provides the technical specifications, actionable implementation steps, and production code snippets you need to stay ahead of the curve.</p>
+
+<h2 id="section-0">What is WordPress 7.1 "Mary Lou"?</h2>
+
+<p>WordPress 7.1 "Mary Lou" is the first major core release of 2026, building upon the structural changes introduced in WordPress 7.0 and fulfilling long-awaited milestones in the Gutenberg project roadmap. Named after Mary Lou Williams—whose innovative arrangements shaped the swing era and modern jazz—version 7.1 reflects that same spirit of structural experimentation, harmony, and compositional brilliance.</p>
+
+<p>At its core, WordPress 7.1 finalizes the multi-year initiative to make WordPress a real-time, multi-tenant workspace while drastically reducing the client-side footprint of frontend sites. The release completely transforms how teams work together inside the Site Editor, standardizes how dynamic data binds to static markup, and brings modern server-driven UI conventions to the open web.</p>
+
+<p>The primary architectural pillars of WordPress 7.1 include:</p>
+<ul>
+    <li><strong>Native Real-Time Collaboration Engine:</strong> Built-in CRDT (Conflict-free Replicated Data Types) synchronization that enables multiple editors to work concurrently on the same post, template, or site-wide pattern without database deadlocks or field-locking barriers.</li>
+    <li><strong>Interactivity API v2:</strong> A refined, signals-based reactive framework that facilitates lightning-fast, client-side routing, optimistic UI updates, and zero-page-reload navigations without requiring React on the frontend.</li>
+    <li><strong>Unified Admin Shell (Admin NextGen):</strong> The initial progressive rollout of the modern dashboard UI, unifying the historical <code>wp-admin</code> interface with the fluid design language of the Site Editor.</li>
+    <li><strong>Speculative Loading & Native Media Optimization:</strong> Deep integration of the W3C Speculation Rules API for instant page transitions, coupled with automatic fallback-free AVIF and JPEG XL delivery.</li>
+    <li><strong>Block Bindings API 2.0:</strong> Direct connection of custom post meta, options tables, and remote microservices to block attributes via native visual controls in the block inspector, eliminating boilerplate custom blocks.</li>
+</ul>
+
+<h2 id="section-1">Why WordPress 7.1 Matters in 2026</h2>
+
+<p>The web landscape of 2026 leaves no room for slow, monolithic platforms that deliver sluggish Core Web Vitals and friction-heavy content workflows. Publishers now demand the real-time editing velocity popularized by SaaS documents (such as Google Docs, Notion, and Figma), while enterprise security teams demand data sovereignty, strict privacy controls, and self-hosted reliability.</p>
+
+<p>WordPress 7.1 directly tackles these demands, rendering complex headless microservices unnecessary for a broad cross-section of projects. By implementing modern frontend techniques directly in the core software, Mary Lou empowers engineering teams to deliver sub-100-millisecond page transitions natively, bypassing the operational overhead, maintenance burdens, and hosting expenses inherent in separate Node.js rendering tiers.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #d1d5db;">
+    <thead>
+        <tr style="background-color: #f3f4f6; color: #111827; border-bottom: 2px solid #d1d5db;">
+            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">Feature Focus</th>
+            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">WordPress 6.x Era</th>
+            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">WordPress 7.1 "Mary Lou"</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border-bottom: 1px solid #e5e7eb;">
+            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Editorial Collaboration</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Crude post-locking ("User X is taking over editing"); asynchronous comments.</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Peer-to-peer real-time CRDT multi-authoring, live cursors, inline thread mentions.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
+            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Dynamic Frontend State</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Interactivity API v1 (basic islands); heavy dependency on custom JS bundles.</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Interactivity API v2; signals-based reactivity; native cross-island global stores.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb;">
+            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Client-Side Routing</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Manual PJAX/Turbolinks integration or full headless headless SPA.</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Native Speculative Rules Engine + Block Client Router for instant navigation.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
+            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Custom Field Integration</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Custom PHP render callbacks, Advanced Custom Fields (ACF), or custom blocks.</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Block Bindings API 2.0 with native UI binding for postmeta, options, and APIs.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Admin Infrastructure</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Bifurcated: Classic PHP WP-Admin vs. React-based Site Editor.</td>
+            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">NextGen Admin UI: Single unified extensible web component architecture.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Furthermore, Mary Lou elevates site safety by setting stricter PHP baseline expectations (PHP 8.2+ recommended, with complete PHP 8.4 support) and native cryptographic nonces integrated directly into transient caching APIs, rendering common replay attacks virtually inert.</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement WordPress 7.1 with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<h2 id="section-2">Step-by-Step Guide: Implementing WordPress 7.1 New Features</h2>
+
+<p>Upgrading to WordPress 7.1 unlocks an arsenal of powerful features for both site operators and plugin developers. The following step-by-step breakdown walks you through adopting, configuring, and developing for the flagship improvements rolled out in the Mary Lou release.</p>
+
+<h3>Step 1: Configuring Real-Time Collaborative Editing</h3>
+<p>The definitive innovation of Phase 3 is the Native Collaborative Engine. Prior to WordPress 7.1, if Author A opened a post, Author B saw a modal stating that the post was locked. In 7.1, Mary Lou introduces concurrent editing based on the Yjs CRDT framework, coordinated over Secure WebSockets or fallback Server-Sent Events (SSE).</p>
+<p>To enable and configure collaboration on enterprise self-hosted environments, developers can define connection endpoints within <code>wp-config.php</code> or hook into core collaboration filters:</p>
+
+<pre><code>// Enable internal WebSockets transport for Real-Time Collaboration
+define( 'WP_COLLABORATION_ENGINE', 'websockets' );
+define( 'WP_COLLABORATION_SERVER_URL', 'wss://collab.yourdomain.com' );
+
+// Optional: Enable peer presence visualization and cursor broadcasts
+add_filter( 'wp_collaboration_settings', function( $settings ) {
+    $settings['show_remote_cursors']    = true;
+    $settings['enable_inline_comments']  = true;
+    $settings['idle_timeout_ms']         = 120000; // 2 minutes
+    return $settings;
+} );
+</code></pre>
+
+<p>When multiple authenticated team members access the Block Editor, each author receives a designated color identity. Cursors, block selections, and text changes stream asynchronously across all client sessions without invoking REST API write cascades, drastically reducing server database load.</p>
+
+<h3>Step 2: Building Interactive UI with Interactivity API v2</h3>
+<p>WordPress 7.1 elevates the Interactivity API by shifting from a micro-VDOM approach to a hyper-performant <strong>signals-based reactive system</strong>. This eliminates UI layout thrashing when dynamic frontend state mutations occur.</p>
+<p>Consider an interactive product inventory tracker or dynamic engagement block. Below is an example of an Interactivity API v2 block implementation demonstrating state, context, and speculative prefetching actions.</p>
+
+<p>First, register the interactive store inside your block's view module:</p>
+
+<pre><code>// view.js - Interactivity API v2 Signal Module
+import { store, getContext } from '@wordpress/interactivity';
+
+store( 'inventoryTracker', {
+    state: {
+        get isLowStock() {
+            return store( 'inventoryTracker' ).state.stockCount &lt; 5;
+        },
+        stockCount: 12,
+        statusText: 'In Stock'
+    },
+    actions: {
+        decrementStock() {
+            const state = store( 'inventoryTracker' ).state;
+            if ( state.stockCount &gt; 0 ) {
+                state.stockCount--;
+                if ( state.stockCount === 0 ) {
+                    state.statusText = 'Sold Out';
+                }
+            }
+        },
+        reserveItem: async () =&gt; {
+            const context = getContext();
+            try {
+                const response = await fetch( `/wp-json/shop/v1/reserve/${context.productId}`, {
+                    method: 'POST',
+                    headers: { 'X-WP-Nonce': wpInteractivityData.nonce }
+                } );
+                if ( response.ok ) {
+                    store( 'inventoryTracker' ).state.stockCount--;
+                }
+            } catch ( error ) {
+                console.error( 'Stock reservation failed:', error );
+            }
+        }
+    },
+    callbacks: {
+        logStockChange: () =&gt; {
+            const { stockCount } = store( 'inventoryTracker' ).state;
+            console.log( `Current inventory shifted: ${stockCount}` );
+        }
+    }
+} );
+</code></pre>
+
+<p>Next, define the declarative directives in your PHP render template using standard HTML5 attributes:</p>
+
+<pre><code>&lt;?php
+/**
+ * Render template for dynamic inventory block
+ * WordPress 7.1 Declarative Directives
+ */
+$product_id = get_the_ID();
+?&gt;
+&lt;div 
+    data-wp-interactive="inventoryTracker"
+    data-wp-context='{ "productId": &lt;?php echo esc_attr( $product_id ); ?&gt; }'
+    data-wp-watch="callbacks.logStockChange"
+    class="inventory-card"
+&gt;
+    &lt;p&gt;Availability: &lt;span data-wp-text="state.statusText"&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;Units remaining: &lt;strong data-wp-text="state.stockCount"&gt;&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;div data-wp-bind--hidden="!state.isLowStock" class="alert-banner"&gt;
+        &lt;span&gt;Hurry! Low inventory warning.&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;button 
+        data-wp-on--click="actions.decrementStock"
+        data-wp-bind--disabled="state.stockCount === 0"
+        class="action-button"
+    &gt;
+        Purchase Unit
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>Step 3: Leveraging the Speculative Rules Engine for Instant Page Loads</h3>
+<p>The Mary Lou release ships with comprehensive, out-of-the-box support for the W3C Speculation Rules API. Instead of depending on third-party JavaScript libraries to prefetch documents on hover, the WordPress 7.1 core parser monitors user intent using native browser heuristics and instructs the browser to pre-render full documents in an invisible background background tab context.</p>
+<p>To configure the Speculation Rules engine via your theme or custom functionality, hook into the new Core Engine API:</p>
+
+<pre><code>// Customize core speculation rules in WordPress 7.1
+add_action( 'wp_enqueue_speculation_rules', function() {
+    $rules = [
+        'prerender' =&gt; [
+            [
+                'source' =&gt; 'list',
+                'urls'   =&gt; [
+                    home_url( '/checkout/' ),
+                    home_url( '/pricing/' )
+                ],
+                'eagerness' =&gt; 'immediate'
+            ],
+            [
+                'source' =&gt; 'document',
+                'where'  =&gt; [
+                    'and' =&gt; [
+                        [ 'href_matches' =&gt; '/*' ],
+                        [ 'not' =&gt; [ 'href_matches' =&gt; '/wp-admin/*' ] ],
+                        [ 'not' =&gt; [ 'href_matches' =&gt; '/*\\?(.+)' ] ], // Avoid search/querystrings
+                        [ 'not' =&gt; [ 'selector_matches' =&gt; '.no-prerender' ] ]
+                    ]
+                ],
+                'eagerness' =&gt; 'moderate'
+            ]
+        ]
+    ];
+
+    wp_register_speculation_rules( 'theme-speculation-rules', $rules );
+} );
+</code></pre>
+
+<h3>Step 4: Hooking into Block Bindings API 2.0</h3>
+<p>WordPress 6.5 introduced the experimental Block Bindings API, but it required considerable low-level wiring and lacked intuitive editor controls. WordPress 7.1 completely rebuilds this system under the 2.0 designation, adding two major improvements:</p>
+<ul>
+    <li>Visual point-and-click binding in the core Block Inspector interface.</li>
+    <li>A simplified PHP registration API supporting two-way bidirectional data flow.</li>
+</ul>
+<p>Here is how to register a dynamic binding source for an enterprise CRM metric or custom post meta in WordPress 7.1:</p>
+
+<pre><code>add_action( 'init', function() {
+    register_block_bindings_source( 'enterprise/account-manager', [
+        'label'              =&gt; __( 'Account Manager Meta', 'enterprise-theme' ),
+        'icon'               =&gt; 'admin-users',
+        'uses_context'       =&gt; [ 'postId' ],
+        'get_value_callback' =&gt; function( array $source_args, $block_instance ) {
+            $post_id = $block_instance-&gt;context['postId'] ?? get_the_ID();
+            $manager = get_post_meta( $post_id, '_account_manager_name', true );
+            return $manager ? esc_html( $manager ) : __( 'Unassigned Staff', 'enterprise-theme' );
+        },
+        'set_value_callback' =&gt; function( $value, array $source_args, $block_instance ) {
+            $post_id = $block_instance-&gt;context['postId'] ?? get_the_ID();
+            if ( current_user_can( 'edit_post', $post_id ) ) {
+                update_post_meta( $post_id, '_account_manager_name', sanitize_text_field( $value ) );
+            }
+        },
+        'can_user_edit_value' =&gt; function( array $source_args, $block_instance ) {
+            $post_id = $block_instance-&gt;context['postId'] ?? get_the_ID();
+            return current_user_can( 'edit_post', $post_id );
+        }
+    ] );
+} );
+</code></pre>
+
+<p>Once registered, editors can bind any Paragraph, Heading, or Button block directly to the "Account Manager Meta" source through the sidebar inspector. Whenever the bound user changes it in the canvas, the new value saves to the underlying meta field without custom React-based meta boxes.</p>
+
+<h3>Step 5: Modernizing Asset Pipelines with Default AVIF & JPEG XL</h3>
+<p>Media files remain the largest contributor to web page bloat. WordPress 7.1 formalizes modern image processing by making next-generation image encoding the default standard. When ImageMagick or libvips is present, Mary Lou generates and prioritizes <strong>JPEG XL</strong> and <strong>AVIF</strong> representations out of the box, reducing typical image weight by 35% to 55% compared to WebP, and up to 80% compared to legacy JPEG.</p>
+<p>To configure modern image quality and generation priorities, add the following configuration to your theme's <code>functions.php</code>:</p>
+
+<pre><code>add_filter( 'wp_image_sizes_generation_mime_types', function( $mime_types ) {
+    // Elevate JPEG XL and AVIF above standard WebP
+    return [
+        'image/jxl',
+        'image/avif',
+        'image/webp',
+        'image/jpeg',
+        'image/png'
+    ];
+} );
+
+add_filter( 'wp_editor_set_quality', function( $quality, $mime_type ) {
+    if ( 'image/avif' === $mime_type ) {
+        return 72; // Optimal compression-to-fidelity balance
+    }
+    if ( 'image/jxl' === $mime_type ) {
+        return 75;
+    }
+    return $quality;
+}, 10, 2 );
+</code></pre>
+
+<h2 id="section-3">Best Practices for Updating to WordPress 7.1</h2>
+
+<p>Adopting a major platform release like WordPress 7.1 demands disciplined release engineering, particularly for enterprise architectures, high-volume publishers, and agency fleets. The transition to unified administration components and real-time collaboration engines makes it vital to audit your stack before updating production sites.</p>
+
+<h3>1. Audit Custom Post Types for CRDT Schema Compatibility</h3>
+<p>Real-time collaborative editing relies on strict structured data models. If your custom post types rely on non-standard fields that inject unescaped HTML or bypass standard revision mechanics, CRDT conflict reconciliation can produce unintended output. Audit your custom post type definitions to ensure they expose explicit support for revisions, the REST API, and native editor fields:</p>
+
+<pre><code>register_post_type( 'corporate_brief', [
+    'public'       =&gt; true,
+    'show_in_rest' =&gt; true, // Mandatory for Interactivity API &amp; CRDT Sync
+    'supports'     =&gt; [ 'title', 'editor', 'revisions', 'custom-fields' ],
+    // Enable core 7.1 real-time state tracking
+    'collaboration' =&gt; [
+        'enabled'      =&gt; true,
+        'sync_meta'    =&gt; [ '_tracked_summary_code', '_workflow_state' ]
+    ]
+] );
+</code></pre>
+
+<h3>2. Migrate Custom Scripts Away from Global Window Observers</h3>
+<p>Because the Interactivity API v2 and the Speculation Rules engine dramatically accelerate user transitions, traditional full-page lifecycle events like <code>DOMContentLoaded</code> or <code>window.load</code> fire far less frequently as visitors navigate your site. Ensure all bespoke front-end analytics, layout calculations, and third-party tracking pixels run through standard lifecycle hooks instead of rigid document-ready listeners:</p>
+
+<pre><code>// Deprecated approach: Fails during speculative page navigations
+document.addEventListener( 'DOMContentLoaded', () =&gt; {
+    initCustomModule();
+} );
+
+// WordPress 7.1 resilient approach: Works across client-side routes
+import { onPageNavigated } from '@wordpress/interactivity-router';
+
+onPageNavigated( () =&gt; {
+    initCustomModule();
+} );
+</code></pre>
+
+<h3>3. Transition Theme Tokens to theme.json Schema v4</h3>
+<p>WordPress 7.1 introduces <code>version: 4</code> of the <code>theme.json</code> specification. This revision introduces dynamic fluid typography math, structured container queries, and native layout isolation rules directly into configuration files. Upgrade your root configuration to prevent deprecation warnings and leverage modernized CSS generation:</p>
+
+<pre><code>{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 4,
+  "settings": {
+    "typography": {
+      "fluid": {
+        "minViewportWidth": "360px",
+        "maxViewportWidth": "1440px"
+      }
+    },
+    "layout": {
+      "useContainerQueries": true,
+      "contentSize": "840px",
+      "wideSize": "1280px"
+    }
+  }
+}
+</code></pre>
+
+<h2 id="section-4">Common Mistakes to Avoid</h2>
+
+<p>When implementing WordPress 7.1, avoid these common anti-patterns and legacy fallbacks:</p>
+
+<h3>1. Over-Engineering Headless Stacks for Simple Interactivity Needs</h3>
+<p>For several years, developers frequently turned to headless stacks (such as Next.js, Remix, or Astro) simply to achieve snappy transitions and reactive interfaces. With the arrival of WordPress 7.1 "Mary Lou," using an external headless framework simply to eliminate page reloads is often an architectural anti-pattern. Interactivity API v2 delivers single-page app responsiveness with server-rendered simplicity, zero JS build pipelines, and built-in SEO capabilities. Carefully reassess whether the architectural overhead, hosting costs, and content synchronization challenges of a decoupled frontend are genuinely justified.</p>
+
+<h3>2. Neglecting WebSocket and HTTP/3 Ingress Layer Constraints</h3>
+<p>Teams deploying WordPress 7.1's real-time collaborative editing features often test successfully on local development servers, only to run into issues in production behind reverse proxies and Web Application Firewalls (such as Cloudflare, AWS CloudFront, or custom Nginx clusters). The collaborative engine requires persistent bidirectional HTTP Upgrade connections. Failing to allow WebSockets through your gateway or terminating long-running HTTP/2 and HTTP/3 multiplexed sessions will force core into polling fallback mode, significantly increasing server database load.</p>
+
+<h3>3. Relying on Classic Nonce Verification in Reactive Components</h3>
+<p>Traditional nonces generated by <code>wp_create_nonce( 'wp_rest' )</code> were designed for short-lived, static HTTP request-response cycles. Because the Interactivity API v2 and speculative pre-rendering can keep applications mounted and reactive across extended user sessions, cached nonces can expire and cause silent <code>403 Forbidden</code> errors. Always use the dynamic nonce hydration routines supplied by the Interactivity runtime rather than hardcoding static nonces into cached template HTML.</p>
+
+<h3>4. Bypassing the Block Bindings API with Raw SQL or Unchecked Meta Updates</h3>
+<p>The Block Bindings API v2 requires that bound values pass through registered schema sanitization. Attempting to update bound meta fields via custom database queries outside of the core REST and metadata APIs breaks client CRDT state sync. This leaves active editor sessions viewing stale data and triggers persistent revision merge conflicts across concurrent contributors.</p>
+
+<h3>5. Ignoring Memory Profiles on Server-Side Image Generation</h3>
+<p>While the automatic generation of AVIF and JPEG XL files significantly reduces client payload sizes, generating three or four modern formats simultaneously requires more memory from host processes. Avoid setting concurrent thumbnail generations to unlimited in background queues. Configure memory limits of at least 512MB per PHP worker when processing high-resolution media uploads to prevent ImageMagick thread panics.</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-5">Conclusion</h2>
+<p>WordPress 7.1 "Mary Lou" represents a major leap forward for the world's most popular content management system. By delivering enhanced editing workflows, improved performance benchmarks, and streamlined site management capabilities, the new features introduced in this release empower both non-technical creators and seasoned developers to build better web experiences with greater efficiency.</p>
+<p>As the digital landscape evolves, staying ahead means adapting to these architectural advancements. Whether you are planning a migration, optimizing your site's speed, or looking to integrate the latest block patterns, tapping into the power of WordPress 7.1 ensures your platform remains modern, secure, and ready to scale.</p>
+<p>If you are looking to upgrade your digital presence or need expert assistance navigating these latest updates, Shiv Parmar is available for WordPress development work worldwide. From bespoke theme and plugin development to comprehensive site upgrades and performance tuning, get in touch today to bring your WordPress 7.1 vision to life.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">WordPress 7.1</a>
+<a href="/blog" class="tag">Mary Lou</a>
+<a href="/blog" class="tag">new features</a>
+</div>
+
+<div class="author-box">
+<img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-18 &middot; 8 min read</div>
+<h4><a href="../blog/best-wordpress-caching-plugins-2026-compared" title="Best WordPress Caching Plugins 2026: WP Rocket vs">Best WordPress Caching Plugins 2026: WP Rocket vs</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-17 &middot; 8 min read</div>
+<h4><a href="../blog/best-wordpress-security-plugins-2026-protection" title="Best WordPress Security Plugins 2026: Full">Best WordPress Security Plugins 2026: Full</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-16 &middot; 8 min read</div>
+<h4><a href="../blog/best-wordpress-migration-plugins-2026-tested" title="Best WordPress Migration Plugins 2026: 6 Picks">Best WordPress Migration Plugins 2026: 6 Picks</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+</body>
+</html>
