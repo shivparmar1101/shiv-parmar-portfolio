@@ -1,0 +1,29 @@
+url,type,site_name,status,contact,anchor_text,notes
+https://www.linkedin.com/in/shiv-parmar,profile,LinkedIn,todo,,Shiv Parmar | WordPress Developer,About section + Featured me site link add karo
+https://github.com/shivparmar1101,profile,GitHub,todo,,shivparmar1101,Repo README me portfolio link + profile bio me site URL
+https://dev.to/,profile,Dev.to,todo,,Shiv Parmar,Canonical = original blog URL set karo republish vaaste
+https://hashnode.com/,profile,Hashnode,todo,,Shiv Parmar,Canonical = original blog URL
+https://medium.com/,profile,Medium,todo,,Shiv Parmar,Import posts with canonical link
+https://profiles.wordpress.org/,profile,WordPress.org,todo,,Shiv Parmar,Community profile me site link (w.org strong)
+https://www.goodfirms.co/,directory,GoodFirms,todo,,Shiv Parmar - WordPress Developer,Free listing + client reviews add karo
+https://clutch.co/,directory,Clutch,todo,,Shiv Parmar / portfolio,Free profile; reviews maangho past clients na
+https://themanifest.com/,directory,The Manifest,todo,,Shiv Parmar - WordPress Developer,Same company data GoodFirms jaisu
+https://www.designrush.com/,directory,DesignRush,todo,,Shiv Parmar,Agency/profile listing
+https://www.topdevelopers.co/,directory,TopDevelopers,todo,,Shiv Parmar,Profile listing
+https://www.itfirms.com/,directory,ITFirms,todo,,Shiv Parmar WordPress Portfolio,Indian IT listing directory
+https://techbehemoths.com/,directory,TechBehemoths,todo,,Shiv Parmar,Free agency profile
+https://www.crunchbase.com/,profile,Crunchbase,todo,,Shiv Parmar,Person profile me website field
+https://about.me/,profile,About.me,todo,,Shiv Parmar,Single-page bio + link
+https://www.upwork.com/,profile,Upwork,todo,,Shiv Parmar,Portfolio link in profile (if freelancing active)
+https://www.fiverr.com/,profile,Fiverr,todo,,Shiv parmar,Profile website field
+https://www.indiehackers.com/,profile,Indie Hackers,todo,,Shiv Parmar,Intro post + site link; build-in-public updates
+https://www.producthunt.com/,list,Product Hunt,todo,,<tool/checklist name>,Tab banao free tool/checklist thase e vaaste
+https://kinsta.com/write-for-kinsta/,guest,Kinsta,todo,,Shiv Parmar (WordPress developer),Write-for-Kinsta program; pitch WooCommerce/speed topic
+https://www.cloudways.com/en/blog/guest-posting/,guest,Cloudways,todo,,Shiv Parmar,Guest posting guidelines page check karo
+https://themeisle.com/write-for-us/,guest,Themeisle,todo,,Shiv Parmar,WordPress tutorials pitch
+https://www.hostinger.com/tutorials/guest-post,guest,Hostinger,verify,,Shiv Parmar,URL verify karo write-for-us search karine
+,<guest>,other WP blogs,todo,,Shiv Parmar,Search: wordpress + ("write for us" OR "guest post") -site:reddit.com
+,<resource>,client sites,todo,,<case study anchor>,Past clients ni site ma "featured/project" section thi backlink
+,<community>,Reddit r/WordPress,todo,,Shiv Parmar,Signature allowed nathi - genuine answer + rare link only
+,<community>,WordPress StackExchange,todo,,Shiv Parmar,Link only when genuinely answers question
+,<resource>,Featured.com/Qwoted,todo,,Shiv Parmar,Journalist requests (HARO alternative) - WordPress expert pitch
