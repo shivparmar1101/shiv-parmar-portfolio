@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Building a WordPress REST API from Scratch | Shiv Parmar</title>
-<meta name="description" content="Learn Building a WordPress REST API from Scratch with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta name="description" content="Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.">
 <meta name="keywords" content="WordPress, WordPress development, WordPress tips, building, wordpress, scratch">
 <meta name="author" content="Shiv Parmar">
 <meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
@@ -13,8 +13,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Building a WordPress REST API from Scratch">
-<meta property="og:description" content="Learn Building a WordPress REST API from Scratch with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta property="og:title" content="Building a WordPress REST API from Scratch | Shiv Parmar">
+<meta property="og:description" content="Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/building-a-wordpress-rest-api-from-scratch-hero.svg">
 <meta property="og:image:alt" content="Building a WordPress REST API from Scratch - WordPress development guide by Shiv Parmar">
@@ -25,8 +25,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Building a WordPress REST API from Scratch">
-<meta name="twitter:description" content="Learn Building a WordPress REST API from Scratch with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta name="twitter:title" content="Building a WordPress REST API from Scratch | Shiv Parmar">
+<meta name="twitter:description" content="Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/building-a-wordpress-rest-api-from-scratch-hero.svg">
 <meta name="twitter:image:alt" content="Building a WordPress REST API from Scratch - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
@@ -37,13 +37,42 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Building a WordPress REST API from Scratch",
-  "description": "Learn Building a WordPress REST API from Scratch with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.",
+  "description": "Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-27",
   "dateModified": "2026-08-27",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/building-a-wordpress-rest-api-from-scratch-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I register a custom route in the WordPress REST API?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Call register_rest_route() from a function hooked to rest_api_init, passing your namespace, route pattern, and an array of endpoints with their methods and callbacks. WordPress then exposes the route under /wp-json/ so any client can reach it. Keep namespaces versioned, for example yournamespace/v1, so you can evolve the contract later." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is permission_callback required on every endpoint?",
+      "acceptedAnswer": { "@type": "Answer", "text": "WordPress treats a route without a permission_callback as public and raises a doing_it_wrong notice, which is an easy way to leak data. The security step shows validating the nonce, the current user capabilities, or an application password before your callback runs. Always return a proper WP_Error with an HTTP status instead of failing silently." }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I sanitize and validate input in my endpoint?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use the sanitize_* functions for strings, rest_sanitize_value_from_schema for arrays, and declare argument types in the endpoint args array so invalid payloads are rejected before your code runs. Escaping on output matters as much as sanitizing on input. Validate first, sanitize second, and fail loudly with descriptive errors." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I call my custom endpoint from JavaScript?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The JavaScript step uses fetch() against the /wp-json/ path with the nonce header WordPress provides, then renders the returned JSON. Test the same request in the REST API index or an API client before writing frontend code, because a 403 there means your permission check is wrong, not your JavaScript. The styling step then presents the data in a readable block." }
+    }
+  ]
 }
 </script>
 
@@ -142,7 +171,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
 <ul id="tocList">
-<li><a href="#section-0" title="Building a WordPress REST API Endpoint from Scratch: A Developer�s Guide">Building a WordPress REST API Endpoint from Scratch: A Developer�s Guide</a></li>
+<li><a href="#section-0" title="Building a WordPress REST API Endpoint from Scratch: A Developer&#39;s Guide">Building a WordPress REST API Endpoint from Scratch: A Developer&#39;s Guide</a></li>
 <li><a href="#section-1" title="Why Build Custom REST API Endpoints?">Why Build Custom REST API Endpoints?</a></li>
 <li><a href="#section-2" title="Step 1: Understanding the Hook and Function">Step 1: Understanding the Hook and Function</a></li>
 <li><a href="#section-3" title="Step 2: Writing the PHP Backend Endpoint">Step 2: Writing the PHP Backend Endpoint</a></li>
@@ -151,10 +180,11 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-6" title="Step 5: Adding Modern Styling">Step 5: Adding Modern Styling</a></li>
 <li><a href="#section-7" title="Testing Your REST Endpoint">Testing Your REST Endpoint</a></li>
 <li><a href="#section-8" title="Wrapping Up">Wrapping Up</a></li>
+<li><a href="#section-9" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
-<h2 id="section-0">Building a WordPress REST <a href="/blog/wordpress-rest-api-authentication-methods">API Endpoint</a> from Scratch: A Developer�s Guide</h2>
+<h2 id="section-0">Building a WordPress REST <a href="/blog/wordpress-rest-api-authentication-methods">API Endpoint</a> from Scratch: A Developer&#39;s Guide</h2>
 
 <p>Namaste! I am Shiv Parmar, a WordPress developer with global experience. Over the years working with clients across the globe, I have seen WordPress transform from a simple blogging tool into a powerful headless CMS. Today, modern web development often demands that WordPress communicate seamlessly with React, Vue, mobile apps, or third-party CRM systems.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WordPress Project Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I specialize in building custom WordPress solutions that drive results. Let's discuss your project.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Let's Talk <span>&rarr;</span></a></div>
@@ -261,7 +291,7 @@ function sp_get_latest_items_callback( $request ) {
 
 <p>Security is non-negotiable when building custom endpoints. WordPress provides built-in parameter sanitization and validation callbacks. Notice how we used <code>'sanitize_callback' =&gt; 'absint'</code> in our registration code above. This guarantees that any value passed to the <code>count</code> query parameter is cast into an absolute integer before our logic touches it.</p>
 
-<p>If you need an endpoint that requires administrative authentication (for writing or updating data), always utilize capability checks within your <code>permission_callback</code>:</p>
+<p>If you need an endpoint that requires administrative authentication (for writing or updating data), always utilize capability checks within your <code>permission_callback</code>. Membership platforms are a perfect real-world case &mdash; if you are gating premium content or courses behind subscriptions, my guide on building a <a href="/blog/how-to-build-a-wordpress-membership-site" title="How to Build a WordPress Membership Site">WordPress membership site</a> covers the full role and access architecture these endpoints depend on.</p>
 
 <pre><code>function sp_update_item_permissions() {
     if ( ! current_user_can( 'edit_posts' ) ) {
@@ -380,6 +410,20 @@ function sp_get_latest_items_callback( $request ) {
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Let's Talk <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-9">Frequently Asked Questions</h2>
+
+<h3>How do I register a custom route in the WordPress REST API?</h3>
+<p>Call register_rest_route() from a function hooked to rest_api_init, passing your namespace, route pattern, and an array of endpoints with their methods and callbacks. WordPress then exposes the route under /wp-json/ so any client can reach it. Keep namespaces versioned, for example yournamespace/v1, so you can evolve the contract later.</p>
+
+<h3>Why is permission_callback required on every endpoint?</h3>
+<p>WordPress treats a route without a permission_callback as public and raises a doing_it_wrong notice, which is an easy way to leak data. The security step shows validating the nonce, the current user capabilities, or an application password before your callback runs. Always return a proper WP_Error with an HTTP status instead of failing silently.</p>
+
+<h3>How should I sanitize and validate input in my endpoint?</h3>
+<p>Use the sanitize_* functions for strings, rest_sanitize_value_from_schema for arrays, and declare argument types in the endpoint args array so invalid payloads are rejected before your code runs. Escaping on output matters as much as sanitizing on input. Validate first, sanitize second, and fail loudly with descriptive errors.</p>
+
+<h3>How do I call my custom endpoint from JavaScript?</h3>
+<p>The JavaScript step uses fetch() against the /wp-json/ path with the nonce header WordPress provides, then renders the returned JSON. Test the same request in the REST API index or an API client before writing frontend code, because a 403 there means your permission check is wrong, not your JavaScript. The styling step then presents the data in a readable block.</p>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

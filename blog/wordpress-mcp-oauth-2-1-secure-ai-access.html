@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress MCP OAuth 2.1 Setup: Secure AI Access | Shiv Parmar</title>
+<title>WordPress MCP OAuth 2.1: Secure AI Access | Shiv Parmar</title>
 <meta name="description" content="Secure your WordPress site with our step-by-step MCP OAuth 2.1 setup guide. Learn how to safely connect AI tools and manage permissions with ease.">
 <meta name="keywords" content="MCP OAuth, WordPress security, AI access">
 <meta name="author" content="Shiv Parmar">
@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide">
+<meta property="og:title" content="WordPress MCP OAuth 2.1: Secure AI Access | Shiv Parmar">
 <meta property="og:description" content="Secure your WordPress site with our step-by-step MCP OAuth 2.1 setup guide. Learn how to safely connect AI tools and manage permissions with ease.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-mcp-oauth-2-1-secure-ai-access-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide">
+<meta name="twitter:title" content="WordPress MCP OAuth 2.1: Secure AI Access | Shiv Parmar">
 <meta name="twitter:description" content="Secure your WordPress site with our step-by-step MCP OAuth 2.1 setup guide. Learn how to safely connect AI tools and manage permissions with ease.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-mcp-oauth-2-1-secure-ai-access-hero.svg">
 <meta name="twitter:image:alt" content="WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide - WordPress development guide by Shiv Parmar">
@@ -36,7 +36,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "WordPress MCP OAuth 2.1 Setup: Secure AI Access Guide",
+  "headline": "WordPress MCP OAuth 2.1: Secure AI Access | Shiv Parmar",
   "description": "Secure your WordPress site with our step-by-step MCP OAuth 2.1 setup guide. Learn how to safely connect AI tools and manage permissions with ease.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
@@ -44,6 +44,47 @@
   "dateModified": "2026-10-12",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-mcp-oauth-2-1-secure-ai-access-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are WordPress Application Passwords unsafe for AI agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Application Passwords cannot be scoped: they inherit every capability of the user who created them, so an agent running on an administrator password can delete the database or install plugins. The guide reserves them for local testing only and uses OAuth 2.1 with narrow scopes for production MCP traffic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is PKCE and why does OAuth 2.1 require it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PKCE pairs a random code_verifier with a SHA-256 code_challenge (S256) so an intercepted authorization code cannot be exchanged for tokens without the verifier. OAuth 2.1 mandates it for every client, public or confidential, because local MCP tools like Claude Desktop cannot safely store a client_secret."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I limit what an AI agent can do in WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Register granular scopes such as mcp:read_content and mcp:draft_content, map them to a dedicated ai_content_assistant role instead of administrator, and enforce them in rest_pre_dispatch so requests without the right scope get a 403. The sample code also forces AI-authored posts to draft status and rate limits token requests to 60 per minute per client."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should OAuth access and refresh tokens live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep access tokens short, 15 to 30 minutes (10 to 60 is the accepted range), and refresh tokens at 7 to 14 days with inactivity expiry. Rotate the refresh token on every use so a replayed old token triggers revocation of the whole authorization tree, and hook set_user_role to revoke tokens when account access changes."
+      }
+    }
+  ]
 }
 </script>
 
@@ -149,6 +190,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for Hardening AI Access in WordPress">Best Practices for Hardening AI Access in WordPress</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -594,6 +636,22 @@ add_action('set_user_role', function (int $user_id, string $role, array $old_rol
 <p>Adopting these modern authentication protocols is essential as generative engines and external integrations become deeper parts of everyday content workflows. While getting your <strong>MCP OAuth</strong> architecture configured correctly requires careful attention to redirect URIs, token lifespans, and PKCE requirements, the operational reliability and peace of mind it provides for enterprise-level environments are well worth the effort.</p>
 
 <p>If you need expert assistance securing your endpoints, fine-tuning authentication handshakes, or building custom integration pipelines, <strong>Shiv Parmar is available for WordPress development work worldwide</strong>. Whether you are architecting a headless ecosystem or introducing next-generation automation to your existing platform, professional support ensures your deployment is fast, reliable, and secure.</p>
+</div>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>Why are WordPress Application Passwords unsafe for AI agents?</h3>
+<p>Application Passwords cannot be scoped: they inherit every capability of the user who created them, so an agent running on an administrator password can delete the database or install plugins. The guide reserves them for local testing only and uses OAuth 2.1 with narrow scopes for production MCP traffic.</p>
+
+<h3>What is PKCE and why does OAuth 2.1 require it?</h3>
+<p>PKCE pairs a random code_verifier with a SHA-256 code_challenge (S256) so an intercepted authorization code cannot be exchanged for tokens without the verifier. OAuth 2.1 mandates it for every client, public or confidential, because local MCP tools like Claude Desktop cannot safely store a client_secret.</p>
+
+<h3>How do I limit what an AI agent can do in WordPress?</h3>
+<p>Register granular scopes such as mcp:read_content and mcp:draft_content, map them to a dedicated ai_content_assistant role instead of administrator, and enforce them in rest_pre_dispatch so requests without the right scope get a 403. The sample code also forces AI-authored posts to draft status and rate limits token requests to 60 per minute per client.</p>
+
+<h3>How long should OAuth access and refresh tokens live?</h3>
+<p>Keep access tokens short, 15 to 30 minutes (10 to 60 is the accepted range), and refresh tokens at 7 to 14 days with inactivity expiry. Rotate the refresh token on every use so a replayed old token triggers revocation of the whole authorization tree, and hook set_user_role to revoke tokens when account access changes.</p>
+
 </div>
 
 <div class="tags">

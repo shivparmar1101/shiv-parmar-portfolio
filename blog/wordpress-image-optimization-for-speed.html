@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WordPress Image Optimization for Speed | Shiv Parmar</title>
-<meta name="description" content="Boost your website speed with this expert guide on WordPress Image Optimization for Speed by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.">
+<meta name="description" content="Speed up WordPress with this image optimization guide. Learn compression, lazy loading, and WebP setup to improve page speed and Core Web Vitals today.">
 <meta name="keywords" content="WordPress speed, website performance, page speed, wordpress, image, optimization, speed">
 <meta name="author" content="Shiv Parmar">
 <meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
@@ -13,8 +13,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress Image Optimization for Speed">
-<meta property="og:description" content="Boost your website speed with this expert guide on WordPress Image Optimization for Speed by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.">
+<meta property="og:title" content="WordPress Image Optimization for Speed | Shiv Parmar">
+<meta property="og:description" content="Speed up WordPress with this image optimization guide. Learn compression, lazy loading, and WebP setup to improve page speed and Core Web Vitals today.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-image-optimization-for-speed-hero.svg">
 <meta property="og:image:alt" content="WordPress Image Optimization for Speed - WordPress development guide by Shiv Parmar">
@@ -23,8 +23,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress Image Optimization for Speed">
-<meta name="twitter:description" content="Boost your website speed with this expert guide on WordPress Image Optimization for Speed by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.">
+<meta name="twitter:title" content="WordPress Image Optimization for Speed | Shiv Parmar">
+<meta name="twitter:description" content="Speed up WordPress with this image optimization guide. Learn compression, lazy loading, and WebP setup to improve page speed and Core Web Vitals today.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-image-optimization-for-speed-hero.svg">
 <meta name="twitter:image:alt" content="WordPress Image Optimization for Speed - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
@@ -35,13 +35,54 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "WordPress Image Optimization for Speed",
-  "description": "Boost your website speed with this expert guide on WordPress Image Optimization for Speed by Shiv Parmar. Learn optimization techniques, caching strategies, and performance best practices.",
+  "description": "Speed up WordPress with this image optimization guide. Learn compression, lazy loading, and WebP setup to improve page speed and Core Web Vitals today.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-27",
   "dateModified": "2026-08-27",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-image-optimization-for-speed-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I lazy load the hero image on my homepage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Lazy loading your hero or main banner delays the Largest Contentful Paint, so the guide removes loading=lazy from the first image in the content with the wp_img_tag_add_loading_attr filter and sets fetchpriority=high so the browser downloads it before non-critical CSS and JavaScript."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I serve WebP and AVIF images in WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPress has supported WebP natively since 5.8 and AVIF since 6.5, so sub-sizes are generated in those formats when GD or ImageMagick is available. Fine-tune quality with the jpeg_quality and wp_editor_set_quality filters (82 is the sweet spot in this guide), or use ShortPixel, Imagify, or Smush when the server lacks image toolkits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I stop images from causing Cumulative Layout Shift?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reserve space for every image before it loads by giving its container explicit dimensions with CSS aspect-ratio and object-fit, plus a fallback background color. That keeps layout stable while the asset downloads, which protects your CLS score and search rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent WordPress from generating useless image sizes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Register exact dimensions for your components with add_image_size(), such as a 360x240 hard-cropped card thumb and a 1200x675 hero, so uploads are cropped to what the layout actually uses. Then unset unused defaults like medium_large, 1536x1536, and 2048x2048 through the intermediate_image_sizes_advanced filter to save disk space."
+      }
+    }
+  ]
 }
 </script>
 
@@ -146,6 +187,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-3" title="4. Prevent Cumulative Layout Shift (CLS) with CSS">4. Prevent Cumulative Layout Shift (CLS) with CSS</a></li>
 <li><a href="#section-4" title="5. Optimization Checklist for WordPress Developers">5. Optimization Checklist for WordPress Developers</a></li>
 <li><a href="#section-5" title="Summary">Summary</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -223,7 +265,7 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
 </code></pre>
 
     <blockquote style="border-left: 4px solid #0073aa; margin: 20px 0; padding-left: 15px; font-style: italic; color: #444;">
-        "Image optimization isn't merely about aggressive file compression�it is about delivering the exact required resolution for the user's specific viewport at the exact instant they need it."
+        "Image optimization isn't merely about aggressive file compression&mdash;it is about delivering the exact required resolution for the user's specific viewport at the exact instant they need it."
     </blockquote>
 
     <h2 id="section-3">4. Prevent Cumulative Layout Shift (CLS) with CSS</h2>
@@ -271,6 +313,21 @@ add_filter( 'intermediate_image_sizes_advanced', 'shiv_remove_unused_image_sizes
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress Performance development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress Performance development projects">Speed Up My Site <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>Should I lazy load the hero image on my homepage?</h3>
+<p>No. Lazy loading your hero or main banner delays the Largest Contentful Paint, so the guide removes loading=lazy from the first image in the content with the wp_img_tag_add_loading_attr filter and sets fetchpriority=high so the browser downloads it before non-critical CSS and JavaScript.</p>
+
+<h3>How do I serve WebP and AVIF images in WordPress?</h3>
+<p>WordPress has supported WebP natively since 5.8 and AVIF since 6.5, so sub-sizes are generated in those formats when GD or ImageMagick is available. Fine-tune quality with the jpeg_quality and wp_editor_set_quality filters (82 is the sweet spot in this guide), or use ShortPixel, Imagify, or Smush when the server lacks image toolkits.</p>
+
+<h3>How do I stop images from causing Cumulative Layout Shift?</h3>
+<p>Reserve space for every image before it loads by giving its container explicit dimensions with CSS aspect-ratio and object-fit, plus a fallback background color. That keeps layout stable while the asset downloads, which protects your CLS score and search rankings.</p>
+
+<h3>How do I prevent WordPress from generating useless image sizes?</h3>
+<p>Register exact dimensions for your components with add_image_size(), such as a 360x240 hard-cropped card thumb and a 1200x675 hero, so uploads are cropped to what the layout actually uses. Then unset unused defaults like medium_large, 1536x1536, and 2048x2048 through the intermediate_image_sizes_advanced filter to save disk space.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

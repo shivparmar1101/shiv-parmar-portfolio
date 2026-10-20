@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WordPress Gutenberg Block Development | Shiv Parmar</title>
-<meta name="description" content="Learn WordPress Gutenberg Block Development with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta name="description" content="Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.">
 <meta name="keywords" content="WordPress, WordPress development, WordPress tips, wordpress, gutenberg, block, development">
 <meta name="author" content="Shiv Parmar">
 <meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
@@ -13,8 +13,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress Gutenberg Block Development">
-<meta property="og:description" content="Learn WordPress Gutenberg Block Development with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta property="og:title" content="WordPress Gutenberg Block Development | Shiv Parmar">
+<meta property="og:description" content="Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-gutenberg-block-development-hero.svg">
 <meta property="og:image:alt" content="WordPress Gutenberg Block Development - WordPress development guide by Shiv Parmar">
@@ -23,8 +23,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress Gutenberg Block Development">
-<meta name="twitter:description" content="Learn WordPress Gutenberg Block Development with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.">
+<meta name="twitter:title" content="WordPress Gutenberg Block Development | Shiv Parmar">
+<meta name="twitter:description" content="Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-gutenberg-block-development-hero.svg">
 <meta name="twitter:image:alt" content="WordPress Gutenberg Block Development - WordPress development guide by Shiv Parmar">
 <meta name="twitter:creator" content="@shivparmar1101">
@@ -35,13 +35,54 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "WordPress Gutenberg Block Development",
-  "description": "Learn WordPress Gutenberg Block Development with this comprehensive WordPress development guide by Shiv Parmar. Step-by-step instructions, practical code examples, and expert tips to help you build better WordPress websites.",
+  "description": "Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/", "logo": { "@type": "ImageObject", "url": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg" } },
   "datePublished": "2026-08-29",
   "dateModified": "2026-08-29",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-gutenberg-block-development-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I scaffold a new WordPress block plugin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With Node.js installed, run npx @wordpress/create-block dev-callout-block from your wp-content/plugins directory, then cd into the folder and start npm start. The scaffold wires up ESNext, Webpack, and SCSS, and npm start watches your files and recompiles assets on every save."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What files are inside a custom Gutenberg block?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "block.json holds the metadata, attributes, and script registrations as the block's single source of truth, while src/index.js registers the block on the client. src/edit.js is the React editor view, src/save.js defines the stored static HTML, and src/style.scss styles both editor and frontend."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I build a dynamic block instead of a static one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a dynamic block whenever output depends on live data such as recent posts, metadata, or WooCommerce products rather than content fixed at save time. Return null from save.js and render on the server with a render.php file or a render_callback, escaping output through esc_html() and wp_kses_post()."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the best practices for custom block development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apply useBlockProps to every wrapper so alignments and custom classes keep working, sanitize server-rendered data with wp_kses_post(), and wrap static strings in __() so the block is translation-ready. Also keep attributes minimal, because storing unused data bloats the block comment markup in the database."
+      }
+    }
+  ]
 }
 </script>
 
@@ -147,6 +188,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-4" title="Static vs. Dynamic Blocks: When to Use PHP">Static vs. Dynamic Blocks: When to Use PHP</a></li>
 <li><a href="#section-5" title="Best Practices for Custom Block Development">Best Practices for Custom Block Development</a></li>
 <li><a href="#section-6" title="Wrapping Up">Wrapping Up</a></li>
+<li><a href="#section-7" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -167,8 +209,10 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <ul>
     <li><strong>Full Site Editing (FSE) Compatibility:</strong> Native blocks integrate seamlessly into FSE templates and block patterns.</li>
     <li><strong>Better <a href="/blog/wordpress-image-optimization-for-speed">Performance</a>:</strong> Native blocks eliminate extra database queries often introduced by heavy third-party option frameworks.</li>
-    <li><strong>Reusable UX Components:</strong> You can leverage WordPress�s rich library of UI components like color pickers, alignment controls, and rich text fields.</li>
+    <li><strong>Reusable UX Components:</strong> You can leverage WordPress&#39;s rich library of UI components like color pickers, alignment controls, and rich text fields.</li>
 </ul>
+
+<p>The same patterns extend to larger UI assemblies too &mdash; building <a href="/blog/how-to-create-wordpress-mega-menu" title="How to Create a WordPress Mega Menu">mega menu blocks</a> relies on the identical <code>block.json</code> registration, RichText editing, and dynamic render workflow described in this guide.</p>
 
 <h2 id="section-2">Setting Up Your Block Development Environment</h2>
 
@@ -308,7 +352,7 @@ export default function save({ attributes }) {
 
 <h2 id="section-4">Static vs. Dynamic Blocks: When to Use PHP</h2>
 
-<p>The code example above demonstrates a <strong>static block</strong>, where HTML is generated in JavaScript and saved directly in <code>post_content</code>. However, if your block needs to display real-time database content�such as recent blog posts, dynamic metadata, or WooCommerce products�you should build a <strong>dynamic block</strong>.</p>
+<p>The code example above demonstrates a <strong>static block</strong>, where HTML is generated in JavaScript and saved directly in <code>post_content</code>. However, if your block needs to display real-time database content&mdash;such as recent blog posts, dynamic metadata, or WooCommerce products&mdash;you should build a <strong>dynamic block</strong>.</p>
 
 <p>To render dynamically on the server side, omit the return statement in <code>save.js</code> (or return <code>null</code>), and define a <code>render.php</code> file inside your block directory, or use the <code>render_callback</code> parameter when registering the block in PHP:</p>
 
@@ -347,6 +391,21 @@ $wrapper_attributes = get_block_wrapper_attributes( array( 'class' =&gt; 'custom
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Hire Me <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-7">Frequently Asked Questions</h2>
+
+<h3>How do I scaffold a new WordPress block plugin?</h3>
+<p>With Node.js installed, run npx @wordpress/create-block dev-callout-block from your wp-content/plugins directory, then cd into the folder and start npm start. The scaffold wires up ESNext, Webpack, and SCSS, and npm start watches your files and recompiles assets on every save.</p>
+
+<h3>What files are inside a custom Gutenberg block?</h3>
+<p>block.json holds the metadata, attributes, and script registrations as the block's single source of truth, while src/index.js registers the block on the client. src/edit.js is the React editor view, src/save.js defines the stored static HTML, and src/style.scss styles both editor and frontend.</p>
+
+<h3>When should I build a dynamic block instead of a static one?</h3>
+<p>Use a dynamic block whenever output depends on live data such as recent posts, metadata, or WooCommerce products rather than content fixed at save time. Return null from save.js and render on the server with a render.php file or a render_callback, escaping output through esc_html() and wp_kses_post().</p>
+
+<h3>What are the best practices for custom block development?</h3>
+<p>Apply useBlockProps to every wrapper so alignments and custom classes keep working, sanitize server-rendered data with wp_kses_post(), and wrap static strings in __() so the block is translation-ready. Also keep attributes minimal, because storing unused data bloats the block comment markup in the database.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

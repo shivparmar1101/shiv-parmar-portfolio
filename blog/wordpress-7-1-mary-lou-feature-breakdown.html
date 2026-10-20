@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress 7.1 Mary Lou: Complete Feature Breakdown | Shiv Parmar</title>
-<meta name="description" content="Explore our complete WordPress 7.1 feature breakdown! Discover what&#39;s new in the &quot;Mary Lou&quot; release, from performance upgrades to enhanced site editing tools.">
+<title>WordPress 7.1 Mary Lou: Complete Feature Breakdown</title>
+<meta name="description" content="Complete WordPress 7.1 Mary Lou feature breakdown: performance upgrades, new site editing tools, admin changes, and step-by-step upgrade guidance.">
 <meta name="keywords" content="WordPress 7.1, Mary Lou, new features">
 <meta name="author" content="Shiv Parmar">
 <meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
@@ -14,7 +14,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown">
-<meta property="og:description" content="Explore our complete WordPress 7.1 feature breakdown! Discover what&#39;s new in the &quot;Mary Lou&quot; release, from performance upgrades to enhanced site editing tools.">
+<meta property="og:description" content="Complete WordPress 7.1 Mary Lou feature breakdown: performance upgrades, new site editing tools, admin changes, and step-by-step upgrade guidance.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg">
 <meta property="og:image:alt" content="WordPress 7.1 Mary Lou: Complete Feature Breakdown - WordPress development guide by Shiv Parmar">
@@ -37,13 +37,62 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "WordPress 7.1 Mary Lou: Complete Feature Breakdown",
-  "description": "Explore our complete WordPress 7.1 feature breakdown! Discover what's new in the \"Mary Lou\" release, from performance upgrades to enhanced site editing tools.",
+  "description": "Complete WordPress 7.1 Mary Lou feature breakdown: performance upgrades, new site editing tools, admin changes, and step-by-step upgrade guidance.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
   "datePublished": "2026-10-18",
   "dateModified": "2026-10-18",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-mary-lou-feature-breakdown-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is WordPress 7.1 \"Mary Lou\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPress 7.1 is the first major core release of 2026, named in honor of pioneering jazz pianist, composer, and arranger Mary Lou Williams. Building on the structural changes of WordPress 7.0, the Mary Lou release finalizes Phase 3 Collaboration with a native CRDT real-time editing engine, the signals-based Interactivity API v2, the Unified Admin Shell rollout, native Speculative Rules loading, default AVIF and JPEG XL delivery, and Block Bindings API 2.0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does WordPress 7.1 matter for publishers in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Publishers in 2026 demand the real-time editing velocity of SaaS documents like Google Docs, Notion, and Figma alongside data sovereignty and self-hosted reliability. WordPress 7.1 meets those demands directly in core, enabling sub-100-millisecond page transitions natively and removing the maintenance burden, hosting costs, and content synchronization challenges of separate Node.js rendering tiers. Stricter PHP baseline expectations and nonces integrated into transient caching also strengthen site security."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does real-time collaborative editing work in WordPress 7.1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collaborative editing runs on the Yjs CRDT framework and is coordinated over Secure WebSockets, with Server-Sent Events as a fallback transport. Each authenticated author receives a color identity, and cursors, block selections, and text changes stream across sessions without triggering REST API write cascades. Developers define connection endpoints in wp-config.php using WP_COLLABORATION_ENGINE and WP_COLLABORATION_SERVER_URL, then tune peer presence through the wp_collaboration_settings filter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What new image formats does WordPress 7.1 generate by default?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When ImageMagick or libvips is present, Mary Lou generates and prioritizes JPEG XL and AVIF representations out of the box. The release claims typical image weight reductions of 35% to 55% compared to WebP, and up to 80% compared to legacy JPEG. You can control generation order with the wp_image_sizes_generation_mime_types filter and tune quality through wp_editor_set_quality, including a value of 72 for AVIF and 75 for JPEG XL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common mistakes when upgrading to WordPress 7.1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The guide highlights five anti-patterns: over-engineering headless stacks when Interactivity API v2 already delivers single-page app responsiveness; blocking WebSocket upgrades at your reverse proxy, which forces polling fallback mode; relying on classic static nonces that expire and cause 403 errors during long reactive sessions; bypassing Block Bindings API 2.0 with raw SQL and breaking CRDT sync; and ignoring server memory, where at least 512MB per PHP worker is recommended for modern image generation."
+      }
+    }
+  ]
 }
 </script>
 
@@ -149,6 +198,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for Updating to WordPress 7.1">Best Practices for Updating to WordPress 7.1</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -517,6 +567,24 @@ onPageNavigated( () =&gt; {
 <p>WordPress 7.1 "Mary Lou" represents a major leap forward for the world's most popular content management system. By delivering enhanced editing workflows, improved performance benchmarks, and streamlined site management capabilities, the new features introduced in this release empower both non-technical creators and seasoned developers to build better web experiences with greater efficiency.</p>
 <p>As the digital landscape evolves, staying ahead means adapting to these architectural advancements. Whether you are planning a migration, optimizing your site's speed, or looking to integrate the latest block patterns, tapping into the power of WordPress 7.1 ensures your platform remains modern, secure, and ready to scale.</p>
 <p>If you are looking to upgrade your digital presence or need expert assistance navigating these latest updates, Shiv Parmar is available for WordPress development work worldwide. From bespoke theme and plugin development to comprehensive site upgrades and performance tuning, get in touch today to bring your WordPress 7.1 vision to life.</p>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What is WordPress 7.1 "Mary Lou"?</h3>
+<p>WordPress 7.1 is the first major core release of 2026, named in honor of pioneering jazz pianist, composer, and arranger Mary Lou Williams. Building on the structural changes of WordPress 7.0, the Mary Lou release finalizes Phase 3 Collaboration with a native CRDT real-time editing engine, the signals-based Interactivity API v2, the Unified Admin Shell rollout, native Speculative Rules loading, default AVIF and JPEG XL delivery, and Block Bindings API 2.0.</p>
+
+<h3>Why does WordPress 7.1 matter for publishers in 2026?</h3>
+<p>Publishers in 2026 demand the real-time editing velocity of SaaS documents like Google Docs, Notion, and Figma alongside data sovereignty and self-hosted reliability. WordPress 7.1 meets those demands directly in core, enabling sub-100-millisecond page transitions natively and removing the maintenance burden, hosting costs, and content synchronization challenges of separate Node.js rendering tiers. Stricter PHP baseline expectations and nonces integrated into transient caching also strengthen site security.</p>
+
+<h3>How does real-time collaborative editing work in WordPress 7.1?</h3>
+<p>Collaborative editing runs on the Yjs CRDT framework and is coordinated over Secure WebSockets, with Server-Sent Events as a fallback transport. Each authenticated author receives a color identity, and cursors, block selections, and text changes stream across sessions without triggering REST API write cascades. Developers define connection endpoints in wp-config.php using WP_COLLABORATION_ENGINE and WP_COLLABORATION_SERVER_URL, then tune peer presence through the wp_collaboration_settings filter.</p>
+
+<h3>What new image formats does WordPress 7.1 generate by default?</h3>
+<p>When ImageMagick or libvips is present, Mary Lou generates and prioritizes JPEG XL and AVIF representations out of the box. The release claims typical image weight reductions of 35% to 55% compared to WebP, and up to 80% compared to legacy JPEG. You can control generation order with the wp_image_sizes_generation_mime_types filter and tune quality through wp_editor_set_quality, including a value of 72 for AVIF and 75 for JPEG XL.</p>
+
+<h3>What are the most common mistakes when upgrading to WordPress 7.1?</h3>
+<p>The guide highlights five anti-patterns: over-engineering headless stacks when Interactivity API v2 already delivers single-page app responsiveness; blocking WebSocket upgrades at your reverse proxy, which forces polling fallback mode; relying on classic static nonces that expire and cause 403 errors during long reactive sessions; bypassing Block Bindings API 2.0 with raw SQL and breaking CRDT sync; and ignoring server memory, where at least 512MB per PHP worker is recommended for modern image generation.</p>
+
 </div>
 
 <div class="tags">

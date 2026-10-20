@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WooCommerce Product Filter Setup Guide">
+<meta property="og:title" content="WooCommerce Product Filter Setup Guide | Shiv Parmar">
 <meta property="og:description" content="Complete WooCommerce product filter setup guide. Learn how to create AJAX filters, customize filter UI and optimize your store for better conversions.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-product-filter-setup-guide-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WooCommerce Product Filter Setup Guide">
+<meta name="twitter:title" content="WooCommerce Product Filter Setup Guide | Shiv Parmar">
 <meta name="twitter:description" content="Complete WooCommerce product filter setup guide. Learn how to create AJAX filters, customize filter UI and optimize your store for better conversions.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-product-filter-setup-guide-hero.svg">
 <meta name="twitter:image:alt" content="Woocommerce Product Filter Setup Guide - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,47 @@
   "dateModified": "2026-08-24",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-product-filter-setup-guide-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are the default WooCommerce filter widgets not enough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The built-in widgets reload the whole page on every selection, which adds latency and breaks the shopping flow. They also offer little visual customization, and on catalogs with thousands of SKUs their queries can slow response times badly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the custom AJAX product filter in this guide work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The script is enqueued only on shop and taxonomy pages, and wp_localize_script passes the admin-ajax.php URL plus a nonce to the front end. A change listener posts the selected category and color to the PHP handler, which checks the nonce, builds a WP_Query with a tax_query, and returns the rendered product grid for instant DOM replacement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I keep product filter queries fast on large catalogs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enable High-Performance Order Storage to reduce database overhead, cache term counts and tax query results with the Transients API, and index filtered columns like price, SKU, and stock status if you build custom tables. FacetWP is the plugin option for this because it maintains its own dedicated index tables."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use a filter plugin instead of custom code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When deadlines or client budgets make custom code impractical. WOOF gives feature-rich shortcodes with native AJAX support, YITH WooCommerce Ajax Product Filter ships polished mobile-ready UI out of the box, and FacetWP is the pick for advanced enterprise-scale search builds."
+      }
+    }
+  ]
 }
 </script>
 
@@ -138,6 +179,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-4" title="Optimizing Database Performance for Large Catalogs">Optimizing Database Performance for Large Catalogs</a></li>
 <li><a href="#section-5" title="Choosing the Right Plugin (When Custom Code Isn&#39;t Feasible)">Choosing the Right Plugin (When Custom Code Isn&#39;t Feasible)</a></li>
 <li><a href="#section-6" title="Wrapping Up">Wrapping Up</a></li>
+<li><a href="#section-7" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -147,7 +189,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Let's Optimize Your WooCommerce Store</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Expert WooCommerce development that drives revenue. Let's build something amazing together.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
 
 
-<p>When an online store grows beyond 50 or 100 products, customers need a fast, intuitive way to slice and dice through inventory. Standard navigation menus simply won't cut it anymore. That is where a robust product filter setup comes into play. In this guide, I will walk you through setting up, customizing, and optimizing WooCommerce product filters�both natively and through custom code�to create a frictionless shopping experience.</p>
+<p>When an online store grows beyond 50 or 100 products, customers need a fast, intuitive way to slice and dice through inventory. Standard navigation menus simply won't cut it anymore. That is where a robust product filter setup comes into play. In this guide, I will walk you through setting up, customizing, and optimizing WooCommerce product filters&mdash;both natively and through custom code&mdash;to create a frictionless shopping experience.</p>
 
 <h2 id="section-1">Why Native WooCommerce Filters Are Often Not Enough</h2>
 
@@ -354,6 +396,21 @@ ul.products {
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WooCommerce development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WooCommerce development projects">Discuss My Project <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-7">Frequently Asked Questions</h2>
+
+<h3>Why are the default WooCommerce filter widgets not enough?</h3>
+<p>The built-in widgets reload the whole page on every selection, which adds latency and breaks the shopping flow. They also offer little visual customization, and on catalogs with thousands of SKUs their queries can slow response times badly.</p>
+
+<h3>How does the custom AJAX product filter in this guide work?</h3>
+<p>The script is enqueued only on shop and taxonomy pages, and wp_localize_script passes the admin-ajax.php URL plus a nonce to the front end. A change listener posts the selected category and color to the PHP handler, which checks the nonce, builds a WP_Query with a tax_query, and returns the rendered product grid for instant DOM replacement.</p>
+
+<h3>How do I keep product filter queries fast on large catalogs?</h3>
+<p>Enable High-Performance Order Storage to reduce database overhead, cache term counts and tax query results with the Transients API, and index filtered columns like price, SKU, and stock status if you build custom tables. FacetWP is the plugin option for this because it maintains its own dedicated index tables.</p>
+
+<h3>When should I use a filter plugin instead of custom code?</h3>
+<p>When deadlines or client budgets make custom code impractical. WOOF gives feature-rich shortcodes with native AJAX support, YITH WooCommerce Ajax Product Filter ships polished mobile-ready UI out of the box, and FacetWP is the pick for advanced enterprise-scale search builds.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

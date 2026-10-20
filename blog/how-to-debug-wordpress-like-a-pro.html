@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Debug WordPress Like a Pro">
+<meta property="og:title" content="How to Debug WordPress Like a Pro | Shiv Parmar">
 <meta property="og:description" content="Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to Debug WordPress Like a Pro">
+<meta name="twitter:title" content="How to Debug WordPress Like a Pro | Shiv Parmar">
 <meta name="twitter:description" content="Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg">
 <meta name="twitter:image:alt" content="How To Debug Wordpress Like A Pro - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,35 @@
   "dateModified": "2026-08-25",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/how-to-debug-wordpress-like-a-pro-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I turn on WordPress debugging?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Define WP_DEBUG as true in wp-config.php, then point WP_DEBUG_LOG at a file and set WP_DEBUG_DISPLAY to false so errors are recorded but never printed to visitors. For fatal errors that blank the page, disable the fatal error handler when you need the raw stack trace. The first step of the guide covers these constants in detail." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a notice, a warning, and a fatal error?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A notice flags non-critical oddities such as an undefined variable, a warning means the code continued but something was likely wrong, and a fatal error halts execution immediately, usually leaving a white screen. The error types section maps each one to the tool best suited to it. Prioritize fatal errors first, then warnings, and clean up notices before they disguise real bugs." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tool should I use to inspect a slow page?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Query Monitor, covered in Step 3, shows every database query with its hook and template, plus HTTP requests, enqueued assets, and deprecated function calls. Pair it with browser developer tools from Step 4 to catch render-blocking resources and JavaScript errors on the client. Together they answer both why a page is slow and where it breaks." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I debug a production site safely?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Log to file instead of displaying errors, restrict Query Monitor to administrators, and never expose stack traces to the public. The production best practices step recommends staging for anything invasive and keeping debug constants in their quiet configuration on live. Remember the post core point: the goal is not just to fix the error but to understand how it happened." }
+    }
+  ]
 }
 </script>
 
@@ -142,6 +171,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-8" title="Step 7: Best Practices for Production">Step 7: Best Practices for Production</a></li>
 <li><a href="#section-9" title="Recommended Debugging Tools">Recommended Debugging Tools</a></li>
 <li><a href="#section-10" title="Wrapping Up">Wrapping Up</a></li>
+<li><a href="#section-11" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -368,6 +398,20 @@ define( 'WC_DEBUG_DISPLAY', false );
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress development <a href="/blog/wordpress-user-role-management-guide">roles</a>. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress development projects">Start a Project <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-11">Frequently Asked Questions</h2>
+
+<h3>How do I turn on WordPress debugging?</h3>
+<p>Define WP_DEBUG as true in wp-config.php, then point WP_DEBUG_LOG at a file and set WP_DEBUG_DISPLAY to false so errors are recorded but never printed to visitors. For fatal errors that blank the page, disable the fatal error handler when you need the raw stack trace. The first step of the guide covers these constants in detail.</p>
+
+<h3>What is the difference between a notice, a warning, and a fatal error?</h3>
+<p>A notice flags non-critical oddities such as an undefined variable, a warning means the code continued but something was likely wrong, and a fatal error halts execution immediately, usually leaving a white screen. The error types section maps each one to the tool best suited to it. Prioritize fatal errors first, then warnings, and clean up notices before they disguise real bugs.</p>
+
+<h3>Which tool should I use to inspect a slow page?</h3>
+<p>Query Monitor, covered in Step 3, shows every database query with its hook and template, plus HTTP requests, enqueued assets, and deprecated function calls. Pair it with browser developer tools from Step 4 to catch render-blocking resources and JavaScript errors on the client. Together they answer both why a page is slow and where it breaks.</p>
+
+<h3>How do I debug a production site safely?</h3>
+<p>Log to file instead of displaying errors, restrict Query Monitor to administrators, and never expose stack traces to the public. The production best practices step recommends staging for anything invasive and keeping debug constants in their quiet configuration on live. Remember the post core point: the goal is not just to fix the error but to understand how it happened.</p>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress 7.1.3 Security Release: What You Need to Know">
+<meta property="og:title" content="WordPress 7.1.3 Security Release: What's New | Shiv Parmar">
 <meta property="og:description" content="Is your site safe? The WordPress 7.1.3 security release patches critical vulnerabilities. Learn what&#39;s new and how to update your website today.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-3-security-release-guide">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-3-security-release-guide-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress 7.1.3 Security Release: What You Need to Know">
+<meta name="twitter:title" content="WordPress 7.1.3 Security Release: What's New | Shiv Parmar">
 <meta name="twitter:description" content="Is your site safe? The WordPress 7.1.3 security release patches critical vulnerabilities. Learn what&#39;s new and how to update your website today.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-3-security-release-guide-hero.svg">
 <meta name="twitter:image:alt" content="WordPress 7.1.3 Security Release: What You Need to Know - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,47 @@
   "dateModified": "2026-10-10",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-3-security-release-guide-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-3-security-release-guide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What vulnerabilities does WordPress 7.1.3 patch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The release closes five core issues, led by an 8.8 critical SQL injection in WP_Query taxonomy group-by clauses and an 8.4 high-severity SSRF and input sanitization flaw in REST API endpoints. It also fixes a 7.6 media library path traversal, a 6.8 stored XSS in block serialization, and a 5.3 timing attack on application password verification."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I update to WordPress 7.1.3 safely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take a point-in-time database export and file archive first with WP-CLI (wp db export with --single-transaction), then move those backups outside the public document root. Run wp core update --version=7.1.3 followed by wp core update-db, update your plugins, and flush the object cache before testing the site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I verify my WordPress core files are clean after the update?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run wp core verify-checksums, which compares every core file against the official md5 checksums from WordPress.org and reports any modified files in wp-includes or wp-admin. Follow it with a quick curl smoke test for a 200 status and a wp-json response to confirm the site is not throwing errors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will automatic background updates install WordPress 7.1.3 for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minor security releases update in the background by default, but those updates frequently fail silently because of file permissions, network timeouts, or caching platforms overriding the update cron. Defining WP_AUTO_UPDATE_CORE as minor in wp-config.php keeps 7.1.x patches automatic, and you should still verify the active version with wp core version."
+      }
+    }
+  ]
 }
 </script>
 
@@ -149,6 +190,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for Hardening WordPress Post-Patch">Best Practices for Hardening WordPress Post-Patch</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -500,6 +542,22 @@ wp user list --role=administrator --field=ID | xargs -I % wp user-meta update % 
 <p>While core updates can sometimes trigger minor plugin or theme incompatibilities, leaving your installation unpatched poses a far greater risk to your business. Before updating to WordPress 7.1.3, ensure you have taken a full backup of your files and database, or test the changes on a staging server to ensure seamless continuity for your visitors.</p>
 
 <p>If you need assistance safely implementing this update, conducting a comprehensive site audit, or customizing your site, expert support is just a message away. <strong>Shiv Parmar</strong> is available for WordPress development work worldwide, helping businesses secure, optimize, and build robust digital experiences. Reach out today to keep your web presence secure, fast, and ahead of the curve.</p>
+</div>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What vulnerabilities does WordPress 7.1.3 patch?</h3>
+<p>The release closes five core issues, led by an 8.8 critical SQL injection in WP_Query taxonomy group-by clauses and an 8.4 high-severity SSRF and input sanitization flaw in REST API endpoints. It also fixes a 7.6 media library path traversal, a 6.8 stored XSS in block serialization, and a 5.3 timing attack on application password verification.</p>
+
+<h3>How do I update to WordPress 7.1.3 safely?</h3>
+<p>Take a point-in-time database export and file archive first with WP-CLI (wp db export with --single-transaction), then move those backups outside the public document root. Run wp core update --version=7.1.3 followed by wp core update-db, update your plugins, and flush the object cache before testing the site.</p>
+
+<h3>How do I verify my WordPress core files are clean after the update?</h3>
+<p>Run wp core verify-checksums, which compares every core file against the official md5 checksums from WordPress.org and reports any modified files in wp-includes or wp-admin. Follow it with a quick curl smoke test for a 200 status and a wp-json response to confirm the site is not throwing errors.</p>
+
+<h3>Will automatic background updates install WordPress 7.1.3 for me?</h3>
+<p>Minor security releases update in the background by default, but those updates frequently fail silently because of file permissions, network timeouts, or caching platforms overriding the update cron. Defining WP_AUTO_UPDATE_CORE as minor in wp-config.php keeps 7.1.x patches automatic, and you should still verify the active version with wp core version.</p>
+
 </div>
 
 <div class="tags">

@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress Security Headers Configuration">
+<meta property="og:title" content="WordPress Security Headers Configuration | Shiv Parmar">
 <meta property="og:description" content="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-security-headers-configuration-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress Security Headers Configuration">
+<meta name="twitter:title" content="WordPress Security Headers Configuration | Shiv Parmar">
 <meta name="twitter:description" content="Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers  Hello there! I am Shiv Parmar, a passionate WordPress developer...">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-security-headers-configuration-hero.svg">
 <meta name="twitter:image:alt" content="Wordpress Security Headers Configuration - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,47 @@
   "dateModified": "2026-08-20",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-security-headers-configuration-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do WordPress sites need security headers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HTTP security headers are response rules your server sends that tell the browser how to handle your site's content, blocking whole classes of attacks such as XSS, clickjacking, MIME-sniffing, and SSL stripping at zero runtime cost. Unlike security plugins, they operate at the browser level and add no PHP or database overhead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add security headers in WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The simplest approach is a small functions.php or custom plugin snippet hooked to send_headers that calls header() for each directive, such as Strict-Transport-Security, X-Frame-Options: SAMEORIGIN, X-Content-Type-Options: nosniff, Referrer-Policy, Permissions-Policy, and Content-Security-Policy. Server files like .htaccess or nginx.conf work too, but PHP gives you per-request control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test if my security headers are working?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open your browser's developer tools, reload the site, select the main document request, and inspect the Response Headers, or run the URL through SecurityHeaders.com for an instant letter grade. Aim for an A or A+ and re-check after every theme or plugin change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will a strict Content Security Policy break my WordPress site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can, which is why you should start with Content-Security-Policy-Report-Only to log violations without blocking anything, audit third-party assets like Google Fonts and analytics, then enforce once the policy is tuned. Inline scripts that still fail can use a per-request PHP nonce instead of the unsafe-inline keyword."
+      }
+    }
+  ]
 }
 </script>
 
@@ -139,12 +180,13 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-5" title="Step-by-Step Implementation Strategy">Step-by-Step Implementation Strategy</a></li>
 <li><a href="#section-6" title="Testing Your Headers">Testing Your Headers</a></li>
 <li><a href="#section-7" title="Final Thoughts">Final Thoughts</a></li>
+<li><a href="#section-8" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
 <h2 id="section-0">Unlocking WordPress Fortifications: A Complete Guide to HTTP Security Headers</h2>
 
-<p>Hello there! I am Shiv Parmar, a passionate WordPress developer with global experience. Throughout my years of building custom themes, optimizing site performance, and hardening enterprise WordPress websites, I have noticed a recurring pattern: most site owners focus heavily on security plugins, strong passwords, and two-factor authentication, but completely overlook one of the most effective browser-level defenses available�<strong>HTTP Security Headers</strong>.</p>
+<p>Hello there! I am Shiv Parmar, a passionate WordPress developer with global experience. Throughout my years of building custom themes, optimizing site performance, and hardening enterprise WordPress websites, I have noticed a recurring pattern: most site owners focus heavily on security plugins, strong passwords, and two-factor authentication, but completely overlook one of the most effective browser-level defenses available&mdash;<strong>HTTP Security Headers</strong>.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Looking for a Security Specialist?</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses protect their WordPress sites from threats. Let's assess your security needs.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
 
 
@@ -310,6 +352,22 @@ async function fetchSecureData(endpoint) {
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WordPress Security development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress Security development projects">Discuss My Project <span>&rarr;</span></a>
 </div>
+</div>
+
+<h2 id="section-8">Frequently Asked Questions</h2>
+
+<h3>Why do WordPress sites need security headers?</h3>
+<p>HTTP security headers are response rules your server sends that tell the browser how to handle your site&#39;s content, blocking whole classes of attacks such as XSS, clickjacking, MIME-sniffing, and SSL stripping at zero runtime cost. Unlike security plugins, they operate at the browser level and add no PHP or database overhead.</p>
+
+<h3>How do I add security headers in WordPress?</h3>
+<p>The simplest approach is a small functions.php or custom plugin snippet hooked to send_headers that calls header() for each directive, such as Strict-Transport-Security, X-Frame-Options: SAMEORIGIN, X-Content-Type-Options: nosniff, Referrer-Policy, Permissions-Policy, and Content-Security-Policy. Server files like .htaccess or nginx.conf work too, but PHP gives you per-request control.</p>
+
+<h3>How do I test if my security headers are working?</h3>
+<p>Open your browser&#39;s developer tools, reload the site, select the main document request, and inspect the Response Headers, or run the URL through SecurityHeaders.com for an instant letter grade. Aim for an A or A+ and re-check after every theme or plugin change.</p>
+
+<h3>Will a strict Content Security Policy break my WordPress site?</h3>
+<p>It can, which is why you should start with Content-Security-Policy-Report-Only to log violations without blocking anything, audit third-party assets like Google Fonts and analytics, then enforce once the policy is tuned. Inline scripts that still fail can use a per-request PHP nonce instead of the unsafe-inline keyword.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

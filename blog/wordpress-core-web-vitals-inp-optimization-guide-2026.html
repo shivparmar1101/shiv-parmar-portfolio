@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress Core Web Vitals: INP Optimization 2026 | Shiv Parmar</title>
+<title>Core Web Vitals INP Optimization Guide 2026 | Shiv Parmar</title>
 <meta name="description" content="Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.">
 <meta name="keywords" content="WordPress INP, Core Web Vitals, page speed">
 <meta name="author" content="Shiv Parmar">
@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordPress Core Web Vitals: INP Optimization Guide 2026">
+<meta property="og:title" content="Core Web Vitals INP Optimization Guide 2026 | Shiv Parmar">
 <meta property="og:description" content="Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-core-web-vitals-inp-optimization-guide-2026">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-core-web-vitals-inp-optimization-guide-2026-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WordPress Core Web Vitals: INP Optimization Guide 2026">
+<meta name="twitter:title" content="Core Web Vitals INP Optimization Guide 2026 | Shiv Parmar">
 <meta name="twitter:description" content="Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-core-web-vitals-inp-optimization-guide-2026-hero.svg">
 <meta name="twitter:image:alt" content="WordPress Core Web Vitals: INP Optimization Guide 2026 - WordPress development guide by Shiv Parmar">
@@ -36,7 +36,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "WordPress Core Web Vitals: INP Optimization Guide 2026",
+  "headline": "Core Web Vitals INP Optimization Guide 2026 | Shiv Parmar",
   "description": "Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.",
   "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
   "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
@@ -44,6 +44,47 @@
   "dateModified": "2026-10-10",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-core-web-vitals-inp-optimization-guide-2026-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-core-web-vitals-inp-optimization-guide-2026"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good INP score for WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google rates INP as Good at 200 milliseconds or less, Needs Improvement between 200 and 500, and Poor above 500, measured at the 75th percentile of real visits. INP scores the whole page visit rather than just the first input, so one slow interaction can drag an otherwise fast page down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find which pages have bad INP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with the Core Web Vitals report in Google Search Console to find URL groups flagged with INP issues over 200ms, then reproduce them in Chrome DevTools. Record the interaction with CPU throttling set to 4x or 6x slowdown and read the Interactions track to see whether Input Delay, Processing Time, or Presentation Delay dominates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I break up long JavaScript tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A long task is any uninterrupted script over 50 milliseconds, so yield control back to the browser periodically using scheduler.yield() with a setTimeout fallback, such as every 20 rendered items. Also give immediate visual feedback with a loading class before running heavy logic so the interface responds while work continues in the background."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will delaying JavaScript execution improve my INP score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. When the first tap forces the browser to download and execute dozens of deferred bundles at once, the main-thread freeze can push INP past 1,500ms, so it is better to dequeue unused scripts, load the rest with defer, and move third-party tags off the main thread with tools like Partytown."
+      }
+    }
+  ]
 }
 </script>
 
@@ -118,6 +159,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for Sustained Performance">Best Practices for Sustained Performance</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -413,6 +455,21 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Expert in WooCommerce, custom themes, plugins. Available worldwide.</p>
 <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3)">Get Free Quote <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What is a good INP score for WordPress?</h3>
+<p>Google rates INP as Good at 200 milliseconds or less, Needs Improvement between 200 and 500, and Poor above 500, measured at the 75th percentile of real visits. INP scores the whole page visit rather than just the first input, so one slow interaction can drag an otherwise fast page down.</p>
+
+<h3>How do I find which pages have bad INP?</h3>
+<p>Start with the Core Web Vitals report in Google Search Console to find URL groups flagged with INP issues over 200ms, then reproduce them in Chrome DevTools. Record the interaction with CPU throttling set to 4x or 6x slowdown and read the Interactions track to see whether Input Delay, Processing Time, or Presentation Delay dominates.</p>
+
+<h3>How do I break up long JavaScript tasks?</h3>
+<p>A long task is any uninterrupted script over 50 milliseconds, so yield control back to the browser periodically using scheduler.yield() with a setTimeout fallback, such as every 20 rendered items. Also give immediate visual feedback with a loading class before running heavy logic so the interface responds while work continues in the background.</p>
+
+<h3>Will delaying JavaScript execution improve my INP score?</h3>
+<p>Usually not. When the first tap forces the browser to download and execute dozens of deferred bundles at once, the main-thread freeze can push INP past 1,500ms, so it is better to dequeue unused scripts, load the rest with defer, and move third-party tags off the main thread with tools like Partytown.</p>
+
 </div>
 
 <div class="tags">

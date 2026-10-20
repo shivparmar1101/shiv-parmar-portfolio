@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WooCommerce Tax Configuration Guide">
+<meta property="og:title" content="WooCommerce Tax Configuration Guide | Shiv Parmar">
 <meta property="og:description" content="Hello there! I'm Shiv Parmar, a WordPress and WooCommerce developer with global experience. Over the years, I have helped b...">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-tax-configuration-guide-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WooCommerce Tax Configuration Guide">
+<meta name="twitter:title" content="WooCommerce Tax Configuration Guide | Shiv Parmar">
 <meta name="twitter:description" content="Hello there! I'm Shiv Parmar, a WordPress and WooCommerce developer with global experience. Over the years, I have helped b...">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-tax-configuration-guide-hero.svg">
 <meta name="twitter:image:alt" content="Woocommerce Tax Configuration Guide - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,47 @@
   "dateModified": "2026-08-20",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-tax-configuration-guide-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I turn on tax calculations in WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Taxes are disabled by default, so go to WooCommerce > Settings > General, tick Enable tax rates and calculations, and save the page. A new Tax tab then appears where rates, classes, and display options are managed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add a custom tax class in WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the woocommerce_tax_classes filter and append your class name to the newline-separated list, as the snippet does for Digital Goods. WooCommerce ships with Standard rate, Reduced rate, and Zero rate, and adding classes in code keeps them consistent across local, staging, and production environments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make wholesale customers tax exempt automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hook woocommerce_matched_rates, check whether the logged-in user has the wholesale_customer capability, and call WC()->customer->set_is_vat_exempt( true ) for them. Keep the is_admin() guard in place so backend order screens are unaffected while shoppers get VAT exempt pricing at checkout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should WooCommerce calculate tax from the shipping or billing address?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is a business decision set under Calculate tax based on: shipping address, billing address, or your store base location, and EU stores typically enter prices inclusive of tax while North American stores exclude it. The guide also recommends enabling Rounding so tax is computed at the subtotal level rather than per item, which prevents rounding discrepancy bugs at checkout."
+      }
+    }
+  ]
 }
 </script>
 
@@ -139,6 +180,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-5" title="Step 6: Enhancing the Checkout Experience with JavaScript">Step 6: Enhancing the Checkout Experience with JavaScript</a></li>
 <li><a href="#section-6" title="Testing and Verifying Your Tax Rates">Testing and Verifying Your Tax Rates</a></li>
 <li><a href="#section-7" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-8" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -273,7 +315,7 @@ jQuery( document ).ready( function( $ ) {
 </code></pre>
 
 <blockquote>
-    <p>"Automating tax logic through clean code isn't just about regulatory compliance�it is about creating a frictionless checkout experience that builds trust and boosts conversion rates."</p>
+    <p>"Automating tax logic through clean code isn't just about regulatory compliance&mdash;it is about creating a frictionless checkout experience that builds trust and boosts conversion rates."</p>
 </blockquote>
 
 <h2 id="section-6">Testing and Verifying Your Tax Rates</h2>
@@ -301,6 +343,21 @@ jQuery( document ).ready( function( $ ) {
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WooCommerce development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WooCommerce development projects">Discuss My Project <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-8">Frequently Asked Questions</h2>
+
+<h3>How do I turn on tax calculations in WooCommerce?</h3>
+<p>Taxes are disabled by default, so go to WooCommerce &gt; Settings &gt; General, tick Enable tax rates and calculations, and save the page. A new Tax tab then appears where rates, classes, and display options are managed.</p>
+
+<h3>How do I add a custom tax class in WooCommerce?</h3>
+<p>Use the woocommerce_tax_classes filter and append your class name to the newline-separated list, as the snippet does for Digital Goods. WooCommerce ships with Standard rate, Reduced rate, and Zero rate, and adding classes in code keeps them consistent across local, staging, and production environments.</p>
+
+<h3>How do I make wholesale customers tax exempt automatically?</h3>
+<p>Hook woocommerce_matched_rates, check whether the logged-in user has the wholesale_customer capability, and call WC()-&gt;customer-&gt;set_is_vat_exempt( true ) for them. Keep the is_admin() guard in place so backend order screens are unaffected while shoppers get VAT exempt pricing at checkout.</p>
+
+<h3>Should WooCommerce calculate tax from the shipping or billing address?</h3>
+<p>That is a business decision set under Calculate tax based on: shipping address, billing address, or your store base location, and EU stores typically enter prices inclusive of tax while North American stores exclude it. The guide also recommends enabling Rounding so tax is computed at the subtotal level rather than per item, which prevents rounding discrepancy bugs at checkout.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

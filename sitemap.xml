@@ -1,157 +1,157 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/</loc><lastmod>2026-10-17</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/</loc><lastmod>2026-10-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://shiv-parmar-portfolio.netlify.app/about</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/services</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/work</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/projects</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/skills</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/experience</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog</loc><lastmod>2026-10-17</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/services</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/work</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/projects</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/skills</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/experience</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog</loc><lastmod>2026-10-20</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://shiv-parmar-portfolio.netlify.app/contact</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-coupon-system-complete-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-bundles-setup</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-user-role-management-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-seo-technical-checklist</loc><lastmod>2026-10-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-coupon-system-complete-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-bundles-setup</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-security-headers-configuration</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-user-role-management-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-seo-technical-checklist</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-core-web-vitals-inp-optimization-guide-2026</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-3-security-release-guide</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

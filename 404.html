@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .error-page {
-      min-height: 100vh;
+      min-height: calc(100vh - 130px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -53,6 +53,7 @@
   </style>
 </head>
 <body>
+  <div id="site-header"></div>
   <div class="error-page">
     <div>
       <div class="error-code">404</div>
@@ -60,9 +61,17 @@
       <p class="error-msg">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
       <div class="error-actions">
         <a class="btn btn-primary" href="/">Go Home <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-ghost" href="/blog">Browse Blog</a>
         <a class="btn btn-ghost" href="/#contact">Contact Me</a>
       </div>
+      <noscript>
+        <nav aria-label="Navigation" style="margin-top:24px;font-size:14px">
+          <a href="/about">About</a> &middot; <a href="/services">Services</a> &middot; <a href="/work">Work</a> &middot; <a href="/blog">Blog</a> &middot; <a href="/contact">Contact</a>
+        </nav>
+      </noscript>
     </div>
   </div>
+  <div id="site-footer"></div>
+  <script src="/includes.js"></script>
 </body>
 </html>

@@ -47,6 +47,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between an endpoint firewall and a cloud-based WAF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Endpoint firewalls, such as Wordfence, run directly on your hosting server alongside WordPress core, inspecting request headers, payload parameters, and database queries before WordPress initializes. Cloud-based WAFs like Sucuri route your domain's traffic through a globally distributed reverse-proxy network before it reaches your server, filtering DDoS attacks and scrubbing malicious bot traffic. Endpoint tools see authenticated user privileges and internal application logic, while cloud proxies offload processing for ultra-low server overhead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I enable Wordfence Extended Protection Mode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The default Basic WordPress Mode lets malicious payloads execute before firewall rules initialize. In your dashboard, go to Wordfence > Firewall > Manage WAF, click Optimize the Wordfence Firewall, download the backup of your .htaccess, .user.ini, or php.ini file, select your server environment such as Apache, Nginx, or LiteSpeed, and click Continue. Wordfence then writes an auto_prepend_file directive so requests are filtered before any core code executes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I block PHP script execution in the WordPress uploads directory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most compromises begin when an attacker uploads a PHP web shell disguised as an image and runs it from /wp-content/uploads/, where WordPress core never requires script execution. On Apache, place an .htaccess file in that directory denying *.php, *.phps, *.phtml, *.pl, *.py, and *.cgi. On Nginx, add a location rule matching any .php request under /wp-content/uploads/ that returns a 403 response for every such file."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I install multiple security plugins for better protection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Running Wordfence, Solid Security, and All In One WP Security together creates firewall race conditions on the identical request lifecycle, dropping legitimate traffic and producing 500 Internal Server Errors. Concurrent real-time file scanners trigger CPU throttling, memory spikes, and PHP memory limit exhaustion, and when false positives block real visitors you cannot tell which firewall layer caused them. Choose one primary endpoint solution like Wordfence and pair it with a cloud-edge CDN proxy like Cloudflare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I limit exposure of the WordPress REST API user endpoint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The public REST API exposes author usernames, user IDs, and software configurations through /wp-json/wp/v2/users, which attackers harvest to build brute-force lists. Add a rest_endpoints filter in your child theme's functions.php or a site-specific plugin that removes the /wp/v2/users endpoint and its single-user variant for any request where the visitor is not logged in. Authenticated users keep full access while anonymous traffic can no longer enumerate accounts."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,6 +198,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for Modern WordPress Security">Best Practices for Modern WordPress Security</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -439,6 +489,23 @@ add_filter( 'rest_endpoints', function( $endpoints ) {
 <p>However, automated tools can only take your defenses so far. Optimal security also involves routine site audits, proper server-level configurations, disciplined update schedules, and performance-minded implementation so your defensive layers don't slow down your user experience. Taking the time to properly configure your <strong>security plugins</strong> today will prevent costly downtime, data loss, and recovery headaches tomorrow.</p>
 
 <p>If you need expert assistance hardening your site, configuring complex firewalls, or building a high-performing, secure digital platform from the ground up, professional support can make all the difference. <strong>Shiv Parmar</strong> is available for freelance WordPress development and security consulting work worldwide. Get in touch today to ensure your website benefits from industry-leading <strong>protection</strong> and custom-tailored development solutions built to scale.</p>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What is the difference between an endpoint firewall and a cloud-based WAF?</h3>
+<p>Endpoint firewalls, such as Wordfence, run directly on your hosting server alongside WordPress core, inspecting request headers, payload parameters, and database queries before WordPress initializes. Cloud-based WAFs like Sucuri route your domain's traffic through a globally distributed reverse-proxy network before it reaches your server, filtering DDoS attacks and scrubbing malicious bot traffic. Endpoint tools see authenticated user privileges and internal application logic, while cloud proxies offload processing for ultra-low server overhead.</p>
+
+<h3>How do I enable Wordfence Extended Protection Mode?</h3>
+<p>The default Basic WordPress Mode lets malicious payloads execute before firewall rules initialize. In your dashboard, go to Wordfence &gt; Firewall &gt; Manage WAF, click Optimize the Wordfence Firewall, download the backup of your .htaccess, .user.ini, or php.ini file, select your server environment such as Apache, Nginx, or LiteSpeed, and click Continue. Wordfence then writes an auto_prepend_file directive so requests are filtered before any core code executes.</p>
+
+<h3>How do I block PHP script execution in the WordPress uploads directory?</h3>
+<p>Most compromises begin when an attacker uploads a PHP web shell disguised as an image and runs it from /wp-content/uploads/, where WordPress core never requires script execution. On Apache, place an .htaccess file in that directory denying *.php, *.phps, *.phtml, *.pl, *.py, and *.cgi. On Nginx, add a location rule matching any .php request under /wp-content/uploads/ that returns a 403 response for every such file.</p>
+
+<h3>Should I install multiple security plugins for better protection?</h3>
+<p>No. Running Wordfence, Solid Security, and All In One WP Security together creates firewall race conditions on the identical request lifecycle, dropping legitimate traffic and producing 500 Internal Server Errors. Concurrent real-time file scanners trigger CPU throttling, memory spikes, and PHP memory limit exhaustion, and when false positives block real visitors you cannot tell which firewall layer caused them. Choose one primary endpoint solution like Wordfence and pair it with a cloud-edge CDN proxy like Cloudflare.</p>
+
+<h3>How do I limit exposure of the WordPress REST API user endpoint?</h3>
+<p>The public REST API exposes author usernames, user IDs, and software configurations through /wp-json/wp/v2/users, which attackers harvest to build brute-force lists. Add a rest_endpoints filter in your child theme's functions.php or a site-specific plugin that removes the /wp/v2/users endpoint and its single-user variant for any request where the visitor is not logged in. Authenticated users keep full access while anonymous traffic can no longer enumerate accounts.</p>
 </div>
 
 <div class="tags">

@@ -2162,6 +2162,23 @@ footer {
   color: var(--accent);
 }
 
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.footer-nav a:hover {
+  color: var(--accent);
+}
+
 /* --------------------------------------------------------------------------
    22. Reveal Animation
    -------------------------------------------------------------------------- */

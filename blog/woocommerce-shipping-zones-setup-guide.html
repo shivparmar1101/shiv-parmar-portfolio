@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="WooCommerce Shipping Zones Setup Guide">
+<meta property="og:title" content="WooCommerce Shipping Zones Setup Guide | Shiv Parmar">
 <meta property="og:description" content="Master WooCommerce shipping zones step by step. Learn how to set up regions, methods and rates so customers get accurate delivery costs at checkout.">
 <meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide">
 <meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-shipping-zones-setup-guide-hero.svg">
@@ -25,7 +25,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WooCommerce Shipping Zones Setup Guide">
+<meta name="twitter:title" content="WooCommerce Shipping Zones Setup Guide | Shiv Parmar">
 <meta name="twitter:description" content="Master WooCommerce with this guide on WooCommerce Shipping Zones Setup Guide. Expert tips for online store success.">
 <meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-shipping-zones-setup-guide-hero.svg">
 <meta name="twitter:image:alt" content="WooCommerce Shipping Zones Setup Guide - WordPress development guide by Shiv Parmar">
@@ -44,6 +44,47 @@
   "dateModified": "2026-08-25",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/woocommerce-shipping-zones-setup-guide-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a WooCommerce shipping zone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A shipping zone is a geographic region where a specific set of shipping methods and rates applies, from an entire continent down to a group of postcodes. Instead of pricing every product or country individually, you define zones such as local pin codes with cheap same-day courier, a national flat-rate zone, and an international zone priced through live carrier APIs like DHL or FedEx."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "In what order does WooCommerce evaluate shipping zones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WooCommerce checks zones top to bottom on the settings list and stops at the first zone whose regions match the customer's address. Keep specific zones like local postal code ranges at the top and broad zones like whole continents near the bottom so the right rate always wins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I hide Flat Rate shipping when free shipping applies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Filter woocommerce_package_rates, loop through the returned rates, and check whether any rate has a method_id of free_shipping. If one exists, unset every flat_rate rate from the array before returning it, which keeps checkout clean when the customer already qualifies for free delivery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why don't my shipping rate code changes show up in checkout?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WooCommerce caches shipping options in the customer session, so new filter output can stay hidden until the cache clears. Re-save your shipping settings in the admin or flush the cache with WC_Cache_Helper::get_transient_version( 'shipping', true ) while developing, and retest in an incognito window with different postcodes."
+      }
+    }
+  ]
 }
 </script>
 
@@ -148,6 +189,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 <li><a href="#section-3" title="Developer Tricks: Customizing Shipping Zones via Code">Developer Tricks: Customizing Shipping Zones via Code</a></li>
 <li><a href="#section-4" title="Best Practices for WooCommerce Shipping Zones">Best Practices for WooCommerce Shipping Zones</a></li>
 <li><a href="#section-5" title="Wrapping Up">Wrapping Up</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -161,12 +203,12 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h2 id="section-1">What Are WooCommerce Shipping Zones?</h2>
 
-<p>A <strong>Shipping Zone</strong> is a geographic region where specific shipping methods and rates apply. Instead of assigning shipping rates individually to every product or country, WooCommerce groups regions together�allowing you to apply set rules to those defined areas.</p>
+<p>A <strong>Shipping Zone</strong> is a geographic region where specific shipping methods and rates apply. Instead of assigning shipping rates individually to every product or country, WooCommerce groups regions together&mdash;allowing you to apply set rules to those defined areas.</p>
 
 <p>Zones can be as broad as an entire continent or as granular as a specific group of postcodes. For instance, if you run a business, you might set up:</p>
 
 <ul>
-  <li><strong>Local Zone:</strong> Local pin codes (e.g., 360001�360007) offering free local pickup or cheap same-day courier.</li>
+  <li><strong>Local Zone:</strong> Local pin codes (e.g., 360001&mdash;360007) offering free local pickup or cheap same-day courier.</li>
   <li><strong>National Zone:</strong> All states across the country with a flat-rate shipping fee.</li>
   <li><strong>International Zone:</strong> Rest of the world, calculated via live carrier APIs like DHL or FedEx.</li>
 </ul>
@@ -201,7 +243,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <h3>Step 4: Configure Method Rules and Pricing</h3>
 
-<p>After adding a method, hover over its name and click <strong>Edit</strong>. For Flat Rate shipping, you can enter costs directly or use mathematical expressions. For example, entering <code>10 + (2 * [qty])</code> charges a base cost of $10 plus $2 per item in the cart.</p>
+<p>After adding a method, hover over its name and click <strong>Edit</strong>. For Flat Rate shipping, you can enter costs directly or use mathematical expressions. For example, entering <code>10 + (2 * [qty])</code> charges a base cost of $10 plus $2 per item in the cart. These method prices also feed into <a href="/blog/woocommerce-tax-configuration-guide" title="WooCommerce Tax Configuration Guide">shipping tax rates</a> &mdash; if the tax classes behind a zone are misconfigured, the grand total at checkout will never match what the customer expected.</p>
 
 <blockquote>
   <p><strong>Key Insight:</strong> WooCommerce evaluates Shipping Zones from top to bottom on the settings list. As soon as a customer's address matches a zone, WooCommerce stops searching and applies that zone's rules. Always place your most specific zones (like local postal code matches) at the top of the list, and broader zones (like entire continents) near the bottom.</p>
@@ -305,6 +347,21 @@ WC_Cache_Helper::get_transient_version( 'shipping', true );
   <p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">Available for full-time, contract or remote WooCommerce development roles. Let's discuss your project &mdash; I'll get back within 24 hours.</p>
   <a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WooCommerce development projects">Let's Talk <span>&rarr;</span></a>
 </div>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What is a WooCommerce shipping zone?</h3>
+<p>A shipping zone is a geographic region where a specific set of shipping methods and rates applies, from an entire continent down to a group of postcodes. Instead of pricing every product or country individually, you define zones such as local pin codes with cheap same-day courier, a national flat-rate zone, and an international zone priced through live carrier APIs like DHL or FedEx.</p>
+
+<h3>In what order does WooCommerce evaluate shipping zones?</h3>
+<p>WooCommerce checks zones top to bottom on the settings list and stops at the first zone whose regions match the customer's address. Keep specific zones like local postal code ranges at the top and broad zones like whole continents near the bottom so the right rate always wins.</p>
+
+<h3>How do I hide Flat Rate shipping when free shipping applies?</h3>
+<p>Filter woocommerce_package_rates, loop through the returned rates, and check whether any rate has a method_id of free_shipping. If one exists, unset every flat_rate rate from the array before returning it, which keeps checkout clean when the customer already qualifies for free delivery.</p>
+
+<h3>Why don't my shipping rate code changes show up in checkout?</h3>
+<p>WooCommerce caches shipping options in the customer session, so new filter output can stay hidden until the cache clears. Re-save your shipping settings in the admin or flush the cache with WC_Cache_Helper::get_transient_version( 'shipping', true ) while developing, and retest in an incognito window with different postcodes.</p>
+
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
 <div class="author-box">

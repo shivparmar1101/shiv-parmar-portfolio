@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WordPress 7.1 AI Client: Streaming &amp; Embeddings | Shiv Parmar</title>
+<title>WordPress 7.1 AI Client: Streaming &amp; Embeddings Guide</title>
 <meta name="description" content="Unlock the power of WordPress 7.1&#39;s new AI Client. Learn how to implement streaming responses and vector embeddings in this complete developer guide.">
 <meta name="keywords" content="AI Client, embeddings, WordPress AI">
 <meta name="author" content="Shiv Parmar">
@@ -44,6 +44,55 @@
   "dateModified": "2026-10-20",
   "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-7-1-ai-client-streaming-embeddings-hero.svg",
   "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the WordPress 7.1 AI Client?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The WordPress 7.1 AI Client is a unified, provider-agnostic subsystem in WordPress core that standardizes how WordPress communicates with generative AI backends such as OpenAI, Anthropic, Google Gemini, Mistral, or self-hosted Ollama and vLLM clusters. It decouples the interface from the transport driver, so switching vendors does not require refactoring prompt wrappers or parsing logic. The client exposes three pillars: inference and chat services, a native streaming engine, and a vector embeddings API."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does streaming prevent PHP execution bottlenecks in WordPress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Large language model generation often takes 3 to 30 seconds, and blocking a synchronous PHP-FPM worker for that duration creates 504 Gateway Timeouts under heavy traffic. The 7.1 AI Client solves this with chunked streaming wrappers that pipe partial tokens from the provider through the REST API to the browser. The WP_AI_Stream_Response class sets Content-Type: text/event-stream, Cache-Control: no-cache, and X-Accel-Buffering: no, and clears PHP output buffers so web workers free up rapidly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I generate and store vector embeddings in WordPress 7.1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the wp_ai_embed() helper to convert post content into high-dimensional vectors, typically 1,536 dimensions for OpenAI's text-embedding-3-small model. Hook into save_post_post, skip autosaves and revisions, and limit the sanitized input to 8,000 characters. Avoid storing vectors in wp_postmeta, which bloats the table and breaks indexing. Instead, JSON-encode the vector and persist it with $wpdb->replace() into a dedicated custom table designed for vector operations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does semantic search work with cosine similarity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After embedding your content, semantic search works by generating an embedding for the visitor's search query, then computing cosine similarity between that query vector and every stored document vector. Cosine similarity ranges from -1 to 1, where 1 means identical contextual meaning. The score is the dot product of the two vectors divided by the product of their magnitudes. Sort the scored posts by descending similarity and slice the top matches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is hybrid search and why combine WP_Query with embeddings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Semantic search excels at conceptual matching, but keyword search remains essential for strict alphanumeric matches such as product SKUs, exact names, and technical acronyms. The recommended pattern is Reciprocal Rank Fusion: run a standard WP_Query lexical search and your vector-based semantic search, then merge both ranked lists using the formula 1 / (k + rank) with the smoothing constant k set to 60. Finally, hydrate the fused post IDs with get_posts ordered by post__in."
+      }
+    }
+  ]
 }
 </script>
 
@@ -149,6 +198,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 <li><a href="#section-3" title="Best Practices for WordPress AI Implementation">Best Practices for WordPress AI Implementation</a></li>
 <li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
 <li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+<li><a href="#section-6" title="Frequently Asked Questions">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <div class="content">
@@ -640,6 +690,24 @@ fetch( '/wp-json/enterprise-ai/v1/stream-summary', { signal, ... } );
 <p>As the web shifts toward interactive, data-driven platforms, mastering vector embeddings and streaming interfaces is essential for keeping your digital assets competitive. The versatile AI Client architecture provides a reliable, scalable foundation whether you are building lightweight plugins, enterprise-grade publishing pipelines, or automated customer support tools. Experimenting with these capabilities today ensures your digital presence is built to lead the next generation of intelligent content delivery.</p>
 
 <p>Ready to integrate cutting-edge WordPress AI features into your web ecosystem? If you are looking to architect custom integrations, optimize performance, or build scalable plugins, Shiv Parmar is available for WordPress development work worldwide. Reach out today to turn these advanced capabilities into powerful solutions tailored to your business needs.</p>
+
+<h2 id="section-6">Frequently Asked Questions</h2>
+
+<h3>What is the WordPress 7.1 AI Client?</h3>
+<p>The WordPress 7.1 AI Client is a unified, provider-agnostic subsystem in WordPress core that standardizes how WordPress communicates with generative AI backends such as OpenAI, Anthropic, Google Gemini, Mistral, or self-hosted Ollama and vLLM clusters. It decouples the interface from the transport driver, so switching vendors does not require refactoring prompt wrappers or parsing logic. The client exposes three pillars: inference and chat services, a native streaming engine, and a vector embeddings API.</p>
+
+<h3>How does streaming prevent PHP execution bottlenecks in WordPress?</h3>
+<p>Large language model generation often takes 3 to 30 seconds, and blocking a synchronous PHP-FPM worker for that duration creates 504 Gateway Timeouts under heavy traffic. The 7.1 AI Client solves this with chunked streaming wrappers that pipe partial tokens from the provider through the REST API to the browser. The WP_AI_Stream_Response class sets Content-Type: text/event-stream, Cache-Control: no-cache, and X-Accel-Buffering: no, and clears PHP output buffers so web workers free up rapidly.</p>
+
+<h3>How do I generate and store vector embeddings in WordPress 7.1?</h3>
+<p>Use the wp_ai_embed() helper to convert post content into high-dimensional vectors, typically 1,536 dimensions for OpenAI's text-embedding-3-small model. Hook into save_post_post, skip autosaves and revisions, and limit the sanitized input to 8,000 characters. Avoid storing vectors in wp_postmeta, which bloats the table and breaks indexing. Instead, JSON-encode the vector and persist it with $wpdb->replace() into a dedicated custom table designed for vector operations.</p>
+
+<h3>How does semantic search work with cosine similarity?</h3>
+<p>After embedding your content, semantic search works by generating an embedding for the visitor's search query, then computing cosine similarity between that query vector and every stored document vector. Cosine similarity ranges from -1 to 1, where 1 means identical contextual meaning. The score is the dot product of the two vectors divided by the product of their magnitudes. Sort the scored posts by descending similarity and slice the top matches.</p>
+
+<h3>What is hybrid search and why combine WP_Query with embeddings?</h3>
+<p>Semantic search excels at conceptual matching, but keyword search remains essential for strict alphanumeric matches such as product SKUs, exact names, and technical acronyms. The recommended pattern is Reciprocal Rank Fusion: run a standard WP_Query lexical search and your vector-based semantic search, then merge both ranked lists using the formula 1 / (k + rank) with the smoothing constant k set to 60. Finally, hydrate the fused post IDs with get_posts ordered by post__in.</p>
+
 </div>
 
 <div class="tags">
