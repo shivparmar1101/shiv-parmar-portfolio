@@ -21,7 +21,7 @@ const ROOT = path.join(__dirname, '..');
 const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 const OUTPUT_PATH = path.join(ROOT, 'seo-data', 'indexing-api-status.json');
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
-const INDEX_URL = 'https://www.googleapis.com/indexing/v3/urlNotifications:publish';
+const INDEX_URL = 'https://indexing.googleapis.com/v3/urlNotifications:publish';
 const SCOPES = 'https://www.googleapis.com/auth/indexing';
 
 const args = process.argv.slice(2);
@@ -86,7 +86,7 @@ async function publish(token, url) {
   const res = await fetch(INDEX_URL, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({ url, type: 'UPDATED' }),
+    body: JSON.stringify({ url, type: 'URL_UPDATED' }),
   });
   const text = await res.text();
   let data = null;
