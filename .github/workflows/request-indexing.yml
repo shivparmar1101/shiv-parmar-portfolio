@@ -1,0 +1,37 @@
+# Google Indexing API: publish UPDATED notifications for sitemap URLs.
+# Companion to gsc-indexing.yml (sitemap submit + URL Inspection).
+# Best-effort: exits 0 even when the API rejects the request.
+name: Request Indexing
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Publish urlNotifications
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: node scripts/request-indexing.js
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexing-api-${{ github.run_number }}
+          path: seo-data/indexing-api-status.json
+          retention-days: 30
+          if-no-files-found: ignore
