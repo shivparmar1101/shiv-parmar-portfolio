@@ -277,7 +277,8 @@
       ],
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-19",
-      "status": "pending"
+      "status": "published",
+      "published_at": "2026-10-23T23:55:59.645Z"
     },
     {
       "id": 21,
