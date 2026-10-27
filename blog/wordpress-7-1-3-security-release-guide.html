@@ -162,6 +162,34 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .contact-card a:hover{color:var(--accent)}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -175,7 +203,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </noscript>
 </div>
 <article><div class="container">
-<img src="../images/blog/wordpress-7-1-3-security-release-guide-hero.svg" alt="WordPress 7.1.3 Security Release: What You Need to Know - WordPress development guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-7-1-3-security-release-guide-hero.svg" alt="WordPress 7.1.3 Security Release: What You Need to Know - WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress 7.1.3 Security Release: What You Need to Know
 </nav>
@@ -194,6 +222,17 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/best-wordpress-security-plugins-2026-protection" title="Best WordPress Security Plugins 2026: Full">Best WordPress Security Plugins 2026: Full</a>
+      <a href="../blog/wordpress-security-headers-configuration" title="WordPress Security Headers Configuration">WordPress Security Headers Configuration</a>
+      <a href="../blog/best-wordpress-booking-plugins-2026-tested" title="Best WordPress Booking Plugins 2026 Tested">Best WordPress Booking Plugins 2026 Tested</a>
+      <a href="../blog/best-wordpress-mcp-plugins-2026-tested-compared" title="Best WordPress MCP Plugins 2026: 21 Tested">Best WordPress MCP Plugins 2026: 21 Tested</a>
+  </nav>
+</div>
 <p>In the modern web ecosystem, an unpatched Content Management System is not merely a technical oversight; it is an open invitation to automated threat actors. When the WordPress security team deployed the <strong>WordPress 7.1.3</strong> security release, it sent a clear signal across the hosting and enterprise development landscapes: update immediately or face automated exploitation. Because security researchers continuously probe the world's most ubiquitous CMS, the interval between a patch disclosure and the operationalization of weaponized exploits has collapsed from weeks to a matter of hours.</p>
 
 <p>This critical <strong>security update</strong> arrives as a rapid-response maintenance release targeting high-severity vulnerabilities discovered in WordPress 7.1 core components. Whether you manage a high-traffic enterprise network, an e-commerce storefront running headless architectures, or a portfolio of client installations, the implications of this release affect your entire digital infrastructure. Threat actors have already begun analyzing the code delta between 7.1.2 and 7.1.3, reverse-engineering the fixes to target unpatched endpoints with automated scanning scripts.</p>
@@ -566,8 +605,10 @@ wp user list --role=administrator --field=ID | xargs -I % wp user-meta update % 
 <a href="/blog" class="tag">WordPress patch</a>
 </div>
 
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-<img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer"></picture>
 <div class="author-info">
 <h4>Shiv Parmar</h4>
 <p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
@@ -647,6 +688,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js"></script defer><script src="../particle-bg.js" defer></script><script src="../script.js"></script defer><script src="../spatial-tilt.js" defer></script>
 </body>
 </html>

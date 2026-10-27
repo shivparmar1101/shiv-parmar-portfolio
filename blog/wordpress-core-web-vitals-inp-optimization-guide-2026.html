@@ -129,6 +129,34 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -144,7 +172,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </noscript>
 </div>
 <article><div class="container">
-<img src="../images/blog/wordpress-core-web-vitals-inp-optimization-guide-2026-hero.svg" alt="WordPress Core Web Vitals: INP Optimization Guide 2026 - WordPress development guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-core-web-vitals-inp-optimization-guide-2026-hero.svg" alt="WordPress Core Web Vitals: INP Optimization Guide 2026 - WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress Core Web Vitals: INP Optimization Guide 2026
 </nav>
@@ -163,6 +191,17 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/wordpress-image-optimization-for-speed" title="WordPress Image Optimization for Speed">WordPress Image Optimization for Speed</a>
+      <a href="../blog/bricksforge-critical-vulnerability-fix-guide" title="Bricksforge Critical Vulnerability Fix Guide">Bricksforge Critical Vulnerability Fix Guide</a>
+      <a href="../blog/how-to-add-ai-to-wordpress-complete-guide-2026" title="Add AI to WordPress: Complete Guide 2026">Add AI to WordPress: Complete Guide 2026</a>
+      <a href="../blog/manage-wordpress-with-chatgpt-mcp-plugin-2026" title="Manage WordPress with ChatGPT MCP Plugin Guide">Manage WordPress with ChatGPT MCP Plugin Guide</a>
+  </nav>
+</div>
 <p>In the evolving landscape of web performance, website owners and developers have shifted their focus toward a critical metric: <strong>Interaction to Next Paint (INP)</strong>. Since officially superseding First Input Delay (FID) as a stable Core Web Vital, INP has fundamentally transformed how Google evaluates user experience. While legacy performance audits prioritized how quickly a page loaded its initial visual elements, current web standards evaluate how rapidly and reliably an interface reacts to ongoing user input throughout an entire browsing session.</p>
 
 <p>For WordPress site owners, the implications of this shift are profound. WordPress powers over 40% of the web, driven by an open ecosystem of themes, page builders, and plugins. However, this architectural flexibility often introduces significant client-side bloat. Heavy JavaScript bundles, monolithic page builders, unoptimized third-party tracking scripts, and deep Document Object Model (DOM) trees consistently strain the browser's main thread. Consequently, a site may display an impressive Largest Contentful Paint (LCP) score yet completely fail the <strong>WordPress INP</strong> assessment due to sluggish mobile menus, unresponsive checkout forms, or delayed cart updates.</p>
@@ -478,8 +517,10 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 <a href="/blog" class="tag">page speed</a>
 </div>
 
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-<img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar">
+<!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar"></picture>
 <div class="author-info">
 <h4>Shiv Parmar</h4>
 <p>WordPress Developer with 4+ years experience. Expert in WooCommerce, custom themes, plugins, and AI integration.</p>
@@ -518,9 +559,9 @@ searchInput.addEventListener('input', debounce((event) =&gt; {
 </noscript>
 </div>
 
-<script src="../includes.js"></script>
-<script src="../script.js"></script>
-<script src="../particle-bg.js"></script>
+<script src="../includes.js"></script defer>
+<script src="../script.js"></script defer>
+<script src="../particle-bg.js"></script defer>
 <script>
 (function(){
   var toc=document.getElementById("tocList");

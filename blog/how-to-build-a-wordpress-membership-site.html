@@ -145,6 +145,34 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <!-- Liquid Glass Background -->
@@ -162,7 +190,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </noscript>
 </div>
 <article><div class="container">
-<img src="../images/blog/how-to-build-a-wordpress-membership-site-hero.svg" alt="How to Build a WordPress Membership Site - WordPress development guide by Shiv Parmar" title="How to Build a WordPress Membership Site - Complete guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/how-to-build-a-wordpress-membership-site-hero.svg" alt="How to Build a WordPress Membership Site - WordPress development guide by Shiv Parmar" title="How to Build a WordPress Membership Site - Complete guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="../" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="../blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>How to Build a WordPress Membership Site
 </nav>
@@ -182,6 +210,17 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/building-a-wordpress-rest-api-from-scratch" title="Building a WordPress REST API from Scratch">Building a WordPress REST API from Scratch</a>
+      <a href="../blog/how-to-add-ai-to-wordpress-complete-guide-2026" title="Add AI to WordPress: Complete Guide 2026">Add AI to WordPress: Complete Guide 2026</a>
+      <a href="../blog/how-to-create-wordpress-mega-menu" title="How to Create WordPress Mega Menu">How to Create WordPress Mega Menu</a>
+      <a href="../blog/wordpress-7-0-ai-client-complete-setup-guide-2026" title="WordPress 7.0 AI Client: Setup Guide 2026">WordPress 7.0 AI Client: Setup Guide 2026</a>
+  </nav>
+</div>
 <p>Namaste! I'm Shiv Parmar, a WordPress developer with global experience. Over the years, I have worked on dozens of membership websites&mdash;ranging from online course portals and private subscription communities to SaaS-like digital libraries. Building a membership site in WordPress is one of the most rewarding projects you can take on, but it can also become complex quickly if you don't structure your platform properly from day one.</p>
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:32px 0"><div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div><p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p><h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Your WordPress Project Deserves Expert Help</h3><p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to complex plugins &mdash; I build WordPress solutions that work. Let's talk.</p><a href="mailto:parmarshiv1101@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s">Discuss My Project <span>&rarr;</span></a></div>
 
@@ -381,8 +420,10 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
 <p>If a member-only page gets cached while it is rendered for a member, everyone else can receive that content for free, and switching caching off entirely makes the site slow. The performance and security step covers capability checks on every AJAX action, nonce validation, and targeted cache exclusions. Add object caching for role lookups so those checks stay cheap at scale.</p>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+  <!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer"></picture>
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
@@ -541,7 +582,7 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
 <footer><div class="container footer-inner"><span class="footer-left">&copy; 2026 Shiv Parmar &middot; WordPress Developer</span><div class="footer-right"><a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/shivparmar1101" target="_blank" rel="noopener">GitHub</a><span style="color:var(--text-muted);font-size:13px">Full-time &middot; Contract &middot; Remote</span></div></div></footer>
 </noscript>
 </div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js"></script defer><script src="../particle-bg.js" defer></script><script src="../script.js"></script defer><script src="../spatial-tilt.js" defer></script>
 
 </body>
 </html>

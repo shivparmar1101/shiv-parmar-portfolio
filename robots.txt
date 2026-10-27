@@ -3,3 +3,4 @@ Allow: /
 Disallow: /scripts/
 
 Sitemap: https://shiv-parmar-portfolio.netlify.app/sitemap.xml
+Sitemap: https://shiv-parmar-portfolio.netlify.app/rss.xml

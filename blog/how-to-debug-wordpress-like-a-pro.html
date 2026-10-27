@@ -145,13 +145,41 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <!-- Full Page Particle Background -->
 <div id="particle-hero" class="particle-canvas-fullpage"></div>
 <div id="site-header"></div>
 <article><div class="container">
-<img src="../images/blog/how-to-debug-wordpress-like-a-pro-hero.svg" alt="How to Debug WordPress Like a Pro - WordPress debugging guide by Shiv Parmar" title="How to Debug WordPress Like a Pro - Complete guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/how-to-debug-wordpress-like-a-pro-hero.svg" alt="How to Debug WordPress Like a Pro - WordPress debugging guide by Shiv Parmar" title="How to Debug WordPress Like a Pro - Complete guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href='/' title='Shiv Parmar - WordPress Developer Portfolio'>Home</a><span>/</span><a href='/blog' title='WordPress Development Blog - Tips, Tutorials & Guides'>Blog</a><span>/</span>How to Debug WordPress Like a Pro
 </nav>
@@ -175,6 +203,17 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/best-wordpress-booking-plugins-2026-tested" title="Best WordPress Booking Plugins 2026 Tested">Best WordPress Booking Plugins 2026 Tested</a>
+      <a href="../blog/best-wordpress-mcp-plugins-2026-tested-compared" title="Best WordPress MCP Plugins 2026: 21 Tested">Best WordPress MCP Plugins 2026: 21 Tested</a>
+      <a href="../blog/best-wordpress-migration-plugins-2026-tested" title="Best WordPress Migration Plugins 2026: 6 Picks">Best WordPress Migration Plugins 2026: 6 Picks</a>
+      <a href="../blog/best-wordpress-plugins-2026-top-30-ranked" title="Best WordPress Plugins 2026: Top 30 Ranked">Best WordPress Plugins 2026: Top 30 Ranked</a>
+  </nav>
+</div>
 <h2 id="section-0">Mastering WordPress Debugging: A Complete Developer's Guide</h2>
 
 <p>Hello everyone! I am Shiv Parmar, a WordPress developer with global experience. Over the years of building custom themes, plugins, and optimizing WooCommerce stores, one skill that has saved me countless hours is <strong>WordPress debugging</strong>. In this comprehensive guide, I will walk you through the techniques, tools, and best practices to debug WordPress like a professional developer.</p>
@@ -414,8 +453,10 @@ define( 'WC_DEBUG_DISPLAY', false );
 <p>Log to file instead of displaying errors, restrict Query Monitor to administrators, and never expose stack traces to the public. The production best practices step recommends staging for anything invasive and keeping debug constants in their quiet configuration on live. Remember the post core point: the goal is not just to fix the error but to understand how it happened.</p>
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+  <!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer"></picture>
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
@@ -570,7 +611,7 @@ define( 'WC_DEBUG_DISPLAY', false );
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js"></script defer><script src="../particle-bg.js" defer></script><script src="../script.js"></script defer><script src="../spatial-tilt.js" defer></script>
 
 </body>
 </html>

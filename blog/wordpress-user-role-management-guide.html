@@ -157,13 +157,41 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <!-- Full Page Particle Background -->
 <div id="particle-hero" class="particle-canvas-fullpage"></div>
 <div id="site-header"></div>
 <article><div class="container">
-<img src="../images/blog/wordpress-user-role-management-guide-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-user-role-management-guide-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="/" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="/blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>WordPress User Role Management Guide
 </nav>
@@ -184,6 +212,17 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/how-to-add-ai-to-wordpress-complete-guide-2026" title="Add AI to WordPress: Complete Guide 2026">Add AI to WordPress: Complete Guide 2026</a>
+      <a href="../blog/manage-wordpress-with-chatgpt-mcp-plugin-2026" title="Manage WordPress with ChatGPT MCP Plugin Guide">Manage WordPress with ChatGPT MCP Plugin Guide</a>
+      <a href="../blog/woocommerce-inventory-management-best-practices" title="WooCommerce Inventory Management Guide">WooCommerce Inventory Management Guide</a>
+      <a href="../blog/wordpress-7-0-ai-client-complete-setup-guide-2026" title="WordPress 7.0 AI Client: Setup Guide 2026">WordPress 7.0 AI Client: Setup Guide 2026</a>
+  </nav>
+</div>
 <h2 id="section-0">Mastering WordPress User Role Management: A Developer's Practical Guide</h2>
 
 <p>Hello everyone! I'm Shiv Parmar, a WordPress developer with global experience. Throughout my career building custom WordPress solutions for clients worldwide, one challenge consistently surfaces: managing user permissions securely and efficiently. Whether you are constructing a complex membership platform, an e-commerce marketplace, or a corporate portal, mastering WordPress user role management is essential for long-term site stability, client satisfaction, and security.</p>
@@ -398,8 +437,10 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
 
 </div>
 <div class="tags"><span class="tag">WordPress</span><span class="tag">Development</span></div>
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+  <!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer"></picture>
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
@@ -554,7 +595,7 @@ add_action( 'admin_enqueue_scripts', 'sp_enqueue_admin_js' );
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js"></script defer><script src="../particle-bg.js" defer></script><script src="../script.js"></script defer><script src="../spatial-tilt.js" defer></script>
 
 </body>
 </html>

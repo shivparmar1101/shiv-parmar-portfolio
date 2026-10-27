@@ -40,13 +40,17 @@ jobs:
           RETRY_DELAY_MS: '30000'
         run: node scripts/retry-generate.js
 
+      # Apply all SEO/CWV/E-E-A-T/RSS optimizations to the new post (+ existing, idempotent)
+      - name: Enhance new post (internal links, FAQ schema, author box, CWV, RSS)
+        run: node scripts/enhance.js
+
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
           if [ -n "$(git status --porcelain)" ]; then
-            git add blog-queue.json blog/ images/blog/ blog.html index.html sitemap.xml
+            git add blog-queue.json blog/ images/blog/ blog.html index.html sitemap.xml rss.xml
             git commit -m "Auto: Publish new blog post"
             git push
             echo "Changes pushed to repository"
@@ -81,56 +85,8 @@ jobs:
           echo "Possible causes: Netlify build skipped/failed, or Ignore Builds setting is active."
           exit 1
 
-      - name: Send Email Notification
-        if: success()
-        env:
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        run: |
-          LATEST_BLOG=$(git diff --name-only HEAD~1 2>/dev/null | grep "^blog/.*\.html$" | head -1 || true)
-
-          if [ -n "$LATEST_BLOG" ] && [ -n "$EMAIL_PASSWORD" ]; then
-            TITLE=$(sed -n 's/.*<title>\([^|]*\).*/\1/p' "$LATEST_BLOG" | head -1)
-            SLUG=$(basename "$LATEST_BLOG" .html)
-
-            echo "Blog: $TITLE"
-            echo "URL: https://shiv-parmar-portfolio.netlify.app/blog/$SLUG"
-
-            export BLOG_TITLE="$TITLE"
-            export BLOG_SLUG="$SLUG"
-
-            node -e '
-              const nodemailer = require("nodemailer");
-              const transporter = nodemailer.createTransport({
-                service: "gmail",
-                auth: {
-                  user: "parmarshiv1101@gmail.com",
-                  pass: process.env.EMAIL_PASSWORD
-                }
-              });
-
-              const title = process.env.BLOG_TITLE;
-              const slug = process.env.BLOG_SLUG;
-
-              const mailOptions = {
-                from: "parmarshiv1101@gmail.com",
-                to: "parmarshiv1101@gmail.com",
-                subject: "New Blog Published: " + title,
-                html: "<div style=\"font-family:Inter,sans-serif;max-width:600px;margin:0 auto;background:#000;color:#f0f0f0;border-radius:12px;overflow:hidden;border:1px solid #333\">" +
-                  "<div style=\"background:#c9a84c;padding:20px;text-align:center\"><h1 style=\"color:#000;margin:0;font-size:24px\">New Blog Published!</h1></div>" +
-                  "<div style=\"padding:24px\"><h2 style=\"color:#f0f0f0;margin-top:0\">" + title + "</h2>" +
-                  "<div style=\"text-align:center;margin:24px 0\"><a href=\"https://shiv-parmar-portfolio.netlify.app/blog/" + slug + "\" style=\"display:inline-block;background:#c9a84c;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600\">Read Blog</a></div>" +
-                  "<p style=\"color:#666;font-size:12px;text-align:center\">Auto-published by GitHub Actions</p></div></div>"
-              };
-
-              transporter.sendMail(mailOptions, (error, info) => {
-                if (error) { console.error("Email error:", error); process.exit(0); }
-                console.log("Email sent:", info.messageId);
-              });
-            '
-          else
-            echo "Skipping email (no new blog or EMAIL_PASSWORD not set)"
-          fi
-
+      # Email notification is handled by blog-email-notification.yml (triggered on push)
+      # to avoid duplicate emails. Keep this step removed.
       - name: Send Failure Email
         if: failure()
         env:

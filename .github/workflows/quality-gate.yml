@@ -1,0 +1,43 @@
+name: Site Quality Gate (broken links + SEO checks)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Broken internal link check
+        run: node scripts/broken-link-check.js
+
+      - name: Blog content sanity (52 posts, no issues)
+        run: node scripts/check-blogs.js
+
+      - name: Sitemap validation
+        run: node scripts/validate-sitemap.js
+
+      - name: RSS feed exists & valid
+        run: |
+          node scripts/generate-rss.js
+          test -s rss.xml
+          grep -q "<rss" rss.xml
+          echo "rss.xml OK ($(grep -c '<item>' rss.xml) items)"

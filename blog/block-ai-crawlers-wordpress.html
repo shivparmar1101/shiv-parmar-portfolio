@@ -145,13 +145,41 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 select option{background:#111;color:#f0f0f0;padding:8px}
 @media(max-width:640px){article{padding:0}h1{font-size:24px}.hero-img{height:200px}.author-box{flex-direction:column;align-items:center;text-align:center}.blog-footer .foot-inner{flex-direction:column;gap:12px}}
 </style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
 </head>
 <body>
 <!-- Full Page Particle Background -->
 <div id="particle-hero" class="particle-canvas-fullpage"></div>
 <div id="site-header"></div>
 <article><div class="container">
-<img src="../images/blog/block-ai-crawlers-wordpress-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/block-ai-crawlers-wordpress-hero.svg" alt="Blog post hero image - WordPress development guide by Shiv Parmar" title="WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
 <a href="/" title="Shiv Parmar - WordPress Developer Portfolio">Home</a><span>/</span><a href="/blog" title="WordPress Development Blog - Tips, Tutorials & Guides">Blog</a><span>/</span>How to Block AI Crawlers from Scraping WordPress Content
 </nav>
@@ -175,6 +203,17 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/wordpress-block-theme-development-guide" title="WordPress Block Theme Development Guide">WordPress Block Theme Development Guide</a>
+      <a href="../blog/wordpress-gutenberg-block-development" title="WordPress Gutenberg Block Development">WordPress Gutenberg Block Development</a>
+      <a href="../blog/wordpress-mcp-oauth-2-1-secure-ai-access" title="WordPress MCP OAuth 2.1: Secure AI Access">WordPress MCP OAuth 2.1: Secure AI Access</a>
+      <a href="../blog/wordpress-security-headers-configuration" title="WordPress Security Headers Configuration">WordPress Security Headers Configuration</a>
+  </nav>
+</div>
 <h2 id="section-0">Why AI Crawlers Are a Growing Concern for WordPress Owners</h2>
 
 <p>Over the past two years, artificial intelligence companies have deployed a new generation of web crawlers to harvest massive volumes of content for training large language models. Unlike traditional search engine bots such as Googlebot or Bingbot, AI crawlers like GPTBot, CCBot, ClaudeBot and Bytespider do not send traffic back to your website. They ingest your articles, documentation, and product descriptions, then use that material to power chatbots that can answer the same questions without ever visiting your site.</p>
@@ -425,8 +464,10 @@ curl -A "Googlebot" -I https://yourdomain.com/
 <p>No. robots.txt is advisory: honest bots read it, but a scraper can ignore it completely. The guide's recommended starting point is robots.txt for compliant bots plus a Cloudflare firewall rule that actively challenges or blocks the rest. For stubborn traffic, add rate limiting and challenge pages as a second layer.</p>
 </div>
 <div class="tags"><span class="tag">WordPress Security</span><span class="tag">AI Crawlers</span><span class="tag">robots.txt</span><span class="tag">Cloudflare</span><span class="tag">GPTBot</span></div>
+<!-- AUTO_AUTHOR_BOX -->
 <div class="author-box">
-  <img src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+  <!-- AUTO_WEBP -->
+<picture><source type="image/webp" srcset="../images/shiv-parmar-wordpress-developer.webp"><img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer"></picture>
   <div class="author-info">
     <h4>Shiv Parmar</h4>
     <p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
@@ -581,7 +622,7 @@ curl -A "Googlebot" -I https://yourdomain.com/
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../scripts/blog-image-generator.js" defer></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js"></script defer><script src="../particle-bg.js" defer></script><script src="../script.js"></script defer><script src="../spatial-tilt.js" defer></script>
 
 </body>
 </html>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiv Parmar - WordPress Development Blog</title>
+    <link>https://shiv-parmar-portfolio.netlify.app/blog</link>
+    <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Oct 2026 06:40:42 GMT</lastBuildDate>
+    <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WordPress 7.1 AI Client: Streaming Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Unlock the power of WordPress 7.1&amp;#39;s new AI Client. Learn how to implement streaming responses and vector embeddings in this complete developer guide.</description>
+      <category>AI Client</category>
+    </item>
+    <item>
+      <title>Best WP Caching Plugins 2026 Compared | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Discover the top WordPress caching plugins for 2026. See how WP Rocket compares to LiteSpeed in our ultimate speed showdown. Boost your site&amp;#39;s performance today!</description>
+      <category>caching plugins</category>
+    </item>
+    <item>
+      <title>WordPress 7.1 Mary Lou Features | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Complete WordPress 7.1 Mary Lou feature breakdown: performance upgrades, new site editing tools, admin changes, and step-by-step upgrade guidance.</description>
+      <category>WordPress 7.1</category>
+    </item>
+    <item>
+      <title>Best WordPress Security Plugins 2026: Full | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Safeguard your site with the best WordPress security plugins of 2026. Compare top tools to stop malware, block attacks, and get full protection today.</description>
+      <category>security plugins</category>
+    </item>
+    <item>
+      <title>Best WordPress Migration Plugins 2026: 6 Picks | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Discover the best WordPress migration plugins for 2026. We tested 6 top tools for speed, safety, and zero downtime to help you move your website stress-free.</description>
+      <category>migration plugins</category>
+    </item>
+    <item>
+      <title>Best WordPress Booking Plugins 2026 Tested | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Looking for the best WordPress booking plugins for 2026? We tested the top 6 tools for appointments, payments, and scheduling. Find your perfect plugin now!</description>
+      <category>booking plugins</category>
+    </item>
+    <item>
+      <title>Best WordPress Themes 2026: Speed &amp;amp; Design | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Discover the best WordPress themes for 2026. We compared speed, performance, and cutting-edge design to help you pick the perfect theme for your website.</description>
+      <category>best WordPress themes</category>
+    </item>
+    <item>
+      <title>Best WordPress Plugins 2026: Top 30 Ranked | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Discover the 30 best WordPress plugins for 2026, ranked by category. Boost your site&amp;#39;s SEO, speed, and security with our ultimate guide. Click to explore!</description>
+      <category>best WordPress plugins</category>
+    </item>
+    <item>
+      <title>Manage WordPress with ChatGPT MCP Plugin Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Learn about Manage WordPress with ChatGPT: MCP Plugin Guide 2026 with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.</description>
+      <category>ChatGPT WordPress</category>
+    </item>
+    <item>
+      <title>Connect Claude to WordPress via MCP Setup | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Master the Claude WordPress integration using MCP. Follow our complete, step-by-step setup guide to automate and manage your website with AI today.</description>
+      <category>Claude WordPress</category>
+    </item>
+    <item>
+      <title>WordPress MCP OAuth 2.1: Secure AI Access | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Secure your WordPress site with our step-by-step MCP OAuth 2.1 setup guide. Learn how to safely connect AI tools and manage permissions with ease.</description>
+      <category>MCP OAuth</category>
+    </item>
+    <item>
+      <title>Best WordPress MCP Plugins 2026: 21 Tested | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Learn about Best WordPress MCP Plugins 2026: 21 Tested &amp;amp; Compared with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.</description>
+      <category>WordPress MCP</category>
+    </item>
+    <item>
+      <title>Auto-Update Cooldown: Protect The Shire | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Protect your WordPress site from sudden bugs. Learn how an auto-update cooldown delay safeguards your digital Shire from broken plugin releases.</description>
+      <category>auto-update</category>
+    </item>
+    <item>
+      <title>Block AI Crawlers from Scraping WordPress | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to block AI crawlers like GPTBot, CCBot and ClaudeBot from scraping your WordPress site. Protect content with robots.txt, .htaccess and plugins.</description>
+      <category>block AI crawlers</category>
+    </item>
+    <item>
+      <title>Bricksforge Critical Vulnerability Fix Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A critical Bricksforge vulnerability threatens your WordPress site. Discover how to patch the exploit immediately with our step-by-step security fix guide.</description>
+      <category>Bricksforge</category>
+    </item>
+    <item>
+      <title>Elementor CSRF Vulnerability: 2 Million Sites | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>A critical CSRF vulnerability in Elementor puts over 2 million WordPress sites at risk. Learn how the exploit works and how to protect your website now.</description>
+      <category>Elementor</category>
+    </item>
+    <item>
+      <title>WordPress 7.1.3 Security Release: What&#39;s New | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-3-security-release-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-3-security-release-guide</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Is your site safe? The WordPress 7.1.3 security release patches critical vulnerabilities. Learn what&amp;#39;s new and how to update your website today.</description>
+      <category>WordPress 7.1.3</category>
+    </item>
+    <item>
+      <title>Core Web Vitals INP Optimization Guide 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-core-web-vitals-inp-optimization-guide-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-core-web-vitals-inp-optimization-guide-2026</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.</description>
+      <category>WordPress INP</category>
+    </item>
+    <item>
+      <title>Add AI to WordPress: Complete Guide 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to add AI to WordPress in this complete 2026 guide. Discover plugins, chatbots, and automation tips to make your site smarter starting today.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WooCommerce 11.1 New Features &amp;amp; Setup Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Explore WooCommerce 11.1 new features in this 2026 setup guide. Follow our step-by-step walkthrough to update, configure, and use every enhancement today.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WordPress 7.0 AI Client: Setup Guide 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Set up the WordPress 7.0 AI Client with our complete 2026 guide. Follow step-by-step instructions to connect AI tools and automate your site like a pro.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>How to Add Schema Markup to WordPress | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress</guid>
+      <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Boost search visibility by adding schema markup to WordPress. Follow this step-by-step guide to install structured data and win rich results in Google search.</description>
+      <category>WordPress SEO</category>
+    </item>
+    <item>
+      <title>WordPress Cron Jobs: Complete Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Master WordPress cron jobs with this complete guide. Learn to schedule tasks, fix missed crons, and keep your site running reliably without missed updates.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WordPress SEO Technical Checklist | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-seo-technical-checklist</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-seo-technical-checklist</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Use this WordPress SEO technical checklist to fix site health fast. Cover crawlability, speed, and indexation for higher rankings and more organic traffic.</description>
+      <category>WordPress SEO</category>
+    </item>
+    <item>
+      <title>WordPress Database Backup Strategies | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies</guid>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Secure your site with these WordPress database backup strategies. Learn scheduling, storage, and restore steps so you can recover your data in minutes.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WordPress Gutenberg Block Development | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</guid>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>How to Speed Up WooCommerce Product Pages | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to speed up WooCommerce product pages for faster load times. Apply caching, image, and lazy-loading fixes to boost sales and conversions today.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>WooCommerce Inventory Management Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Streamline WooCommerce inventory management with our proven best practices. Track stock, automate alerts, and avoid overselling to keep customers happy.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>Building a WordPress REST API from Scratch | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>Gutenberg vs Elementor 2026: Which is Better? | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Gutenberg vs Elementor in 2026: we compare speed, flexibility, and ease of use to help you choose the best page builder for your WordPress website today.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WordPress Image Optimization for Speed | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-image-optimization-for-speed</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Speed up WordPress with this image optimization guide. Learn compression, lazy loading, and WebP setup to improve page speed and Core Web Vitals today.</description>
+      <category>WordPress speed</category>
+    </item>
+    <item>
+      <title>How to Build a WordPress Membership Site | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to build a WordPress membership site step by step. Compare top plugins, set up payments, and protect content to grow recurring revenue fast.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WooCommerce Cart Abandonment Recovery | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-cart-abandonment-recovery</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Reduce lost sales with WooCommerce cart abandonment recovery strategies. Set up emails, discounts, and retargeting to win back shoppers and boost revenue.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>How to Create WordPress Mega Menu | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to create a WordPress mega menu with step-by-step code examples, best practices and tips for building advanced navigation menus in WordPress.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>How to Debug WordPress Like a Pro | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.</description>
+      <category>WordPress debugging</category>
+    </item>
+    <item>
+      <title>How to Set Up WordPress Staging Environment | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete guide to set up a WordPress staging environment. Learn to create staging sites, test updates safely and deploy changes without any downtime.</description>
+      <category>WordPress staging</category>
+    </item>
+    <item>
+      <title>WooCommerce Shipping Zones Setup Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-shipping-zones-setup-guide</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Master WooCommerce shipping zones step by step. Learn how to set up regions, methods and rates so customers get accurate delivery costs at checkout.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>WordPress Caching Plugins Compared 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Compare the best WordPress caching plugins for 2026. Learn which plugins offer the fastest speeds, best features and easiest setup for your site.</description>
+      <category>WordPress speed</category>
+    </item>
+    <item>
+      <title>WooCommerce Coupon System Complete Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-coupon-system-complete-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-coupon-system-complete-guide</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete WooCommerce coupon system guide. Learn how to create, manage and optimize coupon codes to boost sales and customer retention in your store.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>WooCommerce Product Filter Setup Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</guid>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete WooCommerce product filter setup guide. Learn how to create AJAX filters, customize filter UI and optimize your store for better conversions.</description>
+      <category>WooCommerce</category>
+    </item>
+    <item>
+      <title>WooCommerce Product Bundles Setup | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-bundles-setup</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-bundles-setup</guid>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete guide to setup WooCommerce product bundles. Learn how to create bundle products, configure pricing and boost your average order value.</description>
+      <category>WooCommerce product bundles</category>
+    </item>
+    <item>
+      <title>WooCommerce Payment Gateway Comparison 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Detailed comparison of WooCommerce payment gateways in 2026. Compare Stripe, PayPal, Razorpay and more for your online store with expert insights.</description>
+      <category>WooCommerce payment gateway</category>
+    </item>
+    <item>
+      <title>WordPress Migration Guide: Local to Production | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Step-by-step WordPress migration guide from local to production. Learn how to move your WordPress site safely without downtime or data loss.</description>
+      <category>WordPress migration</category>
+    </item>
+    <item>
+      <title>How to Create a WordPress Booking System | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete guide to create a WordPress booking system from scratch. Learn PHP, JavaScript and WooCommerce integration for appointment scheduling.</description>
+      <category>WordPress booking system</category>
+    </item>
+    <item>
+      <title>WordPress Block Theme Development Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Comprehensive guide to WordPress block theme development. Learn how to create custom block themes, use theme.json and build modern WordPress sites.</description>
+      <category>WordPress block theme</category>
+    </item>
+    <item>
+      <title>WordPress Multisite Configuration Tips | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Practical WordPress multisite configuration tips for admins. Learn network setup, subsite management, domain mapping and maintenance in this complete guide.</description>
+      <category>WordPress multisite</category>
+    </item>
+    <item>
+      <title>WordPress REST API Authentication Methods | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Compare WordPress REST API authentication methods: JWT, OAuth, application passwords and cookies. Pick the right option and secure your endpoints today.</description>
+      <category>WordPress REST API</category>
+    </item>
+    <item>
+      <title>Add Custom CSS to WordPress without Plugin | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to add custom CSS to WordPress without using any plugins. Step-by-step guide with code examples for beginners and developers by Shiv Parmar.</description>
+      <category>WordPress</category>
+    </item>
+    <item>
+      <title>WooCommerce Product Variation Best Practices | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Best practices for WooCommerce product variations. Learn how to setup variable products, manage inventory and optimize your store performance.</description>
+      <category>WooCommerce variations</category>
+    </item>
+    <item>
+      <title>WooCommerce Tax Configuration Guide | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Complete WooCommerce tax configuration guide. Learn how to setup tax rates, tax classes and automate tax calculations for your online store.</description>
+      <category>WooCommerce tax</category>
+    </item>
+  </channel>
+</rss>

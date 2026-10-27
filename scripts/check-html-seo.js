@@ -26,7 +26,7 @@ function checkHTMLSEO(filename) {
 
   // Check lang attribute
   if (!$('html').attr('lang')) {
-    results.issues.push('Missing lang attribute on html');
+    result.issues.push('Missing lang attribute on html');
   } else {
     result.passed.push('lang attribute present');
   }
@@ -111,9 +111,11 @@ function main() {
   // Get all HTML files
   const files = [];
   fs.readdirSync(ROOT_DIR).forEach(file => {
-    if (file.endsWith('.html') && file !== '404.html') {
-      files.push(file);
-    }
+    if (!file.endsWith('.html')) return;
+    if (file === '404.html') return;
+    if (file === 'header.html' || file === 'footer.html') return;
+    if (/^google[a-f0-9]+\.html$/i.test(file)) return;
+    files.push(file);
   });
 
   console.log(`Checking ${files.length} HTML files...`);

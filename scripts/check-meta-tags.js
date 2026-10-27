@@ -32,9 +32,11 @@ function getAllHTMLFiles() {
   
   // Root files
   fs.readdirSync(ROOT_DIR).forEach(file => {
-    if (file.endsWith('.html') && file !== '404.html') {
-      files.push(file);
-    }
+    if (!file.endsWith('.html')) return;
+    if (file === '404.html') return;
+    if (file === 'header.html' || file === 'footer.html') return;
+    if (/^google[a-f0-9]+\.html$/i.test(file)) return;
+    files.push(file);
   });
   
   // Blog files

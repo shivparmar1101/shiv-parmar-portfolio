@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages (free github.io domain)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Generate RSS + run idempotent enhancements before deploying (keeps Pages in sync)
+      - name: Enhance site (RSS, internal links, FAQ, author, CWV)
+        run: node scripts/enhance.js --skip-check
+
+      # .nojekyll stops GitHub running Jekyll (which would drop _-prefixed files)
+      - name: Prepare Pages artifact
+        run: |
+          cp -r . ../site-root
+          cd ../site-root
+          rm -rf .git .github node_modules .netlify .env .env.example reports seo-data scripts package.json package-lock.json
+          touch .nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ../site-root
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

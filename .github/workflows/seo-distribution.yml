@@ -1,0 +1,70 @@
+name: SEO Distribution (Dev.to syndication + Bing sitemap + RSS)
+
+# Syndicates new posts to Dev.to (free canonical backlink), submits sitemap to Bing,
+# and refreshes the RSS feed. All steps SKIP gracefully when secrets aren't set,
+# so the workflow never fails if you haven't configured keys yet.
+
+on:
+  schedule:
+    # Daily at 10:00 UTC (4:00 PM IST) - after morning auto-publish
+    - cron: '0 10 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'blog/*.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-distribution
+  cancel-in-progress: false
+
+jobs:
+  distribute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Refresh RSS feed
+        run: node scripts/generate-rss.js
+
+      - name: Enhance (idempotent SEO pass)
+        run: node scripts/enhance.js --skip-check
+
+      - name: Submit sitemap to Bing Webmaster
+        env:
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+          BING_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
+        run: node scripts/submit-bing-sitemap.js
+
+      - name: Syndicate new posts to Dev.to (canonical backlinks)
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: node scripts/syndicate-devto.js --limit=3
+
+      - name: Commit updated files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add rss.xml blog/ seo-data/syndicated.json
+            git commit -m "SEO: refresh RSS + enhancements + syndication state"
+            git push
+            echo "Committed SEO distribution updates"
+          else
+            echo "No changes"
+          fi

@@ -24,6 +24,16 @@
     "email:fail-test": "node scripts/send-failure-email.js --dry-run",
     "blog:auto": "node scripts/auto-blog-generator.js",
     "blog:retry": "node scripts/retry-generate.js",
+    "enhance": "node scripts/enhance.js",
+    "rss": "node scripts/generate-rss.js",
+    "links": "node scripts/inject-internal-links.js",
+    "faq": "node scripts/inject-faq-schema.js",
+    "eat": "node scripts/standardize-author-box.js",
+    "cwv": "node scripts/optimize-cwv.js",
+    "webp": "node scripts/optimize-webp.js",
+    "check:links": "node scripts/broken-link-check.js",
+    "seo:bing": "node scripts/submit-bing-sitemap.js",
+    "seo:syndicate": "node scripts/syndicate-devto.js",
     "test": "node scripts/test-retry.js && node scripts/test-idempotency.js && node scripts/check-blogs.js"
   },
   "keywords": [
@@ -38,5 +48,8 @@
     "axios": "^1.20.0",
     "cheerio": "^1.2.0",
     "nodemailer": "^10.0.10"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.34.0"
   }
 }
