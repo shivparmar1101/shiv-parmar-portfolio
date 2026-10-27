@@ -2655,3 +2655,8 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   background: var(--accent-hover);
   transform: translateY(-3px);
 }
+/* Netlify's "Powered by" badge sits bottom-right with max-int z-index and
+   would cover this button — lift it above the badge only when badge exists */
+body:has(#nl-badge-frame) .back-to-top {
+  bottom: 88px;
+}
