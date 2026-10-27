@@ -6,8 +6,80 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2026 06:40:42 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 06:49:44 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Zero-Click Searches: WordPress Strategy for AI Era | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Tired of losing traffic to zero-click searches? Discover proven WordPress SEO strategies to dominate the AI era, build authority, and maximize your visibility today.</description>
+      <category>zero-click</category>
+    </item>
+    <item>
+      <title>ChatGPT SEO: Get Your WordPress Site Cited by AI | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Learn about ChatGPT SEO: Get Your WordPress Site Cited by AI with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.</description>
+      <category>ChatGPT SEO</category>
+    </item>
+    <item>
+      <title>FAQ Schema for AI Search: WordPress Implementation | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Optimize your site for AI search with this step-by-step guide to implementing FAQ schema in WordPress. Win rich snippets and boost visibility today.</description>
+      <category>FAQ schema</category>
+    </item>
+    <item>
+      <title>Answer Engine Optimization: Complete AEO Guide 2026 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Master Answer Engine Optimization with our 2026 guide. Learn proven AEO strategies to optimize your content, win AI search answers, and drive high-intent traffic.</description>
+      <category>AEO</category>
+    </item>
+    <item>
+      <title>Rank in Google AI Overviews: WordPress Optimization | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/rank-google-ai-overviews-wordpress-optimization</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/rank-google-ai-overviews-wordpress-optimization</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Want to get featured in Google AI Overviews? Discover proven WordPress optimization strategies to boost your search visibility and drive high-intent organic traffic.</description>
+      <category>AI Overviews</category>
+    </item>
+    <item>
+      <title>WordPress Notes Feature: Block-Level Team | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-notes-block-level-collaboration</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-notes-block-level-collaboration</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Boost team collaboration with WordPress Notes. Learn how block-level commenting streamlines your editorial workflow and keeps your team aligned inside the editor.</description>
+      <category>WordPress Notes</category>
+    </item>
+    <item>
+      <title>WordPress 7.1 Image Processing: WebAssembly Editor | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Learn about WordPress 7.1 Image Processing: WebAssembly Editor with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.</description>
+      <category>WebAssembly</category>
+    </item>
+    <item>
+      <title>WordPress Command Palette 7.1: Master Ctrl+K | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Boost your WordPress 7.1 workflow with the command palette. Learn essential Ctrl+K shortcuts to navigate, create, and manage your site faster than ever.</description>
+      <category>command palette</category>
+    </item>
+    <item>
+      <title>WordPress Abilities API: Build AI Features in | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Build smarter WordPress plugins with AI. Learn how the new Abilities API enables you to integrate intelligent features, automate tasks, and enhance your user experience.</description>
+      <category>Abilities API</category>
+    </item>
     <item>
       <title>WordPress 7.1 AI Client: Streaming Guide | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings</link>
@@ -335,78 +407,6 @@
       <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
       <description>Complete guide to setup WooCommerce product bundles. Learn how to create bundle products, configure pricing and boost your average order value.</description>
       <category>WooCommerce product bundles</category>
-    </item>
-    <item>
-      <title>WooCommerce Payment Gateway Comparison 2026 | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-payment-gateway-comparison-2026</guid>
-      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Detailed comparison of WooCommerce payment gateways in 2026. Compare Stripe, PayPal, Razorpay and more for your online store with expert insights.</description>
-      <category>WooCommerce payment gateway</category>
-    </item>
-    <item>
-      <title>WordPress Migration Guide: Local to Production | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-migration-guide-local-to-production</guid>
-      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Step-by-step WordPress migration guide from local to production. Learn how to move your WordPress site safely without downtime or data loss.</description>
-      <category>WordPress migration</category>
-    </item>
-    <item>
-      <title>How to Create a WordPress Booking System | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-a-wordpress-booking-system</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Complete guide to create a WordPress booking system from scratch. Learn PHP, JavaScript and WooCommerce integration for appointment scheduling.</description>
-      <category>WordPress booking system</category>
-    </item>
-    <item>
-      <title>WordPress Block Theme Development Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-block-theme-development-guide</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Comprehensive guide to WordPress block theme development. Learn how to create custom block themes, use theme.json and build modern WordPress sites.</description>
-      <category>WordPress block theme</category>
-    </item>
-    <item>
-      <title>WordPress Multisite Configuration Tips | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-multisite-configuration-tips</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Practical WordPress multisite configuration tips for admins. Learn network setup, subsite management, domain mapping and maintenance in this complete guide.</description>
-      <category>WordPress multisite</category>
-    </item>
-    <item>
-      <title>WordPress REST API Authentication Methods | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-rest-api-authentication-methods</guid>
-      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Compare WordPress REST API authentication methods: JWT, OAuth, application passwords and cookies. Pick the right option and secure your endpoints today.</description>
-      <category>WordPress REST API</category>
-    </item>
-    <item>
-      <title>Add Custom CSS to WordPress without Plugin | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-custom-css-to-wordpress-without-plugin</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Learn how to add custom CSS to WordPress without using any plugins. Step-by-step guide with code examples for beginners and developers by Shiv Parmar.</description>
-      <category>WordPress</category>
-    </item>
-    <item>
-      <title>WooCommerce Product Variation Best Practices | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-variation-best-practices</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Best practices for WooCommerce product variations. Learn how to setup variable products, manage inventory and optimize your store performance.</description>
-      <category>WooCommerce variations</category>
-    </item>
-    <item>
-      <title>WooCommerce Tax Configuration Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-tax-configuration-guide</guid>
-      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Complete WooCommerce tax configuration guide. Learn how to setup tax rates, tax classes and automate tax calculations for your online store.</description>
-      <category>WooCommerce tax</category>
     </item>
   </channel>
 </rss>
