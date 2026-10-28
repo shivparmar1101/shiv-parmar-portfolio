@@ -8,6 +8,7 @@
     "seo:sitemap": "node scripts/validate-sitemap.js",
     "seo:speed": "node scripts/check-pagespeed.js",
     "seo:keywords": "node scripts/track-keywords.js",
+    "seo:questions": "node scripts/audit-question-headings.js",
     "seo:competitors": "node scripts/check-competitors.js",
     "seo:html": "node scripts/check-html-seo.js",
     "seo:blog": "node scripts/check-blog-seo.js",

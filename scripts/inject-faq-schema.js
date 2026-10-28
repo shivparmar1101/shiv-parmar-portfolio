@@ -8,6 +8,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { looksLikeQuestion } = require('./question-query.js');
 
 const ROOT = path.join(__dirname, '..');
 const BLOG_DIR = path.join(ROOT, 'blog');
@@ -17,13 +18,6 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 function stripTags(s) { return String(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
-
-function looksLikeQuestion(text) {
-  const t = text.trim();
-  if (t.length < 6 || t.length > 180) return false;
-  if (/[?]\s*$/.test(t)) return true;
-  return /^(what|how|why|when|where|which|who|can|is|are|do|does|should|will)\b/i.test(t);
-}
 
 function extractFAQ(html) {
   // Capture h3 questions followed by one or more <p> answers (FAQ sections)

@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { looksLikeQuestion } = require('./question-query.js');
 
 const ROOT_DIR = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT_DIR, 'seo-data');
@@ -43,6 +44,16 @@ const KEYWORDS = [
   { keyword: 'wordpress ai integration', category: 'trending', target: 25 },
   { keyword: 'headless wordpress', category: 'trending', target: 25 },
   { keyword: 'wordpress full site editing', category: 'trending', target: 20 },
+
+  // Question queries (AEO — power PAA, featured snippets, voice & AI citations)
+  { keyword: 'how to speed up wordpress site', category: 'question', target: 15 },
+  { keyword: 'what is woocommerce hosting', category: 'question', target: 20 },
+  { keyword: 'is wordpress good for ecommerce', category: 'question', target: 20 },
+  { keyword: 'how to add schema markup to wordpress', category: 'question', target: 15 },
+  { keyword: 'what is headless wordpress', category: 'question', target: 20 },
+  { keyword: 'how to optimize wordpress core web vitals', category: 'question', target: 15 },
+  { keyword: 'which is better elementor or bricks builder', category: 'question', target: 25 },
+  { keyword: 'how to connect claude to wordpress', category: 'question', target: 15 },
 ];
 
 function trackKeywords() {
@@ -75,6 +86,7 @@ function trackKeywords() {
 
   results.keywords = KEYWORDS.map(kw => ({
     ...kw,
+    isQuestion: looksLikeQuestion(kw.keyword),
     currentPosition: null, // To be filled via GSC API or manual input
     previousPosition: previousData ? 
       previousData.keywords.find(p => p.keyword === kw.keyword)?.currentPosition : null,
@@ -82,6 +94,9 @@ function trackKeywords() {
     status: 'pending',
     lastChecked: new Date().toISOString(),
   }));
+
+  // How many tracked keywords are question queries (AEO coverage)
+  results.summary.questions = results.keywords.filter(kw => kw.isQuestion).length;
 
   // Generate recommendations
   results.keywords.forEach(kw => {
