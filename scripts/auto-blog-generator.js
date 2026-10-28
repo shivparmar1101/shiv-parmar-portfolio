@@ -28,6 +28,8 @@ const http = require('http');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+// Fallback used when the primary model returns 503 (high demand).
+const GEMINI_FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || 'gemini-2.5-flash';
 const SITE_URL = 'https://shiv-parmar-portfolio.netlify.app';
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const QUEUE_FILE = path.join(__dirname, '..', 'blog-queue.json');
@@ -92,9 +94,14 @@ function clampMetaDescription(desc) {
   return d;
 }
 
-function callGeminiAPI(prompt) {
+function isUnavailableError(err) {
+  const msg = (err && err.message) || '';
+  return /\b503\b|UNAVAILABLE|high demand/i.test(msg);
+}
+
+function callGeminiAPI(prompt, model = GEMINI_MODEL) {
   return new Promise((resolve, reject) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
     const postData = JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
       generationConfig: { temperature: 0.7, maxOutputTokens: 8192 }
@@ -123,6 +130,20 @@ function callGeminiAPI(prompt) {
   });
 }
 
+// Tries the primary model; on a 503 (high demand) error, falls back to
+// GEMINI_FALLBACK_MODEL once before rejecting.
+async function callGemini(prompt) {
+  try {
+    return await callGeminiAPI(prompt, GEMINI_MODEL);
+  } catch (err) {
+    if (isUnavailableError(err) && GEMINI_FALLBACK_MODEL && GEMINI_FALLBACK_MODEL !== GEMINI_MODEL) {
+      console.log(`Model ${GEMINI_MODEL} unavailable (${String(err.message).slice(0, 80)}). Falling back to ${GEMINI_FALLBACK_MODEL}...`);
+      return await callGeminiAPI(prompt, GEMINI_FALLBACK_MODEL);
+    }
+    throw err;
+  }
+}
+
 async function generateBlogContent(blog) {
   const prompt = `Write a comprehensive, SEO-optimized blog post about "${blog.title}".
 
@@ -149,14 +170,14 @@ Primary keywords: ${blog.keywords.join(', ')}.
 Return ONLY the HTML content (article body, no head/body tags).`;
 
   console.log(`Generating content with ${GEMINI_MODEL}...`);
-  const content = await callGeminiAPI(prompt);
+  const content = await callGemini(prompt);
   return content.replace(/```html\n?|```/g, '').trim();
 }
 
 async function generateMetaDescription(title, keywords) {
   const prompt = `Write a compelling meta description (120-180 characters) for a blog post titled "${title}". Include the primary keyword naturally: ${keywords[0]}. Return ONLY the meta description text, nothing else.`;
   try {
-    const desc = await callGeminiAPI(prompt);
+    const desc = await callGemini(prompt);
     return clampMetaDescription(desc.trim().replace(/^["']|["']$/g, ''));
   } catch (error) {
     return clampMetaDescription(`Learn about ${title} with this comprehensive guide by Shiv Parmar. Step-by-step instructions and expert tips.`);
@@ -166,7 +187,7 @@ async function generateMetaDescription(title, keywords) {
 async function generateConclusion(title, keywords) {
   const prompt = `Write a Conclusion section (2-3 paragraphs) for a blog post titled "${title}". Include a call-to-action mentioning that Shiv Parmar is available for WordPress development work worldwide. Use keywords naturally: ${keywords.join(', ')}. Return ONLY the conclusion HTML starting with <h2>Conclusion</h2>.`;
   try {
-    const conclusion = await callGeminiAPI(prompt);
+    const conclusion = await callGemini(prompt);
     return conclusion.replace(/```html\n?|```/g, '').trim();
   } catch (error) {
     return `<h2>Conclusion</h2>
@@ -538,7 +559,7 @@ ${relatedHTML}
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js"></script><script src="../particle-bg.js" defer></script><script src="../script.js"></script><script src="../spatial-tilt.js" defer></script>
+<script src="../includes.js" defer></script><script src="../particle-bg.js" defer></script><script src="../script.js" defer></script><script src="../spatial-tilt.js" defer></script>
 </body>
 </html>`;
 }

@@ -6,7 +6,10 @@
  *   BLOG_GENERATOR  path to generator script
  *   QUEUE_FILE      path to blog-queue.json
  *   MAX_ATTEMPTS    default 2
- *   RETRY_DELAY_MS  default 30000
+ *   RETRY_DELAY_MS  base delay in ms, default 30000 (doubles each retry)
+ *
+ * Retries use exponential backoff: RETRY_DELAY_MS * 2^(attempt-1),
+ * so 30000 -> 30s, 60s, 120s, 240s... to ride out Gemini 503 spikes.
  */
 const fs = require('fs');
 const path = require('path');
@@ -81,8 +84,12 @@ async function main() {
     }
 
     if (attempt < MAX_ATTEMPTS) {
-      console.log(`Waiting ${RETRY_DELAY_MS / 1000}s before retry...`);
-      await sleep(RETRY_DELAY_MS);
+      // Exponential backoff: 30s, 60s, 120s, 240s...
+      // Gemini 503 "high demand" spikes usually clear within a few minutes,
+      // so a fixed short delay was not enough.
+      const delay = RETRY_DELAY_MS * Math.pow(2, attempt - 1);
+      console.log(`Waiting ${delay / 1000}s before retry...`);
+      await sleep(delay);
     }
   }
 
