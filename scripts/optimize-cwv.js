@@ -58,13 +58,22 @@ function optimizeImages(html) {
 
 function deferScripts(html) {
   let changed = false;
+
+  // Repair legacy broken form: defer wrongly placed in the END tag
+  // (<script src="x"></script defer>) — move it into the opening tag.
+  html = html.replace(/<script\b([^>]*)>(\s*)<\/script(\s+)defer(\s*)>/gi, (m, attrs, ws) => {
+    changed = true;
+    const hasDefer = /\b(?:defer|async)\b/i.test(attrs);
+    const newAttrs = hasDefer ? attrs : attrs.replace(/\s+$/, '') + ' defer';
+    return `<script${newAttrs}>${ws}</script>`;
+  });
+
   // Only touch local script tags without defer/async (external SDKs like gtag should stay as authored)
-  html = html.replace(/<script\b(?![^>]*\b(?:defer|async|type="application\/ld\+json"|type='application\/ld\+json'|src="https:\/\/www\.googletagmanager|src="https:\/\/connect\.facebook))[^>]*src="[^"]*"[^>]*><\/script>/gi, tag => {
-    if (/>$/.test(tag) && !/defer/i.test(tag)) {
-      changed = true;
-      return tag.replace(/>\s*$/, ' defer>');
-    }
-    return tag;
+  html = html.replace(/<script\b(?![^>]*\b(?:defer|async|type="application\/ld\+json"|type='application\/ld\+json'|src="https:\/\/www\.googletagmanager|src="https:\/\/connect\.facebook))[^>]*src="[^"]*"[^>]*>/gi, tag => {
+    if (/\bdefer\b/i.test(tag)) return tag;
+    changed = true;
+    // Insert defer into the OPENING tag (before its closing ">");
+    return tag.replace(/>\s*$/, ' defer>');
   });
   return { html, changed };
 }

@@ -50,8 +50,8 @@ function checkPerformance() {
         results.warnings.push(`${file}: May have render-blocking CSS`);
       }
       
-      // Check for async/defer on scripts
-      const scriptRegex = /<script src="([^"]+)"/g;
+      // Check for async/defer on scripts (match the full opening tag)
+      const scriptRegex = /<script\b[^>]*src="([^"]+)"[^>]*>/g;
       let match;
       while ((match = scriptRegex.exec(html)) !== null) {
         if (!match[0].includes('async') && !match[0].includes('defer')) {

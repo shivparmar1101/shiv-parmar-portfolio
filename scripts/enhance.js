@@ -9,8 +9,9 @@
  *   2. inject-faq-schema       (FAQPage JSON-LD for AI search)
  *   3. standardize-author-box  (E-E-A-T author + Person schema)
  *   4. optimize-cwv            (lazy images, defer scripts, preconnect)
- *   5. generate-rss            (refresh rss.xml)
- *   6. broken-link-check       (fail fast on broken internal refs)
+ *   5. normalize-html          (repair defer tags, noscript reveal, ?v= cache-bust)
+ *   6. generate-rss            (refresh rss.xml)
+ *   7. broken-link-check       (fail fast on broken internal refs)
  *
  * Usage: node scripts/enhance.js [--skip-check]
  * Wired into: auto-blog-publisher.yml (GitHub Actions) + package.json "enhance"
@@ -24,6 +25,7 @@ const steps = [
   ['inject-faq-schema', 'inject-faq-schema.js'],
   ['standardize-author-box', 'standardize-author-box.js'],
   ['optimize-cwv', 'optimize-cwv.js'],
+  ['normalize-html', 'normalize-html.js'],
   ['generate-rss', 'generate-rss.js'],
 ];
 if (!SKIP_CHECK) steps.push(['broken-link-check', 'broken-link-check.js']);

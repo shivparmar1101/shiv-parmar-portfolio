@@ -1,74 +1,17 @@
 /* ==========================================================================
    Shiv Parmar — Black & Glass Premium Portfolio
+   ==========================================================================
+   NOTE: The design palette (CSS variables in :root) is defined in
+   liquid-glass.css, which is linked AFTER this file on every page and is
+   the single source of truth for colors, fonts, radii and shadows.
+   Do not add :root variables here — they would be overridden anyway.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. Design System / CSS Variables
    -------------------------------------------------------------------------- */
 
-:root {
-  /* Dark theme (default) */
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-hover: rgba(255, 255, 255, 0.06);
-  --bg-glass-strong: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.08);
-  --border-glass-hover: rgba(255, 255, 255, 0.15);
-  --border-glass-active: rgba(198, 167, 107, 0.3);
-  --text-primary: #f0f0f0;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent: #c9a84c;
-  --accent-hover: #dbb960;
-  --accent-glow: rgba(201, 168, 76, 0.4);
-  --accent-glow-soft: rgba(201, 168, 76, 0.15);
-  --gradient-accent: linear-gradient(135deg, #c9a84c 0%, #e8d48b 50%, #c9a84c 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
-  --gradient-dark: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #111111 100%);
-  --gradient-hero: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-  --container: 1120px;
-  --blur-sm: 8px;
-  --blur-md: 16px;
-  --blur-lg: 24px;
-  --blur-xl: 40px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --transition-fast: 200ms ease;
-  --transition-base: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-glow: 0 0 40px rgba(201, 168, 76, 0.1);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  --shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 60px rgba(201, 168, 76, 0.08);
-}
-
-/* Light theme */
-html[data-theme="light"] {
-  --bg-primary: #f5f3ef;
-  --bg-secondary: #ebe8e2;
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --bg-glass-hover: rgba(255, 255, 255, 0.85);
-  --bg-glass-strong: rgba(255, 255, 255, 0.9);
-  --border-glass: rgba(0, 0, 0, 0.08);
-  --border-glass-hover: rgba(0, 0, 0, 0.15);
-  --border-glass-active: rgba(140, 120, 50, 0.3);
-  --text-primary: #1a1a1a;
-  --text-secondary: #555555;
-  --text-muted: #888888;
-  --accent: #8c7a32;
-  --accent-hover: #a08c3c;
-  --accent-glow: rgba(140, 122, 50, 0.3);
-  --accent-glow-soft: rgba(140, 122, 50, 0.1);
-  --gradient-accent: linear-gradient(135deg, #8c7a32 0%, #b8a44a 50%, #8c7a32 100%);
-  --gradient-hero: radial-gradient(ellipse at 20% 50%, rgba(140, 122, 50, 0.06) 0%, transparent 60%);
-  --shadow-glow: 0 0 40px rgba(140, 122, 50, 0.08);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 40px rgba(140, 122, 50, 0.06);
-}
+/* Variables live in liquid-glass.css (see note above). */
 
 /* --------------------------------------------------------------------------
    2. Reset & Base
@@ -152,28 +95,11 @@ section {
   pointer-events: none;
 }
 
-.parallax-bg::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: transparent;
-  animation: none;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(1deg); }
-  66% { transform: translate(-20px, 20px) rotate(-1deg); }
-}
-
 .parallax-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0;
+  opacity: 0.18;
   pointer-events: none;
 }
 
@@ -220,13 +146,6 @@ section {
   50% { transform: translate(-50%, -50%) scale(1.2); }
 }
 
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--border-glass) 20%, var(--border-glass) 80%, transparent 100%);
-  margin: 0 auto;
-  max-width: var(--container);
-}
-
 /* --------------------------------------------------------------------------
    5. Typography
    -------------------------------------------------------------------------- */
@@ -251,47 +170,11 @@ section {
   background: var(--accent);
 }
 
-.section-number {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-  display: block;
-}
-
 .lead {
   color: var(--text-secondary);
   max-width: 600px;
   font-size: 16px;
   line-height: 1.75;
-}
-
-/* --------------------------------------------------------------------------
-   6. Glass Components
-   -------------------------------------------------------------------------- */
-
-.glass {
-  background: var(--bg-glass);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-base);
-}
-
-.glass:hover {
-  background: var(--bg-glass-hover);
-  border-color: var(--border-glass-hover);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.glass-strong {
-  background: var(--bg-glass-strong);
-  backdrop-filter: blur(var(--blur-lg));
-  -webkit-backdrop-filter: blur(var(--blur-lg));
-  border: 1px solid var(--border-glass-hover);
-  border-radius: var(--radius-lg);
 }
 
 /* --------------------------------------------------------------------------
@@ -369,18 +252,6 @@ section {
   color: var(--accent);
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(201, 168, 76, 0.1);
-}
-
-.btn-accent {
-  background: var(--gradient-accent);
-  color: #000;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
-}
-
-.btn-accent:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.5);
 }
 
 .btn .arrow {
@@ -1012,12 +883,12 @@ html[data-theme="light"] .floating-pill {
 
 .logo-strip-wrapper::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg-secondary), transparent);
+  background: linear-gradient(to right, var(--bg-primary), transparent);
 }
 
 .logo-strip-wrapper::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg-secondary), transparent);
+  background: linear-gradient(to left, var(--bg-primary), transparent);
 }
 
 .logo-strip {
@@ -1762,7 +1633,6 @@ html[data-theme="light"] .timeline::before {
   transform: scaleX(1);
 }
 
-.blog-date,
 .blog-card .date {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -1791,7 +1661,6 @@ html[data-theme="light"] .timeline::before {
   flex: 1;
 }
 
-.blog-read-more,
 .blog-card .read-more {
   color: var(--accent);
   font-weight: 600;
@@ -1802,7 +1671,6 @@ html[data-theme="light"] .timeline::before {
   transition: gap var(--transition-fast);
 }
 
-.blog-card:hover .blog-read-more,
 .blog-card:hover .read-more {
   gap: 10px;
 }
@@ -2046,7 +1914,6 @@ html[data-theme="light"] .form-row select {
   width: 0;
   overflow: hidden;
   pointer-events: none;
-  tab-index: -1;
 }
 
 .contact-info {
@@ -2194,10 +2061,6 @@ footer {
   transform: none;
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-
 /* --------------------------------------------------------------------------
    23. Mobile Navigation Overlay
    -------------------------------------------------------------------------- */
@@ -2264,13 +2127,8 @@ html[data-theme="light"] .mobile-overlay {
     direction: ltr;
   }
 
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
+  /* Nav visibility (nav-links / hamburger) is controlled by liquid-glass.css
+     (768px breakpoint) — do not duplicate here. */
 
   section {
     padding: 80px 0;
@@ -2524,17 +2382,6 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 .projects-hero .lead{color:var(--text-secondary);max-width:600px;margin:0 auto;font-family:var(--font-primary);font-size:16px}
 .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px;margin-bottom:24px;transition:gap 0.3s;text-decoration:none;font-family:var(--font-primary)}
 .back-link:hover{gap:10px}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
-.proj-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--transition-base)}
-.proj-card:hover{border-color:var(--border-glass-hover);box-shadow:var(--shadow-card-hover);transform:translateY(-4px)}
-.proj-card-img{width:100%;height:220px;overflow:hidden;background:var(--bg-secondary)}
-.proj-card-img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow)}
-.proj-card:hover .proj-card-img img{transform:scale(1.05)}
-.proj-card-body{padding:24px}
-.proj-card-body h3{font-family:var(--font-primary);font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text-primary)}
-.proj-card-body p{font-family:var(--font-primary);font-size:14px;color:var(--text-secondary);margin-bottom:16px;line-height:1.6}
-.proj-link{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-primary);font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;transition:gap 0.3s}
-.proj-link:hover{gap:8px}
 
 /* --------------------------------------------------------------------------
    23. Reduced Motion
@@ -2593,7 +2440,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   .logo-strip { animation-duration: 60s !important; }
   .skel::after { animation: none !important; }
   .svgi-theme circle,
-  .svgi-plugin, .svgi-zap, .svi-search, .svgi-gear, .svgi-cart {
+  .svgi-plugin, .svgi-zap, .svgi-search, .svgi-gear, .svgi-cart {
     animation: none !important;
   }
 
@@ -2618,7 +2465,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
+  z-index: 990;
   transition: all 0.3s ease;
 }
 .whatsapp-btn:hover {
@@ -2643,7 +2490,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
   visibility: hidden;
   transform: translateY(20px);
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 990;
   box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
 }
 .back-to-top.visible {
