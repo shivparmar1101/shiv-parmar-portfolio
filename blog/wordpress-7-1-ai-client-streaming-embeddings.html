@@ -100,8 +100,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -199,6 +199,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -260,34 +270,34 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
     <li><strong>Vector Embeddings API:</strong> High-throughput methods for converting natural language content into numerical vector arrays (tensors), complete with native schema hooks for persistent vector storage and similarity searches.</li>
 </ul>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #dcdcde;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f0f0f1; border-bottom: 2px solid #c3c4c7;">
-            <th style="padding: 12px 15px; font-weight: 600; color: #1d2327;">Feature</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1d2327;">Legacy WordPress AI Plugins</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1d2327;">WordPress 7.1 AI Client</th>
+        <tr>
+            <th style="padding: 12px 15px; font-weight: 600">Feature</th>
+            <th style="padding: 12px 15px; font-weight: 600">Legacy WordPress AI Plugins</th>
+            <th style="padding: 12px 15px; font-weight: 600">WordPress 7.1 AI Client</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #dcdcde;">
-            <td style="padding: 10px 15px; font-weight: 600;">Streaming Support</td>
-            <td style="padding: 10px 15px; color: #50575e;">Requires custom Node/Python microservices or clunky WebSockets.</td>
-            <td style="padding: 10px 15px; color: #1d2327;">Native Server-Sent Events (SSE) via <code>WP_AI_Stream_Response</code>.</td>
+        <tr>
+            <td style="padding: 10px 15px; font-weight: 600">Streaming Support</td>
+            <td style="padding: 10px 15px">Requires custom Node/Python microservices or clunky WebSockets.</td>
+            <td style="padding: 10px 15px">Native Server-Sent Events (SSE) via <code>WP_AI_Stream_Response</code>.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #dcdcde; background-color: #fbfbfc;">
-            <td style="padding: 10px 15px; font-weight: 600;">Embeddings Generation</td>
-            <td style="padding: 10px 15px; color: #50575e;">Raw API calls; developers hand-roll vector parsing and storage.</td>
-            <td style="padding: 10px 15px; color: #1d2327;">Standardized <code>wp_ai_embed()</code> pipeline with batch processing.</td>
+        <tr>
+            <td style="padding: 10px 15px; font-weight: 600">Embeddings Generation</td>
+            <td style="padding: 10px 15px">Raw API calls; developers hand-roll vector parsing and storage.</td>
+            <td style="padding: 10px 15px">Standardized <code>wp_ai_embed()</code> pipeline with batch processing.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #dcdcde;">
-            <td style="padding: 10px 15px; font-weight: 600;">Provider Architecture</td>
-            <td style="padding: 10px 15px; color: #50575e;">Hardcoded to specific APIs; switching vendors breaks integrations.</td>
-            <td style="padding: 10px 15px; color: #1d2327;">Pluggable Provider Drivers (OpenAI, Gemini, Local models, custom).</td>
+        <tr>
+            <td style="padding: 10px 15px; font-weight: 600">Provider Architecture</td>
+            <td style="padding: 10px 15px">Hardcoded to specific APIs; switching vendors breaks integrations.</td>
+            <td style="padding: 10px 15px">Pluggable Provider Drivers (OpenAI, Gemini, Local models, custom).</td>
         </tr>
-        <tr style="background-color: #fbfbfc;">
-            <td style="padding: 10px 15px; font-weight: 600;">Gutenberg Integration</td>
-            <td style="padding: 10px 15px; color: #50575e;">Independent React frontends with inconsistent UX states.</td>
-            <td style="padding: 10px 15px; color: #1d2327;">Standard React hooks (<code>useAIStream</code>) within <code>@wordpress/ai</code>.</td>
+        <tr>
+            <td style="padding: 10px 15px; font-weight: 600">Gutenberg Integration</td>
+            <td style="padding: 10px 15px">Independent React frontends with inconsistent UX states.</td>
+            <td style="padding: 10px 15px">Standard React hooks (<code>useAIStream</code>) within <code>@wordpress/ai</code>.</td>
         </tr>
     </tbody>
 </table>
@@ -839,6 +849,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>

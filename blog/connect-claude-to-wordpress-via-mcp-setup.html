@@ -80,8 +80,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -179,6 +179,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -250,39 +260,39 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>Connecting an intelligent <strong>AI assistant</strong> directly to your site architecture eliminates these administrative bottlenecks. Instead of treating your LLM as an external scratchpad, Claude functions as an embedded editorial partner that reads from and writes to your production environment under your explicit supervision.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #e2e8f0;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Workflow Dimension</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Traditional AI Copy-Paste Workflow</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Claude via MCP Setup</th>
+        <tr>
+            <th style="padding: 12px 15px; font-weight: 600">Workflow Dimension</th>
+            <th style="padding: 12px 15px; font-weight: 600">Traditional AI Copy-Paste Workflow</th>
+            <th style="padding: 12px 15px; font-weight: 600">Claude via MCP Setup</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 15px; font-weight: 600;">Context Retrieval</td>
-            <td style="padding: 12px 15px;">Manual copy-pasting of old posts or site guidelines into the chat window.</td>
-            <td style="padding: 12px 15px;">Live retrieval of existing posts, slugs, and categories directly via tools.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
-            <td style="padding: 12px 15px; font-weight: 600;">Content Insertion</td>
-            <td style="padding: 12px 15px;">Manual block conversion, formatting cleanups, and title/excerpt transfers.</td>
-            <td style="padding: 12px 15px;">Direct insertion into WordPress drafts with valid Gutenberg-compatible HTML.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 15px; font-weight: 600;">Taxonomy Consistency</td>
-            <td style="padding: 12px 15px;">Prone to duplicate tag creation and inconsistent category structures.</td>
-            <td style="padding: 12px 15px;">Claude queries existing taxonomies first, mapping IDs accurately before publishing.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
-            <td style="padding: 12px 15px; font-weight: 600;">Bulk Optimization</td>
-            <td style="padding: 12px 15px;">Painstakingly slow; requires opening dozens of browser tabs.</td>
-            <td style="padding: 12px 15px;">Automated batch audits and updates driven by multi-step iterative prompts.</td>
+        <tr>
+            <td style="padding: 12px 15px; font-weight: 600">Context Retrieval</td>
+            <td style="padding: 12px 15px">Manual copy-pasting of old posts or site guidelines into the chat window.</td>
+            <td style="padding: 12px 15px">Live retrieval of existing posts, slugs, and categories directly via tools.</td>
         </tr>
         <tr>
-            <td style="padding: 12px 15px; font-weight: 600;">Human Oversight</td>
-            <td style="padding: 12px 15px;">High manual labor required for basic data entry.</td>
-            <td style="padding: 12px 15px;">Effort redirected to final review, strategy, and editorial governance.</td>
+            <td style="padding: 12px 15px; font-weight: 600">Content Insertion</td>
+            <td style="padding: 12px 15px">Manual block conversion, formatting cleanups, and title/excerpt transfers.</td>
+            <td style="padding: 12px 15px">Direct insertion into WordPress drafts with valid Gutenberg-compatible HTML.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 15px; font-weight: 600">Taxonomy Consistency</td>
+            <td style="padding: 12px 15px">Prone to duplicate tag creation and inconsistent category structures.</td>
+            <td style="padding: 12px 15px">Claude queries existing taxonomies first, mapping IDs accurately before publishing.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 15px; font-weight: 600">Bulk Optimization</td>
+            <td style="padding: 12px 15px">Painstakingly slow; requires opening dozens of browser tabs.</td>
+            <td style="padding: 12px 15px">Automated batch audits and updates driven by multi-step iterative prompts.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 15px; font-weight: 600">Human Oversight</td>
+            <td style="padding: 12px 15px">High manual labor required for basic data entry.</td>
+            <td style="padding: 12px 15px">Effort redirected to final review, strategy, and editorial governance.</td>
         </tr>
     </tbody>
 </table>
@@ -537,34 +547,34 @@ await server.connect(transport);
 
 <p>A basic read-write implementation for blog posts is just the beginning. The WordPress REST API exposes nearly every corner of your CMS. By adding more tool definitions to your MCP server, you can expand Claude into a comprehensive publishing engine.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #e2e8f0;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">MCP Tool Name</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">REST API Endpoint</th>
-            <th style="padding: 12px 15px; font-weight: 600; color: #1e293b;">Practical Use Case</th>
+        <tr>
+            <th style="padding: 12px 15px; font-weight: 600">MCP Tool Name</th>
+            <th style="padding: 12px 15px; font-weight: 600">REST API Endpoint</th>
+            <th style="padding: 12px 15px; font-weight: 600">Practical Use Case</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 15px; font-family: monospace;">manage_taxonomies</td>
-            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/categories, /wp/v2/tags</td>
-            <td style="padding: 12px 15px;">Check for existing topic tags before publishing to avoid creating duplicates.</td>
+        <tr>
+            <td style="padding: 12px 15px; font-family: monospace">manage_taxonomies</td>
+            <td style="padding: 12px 15px; font-family: monospace">/wp/v2/categories, /wp/v2/tags</td>
+            <td style="padding: 12px 15px">Check for existing topic tags before publishing to avoid creating duplicates.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
-            <td style="padding: 12px 15px; font-family: monospace;">upload_media</td>
-            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/media</td>
-            <td style="padding: 12px 15px;">Upload AI-generated charts or assets and automatically bind them to post IDs.</td>
+        <tr>
+            <td style="padding: 12px 15px; font-family: monospace">upload_media</td>
+            <td style="padding: 12px 15px; font-family: monospace">/wp/v2/media</td>
+            <td style="padding: 12px 15px">Upload AI-generated charts or assets and automatically bind them to post IDs.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 15px; font-family: monospace;">update_seo_meta</td>
-            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/posts/{id} (meta field)</td>
-            <td style="padding: 12px 15px;">Update Yoast or RankMath titles, descriptions, and canonical URLs directly.</td>
+        <tr>
+            <td style="padding: 12px 15px; font-family: monospace">update_seo_meta</td>
+            <td style="padding: 12px 15px; font-family: monospace">/wp/v2/posts/{id} (meta field)</td>
+            <td style="padding: 12px 15px">Update Yoast or RankMath titles, descriptions, and canonical URLs directly.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfd;">
-            <td style="padding: 12px 15px; font-family: monospace;">audit_revisions</td>
-            <td style="padding: 12px 15px; font-family: monospace;">/wp/v2/posts/{id}/revisions</td>
-            <td style="padding: 12px 15px;">Compare content differences across revisions to assess editorial modifications.</td>
+        <tr>
+            <td style="padding: 12px 15px; font-family: monospace">audit_revisions</td>
+            <td style="padding: 12px 15px; font-family: monospace">/wp/v2/posts/{id}/revisions</td>
+            <td style="padding: 12px 15px">Compare content differences across revisions to assess editorial modifications.</td>
         </tr>
     </tbody>
 </table>
@@ -761,6 +771,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>

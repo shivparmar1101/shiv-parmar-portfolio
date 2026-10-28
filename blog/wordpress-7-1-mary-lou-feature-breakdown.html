@@ -100,8 +100,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -199,6 +199,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -269,39 +279,39 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>WordPress 7.1 directly tackles these demands, rendering complex headless microservices unnecessary for a broad cross-section of projects. By implementing modern frontend techniques directly in the core software, Mary Lou empowers engineering teams to deliver sub-100-millisecond page transitions natively, bypassing the operational overhead, maintenance burdens, and hosting expenses inherent in separate Node.js rendering tiers.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #d1d5db;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f3f4f6; color: #111827; border-bottom: 2px solid #d1d5db;">
-            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">Feature Focus</th>
-            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">WordPress 6.x Era</th>
-            <th style="padding: 12px 16px; border: 1px solid #d1d5db;">WordPress 7.1 "Mary Lou"</th>
+        <tr>
+            <th style="padding: 12px 16px">Feature Focus</th>
+            <th style="padding: 12px 16px">WordPress 6.x Era</th>
+            <th style="padding: 12px 16px">WordPress 7.1 "Mary Lou"</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #e5e7eb;">
-            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Editorial Collaboration</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Crude post-locking ("User X is taking over editing"); asynchronous comments.</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Peer-to-peer real-time CRDT multi-authoring, live cursors, inline thread mentions.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
-            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Dynamic Frontend State</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Interactivity API v1 (basic islands); heavy dependency on custom JS bundles.</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Interactivity API v2; signals-based reactivity; native cross-island global stores.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e5e7eb;">
-            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Client-Side Routing</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Manual PJAX/Turbolinks integration or full headless headless SPA.</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Native Speculative Rules Engine + Block Client Router for instant navigation.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e5e7eb; background-color: #f9fafb;">
-            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Custom Field Integration</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Custom PHP render callbacks, Advanced Custom Fields (ACF), or custom blocks.</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Block Bindings API 2.0 with native UI binding for postmeta, options, and APIs.</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">Editorial Collaboration</td>
+            <td style="padding: 12px 16px">Crude post-locking ("User X is taking over editing"); asynchronous comments.</td>
+            <td style="padding: 12px 16px">Peer-to-peer real-time CRDT multi-authoring, live cursors, inline thread mentions.</td>
         </tr>
         <tr>
-            <td style="padding: 12px 16px; font-weight: bold; border: 1px solid #d1d5db;">Admin Infrastructure</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">Bifurcated: Classic PHP WP-Admin vs. React-based Site Editor.</td>
-            <td style="padding: 12px 16px; border: 1px solid #d1d5db;">NextGen Admin UI: Single unified extensible web component architecture.</td>
+            <td style="padding: 12px 16px; font-weight: bold">Dynamic Frontend State</td>
+            <td style="padding: 12px 16px">Interactivity API v1 (basic islands); heavy dependency on custom JS bundles.</td>
+            <td style="padding: 12px 16px">Interactivity API v2; signals-based reactivity; native cross-island global stores.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">Client-Side Routing</td>
+            <td style="padding: 12px 16px">Manual PJAX/Turbolinks integration or full headless headless SPA.</td>
+            <td style="padding: 12px 16px">Native Speculative Rules Engine + Block Client Router for instant navigation.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">Custom Field Integration</td>
+            <td style="padding: 12px 16px">Custom PHP render callbacks, Advanced Custom Fields (ACF), or custom blocks.</td>
+            <td style="padding: 12px 16px">Block Bindings API 2.0 with native UI binding for postmeta, options, and APIs.</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">Admin Infrastructure</td>
+            <td style="padding: 12px 16px">Bifurcated: Classic PHP WP-Admin vs. React-based Site Editor.</td>
+            <td style="padding: 12px 16px">NextGen Admin UI: Single unified extensible web component architecture.</td>
         </tr>
     </tbody>
 </table>
@@ -716,6 +726,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>

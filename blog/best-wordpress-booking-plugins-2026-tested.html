@@ -80,8 +80,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -179,6 +179,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -265,58 +275,58 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>We installed, configured, and stress-tested the top contenders on clean WordPress staging environments running PHP 8.3 and MySQL 8.0. Below is an architectural breakdown of the six best plugins available today, including their performance metrics and optimal use cases.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 15px; text-align: left;">
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 15px; text-align: left">
     <thead>
-        <tr style="background-color: #1e293b; color: #ffffff;">
-            <th style="padding: 12px 16px; border: 1px solid #334155;">Plugin</th>
-            <th style="padding: 12px 16px; border: 1px solid #334155;">Ideal Use Case</th>
-            <th style="padding: 12px 16px; border: 1px solid #334155;">Calendar Sync</th>
-            <th style="padding: 12px 16px; border: 1px solid #334155;">Payment Gateways</th>
-            <th style="padding: 12px 16px; border: 1px solid #334155;">Pricing Model</th>
+        <tr>
+            <th style="padding: 12px 16px">Plugin</th>
+            <th style="padding: 12px 16px">Ideal Use Case</th>
+            <th style="padding: 12px 16px">Calendar Sync</th>
+            <th style="padding: 12px 16px">Payment Gateways</th>
+            <th style="padding: 12px 16px">Pricing Model</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">Amelia</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Salons, Spas, Enterprise Teams</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">2-way (Google, Outlook)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Stripe, PayPal, Mollie, Razorpay</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Annual &amp; Lifetime</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">Amelia</td>
+            <td style="padding: 12px 16px">Salons, Spas, Enterprise Teams</td>
+            <td style="padding: 12px 16px">2-way (Google, Outlook)</td>
+            <td style="padding: 12px 16px">Stripe, PayPal, Mollie, Razorpay</td>
+            <td style="padding: 12px 16px">Annual &amp; Lifetime</td>
         </tr>
         <tr>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">LatePoint</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">High-Performance, Custom UX</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">2-way (Google, Outlook)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Stripe, PayPal, Square, BrainTree</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Annual Subscription</td>
-        </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">Bookly Pro</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Modular Stacks, High Volume</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">2-way (Google, Outlook)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">10+ Gateways (via Add-ons)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">One-time base + Paid Add-ons</td>
+            <td style="padding: 12px 16px; font-weight: bold">LatePoint</td>
+            <td style="padding: 12px 16px">High-Performance, Custom UX</td>
+            <td style="padding: 12px 16px">2-way (Google, Outlook)</td>
+            <td style="padding: 12px 16px">Stripe, PayPal, Square, BrainTree</td>
+            <td style="padding: 12px 16px">Annual Subscription</td>
         </tr>
         <tr>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">Simply Schedule Appointments</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Solopreneurs, Fast Deployment</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">2-way (Google Calendar)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Stripe, PayPal</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Annual Subscription</td>
-        </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">WooCommerce Bookings</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">E-commerce &amp; Inventory Hybrids</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">2-way (Google Calendar)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">All WooCommerce Gateways</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Annual Subscription</td>
+            <td style="padding: 12px 16px; font-weight: bold">Bookly Pro</td>
+            <td style="padding: 12px 16px">Modular Stacks, High Volume</td>
+            <td style="padding: 12px 16px">2-way (Google, Outlook)</td>
+            <td style="padding: 12px 16px">10+ Gateways (via Add-ons)</td>
+            <td style="padding: 12px 16px">One-time base + Paid Add-ons</td>
         </tr>
         <tr>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0; font-weight: bold;">WP Simple Booking Calendar</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Vacation Rentals, Daily Bookings</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">iCal Import/Export</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">None (Availability only)</td>
-            <td style="padding: 12px 16px; border: 1px solid #e2e8f0;">Freemium / Low Annual</td>
+            <td style="padding: 12px 16px; font-weight: bold">Simply Schedule Appointments</td>
+            <td style="padding: 12px 16px">Solopreneurs, Fast Deployment</td>
+            <td style="padding: 12px 16px">2-way (Google Calendar)</td>
+            <td style="padding: 12px 16px">Stripe, PayPal</td>
+            <td style="padding: 12px 16px">Annual Subscription</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">WooCommerce Bookings</td>
+            <td style="padding: 12px 16px">E-commerce &amp; Inventory Hybrids</td>
+            <td style="padding: 12px 16px">2-way (Google Calendar)</td>
+            <td style="padding: 12px 16px">All WooCommerce Gateways</td>
+            <td style="padding: 12px 16px">Annual Subscription</td>
+        </tr>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: bold">WP Simple Booking Calendar</td>
+            <td style="padding: 12px 16px">Vacation Rentals, Daily Bookings</td>
+            <td style="padding: 12px 16px">iCal Import/Export</td>
+            <td style="padding: 12px 16px">None (Availability only)</td>
+            <td style="padding: 12px 16px">Freemium / Low Annual</td>
         </tr>
     </tbody>
 </table>
@@ -612,6 +622,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>

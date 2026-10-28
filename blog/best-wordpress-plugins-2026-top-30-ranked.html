@@ -80,8 +80,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -179,6 +179,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -264,45 +274,45 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>Website speed directly impacts organic search rankings and conversion metrics. The following tools manage page caching, asset optimization, object caching, and database hygiene.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left;">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left">
     <thead>
-        <tr style="background-color: #1e293b; color: #ffffff;">
-            <th style="padding: 12px; border: 1px solid #334155;">Rank & Plugin</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Primary Purpose</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Key 2026 Advantage</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Asset Footprint</th>
+        <tr>
+            <th style="padding: 12px">Rank & Plugin</th>
+            <th style="padding: 12px">Primary Purpose</th>
+            <th style="padding: 12px">Key 2026 Advantage</th>
+            <th style="padding: 12px">Asset Footprint</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>1. FlyingPress</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">All-in-one optimization</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Superior INP JS execution delay</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Ultra-light</td>
+        <tr>
+            <td style="padding: 10px"><strong>1. FlyingPress</strong></td>
+            <td style="padding: 10px">All-in-one optimization</td>
+            <td style="padding: 10px">Superior INP JS execution delay</td>
+            <td style="padding: 10px">Ultra-light</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>2. Perfmatters</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Script manager & debloat</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Granular conditional asset unloading</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Virtually zero (&lt;10KB)</td>
-        </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>3. LiteSpeed Cache</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Server-level caching</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Native integration with LiteSpeed servers</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Moderate (Admin-heavy)</td>
+            <td style="padding: 10px"><strong>2. Perfmatters</strong></td>
+            <td style="padding: 10px">Script manager & debloat</td>
+            <td style="padding: 10px">Granular conditional asset unloading</td>
+            <td style="padding: 10px">Virtually zero (&lt;10KB)</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>4. WP Rocket</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Caching & delivery</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Zero-configuration Critical CSS generation</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Light</td>
+            <td style="padding: 10px"><strong>3. LiteSpeed Cache</strong></td>
+            <td style="padding: 10px">Server-level caching</td>
+            <td style="padding: 10px">Native integration with LiteSpeed servers</td>
+            <td style="padding: 10px">Moderate (Admin-heavy)</td>
         </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>5. Redis Object Cache</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Persistent object caching</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Drastically cuts high-concurrency DB load</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Zero frontend impact</td>
+        <tr>
+            <td style="padding: 10px"><strong>4. WP Rocket</strong></td>
+            <td style="padding: 10px">Caching & delivery</td>
+            <td style="padding: 10px">Zero-configuration Critical CSS generation</td>
+            <td style="padding: 10px">Light</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px"><strong>5. Redis Object Cache</strong></td>
+            <td style="padding: 10px">Persistent object caching</td>
+            <td style="padding: 10px">Drastically cuts high-concurrency DB load</td>
+            <td style="padding: 10px">Zero frontend impact</td>
         </tr>
     </tbody>
 </table>
@@ -361,45 +371,45 @@ add_action('wp_head', function() {
 
 <p>Hardening WordPress against credential stuffing, automated bots, and zero-day vulnerabilities requires robust, layered defenses.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left;">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left">
     <thead>
-        <tr style="background-color: #1e293b; color: #ffffff;">
-            <th style="padding: 12px; border: 1px solid #334155;">Rank & Plugin</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Architecture Type</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Firewall Level</th>
-            <th style="padding: 12px; border: 1px solid #334155;">DB Impact</th>
+        <tr>
+            <th style="padding: 12px">Rank & Plugin</th>
+            <th style="padding: 12px">Architecture Type</th>
+            <th style="padding: 12px">Firewall Level</th>
+            <th style="padding: 12px">DB Impact</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>10. Patchstack</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Vulnerability Patching / Cloud</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Virtual Patching / API</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Negligible</td>
+        <tr>
+            <td style="padding: 10px"><strong>10. Patchstack</strong></td>
+            <td style="padding: 10px">Vulnerability Patching / Cloud</td>
+            <td style="padding: 10px">Virtual Patching / API</td>
+            <td style="padding: 10px">Negligible</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>11. Wordfence Security</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Endpoint WAF & Scanner</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">PHP Application Pre-prepend</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Moderate to High</td>
-        </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>12. Solid Security (iThemes)</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Site Hardening & 2FA</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Software Layer Rules</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Low</td>
+            <td style="padding: 10px"><strong>11. Wordfence Security</strong></td>
+            <td style="padding: 10px">Endpoint WAF & Scanner</td>
+            <td style="padding: 10px">PHP Application Pre-prepend</td>
+            <td style="padding: 10px">Moderate to High</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>13. Sucuri Security</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Auditing & Remote Scanning</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">DNS-level (Pro) / Audit Log</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Low</td>
+            <td style="padding: 10px"><strong>12. Solid Security (iThemes)</strong></td>
+            <td style="padding: 10px">Site Hardening & 2FA</td>
+            <td style="padding: 10px">Software Layer Rules</td>
+            <td style="padding: 10px">Low</td>
         </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>14. Limit Login Attempts Reloaded</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Micro-utility Protection</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Authentication Layer</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Very Low</td>
+        <tr>
+            <td style="padding: 10px"><strong>13. Sucuri Security</strong></td>
+            <td style="padding: 10px">Auditing & Remote Scanning</td>
+            <td style="padding: 10px">DNS-level (Pro) / Audit Log</td>
+            <td style="padding: 10px">Low</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px"><strong>14. Limit Login Attempts Reloaded</strong></td>
+            <td style="padding: 10px">Micro-utility Protection</td>
+            <td style="padding: 10px">Authentication Layer</td>
+            <td style="padding: 10px">Very Low</td>
         </tr>
     </tbody>
 </table>
@@ -441,39 +451,39 @@ deny from all
 
 <p>Forms remain the primary conversion engine for business sites. In 2026, efficient form builders must avoid enqueuing script payloads across pages where no forms are displayed.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left;">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left">
     <thead>
-        <tr style="background-color: #1e293b; color: #ffffff;">
-            <th style="padding: 12px; border: 1px solid #334155;">Rank & Plugin</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Best Used For</th>
-            <th style="padding: 12px; border: 1px solid #334155;">Rendering Method</th>
-            <th style="padding: 12px; border: 1px solid #334155;">API Integrations</th>
+        <tr>
+            <th style="padding: 12px">Rank & Plugin</th>
+            <th style="padding: 12px">Best Used For</th>
+            <th style="padding: 12px">Rendering Method</th>
+            <th style="padding: 12px">API Integrations</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>19. Fluent Forms</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">High-speed lead collection</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Lightweight modern JS/CSS</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Extensive Native</td>
+        <tr>
+            <td style="padding: 10px"><strong>19. Fluent Forms</strong></td>
+            <td style="padding: 10px">High-speed lead collection</td>
+            <td style="padding: 10px">Lightweight modern JS/CSS</td>
+            <td style="padding: 10px">Extensive Native</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>20. Gravity Forms</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Complex enterprise workflows</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Server-side PHP + Modular JS</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Industry standard</td>
-        </tr>
-        <tr style="background-color: #f8fafc;">
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>21. WS Form</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Advanced logic, accessibility</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Native HTML5 form elements</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">High-end custom webhooks</td>
+            <td style="padding: 10px"><strong>20. Gravity Forms</strong></td>
+            <td style="padding: 10px">Complex enterprise workflows</td>
+            <td style="padding: 10px">Server-side PHP + Modular JS</td>
+            <td style="padding: 10px">Industry standard</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>22. WPForms</strong></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Beginner-friendly forms</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Client-side dynamic render</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Moderate Ecosystem</td>
+            <td style="padding: 10px"><strong>21. WS Form</strong></td>
+            <td style="padding: 10px">Advanced logic, accessibility</td>
+            <td style="padding: 10px">Native HTML5 form elements</td>
+            <td style="padding: 10px">High-end custom webhooks</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px"><strong>22. WPForms</strong></td>
+            <td style="padding: 10px">Beginner-friendly forms</td>
+            <td style="padding: 10px">Client-side dynamic render</td>
+            <td style="padding: 10px">Moderate Ecosystem</td>
         </tr>
     </tbody>
 </table>
@@ -673,6 +683,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>

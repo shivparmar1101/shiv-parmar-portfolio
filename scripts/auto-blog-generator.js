@@ -153,7 +153,7 @@ Requirements:
 3. Include practical code examples where relevant (use <pre><code> tags)
 4. Professional, helpful tone
 5. Hook the reader with a strong introduction
-6. Include tables where useful (<table> with inline styles)
+6. Include tables where useful (plain <table>/<thead>/<tbody> markup with <th>/<td> — do NOT add inline styles; table styling is handled by CSS)
 7. Actionable and informative
 
 Structure:
@@ -412,9 +412,13 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 .content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
 .content pre code{background:none;padding:0;color:inherit}
 .content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
-.content table{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:14px}
-.content th{background:var(--bg-glass);padding:10px 8px;text-align:left;color:var(--text-primary);border-bottom:2px solid var(--accent)}
-.content td{padding:10px 8px;border-bottom:1px solid var(--border-glass);color:var(--text-secondary)}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass)}
+.content thead th{background:var(--bg-glass-strong);padding:12px 15px;text-align:left;color:var(--text-primary);font-weight:700;border:1px solid var(--border-glass);border-bottom:2px solid var(--accent)}
+.content th,.content td{padding:12px 15px;border:1px solid var(--border-glass)}
+.content th{background:var(--bg-glass-strong);color:var(--text-primary);font-weight:700}
+.content td{color:var(--text-secondary)}
+.content tbody tr:nth-child(even){background:var(--bg-glass)}
+.content tbody tr:hover{background:var(--bg-glass-hover)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
 .author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}

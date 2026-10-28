@@ -51,8 +51,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=43f486a0">
-<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<link rel="stylesheet" href="../style.css?v=9f93fb36">
+<link rel="stylesheet" href="../liquid-glass.css?v=e2689296">
 <style>
 article{padding:0}
 .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
@@ -150,6 +150,16 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
   </script>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
 </head>
 <body>
 <div class="liquid-glass-bg" aria-hidden="true">
@@ -204,34 +214,34 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>When a user asks ChatGPT a question requiring up-to-date or niche knowledge, the platform deploys web crawlers (such as <code>OAI-SearchBot</code> and <code>ChatGPT-User</code>) to query the live web. It converts the retrieved content into mathematical vector embeddings, matches the user's semantic intent against these vectors, and injects the most contextually relevant chunks into the model's context window. The model then generates a response, hyperlinking the sources that supplied the foundational facts.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #e2e8f0;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f8fafc; border-bottom: 2px solid #cbd5e1;">
-            <th style="padding: 12px 16px; font-weight: 600; color: #1e293b;">Dimension</th>
-            <th style="padding: 12px 16px; font-weight: 600; color: #1e293b;">Traditional SEO (Google)</th>
-            <th style="padding: 12px 16px; font-weight: 600; color: #1e293b;">ChatGPT SEO / GEO</th>
+        <tr>
+            <th style="padding: 12px 16px; font-weight: 600">Dimension</th>
+            <th style="padding: 12px 16px; font-weight: 600">Traditional SEO (Google)</th>
+            <th style="padding: 12px 16px; font-weight: 600">ChatGPT SEO / GEO</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 16px; font-weight: 600; color: #334155;">Primary Metric</td>
-            <td style="padding: 12px 16px; color: #475569;">Rankings, Impressions, Click-Through Rate (CTR)</td>
-            <td style="padding: 12px 16px; color: #475569;">Citation Frequency, Share of Model (SoM), Sourced Mentions</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: 600">Primary Metric</td>
+            <td style="padding: 12px 16px">Rankings, Impressions, Click-Through Rate (CTR)</td>
+            <td style="padding: 12px 16px">Citation Frequency, Share of Model (SoM), Sourced Mentions</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fdfdfd;">
-            <td style="padding: 12px 16px; font-weight: 600; color: #334155;">Indexing Mechanism</td>
-            <td style="padding: 12px 16px; color: #475569;">Inverted Index via Googlebot HTML parsing</td>
-            <td style="padding: 12px 16px; color: #475569;">RAG Pipelines, Vector Databases, Context Window Ingestion</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: 600">Indexing Mechanism</td>
+            <td style="padding: 12px 16px">Inverted Index via Googlebot HTML parsing</td>
+            <td style="padding: 12px 16px">RAG Pipelines, Vector Databases, Context Window Ingestion</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px 16px; font-weight: 600; color: #334155;">Content Evaluation</td>
-            <td style="padding: 12px 16px; color: #475569;">Keyword matching, backlink profiles, user signals</td>
-            <td style="padding: 12px 16px; color: #475569;">Information gain, entity clarity, semantic consensus, factual accuracy</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: 600">Content Evaluation</td>
+            <td style="padding: 12px 16px">Keyword matching, backlink profiles, user signals</td>
+            <td style="padding: 12px 16px">Information gain, entity clarity, semantic consensus, factual accuracy</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fdfdfd;">
-            <td style="padding: 12px 16px; font-weight: 600; color: #334155;">User Interface Result</td>
-            <td style="padding: 12px 16px; color: #475569;">10 blue links, featured snippets, local packs</td>
-            <td style="padding: 12px 16px; color: #475569;">Synthesized answer containing direct contextual source anchors</td>
+        <tr>
+            <td style="padding: 12px 16px; font-weight: 600">User Interface Result</td>
+            <td style="padding: 12px 16px">10 blue links, featured snippets, local packs</td>
+            <td style="padding: 12px 16px">Synthesized answer containing direct contextual source anchors</td>
         </tr>
     </tbody>
 </table>
@@ -265,29 +275,29 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 
 <p>AI models cannot cite what they cannot crawl. OpenAI relies on specific user agents for various tasks. If your WordPress site blocks these user agents via security plugins, Cloudflare configurations, or an outdated <code>robots.txt</code> file, your content will never appear in ChatGPT search outputs.</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; text-align: left; border: 1px solid #cbd5e1;">
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f1f5f9;">
-            <th style="padding: 10px; border: 1px solid #cbd5e1;">Crawler Token</th>
-            <th style="padding: 10px; border: 1px solid #cbd5e1;">Primary Function</th>
-            <th style="padding: 10px; border: 1px solid #cbd5e1;">Access Recommendation</th>
+        <tr>
+            <th style="padding: 10px">Crawler Token</th>
+            <th style="padding: 10px">Primary Function</th>
+            <th style="padding: 10px">Access Recommendation</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><code>OAI-SearchBot</code></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Powers search features in ChatGPT; links back to sites</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>Must Allow</strong> for visibility</td>
+            <td style="padding: 10px"><code>OAI-SearchBot</code></td>
+            <td style="padding: 10px">Powers search features in ChatGPT; links back to sites</td>
+            <td style="padding: 10px"><strong>Must Allow</strong> for visibility</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><code>ChatGPT-User</code></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Real-time browsing when a user directly queries a link</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><strong>Must Allow</strong> for dynamic lookups</td>
+            <td style="padding: 10px"><code>ChatGPT-User</code></td>
+            <td style="padding: 10px">Real-time browsing when a user directly queries a link</td>
+            <td style="padding: 10px"><strong>Must Allow</strong> for dynamic lookups</td>
         </tr>
         <tr>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;"><code>GPTBot</code></td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">General web crawler used to train OpenAI foundation models</td>
-            <td style="padding: 10px; border: 1px solid #cbd5e1;">Allow (optional, if you permit model training)</td>
+            <td style="padding: 10px"><code>GPTBot</code></td>
+            <td style="padding: 10px">General web crawler used to train OpenAI foundation models</td>
+            <td style="padding: 10px">Allow (optional, if you permit model training)</td>
         </tr>
     </tbody>
 </table>
@@ -475,34 +485,34 @@ add_action('init', function() {
 
 <p>As publishers race to capture AI traffic, several common mistakes can damage visibility. Avoid these frequent pitfalls:</p>
 
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left; border: 1px solid #cbd5e1;">
+<table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95em; text-align: left">
     <thead>
-        <tr style="background-color: #f8fafc; border-bottom: 2px solid #cbd5e1;">
-            <th style="padding: 12px; font-weight: 600; color: #1e293b;">Mistake</th>
-            <th style="padding: 12px; font-weight: 600; color: #1e293b;">Why It Fails</th>
-            <th style="padding: 12px; font-weight: 600; color: #1e293b;">Corrective Action</th>
+        <tr>
+            <th style="padding: 12px; font-weight: 600">Mistake</th>
+            <th style="padding: 12px; font-weight: 600">Why It Fails</th>
+            <th style="padding: 12px; font-weight: 600">Corrective Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px; font-weight: 600; color: #b91c1c;">Blocking GPTBot Blindly</td>
-            <td style="padding: 12px; color: #475569;">Many site owners blocked all OpenAI user agents in 2023 to protect copyright, unintentionally removing their site from ChatGPT's <em>search and citation</em> index.</td>
-            <td style="padding: 12px; color: #475569;">Differentiate your rules: Keep <code>OAI-SearchBot</code> and <code>ChatGPT-User</code> allowed, even if you choose to disallow general scraping bots.</td>
+        <tr>
+            <td style="padding: 12px; font-weight: 600">Blocking GPTBot Blindly</td>
+            <td style="padding: 12px">Many site owners blocked all OpenAI user agents in 2023 to protect copyright, unintentionally removing their site from ChatGPT's <em>search and citation</em> index.</td>
+            <td style="padding: 12px">Differentiate your rules: Keep <code>OAI-SearchBot</code> and <code>ChatGPT-User</code> allowed, even if you choose to disallow general scraping bots.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fdfdfd;">
-            <td style="padding: 12px; font-weight: 600; color: #b91c1c;">Publishing AI Content Without Editing</td>
-            <td style="padding: 12px; color: #475569;">Using ChatGPT to write bland, generic articles yields an Information Gain score near zero. Models easily identify recycled answers and look elsewhere for original sources.</td>
-            <td style="padding: 12px; color: #475569;">Ensure every piece features proprietary data, distinct perspectives, original screenshots, or unique code examples.</td>
+        <tr>
+            <td style="padding: 12px; font-weight: 600">Publishing AI Content Without Editing</td>
+            <td style="padding: 12px">Using ChatGPT to write bland, generic articles yields an Information Gain score near zero. Models easily identify recycled answers and look elsewhere for original sources.</td>
+            <td style="padding: 12px">Ensure every piece features proprietary data, distinct perspectives, original screenshots, or unique code examples.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-            <td style="padding: 12px; font-weight: 600; color: #b91c1c;">Burying Answers in Long Introductions</td>
-            <td style="padding: 12px; color: #475569;">Writing extended historical introductions pushes key answers past the chunking window limits of RAG ingest engines.</td>
-            <td style="padding: 12px; color: #475569;">Adopt the inverted pyramid method: State the core finding or direct answer in the very first paragraph under each heading.</td>
+        <tr>
+            <td style="padding: 12px; font-weight: 600">Burying Answers in Long Introductions</td>
+            <td style="padding: 12px">Writing extended historical introductions pushes key answers past the chunking window limits of RAG ingest engines.</td>
+            <td style="padding: 12px">Adopt the inverted pyramid method: State the core finding or direct answer in the very first paragraph under each heading.</td>
         </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fdfdfd;">
-            <td style="padding: 12px; font-weight: 600; color: #b91c1c;">Hiding Data Behind Complex JavaScript</td>
-            <td style="padding: 12px; color: #475569;">Content requiring user interactions (like accordions, infinite scrolling, or AJAX-loaded tabs) may not render during fast-pass RAG retrieval.</td>
-            <td style="padding: 12px; color: #475569;">Deliver core answers in clean, server-side rendered HTML that is visible on initial load without interactive dependencies.</td>
+        <tr>
+            <td style="padding: 12px; font-weight: 600">Hiding Data Behind Complex JavaScript</td>
+            <td style="padding: 12px">Content requiring user interactions (like accordions, infinite scrolling, or AJAX-loaded tabs) may not render during fast-pass RAG retrieval.</td>
+            <td style="padding: 12px">Deliver core answers in clean, server-side rendered HTML that is visible on initial load without interactive dependencies.</td>
         </tr>
     </tbody>
 </table>
@@ -611,6 +621,6 @@ Email</a>
 </section>
 
 <div id="site-footer"></div>
-<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=2b708e49" defer></script><script src="../script.js?v=f93979bd" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
 </body>
 </html>
