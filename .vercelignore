@@ -1,0 +1,31 @@
+# Files excluded from the Vercel deployment (site-only deploy).
+# The public site is pure static HTML at the repo root; everything below is
+# development/SEO tooling that should never be served publicly.
+
+node_modules/
+.git/
+.env
+.env.example
+.netlify/
+.api-key
+config.json
+last-run.log
+package.json
+package-lock.json
+netlify.toml
+vercel.json
+.htaccess
+_redirects
+
+# SEO/automation scripts + data (not part of the public site)
+scripts/
+docs/
+reports/
+seo-data/
+blog-queue.json
+
+# GitHub Actions
+.github/
+
+# Dev/scratch
+**/*.log
