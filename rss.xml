@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Oct 2026 16:25:24 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 01:11:13 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WooCommerce MCP: Connect Store to AI Assistants | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-mcp-connect-ai-assistants</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-mcp-connect-ai-assistants</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Unlock smarter store management with WooCommerce MCP. Learn how to connect your online store to AI assistants to automate tasks, query orders, and scale faster.</description>
+      <category>WooCommerce MCP</category>
+    </item>
     <item>
       <title>Agentic Commerce: AI Agents Shopping WooCommerce | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce</link>
@@ -398,14 +406,6 @@
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-coupon-system-complete-guide</guid>
       <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
       <description>Complete WooCommerce coupon system guide. Learn how to create, manage and optimize coupon codes to boost sales and customer retention in your store.</description>
-      <category>WooCommerce</category>
-    </item>
-    <item>
-      <title>WooCommerce Product Filter Setup Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-product-filter-setup-guide</guid>
-      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Complete WooCommerce product filter setup guide. Learn how to create AJAX filters, customize filter UI and optimize your store for better conversions.</description>
       <category>WooCommerce</category>
     </item>
   </channel>
