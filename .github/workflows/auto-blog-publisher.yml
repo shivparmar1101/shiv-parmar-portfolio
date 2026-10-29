@@ -36,7 +36,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.8-flash
-          GEMINI_FALLBACK_MODEL: gemini-2.5-flash
+          # Stable alias, never a pinned version: pinned models get retired
+          # and return 404, which combined with a 503 spike killed all retries
+          # on 2026-10-28.
+          GEMINI_FALLBACK_MODEL: gemini-flash-latest
           # 5 attempts with exponential backoff: 30s, 60s, 120s, 240s (~7.5 min total)
           MAX_ATTEMPTS: '5'
           RETRY_DELAY_MS: '30000'

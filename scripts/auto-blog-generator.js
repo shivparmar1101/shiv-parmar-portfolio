@@ -29,7 +29,10 @@ const http = require('http');
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 // Fallback used when the primary model returns 503 (high demand).
-const GEMINI_FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || 'gemini-2.5-flash';
+// Use a stable ALIAS (not a pinned version) - pinned models get retired and
+// start returning 404 "no longer available to new users", which killed the
+// 2026-10-28 run when combined with a Gemini 503 spike.
+const GEMINI_FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || 'gemini-flash-latest';
 const SITE_URL = 'https://shiv-parmar-portfolio.netlify.app';
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const QUEUE_FILE = path.join(__dirname, '..', 'blog-queue.json');
@@ -130,18 +133,42 @@ function callGeminiAPI(prompt, model = GEMINI_MODEL) {
   });
 }
 
-// Tries the primary model; on a 503 (high demand) error, falls back to
-// GEMINI_FALLBACK_MODEL once before rejecting.
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// Resilient model chain:
+//   1. primary -> 2. short wait + retry primary -> 3. fallback model
+// A failed fallback (e.g. a retired model returning 404) must NOT kill the
+// run: we rethrow the original 503 so the outer retry loop
+// (scripts/retry-generate.js) can keep riding out the high-demand spike
+// with its exponential backoff instead of failing instantly.
 async function callGemini(prompt) {
-  try {
-    return await callGeminiAPI(prompt, GEMINI_MODEL);
-  } catch (err) {
-    if (isUnavailableError(err) && GEMINI_FALLBACK_MODEL && GEMINI_FALLBACK_MODEL !== GEMINI_MODEL) {
-      console.log(`Model ${GEMINI_MODEL} unavailable (${String(err.message).slice(0, 80)}). Falling back to ${GEMINI_FALLBACK_MODEL}...`);
-      return await callGeminiAPI(prompt, GEMINI_FALLBACK_MODEL);
+  let primaryErr = null;
+
+  for (let i = 0; i < 2; i++) {
+    try {
+      return await callGeminiAPI(prompt, GEMINI_MODEL);
+    } catch (err) {
+      if (!isUnavailableError(err)) throw err;
+      primaryErr = err;
+      if (i === 0) {
+        console.log(`${GEMINI_MODEL} returned 503 (high demand). Waiting 15s, retrying same model...`);
+        await sleep(15000);
+      }
     }
-    throw err;
   }
+
+  console.log(`${GEMINI_MODEL} still unavailable (${String(primaryErr.message).slice(0, 80)}).`);
+
+  if (GEMINI_FALLBACK_MODEL && GEMINI_FALLBACK_MODEL !== GEMINI_MODEL) {
+    console.log(`Falling back to ${GEMINI_FALLBACK_MODEL}...`);
+    try {
+      return await callGeminiAPI(prompt, GEMINI_FALLBACK_MODEL);
+    } catch (fbErr) {
+      console.log(`Fallback ${GEMINI_FALLBACK_MODEL} failed (${String(fbErr.message).slice(0, 120)}). Keeping the run retryable with the primary error.`);
+    }
+  }
+
+  throw primaryErr;
 }
 
 async function generateBlogContent(blog) {
