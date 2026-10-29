@@ -99,7 +99,9 @@ function clampMetaDescription(desc) {
 
 function isUnavailableError(err) {
   const msg = (err && err.message) || '';
-  return /\b503\b|UNAVAILABLE|high demand/i.test(msg);
+  // 503 UNAVAILABLE (high demand) and 429 RESOURCE_EXHAUSTED (rate limit) are
+  // both transient - retry with backoff rides them out.
+  return /\b503\b|\b429\b|UNAVAILABLE|RESOURCE_EXHAUSTED|high demand|rate limit/i.test(msg);
 }
 
 function callGeminiAPI(prompt, model = GEMINI_MODEL) {
