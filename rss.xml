@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Oct 2026 16:31:18 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 00:59:43 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Make WooCommerce Store AI-Agent Readable: Complete | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/make-woocommerce-ai-agent-readable-guide</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/make-woocommerce-ai-agent-readable-guide</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Make your WooCommerce store AI-readable with our complete guide. Learn how to optimize product data, schemas, and APIs so AI shopping agents can find and sell your products.</description>
+      <category>AI-readable</category>
+    </item>
     <item>
       <title>Stripe Agentic Commerce Protocol for WooCommerce | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/stripe-agentic-commerce-protocol-woocommerce</link>
@@ -399,14 +407,6 @@
       <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
       <description>Master WooCommerce shipping zones step by step. Learn how to set up regions, methods and rates so customers get accurate delivery costs at checkout.</description>
       <category>WooCommerce</category>
-    </item>
-    <item>
-      <title>WordPress Caching Plugins Compared 2026 | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-caching-plugins-compared-2026</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Compare the best WordPress caching plugins for 2026. Learn which plugins offer the fastest speeds, best features and easiest setup for your site.</description>
-      <category>WordPress speed</category>
     </item>
   </channel>
 </rss>

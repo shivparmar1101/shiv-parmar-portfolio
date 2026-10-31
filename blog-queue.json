@@ -403,7 +403,8 @@
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-10-24",
-      "status": "pending"
+      "status": "published",
+      "published_at": "2026-10-31T00:59:43.365Z"
     },
     {
       "id": 30,
