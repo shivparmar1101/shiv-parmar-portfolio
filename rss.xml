@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Nov 2026 00:17:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 16:13:37 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WordPress Font Manager: Upload Custom Fonts in 7.0 | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Take control of your site&amp;#39;s typography with WordPress 7.0. Learn how to use the new font manager to upload custom fonts and create unique, beautiful designs.</description>
+      <category>font manager</category>
+    </item>
     <item>
       <title>WordPress Visual Revisions: Scrub Through History | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide</link>
@@ -399,14 +407,6 @@
       <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
       <description>Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.</description>
       <category>WordPress debugging</category>
-    </item>
-    <item>
-      <title>How to Set Up WordPress Staging Environment | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-set-up-wordpress-staging-environment</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Complete guide to set up a WordPress staging environment. Learn to create staging sites, test updates safely and deploy changes without any downtime.</description>
-      <category>WordPress staging</category>
     </item>
   </channel>
 </rss>
