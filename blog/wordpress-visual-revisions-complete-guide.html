@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress Visual Revisions: Scrub Through History | Shiv Parmar</title>
+<meta name="description" content="Master WordPress visual revisions to easily scrub through your edit history, compare changes side by side, and restore lost content in seconds. Read our guide!">
+<meta name="keywords" content="visual revisions, WordPress 7.0, rollback">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress Visual Revisions: Scrub Through History Guide">
+<meta property="og:description" content="Master WordPress visual revisions to easily scrub through your edit history, compare changes side by side, and restore lost content in seconds. Read our guide!">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-visual-revisions-complete-guide-hero.svg">
+<meta property="og:image:alt" content="WordPress Visual Revisions: Scrub Through History Guide - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-11-01">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress Visual Revisions: Scrub Through History Guide">
+<meta name="twitter:description" content="Master WordPress visual revisions to easily scrub through your edit history, compare changes side by side, and restore lost content in seconds. Read our guide!">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-visual-revisions-complete-guide-hero.svg">
+<meta name="twitter:image:alt" content="WordPress Visual Revisions: Scrub Through History Guide - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress Visual Revisions: Scrub Through History Guide",
+  "description": "Master WordPress visual revisions to easily scrub through your edit history, compare changes side by side, and restore lost content in seconds. Read our guide!",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-visual-revisions-complete-guide-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=43f486a0">
+<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass)}
+.content thead th{background:var(--bg-glass-strong);padding:12px 15px;text-align:left;color:var(--text-primary);font-weight:700;border:1px solid var(--border-glass);border-bottom:2px solid var(--accent)}
+.content th,.content td{padding:12px 15px;border:1px solid var(--border-glass)}
+.content th{background:var(--bg-glass-strong);color:var(--text-primary);font-weight:700}
+.content td{color:var(--text-secondary)}
+.content tbody tr:nth-child(even){background:var(--bg-glass)}
+.content tbody tr:hover{background:var(--bg-glass-hover)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-visual-revisions-complete-guide-hero.svg" alt="WordPress Visual Revisions: Scrub Through History | Shiv Parmar - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress Visual Revisions: Scrub Through History | Shiv Parmar
+</nav>
+<div class="date">2026-11-01 &middot; 14 min read</div>
+<h1>WordPress Visual Revisions: Scrub Through History | Shiv Parmar</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What Are WordPress Visual Revisions?">What Are WordPress Visual Revisions?</a></li>
+<li><a href="#section-1" title="Why Visual Revisions Matter in 2026">Why Visual Revisions Matter in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide: Scrubbing Through History &amp;amp; Mastering Rollbacks">Step-by-Step Guide: Scrubbing Through History &amp;amp; Mastering Rollbacks</a></li>
+<li><a href="#section-3" title="Best Practices for Visual Revisions">Best Practices for Visual Revisions</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/best-wordpress-booking-plugins-2026-tested" title="Best WordPress Booking Plugins 2026 Tested">Best WordPress Booking Plugins 2026 Tested</a>
+      <a href="../blog/best-wordpress-mcp-plugins-2026-tested-compared" title="Best WordPress MCP Plugins 2026: 21 Tested">Best WordPress MCP Plugins 2026: 21 Tested</a>
+      <a href="../blog/best-wordpress-migration-plugins-2026-tested" title="Best WordPress Migration Plugins 2026: 6 Picks">Best WordPress Migration Plugins 2026: 6 Picks</a>
+      <a href="../blog/best-wordpress-plugins-2026-top-30-ranked" title="Best WordPress Plugins 2026: Top 30 Ranked">Best WordPress Plugins 2026: Top 30 Ranked</a>
+  </nav>
+</div>
+<p>Every digital creator has experienced that cold drop in the stomach: you spend three hours orchestrating an intricate landing page layout, fine-tuning fluid typography, and dialling in nested block arrangements, only for an accidental keystroke, an erratic autosave, or a teammate's conflicting edit to obliterate your work. For over two decades, recovering from these editorial catastrophes in WordPress felt like deciphering ancient runes. You were thrust into a split-screen matrix of raw HTML, squinting at red and green inline diffs to deduce which missing closing tag collapsed your layout.</p>
+
+<p>That paradigm has shifted entirely. With the emergence of <strong>WordPress 7.0</strong> and its refined core editing architecture, content creators and developers can now leverage true <strong>visual revisions</strong>. Instead of parsing abstracted code strings, the platform introduces an interactive timeline scrubber that lets you visually glide through past iterations of your content, layouts, and global styles in real time.</p>
+
+<p>Whether you are an agency managing complex multi-author workflows, an enterprise marketing team updating dynamic landing pages, or an independent developer safeguarding client assets, understanding how to scrub through history and execute a surgical <strong>rollback</strong> is an indispensable skill. In this comprehensive guide, we will unpack the mechanics of visual history tracking, demonstrate how to navigate the timeline scrubber, explore programmatic controls, and share best practices to keep your database lean while preserving your peace of mind.</p>
+
+<h2 id="section-0">What Are WordPress Visual Revisions?</h2>
+
+<p>At its core, a revision in WordPress is a historical snapshot of a post, page, or custom post type saved to the <code>wp_posts</code> database table as an inherited record (with the post status set to <code>inherit</code> and the post type set to <code>revision</code>). Traditionally, WordPress compared these snapshots using a textual string-diff utility similar to standard Git diffs. If you moved a paragraph block, adjusted margin tokens, or swapped out a background video, the interface presented you with disjointed strings of Gutenberg block comment delimiters, such as <code>&lt;!-- wp:group {"layout":{"type":"constrained"}} --&gt;</code>.</p>
+
+<p><strong>Visual revisions</strong> transform this database state comparison into an interactive, visual canvas. Rather than analyzing plain text, the modern revision engine dynamically hydrates the block parser within an isolated virtual DOM sandbox. As you manipulate the revision slider, WordPress renders the exact visual presentation of the post as it appeared at that specific second—complete with block styles, nested layouts, custom CSS classes, and typography settings.</p>
+
+<p>In modern releases culminating in <strong>WordPress 7.0</strong>, this functionality extends beyond basic post bodies. The visual revision engine now intercepts mutations across three distinct layers:</p>
+
+<ul>
+    <li><strong>Document-Level Content:</strong> Block hierarchies, inner content, embedded media states, and metadata changes across posts, pages, and custom post types.</li>
+    <li><strong>Template and Template Part Architecture:</strong> Header shifts, footer restructurings, sidebar injections, and query loop configurations modified inside the Site Editor.</li>
+    <li><strong>Global Styles and Design Tokens:</strong> Color palette reassignments, fluid typography steps, spacing presets, and custom CSS modifications saved to <code>theme.json</code>.</li>
+</ul>
+
+<p>The system works by tracking serialized JSON trees representing your layout state alongside human-readable metadata, pairing changes with author avatars and precise timestamps down to the second.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature Dimension</th>
+            <th>Legacy Textual Revisions</th>
+            <th>WordPress 7.0 Visual Revisions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Preview Medium</strong></td>
+            <td>Raw HTML strings with highlighted textual deletions/additions.</td>
+            <td>Fully rendered, interactive visual sandbox with responsive viewport toggles.</td>
+        </tr>
+        <tr>
+            <td><strong>Scrubbing Interface</strong></td>
+            <td>Stepped two-handle slider comparing State A to State B.</td>
+            <td>Fluid scrubbing timeline with visual thumbnail snapshots and change annotations.</td>
+        </tr>
+        <tr>
+            <td><strong>Scope of Tracking</strong></td>
+            <td>Post content (`post_content`) and title fields only.</td>
+            <td>Block content, templates, template parts, and global design styles (`theme.json`).</td>
+        </tr>
+        <tr>
+            <td><strong>Rollback Precision</strong></td>
+            <td>All-or-nothing document reversion.</td>
+            <td>Granular rollbacks: restore entire documents or isolate specific block trees.</td>
+        </tr>
+        <tr>
+            <td><strong>Performance Impact</strong></td>
+            <td>Fast string comparison; unreadable for block layouts.</td>
+            <td>Client-side rendering via cached block schemas and optimized REST hydration.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="section-1">Why Visual Revisions Matter in 2026</h2>
+
+<p>The WordPress landscape has transformed from simple blog publishing into an enterprise-grade digital experience platform (DXP). Site designs are no longer static text wrapped in hardcoded PHP wrappers; they are composed of dynamic, deeply nested component trees driven by Full-Site Editing (FSE), block variations, and responsive layout primitives like CSS Grid and Flexbox.</p>
+
+<p>Evaluating layout changes through raw markup in this environment is not only tedious—it invites disaster. If an editor accidentally changes a grid template column configuration from <code>repeat(3, 1fr)</code> to <code>1fr</code>, spotting that modification inside serialized block comments requires deep developer expertise. Non-technical marketing teams simply cannot verify what changed before clicking a rollback button. Visual revisions bridge this gap by translating code diffs into immediate visual feedback.</p>
+
+<p>Moreover, collaborative environments demand greater clarity. With real-time collaboration and multi-user editorial pipelines becoming standard in modern production environments, dozens of micro-revisions can occur in a single work session. Visual history scrubbing provides teams with an intuitive visual audit log:</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement visual revisions with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<ul>
+    <li><strong>Design System Governance:</strong> When a global color or font variable is inadvertently altered across an entire enterprise network, administrators can inspect the Global Styles revision timeline to identify the exact change, who pushed it, and revert the style token without wiping out newly drafted articles.</li>
+    <li><strong>Accelerated Editorial Auditing:</strong> Legal and compliance teams can rapidly scrub backward through time to verify the exact wording, disclaimer visibility, or imagery displayed on a high-traffic regulatory page at a given point in time.</li>
+    <li><strong>Risk-Free Experimentation:</strong> Content teams can radically alter page hierarchies, test new conversion flows, and preview variations knowing that an instantaneous, visual <strong>rollback</strong> is always available.</li>
+</ul>
+
+<h2 id="section-2">Step-by-Step Guide: Scrubbing Through History &amp; Mastering Rollbacks</h2>
+
+<p>Mastering the visual revision workflow requires understanding both the graphical interface within the editor and the underlying configuration parameters that dictate how WordPress stores historical states.</p>
+
+<h3>Step 1: Navigating to the Visual Revisions Interface</h3>
+
+<p>To inspect previous states of your content or site design, access the revision panel inside the Block Editor or Site Editor:</p>
+
+<ol>
+    <li>Open the post, page, or custom template you wish to audit.</li>
+    <li>Ensure the editor settings sidebar (top-right corner gear or document icon) is visible.</li>
+    <li>Select the <strong>Post</strong> (or <strong>Template</strong>) tab.</li>
+    <li>Locate the <strong>Revisions</strong> item within the document overview metadata panel. You will see a counter indicating the number of saved snapshots (e.g., "24 Revisions").</li>
+    <li>Click directly on the Revisions link. In <strong>WordPress 7.0</strong>, this action transitions your workspace into the full-viewport Visual History Inspector, temporarily suspending the standard editing canvas.</li>
+</ol>
+
+<p>If you are working inside the Site Editor editing Global Styles, click the <strong>Styles</strong> icon (half-black, half-white circle), click the three-dots context menu, and choose <strong>Style Book History</strong> or <strong>Revisions</strong> to view design-token-specific timelines.</p>
+
+<h3>Step 2: Using the Timeline Scrubber and Viewport Inspector</h3>
+
+<p>Once inside the Visual Revisions interface, your canvas is divided into three primary zones: the Top Navigation Control Bar, the Central Interactive Preview Sandbox, and the Bottom Timeline Scrubber.</p>
+
+<p>The timeline scrubber at the bottom of the screen displays a chronological axis populated by revision nodes. Each node represents an explicit draft save, an autosave, or a published state update. Nodes are color-coded and marked with user avatars to immediately identify the author behind every action.</p>
+
+<p>To scrub through the document's evolution:</p>
+
+<ol>
+    <li>Click and drag the scrubber playhead across the timeline horizontally. As the playhead glides across timestamps, the central preview updates instantly, displaying the document's exact visual layout at that historical snapshot.</li>
+    <li>Use your keyboard arrow keys (Left/Right) for frame-by-frame traversal across sequential saves.</li>
+    <li>Toggle the <strong>Viewport Switcher</strong> in the top navigation bar to test how an older revision performed across Mobile, Tablet, and Desktop viewport widths.</li>
+    <li>Enable the <strong>Highlight Changes</strong> toggle. This overlay mode places subtle colored outlines around updated components: green borders denote added blocks, blue indicates modified style tokens or layout alignments, and dashed red outlines highlight elements slated for removal.</li>
+</ol>
+
+<h3>Step 3: Granular Block-Level and Global Style Revisions</h3>
+
+<p>A frequent problem in high-velocity publishing is the "destructive full rollback"—restoring an entire document just to recover a single paragraph or pricing table, accidentally discarding all subsequent work. Modern visual revisions resolve this through component-level history scrubbing.</p>
+
+<p>To isolate and scrub an individual block:</p>
+
+<ol>
+    <li>While in the Visual Revisions screen, click directly on the block you wish to restore (such as a complex Grid or Query Loop block).</li>
+    <li>Look at the right-hand Inspector Sidebar, which will switch from "Global Document History" to <strong>"Block History"</strong>.</li>
+    <li>Review the isolated timeline specifically tied to that block's parent identifier.</li>
+    <li>Select the previous iteration that contained your desired content or configuration.</li>
+    <li>Click <strong>Extract Block to Current Draft</strong>. This allows you to cherry-pick that single element out of history and copy it straight into your active draft without touching other sections.</li>
+</ol>
+
+<h3>Step 4: Executing a Flawless Rollback</h3>
+
+<p>When you have reviewed the timeline and decided that a previous snapshot represents the desired state for your live asset, you can initiate a rollback.</p>
+
+<ol>
+    <li>Locate the exact revision node on the scrubber timeline. Verify the date, timestamp, and author credentials shown in the info drawer.</li>
+    <li>Inspect the layout visually in desktop and mobile preview modes to confirm that no third-party block assets (like forms, video players, or custom widgets) are displaying broken states.</li>
+    <li>Click the high-contrast <strong>Rollback to This Revision</strong> button located in the top-right corner.</li>
+    <li>WordPress displays a confirmation modal detailing the action. This operation is non-destructive: it creates a <em>new</em> revision containing the historical data, preserving your recent work further down the timeline.</li>
+    <li>Click <strong>Confirm and Apply</strong>. The canvas returns to the active editing mode with the selected revision fully restored, ready for further editing or immediate publication.</li>
+</ol>
+
+<h3>Step 5: Programmatic Control: Managing Revisions via Code and REST API</h3>
+
+<p>Power users and developers can customize revision tracking behavior programmatically. WordPress provides a suite of configuration constants, hooks, and REST API endpoints to govern how visual snapshots are saved, limited, and queried.</p>
+
+<h4>Configuring Snapshot Storage via wp-config.php</h4>
+
+<p>By default, WordPress may retain an infinite number of revisions if left unmanaged, which can cause significant database bloat on enterprise sites. You can limit visual revision density or adjust the autosave interval directly in your <code>wp-config.php</code> file:</p>
+
+<pre><code>// Limit the total number of visual revisions per post to 15
+define( 'WP_POST_REVISIONS', 15 );
+
+// Extend the autosave interval to 120 seconds to minimize snapshot clutter
+define( 'AUTOSAVE_INTERVAL', 120 );
+
+// Completely disable revisions (Not recommended for visual production environments)
+// define( 'WP_POST_REVISIONS', false );
+</code></pre>
+
+<h4>Fine-Grained Revision Limits by Post Type</h4>
+
+<p>You may want to store 30 revisions for custom landing pages while limiting high-frequency blog posts to 5 snapshots. Use the <code>wp_revisions_to_keep</code> filter in your theme's <code>functions.php</code> or within a custom mu-plugin:</p>
+
+<pre><code>&lt;?php
+/**
+ * Conditionally adjust revision storage thresholds by post type.
+ *
+ * @param int     $num  Number of revisions to keep.
+ * @param WP_Post $post The post object being evaluated.
+ * @return int Modified number of revisions.
+ */
+function prefix_tailor_revision_retention( $num, $post ) {
+    switch ( $post-&gt;post_type ) {
+        case 'landing_page':
+            return 30; // High threshold for complex layouts
+        case 'product':
+            return 10;
+        case 'post':
+            return 5;  // Low threshold for daily editorial content
+        default:
+            return $num;
+    }
+}
+add_filter( 'wp_revisions_to_keep', 'prefix_tailor_revision_retention', 10, 2 );
+</code></pre>
+
+<h4>Querying Visual Revisions via the WordPress REST API</h4>
+
+<p>WordPress 7.0 exposes dedicated visual schema representations of revisions via the REST API, allowing decoupled applications or external staging suites to inspect changes programmatically:</p>
+
+<pre><code>// Fetch revisions for post ID 1042 with raw and rendered block contexts
+fetch('/wp-json/wp/v2/posts/1042/revisions?context=edit', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': wpApiSettings.nonce
+    }
+})
+.then(response =&gt; response.json())
+.then(revisions =&gt; {
+    revisions.forEach(rev =&gt; {
+        console.log(`Revision ID: ${rev.id}`);
+        console.log(`Authored by: ${rev.author}`);
+        console.log(`Snapshot Date: ${rev.date}`);
+        console.log(`Block Content:`, rev.content.raw);
+    });
+})
+.catch(error =&gt; console.error('Error fetching visual revisions:', error));
+</code></pre>
+
+<h4>Programmatic Rollback via WP-CLI</h4>
+
+<p>System administrators managing headless setups or high-volume sites can execute rollbacks straight from the terminal using WP-CLI without loading the graphical interface:</p>
+
+<pre><code># List all historical revisions available for a post
+wp post revision list 1042 --fields=ID,post_date,post_author,post_name
+
+# Perform an immediate rollback to revision ID 2088
+wp post revision restore 2088
+</code></pre>
+
+<h2 id="section-3">Best Practices for Visual Revisions</h2>
+
+<p>While visual revisions simplify history tracking and design recovery, running an unoptimized revision engine can introduce workflow bottlenecks and database bloat. Implement these engineering best practices to maintain a responsive, dependable environment.</p>
+
+<h3>1. Establish Strict Revision Ceilings</h3>
+
+<p>Left unchecked, an enterprise site publishing 10 articles a day with 50 revisions per post will accumulate over 180,000 orphaned rows in <code>wp_posts</code> within a single year. This bloats your primary relational table, degrades indexing efficiency, slows database backups, and drags down general query performance.</p>
+
+<p>Cap post revisions between 10 and 20 for standard publishing environments. Use WP-CLI to schedule automated database maintenance that cleans out legacy visual revisions older than 90 days:</p>
+
+<pre><code># Clean post revisions older than 90 days across the entire network
+wp db query "DELETE FROM wp_posts WHERE post_type = 'revision' AND post_modified &lt; DATE_SUB(NOW(), INTERVAL 90 DAY);"
+</code></pre>
+
+<h3>2. Annotate Significant Revisions</h3>
+
+<p>Train your editorial and design teams to use Revision Summaries. Whenever an editor executes a major restructuring—such as converting a three-column card grid into an asymmetrical hero section—they should add a brief log message in the Document Settings panel before saving. In modern visual revision timelines, these notes appear as labeled flags above the scrubber nodes, helping teammates quickly find key historical moments without having to scrub through micro-drafts.</p>
+
+<h3>3. Use Staging for Massive Architecture Overhauls</h3>
+
+<p>While visual revisions can easily restore single-page structural layouts, they should not replace a dedicated staging environment when performing wholesale site refactors. Rolling back a major template that shares dependencies with un-reverted child blocks or custom theme plugins can lead to schema mismatches. Use visual revisions for editorial rollbacks and style corrections; leave broad site redesigns to Git-backed staging pipelines.</p>
+
+<h3>4. Audit Global Styles Separately from Content</h3>
+
+<p>Global styles affect your entire site footprint simultaneously. Before restoring a global style revision, navigate through multiple diverse page templates in the visual preview—such as archives, single commerce pages, and static contact forms. This ensures that rolling back a global button radius or padding variable doesn't inadvertently break forms or call-to-action sections elsewhere.</p>
+
+<h2 id="section-4">Common Mistakes to Avoid</h2>
+
+<p>Even seasoned WordPress developers and editors can fall into subtle traps when managing visual revisions and executing rollbacks. Avoid these frequent missteps:</p>
+
+<h3>Assuming Media Deletions Will Roll Back</h3>
+
+<p>Visual revisions track the layout state and references to media items, but they <strong>do not store binary image or video assets</strong>. If an author deletes a high-resolution banner image from the WordPress Media Library and subsequently rolls back to a revision that featured that image, the restored block will display a broken 404 image placeholder. Always retain your original media files in your media storage library or offsite bucket, even when swapping assets out of a page layout.</p>
+
+<h3>Confusing Autosaves with Explicit Revisions</h3>
+
+<p>WordPress maintains two different types of working memory: regular explicit revisions and temporary autosaves. An autosave occurs automatically in the background while you work. Each user account has access to only <em>one</em> active autosave per post at any time; every new autosave replaces the previous one. If you make a series of structural missteps relying solely on autosaves without manually hitting "Save Draft", you cannot scrub backward through those intermediate steps. Save draft states manually before testing complex layout modifications.</p>
+
+<h3>Overlooking Third-Party Dynamic Block Dependencies</h3>
+
+<p>Not every block is fully static. Many modern plugins—including dynamic pricing tables, event calendars, and form builders—fetch data dynamically from custom database tables or external REST/GraphQL APIs. When you roll back a page using visual revisions, you are restoring the block's layout configuration attributes, not the external dynamic data it references. If a third-party form ID referenced inside a historical revision has been deleted from that plugin's database table, the restored layout will fail to render the form correctly.</p>
+
+<h3>Neglecting Database Transients and Cache Layers</h3>
+
+<p>Executing a <strong>rollback</strong> in your editor immediately updates your database record, but aggressive server-side caching (Varnish, Redis object caches, or Cloudflare Edge caches) may continue serving the prior cached HTML payload to end users. If a rollback is triggered to fix a critical styling or content error, always ensure your deployment automatically purges the specific object and page cache URLs:</p>
+
+<pre><code>&lt;?php
+/**
+ * Automatically purge edge cache when a post revision is restored.
+ *
+ * @param int $post_id     The parent post ID.
+ * @param int $revision_id The ID of the revision restored.
+ */
+function prefix_purge_cache_on_revision_rollback( $post_id, $revision_id ) {
+    // Check if an external caching engine is present
+    if ( function_exists( 'wp_cache_post_change' ) ) {
+        wp_cache_post_change( $post_id );
+    }
+    
+    // Example: Trigger Cloudflare or local reverse proxy hook
+    do_action( 'custom_purge_post_cache', $post_id );
+}
+add_action( 'wp_restore_post_revision', 'prefix_purge_cache_on_revision_rollback', 10, 2 );
+</code></pre>
+
+<h3>Ignoring User Permissions and Access Control</h3>
+
+<p>Not all contributors should have unrestricted authority to roll back published content. A standard Contributor or Author could accidentally revert critical SEO metadata, schema markup, or layout templates updated by an Administrator. Audit your user roles using a capability manager plugin or custom code, ensuring that the <code>edit_others_posts</code> and <code>publish_posts</code> capabilities are strictly guarded for users operating in sensitive environments.</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-5">Conclusion</h2>
+<p>This guide covered everything you need to know about WordPress Visual Revisions: Scrub Through History Guide. By following these steps, you can implement these solutions on your WordPress site today.</p>
+<p>If you need help with WordPress development, WooCommerce, or performance optimization, feel free to reach out. I work with clients worldwide and deliver high-quality results.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">visual revisions</a>
+<a href="/blog" class="tag">WordPress 7.0</a>
+<a href="/blog" class="tag">rollback</a>
+</div>
+
+<!-- AUTO_AUTHOR_BOX -->
+<div class="author-box">
+<img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-10-31 &middot; 8 min read</div>
+<h4><a href="../blog/make-woocommerce-ai-agent-readable-guide" title="Make WooCommerce Store AI-Agent Readable: Complete">Make WooCommerce Store AI-Agent Readable: Complete</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-29 &middot; 8 min read</div>
+<h4><a href="../blog/stripe-agentic-commerce-protocol-woocommerce" title="Stripe Agentic Commerce Protocol for WooCommerce">Stripe Agentic Commerce Protocol for WooCommerce</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-10-29 &middot; 8 min read</div>
+<h4><a href="../blog/woocommerce-mcp-connect-ai-assistants" title="WooCommerce MCP: Connect Store to AI Assistants">WooCommerce MCP: Connect Store to AI Assistants</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+</body>
+</html>
