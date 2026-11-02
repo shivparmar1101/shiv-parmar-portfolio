@@ -5,7 +5,9 @@
  *  1. Submits sitemap.xml  (webmasters v3 -> sitemaps submit)
  *  2. Inspects recently changed URLs (searchconsole v1 -> urlInspection.index:inspect)
  *  3. Writes seo-data/gsc-status.json + prints a report
- *  4. Exits 1 when a post is old but still not indexed (-> GitHub failure email)
+ *  4. Exits 1 only for real blockers (robots/meta blocked, or every inspection errored).
+ *     URLs still unindexed after N days are reported as a WARNING and do not fail the
+ *     run (set GSC_FAIL_ON_STALE=1 to restore the old fail-on-stale behaviour).
  *
  * Auth: Google service account, RS256 JWT signed with node:crypto.
  *
@@ -13,11 +15,13 @@
  *   GSC_SERVICE_ACCOUNT  service account JSON (raw JSON, or base64 of it). If unset -> skip.
  *   GSC_SITE_URL         default https://shiv-parmar-portfolio.netlify.app/
  *   GSC_INSPECT_DAYS     inspect URLs with lastmod within N days (default 14)
- *   GSC_ALERT_DAYS       fail when a post older than N days is not indexed (default 7)
+ *   GSC_ALERT_DAYS       warn when a post older than N days is not indexed (default 7)
+ *   GSC_FAIL_ON_STALE    set to 1 to exit 1 on stale/unindexed URLs (default: warn only)
  *
  * Flags:
  *   --all          inspect every sitemap URL (not just recent ones)
  *   --limit=N      inspect at most N URLs
+ *   --sitemap-only submit the sitemap and exit (fast path for the publish pipeline)
  *   --no-sitemap   skip the sitemap submission step
  *   --dry-run      print the plan, no API calls
  */
@@ -33,6 +37,7 @@ const OUTPUT_PATH = path.join(ROOT, 'seo-data', 'gsc-status.json');
 const SITE_URL = (process.env.GSC_SITE_URL || 'https://shiv-parmar-portfolio.netlify.app/').replace(/\/*$/, '/');
 const INSPECT_DAYS = Math.max(1, parseInt(process.env.GSC_INSPECT_DAYS || '14', 10));
 const ALERT_DAYS = Math.max(1, parseInt(process.env.GSC_ALERT_DAYS || '7', 10));
+const FAIL_ON_STALE = process.env.GSC_FAIL_ON_STALE === '1';
 
 const SCOPES = 'https://www.googleapis.com/auth/webmasters';
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
@@ -43,6 +48,7 @@ const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
 const ALL = args.includes('--all');
 const SKIP_SITEMAP = args.includes('--no-sitemap');
+const SITEMAP_ONLY = args.includes('--sitemap-only');
 const LIMIT = (() => {
   const a = args.find(x => x.startsWith('--limit='));
   return a ? Math.max(1, parseInt(a.split('=')[1], 10) || 0) : 0;
@@ -230,6 +236,14 @@ async function main() {
     return 1;
   }
 
+  // Fast path used by auto-blog-publisher right after a post goes live:
+  // push the sitemap to Search Console without waiting for the daily inspection.
+  if (SITEMAP_ONLY) {
+    const ok = await submitSitemap(token);
+    console.log(ok ? 'Sitemap-only mode done.' : 'Sitemap-only mode: submit failed.');
+    return ok ? 0 : 1;
+  }
+
   if (!SKIP_SITEMAP) await submitSitemap(token);
   console.log('');
 
@@ -296,8 +310,14 @@ async function main() {
     console.error('  Search Console -> URL Inspection -> enter URL -> Request indexing (top posts only).');
   }
 
-  if (blockers.length || stale.length) return 1;
+  if (blockers.length) return 1;
   if (errors.length && errors.length === results.length) return 1;
+  if (stale.length) {
+    if (FAIL_ON_STALE) return 1;
+    console.log(`\n${stale.length} URL(s) above are unindexed after ${ALERT_DAYS}+ days - reported as a warning only.`);
+    console.log('Set GSC_FAIL_ON_STALE=1 to fail the workflow on stale URLs.');
+    return 0;
+  }
   console.log('\nAll inspected URLs are indexed or still inside the grace period.');
   return 0;
 }

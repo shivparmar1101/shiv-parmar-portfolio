@@ -90,6 +90,39 @@ jobs:
           echo "Possible causes: Netlify build skipped/failed, or Ignore Builds setting is active."
           exit 1
 
+      # Google reads the sitemap on its own schedule - push it to Search Console the
+      # moment the new post is live instead of waiting for the daily GSC run.
+      # Best-effort: never fails the publish workflow.
+      - name: Submit sitemap to Google Search Console
+        if: success()
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+          GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
+        run: node scripts/gsc-indexing.js --sitemap-only
+
+      # Best-effort crawl nudge for the URL that was just published. Google's Indexing
+      # API is officially documented for JobPosting/LiveStream only, so a 403 here is
+      # expected and harmless - the sitemap submit above is the real signal.
+      - name: Notify Google Indexing API (new URL)
+        if: success()
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: |
+          MSG=$(git log -1 --pretty=%s)
+          if [ "$MSG" != "Auto: Publish new blog post" ]; then
+            echo "Last commit is not a new publish ($MSG) - skipping"
+            exit 0
+          fi
+          LATEST=$(git diff --name-only HEAD~1 | grep "^blog/.*\.html$" | head -1 || true)
+          if [ -z "$LATEST" ]; then
+            echo "No new blog file in this commit - skipping"
+            exit 0
+          fi
+          SLUG=$(basename "$LATEST" .html)
+          node scripts/request-indexing.js --url="https://shiv-parmar-portfolio.netlify.app/blog/${SLUG}"
+
       # Email notification is handled by blog-email-notification.yml (triggered on push)
       # to avoid duplicate emails. Keep this step removed.
       - name: Send Failure Email

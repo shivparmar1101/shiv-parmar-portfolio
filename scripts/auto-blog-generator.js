@@ -753,8 +753,9 @@ async function main() {
   updateIndexHTML(nextBlog);
   updateSitemap(nextBlog);
 
-  // Google indexing: IndexNow covers Bing/Yandex. Google reads the sitemap on its
-  // own schedule - the gsc-indexing workflow submits it to Search Console daily.
+  // Google discovery: IndexNow covers Bing/Yandex. The auto-blog-publisher workflow
+  // then submits sitemap.xml to Search Console and pings the Indexing API for this
+  // URL; gsc-indexing.yml re-checks everything daily.
   console.log('\nSubmitting for indexing...');
   await submitToIndexNow(nextBlog);
 

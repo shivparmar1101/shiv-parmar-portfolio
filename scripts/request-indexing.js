@@ -10,8 +10,10 @@
  *   GSC_PROPERTY         optional siteUrl for logs (default domain property)
  *
  * Flags:
- *   --limit=N   publish at most N URLs
- *   --dry-run   print the plan, no API calls
+ *   --url=URL    publish a single URL (the post that was just published)
+ *   --last=N     publish only the last N sitemap URLs (the newest posts)
+ *   --limit=N    publish at most N URLs (from the top of the sitemap)
+ *   --dry-run    print the plan, no API calls
  */
 const fs = require('fs');
 const path = require('path');
@@ -26,6 +28,14 @@ const SCOPES = 'https://www.googleapis.com/auth/indexing';
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
+const URL_ARG = (() => {
+  const a = args.find(x => x.startsWith('--url='));
+  return a ? a.slice('--url='.length).trim() : '';
+})();
+const LAST = (() => {
+  const a = args.find(x => x.startsWith('--last='));
+  return a ? Math.max(1, parseInt(a.split('=')[1], 10) || 0) : 0;
+})();
 const LIMIT = (() => {
   const a = args.find(x => x.startsWith('--limit='));
   return a ? Math.max(1, parseInt(a.split('=')[1], 10) || 0) : 0;
@@ -97,8 +107,19 @@ async function publish(token, url) {
 async function main() {
   console.log('Google Indexing API notifier');
   const urls = readUrls();
-  const targets = LIMIT ? urls.slice(0, LIMIT) : urls;
-  console.log(`Sitemap URLs: ${urls.length} | to publish: ${targets.length}`);
+  let targets = urls;
+  let mode = `all ${urls.length}`;
+  if (URL_ARG) {
+    targets = [URL_ARG];
+    mode = 'single URL';
+  } else if (LAST) {
+    targets = urls.slice(-LAST);
+    mode = `newest ${targets.length}`;
+  } else if (LIMIT) {
+    targets = urls.slice(0, LIMIT);
+    mode = `first ${targets.length}`;
+  }
+  console.log(`Sitemap URLs: ${urls.length} | to publish: ${targets.length} (${mode})`);
 
   if (DRY_RUN) {
     targets.forEach(u => console.log(`  UPDATED ${u}`));

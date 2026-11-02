@@ -1,9 +1,12 @@
-# Google Indexing API: publish UPDATED notifications for sitemap URLs.
+# Google Indexing API: publish "UPDATED" urlNotifications for the newest sitemap URLs.
 # Companion to gsc-indexing.yml (sitemap submit + URL Inspection).
-# Best-effort: exits 0 even when the API rejects the request.
+# Runs daily after the new post is published; best-effort, exits 0 even when the API
+# rejects the request (Google documents this API for JobPosting/LiveStream only).
 name: Request Indexing
 
 on:
+  schedule:
+    - cron: '45 7 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,10 +25,10 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Publish urlNotifications
+      - name: Publish urlNotifications (newest 10 URLs)
         env:
           GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
-        run: node scripts/request-indexing.js
+        run: node scripts/request-indexing.js --last=10
 
       - name: Upload report
         if: always()
