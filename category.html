@@ -95,6 +95,9 @@
     .back-link:hover {
       gap: 12px;
     }
+    .cat-heading {
+      margin: 0 0 28px;
+    }
     .cat-links {
       list-style: none;
       margin: 14px 0 0;
@@ -117,12 +120,8 @@
       border-color: var(--accent);
     }
     .cat-all {
-      margin-top: 40px;
+      margin-top: 48px;
       text-align: center;
-    }
-    .cat-all a {
-      color: var(--accent);
-      font-weight: 600;
     }
   </style>
   <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
@@ -158,7 +157,7 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <a class="back-link" href="/">&larr; Back to Home</a>
+        <a class="back-link" href="/blog">&larr; Back to Blog</a>
         <h1>Blog Categories</h1>
         <p class="lead">Every WordPress development guide on this site, grouped by topic. Pick a category and start reading.</p>
       </div>
@@ -166,7 +165,7 @@
 
     <section style="padding:0 0 96px">
       <div class="container">
-        <h2>Browse by Topic</h2>
+        <h2 class="cat-heading">Browse by Topic</h2>
         <div class="blog-grid">
 
           <article class="blog-card reveal">
@@ -269,7 +268,9 @@
           </article>
 
         </div>
-        <p class="cat-all"><a href="blog">Browse every post in chronological order &rarr;</a></p>
+        <div class="cat-all">
+          <a class="btn btn-primary" href="/blog">Blog <span class="arrow">&rarr;</span></a>
+        </div>
       </div>
     </section>
   </main>
