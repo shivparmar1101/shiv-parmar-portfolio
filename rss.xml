@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Nov 2026 19:57:18 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 08:43:45 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WordPress Breadcrumb Block: Native SEO Navigation | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-breadcrumb-block-native-seo</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-breadcrumb-block-native-seo</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Boost your site’s SEO and user experience with the native WordPress breadcrumb block. Learn how to easily set up smart, Google-friendly navigation.</description>
+      <category>breadcrumb block</category>
+    </item>
     <item>
       <title>WordPress Font Manager: Upload Custom Fonts in 7.0 | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts</link>
@@ -399,14 +407,6 @@
       <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
       <description>Learn how to create a WordPress mega menu with step-by-step code examples, best practices and tips for building advanced navigation menus in WordPress.</description>
       <category>WordPress</category>
-    </item>
-    <item>
-      <title>How to Debug WordPress Like a Pro | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-debug-wordpress-like-a-pro</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Complete WordPress debugging guide for developers. Learn error logging, debugging tools, common fixes and pro techniques to debug WordPress efficiently.</description>
-      <category>WordPress debugging</category>
     </item>
   </channel>
 </rss>
