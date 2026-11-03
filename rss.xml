@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Nov 2026 08:43:45 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 17:14:36 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Block-Level CSS WordPress 7.0: Style Every Block | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Master WordPress 7.0 with custom block CSS! Learn how to style every block individually and unlock total design control for your website.</description>
+      <category>block CSS</category>
+    </item>
     <item>
       <title>WordPress Breadcrumb Block: Native SEO Navigation | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-breadcrumb-block-native-seo</link>
@@ -399,14 +407,6 @@
       <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
       <description>Reduce lost sales with WooCommerce cart abandonment recovery strategies. Set up emails, discounts, and retargeting to win back shoppers and boost revenue.</description>
       <category>WooCommerce</category>
-    </item>
-    <item>
-      <title>How to Create WordPress Mega Menu | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu</guid>
-      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Learn how to create a WordPress mega menu with step-by-step code examples, best practices and tips for building advanced navigation menus in WordPress.</description>
-      <category>WordPress</category>
     </item>
   </channel>
 </rss>
