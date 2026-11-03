@@ -28,11 +28,22 @@ const http = require('http');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
-// Fallback used when the primary model returns 503 (high demand).
-// Use a stable ALIAS (not a pinned version) - pinned models get retired and
-// start returning 404 "no longer available to new users", which killed the
-// 2026-10-28 run when combined with a Gemini 503 spike.
-const GEMINI_FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || 'gemini-flash-latest';
+// Fallback chain used when the primary model is unavailable.
+// Gemini free-tier quotas are PER MODEL (gemini-3.8-flash: 20 generate_content
+// requests/day), and aliases such as gemini-flash-latest resolve to the SAME
+// quota as the primary - so when the primary is exhausted the chain must move
+// to a genuinely different model. Each entry is tried in order.
+// Set GEMINI_FALLBACK_MODELS="" to disable the chain entirely; the legacy
+// GEMINI_FALLBACK_MODEL (single model) is still honoured when set.
+const DEFAULT_FALLBACK_MODELS = 'gemini-3.6-flash, gemini-3.5-flash, gemini-flash-lite-latest';
+const GEMINI_MODEL_CHAIN = (() => {
+  const raw = process.env.GEMINI_FALLBACK_MODELS !== undefined
+    ? process.env.GEMINI_FALLBACK_MODELS
+    : (process.env.GEMINI_FALLBACK_MODEL || DEFAULT_FALLBACK_MODELS);
+  return [GEMINI_MODEL, ...String(raw).split(',')]
+    .map(m => m.trim())
+    .filter((m, i, arr) => m && arr.indexOf(m) === i);
+})();
 const SITE_URL = 'https://shiv-parmar-portfolio.netlify.app';
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const QUEUE_FILE = path.join(__dirname, '..', 'blog-queue.json');
@@ -104,6 +115,15 @@ function isUnavailableError(err) {
   return /\b503\b|\b429\b|UNAVAILABLE|RESOURCE_EXHAUSTED|high demand|rate limit/i.test(msg);
 }
 
+// A per-model daily QUOTA (429 "You exceeded your current quota ... requests
+// per day") does not clear by waiting a few seconds - only the NEXT model in
+// the chain (or tomorrow's reset) helps. Distinguished from transient 503s so
+// we do not burn 15s sleeps + outer retries on a quota that cannot recover.
+function isQuotaError(err) {
+  const msg = (err && err.message) || '';
+  return /\b429\b/.test(msg) && /exceeded your current quota|per day limit|free tier/i.test(msg);
+}
+
 function callGeminiAPI(prompt, model = GEMINI_MODEL) {
   return new Promise((resolve, reject) => {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
@@ -138,39 +158,49 @@ function callGeminiAPI(prompt, model = GEMINI_MODEL) {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // Resilient model chain:
-//   1. primary -> 2. short wait + retry primary -> 3. fallback model
-// A failed fallback (e.g. a retired model returning 404) must NOT kill the
-// run: we rethrow the original 503 so the outer retry loop
-// (scripts/retry-generate.js) can keep riding out the high-demand spike
-// with its exponential backoff instead of failing instantly.
+//   for each model in GEMINI_MODEL_CHAIN:
+//     1. try it -> 2. on a transient 503, one short wait + retry it
+//     3. on a per-model QUOTA 429, skip straight to the next model
+// A failed model must NOT kill the run: we remember the first error and keep
+// walking the chain, so the outer retry loop (scripts/retry-generate.js) can
+// still ride out a spike. Only when EVERY model failed do we rethrow.
 async function callGemini(prompt) {
-  let primaryErr = null;
+  let firstErr = null;
 
-  for (let i = 0; i < 2; i++) {
-    try {
-      return await callGeminiAPI(prompt, GEMINI_MODEL);
-    } catch (err) {
-      if (!isUnavailableError(err)) throw err;
-      primaryErr = err;
-      if (i === 0) {
-        console.log(`${GEMINI_MODEL} returned 503 (high demand). Waiting 15s, retrying same model...`);
-        await sleep(15000);
+  for (let m = 0; m < GEMINI_MODEL_CHAIN.length; m++) {
+    const model = GEMINI_MODEL_CHAIN[m];
+    const isPrimary = m === 0;
+
+    for (let i = 0; i < 2; i++) {
+      try {
+        const text = await callGeminiAPI(prompt, model);
+        if (!isPrimary || i > 0) console.log(`  -> generated with ${model}${i ? ' (after retry)' : ''}`);
+        return text;
+      } catch (err) {
+        // Real errors (404 bad model name, auth, malformed prompt) are not
+        // retryable - but on a FALLBACK model they only mean "this model is
+        // not usable", so keep walking instead of failing the run.
+        if (!isUnavailableError(err)) {
+          if (isPrimary) throw err;
+          console.log(`${model}: unusable (${String(err.message).slice(0, 90)}) - trying next model.`);
+          break;
+        }
+        if (!firstErr) firstErr = err;
+
+        if (isQuotaError(err)) {
+          console.log(`${model}: daily quota exhausted - moving to next model.`);
+          break;
+        }
+        if (i === 0) {
+          console.log(`${model} returned 503 (high demand). Waiting 15s, retrying same model...`);
+          await sleep(15000);
+        }
       }
     }
   }
 
-  console.log(`${GEMINI_MODEL} still unavailable (${String(primaryErr.message).slice(0, 80)}).`);
-
-  if (GEMINI_FALLBACK_MODEL && GEMINI_FALLBACK_MODEL !== GEMINI_MODEL) {
-    console.log(`Falling back to ${GEMINI_FALLBACK_MODEL}...`);
-    try {
-      return await callGeminiAPI(prompt, GEMINI_FALLBACK_MODEL);
-    } catch (fbErr) {
-      console.log(`Fallback ${GEMINI_FALLBACK_MODEL} failed (${String(fbErr.message).slice(0, 120)}). Keeping the run retryable with the primary error.`);
-    }
-  }
-
-  throw primaryErr;
+  console.log(`All ${GEMINI_MODEL_CHAIN.length} model(s) in the chain failed (${String((firstErr && firstErr.message) || '').slice(0, 90)}).`);
+  throw firstErr;
 }
 
 async function generateBlogContent(blog) {
@@ -691,6 +721,7 @@ async function main() {
   console.log('========================================');
   console.log('Auto Blog Generator v2');
   console.log(`Model: ${GEMINI_MODEL}`);
+  if (GEMINI_MODEL_CHAIN.length > 1) console.log(`Fallback chain: ${GEMINI_MODEL_CHAIN.slice(1).join(' -> ')}`);
   console.log('========================================\n');
 
   if (!GEMINI_API_KEY) {
@@ -769,7 +800,7 @@ async function main() {
   console.log('========================================');
 }
 
-module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, updateBlogHTML, updateIndexHTML, updateSitemap, buildMetaTitle, clampMetaDescription, SEO_RULES, BLOG_DIR };
+module.exports = { getRelatedPosts, buildRelatedHTML, buildTOC, escapeHtml, createBlogHTML, updateBlogHTML, updateIndexHTML, updateSitemap, buildMetaTitle, clampMetaDescription, SEO_RULES, BLOG_DIR, callGemini, GEMINI_MODEL_CHAIN };
 
 if (require.main === module) {
   main().catch((err) => {
