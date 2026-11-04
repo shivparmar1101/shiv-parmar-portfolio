@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress View Transitions API: Smooth Page | Shiv Parmar</title>
+<meta name="description" content="Learn how to use the WordPress View Transitions API to create smooth, app-like page animations. Elevate your site&#39;s user experience with our complete guide.">
+<meta name="keywords" content="View Transitions, animations, UX">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress View Transitions API: Smooth Page Animations">
+<meta property="og:description" content="Learn how to use the WordPress View Transitions API to create smooth, app-like page animations. Elevate your site&#39;s user experience with our complete guide.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-view-transitions-smooth-animations-hero.svg">
+<meta property="og:image:alt" content="WordPress View Transitions API: Smooth Page Animations - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-11-04">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress View Transitions API: Smooth Page Animations">
+<meta name="twitter:description" content="Learn how to use the WordPress View Transitions API to create smooth, app-like page animations. Elevate your site&#39;s user experience with our complete guide.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-view-transitions-smooth-animations-hero.svg">
+<meta name="twitter:image:alt" content="WordPress View Transitions API: Smooth Page Animations - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress View Transitions API: Smooth Page Animations",
+  "description": "Learn how to use the WordPress View Transitions API to create smooth, app-like page animations. Elevate your site's user experience with our complete guide.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-view-transitions-smooth-animations-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=43f486a0">
+<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass)}
+.content thead th{background:var(--bg-glass-strong);padding:12px 15px;text-align:left;color:var(--text-primary);font-weight:700;border:1px solid var(--border-glass);border-bottom:2px solid var(--accent)}
+.content th,.content td{padding:12px 15px;border:1px solid var(--border-glass)}
+.content th{background:var(--bg-glass-strong);color:var(--text-primary);font-weight:700}
+.content td{color:var(--text-secondary)}
+.content tbody tr:nth-child(even){background:var(--bg-glass)}
+.content tbody tr:hover{background:var(--bg-glass-hover)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-view-transitions-smooth-animations-hero.svg" alt="WordPress View Transitions API: Smooth Page | Shiv Parmar - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress View Transitions API: Smooth Page | Shiv Parmar
+</nav>
+<div class="date">2026-11-04 &middot; 14 min read</div>
+<h1>WordPress View Transitions API: Smooth Page | Shiv Parmar</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What is the View Transitions API?">What is the View Transitions API?</a></li>
+<li><a href="#section-1" title="Why View Transitions Matter for WordPress in 2026">Why View Transitions Matter for WordPress in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide: Implementing View Transitions in WordPress">Step-by-Step Guide: Implementing View Transitions in WordPress</a></li>
+<li><a href="#section-3" title="Best Practices for WordPress View Transitions">Best Practices for WordPress View Transitions</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/best-wordpress-booking-plugins-2026-tested" title="Best WordPress Booking Plugins 2026 Tested">Best WordPress Booking Plugins 2026 Tested</a>
+      <a href="../blog/best-wordpress-mcp-plugins-2026-tested-compared" title="Best WordPress MCP Plugins 2026: 21 Tested">Best WordPress MCP Plugins 2026: 21 Tested</a>
+      <a href="../blog/best-wordpress-migration-plugins-2026-tested" title="Best WordPress Migration Plugins 2026: 6 Picks">Best WordPress Migration Plugins 2026: 6 Picks</a>
+      <a href="../blog/best-wordpress-plugins-2026-top-30-ranked" title="Best WordPress Plugins 2026: Top 30 Ranked">Best WordPress Plugins 2026: Top 30 Ranked</a>
+  </nav>
+</div>
+<p>For more than two decades, the traditional web browsing experience has followed an abrupt, mechanical pattern: click a link, stare at an empty white viewport while the browser unloads the document, and watch elements jump aggressively into place as the new page renders. Native mobile applications long ago abandoned this jarring paradigm in favor of smooth, context-aware visual continuity. Web developers attempted to emulate this fluidity by converting standard websites into heavy Single Page Applications (SPAs)—often trading away SEO performance, caching simplicity, and baseline speed in exchange for visual polish.</p>
+
+<p>The web platform has fundamentally evolved. With the native browser <strong>View Transitions</strong> API now extending to multi-page architectures, WordPress websites can deliver fluid, app-like page navigation without changing a single line of your database schema or abandoning the classic WordPress template hierarchy. By offloading rendering calculations to the browser's GPU and rendering pipeline, native cross-document transitions allow images to glide across views, headers to persist seamlessly, and content to fade gracefully between clicks.</p>
+
+<p>Implementing modern <strong>animations</strong> in WordPress is no longer about chaining unwieldy JavaScript libraries like Barba.js or Turbolinks. Instead, it is about unlocking native browser standards to elevate site-wide <strong>UX</strong>. In this guide, we will unpack how the View Transitions API works within the WordPress ecosystem, explore its measurable impact on engagement and performance metrics, and walk through production-ready implementation strategies for block and classic themes alike.</p>
+
+<h2 id="section-0">What is the View Transitions API?</h2>
+
+<p>The View Transitions API is a browser specification that provides a native mechanism for creating animated transitions between different DOM states. Initially launched for same-document (single-page) architectures, the specification now natively supports cross-document transitions—often referred to as Multi-Page App (MPA) View Transitions. This cross-document support is precisely what makes the technology revolutionary for WordPress.</p>
+
+<p>Traditionally, navigating from an archive listing (`archive.php` or `index.html`) to a single post (`single.php`) in WordPress triggers a hard document lifecycle: the old document is completely destroyed, assets are re-evaluated, and the new document paints from scratch. With cross-document View Transitions enabled, the browser intercepts this handoff by executing a precise, hardware-accelerated sequence:</p>
+
+<ol>
+    <li>The user clicks a link pointing to a new page within the same origin.</li>
+    <li>The browser captures a visual snapshot (a rasterized screenshot) of the outgoing page's current state.</li>
+    <li>The incoming page is fetched over the network and parsed in the background.</li>
+    <li>Before displaying the new page, the browser captures a snapshot of the incoming page.</li>
+    <li>The browser constructs a temporary pseudo-element tree that sits on top of the document.</li>
+    <li>Using standard CSS animations, the browser transitions between the old snapshots and the new live elements, morphing shared elements across coordinates.</li>
+</ol>
+
+<p>This entire process happens on the browser rendering thread. Your WordPress backend continues outputting standard semantic HTML, serving cached assets, and executing zero client-side routing routines. The browser treats the navigation as a standard multi-page load for SEO, analytics, and security, but paints it as an unbroken, continuous visual thread for the user.</p>
+
+<h3>The Pseudo-Element Architecture Under the Hood</h3>
+
+<p>When a transition executes, the browser constructs a specialized, temporary pseudo-element hierarchy at the root level of the document. Understanding this structure is essential for writing custom transition CSS:</p>
+
+<pre><code>::view-transition
+└── ::view-transition-group(root)
+    └── ::view-transition-image-pair(root)
+        ├── ::view-transition-old(root)
+        └── ::view-transition-new(root)
+</code></pre>
+
+<p>Every element assigned a unique <code>view-transition-name</code> receives its own independent <code>::view-transition-group()</code> branch. This isolates the element from the global page snapshot, allowing it to translate, scale, and cross-fade independently from the surrounding document flow.</p>
+
+<h2 id="section-1">Why View Transitions Matter for WordPress in 2026</h2>
+
+<p>The modern web landscape demands frictionless interactions. Users spend the majority of their digital time inside native mobile ecosystems (iOS and Android apps) where context-preserving animations guide focus, reinforce visual hierarchy, and signal state changes. When those same users navigate a typical WordPress site, the jarring "hard refresh" feels antiquated, driving up micro-frustrations and perceived load times.</p>
+
+<p>Beyond aesthetics, adopting native view transitions provides critical architectural advantages for WordPress administrators and developers:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature / Metric</th>
+            <th>Traditional WordPress Navigation</th>
+            <th>SPA Frameworks (Headless WordPress)</th>
+            <th>Native View Transitions API</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>JavaScript Overhead</strong></td>
+            <td>Low (0–50 KB)</td>
+            <td>Extremely High (200–800+ KB)</td>
+            <td>Zero (Browser Native)</td>
+        </tr>
+        <tr>
+            <td><strong>SEO & Crawlability</strong></td>
+            <td>Native / Out of the Box</td>
+            <td>Requires SSR / Prerendering</td>
+            <td>Native / Out of the Box</td>
+        </tr>
+        <tr>
+            <td><strong>Perceived Latency</strong></td>
+            <td>High (White screen flash)</td>
+            <td>Low (Dynamic routing)</td>
+            <td>Extremely Low (Visual continuity)</td>
+        </tr>
+        <tr>
+            <td><strong>Plugin Compatibility</strong></td>
+            <td>100% Core Native</td>
+            <td>Frequently Breaks Script Queues</td>
+            <td>100% Core Native</td>
+        </tr>
+        <tr>
+            <td><strong>Core Web Vitals Impact</strong></td>
+            <td>Susceptible to Layout Shifts</td>
+            <td>High INP Risk Due to Scripting</td>
+            <td>Optimizes Perceived LCP & Lowers INP</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The View Transitions API directly optimizes <strong>UX</strong> by eliminating perceived latency. When an element—such as a featured blog thumbnail—seamlessly scales up into the hero header of the target post, the user’s cognitive focus remains locked on the content. The browser masks network loading time behind a purposeful, contextual animation.</p>
+
+<p>Furthermore, because native transitions avoid the DOM replacement headaches common to PJAX or Barba.js setups, you do not need to re-initialize third-party analytics tags, re-bind event listeners for plugins like WooCommerce or Gravity Forms, or rebuild WordPress's internal asset dependency graph. It is the architectural compromise web developers have sought for over a decade: the operational simplicity of an MPA paired with the fluid presentation of an SPA.</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement View Transitions with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<h2 id="section-2">Step-by-Step Guide: Implementing View Transitions in WordPress</h2>
+
+<p>Deploying native View Transitions to your WordPress theme requires a structured approach, progressing from a global opt-in rule to granular element tracking and robust accessibility safeguards.</p>
+
+<h3>Step 1: Enabling Cross-Document Transitions with CSS</h3>
+
+<p>The browser requires explicit consent from both the current document and the target document before running a cross-page transition. To provide this consent, you must declare the <code>@view-transition</code> at-rule inside your global stylesheet.</p>
+
+<p>Add the following declaration to your theme’s main stylesheet (e.g., <code>style.css</code> in a child theme or your active custom block theme):</p>
+
+<pre><code>@view-transition {
+    navigation: auto;
+}
+</code></pre>
+
+<p>Setting <code>navigation: auto</code> informs the browser that when a same-origin navigation occurs, it should capture the outgoing snapshot, request the target document, capture the incoming snapshot, and execute the default cross-fade transition. With this single rule, your entire WordPress site immediately abandons the blank-screen refresh and adopts a soft, browser-level cross-dissolve.</p>
+
+<h3>Step 2: Properly Enqueuing Styles via functions.php</h3>
+
+<p>To ensure your transitions load cleanly without render-blocking issues, enqueue your transition rules properly inside WordPress. Open your active theme’s <code>functions.php</code> file and register your styles using the standard hook:</p>
+
+<pre><code>&lt;?php
+/**
+ * Enqueue View Transitions styles.
+ */
+function wp_view_transitions_enqueue_scripts() {
+    wp_enqueue_style(
+        'wp-view-transitions-style',
+        get_theme_file_uri( '/assets/css/view-transitions.css' ),
+        array(),
+        wp_get_theme()-&gt;get( 'Version' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'wp_view_transitions_enqueue_scripts' );
+</code></pre>
+
+<p>If you prefer an inline approach to eliminate an extra HTTP request, you can inject the base rule directly into your document head:</p>
+
+<pre><code>&lt;?php
+/**
+ * Inject critical view transition rule into document head.
+ */
+function wp_view_transitions_inline_head() {
+    echo '&lt;style id="view-transitions-core"&gt;@view-transition { navigation: auto; }&lt;/style&gt;' . "\n";
+}
+add_action( 'wp_head', 'wp_view_transitions_inline_head', 1 );
+</code></pre>
+
+<h3>Step 3: Creating Persistent Interface Elements</h3>
+
+<p>The default <code>navigation: auto</code> behavior dissolves the entire old page into the entire new page. While this is an improvement, true app-like UX occurs when UI components that do not change—such as your site header, primary navigation, or persistent search bar—remain static while only the content body shifts.</p>
+
+<p>To lock an element in place, assign it an explicit, unique <code>view-transition-name</code> property in your CSS:</p>
+
+<pre><code>/* Preserve the Site Header */
+.site-header,
+header.wp-block-template-part {
+    view-transition-name: main-site-header;
+}
+
+/* Preserve the Primary Navigation */
+.main-navigation,
+nav.wp-block-navigation {
+    view-transition-name: primary-nav;
+}
+
+/* Preserve the Site Footer */
+.site-footer,
+footer.wp-block-template-part {
+    view-transition-name: main-site-footer;
+}
+</code></pre>
+
+<p>Because the browser sees an identical <code>view-transition-name</code> on both the current and incoming pages, it extracts that element into its own layer. Rather than fading out and back in, the header stays pinned to the viewport, while the rest of the document transitions underneath it.</p>
+
+<h3>Step 4: Building Shared Element Transitions (Card to Single Post)</h3>
+
+<p>The most visually impressive application of the View Transitions API is the "shared element" pattern: animating a post card’s featured image on an archive page directly into the full-width hero image of the single post template.</p>
+
+<p>The challenge in a dynamic CMS like WordPress is that <code>view-transition-name</code> values must be <strong>globally unique</strong> on any given page. If your archive page contains ten posts, you cannot assign <code>view-transition-name: post-thumbnail;</code> to all ten images, or the browser will discard the transition entirely due to name collisions.</p>
+
+<p>To solve this, assign dynamic transition names based on the post ID. Here is how to achieve this using WordPress template tags or custom filters.</p>
+
+<p><strong>For Classic Themes (PHP Templates):</strong></p>
+
+<p>In your <code>archive.php</code> loop:</p>
+
+<pre><code>&lt;article id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class( 'post-card' ); ?&gt;&gt;
+    &lt;a href="&lt;?php the_permalink(); ?&gt;" class="post-card-image-link"&gt;
+        &lt;?php 
+        the_post_thumbnail( 'medium', array(
+            'style' =&gt; 'view-transition-name: post-img-' . get_the_ID() . ';',
+            'class' =&gt; 'archive-thumbnail'
+        ) ); 
+        ?&gt;
+    &lt;/a&gt;
+    &lt;h2 class="entry-title" style="view-transition-name: post-title-&lt;?php the_ID(); ?&gt;;"&gt;
+        &lt;a href="&lt;?php the_permalink(); ?&gt;"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;
+    &lt;/h2&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>In your <code>single.php</code> template:</p>
+
+<pre><code>&lt;article id="post-&lt;?php the_ID(); ?&gt;" &lt;?php post_class( 'single-post-wrapper' ); ?&gt;&gt;
+    &lt;header class="post-header"&gt;
+        &lt;h1 class="entry-title" style="view-transition-name: post-title-&lt;?php the_ID(); ?&gt;;"&gt;
+            &lt;?php the_title(); ?&gt;
+        &lt;/h1&gt;
+        &lt;?php 
+        the_post_thumbnail( 'full', array(
+            'style' =&gt; 'view-transition-name: post-img-' . get_the_ID() . ';',
+            'class' =&gt; 'single-hero-thumbnail'
+        ) ); 
+        ?&gt;
+    &lt;/header&gt;
+    &lt;div class="entry-content"&gt;
+        &lt;?php the_content(); ?&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>When the user clicks from the archive page to Post #42, the browser notes that <code>post-img-42</code> exists on both documents. It automatically interpolates the width, height, border-radius, and screen coordinates, smoothly flying the card thumbnail into the hero header position.</p>
+
+<p><strong>For Block Themes (FSE):</strong></p>
+
+<p>If you are utilizing full site editing (FSE) block templates where you do not write raw PHP loops, you can use the <code>render_block</code> filter to dynamically inject transition names onto the Featured Image block:</p>
+
+<pre><code>&lt;?php
+/**
+ * Inject dynamic view-transition-name into core/post-featured-image blocks.
+ */
+function wp_add_view_transition_to_featured_image( $block_content, $block ) {
+    if ( 'core/post-featured-image' === $block['blockName'] ) {
+        $post_id = get_the_ID();
+        if ( ! $post_id ) {
+            return $block_content;
+        }
+
+        // Add inline style for transition name to the img element
+        $transition_style = 'style="view-transition-name: post-img-' . esc_attr( $post_id ) . ';"';
+        $block_content = str_replace( '&lt;img ', '&lt;img ' . $transition_style . ' ', $block_content );
+    }
+
+    return $block_content;
+}
+add_filter( 'render_block', 'wp_add_view_transition_to_featured_image', 10, 2 );
+</code></pre>
+
+<h3>Step 5: Customizing Animation Timings and Easing Curves</h3>
+
+<p>The default browser transition uses a generic cross-dissolve lasting approximately 250 milliseconds. To deliver a signature design language, you can override the animation curves applied to the pseudo-element tree.</p>
+
+<p>Here is an example that creates an intentional, high-end editorial feel using cubic-bezier timing and subtle vertical translations:</p>
+
+<pre><code>/* Define smooth easing variables */
+:root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-standard: 380ms;
+}
+
+/* Customize the old content leaving the viewport */
+::view-transition-old(root) {
+    animation: fade-out 200ms ease-out both;
+}
+
+/* Customize the new content entering the viewport */
+::view-transition-new(root) {
+    animation: slide-up var(--duration-standard) var(--ease-out-expo) both;
+}
+
+/* Keyframe animations */
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth morphing for shared thumbnails */
+::view-transition-group(*) {
+    animation-duration: var(--duration-standard);
+    animation-timing-function: var(--ease-out-expo);
+}
+</code></pre>
+
+<h3>Step 6: Progressive Enhancement and Fallback Handlers</h3>
+
+<p>While modern Chromium browsers and Apple WebKit (Safari 18+) provide native support for cross-document view transitions, older browsers and specific configurations will encounter stylesheets containing these properties without native capability. The fundamental beauty of CSS View Transitions is that they fail silently; unsupported browsers simply run standard, un-animated page loads.</p>
+
+<p>However, if you want to execute conditional logic or load polyfills, you can feature-detect support in CSS and JavaScript:</p>
+
+<p><strong>In CSS:</strong></p>
+
+<pre><code>@supports (view-transition-name: test) {
+    /* Advanced transition styling only applied if supported */
+    .site-main {
+        view-transition-name: content-area;
+    }
+}
+</code></pre>
+
+<p><strong>In JavaScript:</strong></p>
+
+<pre><code>document.addEventListener('DOMContentLoaded', () => {
+    if (!('startViewTransition' in document)) {
+        // Fallback: Document does not support View Transitions
+        console.info('Native View Transitions are not supported in this browser.');
+    }
+});
+</code></pre>
+
+<h2 id="section-3">Best Practices for WordPress View Transitions</h2>
+
+<p>Implementing transition effects requires intentionality. Without careful technical governance, dynamic transitions can impair accessibility, degrade device battery life, or cause confusing visual jumps.</p>
+
+<h3>1. Respect Accessibility and Motion Sensitivities</h3>
+
+<p>The most important rule when configuring site-wide <strong>animations</strong> is honoring user preferences. Users suffering from vestibular disorders, motion sickness, or cognitive sensitivities often configure their operating system to reduce motion effects.</p>
+
+<p>You must include a <code>prefers-reduced-motion</code> media query that completely strips out motion or replaces translations with immediate cuts or instantaneous cross-fades:</p>
+
+<pre><code>@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+    
+    @view-transition {
+        navigation: none;
+    }
+}
+</code></pre>
+
+<h3>2. Maintain Strict Control Over Transition Durations</h3>
+
+<p>Transitions should inform, not delay. A common design pitfall is slowing down animations to show off visual assets. Long transitions (greater than 400ms) make the site feel sluggish, frustrating users who want to find information quickly.</p>
+
+<ul>
+    <li><strong>Standard cross-fades:</strong> 150ms to 250ms.</li>
+    <li><strong>Shared element morphs (card to page):</strong> 300ms to 380ms maximum.</li>
+    <li><strong>Timing functions:</strong> Always use an easing curve with a fast start and decelerating finish (such as <code>ease-out</code> or custom <code>cubic-bezier</code> curves) so elements react immediately to user input.</li>
+</ul>
+
+<h3>3. Manage Layer Containment and Aspect Ratios</h3>
+
+<p>When an element transitions between pages, the browser scales both its content and its bounding box. If an archive card displays a thumbnail in a <code>16:9</code> aspect ratio, but the single post displays it in a <code>21:9</code> banner ratio, the image may stretch unnaturally during the animation if not properly constrained.</p>
+
+<p>Ensure that both the source and target elements utilize matching <code>object-fit</code> definitions to avoid distorting the rendered image:</p>
+
+<pre><code>.archive-thumbnail,
+.single-hero-thumbnail {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+</code></pre>
+
+<p>To avoid clipping bugs, assign <code>overflow: clip;</code> or <code>overflow: hidden;</code> to containing elements, ensuring that during scale transformations, nested elements do not bleed outside their parent containers.</p>
+
+<h3>4. Keep the Logged-In Admin Bar Stable</h3>
+
+<p>For logged-in administrators and editors, the WordPress Admin Bar (<code>#wpadminbar</code>) sits pinned to the top of the viewport. If you apply a global page slide or fail to isolate the admin bar, the toolbar will flash, shift down, or cross-fade on every click.</p>
+
+<p>Isolate the admin bar by assigning it an explicit transition name:</p>
+
+<pre><code>#wpadminbar {
+    view-transition-name: admin-bar;
+}
+</code></pre>
+
+<p>This prevents the administrative controls from shifting or re-animating during internal editorial workflow testing.</p>
+
+<h2 id="section-4">Common Mistakes to Avoid</h2>
+
+<p>Because the View Transitions API operates at a low level in the browser rendering engine, minor configuration bugs can completely disable animations or trigger visual glitches.</p>
+
+<h3>1. Duplicate Transition Names</h3>
+
+<p>The single most frequent mistake in WordPress implementations is duplicating names. The browser specification mandates that a <code>view-transition-name</code> must be unique within both the active document and the incoming document.</p>
+
+<p>If you mistakenly add static CSS like this:</p>
+
+<pre><code>/* INCORRECT: Will break if multiple cards exist on the page */
+.post-card .post-thumbnail {
+    view-transition-name: featured-image;
+}
+</code></pre>
+
+<p>When your archive page renders with twelve posts, twelve elements share the name <code>featured-image</code>. When a user clicks a link, the browser detects this name collision, discards the transition entirely, and falls back to an unstyled, instant page reload. Always bind unique identifiers (such as the database post ID or taxonomy slug) to dynamically generated elements.</p>
+
+<h3>2. Over-Animating Page Elements</h3>
+
+<p>It is tempting to assign transition names to the header, the logo, the navigation menu, the sidebar, the author bio box, the comments container, and the footer simultaneously. Running ten distinct transition groups forces the browser to compose and render multiple simultaneous bitmap textures on the GPU.</p>
+
+<p>On low-power mobile hardware, this can cause frame drops, jank, and a degraded <strong>UX</strong>. Adhere to a minimalist philosophy: pin persistent layout boundaries (header/footer) and animate only one key contextual element (the primary image or headline).</p>
+
+<h3>3. Ignoring Cumulative Layout Shift (CLS) on Late-Loaded Ads and Scripts</h3>
+
+<p>View transitions take visual snapshots of the page exactly when the unload process begins. If your WordPress site loads dynamic client-side scripts—such as third-party display advertisements, newsletter popups, or chat widgets—that suddenly shift the page right as the transition activates, the outgoing snapshot will capture that layout shift.</p>
+
+<p>Ensure that all structural layout dimensions are reserved using explicit CSS aspect-ratio or min-height declarations. Do not run heavy client-side DOM mutations in the milliseconds immediately following a link click.</p>
+
+<h3>4. Forgetting External Links and Cross-Origin Navigation</h3>
+
+<p>The View Transitions API for cross-document navigation strictly enforces the Same-Origin Policy. A link pointing to an external domain (or a different subdomain) cannot run a view transition. If you write custom JavaScript transition helpers, avoid applying loading states or link interception to external links, file downloads, or <code>target="_blank"</code> links.</p>
+
+<p>You can safeguard your links using a standard CSS selector filter or simple JavaScript check:</p>
+
+<pre><code>// Example: Intercept only internal same-origin links if enhancing with JS
+document.querySelectorAll('a').forEach(link => {
+    if (link.origin !== window.location.origin || link.target === '_blank') {
+        // Exclude from custom transition logic
+        return;
+    }
+});
+</code></pre>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-5">Conclusion</h2>
+<p>Integrating the <strong>View Transitions</strong> API into your WordPress site effectively bridges the gap between traditional multi-page architecture and the fluid feel of modern single-page applications. By replacing jarring browser reloads with seamless page <strong>animations</strong>, you can dramatically elevate your site's perceived speed and deliver a refined, modern <strong>UX</strong> that keeps users engaged.</p>
+
+<p>While implementing these transition effects requires careful consideration around progressive enhancement and cross-browser fallbacks, the impact on user retention and brand perception is well worth the effort. Embracing these native browser capabilities ensures your WordPress platform stays ahead of design trends without sacrificing accessibility or performance.</p>
+
+<p>Ready to modernize your WordPress site with seamless page transitions and high-performance design? <strong>Shiv Parmar</strong> is available for WordPress development work worldwide, helping businesses and agencies craft bespoke, high-converting digital experiences. Get in touch today to bring cutting-edge web capabilities to your next project.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">View Transitions</a>
+<a href="/blog" class="tag">animations</a>
+<a href="/blog" class="tag">UX</a>
+</div>
+
+<!-- AUTO_AUTHOR_BOX -->
+<div class="author-box">
+<img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-11-03 &middot; 8 min read</div>
+<h4><a href="../blog/block-level-css-wordpress-7-style-blocks" title="Block-Level CSS WordPress 7.0: Style Every Block">Block-Level CSS WordPress 7.0: Style Every Block</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-03 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-breadcrumb-block-native-seo" title="WordPress Breadcrumb Block: Native SEO Navigation">WordPress Breadcrumb Block: Native SEO Navigation</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-01 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-font-manager-custom-fonts" title="WordPress Font Manager: Upload Custom Fonts in 7.0">WordPress Font Manager: Upload Custom Fonts in 7.0</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+</body>
+</html>
