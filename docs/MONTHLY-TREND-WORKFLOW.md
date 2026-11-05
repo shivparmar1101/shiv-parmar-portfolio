@@ -138,21 +138,20 @@ node scripts/monthly-trend-titles.js --count=30 --month=2026-12
 
 ## Cadence Mathu Rakho (Important)
 
-Existing cadence **2 posts/day = ~60 posts/month** che, ane aa workflow month ma
-**30 titles** aape che (1/day). Atliye:
+Cadence now **1 post/day = ~30 posts/month** che (3 PM valo cron kadhya pachhi),
+ane aa workflow month ma **30 titles** aape che (1/day). Atle:
 
-- **Today:** queue ma ~40 pending che → ~20 din nu content ready
-- **Monthly refill:** 30 titles/month → queue eventually khashta raheshe
+- **Balance:** 30 titles in, 30 posts out → queue stable, khashtu nathi
+- **Refill:** dar mahine 1st na roj nava 30 titles add thay
 
-Jo exact **1 post/day** joie (30/month sathe match kare), toh
-`auto-blog-publisher.yml` ma ena 3 PM valo cron remove karo:
+Jo 2 posts/day joiye toh `auto-blog-publisher.yml` ma cron pachu add karo:
 
 ```yaml
     - cron: '30 9 * * *'   # 3:00 AM IST - keep
-    - cron: '30 21 * * *'  # 3:00 PM IST - delete for 1 post/day
+    - cron: '30 21 * * *'  # 3:00 PM IST - add back for 2 post/day
 ```
 
-Bey opposite: 2 posts/day rakhva hoy toh count 60 karo (`--count=60`).
+Sathe `--count=60` pan karo (`docs/TREND-PLAN-YYYY-MM.md` ma targets sathe match kare).
 
 ---
 

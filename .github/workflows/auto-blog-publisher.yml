@@ -1,9 +1,9 @@
 name: Auto Blog Publisher
 on:
   schedule:
-    # Runs at 3:00 AM and 3:00 PM IST (9:30 AM and 9:30 PM UTC)
+    # Runs once a day at 3:00 AM IST (9:30 AM UTC) - 1 post/day keeps the
+    # queue balanced with the 30 titles the Monthly Trend Titles workflow adds.
     - cron: '30 9 * * *'
-    - cron: '30 21 * * *'
   workflow_dispatch:
 
 permissions:
