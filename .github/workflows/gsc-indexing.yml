@@ -1,5 +1,9 @@
-# Google Search Console: submit sitemap + inspect index status
+# Google Search Console: submit sitemap + inspect index status.
 # Skips gracefully when GSC_SERVICE_ACCOUNT secret is not set up.
+#
+# The status report is committed back to the repo (seo-data/gsc-status.json) so the
+# indexing state is visible without opening Actions artifacts, and so the next run can
+# rotate its inspection budget through the URLs it has not checked lately.
 name: GSC Indexing
 
 on:
@@ -8,11 +12,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: gsc-indexing
+  cancel-in-progress: false
 
 jobs:
   gsc:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -23,10 +32,15 @@ jobs:
         with:
           node-version: '22'
 
+      # Unindexed-but-discovered URLs are reported as a warning only: Google has no
+      # "request indexing" API, so failing the run on them only produced red runs
+      # (Oct 27 - Nov 1) without fixing anything.
       - name: Submit sitemap + inspect URLs
         env:
           GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
           GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
+          GSC_INSPECT_MAX: '30'
+          GSC_FAIL_ON_STALE: '0'
         run: node scripts/gsc-indexing.js
 
       - name: Upload index status report
@@ -37,3 +51,29 @@ jobs:
           path: seo-data/gsc-status.json
           retention-days: 30
           if-no-files-found: ignore
+
+      - name: Commit index status report
+        if: always()
+        continue-on-error: true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add -f seo-data/gsc-status.json
+          if git diff --cached --quiet; then
+            echo "gsc-status.json unchanged - nothing to commit"
+            exit 0
+          fi
+
+          git commit -m "SEO: refresh GSC index status report"
+
+          # Retry on a push race with the Auto Blog Publisher (both push to main).
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Report committed"
+              exit 0
+            fi
+            echo "push attempt $i failed - retrying in 20s"
+            sleep 20
+          done
+          echo "::warning::Could not push the GSC report (push race) - run succeeded anyway"

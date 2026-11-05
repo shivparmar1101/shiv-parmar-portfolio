@@ -14,9 +14,15 @@
  * Env:
  *   GSC_SERVICE_ACCOUNT  service account JSON (raw JSON, or base64 of it). If unset -> skip.
  *   GSC_SITE_URL         default https://shiv-parmar-portfolio.netlify.app/
- *   GSC_INSPECT_DAYS     inspect URLs with lastmod within N days (default 14)
+ *   GSC_INSPECT_DAYS     always inspect URLs with lastmod within N days (default 14)
+ *   GSC_INSPECT_MAX      max URLs inspected per run (default 30)
  *   GSC_ALERT_DAYS       warn when a post older than N days is not indexed (default 7)
  *   GSC_FAIL_ON_STALE    set to 1 to exit 1 on stale/unindexed URLs (default: warn only)
+ *
+ * Rotation: URLs modified inside GSC_INSPECT_DAYS are always inspected. The remaining
+ * budget is filled with the least-recently-inspected older URLs (tracked in the previous
+ * seo-data/gsc-status.json), so every sitemap URL is re-checked over time instead of
+ * only the ones that changed recently.
  *
  * Flags:
  *   --all          inspect every sitemap URL (not just recent ones)
@@ -36,6 +42,7 @@ const OUTPUT_PATH = path.join(ROOT, 'seo-data', 'gsc-status.json');
 
 const SITE_URL = (process.env.GSC_SITE_URL || 'https://shiv-parmar-portfolio.netlify.app/').replace(/\/*$/, '/');
 const INSPECT_DAYS = Math.max(1, parseInt(process.env.GSC_INSPECT_DAYS || '14', 10));
+const INSPECT_MAX = Math.max(1, parseInt(process.env.GSC_INSPECT_MAX || '30', 10));
 const ALERT_DAYS = Math.max(1, parseInt(process.env.GSC_ALERT_DAYS || '7', 10));
 const FAIL_ON_STALE = process.env.GSC_FAIL_ON_STALE === '1';
 
@@ -144,10 +151,40 @@ function daysSince(dateStr) {
   return (Date.now() - t) / 86400000;
 }
 
+function loadPreviousReport() {
+  try {
+    const prev = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    return prev && typeof prev.lastInspected === 'object' && prev.lastInspected ? prev.lastInspected : {};
+  } catch (e) {
+    return {}; // first run, or the report was never committed
+  }
+}
+
 function selectTargets(targets) {
-  let list = targets;
-  if (!ALL) list = list.filter(t => daysSince(t.lastmod) <= INSPECT_DAYS);
-  if (LIMIT) list = list.slice(0, LIMIT);
+  if (ALL) return LIMIT ? targets.slice(0, LIMIT) : targets;
+  if (LIMIT) return targets.slice(0, LIMIT);
+
+  const seen = loadPreviousReport();
+  const stamp = t => {
+    const seenAt = Date.parse(seen[t.loc] || '');
+    if (!Number.isNaN(seenAt)) return seenAt;
+    // Never inspected: start with the oldest content (highest risk of dropping out).
+    const lastmod = Date.parse(t.lastmod || '');
+    return Number.isNaN(lastmod) ? 0 : lastmod;
+  };
+
+  // Fresh URLs (changed inside the window) always get a slot...
+  const recent = targets.filter(t => daysSince(t.lastmod) <= INSPECT_DAYS);
+  // ...and the rest of the budget rotates through the URLs Google has not seen lately.
+  const older = targets
+    .filter(t => daysSince(t.lastmod) > INSPECT_DAYS)
+    .sort((a, b) => stamp(a) - stamp(b));
+
+  const list = recent.slice(0, INSPECT_MAX);
+  for (const t of older) {
+    if (list.length >= INSPECT_MAX) break;
+    if (!list.some(x => x.loc === t.loc)) list.push(t);
+  }
   return list;
 }
 
@@ -201,7 +238,9 @@ async function main() {
 
   const targets = readSitemapTargets();
   const selected = selectTargets(targets);
-  console.log(`Sitemap URLs: ${targets.length} | selected for inspection: ${selected.length}`);
+  const recentCount = targets.filter(t => daysSince(t.lastmod) <= INSPECT_DAYS).length;
+  console.log(`Sitemap URLs: ${targets.length} | selected for inspection: ${selected.length}` +
+    `${ALL || LIMIT ? '' : ` (${Math.min(recentCount, INSPECT_MAX)} recent + rotation through older URLs)`}`);
 
   let sa = null;
   try { sa = loadServiceAccount(); } catch (e) { console.error(`ERROR: ${e.message}`); process.exit(1); }
@@ -252,6 +291,7 @@ async function main() {
   for (let i = 0; i < selected.length; i++) {
     const t = selected[i];
     const r = await inspectUrl(token, t);
+    r.inspectedAt = new Date().toISOString();
     if (r.rateLimited) {
       rateLimited = true;
       console.warn(`Rate limited (HTTP 429) after ${i} inspections - stopping early.`);
@@ -259,7 +299,7 @@ async function main() {
     }
     if (r.error) {
       console.warn(`  ERROR ${t.loc}: ${r.error}`);
-      results.push({ url: t.loc, lastmod: t.lastmod, error: r.error, indexed: false });
+      results.push({ url: t.loc, lastmod: t.lastmod, error: r.error, indexed: false, inspectedAt: r.inspectedAt });
     } else {
       results.push(r);
       console.log(`  ${r.indexed ? 'INDEXED  ' : 'NOT-INDEX'} ${r.verdict.padEnd(8)} ${t.loc}`);
@@ -279,6 +319,13 @@ async function main() {
   );
   const stale = notIndexed.filter(r => daysSince(r.lastmod) > ALERT_DAYS);
 
+  // Rotation state: when each URL was last inspected. Merged with the previous report so
+  // URLs skipped today keep their older timestamp, and pruned when a URL leaves the sitemap.
+  const lastInspected = loadPreviousReport();
+  results.forEach(r => { if (r.url && r.inspectedAt) lastInspected[r.url] = r.inspectedAt; });
+  const inSitemap = new Set(targets.map(t => t.loc));
+  Object.keys(lastInspected).forEach(u => { if (!inSitemap.has(u)) delete lastInspected[u]; });
+
   const report = {
     generatedAt: new Date().toISOString(),
     siteUrl: SITE_URL,
@@ -289,6 +336,7 @@ async function main() {
     rateLimited,
     blockers: blockers.map(r => ({ url: r.url, indexingState: r.indexingState, robotsTxtState: r.robotsTxtState })),
     staleNotIndexed: stale.map(r => ({ url: r.url, lastmod: r.lastmod, verdict: r.verdict, coverageState: r.coverageState })),
+    lastInspected,
     results,
   };
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });

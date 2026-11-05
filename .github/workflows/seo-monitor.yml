@@ -1,38 +1,77 @@
-# SEO Monitor - With Report Upload
+# SEO Monitor - real Search Console performance report (clicks, impressions, queries).
+# Replaces the old stub that only listed HTML files. Skips gracefully when the
+# GSC_SERVICE_ACCOUNT secret is not set up.
 name: SEO Monitor
 
 on:
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
+    inputs:
+      days:
+        description: 'Window length in days (1-28)'
+        required: false
+        default: '7'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-monitor
+  cancel-in-progress: false
 
 jobs:
   seo-check:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 10
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      
-      - name: Run SEO Check
-        run: |
-          mkdir -p reports
-          echo "# SEO Monitor Report" > reports/SEO-REPORT.md
-          echo "**Date:** $(date)" >> reports/SEO-REPORT.md
-          echo "" >> reports/SEO-REPORT.md
-          echo "## Files Checked:" >> reports/SEO-REPORT.md
-          find . -name "*.html" -not -path "./node_modules/*" -exec echo "- {}" \; >> reports/SEO-REPORT.md
-          echo "" >> reports/SEO-REPORT.md
-          echo "## Status: ✅ Completed" >> reports/SEO-REPORT.md
-      
-      - name: Upload Report
+
+      - name: Query Search Console performance
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+          GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
+        run: node scripts/gsc-performance.js --days=${{ github.event.inputs.days || '7' }}
+
+      - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: seo-monitor-report-${{ github.run_number }}
-          path: reports/
+          path: |
+            reports/SEO-REPORT.md
+            seo-data/gsc-performance.json
           retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Commit report to repo
+        if: always()
+        continue-on-error: true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add -f reports/SEO-REPORT.md seo-data/gsc-performance.json
+          if git diff --cached --quiet; then
+            echo "Report unchanged - nothing to commit"
+            exit 0
+          fi
+
+          git commit -m "SEO: refresh Search Console performance report"
+
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Report committed"
+              exit 0
+            fi
+            echo "push attempt $i failed - retrying in 20s"
+            sleep 20
+          done
+          echo "::warning::Could not push the SEO report (push race) - run succeeded anyway"

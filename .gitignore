@@ -11,6 +11,11 @@ last-run.log
 reports/*.json
 seo-data/*.json
 
+# ...except the Search Console reports, which are committed on purpose so the
+# indexing state is readable in the repo (GSC Indexing + SEO Monitor workflows).
+!seo-data/gsc-status.json
+!seo-data/gsc-performance.json
+
 # Keep directory structure
 !reports/.gitkeep
 !seo-data/.gitkeep

@@ -8,15 +8,35 @@ This system runs automatically via GitHub Actions. No need to keep your computer
 
 1. **SEO Monitor** (`seo-monitor.yml`)
    - Runs: **Daily at 6 AM UTC** (11:30 AM IST)
-   - Checks: All SEO elements across the portfolio
-   - Generates: SEO audit report
+   - Checks: Google Search Console performance (clicks, impressions, CTR, position, top queries/pages) vs the previous 7 days
+   - Generates: `reports/SEO-REPORT.md` + `seo-data/gsc-performance.json` (committed to the repo)
 
-2. **Keyword Tracker** (`keyword-tracker.yml`)
+2. **GSC Indexing** (`gsc-indexing.yml`)
+   - Runs: **Daily at 7 AM UTC**
+   - Checks: submits `sitemap.xml` and inspects up to 30 URLs (recent changes first, then a rotation over the rest of the sitemap)
+   - Generates: `seo-data/gsc-status.json` (committed to the repo)
+   - Unindexed URLs are a warning, never a failure - Google has no "request indexing" API
+
+3. **Request Indexing** (`request-indexing.yml`)
+   - Runs: **Daily at 7:45 AM UTC**
+   - Pushes the newest 10 URLs to Google's Indexing API (best effort)
+
+4. **Monthly Trend Titles** (`monthly-trend-titles.yml`)
+   - Runs: **1st of every month at 4:30 AM UTC** (10:00 AM IST)
+   - Builds a month of WordPress titles from Google Trends / Google News / Autocomplete
+   - Skips anything already published or queued, then appends to `blog-queue.json`
+   - Generates: `docs/TREND-PLAN-YYYY-MM.md` (review calendar) - see `docs/MONTHLY-TREND-WORKFLOW.md`
+
+5. **Auto Blog Publisher** (`auto-blog-publisher.yml`)
+   - Runs: **Twice a day, 3 AM and 3 PM IST**
+   - Writes and publishes the next pending title from `blog-queue.json`, then submits the sitemap to Search Console
+
+6. **Keyword Tracker** (`keyword-tracker.yml`)
    - Runs: **Every Monday at 7 AM UTC** (12:30 PM IST)
    - Tracks: Keyword rankings and positions
    - Generates: Keyword tracking report
 
-3. **Content Check** (`content-check.yml`)
+7. **Content Check** (`content-check.yml`)
    - Runs: **On every push to main**
    - Validates: HTML SEO, blog posts, schema markup
    - Generates: Validation report
@@ -49,12 +69,17 @@ npm run seo:report
 
 ### Where to Find Reports:
 
-1. **GitHub Actions Artifacts:**
+1. **In the repository (committed daily):**
+   - `reports/SEO-REPORT.md` - Search Console performance (SEO Monitor)
+   - `seo-data/gsc-status.json` - index status per URL (GSC Indexing)
+   - `docs/TREND-PLAN-YYYY-MM.md` - monthly title plan (Monthly Trend Titles)
+
+2. **GitHub Actions Artifacts:**
    - Go to Actions tab
    - Click on completed workflow run
-   - Download "reports" artifact
+   - Download the report artifact (kept 30-90 days)
 
-2. **Local Files:**
+3. **Local Files:**
    - Reports: `reports/` directory
    - Data: `seo-data/` directory
 

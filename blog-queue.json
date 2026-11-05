@@ -581,6 +581,428 @@
       "publish_time": "3:00 PM",
       "publish_date": "2026-10-30",
       "status": "pending"
+    },
+    {
+      "id": 43,
+      "title": "CISA Warns Hackers Are Exploiting WordPress Update Flaw",
+      "slug": "cisa-warns-hackers-are-exploiting-wordpress-update-flaw",
+      "keywords": [
+        "CISA says hackers exploit WordPress update flaw",
+        "CISA says hackers",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-01",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 44,
+      "title": "Cloudflare Explains Its Migration to EmDash CMS",
+      "slug": "cloudflare-explains-its-migration-to-emdash-cms",
+      "keywords": [
+        "Cloudflare Details its Migration to \"WordPress Successor\" EmDash",
+        "Cloudflare Details Migration",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-02",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 45,
+      "title": "Rank Math SEO Plugin Vulnerability Exposes Sites to Backdoors",
+      "slug": "rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors",
+      "keywords": [
+        "WordPress SEO plugin Rank Math compromised to backdoor websites",
+        "WordPress plugin Rank",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-03",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 46,
+      "title": "WordPress vs WP Engine Conflict: Impact on Developers",
+      "slug": "wordpress-vs-wp-engine-conflict-impact-on-developers",
+      "keywords": [
+        "The WordPress vs. WP Engine drama",
+        "explained",
+        "WordPress Engine drama,",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-04",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 47,
+      "title": "WordPress 7.0 Features: What Developers Need to Know",
+      "slug": "wordpress-7-0-features-what-developers-need-to-know",
+      "keywords": [
+        "WordPress 7.0 Is A Winner",
+        "Here’s What You Need To Know",
+        "WordPress Winner: Here’s",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-05",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 48,
+      "title": "WordPress Market Share Drops for Six Consecutive Months",
+      "slug": "wordpress-market-share-drops-for-six-consecutive-months",
+      "keywords": [
+        "WordPress Market Share Declines For Six Months In A Row",
+        "WordPress Market Share",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-06",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 49,
+      "title": "New WordPress Security Initiative Targets Plugins and Themes",
+      "slug": "new-wordpress-security-initiative-targets-plugins-and-themes",
+      "keywords": [
+        "New WordPress Initiative Will Secure Plugins And Themes",
+        "WordPress Initiative Will",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-07",
+      "status": "pending",
+      "source": "google-news"
+    },
+    {
+      "id": 50,
+      "title": "How to Become a Modern WordPress Developer",
+      "slug": "how-to-become-a-modern-wordpress-developer",
+      "keywords": [
+        "wordpress developer",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-08",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 51,
+      "title": "WordPress Logo Brand Guidelines and SVG Code Usage",
+      "slug": "wordpress-logo-brand-guidelines-and-svg-code-usage",
+      "keywords": [
+        "wordpress logo",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-09",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 52,
+      "title": "Essential WordPress Plugin Architecture and Best Practices",
+      "slug": "essential-wordpress-plugin-architecture-and-best-practices",
+      "keywords": [
+        "wordpress plugins",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-10",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 53,
+      "title": "How to Safely Upgrade to the Latest WordPress Release",
+      "slug": "how-to-safely-upgrade-to-the-latest-wordpress-release",
+      "keywords": [
+        "wordpress latest version",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-11",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 54,
+      "title": "Optimizing WordPress Hosting for High-Performance Sites",
+      "slug": "optimizing-wordpress-hosting-for-high-performance-sites",
+      "keywords": [
+        "wordpress hosting",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-12",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 55,
+      "title": "How to Install WordPress Using WP-CLI and Docker",
+      "slug": "how-to-install-wordpress-using-wp-cli-and-docker",
+      "keywords": [
+        "wordpress install",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-13",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 56,
+      "title": "Mastering Core WordPress Development Concepts",
+      "slug": "mastering-core-wordpress-development-concepts",
+      "keywords": [
+        "wordpress tutorial",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-14",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 57,
+      "title": "Modern WooCommerce Development Strategies for 2026",
+      "slug": "modern-woocommerce-development-strategies-for-2026",
+      "keywords": [
+        "woocommerce",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-15",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 58,
+      "title": "How to Build Custom WooCommerce Extensions",
+      "slug": "how-to-build-custom-woocommerce-extensions",
+      "keywords": [
+        "woocommerce plugin",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-16",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 59,
+      "title": "Programmatically Customizing WooCommerce Memberships",
+      "slug": "programmatically-customizing-woocommerce-memberships",
+      "keywords": [
+        "woocommerce memberships",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-17",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 60,
+      "title": "Customizing Checkout Logos in WooCommerce Themes",
+      "slug": "customizing-checkout-logos-in-woocommerce-themes",
+      "keywords": [
+        "woocommerce logo",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-18",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 61,
+      "title": "Building Scalable E-Commerce Sites with WooCommerce",
+      "slug": "building-scalable-e-commerce-sites-with-woocommerce",
+      "keywords": [
+        "woocommerce website",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-19",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 62,
+      "title": "Developing Custom Block Themes for WooCommerce",
+      "slug": "developing-custom-block-themes-for-woocommerce",
+      "keywords": [
+        "woocommerce theme",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-20",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 63,
+      "title": "Building Custom React Blocks for the Gutenberg Editor",
+      "slug": "building-custom-react-blocks-for-the-gutenberg-editor",
+      "keywords": [
+        "gutenberg wordpress",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-21",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 64,
+      "title": "How to Securely Upload and Deploy WordPress Plugins",
+      "slug": "how-to-securely-upload-and-deploy-wordpress-plugins",
+      "keywords": [
+        "wordpress plugin upload",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-22",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 65,
+      "title": "Object-Oriented WordPress Plugin Development Guide",
+      "slug": "object-oriented-wordpress-plugin-development-guide",
+      "keywords": [
+        "wordpress plugin development",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-23",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 66,
+      "title": "Using Automated Tools to Audit WordPress Plugin Code",
+      "slug": "using-automated-tools-to-audit-wordpress-plugin-code",
+      "keywords": [
+        "wordpress plugin checker",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-24",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 67,
+      "title": "How to Sell Premium WordPress Plugins Independently",
+      "slug": "how-to-sell-premium-wordpress-plugins-independently",
+      "keywords": [
+        "wordpress plugin store",
+        "WooCommerce",
+        "WordPress"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-25",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 68,
+      "title": "Submitting Your Plugin to the Official WordPress Repository",
+      "slug": "submitting-your-plugin-to-the-official-wordpress-repository",
+      "keywords": [
+        "wordpress plugin directory",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-26",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 69,
+      "title": "How Theme Detectors Analyze WordPress Site Styling",
+      "slug": "how-theme-detectors-analyze-wordpress-site-styling",
+      "keywords": [
+        "wordpress theme detector",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-27",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 70,
+      "title": "Auditing and Customizing Free WordPress Themes Safely",
+      "slug": "auditing-and-customizing-free-wordpress-themes-safely",
+      "keywords": [
+        "wordpress theme free",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-28",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 71,
+      "title": "Using Theme Generators to Scaffold Custom WP Themes",
+      "slug": "using-theme-generators-to-scaffold-custom-wp-themes",
+      "keywords": [
+        "wordpress theme generator",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 AM",
+      "publish_date": "2026-11-29",
+      "status": "pending",
+      "source": "autocomplete"
+    },
+    {
+      "id": 72,
+      "title": "Architecting Modern Full Site Editing WordPress Themes",
+      "slug": "architecting-modern-full-site-editing-wordpress-themes",
+      "keywords": [
+        "wordpress theme development",
+        "WordPress",
+        "WordPress guide"
+      ],
+      "publish_time": "3:00 PM",
+      "publish_date": "2026-11-30",
+      "status": "pending",
+      "source": "autocomplete"
     }
   ]
 }

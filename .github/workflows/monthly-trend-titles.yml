@@ -1,0 +1,111 @@
+# Monthly WordPress title plan.
+#
+# Pulls WordPress-related search demand from Google (Trends trending RSS + related
+# queries, Google News, Autocomplete), drops anything already published or queued,
+# and appends a month of titles to blog-queue.json - Auto Blog Publisher then picks
+# the pending entries up on its normal schedule. The same run writes a human
+# readable calendar to docs/TREND-PLAN-YYYY-MM.md so the titles can be reviewed.
+#
+# All sources are free and keyless; GEMINI_API_KEY only polishes the wording and
+# collapses duplicate news stories (the run degrades gracefully without it).
+name: Monthly Trend Titles
+
+on:
+  schedule:
+    # 1st of every month at 04:30 UTC (10:00 AM IST)
+    - cron: '30 4 1 * *'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'How many titles to plan'
+        required: false
+        default: '30'
+      month:
+        description: 'Target month as YYYY-MM (blank = current month)'
+        required: false
+        default: ''
+      queue:
+        description: 'Append to blog-queue.json (set to false for a plan-only run)'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-trend-titles
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # monthly-trend-titles.js itself only needs Node builtins, but it reuses the
+      # Gemini helper from auto-blog-generator.js - install so a future dependency
+      # added there cannot break this run silently.
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build the month's title plan
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.8-flash
+          # Free-tier quota is per model - chain to a different model when the
+          # primary's daily quota is exhausted (same chain as Auto Blog Publisher).
+          GEMINI_FALLBACK_MODELS: gemini-3.6-flash, gemini-3.5-flash, gemini-flash-lite-latest
+          GEMINI_TIMEOUT_MS: '240000'
+        run: |
+          FLAGS="--count=${{ github.event.inputs.count || '30' }}"
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            FLAGS="$FLAGS --month=${{ github.event.inputs.month }}"
+          fi
+          if [ "${{ github.event.inputs.queue }}" = "false" ]; then
+            FLAGS="$FLAGS --no-queue"
+          fi
+          node scripts/monthly-trend-titles.js $FLAGS
+
+      - name: Upload plan
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trend-plan-${{ github.run_number }}
+          path: |
+            docs/TREND-PLAN-*.md
+            blog-queue.json
+          retention-days: 90
+          if-no-files-found: ignore
+
+      - name: Commit plan and queue
+        if: always()
+        continue-on-error: true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add blog-queue.json docs/
+          if git diff --cached --quiet; then
+            echo "Nothing changed - the queue already holds this month's titles"
+            exit 0
+          fi
+
+          git commit -m "SEO: add monthly Google Trends title plan"
+
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Plan committed"
+              exit 0
+            fi
+            echo "push attempt $i failed - retrying in 20s"
+            sleep 20
+          done
+          echo "::warning::Could not push the plan (push race) - the artifact still has it"
