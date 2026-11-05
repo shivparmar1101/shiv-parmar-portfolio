@@ -1,0 +1,395 @@
+{
+  "generatedAt": "2026-11-05T12:16:12.577Z",
+  "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
+  "days": 7,
+  "ranges": {
+    "current": {
+      "startDate": "2026-10-27",
+      "endDate": "2026-11-02"
+    },
+    "previous": {
+      "startDate": "2026-10-20",
+      "endDate": "2026-10-26"
+    }
+  },
+  "current": {
+    "totals": {
+      "clicks": 1,
+      "impressions": 1104
+    },
+    "ctr": 0.09057971014492754,
+    "avgPosition": 11.07518115942029
+  },
+  "previous": {
+    "totals": {
+      "clicks": 0,
+      "impressions": 597
+    },
+    "ctr": 0,
+    "avgPosition": 15.26968174204355
+  },
+  "topQueries": [
+    {
+      "keys": [
+        "ai agent woocommerce"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 85
+    },
+    {
+      "keys": [
+        "ai crawlers wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 64
+    },
+    {
+      "keys": [
+        "answer engine optimization website structure h1 faq strategy 2025 2026"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 44
+    },
+    {
+      "keys": [
+        "core web vitals wordpress optimization 2026"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 90
+    },
+    {
+      "keys": [
+        "how do you make your product catalogue machine-readable for ai shopping agents"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "keys": [
+        "how to add schema code in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 78.16666666666667
+    },
+    {
+      "keys": [
+        "how to add schema in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 100
+    },
+    {
+      "keys": [
+        "how to add schema markup in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 90.66666666666667
+    },
+    {
+      "keys": [
+        "how to add schema to wordpress website"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 67.5
+    },
+    {
+      "keys": [
+        "how to insert schema in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 74.6
+    },
+    {
+      "keys": [
+        "how to insert schema in wordpress pages"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 87
+    },
+    {
+      "keys": [
+        "how to insert schema to wordpress blogpost"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "keys": [
+        "how to optimize for answer engines aeo 2026 guide"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 99
+    },
+    {
+      "keys": [
+        "how to secure wordpress when using ai automation"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 57.333333333333336
+    },
+    {
+      "keys": [
+        "htaccess block claudebot"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 36
+    },
+    {
+      "keys": [
+        "lscache vs wp rocket"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 62
+    },
+    {
+      "keys": [
+        "max potential first input delay wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "keys": [
+        "migrate custom database to wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 25.25
+    },
+    {
+      "keys": [
+        "object cache pro vs wp rocket"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "shiv parmar"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 8.8
+    }
+  ],
+  "topPages": [
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
+      ],
+      "clicks": 1,
+      "impressions": 30,
+      "ctr": 0.03333333333333333,
+      "position": 18.2
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/about"
+      ],
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 7.428571428571429
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 50
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 26.875
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 37.25
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
+      ],
+      "clicks": 0,
+      "impressions": 879,
+      "ctr": 0,
+      "position": 7.4436860068259385
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 19.666666666666668
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7.75
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 4.25
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 21,
+      "ctr": 0,
+      "position": 78.42857142857143
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 23.666666666666668
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/make-woocommerce-ai-agent-readable-guide"
+      ],
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 51.6
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 7.166666666666667
+    }
+  ]
+}
