@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2026 01:36:35 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 17:31:54 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Core Web Vitals 2026: WordPress Performance | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Master Core Web Vitals in 2026 with our complete WordPress performance checklist. Speed up your site, pass Google&amp;#39;s metrics, and boost your SEO today!</description>
+      <category>Core Web Vitals</category>
+    </item>
     <item>
       <title>Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide</link>
@@ -398,14 +406,6 @@
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</guid>
       <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
       <description>Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.</description>
-      <category>WordPress</category>
-    </item>
-    <item>
-      <title>Gutenberg vs Elementor 2026: Which is Better? | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026</guid>
-      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Gutenberg vs Elementor in 2026: we compare speed, flexibility, and ease of use to help you choose the best page builder for your WordPress website today.</description>
       <category>WordPress</category>
     </item>
   </channel>
