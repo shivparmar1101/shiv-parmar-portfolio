@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar</title>
+<meta name="description" content="Transform your WordPress site into an app in 2026! Follow our step-by-step PWA setup guide to boost speed, engagement, and offline access.">
+<meta name="keywords" content="PWA, mobile app, WordPress">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Progressive Web Apps WordPress: PWA Setup Guide 2026">
+<meta property="og:description" content="Transform your WordPress site into an app in 2026! Follow our step-by-step PWA setup guide to boost speed, engagement, and offline access.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/progressive-web-apps-wordpress-pwa-guide-hero.svg">
+<meta property="og:image:alt" content="Progressive Web Apps WordPress: PWA Setup Guide 2026 - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-11-05">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Progressive Web Apps WordPress: PWA Setup Guide 2026">
+<meta name="twitter:description" content="Transform your WordPress site into an app in 2026! Follow our step-by-step PWA setup guide to boost speed, engagement, and offline access.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/progressive-web-apps-wordpress-pwa-guide-hero.svg">
+<meta name="twitter:image:alt" content="Progressive Web Apps WordPress: PWA Setup Guide 2026 - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Progressive Web Apps WordPress: PWA Setup Guide 2026",
+  "description": "Transform your WordPress site into an app in 2026! Follow our step-by-step PWA setup guide to boost speed, engagement, and offline access.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/progressive-web-apps-wordpress-pwa-guide-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=43f486a0">
+<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass)}
+.content thead th{background:var(--bg-glass-strong);padding:12px 15px;text-align:left;color:var(--text-primary);font-weight:700;border:1px solid var(--border-glass);border-bottom:2px solid var(--accent)}
+.content th,.content td{padding:12px 15px;border:1px solid var(--border-glass)}
+.content th{background:var(--bg-glass-strong);color:var(--text-primary);font-weight:700}
+.content td{color:var(--text-secondary)}
+.content tbody tr:nth-child(even){background:var(--bg-glass)}
+.content tbody tr:hover{background:var(--bg-glass-hover)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/progressive-web-apps-wordpress-pwa-guide-hero.svg" alt="Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar
+</nav>
+<div class="date">2026-11-05 &middot; 15 min read</div>
+<h1>Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What is a Progressive Web App (PWA) in WordPress?">What is a Progressive Web App (PWA) in WordPress?</a></li>
+<li><a href="#section-1" title="Why WordPress PWAs Matter in 2026">Why WordPress PWAs Matter in 2026</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide: How to Set Up a PWA in WordPress">Step-by-Step Guide: How to Set Up a PWA in WordPress</a></li>
+<li><a href="#section-3" title="Best Practices for WordPress PWAs in 2026">Best Practices for WordPress PWAs in 2026</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid in WordPress PWAs">Common Mistakes to Avoid in WordPress PWAs</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/wordpress-7-0-ai-client-complete-setup-guide-2026" title="WordPress 7.0 AI Client: Setup Guide 2026">WordPress 7.0 AI Client: Setup Guide 2026</a>
+      <a href="../blog/how-to-add-ai-to-wordpress-complete-guide-2026" title="Add AI to WordPress: Complete Guide 2026">Add AI to WordPress: Complete Guide 2026</a>
+      <a href="../blog/woocommerce-11-1-new-features-setup-guide-2026" title="WooCommerce 11.1 New Features &amp;amp; Setup Guide">WooCommerce 11.1 New Features &amp;amp; Setup Guide</a>
+      <a href="../blog/wordpress-cron-jobs-complete-guide" title="WordPress Cron Jobs: Complete Guide">WordPress Cron Jobs: Complete Guide</a>
+  </nav>
+</div>
+<p>In an era where over 65% of global web traffic originates from mobile devices, traditional web experiences often fall short of meeting user expectations. Users demand modern mobile experiences: blazing-fast load times, seamless offline functionality, instant push notifications, and home screen access without friction. Historically, delivering these features required building and maintaining separate native mobile apps for iOS and Android—a process costing tens of thousands of dollars and requiring approval from app store gatekeepers.</p>
+
+<p>Enter the Progressive Web App (PWA). By converting your website into a <strong>WordPress PWA</strong>, you bridge the gap between web and mobile app architecture. A WordPress site equipped with PWA technology behaves exactly like a native <strong>mobile app</strong> on smartphones, tablets, and desktop devices while leveraging the power, scalability, and ease of content management that <strong>WordPress</strong> provides.</p>
+
+<p>Whether you run an e-commerce store, a content blog, a corporate portal, or a SaaS platform on WordPress, implementing a PWA in 2026 is no longer just a technical luxury—it is a critical strategy for retention, search engine optimization (SEO), and conversion rate optimization. This guide provides an actionable, step-by-step roadmap to building, configuring, and optimizing a Progressive Web App in WordPress.</p>
+
+<h2 id="section-0">What is a Progressive Web App (PWA) in WordPress?</h2>
+
+<p>A Progressive Web App is a web application built using modern web standards (JavaScript, HTML, CSS, and web APIs) that delivers an app-like experience directly through a browser. Unlike standard websites, a PWA can be installed directly onto a user’s home screen, work completely offline, handle background sync, and receive real-time push notifications.</p>
+
+<p>When combined with WordPress, a PWA transforms your site dynamically. The core CMS handles database queries, dynamic content publishing, REST API requests, and page rendering, while the PWA layer (executed via browser APIs) manages static resource caching, network routing, and offline storage.</p>
+
+<p>To qualify as a fully functional PWA, a WordPress site relies on three foundational technical pillars:</p>
+
+<ul>
+  <li><strong>HTTPS Protocol:</strong> Web security is non-negotiable. Modern browsers only register PWA components like Service Workers over secure connections.</li>
+  <li><strong>Web App Manifest (<code>manifest.json</code>):</strong> A JSON configuration file that defines how the application looks and behaves when installed on a home screen (app name, icons, theme color, display mode).</li>
+  <li><strong>Service Worker (<code>sw.js</code>):</strong> A background JavaScript file running independently of the web page, intercepting network requests, managing custom caching strategies, and facilitating background synchronization and notifications.</li>
+</ul>
+
+<h3>Comparing Web Experiences: Website vs. WordPress PWA vs. Native Mobile App</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature / Capability</th>
+      <th>Standard WordPress Site</th>
+      <th>WordPress PWA</th>
+      <th>Native Mobile App</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <li><strong>App Store Requirement</strong></li>
+      <li>No</li>
+      <li>No (Direct Browser Install)</li>
+      <li>Yes (Apple App Store / Google Play)</li>
+    </tr>
+    <tr>
+      <li><strong>Development Cost</strong></li>
+      <li>Low</li>
+      <li>Low to Medium</li>
+      <li>High to Very High</li>
+    </tr>
+    <tr>
+      <li><strong>Offline Functionality</strong></li>
+      <li>No</li>
+      <li>Yes (Via Service Workers)</li>
+      <li>Yes</li>
+    </tr>
+    <tr>
+      <li><strong>Push Notifications</strong></li>
+      <li>Limited (Desktop web only)</li>
+      <li>Yes (Mobile &amp; Desktop)</li>
+      <li>Yes</li>
+    </tr>
+    <tr>
+      <li><strong>Storage Footprint</strong></li>
+      <li>Minimal (Browser Cache)</li>
+      <li>Tiny (&lt; 5 MB)</li>
+      <li>Large (50 MB – 200 MB+)</li>
+    </tr>
+    <tr>
+      <li><strong>SEO Benefits</strong></li>
+      <li>Standard</li>
+      <li>Enhanced (Improved Web Vitals)</li>
+      <li>None (App store separate index)</li>
+    </tr>
+    <tr>
+      <li><strong>Update Maintenance</strong></li>
+      <li>Instant (Server-side)</li>
+      <li>Instant (Server-side)</li>
+      <li>Delayed (Requires Store Review)</li>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="section-1">Why WordPress PWAs Matter in 2026</h2>
+
+<p>The web development landscape in 2026 places an overwhelming emphasis on page user experience metrics, page stability, and instantaneous loading speeds. Search engines, led by Google's continuous refinement of Core Web Vitals—specifically Interaction to Next Paint (INP) and Largest Contentful Paint (LCP)—heavily reward sites that react immediately to user input.</p>
+
+<h3>1. Conquering App Store Fatigue</h3>
+
+<p>User behavior has fundamentally shifted over the past few years. Downloading a native app requires opening an app store, searching, authenticating, waiting for a multi-megabyte download, and granting extensive device permissions. Data shows that over 65% of smartphone users download zero new apps per month. A WordPress PWA removes this friction completely: a single click on a "Add to Home Screen" banner installs the lightweight app instantly without leaving the browser environment.</p>
+
+<h3>2. Drastic Performance Improvements &amp; Core Web Vitals Success</h3>
+
+<p>Because Service Workers cache key assets—such as CSS stylesheets, core JavaScript runtime files, web fonts, and custom branding—locally inside the user's browser storage, page loads become instantaneous. Subsequent navigation bypasses round-trip server latency entirely. This reduces Server Response Time (TTFB) to near-zero for cached routes and dramatically boosts Google Core Web Vitals scores, directly lifting your organic search rankings.</p>
+
+<h3>3. Offline Accessibility and Low-Bandwidth Resilience</h3>
+
+<p>Standard WordPress sites break when network connectivity drops or flickers (e.g., in subways, rural areas, or overloaded event Wi-Fi networks). A properly configured PWA serves cached HTML fallbacks, allows users to read pre-loaded articles, and can even temporarily save form submissions or cart items in local IndexedDB storage until connection returns. This resilience keeps engagement rates high where standard sites fail.</p>
+
+<h3>4. Direct Re-engagement via Web Push Notifications</h3>
+
+<p>Re-engaging visitors once they leave your platform is a constant challenge. Email open rates continue to decline, while paid ad retargeting costs rise. A WordPress PWA unlocks system-level Web Push Notifications. You can alert users directly on their desktop or mobile lock screens about new blog posts, order updates, abandoned shopping carts, or flash sales without needing native app approval.</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement PWA with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<h2 id="section-2">Step-by-Step Guide: How to Set Up a PWA in WordPress</h2>
+
+<p>Setting up a Progressive Web App on WordPress can be accomplished using two distinct approaches: leveraging specialized plugins for an automated setup, or writing custom code for complete architectural control. We will cover both methods thoroughly.</p>
+
+<h3>Prerequisites Before Getting Started</h3>
+
+<ul>
+  <li><strong>SSL Certificate (HTTPS Enabled):</strong> Service workers will fail to register over HTTP (except on <code>localhost</code>). Ensure your site redirects all traffic through HTTPS.</li>
+  <li><strong>Modern PHP Environment:</strong> Ensure your site runs PHP 8.1+ for optimal API response speed.</li>
+  <li><strong>Child Theme Access:</strong> If writing custom code, use a child theme or custom plugin to retain changes across theme updates.</li>
+</ul>
+
+<h3>Method 1: Fast Setup Using WordPress PWA Plugins</h3>
+
+<p>If you prefer a low-code approach, several high-quality plugins handle manifest creation, service worker scripts, and push configuration out of the box.</p>
+
+<h4>1. Super PWA</h4>
+<p>Super PWA is one of the most reliable and lightweight plugins available for converting WordPress sites into PWAs. It generates the web app manifest file dynamically and handles baseline offline functionality automatically.</p>
+
+<ul>
+  <li>Navigate to <strong>Plugins &gt; Add New</strong> in your WordPress Dashboard.</li>
+  <li>Search for <strong>Super PWA</strong>, install, and activate the plugin.</li>
+  <li>Go to <strong>SuperPWA &gt; Settings</strong>.</li>
+  <li>Set your <strong>App Name</strong> and <strong>App Short Name</strong> (used beneath the home screen icon).</li>
+  <li>Upload an <strong>Application Icon</strong> (must be a minimum 512x512 pixels, PNG format).</li>
+  <li>Choose a <strong>Background Color</strong> and <strong>Theme Color</strong> for browser UI controls.</li>
+  <li>Select your default <strong>Start Page</strong> (usually your homepage or shop archive).</li>
+  <li>Select your <strong>Offline Page</strong> (a custom page served when the user has no internet access).</li>
+  <li>Click <strong>Save Settings</strong>.</li>
+</ul>
+
+<h4>2. Workbox PWA / PWA by WordPress Core Team</h4>
+<p>Maintained in part by core WordPress contributors, the <em>PWA</em> plugin serves as an integration layer for the Web App Manifest and Service Worker APIs, using Google's Workbox library under the hood. It is an ideal framework plugin if developers plan to extend PWA functionality via code hooks.</p>
+
+<hr />
+
+<h3>Method 2: Custom Manual Setup (Developer Guide)</h3>
+
+<p>For complete control over cache routing, service worker logic, and offline assets without plugin bloat, building a custom implementation is best. Follow these four manual setup steps.</p>
+
+<h4>Step 1: Create the Web App Manifest (<code>manifest.json</code>)</h4>
+
+<p>Create a file named <code>manifest.json</code> in your child theme root directory (e.g., <code>/wp-content/themes/my-child-theme/manifest.json</code>):</p>
+
+<pre><code>{
+  "name": "My WordPress PWA",
+  "short_name": "WPPWA",
+  "description": "Experience lightning-fast browsing on our mobile app.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0066cc",
+  "icons": [
+    {
+      "src": "/wp-content/themes/my-child-theme/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/wp-content/themes/my-child-theme/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}</code></pre>
+
+<h4>Step 2: Enqueue the Manifest in WordPress</h4>
+
+<p>Open your child theme's <code>functions.php</code> file and add the following hook to print the manifest tag into your site's HTML <code>&lt;head&gt;</code> section, along with iOS-specific meta tags:</p>
+
+<pre><code>function wp_pwa_add_manifest_tags() {
+    $theme_uri = get_stylesheet_directory_uri();
+    echo '&lt;link rel="manifest" href="' . esc_url( $theme_uri . '/manifest.json' ) . '"&gt;' . "\n";
+    echo '&lt;meta name="theme-color" content="#0066cc"&gt;' . "\n";
+    echo '&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;' . "\n";
+    echo '&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;' . "\n";
+    echo '&lt;link rel="apple-touch-icon" href="' . esc_url( $theme_uri . '/assets/icons/icon-192x192.png' ) . '"&gt;' . "\n";
+}
+add_action( 'wp_head', 'wp_pwa_add_manifest_tags', 1 );</code></pre>
+
+<h4>Step 3: Build the Service Worker File (<code>sw.js</code>)</h4>
+
+<p>Create a file named <code>sw.js</code> at the root directory of your WordPress installation (e.g., <code>https://example.com/sw.js</code>). Placing it at the root ensures its scope extends to all URLs across your entire domain.</p>
+
+<pre><code>const CACHE_NAME = 'wp-pwa-v1.0.0';
+const OFFLINE_URL = '/offline/';
+
+// Assets to cache immediately on install
+const PRECACHE_ASSETS = [
+  '/',
+  '/offline/',
+  '/wp-content/themes/my-child-theme/style.css',
+  '/wp-content/themes/my-child-theme/assets/js/main.js',
+  '/wp-content/themes/my-child-theme/assets/icons/icon-192x192.png'
+];
+
+// Install Event
+self.addEventListener('install', (event) =&gt; {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) =&gt; {
+      return cache.addAll(PRECACHE_ASSETS);
+    }).then(() =&gt; self.skipWaiting())
+  );
+});
+
+// Activate Event (Cleanup Old Caches)
+self.addEventListener('activate', (event) =&gt; {
+  event.waitUntil(
+    caches.keys().then((cacheNames) =&gt; {
+      return Promise.all(
+        cacheNames.map((cache) =&gt; {
+          if (cache !== CACHE_NAME) {
+            console.log('[Service Worker] Deleting old cache:', cache);
+            return caches.delete(cache);
+          }
+        })
+      );
+    }).then(() =&gt; self.clients.claim())
+  );
+});
+
+// Network First with Cache Fallback Strategy
+self.addEventListener('fetch', (event) =&gt; {
+  // Only handle GET requests
+  if (event.request.method !== 'GET') return;
+  
+  // Exclude wp-admin and login pages from caching
+  if (event.request.url.includes('/wp-admin') || event.request.url.includes('/wp-login.php')) {
+    return;
+  }
+
+  event.respondWith(
+    fetch(event.request)
+      .then((networkResponse) =&gt; {
+        // Dynamic caching of successful requests
+        if (networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) =&gt; {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return networkResponse;
+      })
+      .catch(() =&gt; {
+        // Failover to cache, or show offline page if navigation fails
+        return caches.match(event.request).then((cachedResponse) =&gt; {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          if (event.request.mode === 'navigate') {
+            return caches.match(OFFLINE_URL);
+          }
+        });
+      })
+  );
+});</code></pre>
+
+<h4>Step 4: Register the Service Worker via WordPress</h4>
+
+<p>Register your service worker script in your <code>functions.php</code> file so that every front-end page execution includes the registration logic:</p>
+
+<pre><code>function wp_pwa_register_service_worker() {
+    if ( is_admin() ) return; // Do not register inside wp-admin
+    ?&gt;
+    &lt;script&gt;
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('PWA ServiceWorker registered with scope: ', registration.scope);
+            })
+            .catch(function(err) {
+              console.error('PWA ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    &lt;/script&gt;
+    &lt;?php
+}
+add_action( 'wp_footer', 'wp_pwa_register_service_worker', 99 );</code></pre>
+
+<h3>Setting Up Web Push Notifications</h3>
+
+<p>To implement real-time push notifications on your WordPress PWA, integrating a service like OneSignal or utilizing the Web Push API via standard webhooks is recommended.</p>
+
+<ol>
+  <li>Create a free account on a platform such as <strong>OneSignal</strong> or <strong>PushEngage</strong>.</li>
+  <li>Install their official WordPress plugin (e.g., <em>OneSignal Web Push Notifications</em>).</li>
+  <li>Provide your API credentials and REST API Keys from your dashboard.</li>
+  <li>Configure auto-prompt triggering logic (e.g., show prompt after 2 pageviews or 30 seconds spent on site).</li>
+  <li>Configure automated pushes whenever a new WordPress post is published.</li>
+</ol>
+
+<h3>Setting Up a Dedicated Offline Fallback Page</h3>
+
+<p>When users navigate to an uncached page while disconnected from internet access, serving a generic browser error ruins user experience. A customized offline page keeps users inside your branded ecosystem.</p>
+
+<ul>
+  <li>Create a new page in WordPress titled <strong>"You Are Offline"</strong>.</li>
+  <li>Set the URL slug to <code>offline</code> (matching the <code>OFFLINE_URL</code> constant in your <code>sw.js</code> file).</li>
+  <li>Add friendly messaging explaining that their internet connection dropped, along with a "Try Again" reload button and a list of contact details or saved offline content.</li>
+  <li>Include custom CSS to render a simple offline game, interactive SVG graphics, or saved local content links.</li>
+</ul>
+
+<h2 id="section-3">Best Practices for WordPress PWAs in 2026</h2>
+
+<p>Architecting a baseline PWA is relatively simple; optimizing it for long-term production use requires following performance best practices to avoid common operational issues.</p>
+
+<h3>1. Choose the Right Caching Strategy per Resource Type</h3>
+
+<p>Applying a single global caching logic across all files can disrupt site functionality. Match the caching strategy to the specific resource type:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource Category</th>
+      <th>Recommended Caching Strategy</th>
+      <th>Technical Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <li><strong>Core Assets (CSS, JS, Web Fonts)</strong></li>
+      <li>Cache First, Fallback to Network</li>
+      <li>Static files change rarely; loading directly from cache maximizes speed.</li>
+    </tr>
+    <tr>
+      <li><strong>HTML Content / Blog Articles</strong></li>
+      <li>Network First, Fallback to Cache</li>
+      <li>Ensures users always see the latest editorial content and comment threads.</li>
+    </tr>
+    <tr>
+      <li><strong>WooCommerce API / Dynamic Forms</strong></li>
+      <li>Network Only (No Cache)</li>
+      <li>Prevents cart state pollution, inventory miscalculations, and user session leakage.</li>
+    </tr>
+    <tr>
+      <li><strong>Media Uploads (Images/Videos)</strong></li>
+      <li>Stale-While-Revalidate</li>
+      <li>Serves cached images immediately while fetching updated asset versions in the background.</li>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2. Adhere strictly to App Icon Guidelines</h3>
+
+<p>Modern mobile platforms enforce strict visual standards for PWA installation:</p>
+
+<ul>
+  <li><strong>Maskable Icons:</strong> Mobile OS vendors (especially Android) dynamically crop app icons into teardrops, squircles, or rounded circles depending on device system themes. Always add <code>"purpose": "any maskable"</code> in your <code>manifest.json</code> and ensure key icon graphics fit within the central "safe zone" (the middle 80% of the image).</li>
+  <li><strong>Dimensions:</strong> Provide multiple sizes inside your manifest file. Standard required dimensions are <code>192x192</code> pixels and <code>512x512</code> pixels. Include dedicated Apple Touch Icons (<code>180x180</code>) linked directly inside the HTML <code>&lt;head&gt;</code>.</li>
+</ul>
+
+<h3>3. Optimize "Add to Home Screen" Prompts</h3>
+
+<p>Browsers automatically trigger the native installation prompt when specific heuristic requirements are met. However, displaying popups immediately upon page land annoys users and leads to instant dismissals.</p>
+
+<p>Instead, implement a soft-prompt strategy:</p>
+<ul>
+  <li>Intercept the browser's native <code>beforeinstallprompt</code> JavaScript event.</li>
+  <li>Store the event reference in memory without showing the prompt immediately.</li>
+  <li>Display a subtle, custom custom UI button (e.g., "Install App" in your site header or menu footer).</li>
+  <li>When the user explicitly clicks your custom button, trigger the saved prompt event.</li>
+</ul>
+
+<pre><code>let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) =&gt; {
+  // Prevent immediate browser banner display
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Show custom install button UI element
+  const installButton = document.getElementById('pwa-install-btn');
+  if (installButton) {
+    installButton.style.display = 'block';
+    
+    installButton.addEventListener('click', () =&gt; {
+      installButton.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) =&gt; {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the PWA install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  }
+});</code></pre>
+
+<h3>4. Rigorous Auditing and Performance Testing</h3>
+
+<p>Periodically test your progressive web application setup using built-in developer tools:</p>
+
+<ul>
+  <li><strong>Chrome DevTools (Lighthouse):</strong> Open Chrome DevTools, click the <em>Lighthouse</em> tab, check the <em>Progressive Web App</em> category, and run an audit. Address flagged issues immediately (e.g., missing theme color, invalid start URL, unoptimized manifest icon).</li>
+  <li><strong>Application Panel:</strong> Use the <em>Application</em> tab in Chrome DevTools to inspect registered Service Workers, view cached entries in <em>Cache Storage</em>, simulate offline mode, and clear site data during debugging.</li>
+  <li><strong>PWA Builder:</strong> Paste your website domain into <a href="https://www.pwabuilder.com/" target="_blank" rel="noopener">PWA Builder</a> to analyze your implementation and auto-generate store-ready native wrappers for Windows, Google Play, and the Apple App Store.</li>
+</ul>
+
+<h2 id="section-4">Common Mistakes to Avoid in WordPress PWAs</h2>
+
+<p>Building a WordPress PWA presents unique hurdles due to WordPress's dynamic database architecture, extensive plugin ecosystem, and user access levels. Avoid these frequent implementation traps.</p>
+
+<h3>1. Caching WooCommerce &amp; Dynamic User Endpoints</h3>
+
+<p>Caching the wrong dynamic routes is the single most common mistake made by developers configuring WordPress PWAs. If your service worker caches dynamic routes, users might view other customers' checkout screens, experience broken shopping carts, or remain stuck inside stale logged-in states.</p>
+
+<p><strong>Fix:</strong> Explicitly add administrative, dynamic, and e-commerce endpoints to your service worker exclusion list inside your fetch handler:</p>
+
+<pre><code>const EXCLUDED_URLS = [
+  '/wp-admin',
+  '/wp-login.php',
+  '/cart',
+  '/checkout',
+  '/my-account',
+  '/?wc-api='
+];
+
+// Inside fetch listener check:
+const isExcluded = EXCLUDED_URLS.some(url =&gt; event.request.url.includes(url));
+if (isExcluded) {
+  return; // Let browser make standard network request
+}</code></pre>
+
+<h3>2. Overlooking Service Worker Cache Versioning</h3>
+
+<p>If you update your theme CSS, site code, or main JavaScript bundle without updating the service worker cache version string (e.g., <code>wp-pwa-v1.0.0</code> to <code>wp-pwa-v1.0.1</code>), returning visitors will continue to view obsolete cached assets indefinitely. This issue leads to broken layouts and missing script execution.</p>
+
+<p><strong>Fix:</strong> Always update your cache version constant inside <code>sw.js</code> whenever updating front-end production code. Furthermore, implement an activation cleanup script (as shown in our manual developer guide above) to clear stale caches automatically upon service worker registration updates.</p>
+
+<h3>3. Serving PWA Features Over Unsecured Protocol (HTTP)</h3>
+
+<p>Service workers operate with powerful capabilities, including full network request interception. As a security safeguard, modern browsers strictly disable Service Workers, Push Notifications, and Background Sync over unsecured HTTP connections.</p>
+
+<p><strong>Fix:</strong> Ensure your site enforces HTTPS sitewide via permanent 301 redirects, update your WordPress site URL settings to reflect HTTPS, and check that assets do not yield mixed-content warnings in the console.</p>
+
+<h3>4. Improper Service Worker Scope Allocation</h3>
+
+<p>A service worker's maximum operational scope is defined by its physical location on your web host server. If you host your script file inside a theme folder (e.g., <code>/wp-content/themes/my-theme/sw.js</code>), the service worker will only be capable of intercepting requests originating under that specific directory path.</p>
+
+<p><strong>Fix:</strong> Place <code>sw.js</code> directly within the root public directory of your server (e.g., <code>/public_html/sw.js</code>). Alternatively, if the file must live inside a theme directory, register it using the HTTP header <code>Service-Worker-Allowed: /</code> sent from your web server (Nginx or Apache configuration).</p>
+
+### 5. Neglecting Non-Chrome Browsers (Safari / iOS Limits)
+
+<p>While Android and Chromium-based browsers offer extensive PWA support, iOS WebKit (Safari) implements PWA standards differently. Apple devices do not fire the native <code>beforeinstallprompt</code> event and require specific Apple-touch-icon meta tags for correct visual display.</p>
+
+<p><strong>Fix:</strong> Include specific iOS fallback meta tags in your header script. Provide tailored visual instructions for Safari iOS users (e.g., "Tap the Share icon and select 'Add to Home Screen'").</p>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-5">Conclusion</h2>
+<p>As we navigate 2026, transforming your site into a Progressive Web App is no longer just an optional upgrade—it is a critical strategy for boosting user engagement and improving overall performance. By integrating a PWA into your WordPress ecosystem, you offer visitors the lightning-fast loading speeds, offline functionality, and re-engagement capabilities typically reserved for a native mobile app, all without requiring users to download software from an app store.</p>
+<p>Implementing a PWA effectively bridges the gap between traditional web browsing and mobile app convenience. Whether you opt for a streamlined plugin setup or a fully tailored service worker architecture, the long-term benefits—such as higher conversion rates, improved mobile SEO, and reduced bounce rates—far outweigh the initial effort required to set it up properly.</p>
+<p>Ready to elevate your digital presence and provide an app-like experience for your audience? If you need professional help configuring a PWA or developing custom web solutions, <strong>Shiv Parmar</strong> is available for WordPress development work worldwide. Reach out today to transform your website into a fast, reliable, and engaging mobile-first platform.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">PWA</a>
+<a href="/blog" class="tag">mobile app</a>
+<a href="/blog" class="tag">WordPress</a>
+</div>
+
+<!-- AUTO_AUTHOR_BOX -->
+<div class="author-box">
+<img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-11-04 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-speculative-loading-7-1-guide" title="WordPress Speculative Loading 7.1: Moderate Mode">WordPress Speculative Loading 7.1: Moderate Mode</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-04 &middot; 8 min read</div>
+<h4><a href="../blog/wordpress-view-transitions-smooth-animations" title="WordPress View Transitions API: Smooth Page">WordPress View Transitions API: Smooth Page</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-03 &middot; 8 min read</div>
+<h4><a href="../blog/block-level-css-wordpress-7-style-blocks" title="Block-Level CSS WordPress 7.0: Style Every Block">Block-Level CSS WordPress 7.0: Style Every Block</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+</body>
+</html>
