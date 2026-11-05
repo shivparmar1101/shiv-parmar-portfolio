@@ -134,7 +134,10 @@ const pct = (now, before) => {
 const f2 = n => Number(n || 0).toFixed(2);
 
 function buildMarkdown(report) {
-  const { ranges, current, previous, queries, pages, generatedAt } = report;
+  // report stores them as topQueries/topPages - keep the local names short below.
+  const { ranges, current, previous, generatedAt } = report;
+  const queries = Array.isArray(report.topQueries) ? report.topQueries : [];
+  const pages = Array.isArray(report.topPages) ? report.topPages : [];
   const rows = [
     ['# SEO Monitor Report', ''],
     ['', ''],

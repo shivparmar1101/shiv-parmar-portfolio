@@ -35,7 +35,7 @@
     "check:links": "node scripts/broken-link-check.js",
     "seo:bing": "node scripts/submit-bing-sitemap.js",
     "seo:syndicate": "node scripts/syndicate-devto.js",
-    "test": "node scripts/test-retry.js && node scripts/test-idempotency.js && node scripts/check-blogs.js"
+    "test": "node scripts/test-retry.js && node scripts/test-idempotency.js && node scripts/test-gsc-performance.js && node scripts/check-blogs.js"
   },
   "keywords": [
     "seo",
