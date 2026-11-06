@@ -92,6 +92,38 @@ jobs:
           echo "Possible causes: Netlify build skipped/failed, or Ignore Builds setting is active."
           exit 1
 
+      # NOTE: this runs here instead of blog-email-notification.yml on purpose.
+      # That workflow listens for push events, but pushes made with GITHUB_TOKEN
+      # never trigger other workflows (GitHub's recursion guard) - so it only
+      # fired on manual pushes and never on "Auto: Publish new blog post".
+      - name: Send publish notification email
+        if: success()
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME || 'parmarshiv1101@gmail.com' }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO || 'parmarshiv1101@gmail.com' }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM || 'parmarshiv1101@gmail.com' }}
+        run: |
+          MSG=$(git log -1 --pretty=%s)
+          if [ "$MSG" != "Auto: Publish new blog post" ]; then
+            echo "Last commit is not a new publish ($MSG) - skipping email"
+            exit 0
+          fi
+
+          LATEST=$(git diff --name-only HEAD~1 HEAD | grep "^blog/.*\.html$" | head -1 || true)
+          if [ -z "$LATEST" ]; then
+            echo "No new blog file in this commit - skipping email"
+            exit 0
+          fi
+
+          SLUG=$(basename "$LATEST" .html)
+          export BLOG_URL="https://shiv-parmar-portfolio.netlify.app/blog/${SLUG}"
+          export BLOG_TITLE=$(sed -n 's/.*<title>\(.*\)<\/title>.*/\1/p' "$LATEST" | head -n 1)
+          export BLOG_DESC=$(sed -n 's/.*<meta name="description" content="\([^"]*\)".*/\1/p' "$LATEST" | head -n 1)
+
+          echo "Sending publish notification: $BLOG_TITLE"
+          node scripts/send-email-notification.js
+
       # Google reads the sitemap on its own schedule - push it to Search Console the
       # moment the new post is live instead of waiting for the daily GSC run.
       # Best-effort: never fails the publish workflow.

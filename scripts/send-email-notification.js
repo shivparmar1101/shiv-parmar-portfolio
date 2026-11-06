@@ -180,4 +180,11 @@ async function sendEmail() {
   }
 }
 
-sendEmail();
+// Exit 1 when the send fails - otherwise GitHub Actions reports a green run
+// even though no mail went out (silent failure).
+sendEmail()
+  .then(ok => process.exit(ok ? 0 : 1))
+  .catch(err => {
+    console.error('Fatal:', err.message || err);
+    process.exit(1);
+  });
