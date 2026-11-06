@@ -1,8 +1,9 @@
 name: Auto Blog Publisher
 on:
   schedule:
-    # Runs once a day at 3:00 AM IST (9:30 AM UTC) - 1 post/day keeps the
+    # Runs once a day at 9:30 AM UTC = 3:00 PM IST - 1 post/day keeps the
     # queue balanced with the 30 titles the Monthly Trend Titles workflow adds.
+    # (GitHub's scheduler often delays this run by several hours.)
     - cron: '30 9 * * *'
   workflow_dispatch:
 
