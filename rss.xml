@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2026 17:49:41 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 12:50:23 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Best AI Plugins for WordPress 2026: Tested &amp;amp; | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Transform your website with the best AI plugins for WordPress in 2026. We tested and compared top tools to automate content, boost SEO, and scale fast.</description>
+      <category>AI plugins</category>
+    </item>
     <item>
       <title>Core Web Vitals 2026: WordPress Performance | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist</link>
@@ -399,14 +407,6 @@
       <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
       <description>Streamline WooCommerce inventory management with our proven best practices. Track stock, automate alerts, and avoid overselling to keep customers happy.</description>
       <category>WooCommerce</category>
-    </item>
-    <item>
-      <title>Building a WordPress REST API from Scratch | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch</guid>
-      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Build a WordPress REST API from scratch with this hands-on guide. Learn routes, authentication, and responses with practical code examples to power any app.</description>
-      <category>WordPress</category>
     </item>
   </channel>
 </rss>
