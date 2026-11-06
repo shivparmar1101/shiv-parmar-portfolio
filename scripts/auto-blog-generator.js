@@ -124,6 +124,12 @@ function isQuotaError(err) {
   return /\b429\b/.test(msg) && /exceeded your current quota|per day limit|free tier/i.test(msg);
 }
 
+// A hung generateContent socket must fail fast: without this a dead connection
+// sat forever and ate the whole 30-minute job budget in ATTEMPT 1 (observed
+// 2026-11-06), so retry-generate never got a chance to run. Env override keeps
+// the Monthly Trend Titles workflow's GEMINI_TIMEOUT_MS working.
+const GEMINI_TIMEOUT_MS = Math.max(5000, parseInt(process.env.GEMINI_TIMEOUT_MS || '180000', 10) || 180000);
+
 function callGeminiAPI(prompt, model = GEMINI_MODEL) {
   return new Promise((resolve, reject) => {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
@@ -135,6 +141,14 @@ function callGeminiAPI(prompt, model = GEMINI_MODEL) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY }
     };
+    let settled = false;
+    let timer = null;
+    const done = (fn, val) => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      fn(val);
+    };
     const req = https.request(url, options, (res) => {
       let data = '';
       res.on('data', (chunk) => data += chunk);
@@ -142,14 +156,20 @@ function callGeminiAPI(prompt, model = GEMINI_MODEL) {
         try {
           const response = JSON.parse(data);
           if (response.candidates && response.candidates[0]) {
-            resolve(response.candidates[0].content.parts[0].text);
+            done(resolve, response.candidates[0].content.parts[0].text);
           } else {
-            reject(new Error(data.substring(0, 500)));
+            done(reject, new Error(data.substring(0, 500)));
           }
-        } catch (e) { reject(e); }
+        } catch (e) { done(reject, e); }
       });
     });
-    req.on('error', reject);
+    // UNAVAILABLE in the message so isUnavailableError() treats it as transient
+    // -> 15s wait + model chain move-on instead of an instant fatal throw.
+    timer = setTimeout(() => {
+      done(reject, new Error(`Gemini request timed out after ${GEMINI_TIMEOUT_MS}ms - UNAVAILABLE (high demand)`));
+      req.destroy();
+    }, GEMINI_TIMEOUT_MS);
+    req.on('error', err => done(reject, err));
     req.write(postData);
     req.end();
   });
