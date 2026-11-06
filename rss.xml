@@ -6,7 +6,7 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Nov 2026 12:50:23 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 16:56:57 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
     <item>
       <title>Best AI Plugins for WordPress 2026: Tested &amp;amp; | Shiv Parmar</title>
@@ -15,6 +15,14 @@
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
       <description>Transform your website with the best AI plugins for WordPress in 2026. We tested and compared top tools to automate content, boost SEO, and scale fast.</description>
       <category>AI plugins</category>
+    </item>
+    <item>
+      <title>WordPress AI Content Workflow: Gemini Claude | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude</guid>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Streamline your WordPress blogging with the ultimate AI content workflow. Combine ChatGPT, Claude, and Gemini to create high-quality posts faster.</description>
+      <category>AI content</category>
     </item>
     <item>
       <title>Core Web Vitals 2026: WordPress Performance | Shiv Parmar</title>
@@ -398,14 +406,6 @@
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-speed-up-woocommerce-product-pages</guid>
       <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
       <description>Learn how to speed up WooCommerce product pages for faster load times. Apply caching, image, and lazy-loading fixes to boost sales and conversions today.</description>
-      <category>WooCommerce</category>
-    </item>
-    <item>
-      <title>WooCommerce Inventory Management Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-inventory-management-best-practices</guid>
-      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Streamline WooCommerce inventory management with our proven best practices. Track stock, automate alerts, and avoid overselling to keep customers happy.</description>
       <category>WooCommerce</category>
     </item>
   </channel>
