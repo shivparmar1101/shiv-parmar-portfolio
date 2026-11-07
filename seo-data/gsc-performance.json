@@ -1,51 +1,51 @@
 {
-  "generatedAt": "2026-11-06T13:37:36.864Z",
+  "generatedAt": "2026-11-07T12:17:55.827Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-10-28",
-      "endDate": "2026-11-03"
+      "startDate": "2026-10-29",
+      "endDate": "2026-11-04"
     },
     "previous": {
-      "startDate": "2026-10-21",
-      "endDate": "2026-10-27"
+      "startDate": "2026-10-22",
+      "endDate": "2026-10-28"
     }
   },
   "current": {
     "totals": {
       "clicks": 1,
-      "impressions": 1160
+      "impressions": 1161
     },
-    "ctr": 0.08620689655172414,
-    "avgPosition": 11.11896551724138
+    "ctr": 0.08613264427217916,
+    "avgPosition": 11.30232558139535
   },
   "previous": {
     "totals": {
       "clicks": 1,
-      "impressions": 712
+      "impressions": 824
     },
-    "ctr": 0.1404494382022472,
-    "avgPosition": 12.94943820224719
+    "ctr": 0.12135922330097086,
+    "avgPosition": 11.780339805825243
   },
   "topQueries": [
+    {
+      "keys": [
+        "\"ai in digital marketing\",,-,590,\"no data in gsc\",\"aura pr keywords\",134,-"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 56
+    },
     {
       "keys": [
         "ai agent woocommerce"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 85
-    },
-    {
-      "keys": [
-        "ai crawlers wordpress"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 64
+      "position": 72
     },
     {
       "keys": [
@@ -67,6 +67,15 @@
     },
     {
       "keys": [
+        "detect ai bots wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68
+    },
+    {
+      "keys": [
         "how do you make your product catalogue machine-readable for ai shopping agents"
       ],
       "clicks": 0,
@@ -81,7 +90,7 @@
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 78.16666666666667
+      "position": 77.66666666666667
     },
     {
       "keys": [
@@ -199,15 +208,6 @@
       "impressions": 3,
       "ctr": 0,
       "position": 23.666666666666668
-    },
-    {
-      "keys": [
-        "object cache pro vs wp rocket"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 34
     }
   ],
   "topPages": [
@@ -216,9 +216,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
       ],
       "clicks": 1,
-      "impressions": 6,
-      "ctr": 0.16666666666666666,
-      "position": 5.333333333333333
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 5.25
     },
     {
       "keys": [
@@ -252,9 +252,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
       ],
       "clicks": 0,
-      "impressions": 15,
+      "impressions": 16,
       "ctr": 0,
-      "position": 28
+      "position": 30.1875
     },
     {
       "keys": [
@@ -263,7 +263,7 @@
       "clicks": 0,
       "impressions": 5,
       "ctr": 0,
-      "position": 5.8
+      "position": 6.2
     },
     {
       "keys": [
@@ -272,25 +272,25 @@
       "clicks": 0,
       "impressions": 7,
       "ctr": 0,
-      "position": 32.714285714285715
+      "position": 32.14285714285714
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 899,
+      "impressions": 891,
       "ctr": 0,
-      "position": 7.424916573971079
+      "position": 7.4668911335578
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 6,
       "ctr": 0,
-      "position": 17.428571428571427
+      "position": 12.833333333333334
     },
     {
       "keys": [
@@ -299,16 +299,16 @@
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 3
+      "position": 9
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 26,
+      "impressions": 24,
       "ctr": 0,
-      "position": 20.692307692307693
+      "position": 21.458333333333332
     },
     {
       "keys": [
@@ -317,7 +317,7 @@
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 4
+      "position": 3.5
     },
     {
       "keys": [
@@ -342,54 +342,54 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide"
       ],
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 7,
       "ctr": 0,
-      "position": 4.25
+      "position": 4.571428571428571
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress"
       ],
       "clicks": 0,
-      "impressions": 24,
+      "impressions": 25,
       "ctr": 0,
-      "position": 72.75
+      "position": 67.08
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 2,
       "ctr": 0,
-      "position": 23.666666666666668
+      "position": 30
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu"
       ],
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 9,
       "ctr": 0,
-      "position": 15.125
+      "position": 15.333333333333334
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/make-woocommerce-ai-agent-readable-guide"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 10,
       "ctr": 0,
-      "position": 45.22222222222222
+      "position": 46.6
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 10,
       "ctr": 0,
-      "position": 8.142857142857142
+      "position": 7.9
     }
   ]
 }
