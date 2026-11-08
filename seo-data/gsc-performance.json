@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-11-07T12:17:55.827Z",
+  "generatedAt": "2026-11-08T12:37:53.038Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-10-29",
-      "endDate": "2026-11-04"
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-05"
     },
     "previous": {
-      "startDate": "2026-10-22",
-      "endDate": "2026-10-28"
+      "startDate": "2026-10-23",
+      "endDate": "2026-10-29"
     }
   },
   "current": {
     "totals": {
       "clicks": 1,
-      "impressions": 1161
+      "impressions": 1119
     },
-    "ctr": 0.08613264427217916,
-    "avgPosition": 11.30232558139535
+    "ctr": 0.08936550491510277,
+    "avgPosition": 10.85254691689008
   },
   "previous": {
     "totals": {
       "clicks": 1,
-      "impressions": 824
+      "impressions": 994
     },
-    "ctr": 0.12135922330097086,
-    "avgPosition": 11.780339805825243
+    "ctr": 0.1006036217303823,
+    "avgPosition": 11.78169014084507
   },
   "topQueries": [
     {
@@ -34,9 +34,9 @@
         "\"ai in digital marketing\",,-,590,\"no data in gsc\",\"aura pr keywords\",134,-"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 4,
       "ctr": 0,
-      "position": 56
+      "position": 55.5
     },
     {
       "keys": [
@@ -52,9 +52,27 @@
         "answer engine optimization website structure h1 faq strategy 2025 2026"
       ],
       "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 44.333333333333336
+    },
+    {
+      "keys": [
+        "chatgpt mcp wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "keys": [
+        "chatgpt wordpress mcp"
+      ],
+      "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 44
+      "position": 62.5
     },
     {
       "keys": [
@@ -76,6 +94,15 @@
     },
     {
       "keys": [
+        "how ai crawlers interact with wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 74
+    },
+    {
+      "keys": [
         "how do you make your product catalogue machine-readable for ai shopping agents"
       ],
       "clicks": 0,
@@ -90,7 +117,7 @@
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 77.66666666666667
+      "position": 79.33333333333333
     },
     {
       "keys": [
@@ -121,42 +148,6 @@
     },
     {
       "keys": [
-        "how to add schema to wordpress website"
-      ],
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 67.5
-    },
-    {
-      "keys": [
-        "how to insert schema in wordpress"
-      ],
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 74.6
-    },
-    {
-      "keys": [
-        "how to insert schema in wordpress pages"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 87
-    },
-    {
-      "keys": [
-        "how to insert schema to wordpress blogpost"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 55
-    },
-    {
-      "keys": [
         "how to optimize for answer engines aeo 2026 guide"
       ],
       "clicks": 0,
@@ -175,15 +166,6 @@
     },
     {
       "keys": [
-        "htaccess block claudebot"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 36
-    },
-    {
-      "keys": [
         "lscache vs wp rocket"
       ],
       "clicks": 0,
@@ -198,16 +180,34 @@
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 12
+      "position": 13
     },
     {
       "keys": [
-        "migrate custom database to wordpress"
+        "object cache pro vs wp rocket"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "keys": [
+        "shiv parmar"
       ],
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 23.666666666666668
+      "position": 9
+    },
+    {
+      "keys": [
+        "technical seo for wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 97
     }
   ],
   "topPages": [
@@ -216,27 +216,27 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
       ],
       "clicks": 1,
-      "impressions": 8,
-      "ctr": 0.125,
-      "position": 5.25
+      "impressions": 6,
+      "ctr": 0.16666666666666666,
+      "position": 5.333333333333333
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 2,
       "ctr": 0,
-      "position": 5.333333333333333
+      "position": 7
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/about"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
-      "position": 7.142857142857143
+      "position": 7.375
     },
     {
       "keys": [
@@ -254,34 +254,34 @@
       "clicks": 0,
       "impressions": 16,
       "ctr": 0,
-      "position": 30.1875
+      "position": 33.5625
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 6.2
+      "position": 5.833333333333333
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
-      "position": 32.14285714285714
+      "position": 28.75
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 891,
+      "impressions": 855,
       "ctr": 0,
-      "position": 7.4668911335578
+      "position": 7.470175438596491
     },
     {
       "keys": [
@@ -290,34 +290,43 @@
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 12.833333333333334
+      "position": 12.5
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 9
+      "position": 9.5
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 24,
+      "impressions": 18,
       "ctr": 0,
-      "position": 21.458333333333332
+      "position": 28.72222222222222
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 8.333333333333332
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 4,
       "ctr": 0,
-      "position": 3.5
+      "position": 2.75
     },
     {
       "keys": [
@@ -333,45 +342,36 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 3,
       "ctr": 0,
-      "position": 5
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide"
-      ],
-      "clicks": 0,
-      "impressions": 7,
-      "ctr": 0,
-      "position": 4.571428571428571
+      "position": 6.666666666666667
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress"
       ],
       "clicks": 0,
-      "impressions": 25,
+      "impressions": 17,
       "ctr": 0,
-      "position": 67.08
+      "position": 61.411764705882355
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-a-wordpress-membership-site"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 30
+      "position": 18
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 8,
       "ctr": 0,
-      "position": 15.333333333333334
+      "position": 11.75
     },
     {
       "keys": [
@@ -387,9 +387,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026"
       ],
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 17,
       "ctr": 0,
-      "position": 7.9
+      "position": 14.529411764705882
     }
   ]
 }
