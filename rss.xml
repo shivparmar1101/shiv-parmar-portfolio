@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Nov 2026 16:04:09 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 16:12:02 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Content Optimization for AI: Write for Humans &amp;amp; | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Master the art of optimizing AI content for search LLMs and human readers. Learn actionable strategies to boost rankings, engagement, and brand trust today.</description>
+      <category>AI content</category>
+    </item>
     <item>
       <title>AI Visibility Tracking: Monitor Brand in ChatGPT | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini</link>
@@ -398,14 +406,6 @@
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies</guid>
       <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
       <description>Secure your site with these WordPress database backup strategies. Learn scheduling, storage, and restore steps so you can recover your data in minutes.</description>
-      <category>WordPress</category>
-    </item>
-    <item>
-      <title>WordPress Gutenberg Block Development | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-block-development</guid>
-      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Master WordPress Gutenberg block development with this complete guide. Build custom blocks step by step with practical code and expert developer tips.</description>
       <category>WordPress</category>
     </item>
   </channel>
