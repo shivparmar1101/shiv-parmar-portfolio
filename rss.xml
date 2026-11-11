@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Nov 2026 17:27:06 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 17:30:17 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Cloudflare Explains Its Migration to EmDash CMS | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Cloudflare Details its Migration to &amp;quot;WordPress Successor&amp;quot; EmDash. Learn why the tech giant made the switch and how it boosts performance and security.</description>
+      <category>Cloudflare Details its Migration to &amp;quot;WordPress Successor&amp;quot; EmDash</category>
+    </item>
     <item>
       <title>CISA Warns Hackers Are Exploiting WordPress Update | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw</link>
@@ -399,14 +407,6 @@
       <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
       <description>Boost search visibility by adding schema markup to WordPress. Follow this step-by-step guide to install structured data and win rich results in Google search.</description>
       <category>WordPress SEO</category>
-    </item>
-    <item>
-      <title>WordPress Cron Jobs: Complete Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-cron-jobs-complete-guide</guid>
-      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
-      <description>Master WordPress cron jobs with this complete guide. Learn to schedule tasks, fix missed crons, and keep your site running reliably without missed updates.</description>
-      <category>WordPress</category>
     </item>
   </channel>
 </rss>
