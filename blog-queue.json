@@ -629,8 +629,9 @@
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-11-03",
-      "status": "pending",
-      "source": "google-news"
+      "status": "published",
+      "source": "google-news",
+      "published_at": "2026-11-12T17:43:41.124Z"
     },
     {
       "id": 46,
