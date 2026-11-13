@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-11-12T14:30:02.624Z",
+  "generatedAt": "2026-11-13T13:47:34.149Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-11-03",
-      "endDate": "2026-11-09"
+      "startDate": "2026-11-04",
+      "endDate": "2026-11-10"
     },
     "previous": {
-      "startDate": "2026-10-27",
-      "endDate": "2026-11-02"
+      "startDate": "2026-10-28",
+      "endDate": "2026-11-03"
     }
   },
   "current": {
     "totals": {
-      "clicks": 7,
-      "impressions": 883
+      "clicks": 6,
+      "impressions": 821
     },
-    "ctr": 0.7927519818799547,
-    "avgPosition": 12.093997734994337
+    "ctr": 0.730816077953715,
+    "avgPosition": 12.286236297198538
   },
   "previous": {
     "totals": {
       "clicks": 1,
-      "impressions": 1104
+      "impressions": 1160
     },
-    "ctr": 0.09057971014492754,
-    "avgPosition": 11.07518115942029
+    "ctr": 0.08620689655172414,
+    "avgPosition": 11.11896551724138
   },
   "topQueries": [
     {
@@ -58,12 +58,30 @@
     },
     {
       "keys": [
+        "ai in digital marketing ,,-,590, no data in gsc , aura pr keywords ,134,-"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 48
+    },
+    {
+      "keys": [
         "answer engine optimization website structure h1 faq strategy 2025 2026"
       ],
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
       "position": 36.666666666666664
+    },
+    {
+      "keys": [
+        "best llm for wordpress development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 46
     },
     {
       "keys": [
@@ -85,6 +103,15 @@
     },
     {
       "keys": [
+        "connect woocommerce to claude"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 90.5
+    },
+    {
+      "keys": [
         "core web vitals wordpress optimization 2026"
       ],
       "clicks": 0,
@@ -97,9 +124,9 @@
         "detect ai bots wordpress"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 59.666666666666664
+      "position": 56.5
     },
     {
       "keys": [
@@ -115,9 +142,9 @@
         "gutenberg development services"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 62.5
+      "position": 45.333333333333336
     },
     {
       "keys": [
@@ -133,9 +160,9 @@
         "how to add schema code in wordpress"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 3,
       "ctr": 0,
-      "position": 77.25
+      "position": 77
     },
     {
       "keys": [
@@ -148,12 +175,12 @@
     },
     {
       "keys": [
-        "how to add schema to wordpress"
+        "human-to-answer framework for aeo"
       ],
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 90
+      "position": 53
     },
     {
       "keys": [
@@ -181,33 +208,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 26
-    },
-    {
-      "keys": [
-        "openai_api_key sk-proj- site:netlify.app"
-      ],
-      "clicks": 0,
-      "impressions": 37,
-      "ctr": 0,
-      "position": 3
-    },
-    {
-      "keys": [
-        "site:netlify.app \"gemini_api_key=\""
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 18
-    },
-    {
-      "keys": [
-        "site:netlify.app gemini ai"
-      ],
-      "clicks": 0,
-      "impressions": 5,
-      "ctr": 0,
-      "position": 10
     }
   ],
   "topPages": [
@@ -216,9 +216,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-breadcrumb-block-native-seo"
       ],
       "clicks": 2,
-      "impressions": 10,
-      "ctr": 0.2,
-      "position": 2.6
+      "impressions": 12,
+      "ctr": 0.16666666666666666,
+      "position": 3.5833333333333335
     },
     {
       "keys": [
@@ -234,9 +234,9 @@
         "https://shiv-parmar-portfolio.netlify.app/about"
       ],
       "clicks": 1,
-      "impressions": 3,
-      "ctr": 0.3333333333333333,
-      "position": 7.333333333333333
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 7.5
     },
     {
       "keys": [
@@ -245,25 +245,16 @@
       "clicks": 1,
       "impressions": 5,
       "ctr": 0.2,
-      "position": 7.4
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
-      ],
-      "clicks": 1,
-      "impressions": 5,
-      "ctr": 0.2,
-      "position": 4.8
+      "position": 10.2
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts"
       ],
       "clicks": 1,
-      "impressions": 21,
-      "ctr": 0.047619047619047616,
-      "position": 5.761904761904762
+      "impressions": 20,
+      "ctr": 0.05,
+      "position": 6.3
     },
     {
       "keys": [
@@ -279,27 +270,27 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
       ],
       "clicks": 0,
-      "impressions": 17,
+      "impressions": 11,
       "ctr": 0,
-      "position": 40.88235294117647
+      "position": 49.36363636363637
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 48,
+      "impressions": 73,
       "ctr": 0,
-      "position": 3.5833333333333335
+      "position": 4.260273972602739
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 7,
       "ctr": 0,
-      "position": 4.777777777777778
+      "position": 4.285714285714286
     },
     {
       "keys": [
@@ -315,9 +306,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 514,
+      "impressions": 443,
       "ctr": 0,
-      "position": 7.628404669260701
+      "position": 7.738148984198646
     },
     {
       "keys": [
@@ -333,18 +324,18 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 11,
+      "impressions": 12,
       "ctr": 0,
-      "position": 39
+      "position": 38.416666666666664
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks"
       ],
       "clicks": 0,
-      "impressions": 17,
+      "impressions": 21,
       "ctr": 0,
-      "position": 13.352941176470589
+      "position": 12.238095238095237
     },
     {
       "keys": [
@@ -357,12 +348,30 @@
     },
     {
       "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5.333333333333333
+    },
+    {
+      "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 5,
       "ctr": 0,
-      "position": 13.25
+      "position": 10.8
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 24
     },
     {
       "keys": [
@@ -381,15 +390,6 @@
       "impressions": 3,
       "ctr": 0,
       "position": 7
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 17
     }
   ]
 }
