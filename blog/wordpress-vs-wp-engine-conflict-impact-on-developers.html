@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPress vs WP Engine Conflict: Impact on | Shiv Parmar</title>
+<meta name="description" content="The WordPress vs. WP Engine drama is reshaping web development. Discover how this conflict impacts developers, hosting choices, and the future of open source.">
+<meta name="keywords" content="The WordPress vs. WP Engine drama, explained, WordPress Engine drama,, WordPress">
+<meta name="author" content="Shiv Parmar">
+<meta name="google-site-verification" content="3bq_-xDevPWEZSADvcEB-ykrDgizyDWLNgEPQA1pOrc" />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress vs WP Engine Conflict: Impact on Developers">
+<meta property="og:description" content="The WordPress vs. WP Engine drama is reshaping web development. Discover how this conflict impacts developers, hosting choices, and the future of open source.">
+<meta property="og:url" content="https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers">
+<meta property="og:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-vs-wp-engine-conflict-impact-on-developers-hero.svg">
+<meta property="og:image:alt" content="WordPress vs WP Engine Conflict: Impact on Developers - WordPress development guide by Shiv Parmar">
+<meta property="og:site_name" content="Shiv Parmar - WordPress Developer Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://www.linkedin.com/in/shiv-parmar/">
+<meta property="article:published_time" content="2026-11-13">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WordPress vs WP Engine Conflict: Impact on Developers">
+<meta name="twitter:description" content="The WordPress vs. WP Engine drama is reshaping web development. Discover how this conflict impacts developers, hosting choices, and the future of open source.">
+<meta name="twitter:image" content="https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-vs-wp-engine-conflict-impact-on-developers-hero.svg">
+<meta name="twitter:image:alt" content="WordPress vs WP Engine Conflict: Impact on Developers - WordPress development guide by Shiv Parmar">
+<meta name="twitter:creator" content="@shivparmar1101">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WordPress vs WP Engine Conflict: Impact on Developers",
+  "description": "The WordPress vs. WP Engine drama is reshaping web development. Discover how this conflict impacts developers, hosting choices, and the future of open source.",
+  "author": { "@type": "Person", "name": "Shiv Parmar", "url": "https://www.linkedin.com/in/shiv-parmar/" },
+  "publisher": { "@type": "Organization", "name": "Shiv Parmar - WordPress Developer", "url": "https://shiv-parmar-portfolio.netlify.app/" },
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/blog/wordpress-vs-wp-engine-conflict-impact-on-developers-hero.svg",
+  "mainEntityOfPage": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=43f486a0">
+<link rel="stylesheet" href="../liquid-glass.css?v=3d312df0">
+<style>
+article{padding:0}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px;font-family:var(--font-mono)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px;opacity:0.5}
+.date{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);margin-bottom:12px}
+h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:24px;color:var(--text-primary)}
+.toc{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:24px;margin:0 0 32px}
+.toc h3{font-size:16px;font-weight:700;margin:0 0 12px;color:var(--text-primary)}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin-bottom:8px}
+.toc a{font-size:14px;color:var(--text-secondary);text-decoration:none;font-family:var(--font-primary)}
+.toc a:hover{color:var(--accent)}
+.content{font-size:16px;color:var(--text-primary);font-family:var(--font-primary)}
+.content h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:var(--text-primary)}
+.content h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text-primary)}
+.content p{margin-bottom:16px;color:var(--text-secondary)}
+.content ul,.content ol{margin:0 0 16px 24px;color:var(--text-secondary)}
+.content li{margin-bottom:8px}
+.content code{font-family:var(--font-mono);background:var(--bg-glass-strong);padding:2px 8px;border-radius:6px;font-size:14px}
+.content pre{background:#0d0d0d;color:#c7d2fe;padding:20px;border-radius:var(--radius-lg);overflow-x:auto;margin:0 0 24px;font-size:14px;line-height:1.6;border:1px solid var(--border-glass)}
+.content pre code{background:none;padding:0;color:inherit}
+.content blockquote{border-left:4px solid var(--accent);padding:10px 0 10px 15px;margin:20px 0;font-style:italic;color:var(--text-primary);background:var(--accent-glow-soft);border-radius:0px 15px 15px 0}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass)}
+.content thead th{background:var(--bg-glass-strong);padding:12px 15px;text-align:left;color:var(--text-primary);font-weight:700;border:1px solid var(--border-glass);border-bottom:2px solid var(--accent)}
+.content th,.content td{padding:12px 15px;border:1px solid var(--border-glass)}
+.content th{background:var(--bg-glass-strong);color:var(--text-primary);font-weight:700}
+.content td{color:var(--text-secondary)}
+.content tbody tr:nth-child(even){background:var(--bg-glass)}
+.content tbody tr:hover{background:var(--bg-glass-hover)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;padding:24px 0;border-top:1px solid var(--border-glass)}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-glow-soft);color:var(--accent)}
+.author-box{display:flex;gap:20px;align-items:flex-start;padding:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);margin-top:32px}
+.author-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex-shrink:0}
+.author-box .author-info h4{font-size:16px;font-weight:700;margin:0 0 4px;color:var(--text-primary)}
+.author-box .author-info p{font-size:14px;color:var(--text-secondary);margin:0 0 8px}
+.author-social{display:flex;gap:12px;flex-wrap:wrap}
+.author-social a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.author-social a:hover{text-decoration:underline}
+.hero-img{width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--radius-lg);margin-top:20px;margin-bottom:32px;border:1px solid var(--border-glass)}
+.related-blogs{margin-top:40px;padding-top:32px;border-top:1px solid var(--border-glass)}
+.related-blogs h3{font-size:20px;font-weight:700;margin:0 0 20px;color:var(--text-primary)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.related-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:20px;transition:all 0.3s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .date{font-size:12px;margin-bottom:8px}
+.related-card h4{font-size:15px;font-weight:600;margin:0;line-height:1.4}
+.related-card h4 a{color:var(--text-primary);text-decoration:none}
+.related-card h4 a:hover{color:var(--accent)}
+.cta-section{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.form-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-xl);padding:32px}
+.form-card h3{font-size:24px;font-weight:800;margin:0 0 24px;color:var(--text-primary)}
+.form-row{margin-bottom:16px}
+.form-row label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 16px;background:var(--bg-glass-strong);border:1px solid var(--border-glass);border-radius:var(--radius-md);color:var(--text-primary);font-size:14px;font-family:var(--font-primary)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--accent)}
+.form-row textarea{resize:vertical;min-height:100px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.4)}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-card{display:flex;gap:16px;align-items:center;padding:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-lg);transition:all 0.3s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-icon{width:48px;height:48px;flex-shrink:0;color:var(--accent)}
+.contact-svg{width:100%;height:100%}
+.contact-card strong{display:block;font-size:14px;color:var(--text-primary);margin-bottom:4px}
+.contact-card a,.contact-card span{font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all}
+.contact-card a:hover{color:var(--accent)}
+@media(max-width:640px){article{padding:0}h1{font-size:24px}.author-box{flex-direction:column;align-items:center;text-align:center}.contact-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}}
+</style>
+  <!-- AUTO_PERSON_SCHEMA -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiv Parmar",
+  "url": "https://shiv-parmar-portfolio.netlify.app/",
+  "jobTitle": "WordPress Developer",
+  "email": "mailto:parmarshiv1101@gmail.com",
+  "telephone": "+91-73594-11663",
+  "image": "https://shiv-parmar-portfolio.netlify.app/images/shiv-parmar-wordpress-developer.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiv-parmar/",
+    "https://github.com/shivparmar1101",
+    "https://twitter.com/shivparmar1101"
+  ],
+  "knowsAbout": [
+    "WordPress",
+    "WooCommerce",
+    "PHP",
+    "JavaScript",
+    "WordPress Performance",
+    "WordPress Security"
+  ],
+  "description": "WordPress developer with 4+ years of experience building custom themes, WooCommerce stores, plugins and REST API integrations. Available worldwide."
+}
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="Shiv Parmar - WordPress Blog RSS" href="/rss.xml">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+/* table-normalize */
+.content table,table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px;text-align:left;border:1px solid var(--border-glass,rgba(255,255,255,.1));font-family:var(--font-primary)}
+.content thead th,table thead th{background:var(--bg-glass-strong,rgba(255,255,255,.08));padding:12px 15px;color:var(--text-primary,#f0f0f5);font-weight:700;border:1px solid var(--border-glass,rgba(255,255,255,.1));border-bottom:2px solid var(--accent,#c9a84c)}
+.content th,.content td,table th,table td{padding:12px 15px;border:1px solid var(--border-glass,rgba(255,255,255,.1))}
+.content th,table th{color:var(--text-primary,#f0f0f5);font-weight:700;background:var(--bg-glass-strong,rgba(255,255,255,.08))}
+.content td,table td{color:var(--text-secondary,#a0a3b5)}
+.content tbody tr:nth-child(even),table tbody tr:nth-child(even){background:var(--bg-glass,rgba(255,255,255,.03))}
+.content tbody tr:hover,table tbody tr:hover{background:var(--bg-glass-hover,rgba(255,255,255,.06))}
+</style>
+</head>
+<body>
+<div class="liquid-glass-bg" aria-hidden="true">
+<div class="liquid-blob liquid-blob-1"></div><div class="liquid-blob liquid-blob-2"></div>
+<div class="liquid-blob liquid-blob-3"></div><div class="liquid-blob liquid-blob-4"></div>
+</div>
+<div id="particle-hero" class="particle-canvas-fullpage"></div>
+<div id="site-header">
+<noscript>
+<header><div class="container nav"><a class="logo" href="../">shiv<span class="dot">.</span>parmar</a><nav class="nav-links"><a href="../about">About</a><a href="../services">Services</a><a href="../work">Work</a><a href="../skills">Skills</a><a href="../experience">Experience</a><a href="../blog" class="active">Blog</a><a href="../contact">Contact</a></nav><div class="nav-right"><a class="nav-cta" href="../contact">Hire Me</a></div></div></header>
+</noscript>
+</div>
+<article><div class="container">
+<img decoding="async" loading="eager" fetchpriority="high" src="../images/blog/wordpress-vs-wp-engine-conflict-impact-on-developers-hero.svg" alt="WordPress vs WP Engine Conflict: Impact on | Shiv Parmar - WordPress development guide by Shiv Parmar" class="hero-img">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>WordPress vs WP Engine Conflict: Impact on | Shiv Parmar
+</nav>
+<div class="date">2026-11-13 &middot; 11 min read</div>
+<h1>WordPress vs WP Engine Conflict: Impact on | Shiv Parmar</h1>
+<div class="toc" id="toc">
+<h3>Table of Contents</h3>
+<ul id="tocList">
+<li><a href="#section-0" title="What is the WordPress vs. WP Engine Conflict?">What is the WordPress vs. WP Engine Conflict?</a></li>
+<li><a href="#section-1" title="Why the WordPress vs. WP Engine Conflict Matters">Why the WordPress vs. WP Engine Conflict Matters</a></li>
+<li><a href="#section-2" title="Step-by-Step Guide for Developers Navigating the Fallout">Step-by-Step Guide for Developers Navigating the Fallout</a></li>
+<li><a href="#section-3" title="Best Practices for Modern Developers">Best Practices for Modern Developers</a></li>
+<li><a href="#section-4" title="Common Mistakes to Avoid">Common Mistakes to Avoid</a></li>
+<li><a href="#section-5" title="Conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div class="content">
+
+<!-- AUTO_INTERNAL_LINKS -->
+<div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
+  <p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Related reading</p>
+  <nav class="related-inline-links" aria-label="Related posts" style="display:flex;flex-direction:column;gap:6px">
+      <a href="../blog/how-to-add-ai-to-wordpress-complete-guide-2026" title="Add AI to WordPress: Complete Guide 2026">Add AI to WordPress: Complete Guide 2026</a>
+      <a href="../blog/wordpress-7-0-ai-client-complete-setup-guide-2026" title="WordPress 7.0 AI Client: Setup Guide 2026">WordPress 7.0 AI Client: Setup Guide 2026</a>
+      <a href="../blog/building-a-wordpress-rest-api-from-scratch" title="Building a WordPress REST API from Scratch">Building a WordPress REST API from Scratch</a>
+      <a href="../blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw" title="CISA Warns Hackers Are Exploiting WordPress Update">CISA Warns Hackers Are Exploiting WordPress Update</a>
+  </nav>
+</div>
+<p>When Matt Mullenweg took the stage at WordCamp US in September 2024 and publicly criticized WP Engine, few web engineers anticipated how fundamentally the open-source ecosystem would change. What initially appeared to be a standard corporate intellectual property dispute quickly escalated into a historic crisis involving domain bans, repository forks, legal injunctions, and weaponized software updates. For developers, agency owners, and enterprise architects using <strong>WordPress</strong>, the conflict destroyed long-held assumptions about supply chain security, central repository neutrality, and vendor neutrality.</p>
+
+<p>Fast forward to today, and the implications of this rift have solidified into a permanent shift in how professional web applications are designed, deployed, and maintained. <strong>The WordPress vs. WP Engine drama, explained</strong> through an engineering lens, is fundamentally a story about single-point-of-failure risks in open-source governance. When access to the central WordPress.org plugin repository was restricted for WP Engine servers and the popular Advanced Custom Fields (ACF) plugin was forcibly taken over and rebranded as Secure Custom Fields (SCF), developers were forced to confront a new reality: relying on a single, centralized entity for updates and plugin distribution is a business liability.</p>
+
+<p>Navigating this landscape requires more than just taking sides; it demands a modernized development strategy. The ongoing fallout from the <strong>WordPress Engine drama,</strong> has shifted industry standards toward containerized workflows, self-hosted package registries, automated build pipelines, and vendor-agnostic hosting architectures. This guide breaks down the technical details of the conflict, examines its long-term impacts, and provides actionable code patterns to protect your development pipeline against governance disruptions.</p>
+
+<h2 id="section-0">What is the WordPress vs. WP Engine Conflict?</h2>
+
+<p>The feud between Automattic (the commercial entity led by WordPress co-founder Matt Mullenweg) and WP Engine (one of the largest specialized hosting providers, backed by private equity firm Silver Lake) began as a dispute over open-source contributions and trademark enforcement. Automattic alleged that WP Engine was profiting off the "WP" trademark without adequately contributing back to the open-source project through programs like "Five for the Future." WP Engine countered that the term "WP" had long been accepted as a descriptive abbreviation and accused Automattic of demanding exorbitant licensing fees under threat of retaliatory action.</p>
+
+<p>The conflict rapidly escalated beyond public relations statements into direct technical interventions that directly impacted software infrastructure across the web:</p>
+
+<ul>
+    <li><strong>WordPress.org Access Blocks:</strong> IP addresses and servers associated with WP Engine were blocked from accessing WordPress.org. This prevented thousands of hosted sites from directly downloading core updates, themes, and plugin updates through the native dashboard.</li>
+    <li><strong>Forced Plugin Takeover (ACF to SCF):</strong> In an unprecedented move, WordPress.org administrators invoked executive control over the official repository to clone Advanced Custom Fields (ACF)—a plugin maintained by WP Engine—and replace it with a fork named "Secure Custom Fields" (SCF). Sites updating ACF via the WordPress dashboard were automatically migrated to SCF code without explicit developer consent.</li>
+    <li><strong>Legal Battles and Injunctions:</strong> WP Engine filed lawsuits in U.S. Federal Court alleging extortion, breach of contract, and unfair competition, while Automattic counter-sued over trademark infringement. The legal proceedings highlighted the blurry line between the non-profit WordPress Foundation, the commercial entity Automattic, and the community-driven WordPress.org infrastructure.</li>
+</ul>
+
+<p>To understand the breakdown of responsibilities and control across the ecosystem, consider the following structural comparison:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Entity</th>
+            <th>Type</th>
+            <th>Primary Function</th>
+            <th>Role in the Conflict</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>WordPress Foundation</strong></td>
+            <td>501(c)(3) Non-Profit</td>
+            <td>Owns the "WordPress" trademarks and protects open-source goals.</td>
+            <td>Licensed trademark usage rights exclusively to Automattic for commercial sub-licensing.</td>
+        </tr>
+        <tr>
+            <td><strong>Automattic Inc.</strong></td>
+            <td>For-profit Corporation</td>
+            <td>Operates WordPress.com, WooCommerce, Pressable, and VIP.</td>
+            <td>Demanded licensing fees/contributions from WP Engine; led legal actions.</td>
+        </tr>
+        <tr>
+            <td><strong>WordPress.org</strong></td>
+            <td>Privately-owned Infrastructure</td>
+            <td>Hosts core code, official plugin/theme repositories, and update APIs.</td>
+            <td>Blocked WP Engine infrastructure and executed the ACF-to-SCF repository swap.</td>
+        </tr>
+        <tr>
+            <td><strong>WP Engine</strong></td>
+            <td>For-profit Host / Host Group</td>
+            <td>Provides managed hosting, hosting ACF, Genesis, and Flywheel.</td>
+            <td>Refused trademark payments, deployed custom update endpoints, and filed federal lawsuits.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="section-1">Why the WordPress vs. WP Engine Conflict Matters</h2>
+
+<p>Prior to this conflict, web development teams operated under the assumption that the public WordPress.org plugin repository was a neutral public utility. The technical enforcement actions taken during the dispute permanently altered that risk model. For technical leaders, software architects, and engineering teams, the incident exposed major supply chain risks inherent in the platform's default distribution mechanisms.</p>
+
+<p>First, the automated takeover of ACF demonstrated that third-party code running in site production environments could be altered upstream without site administrator authorization. This created immediate compliance and security audit issues for regulated industries, high-volume e-commerce platforms, and enterprise clients. If a core repository operator can swap plugin maintainers and codebase signatures on the fly, automated auto-updates become a significant liability rather than a security convenience.</p>
+
+<p>Second, the blocking of host IP ranges proved that centralized API endpoints (`api.wordpress.org`) present a single point of failure for operational stability. Websites hosted on targeted platforms lost access to basic maintenance features, creating emergency technical work for developers who had to implement custom update mirrors, switch to Composer-based workflows, or execute manual migrations under tight deadlines.</p>
+
+<p>Finally, the conflict forced a strategic re-evaluation of long-term software architecture choices. Enterprise development agencies have pivoted away from deep vendor lock-in toward decoupled, containerized, and private-registry-backed deployments. Developing modern applications with <strong>WordPress</strong> now requires treating the platform's central infrastructure as an external vendor rather than an unquestioned foundation.</p>
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Expert Help Available<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Need Help Implementing This on Your WordPress Site?</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">I help businesses implement The WordPress vs. WP Engine drama with clean code and best practices. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Help%20Request" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress help">Schedule a Meeting <span>&rarr;</span></a>
+</div>
+
+
+<h2 id="section-2">Step-by-Step Guide for Developers Navigating the Fallout</h2>
+
+<p>To protect client infrastructure, maintain complete control over code updates, and prevent unauthorized upstream code modifications, developers should adopt a decoupled software supply chain. Follow these concrete steps to modernize your deployment process and eliminate central repository dependencies.</p>
+
+<h3>Step 1: Audit Plugin Dependencies and Supply Chain Routes</h3>
+
+<p>Begin by identifying all plugins running across your client sites that originate from public repositories versus private commercial vendors. Pay particular attention to fork risks like ACF/SCF, as well as plugins maintained directly by WP Engine, Automattic, or independent developers who may lack formal SLA guarantees.</p>
+
+<p>Run the following CLI command using WP-CLI to audit installed plugins, their source statuses, and their update availability across your environment:</p>
+
+<pre><code># Check installed plugin status, origin, and update flags
+wp plugin list --fields=name,status,update,version,title --format=table
+
+# Inspect specific update package URLs to verify update origin
+wp option get _site_transient_update_plugins --format=json | grep -E '"package"|"slug"'
+</code></pre>
+
+<h3>Step 2: Decouple Dependencies Using Composer and Roots Bedrock</h3>
+
+<p>Relying on the built-in WordPress dashboard installer for site updates exposes your production stack to upstream repository changes. Transition your project to a Composer-managed layout (such as Roots Bedrock) to treat all plugins, themes, and core files as strict, version-pinned dependencies.</p>
+
+<p>Create a robust <code>composer.json</code> file that pulls core code directly from GitHub, commercial plugins from private repositories, and open-source plugins from audited mirrors (like WPackagist) with explicit version locking:</p>
+
+<pre><code>{
+  "name": "agency/enterprise-project",
+  "type": "project",
+  "description": "Decoupled WordPress deployment configuration",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "6.3.10",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&amp;a=download&amp;k={%ACF_PRO_KEY}"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": "&gt;=8.2",
+    "roots/wordpress": "6.7.1",
+    "johnpbloch/wordpress-core-installer": "^2.0",
+    "advanced-custom-fields/advanced-custom-fields-pro": "6.3.10",
+    "wpackagist-plugin/woocommerce": "9.4.2"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true
+    }
+  }
+}
+</code></pre>
+
+<h3>Step 3: Programmatically Bypass Public Update Checks for Disputed Plugins</h3>
+
+<p>If you choose to stick with traditional hosting environments rather than full CI/CD deployment pipelines, you must programmatically protect plugins like ACF Pro from being hijacked or overwritten by third-party repositories. You can intercept the core update transient mechanism using a custom hook in a mandatory system plugin (MU-plugin).</p>
+
+<p>Create a file named <code>wp-content/mu-plugins/secure-update-routing.php</code> and insert the following code:</p>
+
+<pre><code>&lt;?php
+/**
+ * Plugin Name: Custom Supply Chain Protection
+ * Description: Intercepts core plugin update queries to protect custom and commercial plugins.
+ * Version: 1.0.0
+ * Author: Enterprise Engineering Team
+ */
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+add_filter('site_transient_update_plugins', 'override_disputed_plugin_updates');
+
+function override_disputed_plugin_updates($transient) {
+    if (!is_object($transient)) {
+        return $transient;
+    }
+
+    // List of plugin slugs that must NEVER update from the public WordPress.org repo
+    $protected_plugins = [
+        'advanced-custom-fields/acf.php',
+        'advanced-custom-fields-pro/acf.php',
+    ];
+
+    foreach ($protected_plugins as $plugin_file) {
+        if (isset($transient-&gt;response[$plugin_file])) {
+            // Check if the update package originates from an unauthorized repo
+            $package_url = $transient-&gt;response[$plugin_file]-&gt;package ?? '';
+            
+            if (str_contains($package_url, 'downloads.wordpress.org')) {
+                // Remove the update entry to prevent accidental overwrites via dashboard
+                unset($transient-&gt;response[$plugin_file]);
+            }
+        }
+    }
+
+    return $transient;
+}
+
+// Disable native auto-updates for sensitive commercial extensions
+add_filter('auto_update_plugin', function ($update, $item) {
+    $sensitive_slugs = ['advanced-custom-fields', 'advanced-custom-fields-pro'];
+    if (in_array($item-&gt;slug ?? '', $sensitive_slugs, true)) {
+        return false;
+    }
+    return $update;
+}, 10, 2);
+</code></pre>
+
+<h3>Step 4: Build a Vendor-Agnostic CI/CD Pipeline</h3>
+
+<p>Relying on dashboard clicks to handle updates creates unnecessary risks. Automating your deployment pipeline via standard Continuous Integration tools (such as GitHub Actions or GitLab CI) ensures that code running in staging and production environments matches your exact Git commits.</p>
+
+<p>Below is a working GitHub Actions deployment workflow (`.github/workflows/deploy.yml`) that builds dependencies, strips unsafe native update logic, and deploys directly to target servers via SSH/RSYNC:</p>
+
+<pre><code>name: Enterprise Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP Environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install Dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader --prefer-dist
+
+      - name: Deploy Code Base via Rsync
+        uses: AEnterprise/rsync-deploy@v1.0
+        env:
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avzr --delete"
+          SERVER_PORT: "22"
+          SERVER_IP: ${{ secrets.PRODUCTION_SERVER_IP }}
+          USERNAME: ${{ secrets.PRODUCTION_DB_USER }}
+          FOLDER: "./"
+          SERVER_DEST: "/var/www/html/public_html/"
+</code></pre>
+
+<h2 id="section-3">Best Practices for Modern Developers</h2>
+
+<p>Operating efficiently in a post-conflict ecosystem requires shifting away from legacy workflows toward modern software practices. The fundamental takeaway from the <strong>WordPress Engine drama,</strong> is that software supply chains must be explicitly verified and controlled at every build step.</p>
+
+<p>Review the primary operational shifts required for production stability:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Development Domain</th>
+            <th>Legacy Approach (Pre-Conflict)</th>
+            <th>Modern Best Practice (Post-Conflict)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Plugin Management</strong></td>
+            <td>In-dashboard one-click installs directly from WordPress.org.</td>
+            <td>Composer-managed dependencies pinned to strict semantic versions.</td>
+        </tr>
+        <tr>
+            <td><strong>Core Updates</strong></td>
+            <td>Enabling background auto-updates via core mechanisms.</td>
+            <td>Staged CI/CD builds with automated visual regression tests.</td>
+        </tr>
+        <tr>
+            <td><strong>Trademark &amp; Branding</strong></td>
+            <td>Using "WP" loosely in client project domains and custom code.</td>
+            <td>Replacing "WP" prefixes with proprietary agency tags to avoid compliance disputes.</td>
+        </tr>
+        <tr>
+            <td><strong>Repository Dependency</strong></td>
+            <td>Relying 100% on central public endpoints for all assets.</td>
+            <td>Hosting private package registries (Satis, Private Packagist, S3 assets).</td>
+        </tr>
+        <tr>
+            <td><strong>Hosting Architecture</strong></td>
+            <td>Tightly coupled host-specific features and dashboard tools.</td>
+            <td>Containerized apps (Docker) deployable to any cloud host (AWS, GCP, DigitalOcean).</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>To ensure business continuity for your clients, adopt these three core development principles:</p>
+
+<ul>
+    <li><strong>Implement Private Package Mirrors:</strong> Maintain local or private S3/Satis mirrors of crucial open-source plugins. If the public repository alters access rules or drops a critical package, your pipeline will continue to build cleanly using your cached copies.</li>
+    <li><strong>Isolate Client Domains and Naming Assets:</strong> Ensure custom plugins, internal agency tools, and domain registrations comply strictly with trademark guidelines. Avoid using "WordPress" or "WP" in commercial product titles, plugin names, or SaaS extensions.</li>
+    <li><strong>Standardize Staging Verification Pipelines:</strong> Never permit automatic, unattended upgrades on production environments. Always test core updates, database schema changes, and plugin revisions in isolated staging environments using automated visual regression testing tools like Playwright or Cypress.</li>
+</ul>
+
+<h2 id="section-4">Common Mistakes to Avoid</h2>
+
+<p>As developer teams adjust to new supply chain workflows, several recurring mistakes can expose projects to outages, code collisions, or legal vulnerabilities. Avoid these practical pitfalls when updating your development stack:</p>
+
+<ul>
+    <li><strong>Blindly Accepting Plugin Name Conversions:</strong> Do not approve batch updates in the dashboard without reading change logs. Automatically updating a legacy plugin (such as updating ACF Pro to SCF via default dashboard channels) can overwrite custom field structures, breaking custom theme queries and field group logic.</li>
+    <li><strong>Hardcoding Vendor-Specific API Endpoints:</strong> Avoid writing code that relies on host-specific APIs or proprietary features. If you are forced to migrate from one host to another due to legal disputes or service changes, hardcoded host hooks will create broken dependencies across your codebase.</li>
+    <li><strong>Neglecting Database Backups Before Engine Migration:</strong> When converting site setups between competing plugins (e.g., switching from SCF back to official ACF Pro releases), schema definitions in the `wp_options` or `wp_postmeta` tables may require manual key updates. Always run full database dumps using `wp db export` before attempting migration scripts.</li>
+    <li><strong>Ignoring Headless and Decoupled Options:</strong> Assuming that traditional PHP theme templates are the only way to build with the platform leaves projects vulnerable to platform disputes. Consider decoupling your frontend using Next.js or Nuxt, relying on the platform strictly as a headless GraphQL content API.</li>
+</ul>
+
+<pre><code># Correct approach: Export production database state before running schema updates
+wp db export fallback_backup_$(date +%Y%m%d_%H%m%S).sql --add-drop-table
+
+# Verify database integrity before executing migrations
+wp check-dir-structure
+wp db check
+</code></pre>
+
+
+<div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">
+<div style="position:absolute;top:0;left:0;right:0;height:1px;background:var(--gradient-accent);opacity:0.5"></div>
+<p style="margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:24px;height:1px;background:var(--accent)"></span>Open to work<span style="width:24px;height:1px;background:var(--accent)"></span></p>
+<h3 style="margin:0 0 12px;font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--text-primary);letter-spacing:-0.02em">Hire a WordPress Developer Who Delivers Results</h3>
+<p style="margin:0 auto 24px;max-width:480px;font-size:15px;color:var(--text-secondary);line-height:1.7">From custom themes to WooCommerce stores, I build WordPress sites that perform. Available worldwide.</p>
+<a href="mailto:parmarshiv1101@gmail.com?subject=WordPress%20Project%20Inquiry" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient-accent);color:#000;padding:14px 32px;border-radius:var(--radius-md);font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.3s" title="Email Shiv Parmar for WordPress projects">Get Free Quote <span>&rarr;</span></a>
+</div>
+
+<h2 id="section-5">Conclusion</h2>
+<p>Having <strong>The WordPress vs. WP Engine drama, explained</strong> from both developer and business perspectives, the overarching takeaway is the critical need for technical adaptability. Navigating the ongoing <strong>WordPress Engine drama,</strong> web professionals have seen firsthand how vulnerable client ecosystems can be when major open-source contributors and hosting providers clash. As a developer, staying informed and adopting host-agnostic practices is essential to protecting your projects and maintaining uninterrupted service.</p>
+
+<p>Despite these temporary disruptions, <strong>WordPress</strong> remains the dominant content management system powering the web, backed by a resilient and highly active global community. Developers who prioritize modular architecture, proper fallback strategies, and transparent client communication will continue to navigate these industry shifts successfully while delivering high-value solutions to their clients.</p>
+
+<p>If you are looking for an expert to help secure, migrate, or elevate your digital platforms during these changing times, <strong>Shiv Parmar</strong> is available for <strong>WordPress</strong> development work worldwide. From complex custom builds to infrastructure optimization, Shiv brings high-level technical expertise to ensure your web presence remains stable, scalable, and future-proof.</p>
+</div>
+
+<div class="tags">
+<a href="/blog" class="tag">The WordPress vs. WP Engine drama</a>
+<a href="/blog" class="tag">explained</a>
+<a href="/blog" class="tag">WordPress Engine drama,</a>
+<a href="/blog" class="tag">WordPress</a>
+</div>
+
+<!-- AUTO_AUTHOR_BOX -->
+<div class="author-box">
+<img decoding="async" loading="lazy" src="../images/shiv-parmar-wordpress-developer.jpg" alt="Shiv Parmar - WordPress Developer" title="Shiv Parmar - WordPress Developer">
+<div class="author-info">
+<h4>Shiv Parmar</h4>
+<p>WordPress Developer with global experience. Specializing in custom themes, WooCommerce, and high-performance WordPress sites.</p>
+<div class="author-social">
+<a href="https://linkedin.com/in/shiv-parmar" target="_blank" rel="noopener" title="Connect with Shiv Parmar on LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn</a>
+<a href="https://github.com/shivparmar1101" target="_blank" rel="noopener" title="View Shiv Parmar's GitHub Profile">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+GitHub</a>
+<a href="mailto:parmarshiv1101@gmail.com" title="Email Shiv Parmar">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+Email</a>
+</div>
+</div>
+</div>
+
+<div class="related-blogs">
+<h3>Related Posts</h3>
+<div class="related-grid" id="relatedBlogs">
+<div class="related-card">
+<div class="date">2026-11-12 &middot; 8 min read</div>
+<h4><a href="../blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors" title="Rank Math SEO Plugin Vulnerability Exposes Sites to">Rank Math SEO Plugin Vulnerability Exposes Sites to</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-11 &middot; 8 min read</div>
+<h4><a href="../blog/cloudflare-explains-its-migration-to-emdash-cms" title="Cloudflare Explains Its Migration to EmDash CMS">Cloudflare Explains Its Migration to EmDash CMS</a></h4>
+</div>
+<div class="related-card">
+<div class="date">2026-11-10 &middot; 8 min read</div>
+<h4><a href="../blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw" title="CISA Warns Hackers Are Exploiting WordPress Update">CISA Warns Hackers Are Exploiting WordPress Update</a></h4>
+</div>
+</div>
+</div>
+</div></article>
+
+<section id="contact" class="cta-section" aria-labelledby="contact-heading">
+<div class="container">
+<div class="contact-grid">
+<div class="form-card reveal">
+<h3>Let's Work Together</h3>
+<form id="contactForm" novalidate>
+<div class="form-row"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+<div class="form-row"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+<div class="form-row"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000"></div>
+<div class="form-row"><label for="subject">Subject *</label><select id="subject" name="subject" required><option value="" disabled selected>Select an inquiry type</option><option value="General Inquiry">General Inquiry</option><option value="Project Request">Project Request</option><option value="Collaboration">Collaboration</option><option value="Freelance Work">Freelance Work</option><option value="Other">Other</option></select></div>
+<div class="form-row"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Select your budget</option><option value="Under $500">Under $500</option><option value="$500 - $1,500">$500 - $1,500</option><option value="$1,500 - $5,000">$1,500 - $5,000</option><option value="$5,000 - $15,000">$5,000 - $15,000</option><option value="Above $15,000">Above $15,000</option></select></div>
+<div class="form-row"><label for="message">Project Details *</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+<button class="btn btn-primary" type="submit">Send Message <span class="arrow">&rarr;</span></button>
+<p class="form-note" id="formStatus">Your message will be sent directly to my email &mdash; I'll respond within 24 hours.</p>
+</form>
+</div>
+<div class="contact-info">
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="3"/><path d="M6 14l18 11 18-11"/></svg></div>
+<div><strong>Email</strong><a href="mailto:parmarshiv1101@gmail.com" title="Send email to Shiv Parmar">parmarshiv1101@gmail.com</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="5"/><path d="M16 21v15"/><circle cx="16" cy="15" r="2.5" fill="currentColor" stroke="none"/><path d="M24 21v15"/><path d="M24 27c0-4 2-6 5-6s5 2 5 6v9"/></svg></div>
+<div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shiv-parmar/" target="_blank" rel="noopener noreferrer" title="Connect with Shiv Parmar on LinkedIn">linkedin.com/in/shiv-parmar</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="currentColor" stroke="none" aria-hidden="true"><path d="M24 4C12.95 4 4 12.95 4 24c0 8.84 5.74 16.34 13.7 18.98 1 .18 1.37-.44 1.37-.98v-3.46c-5.57 1.22-6.74-2.68-6.74-2.68-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.06 2.06 3.06 2.06 1.78 3.05 4.67 2.16 5.81 1.65.18-1.29.7-2.16 1.27-2.66-4.45-.5-9.12-2.22-9.12-9.9 0-2.19.78-3.98 2.06-5.38-.2-.5-.9-2.52.2-5.25 0 0 1.68-.54 5.5 2.06a19.16 19.16 0 0 1 10 0c3.82-2.6 5.5-2.06 5.5-2.06 1.1 2.73.4 4.75.2 5.25 1.28 1.4 2.06 3.19 2.06 5.38 0 7.7-4.68 9.39-9.14 9.88.72.62 1.36 1.85 1.36 3.73v5.54c0 .55.37 1.17 1.38.98C38.27 40.34 44 32.84 44 24 44 12.95 35.05 4 24 4Z"/></svg></div>
+<div><strong>GitHub</strong><a href="https://github.com/shivparmar1101/shiv-parmar-portfolio" target="_blank" rel="noopener noreferrer" title="View Shiv Parmar's Portfolio on GitHub">github.com/shivparmar1101</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8h-2a3 3 0 0 0-3 3v2c0 14 10 24 24 24h2a3 3 0 0 0 3-3v-3l-5-3-3 2a18 18 0 0 1-9-9l2-3-3-5z"/></svg></div>
+<div><strong>Phone</strong><a href="tel:+917359411663" title="Call Shiv Parmar">+91 73594 11663</a></div>
+</div>
+<div class="contact-card reveal">
+<div class="contact-icon"><svg class="contact-svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 44S40 30 40 20a16 16 0 1 0-32 0c0 10 16 24 16 24Z"/><circle cx="24" cy="20" r="5"/></svg></div>
+<div><strong>Location</strong><span>Available Worldwide &middot; Remote-ready</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../includes.js?v=e8193bf0" defer></script><script src="../particle-bg.js?v=4f692920" defer></script><script src="../script.js?v=58e33b2a" defer></script><script src="../spatial-tilt.js?v=94b6438b" defer></script>
+</body>
+</html>
