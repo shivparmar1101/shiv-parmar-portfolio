@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Nov 2026 17:28:53 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 15:57:51 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WordPress 7.0 Features: What Developers Need to | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Explore key developer updates, performance boosts, and new APIs. Discover why WordPress 7.0 Is A Winner for developers today.</description>
+      <category>WordPress 7.0 Is A Winner</category>
+    </item>
     <item>
       <title>WordPress vs WP Engine Conflict: Impact on | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers</link>
@@ -398,14 +406,6 @@
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</guid>
       <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
       <description>Learn how to add AI to WordPress in this complete 2026 guide. Discover plugins, chatbots, and automation tips to make your site smarter starting today.</description>
-      <category>WordPress</category>
-    </item>
-    <item>
-      <title>WooCommerce 11.1 New Features &amp;amp; Setup Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Explore WooCommerce 11.1 new features in this 2026 setup guide. Follow our step-by-step walkthrough to update, configure, and use every enhancement today.</description>
       <category>WordPress</category>
     </item>
   </channel>
