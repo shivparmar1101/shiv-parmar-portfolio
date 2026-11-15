@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Nov 2026 16:21:22 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 16:35:11 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>WordPress Market Share Drops for Six Consecutive | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Latest data reveals WordPress market share declines for six months in a row. Discover why users are switching, which CMS rivals are growing, and what it means for you.</description>
+      <category>WordPress Market Share Declines For Six Months In A Row</category>
+    </item>
     <item>
       <title>WordPress 7.0 Features: What Developers Need to | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know</link>
@@ -399,14 +407,6 @@
       <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
       <description>Master WordPress INP in 2026. Learn actionable fixes to reduce interaction latency, pass Core Web Vitals, and deliver a lightning-fast user experience.</description>
       <category>WordPress INP</category>
-    </item>
-    <item>
-      <title>Add AI to WordPress: Complete Guide 2026 | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
-      <description>Learn how to add AI to WordPress in this complete 2026 guide. Discover plugins, chatbots, and automation tips to make your site smarter starting today.</description>
-      <category>WordPress</category>
     </item>
   </channel>
 </rss>
