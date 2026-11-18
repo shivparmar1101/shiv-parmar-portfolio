@@ -721,8 +721,9 @@
       ],
       "publish_time": "3:00 AM",
       "publish_date": "2026-11-09",
-      "status": "pending",
-      "source": "autocomplete"
+      "status": "published",
+      "source": "autocomplete",
+      "published_at": "2026-11-18T18:16:07.216Z"
     },
     {
       "id": 52,
