@@ -240,6 +240,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -257,7 +258,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 
 <p>Too often, site owners install an SEO plugin like Yoast or Rank Math, green-light every indicator, and assume their technical SEO is complete. However, plugins can only go so far. If your theme code is bloated, your database is slow, or your dynamic markup is broken, search engines will penalize your rankings.</p>
 
-<p>In this post, I am sharing my personal <strong>WordPress SEO Technical Checklist</strong>&mdash;the exact developer-level audit process I run on every custom build to guarantee lightning-fast crawlability, clean indexation, and top-tier Core Web Vitals performance.</p>
+<p>In this post, I am sharing my personal <strong>WordPress SEO Technical Checklist</strong>&mdash;the exact developer-level audit process I run on every custom build to guarantee lightning-fast crawlability, clean indexation, and top-tier <a href="../blog/core-web-vitals-2026-wordpress-checklist" title="Core Web Vitals 2026: WordPress Performance">Core Web Vitals</a> performance.</p>
 
 <h2 id="section-0">1. Clean Up Head Bloat & Reduce DOM Size</h2>
 
@@ -285,7 +286,7 @@ add_action('init', function() {
 
 <h2 id="section-1">2. Enforce Proper Schema Markup (Structured Data)</h2>
 
-<p>While plugins generate basic Schema, custom post types or complex layouts often require precise JSON-LD structured data. Adding structured data helps search engines understand your content contextually, unlocking rich snippets in Google search results. If you have not gone past plugin defaults yet, my guide on how to <a href="/blog/how-to-add-schema-markup-to-wordpress" title="How to Add Schema Markup to WordPress">add schema markup</a> to WordPress covers the full setup before you drop into raw JSON-LD.</p>
+<p>While plugins generate basic Schema, custom post types or complex layouts often require precise JSON-LD <a href="../blog/faq-schema-ai-search-wordpress-guide" title="FAQ Schema for AI Search: WordPress Implementation">structured data</a>. Adding structured data helps search engines understand your content contextually, unlocking rich snippets in Google search results. If you have not gone past plugin defaults yet, my guide on how to <a href="/blog/how-to-add-schema-markup-to-wordpress" title="How to Add Schema Markup to WordPress">add schema markup</a> to WordPress covers the full setup before you drop into raw JSON-LD.</p>
 
 <p>Here is how I inject custom JSON-LD schema dynamically into the <code>&lt;head&gt;</code> section for single blog posts using PHP:</p>
 

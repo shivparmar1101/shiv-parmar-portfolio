@@ -1,10 +1,10 @@
 url,type,site_name,status,contact,anchor_text,notes
-https://www.linkedin.com/in/shiv-parmar,profile,LinkedIn,todo,,Shiv Parmar | WordPress Developer,About section + Featured me site link add karo
-https://github.com/shivparmar1101,profile,GitHub,todo,,shivparmar1101,Repo README me portfolio link + profile bio me site URL
-https://dev.to/,profile,Dev.to,todo,,Shiv Parmar,Canonical = original blog URL set karo republish vaaste
-https://hashnode.com/,profile,Hashnode,todo,,Shiv Parmar,Canonical = original blog URL
-https://medium.com/,profile,Medium,todo,,Shiv Parmar,Import posts with canonical link
-https://profiles.wordpress.org/,profile,WordPress.org,todo,,Shiv Parmar,Community profile me site link (w.org strong)
+https://www.linkedin.com/in/shiv-parmar,profile,LinkedIn,todo,,Shiv Parmar | WordPress Developer,About section + Featured me site link add karo; URL live (bot-block 999 for scripts)
+https://github.com/shivparmar1101,profile,GitHub,earned,,shivparmar1101,README.md first line = site link added 2026-11-19; profile bio me site URL pending manual step
+https://dev.to/,profile,Dev.to,todo,,Shiv Parmar,Canonical = original blog URL set karo republish vaaste; site live (200)
+https://hashnode.com/,profile,Hashnode,todo,,Shiv Parmar,Canonical = original blog URL; site live (200)
+https://medium.com/,profile,Medium,todo,,Shiv Parmar,Import posts with canonical link; site live (bot-block 403 for scripts)
+https://profiles.wordpress.org/,profile,WordPress.org,todo,,Shiv Parmar,Community profile me site link (w.org strong); site live (200)
 https://www.goodfirms.co/,directory,GoodFirms,todo,,Shiv Parmar - WordPress Developer,Free listing + client reviews add karo
 https://clutch.co/,directory,Clutch,todo,,Shiv Parmar / portfolio,Free profile; reviews maangho past clients na
 https://themanifest.com/,directory,The Manifest,todo,,Shiv Parmar - WordPress Developer,Same company data GoodFirms jaisu
@@ -18,10 +18,12 @@ https://www.upwork.com/,profile,Upwork,todo,,Shiv Parmar,Portfolio link in profi
 https://www.fiverr.com/,profile,Fiverr,todo,,Shiv parmar,Profile website field
 https://www.indiehackers.com/,profile,Indie Hackers,todo,,Shiv Parmar,Intro post + site link; build-in-public updates
 https://www.producthunt.com/,list,Product Hunt,todo,,<tool/checklist name>,Tab banao free tool/checklist thase e vaaste
-https://kinsta.com/write-for-kinsta/,guest,Kinsta,todo,,Shiv Parmar (WordPress developer),Write-for-Kinsta program; pitch WooCommerce/speed topic
-https://www.cloudways.com/en/blog/guest-posting/,guest,Cloudways,todo,,Shiv Parmar,Guest posting guidelines page check karo
-https://themeisle.com/write-for-us/,guest,Themeisle,todo,,Shiv Parmar,WordPress tutorials pitch
-https://www.hostinger.com/tutorials/guest-post,guest,Hostinger,verify,,Shiv Parmar,URL verify karo write-for-us search karine
+https://kinsta.com/write-for-kinsta/,guest,Kinsta,rejected,,Shiv Parmar (WordPress developer),2026-11-19 check: write-for-kinsta page 404 - program retired, skip this target
+https://www.cloudways.com/en/blog/guest-posting/,guest,Cloudways,todo,,Shiv Parmar,URL live (bot-block 403 for scripts); guidelines page browser me kholi pitch karva pehla
+https://themeisle.com/write-for-us/,guest,Themeisle,rejected,,Shiv Parmar,Correct URL = /blog/write-for-us/ but page says NOT accepting guest writers for now; revisit later
+https://www.hostinger.com/tutorials/guest-post,guest,Hostinger,verify,,Shiv Parmar,URL verified live (200) 2026-11-19; guidelines read karine pitch banao
+https://torquemag.io/contribute/,guest,Torque,todo,,Shiv Parmar,NEW 2026-11-19: /contribute/ live (200); WordPress topics 500-1300 words - pitch karo
+https://wpbuffs.com/write-for-us/,guest,WP Buffs,todo,,Shiv Parmar,NEW 2026-11-19: write-for-us live (200); unpaid 1000-2000 words + 1 author-bio link
 ,<guest>,other WP blogs,todo,,Shiv Parmar,Search: wordpress + ("write for us" OR "guest post") -site:reddit.com
 ,<resource>,client sites,todo,,<case study anchor>,Past clients ni site ma "featured/project" section thi backlink
 ,<community>,Reddit r/WordPress,todo,,Shiv Parmar,Signature allowed nathi - genuine answer + rare link only

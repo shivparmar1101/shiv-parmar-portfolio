@@ -191,6 +191,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -370,7 +371,7 @@ function inject_agentic_product_schema() {
 
 <h3>2. Exposing High-Performance, Agent-Specific REST Endpoints</h3>
 
-<p>The standard WooCommerce REST API (<code>/wp-json/wc/v3/</code>) is designed for administrative dashboards, mobile app backends, and ERP integrations. It typically enforces cookie-based authentication, nonces, or consumer key/secret pairs via basic auth. Furthermore, core product endpoints return massive JSON payloads packed with visual metadata, layout settings, and dashboard flags that exhaust the context window of LLM reasoning engines.</p>
+<p>The standard WooCommerce REST API (<code>/wp-json/wc/v3/</code>) is designed for administrative dashboards, <a href="../blog/progressive-web-apps-wordpress-pwa-guide" title="Progressive Web Apps WordPress: PWA Setup Guide">mobile app</a> backends, and ERP integrations. It typically enforces cookie-based authentication, nonces, or consumer key/secret pairs via basic auth. Furthermore, core product endpoints return massive JSON payloads packed with visual metadata, layout settings, and dashboard flags that exhaust the context window of LLM reasoning engines.</p>
 
 <p>To accommodate autonomous agents, you should register lightweight, publicly accessible (or tokenized) agent discovery endpoints that return strictly token-efficient, semantic payloads containing only the data points an AI agent needs to evaluate an item.</p>
 

@@ -191,6 +191,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -204,7 +205,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </div>
 <p>The organic search landscape has undergone its most consequential structural shift since the introduction of mobile-first indexing. The era of the predictable "ten blue links" has evolved into an answer-engine paradigm dominated by <strong>Google AI Overviews</strong>. Powered by custom Gemini models and advanced Retrieval-Augmented Generation (RAG) frameworks, Google no longer merely indexes web pages; it reads, extracts, synthesizes, and attributes data directly at the top of the Search Engine Results Page (SERP).</p>
 
-<p>For WordPress publishers, site owners, and enterprise webmasters, this transition has sparked intense anxiety over zero-click searches and vanishing organic impressions. However, the data reveals a different reality: websites chosen as sources for AI Overviews earn unprecedented authority, hyper-targeted referral traffic, and brand visibility that traditional organic positions simply cannot match. Securing these citations is not a matter of luck—it requires deliberate architectural, semantic, and structural engineering.</p>
+<p>For WordPress publishers, site owners, and enterprise webmasters, this transition has sparked intense anxiety over zero-<a href="../blog/zero-click-searches-wordpress-ai-strategy" title="Zero-Click Searches: WordPress Strategy for AI Era">click searches</a> and vanishing organic impressions. However, the data reveals a different reality: websites chosen as sources for AI Overviews earn unprecedented authority, hyper-targeted referral traffic, and brand visibility that traditional organic positions simply cannot match. Securing these citations is not a matter of luck—it requires deliberate architectural, semantic, and structural engineering.</p>
 
 <p>WordPress powers over 40% of the open web, yet the vast majority of WordPress installations are poorly configured for LLM parsing. Out-of-the-box themes, bloated page builders, messy DOM trees, and unoptimized schema architectures create friction that prevents search crawlers and RAG pipelines from extracting core answers. This comprehensive guide outlines the exact technical blueprint required to optimize your WordPress platform to secure consistent citations and dominate <strong>ranking</strong> within Google AI Overviews.</p>
 
@@ -396,7 +397,7 @@ add_action( 'wp_enqueue_scripts', 'streamline_wordpress_dom', 100 );
 
 <p>Google’s systems are increasingly relying on machine-readable endpoints to discover and cross-reference authoritative entities. WordPress natively includes a powerful REST API, but many sites either break it with aggressive security plugins or fail to expose the full contextual metadata required by automated data pipelines.</p>
 
-<p>You can optimize your WordPress REST API to return sanitized, structured content explicitly designed for scraping agents and automated validation pipelines:</p>
+<p>You can optimize your WordPress REST API to return sanitized, <a href="../blog/make-woocommerce-ai-agent-readable-guide" title="Make WooCommerce Store AI-Agent Readable: Complete">structured content</a> explicitly designed for scraping agents and automated validation pipelines:</p>
 
 <pre><code>function expose_ai_friendly_rest_fields() {
     register_rest_field( 'post', 'ai_context', [

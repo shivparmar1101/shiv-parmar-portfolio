@@ -223,6 +223,7 @@ select option{background:#111;color:#f0f0f0;padding:8px}
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -297,7 +298,7 @@ add_action( 'wp_enqueue_scripts', 'shiv_enqueue_rest_script' );
 
 <h2 id="section-2">2. Application Passwords (Best for External Scripts & Quick Integrations)</h2>
 
-<p>Introduced in WordPress 5.6, <strong>Application Passwords</strong> allow external applications (like mobile apps, Zapier, or Node.js scripts) to authenticate without sharing the user's actual password. Each application gets its own 24-character random password, which can be revoked at any time from the User Profile screen.</p>
+<p>Introduced in WordPress 5.6, <strong>Application Passwords</strong> allow external applications (like <a href="../blog/progressive-web-apps-wordpress-pwa-guide" title="Progressive Web Apps WordPress: PWA Setup Guide">mobile app</a>s, Zapier, or Node.js scripts) to authenticate without sharing the user's actual password. Each application gets its own 24-character random password, which can be revoked at any time from the User Profile screen.</p>
 
 <p>This method uses HTTP Basic Authentication, sending a base64-encoded string of <code>username:application_password</code> in the HTTP request headers.</p>
 

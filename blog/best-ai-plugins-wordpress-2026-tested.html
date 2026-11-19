@@ -195,6 +195,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -521,7 +522,7 @@ function handle_custom_ai_rest_query( WP_REST_Request $request ) {
 
 <h3>2. Exposing API Credentials in Client-Side Code</h3>
 
-<p>A severe security vulnerability on modern WordPress sites occurs when site administrators embed their raw OpenAI or Anthropic API keys directly into frontend JavaScript scripts or custom block widgets. malicious actors can easily inspect your page source code, retrieve the API key, and consume your credit balance within minutes. Always proxy all queries through custom server-side endpoints built in PHP.</p>
+<p>A severe security vulnerability on <a href="../blog/how-to-become-a-modern-wordpress-developer" title="How to Become a Modern WordPress Developer">modern WordPress</a> sites occurs when site administrators embed their raw OpenAI or Anthropic API keys directly into frontend JavaScript scripts or custom block widgets. malicious actors can easily inspect your page source code, retrieve the API key, and consume your credit balance within minutes. Always proxy all queries through custom server-side endpoints built in PHP.</p>
 
 <h3>3. Blocking Main Thread Execution with Synchronous API Requests</h3>
 

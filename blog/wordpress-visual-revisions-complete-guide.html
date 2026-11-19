@@ -195,6 +195,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -467,7 +468,7 @@ wp db query "DELETE FROM wp_posts WHERE post_type = 'revision' AND post_modified
 
 <h3>Overlooking Third-Party Dynamic Block Dependencies</h3>
 
-<p>Not every block is fully static. Many modern plugins—including dynamic pricing tables, event calendars, and form builders—fetch data dynamically from custom database tables or external REST/GraphQL APIs. When you roll back a page using visual revisions, you are restoring the block's layout configuration attributes, not the external dynamic data it references. If a third-party form ID referenced inside a historical revision has been deleted from that plugin's database table, the restored layout will fail to render the form correctly.</p>
+<p>Not <a href="../blog/block-level-css-wordpress-7-style-blocks" title="Block-Level CSS WordPress 7.0: Style Every Block">every block</a> is fully static. Many modern plugins—including dynamic pricing tables, event calendars, and form builders—fetch data dynamically from custom database tables or external REST/GraphQL APIs. When you roll back a page using visual revisions, you are restoring the block's layout configuration attributes, not the external dynamic data it references. If a third-party form ID referenced inside a historical revision has been deleted from that plugin's database table, the restored layout will fail to render the form correctly.</p>
 
 <h3>Neglecting Database Transients and Cache Layers</h3>
 

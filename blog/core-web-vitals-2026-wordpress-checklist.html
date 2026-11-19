@@ -195,6 +195,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -497,7 +498,7 @@ add_action( 'wp_enqueue_scripts', 'conditional_asset_cleanup', 100 );
   <li><strong>Rely on Real User Monitoring (RUM):</strong> Synthetic performance tests (like desktop PageSpeed Insights runs) do not trigger Google ranking penalties. Focus primarily on field data reported through the Chrome User Experience Report (CrUX) and integrated real-user analytics tools.</li>
   <li><strong>Establish a Staging Performance Gate:</strong> Audit code changes, new theme builds, and major plugin additions in a staging environment using tools like WebPageTest or Lighthouse CI before pushing changes to production.</li>
   <li><strong>Enforce Strict Plugin Governance:</strong> Implement a clear review policy for new plugin requests. Evaluate candidate plugins for script payload size, main-thread blocking time, and query counts before approval.</li>
-  <li><strong>Utilize Native Block Themes:</strong> Modern WordPress block themes built on Full Site Editing (FSE) render significantly cleaner code structures with far less overhead than legacy page-builder themes.</li>
+  <li><strong>Utilize Native Block Themes:</strong> <a href="../blog/how-to-become-a-modern-wordpress-developer" title="How to Become a Modern WordPress Developer">Modern WordPress</a> block themes built on Full Site Editing (FSE) render significantly cleaner code structures with far less overhead than legacy page-builder themes.</li>
   <li><strong>Set Up Edge-Side Image Optimization:</strong> Automate image conversion, resizing, and responsive srcset generation directly on your CDN edge network to maintain optimal performance automatically for all editor uploads.</li>
 </ul>
 

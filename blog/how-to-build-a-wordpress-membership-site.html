@@ -397,7 +397,7 @@ add_action( 'wp_ajax_sp_verify_member_status', 'sp_verify_member_status_callback
 
 <ol>
     <li><strong>Implement Object Caching:</strong> Use Redis or Memcached to store transient data and user meta in memory. This drastically reduces SQL queries on page loads for authenticated users.</li>
-    <li><strong>Exclude Membership Pages from <a href="/blog/wordpress-caching-plugins-compared-2026">Page <a href="/blog/wordpress-caching-plugins-compared-2026">Cache</a></a>:</strong> Ensure that dynamic pages like Account Details, Checkout, and Login are excluded from server-level page caching (e.g., Nginx FastCGI cache or WP Rocket) to prevent user data leaks.</li>
+    <li><strong>Exclude Membership Pages from <a href="/blog/wordpress-caching-plugins-compared-2026">Page Cache</a>:</strong> Ensure that dynamic pages like Account Details, Checkout, and Login are excluded from server-level page caching (e.g., Nginx FastCGI cache or WP Rocket) to prevent user data leaks.</li>
     <li><strong>Protect Direct File Uploads:</strong> If your site offers downloadable PDFs or media assets for paid members, do not store them in the public <code>/wp-content/uploads/</code> folder. Store them outside the root directory or use Amazon S3 with short-lived pre-signed URLs to prevent hotlinking.</li>
 </ol>
 

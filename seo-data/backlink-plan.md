@@ -7,6 +7,19 @@ Goal (6 months): 20-30 quality referring domains. Relevance > quantity.
 
 ---
 
+## Execution log
+
+- **2026-11-19 — URL audit (all 23 tracker URLs HEAD-checked)**
+  - Dead: Kinsta `write-for-kinsta` (404, program retired) → `rejected`
+  - Wrong URL + closed: Themeisle → correct is `/blog/write-for-us/`, page says "not accepting for now" → `rejected`
+  - Verified live: Hostinger (200), Cloudways (403 = bot-block, page exists)
+  - **New live targets added:** Torque `torquemag.io/contribute/` (200, WP topics, 500–1300 words) and WP Buffs `wpbuffs.com/write-for-us/` (200, 1000–2000 words + author-bio link)
+  - 403/999 on LinkedIn, Medium, GoodFirms, Clutch, etc. = bot protection, sites are fine
+- **2026-11-19 — GitHub README created** (`README.md`, first line = site link per Phase 1 rule) → GitHub row = `earned` (profile bio URL still manual)
+- **Still manual (needs your accounts):** all profile/directory sign-ups (LinkedIn, Dev.to, Hashnode, Medium, WordPress.org, GoodFirms, Clutch, …), guest pitches (Template A), client credits (Template C)
+
+---
+
 ## Phase 1 — Profiles & directories (do this week, 1-2 hours)
 
 For every row in the tracker with `type=profile` or `type=directory`:

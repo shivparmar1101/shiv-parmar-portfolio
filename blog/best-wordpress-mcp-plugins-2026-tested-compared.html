@@ -222,6 +222,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -596,7 +597,7 @@ add_action('mcp_register_tools', function($mcp_registry) {
 <p>Stdio runs the MCP server as a local subprocess of your AI client, which is ideal for development machines because nothing is exposed over the network. SSE keeps a persistent HTTP endpoint that remote or hosted clients can reach, which helps teams but demands strict authentication. Choose Stdio for local work and SSE only when you can secure the endpoint properly.</p>
 
 <h3>How do I register my own custom MCP tools?</h3>
-<p>The step-by-step section shows registering tools from PHP with strictly typed input schemas, so the model only receives validated parameters and predictable results. Keep tool descriptions narrow and return structured data rather than free-form text. Strict schemas also reduce token usage, which the guide flags as an important cost control.</p>
+<p>The step-by-step section shows registering tools from PHP with strictly typed input schemas, so the model only receives validated parameters and predictable results. Keep tool descriptions narrow and return <a href="../blog/faq-schema-ai-search-wordpress-guide" title="FAQ Schema for AI Search: WordPress Implementation">structured data</a> rather than free-form text. Strict schemas also reduce token usage, which the guide flags as an important cost control.</p>
 
 <h3>Is it safe to let AI make changes to my WordPress site?</h3>
 <p>Only if you enforce the principle of least privilege and expose the smallest set of tools your workflow needs. The common mistakes section warns against unauthenticated public REST endpoints and forgotten nonce or session isolation, both of which would let anyone drive your admin. It also recommends restricting direct SQL tools in production and trying new tools on staging first.</p>

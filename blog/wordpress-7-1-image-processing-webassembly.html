@@ -191,6 +191,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -564,7 +565,7 @@ Content-Security-Policy: script-src 'self' 'wasm-unsafe-eval';
 <p>Because the client-side <strong>image editor</strong> generates scaled versions (thumbnails, medium sizes, and retina derivatives) prior to upload, your upload handler may receive multiple independent binary files in a single ingestion sequence. Failing to link these derivatives within WordPress's attachment database (<code>wp_posts</code> and <code>wp_postmeta</code> tables) can leave orphaned visual files in your <code>wp-content/uploads</code> folder. Always use the <code>wp_generate_attachment_metadata</code> hooks to properly map client-rendered responsive alternatives back to their parent attachment ID.</p>
 
 <h3>Ignoring Fallbacks for Headless Deployments</h3>
-<p>Decoupled and headless architectures that expose custom ingestion endpoints (such as mobile applications or external publishing scripts) will not trigger the browser-based WebAssembly interface unless that environment runs a dedicated Node.js or embedded Wasm runner. If your architecture relies heavily on third-party ingestion, ensure you retain server-side image processing capabilities (like a containerized ImageMagick microservice or an edge worker) to handle uploads from external clients.</p>
+<p>Decoupled and headless architectures that expose custom ingestion endpoints (such as <a href="../blog/progressive-web-apps-wordpress-pwa-guide" title="Progressive Web Apps WordPress: PWA Setup Guide">mobile app</a>lications or external publishing scripts) will not trigger the browser-based WebAssembly interface unless that environment runs a dedicated Node.js or embedded Wasm runner. If your architecture relies heavily on third-party ingestion, ensure you retain server-side image processing capabilities (like a containerized ImageMagick microservice or an edge worker) to handle uploads from external clients.</p>
 
 
 <div style="background:var(--bg-glass);backdrop-filter:blur(var(--blur-lg));-webkit-backdrop-filter:blur(var(--blur-lg));border:1px solid var(--border-glass);padding:48px 32px;border-radius:var(--radius-xl);text-align:center;position:relative;overflow:hidden;margin:40px 0 32px">

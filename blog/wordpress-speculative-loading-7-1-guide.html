@@ -195,6 +195,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </ul>
 </div>
 <div class="content">
+<!-- AUTO_BODY_LINKS -->
 
 <!-- AUTO_INTERNAL_LINKS -->
 <div class="related-inline" style="margin:0 0 28px;padding:16px 20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-left:3px solid var(--accent);border-radius:var(--radius-md)">
@@ -208,7 +209,7 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </div>
 <p>In the relentless pursuit of sub-second page loads, web performance optimization has undergone a seismic shift. For years, developers relied heavily on traditional caching, asset minification, image compression, and basic <code>&lt;link rel="preload"&gt;</code> tags to trim milliseconds off page load times. While these techniques remain essential foundation blocks, they are fundamentally reactive—they speed up the delivery of assets only after a user explicitly requests a page. In modern web development, waiting for the click is already too late.</p>
 
-<p>WordPress Speculative Loading fundamentally changes this dynamic by moving performance engineering from reactive delivery to predictive execution. Powered by the W3C Speculation Rules API, WordPress can now instruct modern web browsers to speculatively prefetch or full-fidelity prerender pages in the background *before* the user actively clicks a link. When a user finally navigates to a prerendered link, the page displays almost instantly—delivering a zero-latency experience that mirrors native desktop and mobile applications.</p>
+<p>WordPress Speculative Loading fundamentally changes this dynamic by moving performance engineering from reactive delivery to predictive execution. Powered by the W3C Speculation Rules API, WordPress can now instruct modern web browsers to speculatively prefetch or full-fidelity prerender pages in the background *before* the user actively clicks a link. When a user finally navigates to a prerendered link, the page displays almost instantly—delivering a zero-latency experience that mirrors native desktop and <a href="../blog/progressive-web-apps-wordpress-pwa-guide" title="Progressive Web Apps WordPress: PWA Setup Guide">mobile app</a>lications.</p>
 
 <p>However, predictive rendering is a double-edged sword. Prerendering too aggressively can swamp your web server with unnecessary request traffic and drain client memory, while being too cautious yields minimal speed gains. This is where <strong>Speculative Loading Moderate Mode</strong> comes into play. As the recommended operational baseline for most production environments, Moderate Mode hits the precise sweet spot between maximum performance and intelligent server resource conservation. In this comprehensive guide, we will explore the architecture of WordPress Speculative Loading, dive deep into configuring Moderate Mode, examine code-level customizations, and review operational best practices to supercharge your website's performance.</p>
 
