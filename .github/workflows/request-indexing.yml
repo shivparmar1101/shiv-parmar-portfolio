@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '45 7 * * *'
   workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Comma-separated URLs to publish (explicit re-index list). Empty = newest 10 sitemap URLs.'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -25,10 +30,16 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Publish urlNotifications (newest 10 URLs)
+      - name: Publish urlNotifications
         env:
           GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
-        run: node scripts/request-indexing.js --last=10
+          INPUT_URLS: ${{ github.event.inputs.urls }}
+        run: |
+          if [ -n "$INPUT_URLS" ]; then
+            node scripts/request-indexing.js --url="$INPUT_URLS"
+          else
+            node scripts/request-indexing.js --last=10
+          fi
 
       - name: Upload report
         if: always()

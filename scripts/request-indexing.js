@@ -10,7 +10,8 @@
  *   GSC_PROPERTY         optional siteUrl for logs (default domain property)
  *
  * Flags:
- *   --url=URL    publish a single URL (the post that was just published)
+ *   --url=URL    publish one URL, or several comma-separated URLs
+ *                (the post that was just published, or an explicit re-index list)
  *   --last=N     publish only the last N sitemap URLs (the newest posts)
  *   --limit=N    publish at most N URLs (from the top of the sitemap)
  *   --dry-run    print the plan, no API calls
@@ -110,8 +111,8 @@ async function main() {
   let targets = urls;
   let mode = `all ${urls.length}`;
   if (URL_ARG) {
-    targets = [URL_ARG];
-    mode = 'single URL';
+    targets = URL_ARG.split(',').map(s => s.trim()).filter(Boolean);
+    mode = `explicit ${targets.length} URL(s)`;
   } else if (LAST) {
     targets = urls.slice(-LAST);
     mode = `newest ${targets.length}`;
