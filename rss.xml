@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 10:39:50 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 18:31:54 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>Essential WordPress Plugin Architecture and Best | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/essential-wordpress-plugin-architecture-and-best-practices</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/essential-wordpress-plugin-architecture-and-best-practices</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Master essential architecture patterns and best practices for developing custom WordPress plugins. Learn to write clean, secure, and scalable code today.</description>
+      <category>wordpress plugins</category>
+    </item>
     <item>
       <title>WordPress Logo Brand Guidelines and SVG Code Usage | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage</link>
@@ -25,7 +33,7 @@
       <category>wordpress developer</category>
     </item>
     <item>
-      <title>New WordPress Security Initiative Targets Plugins and Themes</title>
+      <title>New WordPress Security Initiative Targets Plugins | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/new-wordpress-security-initiative-targets-plugins-and-themes</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/new-wordpress-security-initiative-targets-plugins-and-themes</guid>
       <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
@@ -49,7 +57,7 @@
       <category>WordPress 7.0 Is A Winner</category>
     </item>
     <item>
-      <title>WordPress vs WP Engine Conflict: Impact on Developers</title>
+      <title>WordPress vs WP Engine Conflict: Impact on | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers</guid>
       <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
@@ -73,7 +81,7 @@
       <category>Cloudflare Details its Migration to &amp;quot;WordPress Successor&amp;quot; EmDash</category>
     </item>
     <item>
-      <title>CISA Warns Hackers Are Exploiting WordPress Update Flaw</title>
+      <title>CISA Warns Hackers Are Exploiting WordPress Update | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
@@ -81,7 +89,7 @@
       <category>CISA says hackers exploit WordPress update flaw</category>
     </item>
     <item>
-      <title>WordPress Login Security 2026: 2FA Brute Force Protection</title>
+      <title>WordPress Login Security 2026: 2FA Brute Force | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force</guid>
       <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
@@ -97,7 +105,7 @@
       <category>AI content</category>
     </item>
     <item>
-      <title>AI Visibility Tracking: Monitor Brand in ChatGPT Gemini</title>
+      <title>AI Visibility Tracking: Monitor Brand in ChatGPT | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini</guid>
       <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
@@ -105,7 +113,7 @@
       <category>AI visibility</category>
     </item>
     <item>
-      <title>Best AI Plugins for WordPress 2026: Tested &amp;amp; Compared</title>
+      <title>Best AI Plugins for WordPress 2026: Tested &amp;amp; | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested</guid>
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
@@ -113,7 +121,7 @@
       <category>AI plugins</category>
     </item>
     <item>
-      <title>WordPress AI Content Workflow: Gemini Claude ChatGPT</title>
+      <title>WordPress AI Content Workflow: Gemini Claude | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude</guid>
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
@@ -121,7 +129,7 @@
       <category>AI content</category>
     </item>
     <item>
-      <title>Core Web Vitals 2026: WordPress Performance Checklist</title>
+      <title>Core Web Vitals 2026: WordPress Performance | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist</guid>
       <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
@@ -129,7 +137,7 @@
       <category>Core Web Vitals</category>
     </item>
     <item>
-      <title>Progressive Web Apps WordPress: PWA Setup Guide 2026</title>
+      <title>Progressive Web Apps WordPress: PWA Setup Guide | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide</guid>
       <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
@@ -137,7 +145,7 @@
       <category>PWA</category>
     </item>
     <item>
-      <title>WordPress Speculative Loading 7.1: Moderate Mode Guide</title>
+      <title>WordPress Speculative Loading 7.1: Moderate Mode | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-speculative-loading-7-1-guide</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-speculative-loading-7-1-guide</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
@@ -145,7 +153,7 @@
       <category>speculative loading</category>
     </item>
     <item>
-      <title>WordPress View Transitions API: Smooth Page Animations</title>
+      <title>WordPress View Transitions API: Smooth Page | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
@@ -177,7 +185,7 @@
       <category>font manager</category>
     </item>
     <item>
-      <title>WordPress Visual Revisions: Scrub Through History Guide</title>
+      <title>WordPress Visual Revisions: Scrub Through History | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide</guid>
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
@@ -193,7 +201,7 @@
       <category>AI-readable</category>
     </item>
     <item>
-      <title>Stripe Agentic Commerce Protocol for WooCommerce Setup</title>
+      <title>Stripe Agentic Commerce Protocol for WooCommerce | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/stripe-agentic-commerce-protocol-woocommerce</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/stripe-agentic-commerce-protocol-woocommerce</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
@@ -209,7 +217,7 @@
       <category>WooCommerce MCP</category>
     </item>
     <item>
-      <title>Agentic Commerce: AI Agents Shopping WooCommerce Stores</title>
+      <title>Agentic Commerce: AI Agents Shopping WooCommerce | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce</guid>
       <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
@@ -233,7 +241,7 @@
       <category>ChatGPT SEO</category>
     </item>
     <item>
-      <title>FAQ Schema for AI Search: WordPress Implementation Guide</title>
+      <title>FAQ Schema for AI Search: WordPress Implementation | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide</guid>
       <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
@@ -257,7 +265,7 @@
       <category>AI Overviews</category>
     </item>
     <item>
-      <title>WordPress Notes Feature: Block-Level Team Collaboration</title>
+      <title>WordPress Notes Feature: Block-Level Team | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-notes-block-level-collaboration</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-notes-block-level-collaboration</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
@@ -273,7 +281,7 @@
       <category>WebAssembly</category>
     </item>
     <item>
-      <title>WordPress Command Palette 7.1: Master Ctrl+K Shortcuts</title>
+      <title>WordPress Command Palette 7.1: Master Ctrl+K | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k</guid>
       <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
@@ -297,7 +305,7 @@
       <category>AI Client</category>
     </item>
     <item>
-      <title>Best WordPress Caching Plugins 2026: WP Rocket vs LiteSpeed</title>
+      <title>Best WordPress Caching Plugins 2026: WP Rocket vs | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared</guid>
       <pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
@@ -313,7 +321,7 @@
       <category>WordPress 7.1</category>
     </item>
     <item>
-      <title>Best WordPress Security Plugins 2026: Full Protection Guide</title>
+      <title>Best WordPress Security Plugins 2026: Full | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection</guid>
       <pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
@@ -399,14 +407,6 @@
       <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
       <description>Learn how to block AI crawlers like GPTBot, CCBot and ClaudeBot from scraping your WordPress site. Protect content with robots.txt, .htaccess and plugins.</description>
       <category>block AI crawlers</category>
-    </item>
-    <item>
-      <title>Bricksforge Critical Vulnerability: Patch It Now | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
-      <description>A critical Bricksforge vulnerability threatens your WordPress site. Discover how to patch the exploit immediately with our step-by-step security fix guide.</description>
-      <category>Bricksforge</category>
     </item>
   </channel>
 </rss>
