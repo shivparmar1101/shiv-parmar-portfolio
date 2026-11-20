@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-19T16:13:33.289Z",
+  "generatedAt": "2026-11-20T16:00:31.471Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
-  "sitemapUrls": 97,
+  "sitemapUrls": 98,
   "inspected": 30,
-  "indexed": 24,
-  "notIndexed": 6,
+  "indexed": 22,
+  "notIndexed": 5,
   "rateLimited": false,
   "blockers": [],
   "staleNotIndexed": [
@@ -12,7 +12,7 @@
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force",
       "lastmod": "2026-11-09",
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google"
+      "coverageState": "Discovered - currently not indexed"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw",
@@ -21,33 +21,27 @@
       "coverageState": "Discovered - currently not indexed"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire",
+      "url": "https://shiv-parmar-portfolio.netlify.app/work",
       "lastmod": "2026-10-20",
       "verdict": "NEUTRAL",
       "coverageState": "Discovered - currently not indexed"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared",
-      "lastmod": "2026-10-20",
-      "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection",
+      "url": "https://shiv-parmar-portfolio.netlify.app/projects",
       "lastmod": "2026-10-20",
       "verdict": "NEUTRAL",
       "coverageState": "Discovered - currently not indexed"
     }
   ],
   "lastInspected": {
-    "https://shiv-parmar-portfolio.netlify.app/category": "2026-11-15T14:25:33.300Z",
+    "https://shiv-parmar-portfolio.netlify.app/category": "2026-11-20T15:57:20.646Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-notes-block-level-collaboration": "2026-11-16T16:38:54.547Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide": "2026-11-17T16:36:10.345Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/rank-google-ai-overviews-wordpress-optimization": "2026-11-17T16:36:17.188Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai": "2026-11-18T16:04:35.347Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide": "2026-11-18T16:04:41.927Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy": "2026-11-14T13:54:50.297Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce": "2026-11-15T14:28:23.130Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy": "2026-11-20T15:56:53.967Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce": "2026-11-20T16:00:24.434Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-mcp-connect-ai-assistants": "2026-11-16T16:39:46.639Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/stripe-agentic-commerce-protocol-woocommerce": "2026-11-16T16:39:52.991Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/make-woocommerce-ai-agent-readable-guide": "2026-11-18T16:05:21.307Z",
@@ -58,15 +52,15 @@
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-view-transitions-smooth-animations": "2026-11-17T16:34:06.281Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-speculative-loading-7-1-guide": "2026-11-17T16:34:12.981Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/progressive-web-apps-wordpress-pwa-guide": "2026-11-18T16:02:43.455Z",
-    "https://shiv-parmar-portfolio.netlify.app/about": "2026-11-15T14:27:30.883Z",
-    "https://shiv-parmar-portfolio.netlify.app/contact": "2026-11-15T14:27:37.437Z",
-    "https://shiv-parmar-portfolio.netlify.app/": "2026-11-15T14:27:44.001Z",
-    "https://shiv-parmar-portfolio.netlify.app/services": "2026-11-15T14:27:50.515Z",
-    "https://shiv-parmar-portfolio.netlify.app/work": "2026-11-15T14:27:57.018Z",
-    "https://shiv-parmar-portfolio.netlify.app/projects": "2026-11-15T14:28:03.556Z",
-    "https://shiv-parmar-portfolio.netlify.app/skills": "2026-11-15T14:28:10.066Z",
-    "https://shiv-parmar-portfolio.netlify.app/experience": "2026-11-15T14:28:16.589Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog": "2026-11-15T14:28:29.643Z",
+    "https://shiv-parmar-portfolio.netlify.app/about": "2026-11-20T15:57:36.868Z",
+    "https://shiv-parmar-portfolio.netlify.app/contact": "2026-11-20T15:57:43.569Z",
+    "https://shiv-parmar-portfolio.netlify.app/": "2026-11-20T15:57:50.394Z",
+    "https://shiv-parmar-portfolio.netlify.app/services": "2026-11-20T15:57:57.012Z",
+    "https://shiv-parmar-portfolio.netlify.app/work": "2026-11-20T15:58:03.812Z",
+    "https://shiv-parmar-portfolio.netlify.app/projects": "2026-11-20T15:58:10.632Z",
+    "https://shiv-parmar-portfolio.netlify.app/skills": "2026-11-20T16:00:11.127Z",
+    "https://shiv-parmar-portfolio.netlify.app/experience": "2026-11-20T16:00:17.812Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog": "2026-11-20T16:00:31.270Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress": "2026-11-15T14:28:36.182Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/building-a-wordpress-rest-api-from-scratch": "2026-11-15T14:28:42.711Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-gutenberg-vs-elementor-which-is-better-in-2026": "2026-11-16T16:38:48.231Z",
@@ -108,7 +102,7 @@
     "https://shiv-parmar-portfolio.netlify.app/blog/elementor-csrf-vulnerability-2-million-sites": "2026-11-18T16:05:54.161Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire": "2026-11-19T16:11:54.586Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared": "2026-11-19T16:12:01.118Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini": "2026-11-19T16:10:35.929Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini": "2026-11-20T15:50:37.178Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access": "2026-11-19T16:12:07.689Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup": "2026-11-19T16:12:14.311Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026": "2026-11-19T16:12:20.909Z",
@@ -121,58 +115,25 @@
     "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested": "2026-11-19T16:13:19.989Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection": "2026-11-19T16:13:26.529Z",
     "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared": "2026-11-19T16:13:33.088Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown": "2026-11-14T13:54:43.974Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms": "2026-11-19T16:10:42.517Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings": "2026-11-14T13:54:56.831Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features": "2026-11-14T13:55:03.181Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly": "2026-11-14T13:55:09.794Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k": "2026-11-15T14:27:24.365Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force": "2026-11-19T16:10:49.078Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw": "2026-11-19T16:10:55.593Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms": "2026-11-19T16:11:02.180Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors": "2026-11-19T16:11:08.715Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers": "2026-11-19T16:11:15.252Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know": "2026-11-19T16:11:21.807Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months": "2026-11-19T16:11:28.364Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/new-wordpress-security-initiative-targets-plugins-and-themes": "2026-11-19T16:11:34.904Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer": "2026-11-19T16:11:41.463Z",
-    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage": "2026-11-19T16:11:48.038Z"
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown": "2026-11-20T15:56:47.131Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms": "2026-11-20T15:52:37.604Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings": "2026-11-20T15:57:00.743Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features": "2026-11-20T15:57:07.374Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly": "2026-11-20T15:57:13.999Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k": "2026-11-20T15:57:27.273Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force": "2026-11-20T15:52:44.381Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw": "2026-11-20T15:52:50.970Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms": "2026-11-20T15:52:57.582Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors": "2026-11-20T15:53:04.327Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers": "2026-11-20T15:53:10.891Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know": "2026-11-20T15:53:18.688Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months": "2026-11-20T15:55:19.100Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/new-wordpress-security-initiative-targets-plugins-and-themes": "2026-11-20T15:55:25.860Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer": "2026-11-20T15:55:32.575Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage": "2026-11-20T15:56:21.585Z",
+    "https://shiv-parmar-portfolio.netlify.app/blog/essential-wordpress-plugin-architecture-and-best-practices": "2026-11-20T15:56:28.353Z"
   },
   "results": [
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested",
-      "lastmod": "2026-11-06",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-07T08:59:09Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:10:22.806Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude",
-      "lastmod": "2026-11-06",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-07T01:16:51Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-ai-content-workflow-gemini-claude",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:10:29.350Z"
-    },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini",
       "lastmod": "2026-11-07",
@@ -184,41 +145,33 @@
       "lastCrawlTime": "2026-11-08T03:47:47Z",
       "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini",
       "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/ai-visibility-tracking-chatgpt-gemini",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
+      "inSitemap": [],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:10:35.929Z"
+      "inspectedAt": "2026-11-20T15:50:37.178Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms",
       "lastmod": "2026-11-08",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-08T18:59:30Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms",
-      "inSitemap": [],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:10:42.517Z"
+      "error": "HTTP 503 {\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"status\":\"UNAVAILABLE\"}}",
+      "indexed": false,
+      "inspectedAt": "2026-11-20T15:52:37.604Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-login-security-2fa-brute-force",
       "lastmod": "2026-11-09",
       "verdict": "NEUTRAL",
-      "coverageState": "URL is unknown to Google",
+      "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
       "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
       "lastCrawlTime": null,
       "googleCanonical": null,
       "userCanonical": null,
-      "inSitemap": [],
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
       "indexed": false,
-      "inspectedAt": "2026-11-19T16:10:49.078Z"
+      "inspectedAt": "2026-11-20T15:52:44.381Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/cisa-warns-hackers-are-exploiting-wordpress-update-flaw",
@@ -235,7 +188,7 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": false,
-      "inspectedAt": "2026-11-19T16:10:55.593Z"
+      "inspectedAt": "2026-11-20T15:52:50.970Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms",
@@ -248,9 +201,11 @@
       "lastCrawlTime": "2026-11-12T05:06:54Z",
       "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms",
       "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms",
-      "inSitemap": [],
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:02.180Z"
+      "inspectedAt": "2026-11-20T15:52:57.582Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors",
@@ -263,11 +218,9 @@
       "lastCrawlTime": "2026-11-12T20:19:11Z",
       "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors",
       "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/rank-math-seo-plugin-vulnerability-exposes-sites-to-backdoors",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
+      "inSitemap": [],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:08.715Z"
+      "inspectedAt": "2026-11-20T15:53:04.327Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-vs-wp-engine-conflict-impact-on-developers",
@@ -284,7 +237,7 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:15.252Z"
+      "inspectedAt": "2026-11-20T15:53:10.891Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-features-what-developers-need-to-know",
@@ -301,24 +254,14 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:21.807Z"
+      "inspectedAt": "2026-11-20T15:53:18.688Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months",
       "lastmod": "2026-11-15",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-15T16:53:05Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-market-share-drops-for-six-consecutive-months",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:28.364Z"
+      "error": "HTTP 503 {\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"status\":\"UNAVAILABLE\"}}",
+      "indexed": false,
+      "inspectedAt": "2026-11-20T15:55:19.100Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/new-wordpress-security-initiative-targets-plugins-and-themes",
@@ -335,7 +278,7 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:34.904Z"
+      "inspectedAt": "2026-11-20T15:55:25.860Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer",
@@ -348,15 +291,30 @@
       "lastCrawlTime": "2026-11-18T21:48:26Z",
       "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer",
       "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
+      "inSitemap": [],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:11:41.463Z"
+      "inspectedAt": "2026-11-20T15:55:32.575Z"
     },
     {
       "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage",
       "lastmod": "2026-11-18",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-11-19T17:00:28Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-logo-brand-guidelines-and-svg-code-usage",
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T15:56:21.585Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/essential-wordpress-plugin-architecture-and-best-practices",
+      "lastmod": "2026-11-19",
       "verdict": "NEUTRAL",
       "coverageState": "Discovered - currently not indexed",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
@@ -369,238 +327,193 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": false,
-      "inspectedAt": "2026-11-19T16:11:48.038Z"
+      "inspectedAt": "2026-11-20T15:56:28.353Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-plugin-auto-update-cooldown-protect-shire",
-      "lastmod": "2026-10-20",
-      "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
-      "indexingState": "INDEXING_STATE_UNSPECIFIED",
-      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-      "lastCrawlTime": null,
-      "googleCanonical": null,
-      "userCanonical": null,
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": false,
-      "inspectedAt": "2026-11-19T16:11:54.586Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-mcp-plugins-2026-tested-compared",
-      "lastmod": "2026-10-20",
-      "verdict": "NEUTRAL",
-      "coverageState": "Discovered - currently not indexed",
-      "indexingState": "INDEXING_STATE_UNSPECIFIED",
-      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
-      "lastCrawlTime": null,
-      "googleCanonical": null,
-      "userCanonical": null,
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": false,
-      "inspectedAt": "2026-11-19T16:12:01.118Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown",
       "lastmod": "2026-10-20",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-15T13:04:27Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-mcp-oauth-2-1-secure-ai-access",
+      "lastCrawlTime": "2026-10-20T03:39:50Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-mary-lou-feature-breakdown",
       "inSitemap": [],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:07.689Z"
+      "inspectedAt": "2026-11-20T15:56:47.131Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup",
-      "lastmod": "2026-10-20",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy",
+      "lastmod": "2026-10-27",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-17T07:48:19Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup",
+      "lastCrawlTime": "2026-11-03T14:41:42Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/zero-click-searches-wordpress-ai-strategy",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:14.311Z"
+      "inspectedAt": "2026-11-20T15:56:53.967Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings",
       "lastmod": "2026-10-20",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-16T01:01:40Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026",
-      "inSitemap": [
-        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
-      ],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:20.909Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked",
-      "lastmod": "2026-10-20",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-16T21:02:50Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked",
+      "lastCrawlTime": "2026-11-08T14:50:08Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings",
       "inSitemap": [],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:27.578Z"
+      "inspectedAt": "2026-11-20T15:57:00.743Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026",
-      "lastmod": "2026-10-20",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features",
+      "lastmod": "2026-10-21",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-03T04:51:45Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-ai-to-wordpress-complete-guide-2026",
-      "inSitemap": [],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:34.134Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide",
-      "lastmod": "2026-11-01",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-01T14:15:42Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-visual-revisions-complete-guide",
+      "lastCrawlTime": "2026-10-21T12:39:12Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-abilities-api-build-ai-features",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:40.691Z"
+      "inspectedAt": "2026-11-20T15:57:07.374Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts",
-      "lastmod": "2026-11-01",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly",
+      "lastmod": "2026-10-22",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-03T00:36:05Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-font-manager-custom-fonts",
+      "lastCrawlTime": "2026-10-22T15:14:43Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-image-processing-webassembly",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:47.233Z"
+      "inspectedAt": "2026-11-20T15:57:13.999Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026",
-      "lastmod": "2026-10-20",
+      "url": "https://shiv-parmar-portfolio.netlify.app/category",
+      "lastmod": "2026-11-02",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-03T22:22:21Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026",
-      "inSitemap": [],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:12:53.788Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026",
-      "lastmod": "2026-10-20",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-11-03T12:04:47Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-0-ai-client-complete-setup-guide-2026",
+      "lastCrawlTime": "2026-11-02T14:33:14Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/category",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/category",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:13:00.373Z"
+      "inspectedAt": "2026-11-20T15:57:20.646Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared",
-      "lastmod": "2026-10-20",
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k",
+      "lastmod": "2026-10-22",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-15T13:09:52Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared",
-      "inSitemap": [],
-      "indexed": true,
-      "inspectedAt": "2026-11-19T16:13:06.912Z"
-    },
-    {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested",
-      "lastmod": "2026-10-20",
-      "verdict": "PASS",
-      "coverageState": "Submitted and indexed",
-      "indexingState": "INDEXING_ALLOWED",
-      "robotsTxtState": "ALLOWED",
-      "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-16T15:54:06Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested",
+      "lastCrawlTime": "2026-10-24T17:22:19Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-command-palette-master-ctrl-k",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:13:13.432Z"
+      "inspectedAt": "2026-11-20T15:57:27.273Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested",
+      "url": "https://shiv-parmar-portfolio.netlify.app/about",
+      "lastmod": "2026-10-17",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-10-14T18:17:06Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/about",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/about",
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T15:57:36.868Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/contact",
+      "lastmod": "2026-10-17",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-10-14T09:18:10Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/contact",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/contact",
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T15:57:43.569Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/",
       "lastmod": "2026-10-20",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-17T11:45:14Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested",
+      "lastCrawlTime": "2026-11-10T10:21:56Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:13:19.989Z"
+      "inspectedAt": "2026-11-20T15:57:50.394Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-security-plugins-2026-protection",
+      "url": "https://shiv-parmar-portfolio.netlify.app/services",
+      "lastmod": "2026-10-20",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-10-14T07:34:55Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/services",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/services",
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T15:57:57.012Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/work",
       "lastmod": "2026-10-20",
       "verdict": "NEUTRAL",
       "coverageState": "Discovered - currently not indexed",
@@ -614,24 +527,80 @@
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": false,
-      "inspectedAt": "2026-11-19T16:13:26.529Z"
+      "inspectedAt": "2026-11-20T15:58:03.812Z"
     },
     {
-      "url": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared",
+      "url": "https://shiv-parmar-portfolio.netlify.app/projects",
+      "lastmod": "2026-10-20",
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "userCanonical": null,
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": false,
+      "inspectedAt": "2026-11-20T15:58:10.632Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/skills",
+      "lastmod": "2026-10-20",
+      "error": "HTTP 503 {\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"status\":\"UNAVAILABLE\"}}",
+      "indexed": false,
+      "inspectedAt": "2026-11-20T16:00:11.127Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/experience",
       "lastmod": "2026-10-20",
       "verdict": "PASS",
       "coverageState": "Submitted and indexed",
       "indexingState": "INDEXING_ALLOWED",
       "robotsTxtState": "ALLOWED",
       "pageFetchState": "SUCCESSFUL",
-      "lastCrawlTime": "2026-10-19T21:23:16Z",
-      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared",
-      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared",
+      "lastCrawlTime": "2026-10-14T05:59:32Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/experience",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/experience",
       "inSitemap": [
         "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
       ],
       "indexed": true,
-      "inspectedAt": "2026-11-19T16:13:33.088Z"
+      "inspectedAt": "2026-11-20T16:00:17.812Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce",
+      "lastmod": "2026-10-28",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-10-29T07:13:58Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog/agentic-commerce-ai-agents-woocommerce",
+      "inSitemap": [],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T16:00:24.434Z"
+    },
+    {
+      "url": "https://shiv-parmar-portfolio.netlify.app/blog",
+      "lastmod": "2026-10-20",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "indexingState": "INDEXING_ALLOWED",
+      "robotsTxtState": "ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-11-08T04:03:13Z",
+      "googleCanonical": "https://shiv-parmar-portfolio.netlify.app/blog",
+      "userCanonical": "https://shiv-parmar-portfolio.netlify.app/blog",
+      "inSitemap": [
+        "https://shiv-parmar-portfolio.netlify.app/sitemap.xml"
+      ],
+      "indexed": true,
+      "inspectedAt": "2026-11-20T16:00:31.270Z"
     }
   ]
 }
