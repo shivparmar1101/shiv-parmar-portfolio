@@ -6,8 +6,16 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 18:50:10 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 17:58:24 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
+    <item>
+      <title>How to Safely Upgrade to the Latest WordPress | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-safely-upgrade-to-the-latest-wordpress-release</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-safely-upgrade-to-the-latest-wordpress-release</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Protect your site from downtime. Follow our step-by-step guide to safely upgrade your website to the WordPress latest version today.</description>
+      <category>wordpress latest version</category>
+    </item>
     <item>
       <title>Essential WordPress Plugin Architecture and Best | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/essential-wordpress-plugin-architecture-and-best-practices</link>
@@ -399,14 +407,6 @@
       <pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
       <description>Protect your WordPress site from sudden bugs. Learn how an auto-update cooldown delay safeguards your digital Shire from broken plugin releases.</description>
       <category>auto-update</category>
-    </item>
-    <item>
-      <title>Block AI Crawlers from Scraping WordPress | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Learn how to block AI crawlers like GPTBot, CCBot and ClaudeBot from scraping your WordPress site. Protect content with robots.txt, .htaccess and plugins.</description>
-      <category>block AI crawlers</category>
     </item>
   </channel>
 </rss>
