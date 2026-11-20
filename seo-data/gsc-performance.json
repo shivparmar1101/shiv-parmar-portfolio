@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-11-19T15:05:08.915Z",
+  "generatedAt": "2026-11-20T14:46:33.048Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-11-10",
-      "endDate": "2026-11-16"
+      "startDate": "2026-11-11",
+      "endDate": "2026-11-17"
     },
     "previous": {
-      "startDate": "2026-11-03",
-      "endDate": "2026-11-09"
+      "startDate": "2026-11-04",
+      "endDate": "2026-11-10"
     }
   },
   "current": {
     "totals": {
       "clicks": 2,
-      "impressions": 791
+      "impressions": 747
     },
-    "ctr": 0.2528445006321113,
-    "avgPosition": 17.441213653603032
+    "ctr": 0.2677376171352075,
+    "avgPosition": 18.957161981258366
   },
   "previous": {
     "totals": {
-      "clicks": 7,
-      "impressions": 883
+      "clicks": 6,
+      "impressions": 821
     },
-    "ctr": 0.7927519818799547,
-    "avgPosition": 12.093997734994337
+    "ctr": 0.730816077953715,
+    "avgPosition": 12.286236297198538
   },
   "topQueries": [
     {
@@ -61,9 +61,9 @@
         "ai in digital marketing ,,-,590, no data in gsc , aura pr keywords ,134,-"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 50
+      "position": 52
     },
     {
       "keys": [
@@ -76,12 +76,21 @@
     },
     {
       "keys": [
-        "best llm for wordpress development"
+        "answer engine optimization website structure h1 faq strategy"
       ],
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 45.5
+    },
+    {
+      "keys": [
+        "best llm for wordpress development"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
     },
     {
       "keys": [
@@ -121,6 +130,15 @@
     },
     {
       "keys": [
+        "chatgpt seo mcp"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 60
+    },
+    {
+      "keys": [
         "chatgpt wordpress mcp"
       ],
       "clicks": 0,
@@ -133,9 +151,9 @@
         "connect woocommerce to claude"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 2,
       "ctr": 0,
-      "position": 66.75
+      "position": 43
     },
     {
       "keys": [
@@ -151,9 +169,9 @@
         "detect ai bots wordpress"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 55
+      "position": 63
     },
     {
       "keys": [
@@ -187,27 +205,9 @@
         "evaluate the public relations company wordpress on wordpress sued"
       ],
       "clicks": 0,
-      "impressions": 26,
+      "impressions": 38,
       "ctr": 0,
-      "position": 5.076923076923077
-    },
-    {
-      "keys": [
-        "evaluate the public relations company wp engine on are wordpress engine and wordpress related?"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 15
-    },
-    {
-      "keys": [
-        "evaluate the public relations company wp engine on wordpress engine"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 3
+      "position": 4.605263157894736
     }
   ],
   "topPages": [
@@ -216,36 +216,36 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-7-1-ai-client-streaming-embeddings"
       ],
       "clicks": 1,
-      "impressions": 30,
-      "ctr": 0.03333333333333333,
-      "position": 8.533333333333333
+      "impressions": 31,
+      "ctr": 0.03225806451612903,
+      "position": 7.967741935483871
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies"
       ],
       "clicks": 1,
-      "impressions": 14,
-      "ctr": 0.07142857142857142,
-      "position": 26.714285714285715
+      "impressions": 13,
+      "ctr": 0.07692307692307693,
+      "position": 30.307692307692307
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 3
+      "position": 7
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/about"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 9
+      "position": 9.666666666666666
     },
     {
       "keys": [
@@ -261,54 +261,54 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
-      "position": 60.857142857142854
+      "position": 58
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 126,
+      "impressions": 109,
       "ctr": 0,
-      "position": 5.76984126984127
+      "position": 5.752293577981652
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 10.5
+      "position": 12
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 52
+      "position": 56.5
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 222,
+      "impressions": 170,
       "ctr": 0,
-      "position": 7.301801801801802
+      "position": 7.047058823529412
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 27
+      "position": 36
     },
     {
       "keys": [
@@ -324,18 +324,18 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 15,
       "ctr": 0,
-      "position": 34.77777777777778
+      "position": 37.8
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks"
       ],
       "clicks": 0,
-      "impressions": 34,
+      "impressions": 30,
       "ctr": 0,
-      "position": 17.5
+      "position": 18.833333333333332
     },
     {
       "keys": [
@@ -351,36 +351,27 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 4,
       "ctr": 0,
-      "position": 8.5
+      "position": 21.25
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms"
       ],
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 7,
       "ctr": 0,
-      "position": 35.333333333333336
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 1
+      "position": 30.428571428571427
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/content-optimization-ai-humans-llms"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 12.5
+      "position": 1
     },
     {
       "keys": [
@@ -390,6 +381,15 @@
       "impressions": 4,
       "ctr": 0,
       "position": 24
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/faq-schema-ai-search-wordpress-guide"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
     }
   ]
 }
