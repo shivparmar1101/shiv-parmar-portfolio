@@ -20,6 +20,17 @@ function esc(s) {
     .replace(/'/g, '&#39;');
 }
 
+// Reverse HTML entities so values extracted from the page are plain text
+// before esc() runs — otherwise "&amp;" in a title became "&amp;amp;" in the feed.
+function decode(s) {
+  return String(s)
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&#x27;/gi, "'")
+    .replace(/&amp;/g, '&');
+}
+
 function textOnly(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
@@ -33,20 +44,21 @@ function parsePost(file) {
   const html = fs.readFileSync(file, 'utf8');
   const slug = path.basename(file, '.html');
 
-  const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || slug.replace(/-/g, ' ');
-  const desc =
-    (html.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || '';
+  const title = decode((html.match(/<title>([^<]*)<\/title>/i) || [])[1] || slug.replace(/-/g, ' '));
+  const desc = decode(
+    (html.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || ''
+  );
   const dateStr =
     (html.match(/<div class="date">([^<]*)<\/div>/i) || [])[1] ||
     (html.match(/article:published_time" content="([^"]*)"/) || [])[1] ||
     '';
-  const keywords = (html.match(/<meta name="keywords" content="([^"]*)"/i) || [])[1] || '';
+  const keywords = decode((html.match(/<meta name="keywords" content="([^"]*)"/i) || [])[1] || '');
 
   // Extract first paragraph as description fallback
   let bodyDesc = desc;
   if (!bodyDesc) {
     const p = html.match(/<div class="content">\s*<p>([\s\S]*?)<\/p>/i);
-    if (p) bodyDesc = textOnly(p[1]);
+    if (p) bodyDesc = decode(textOnly(p[1]));
   }
 
   const cleanDate = dateStr.match(/\d{4}-\d{2}-\d{2}/)

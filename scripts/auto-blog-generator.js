@@ -60,6 +60,19 @@ function escapeHtml(str) {
 const SEO_RULES = { titleMin: 30, titleMax: 65, descMin: 120, descMax: 320 };
 const BRAND_SUFFIX = ' | Shiv Parmar';
 
+// Words a title must never end on (see auto-fix-seo.js fitBrandTitle).
+const HANGING_TAIL = new Set([
+  'a', 'an', 'the', 'of', 'for', 'to', 'in', 'on', 'at', 'by', 'with',
+  'and', 'or', 'vs', 'as', 'is', 'are', 'from', 'into', 'that', 'which',
+  'your', 'my', 'its', 'be', 'can', 'will', 'how', 'what', 'why', 'when',
+]);
+
+function endsHanging(words) {
+  const last = words[words.length - 1] || '';
+  const bare = last.toLowerCase().replace(/[^a-z&+]/g, '');
+  return HANGING_TAIL.has(bare) || /^[^A-Za-z0-9]+$/.test(last) || /[,;:\u2013\u2014-]$/.test(last);
+}
+
 function buildMetaTitle(baseTitle) {
   const base = String(baseTitle).replace(/\s+/g, ' ').trim();
   let title = `${base}${BRAND_SUFFIX}`;
@@ -68,6 +81,9 @@ function buildMetaTitle(baseTitle) {
     const words = base.split(' ');
     while (words.length > 3 && `${words.join(' ')}${BRAND_SUFFIX}`.length > SEO_RULES.titleMax) {
       words.pop();
+      // Never end the title mid-phrase: drop hanging connectors left at the
+      // tail ("... Tested &", "WP Rocket vs", "... and Best").
+      while (words.length > 3 && endsHanging(words)) words.pop();
     }
     title = `${words.join(' ')}${BRAND_SUFFIX}`;
   }
@@ -552,12 +568,12 @@ h1{font-family:var(--font-primary);font-size:clamp(28px,4vw,40px);font-weight:80
 </noscript>
 </div>
 <article><div class="container">
-<img src="../images/blog/${blog.slug}-hero.svg" alt="${safeTitle} - WordPress development guide by Shiv Parmar" class="hero-img">
+<img src="../images/blog/${blog.slug}-hero.svg" alt="${safeBaseTitle} - WordPress development guide by Shiv Parmar" class="hero-img">
 <nav class="breadcrumb" aria-label="Breadcrumb">
-<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>${safeTitle}
+<a href="../">Home</a><span>/</span><a href="../blog">Blog</a><span>/</span>${safeBaseTitle}
 </nav>
 <div class="date">${today} &middot; ${readTime} min read</div>
-<h1>${safeTitle}</h1>
+<h1>${safeBaseTitle}</h1>
 <div class="toc" id="toc">
 <h3>Table of Contents</h3>
 <ul id="tocList">

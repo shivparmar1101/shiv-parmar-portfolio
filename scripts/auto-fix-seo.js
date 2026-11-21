@@ -35,22 +35,44 @@ function logSkip(file, type, reason) {
   console.log(`  ⏭️ SKIP: ${type} in ${file} - ${reason}`);
 }
 
-// SEO meta rules for blog/page titles
+// SEO meta rules for blog/page titles.
+// TITLE_MAX = 60: Google's SERP cuts titles around 60 chars, so anything
+// longer loses its tail (and the brand) in the results.
 const TITLE_MIN = 30;
-const TITLE_MAX = 65;
+const TITLE_MAX = 60;
 const BRAND = ' | Shiv Parmar';
 
-// Build a brand title that never exceeds TITLE_MAX chars
+// A title must never end on one of these — that is how titles used to come
+// out mid-phrase ("...2026: Tested & | Shiv Parmar", "WP Rocket vs | ...").
+const HANGING = new Set([
+  'a', 'an', 'the', 'of', 'for', 'to', 'in', 'on', 'at', 'by', 'with',
+  'and', 'or', 'vs', 'as', 'is', 'are', 'from', 'into', 'that', 'which',
+  'your', 'my', 'its', 'be', 'can', 'will', 'how', 'what', 'why', 'when',
+]);
+
+// Drop trailing hanging connectors/punctuation so a clipped title still reads
+// as a complete phrase ("...2026: Tested &" -> "...2026: Tested").
+function stripHangingTail(words) {
+  const out = words.slice();
+  while (out.length > 1) {
+    const last = out[out.length - 1];
+    const bare = last.toLowerCase().replace(/[^a-z&+]/g, '');
+    if (HANGING.has(bare) || /^[^A-Za-z0-9]+$/.test(last) || /[,;:\u2013\u2014-]$/.test(last)) out.pop();
+    else break;
+  }
+  return out;
+}
+
+// Build a brand title that never exceeds TITLE_MAX chars and never ends mid-phrase.
 function fitBrandTitle(title) {
   const base = title.replace(/\s*\|\s*Shiv Parmar\s*$/, '').replace(/\s+/g, ' ').trim();
-  let words = base.split(' ');
-  let result = words.join(' ') + BRAND;
-
-  while (result.length > TITLE_MAX && words.length > 3) {
+  const words = base.split(' ');
+  while (words.join(' ').length + BRAND.length > TITLE_MAX && words.length > 3) {
     words.pop();
-    result = words.join(' ') + BRAND;
   }
-  return result;
+  const stripped = stripHangingTail(words).join(' ') + BRAND;
+  // Only accept the stripped tail when the result still meets the minimum.
+  return stripped.length >= TITLE_MIN ? stripped : words.join(' ') + BRAND;
 }
 
 // Fix 1: Add brand name to blog titles
@@ -255,12 +277,15 @@ function fixContactSchema() {
   }
 }
 
-// Helper: Get all HTML files
+// Helper: Get all HTML files (standalone pages only — header/footer are
+// include partials and the google file is a verification token, so meta fixes
+// do not apply to them and only produced phantom "fixes")
 function getAllHTMLFiles() {
+  const EXCLUDE = new Set(['404.html', 'header.html', 'footer.html']);
   const files = [];
-  
+
   fs.readdirSync(ROOT_DIR).forEach(file => {
-    if (file.endsWith('.html') && file !== '404.html') {
+    if (file.endsWith('.html') && !EXCLUDE.has(file) && !file.startsWith('google')) {
       files.push(file);
     }
   });
