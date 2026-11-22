@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-11-21T14:02:01.105Z",
+  "generatedAt": "2026-11-22T13:55:35.336Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-11-12",
-      "endDate": "2026-11-18"
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-19"
     },
     "previous": {
-      "startDate": "2026-11-05",
-      "endDate": "2026-11-11"
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-12"
     }
   },
   "current": {
     "totals": {
       "clicks": 1,
-      "impressions": 712
+      "impressions": 662
     },
-    "ctr": 0.1404494382022472,
-    "avgPosition": 20.120786516853933
+    "ctr": 0.1510574018126888,
+    "avgPosition": 21.48942598187311
   },
   "previous": {
     "totals": {
-      "clicks": 7,
-      "impressions": 789
+      "clicks": 8,
+      "impressions": 724
     },
-    "ctr": 0.8871989860583016,
-    "avgPosition": 12.55640050697085
+    "ctr": 1.1049723756906076,
+    "avgPosition": 12.846685082872929
   },
   "topQueries": [
     {
@@ -43,9 +43,18 @@
         "ai crawler blocker wordpress"
       ],
       "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 69.33333333333333
+    },
+    {
+      "keys": [
+        "ai crawlers wordpress"
+      ],
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 69
+      "position": 70
     },
     {
       "keys": [
@@ -88,9 +97,9 @@
         "block ai crawlers wordpress"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 59
+      "position": 74.5
     },
     {
       "keys": [
@@ -100,15 +109,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 77
-    },
-    {
-      "keys": [
-        "block styling"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 22
     },
     {
       "keys": [
@@ -184,6 +184,15 @@
     },
     {
       "keys": [
+        "evaluate the public relations company wordpress on wordpress engine"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
         "evaluate the public relations company wordpress on wordpress engine matt mullenweg/automatic conflict"
       ],
       "clicks": 0,
@@ -196,56 +205,38 @@
         "evaluate the public relations company wordpress on wordpress sued"
       ],
       "clicks": 0,
-      "impressions": 49,
+      "impressions": 50,
       "ctr": 0,
-      "position": 4.6938775510204085
-    },
-    {
-      "keys": [
-        "evaluate the public relations company wp engine on are wordpress engine and wordpress related?"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 15
+      "position": 4.68
     }
   ],
   "topPages": [
     {
       "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/wordpress-database-backup-strategies"
-      ],
-      "clicks": 1,
-      "impressions": 12,
-      "ctr": 0.08333333333333333,
-      "position": 34.333333333333336
-    },
-    {
-      "keys": [
         "https://shiv-parmar-portfolio.netlify.app/"
       ],
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 7
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 5.333333333333333
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/about"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 9.666666666666666
+      "position": 7.75
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 11,
       "ctr": 0,
-      "position": 55
+      "position": 46.27272727272727
     },
     {
       "keys": [
@@ -254,25 +245,34 @@
       "clicks": 0,
       "impressions": 110,
       "ctr": 0,
-      "position": 5.890909090909091
+      "position": 6.327272727272727
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-booking-plugins-2026-tested"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-caching-plugins-2026-compared"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 72.33333333333333
+      "position": 55.25
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 115,
+      "impressions": 74,
       "ctr": 0,
-      "position": 6.721739130434782
+      "position": 7.0675675675675675
     },
     {
       "keys": [
@@ -288,36 +288,36 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-themes-2026-speed-design-compared"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 6
+      "position": 3
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 13,
+      "impressions": 19,
       "ctr": 0,
-      "position": 39.30769230769231
+      "position": 51.526315789473685
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks"
       ],
       "clicks": 0,
-      "impressions": 26,
+      "impressions": 23,
       "ctr": 0,
-      "position": 19.884615384615383
+      "position": 20.73913043478261
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/bricksforge-critical-vulnerability-fix-guide"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 4.5
+      "position": 4
     },
     {
       "keys": [
@@ -333,9 +333,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 29
+      "position": 33.166666666666664
     },
     {
       "keys": [
@@ -360,9 +360,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 2,
       "ctr": 0,
-      "position": 31.333333333333332
+      "position": 44
     },
     {
       "keys": [
@@ -387,9 +387,9 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress"
       ],
       "clicks": 0,
-      "impressions": 30,
+      "impressions": 27,
       "ctr": 0,
-      "position": 59.06666666666667
+      "position": 56.7037037037037
     }
   ]
 }
