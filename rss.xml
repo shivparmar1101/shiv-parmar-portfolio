@@ -6,10 +6,10 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 17:35:36 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 06:19:51 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
     <item>
-      <title>How to Install WordPress Using WP-CLI and Docker | Shiv Parmar</title>
+      <title>How to Install WordPress with WP-CLI &amp; Docker | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-install-wordpress-using-wp-cli-and-docker</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-install-wordpress-using-wp-cli-and-docker</guid>
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
@@ -17,7 +17,7 @@
       <category>wordpress install</category>
     </item>
     <item>
-      <title>Optimizing WordPress Hosting | Shiv Parmar</title>
+      <title>Optimizing WordPress Hosting for Performance | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/optimizing-wordpress-hosting-for-high-performance-sites</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/optimizing-wordpress-hosting-for-high-performance-sites</guid>
       <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
