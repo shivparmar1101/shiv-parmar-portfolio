@@ -19,3 +19,4 @@ seo-data/*.json
 # Keep directory structure
 !reports/.gitkeep
 !seo-data/.gitkeep
+seo-data/repost-pack.md
