@@ -6,10 +6,18 @@
     <atom:link href="https://shiv-parmar-portfolio.netlify.app/rss.xml" rel="self" type="application/rss+xml" />
     <description>Expert guides on WordPress, WooCommerce, plugin development and performance optimization by Shiv Parmar, professional WordPress developer.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Nov 2026 20:28:49 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 19:29:46 GMT</lastBuildDate>
     <generator>Shiv Parmar RSS Generator</generator>
     <item>
-      <title>Modern WooCommerce Development Strategies for 2026 | Shiv Parmar</title>
+      <title>How to Build Custom WooCommerce Extensions | Shiv Parmar</title>
+      <link>https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-custom-woocommerce-extensions</link>
+      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/how-to-build-custom-woocommerce-extensions</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to build a custom WooCommerce plugin step-by-step. Extend your online store&#39;s functionality with tailored code and developer best practices.</description>
+      <category>woocommerce plugin</category>
+    </item>
+    <item>
+      <title>Modern WooCommerce Development Strategies | Shiv Parmar</title>
       <link>https://shiv-parmar-portfolio.netlify.app/blog/modern-woocommerce-development-strategies-for-2026</link>
       <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/modern-woocommerce-development-strategies-for-2026</guid>
       <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
@@ -399,14 +407,6 @@
       <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
       <description>Discover the 30 best WordPress plugins for 2026, ranked by category. Boost your site&#39;s SEO, speed, and security with our ultimate guide. Click to explore!</description>
       <category>best WordPress plugins</category>
-    </item>
-    <item>
-      <title>Manage WordPress with ChatGPT MCP Plugin Guide | Shiv Parmar</title>
-      <link>https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026</link>
-      <guid isPermaLink="true">https://shiv-parmar-portfolio.netlify.app/blog/manage-wordpress-with-chatgpt-mcp-plugin-2026</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Connect an MCP plugin and manage WordPress from ChatGPT — install, edit and publish by chat, with setup steps, tool manifests and security limits.</description>
-      <category>ChatGPT WordPress</category>
     </item>
   </channel>
 </rss>
