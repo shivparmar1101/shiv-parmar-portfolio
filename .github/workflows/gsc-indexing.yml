@@ -10,12 +10,6 @@ on:
   schedule:
     - cron: '0 7 * * *'
   workflow_dispatch:
-    inputs:
-      all:
-        description: 'Inspect every sitemap URL (true) instead of the rotating 30'
-        required: false
-        default: 'false'
-        type: boolean
 
 permissions:
   contents: write
@@ -41,18 +35,16 @@ jobs:
       # Unindexed-but-discovered URLs are reported as a warning only: Google has no
       # "request indexing" API, so failing the run on them only produced red runs
       # (Oct 27 - Nov 1) without fixing anything.
+      # --all inspects every sitemap URL daily (104 URLs ~12 min, well within the
+      # 2000/day URL Inspection quota) so the report always shows full coverage
+      # instead of a rotating 30-URL sample.
       - name: Submit sitemap + inspect URLs
         env:
           GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
           GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
           GSC_INSPECT_MAX: '30'
           GSC_FAIL_ON_STALE: '0'
-        run: |
-          if [ "${{ github.event.inputs.all }}" = "true" ]; then
-            node scripts/gsc-indexing.js --all
-          else
-            node scripts/gsc-indexing.js
-          fi
+        run: node scripts/gsc-indexing.js --all
 
       - name: Upload index status report
         if: always()
