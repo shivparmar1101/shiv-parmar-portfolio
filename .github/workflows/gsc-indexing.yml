@@ -10,6 +10,12 @@ on:
   schedule:
     - cron: '0 7 * * *'
   workflow_dispatch:
+    inputs:
+      all:
+        description: 'Inspect every sitemap URL (true) instead of the rotating 30'
+        required: false
+        default: 'false'
+        type: boolean
 
 permissions:
   contents: write
@@ -41,7 +47,12 @@ jobs:
           GSC_SITE_URL: https://shiv-parmar-portfolio.netlify.app/
           GSC_INSPECT_MAX: '30'
           GSC_FAIL_ON_STALE: '0'
-        run: node scripts/gsc-indexing.js
+        run: |
+          if [ "${{ github.event.inputs.all }}" = "true" ]; then
+            node scripts/gsc-indexing.js --all
+          else
+            node scripts/gsc-indexing.js
+          fi
 
       - name: Upload index status report
         if: always()
