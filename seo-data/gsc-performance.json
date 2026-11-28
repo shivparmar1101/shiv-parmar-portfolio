@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-11-27T15:58:42.460Z",
+  "generatedAt": "2026-11-28T14:55:52.928Z",
   "siteUrl": "https://shiv-parmar-portfolio.netlify.app/",
   "days": 7,
   "ranges": {
     "current": {
-      "startDate": "2026-11-18",
-      "endDate": "2026-11-24"
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-25"
     },
     "previous": {
-      "startDate": "2026-11-11",
-      "endDate": "2026-11-17"
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-18"
     }
   },
   "current": {
     "totals": {
-      "clicks": 2,
-      "impressions": 434
+      "clicks": 4,
+      "impressions": 412
     },
-    "ctr": 0.4608294930875576,
-    "avgPosition": 28.13364055299539
+    "ctr": 0.9708737864077669,
+    "avgPosition": 30.179611650485437
   },
   "previous": {
     "totals": {
-      "clicks": 2,
-      "impressions": 747
+      "clicks": 1,
+      "impressions": 712
     },
-    "ctr": 0.2677376171352075,
-    "avgPosition": 18.957161981258366
+    "ctr": 0.1404494382022472,
+    "avgPosition": 20.120786516853933
   },
   "topQueries": [
     {
@@ -34,25 +34,25 @@
         "ai crawler blocker wordpress"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 6,
       "ctr": 0,
-      "position": 67
+      "position": 66.83333333333333
     },
     {
       "keys": [
         "ai crawlers wordpress"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 70
+      "position": 68
     },
     {
       "keys": [
         "ai in digital marketing ,,-,590, no data in gsc , aura pr keywords ,134,-"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
       "position": 55
     },
@@ -85,30 +85,12 @@
     },
     {
       "keys": [
-        "answer engine optimization website structure h1 faq strategy"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 43
-    },
-    {
-      "keys": [
         "block ai crawlers wordpress"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 5,
       "ctr": 0,
-      "position": 76.66666666666667
-    },
-    {
-      "keys": [
-        "chatgpt seo mcp"
-      ],
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 60
+      "position": 74.2
     },
     {
       "keys": [
@@ -133,9 +115,9 @@
         "cloudflare cms"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 3,
       "ctr": 0,
-      "position": 33
+      "position": 26
     },
     {
       "keys": [
@@ -175,21 +157,12 @@
     },
     {
       "keys": [
-        "evaluate the public relations company wordpress on wordpress engine matt mullenweg/automatic conflict"
+        "evaluate the public relations company wordpress on wordpress sued"
       ],
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 6.333333333333333
-    },
-    {
-      "keys": [
-        "evaluate the public relations company wordpress on wordpress sued"
-      ],
-      "clicks": 0,
-      "impressions": 14,
-      "ctr": 0,
-      "position": 5.071428571428571
+      "position": 5.333333333333333
     },
     {
       "keys": [
@@ -208,6 +181,33 @@
       "impressions": 1,
       "ctr": 0,
       "position": 4
+    },
+    {
+      "keys": [
+        "how ai crawlers interact with wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 49
+    },
+    {
+      "keys": [
+        "how to add schema code in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 91
+    },
+    {
+      "keys": [
+        "how to add schema in wordpress"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 92
     }
   ],
   "topPages": [
@@ -222,12 +222,30 @@
     },
     {
       "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-create-wordpress-mega-menu"
+      ],
+      "clicks": 1,
+      "impressions": 9,
+      "ctr": 0.1111111111111111,
+      "position": 47
+    },
+    {
+      "keys": [
+        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-install-wordpress-using-wp-cli-and-docker"
+      ],
+      "clicks": 1,
+      "impressions": 20,
+      "ctr": 0.05,
+      "position": 30.6
+    },
+    {
+      "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/woocommerce-11-1-new-features-setup-guide-2026"
       ],
       "clicks": 1,
-      "impressions": 2,
-      "ctr": 0.5,
-      "position": 3.5
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 5.666666666666667
     },
     {
       "keys": [
@@ -243,27 +261,27 @@
         "https://shiv-parmar-portfolio.netlify.app/blog"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 4,
       "ctr": 0,
-      "position": 83.5
+      "position": 58.5
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/answer-engine-optimization-complete-aeo-guide"
       ],
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 10,
       "ctr": 0,
-      "position": 43.75
+      "position": 42.9
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-ai-plugins-wordpress-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 55,
+      "impressions": 42,
       "ctr": 0,
-      "position": 8.509090909090908
+      "position": 9.714285714285714
     },
     {
       "keys": [
@@ -288,18 +306,18 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-migration-plugins-2026-tested"
       ],
       "clicks": 0,
-      "impressions": 29,
+      "impressions": 18,
       "ctr": 0,
-      "position": 7.0344827586206895
+      "position": 8.333333333333332
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/best-wordpress-plugins-2026-top-30-ranked"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 24
+      "position": 20
     },
     {
       "keys": [
@@ -315,18 +333,18 @@
         "https://shiv-parmar-portfolio.netlify.app/blog/block-ai-crawlers-wordpress"
       ],
       "clicks": 0,
-      "impressions": 25,
+      "impressions": 31,
       "ctr": 0,
-      "position": 53.6
+      "position": 57.064516129032256
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/block-level-css-wordpress-7-style-blocks"
       ],
       "clicks": 0,
-      "impressions": 37,
+      "impressions": 40,
       "ctr": 0,
-      "position": 37.37837837837838
+      "position": 34.925
     },
     {
       "keys": [
@@ -344,52 +362,34 @@
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 4
+      "position": 3
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/chatgpt-seo-get-wordpress-cited-by-ai"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 6,
       "ctr": 0,
-      "position": 31.428571428571427
+      "position": 26.666666666666668
     },
     {
       "keys": [
         "https://shiv-parmar-portfolio.netlify.app/blog/cloudflare-explains-its-migration-to-emdash-cms"
       ],
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 13,
       "ctr": 0,
-      "position": 13.7
+      "position": 16.076923076923077
     },
     {
       "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/core-web-vitals-2026-wordpress-checklist"
-      ],
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 54
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-add-schema-markup-to-wordpress"
-      ],
-      "clicks": 0,
-      "impressions": 32,
-      "ctr": 0,
-      "position": 68.03125
-    },
-    {
-      "keys": [
-        "https://shiv-parmar-portfolio.netlify.app/blog/how-to-become-a-modern-wordpress-developer"
+        "https://shiv-parmar-portfolio.netlify.app/blog/connect-claude-to-wordpress-via-mcp-setup"
       ],
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 38
+      "position": 1
     }
   ]
 }
